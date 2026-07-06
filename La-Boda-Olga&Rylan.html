@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/d8db139f-2843-471c-8777-bbc537e23c51/files/">
+<meta charset="UTF-8">
+<title>La Boda — Diccionario de Audio, Juegos y Quiz</title>
+<style>
+:root{--pink:#e75480;--gold:#d4af37;--cream:#fff8f0;--dark:#3a2a2a;}
+*{box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#fdf6f0,#f7e6ee);margin:0;padding:0;color:var(--dark);}
+header{background:linear-gradient(135deg,var(--pink),#c73866);color:#fff;padding:30px 20px;text-align:center;}
+header h1{margin:0;font-size:2.2em;}
+header p{margin:8px 0 0;opacity:.95;}
+.container{max-width:900px;margin:0 auto;padding:20px;}
+section{background:#fff;border-radius:14px;padding:22px 26px;margin:22px 0;box-shadow:0 4px 14px rgba(0,0,0,.08);}
+h2{color:var(--pink);border-bottom:3px solid var(--gold);padding-bottom:6px;}
+audio{width:100%;margin:10px 0;}
+.dialogo-line{padding:10px 14px;margin:6px 0;border-radius:10px;background:#fdf0f4;border-left:4px solid var(--pink);}
+.dialogo-line.hermana{background:#f0f7fd;border-left-color:#4a90d9;}
+.es{font-weight:bold;}
+.en{color:#777;font-style:italic;font-size:.92em;margin-top:2px;}
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;}
+th{background:var(--pink);color:#fff;}
+tr:nth-child(even){background:#fdf6f9;}
+.play-btn{background:var(--pink);color:#fff;border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1em;}
+.play-btn:hover{background:#c73866;}
+.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.card{padding:12px;border-radius:10px;background:#fdf6f9;border:2px solid #f3d1de;cursor:pointer;text-align:center;font-weight:bold;user-select:none;transition:.2s;}
+.card.selected{background:var(--gold);color:#fff;}
+.card.matched{background:#8fd19e;color:#fff;cursor:default;}
+.quiz-q{margin:16px 0;padding:14px;background:#fdf9f2;border-radius:10px;border:1px solid #f0e0c0;}
+.quiz-q p{font-weight:bold;}
+.opt{display:block;width:100%;text-align:left;padding:8px 12px;margin:4px 0;border:2px solid #eee;border-radius:8px;background:#fff;cursor:pointer;}
+.opt:hover{border-color:var(--pink);}
+.opt.correct{background:#c8f0cf;border-color:#4caf50;}
+.opt.incorrect{background:#f7c9c9;border-color:#e53935;}
+#score{font-weight:bold;color:var(--pink);}
+.blank-input{padding:6px;border-radius:6px;border:1px solid #ccc;width:140px;}
+.check-btn{background:var(--gold);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;margin-top:8px;}
+.check-btn:hover{opacity:.9;}
+.result{margin-left:10px;font-weight:bold;}
+@media print{
+ header{background:#eee!important;color:#000!important;}
+ .no-print{display:none!important;}
+ section{box-shadow:none;border:1px solid #ccc;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💍 La Boda — Diccionario de Audio</h1>
+  <p>Spanish Audio Dictionary • English Subtitles • Games • Quizzes</p>
+</header>
+
+<div class="container">
+
+<section>
+  <h2>🎧 Diálogo Completo / Full Dialogue</h2>
+  <p>Escucha la conversación completa entre la suegra y la hermana (novia).</p>
+  <audio controls src="warmly_hola_c_mo_est_s_short_pause_muy_b_53a54b92.mp3"></audio>
+
+  <div id="dialogo"></div>
+</section>
+
+<section>
+  <h2>📖 Diccionario de Vocabulario / Vocabulary Dictionary</h2>
+  <p>Audio de pronunciación lenta y clara para cada palabra clave.</p>
+  <audio controls src="boda_short_pause_suegra_short_pause_herm_b7e6ac64.mp3"></audio>
+  <table>
+    <tr><th>Español</th><th>English</th><th>Ejemplo</th></tr>
+    <tr><td>la boda</td><td>the wedding</td><td>Estoy muy emocionada por tu <b>boda</b>.</td></tr>
+    <tr><td>la suegra</td><td>mother-in-law</td><td>La <b>suegra</b> vive en Australia.</td></tr>
+    <tr><td>la hermana</td><td>the sister</td><td>Mi <b>hermana</b> se casa en enero.</td></tr>
+    <tr><td>emocionada/o</td><td>excited</td><td>Estoy muy <b>emocionada</b>.</td></tr>
+    <tr><td>las invitaciones</td><td>the invitations</td><td>Ya hice las <b>invitaciones</b>.</td></tr>
+    <tr><td>asistir</td><td>to attend</td><td>Cien personas van a <b>asistir</b>.</td></tr>
+    <tr><td>el vestido de novia</td><td>the wedding/bridal dress</td><td>Ya compré el <b>vestido de novia</b>.</td></tr>
+    <tr><td>nerviosa/o</td><td>nervous</td><td>Estoy un poco <b>nerviosa</b>.</td></tr>
+    <tr><td>feliz</td><td>happy</td><td>Sobre todo estoy <b>feliz</b>.</td></tr>
+    <tr><td>la comida</td><td>the food</td><td>Habrá <b>comida</b> boliviana.</td></tr>
+    <tr><td>platos internacionales</td><td>international dishes</td><td>Algunos <b>platos internacionales</b>.</td></tr>
+    <tr><td>hermoso/a</td><td>beautiful</td><td>¡Qué <b>hermoso</b>!</td></tr>
+    <tr><td>elegante</td><td>elegant</td><td>Es blanco, largo y <b>elegante</b>.</td></tr>
+    <tr><td>largo/a</td><td>long</td><td>El vestido es <b>largo</b>.</td></tr>
+    <tr><td>blanco/a</td><td>white</td><td>El vestido es <b>blanco</b>.</td></tr>
+    <tr><td>especial</td><td>special</td><td>Será un día muy <b>especial</b>.</td></tr>
+  </table>
+</section>
+
+<section class="no-print">
+  <h2>🎮 Juego de Memoria / Matching Game</h2>
+  <p>Haz clic en una palabra en español y luego en su traducción en inglés para emparejar.</p>
+  <div class="game-grid" id="gameGrid"></div>
+  <p id="gameStatus"></p>
+</section>
+
+<section class="no-print">
+  <h2>✏️ Completa la Frase / Fill in the Blank</h2>
+  <div id="fillGame"></div>
+</section>
+
+<section class="no-print">
+  <h2>📝 Quiz de Comprensión / Comprehension Quiz</h2>
+  <div id="quiz"></div>
+  <p>Puntaje / Score: <span id="score">0</span> / <span id="total">0</span></p>
+</section>
+
+</div>
+
+<script>
+const dialogo = [
+["Suegra","Hola, ¿cómo estás?","Hello, how are you?"],
+["Hermana","Muy bien, gracias. ¿Y tú?","Very well, thanks. And you?"],
+["Suegra","Muy bien también. Estoy muy emocionada por tu boda.","Very well too. I'm so excited about your wedding."],
+["Hermana","¡Gracias! Yo también estoy muy emocionada.","Thanks! I'm very excited too."],
+["Suegra","¿Cuándo es la boda?","When is the wedding?"],
+["Hermana","Es el 26 de enero.","It's on January 26th."],
+["Suegra","¡Qué bonito! ¿Ya has hecho las invitaciones?","How lovely! Have you already made the invitations?"],
+["Hermana","Sí, ya están listas.","Yes, they're ready already."],
+["Suegra","¿Muchas personas van a asistir?","Are many people going to attend?"],
+["Hermana","Sí, aproximadamente cien personas.","Yes, approximately a hundred people."],
+["Suegra","¿Ya tienes tu vestido de novia?","Do you already have your wedding dress?"],
+["Hermana","Sí, ya lo compré.","Yes, I already bought it."],
+["Suegra","¿Cómo es tu vestido?","What is your dress like?"],
+["Hermana","Es blanco, largo y elegante.","It's white, long and elegant."],
+["Suegra","¡Qué hermoso! ¿Estás nerviosa?","How beautiful! Are you nervous?"],
+["Hermana","Un poco, pero sobre todo estoy feliz.","A little, but above all I'm happy."],
+["Suegra","¿Qué tipo de comida habrá en la boda?","What kind of food will there be at the wedding?"],
+["Hermana","Habrá comida boliviana y algunos platos internacionales.","There will be Bolivian food and some international dishes."],
+["Suegra","Suena delicioso. Tengo muchas ganas de conocerte mejor y celebrar con ustedes.","Sounds delicious. I'm really looking forward to getting to know you better and celebrating with you all."],
+["Hermana","Gracias. Estoy muy feliz de que vengas a la boda.","Thank you. I'm very happy you're coming to the wedding."],
+["Suegra","Yo también. Será un día muy especial.","Me too. It will be a very special day."]
+];
+
+const dEl = document.getElementById('dialogo');
+dialogo.forEach(([who,es,en])=>{
+  const div = document.createElement('div');
+  div.className = 'dialogo-line ' + (who==='Hermana'?'hermana':'');
+  div.innerHTML = `<div class="es">${who}: ${es}</div><div class="en">${en}</div>`;
+  dEl.appendChild(div);
+});
+
+// Matching Game
+const vocab = [
+ ["boda","wedding"],["suegra","mother-in-law"],["hermana","sister"],
+ ["emocionada","excited"],["invitaciones","invitations"],["asistir","to attend"],
+ ["vestido de novia","wedding dress"],["nerviosa","nervous"],["feliz","happy"],
+ ["comida","food"]
+];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const picked = shuffle([...vocab]).slice(0,6);
+let esCards = picked.map((v,i)=>({text:v[0],id:i}));
+let enCards = picked.map((v,i)=>({text:v[1],id:i}));
+esCards = shuffle(esCards); enCards = shuffle(enCards);
+const grid = document.getElementById('gameGrid');
+let selected = null; let matchedCount = 0;
+function renderGame(){
+  grid.innerHTML='';
+  esCards.forEach(c=>{
+    const d = document.createElement('div');
+    d.className='card'; d.textContent=c.text; d.dataset.id=c.id; d.dataset.side='es';
+    d.onclick=()=>handleClick(d);
+    grid.appendChild(d);
+  });
+  enCards.forEach(c=>{
+    const d = document.createElement('div');
+    d.className='card'; d.textContent=c.text; d.dataset.id=c.id; d.dataset.side='en';
+    d.onclick=()=>handleClick(d);
+    grid.appendChild(d);
+  });
+}
+function handleClick(d){
+  if(d.classList.contains('matched')) return;
+  if(!selected){ selected=d; d.classList.add('selected'); return; }
+  if(selected===d) return;
+  if(selected.dataset.id===d.dataset.id && selected.dataset.side!==d.dataset.side){
+    selected.classList.remove('selected'); selected.classList.add('matched');
+    d.classList.add('matched'); matchedCount++;
+    document.getElementById('gameStatus').textContent = matchedCount===picked.length? '¡Completado! / Completed! 🎉' : '';
+  } else {
+    d.classList.add('selected');
+    setTimeout(()=>{selected.classList.remove('selected'); d.classList.remove('selected'); selected=null;},600);
+    return;
+  }
+  selected=null;
+}
+renderGame();
+
+// Fill in the blank
+const fillItems = [
+ {sentence:"Estoy muy ___ por tu boda.",answer:"emocionada",hint:"excited"},
+ {sentence:"¿Muchas personas van a ___?",answer:"asistir",hint:"to attend"},
+ {sentence:"Ya tienes tu ___ de novia?",answer:"vestido",hint:"dress"},
+ {sentence:"Es blanco, largo y ___.",answer:"elegante",hint:"elegant"},
+ {sentence:"Un poco, pero sobre todo estoy ___.",answer:"feliz",hint:"happy"}
+];
+const fillDiv = document.getElementById('fillGame');
+fillItems.forEach((item,i)=>{
+  const w = document.createElement('div');
+  w.className='quiz-q';
+  w.innerHTML = `<p>${i+1}. ${item.sentence} <span style="color:#999;font-weight:normal;">(${item.hint})</span></p>
+    <input class="blank-input" id="fill${i}" placeholder="respuesta">
+    <button class="check-btn" onclick="checkFill(${i},'${item.answer}')">Verificar</button>
+    <span class="result" id="fillResult${i}"></span>`;
+  fillDiv.appendChild(w);
+});
+function checkFill(i,answer){
+  const val = document.getElementById('fill'+i).value.trim().toLowerCase();
+  const res = document.getElementById('fillResult'+i);
+  if(val===answer.toLowerCase()){ res.textContent='✅ ¡Correcto!'; res.style.color='green'; }
+  else { res.textContent='❌ Correcto: '+answer; res.style.color='red'; }
+}
+
+// Quiz
+const quizItems = [
+ {q:"¿Cuándo es la boda?",opts:["El 26 de enero","El 16 de enero","El 6 de junio"],a:0},
+ {q:"¿Cuántas personas asistirán aproximadamente?",opts:["50","100","200"],a:1},
+ {q:"¿De qué color es el vestido?",opts:["Rojo","Azul","Blanco"],a:2},
+ {q:"¿Cómo se siente la hermana, sobre todo?",opts:["Triste","Feliz","Enojada"],a:1},
+ {q:"¿Qué tipo de comida habrá?",opts:["Comida boliviana e internacional","Solo comida italiana","Comida rápida"],a:0},
+ {q:"¿De dónde es la suegra?",opts:["España","Australia","México"],a:1}
+];
+const quizDiv = document.getElementById('quiz');
+document.getElementById('total').textContent = quizItems.length;
+let score=0;
+quizItems.forEach((item,i)=>{
+  const w = document.createElement('div');
+  w.className='quiz-q';
+  w.innerHTML = `<p>${i+1}. ${item.q}</p>`;
+  item.opts.forEach((opt,oi)=>{
+    const b = document.createElement('button');
+    b.className='opt'; b.textContent=opt;
+    b.onclick=()=>{
+      if(b.dataset.done) return;
+      [...w.querySelectorAll('.opt')].forEach(x=>x.dataset.done='1');
+      if(oi===item.a){ b.classList.add('correct'); score++; }
+      else { b.classList.add('incorrect'); w.querySelectorAll('.opt')[item.a].classList.add('correct'); }
+      document.getElementById('score').textContent = score;
+    };
+    w.appendChild(b);
+  });
+  quizDiv.appendChild(w);
+});
+</script>
+
+</body>
+</html>
