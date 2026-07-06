@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/d7fa6f99-75d1-4220-ae36-d4ff1d0fbe7f/files/">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Paolita 🌟 SER & ESTAR — Complete Spanish Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════════════════════════════════
+   SCREEN STYLES
+══════════════════════════════════════ */
+:root{
+  --purple:#7c3aed;--purple2:#a78bfa;--purple-light:#ede9fe;
+  --coral:#f43f5e;--coral-light:#ffe4e6;
+  --gold:#f59e0b;--gold-light:#fef3c7;
+  --green:#10b981;--green-light:#d1fae5;
+  --blue:#3b82f6;--blue-light:#dbeafe;
+  --bg:#faf5ff;--card:#fff;--text:#1e1b4b;--muted:#6b7280;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 40%,#f43f5e 80%,#f59e0b 100%);
+  color:#fff;text-align:center;padding:52px 20px 40px;position:relative;overflow:hidden;}
+.hero::before{content:'🇪🇸';font-size:140px;position:absolute;top:-30px;left:-30px;opacity:.1;line-height:1;}
+.hero::after{content:'📚';font-size:110px;position:absolute;bottom:-20px;right:-20px;opacity:.12;}
+.hero h1{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:900;text-shadow:0 3px 12px rgba(0,0,0,.25);line-height:1.15;}
+.hero p{font-size:1.05rem;margin-top:10px;opacity:.93;}
+.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+.hero-badge{background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.4);border-radius:999px;
+  padding:6px 18px;font-weight:800;font-size:.82rem;backdrop-filter:blur(6px);}
+
+/* TOP BAR */
+.top-bar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px 16px 0;
+  background:#fff;border-bottom:3px solid var(--purple-light);
+  position:sticky;top:0;z-index:200;box-shadow:0 2px 14px rgba(124,58,237,.1);}
+.tab-btn{border:none;background:var(--purple-light);color:var(--purple);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;
+  padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .2s;margin-bottom:8px;}
+.tab-btn.active,.tab-btn:hover{background:var(--purple);color:#fff;transform:translateY(-2px);
+  box-shadow:0 4px 14px rgba(124,58,237,.35);}
+.print-btn-top{background:linear-gradient(90deg,var(--gold),#f97316);color:#fff;
+  border:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;
+  padding:9px 18px;border-radius:999px;cursor:pointer;margin-bottom:8px;
+  box-shadow:0 4px 14px rgba(245,158,11,.35);transition:all .2s;}
+.print-btn-top:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,158,11,.45);}
+
+/* SECTIONS */
+.section{display:none;padding:30px 16px 40px;max-width:1120px;margin:0 auto;}
+.section.active{display:block;}
+.sec-title{font-size:1.55rem;font-weight:900;color:var(--purple);margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.sec-sub{color:var(--muted);font-size:.9rem;margin-bottom:22px;}
+
+/* INNER TABS */
+.inner-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.itab{border:none;background:#f3f4f6;color:var(--muted);
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;
+  padding:7px 16px;border-radius:999px;cursor:pointer;transition:all .2s;}
+.itab.active,.itab:hover{background:var(--purple);color:#fff;}
+.ipanel{display:none;}.ipanel.active{display:block;}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;
+  box-shadow:0 4px 18px rgba(124,58,237,.08);}
+thead tr{background:linear-gradient(90deg,var(--purple),var(--coral));}
+thead th{color:#fff;padding:11px 14px;font-weight:800;font-size:.82rem;text-align:left;}
+tbody tr:nth-child(odd){background:#faf5ff;}
+tbody tr:nth-child(even){background:#fff;}
+tbody tr:hover{background:var(--purple-light);}
+tbody td{padding:10px 14px;font-size:.88rem;border-bottom:1px solid #ede9fe;vertical-align:top;}
+.sp{color:var(--purple);font-weight:800;cursor:pointer;}
+.sp:hover{text-decoration:underline;}
+.en{color:var(--muted);font-size:.8rem;}
+
+/* RULE CARDS */
+.rule{background:var(--card);border-left:5px solid var(--purple);border-radius:var(--radius);
+  padding:18px 22px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+.rule.estar{border-left-color:var(--coral);}
+.rule h3{font-size:1rem;font-weight:800;color:var(--purple);margin-bottom:10px;}
+.rule.estar h3{color:var(--coral);}
+.rule ul{padding-left:20px;}
+.rule li{margin-bottom:7px;font-size:.9rem;line-height:1.6;}
+.rule li .esp{color:var(--purple);font-weight:700;}
+.rule li .eng{color:var(--muted);}
+.tip{background:var(--gold-light);border:2px solid var(--gold);border-radius:10px;
+  padding:12px 16px;margin-top:12px;font-size:.87rem;}
+.tip strong{color:#92400e;}
+
+/* VOCAB FLIP CARDS */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:28px;}
+.flip-card{height:170px;perspective:900px;cursor:pointer;}
+.fci{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.flip-card.flipped .fci{transform:rotateY(180deg);}
+.ff,.fb{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:var(--radius);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:12px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.ff{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;}
+.fb{background:linear-gradient(135deg,var(--coral),#fb7185);color:#fff;transform:rotateY(180deg);}
+.ff .fw{font-size:1.15rem;font-weight:900;}
+.ff .fp{font-size:.68rem;opacity:.8;margin-top:3px;}
+.fb .ft{font-size:1rem;font-weight:800;}
+.fb .fe{font-size:.68rem;margin-top:5px;opacity:.92;line-height:1.4;}
+.ff .fh{font-size:.6rem;opacity:.55;margin-top:8px;}
+.aud-btn{background:rgba(255,255,255,.22);border:none;color:#fff;border-radius:999px;
+  padding:4px 10px;font-size:.68rem;cursor:pointer;margin-top:7px;
+  font-family:'Nunito',sans-serif;font-weight:800;transition:background .2s;}
+.aud-btn:hover{background:rgba(255,255,255,.4);}
+
+/* EMOTION CARDS */
+.emo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:24px;}
+.emo-card{background:var(--card);border-radius:var(--radius);padding:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);border-top:4px solid var(--purple);
+  transition:transform .2s,box-shadow .2s;}
+.emo-card:hover{transform:translateY(-3px);box-shadow:0 7px 22px rgba(0,0,0,.1);}
+.emo-num{font-size:.65rem;font-weight:800;color:var(--muted);}
+.emo-esp{font-size:1.05rem;font-weight:900;}
+.emo-eng{font-size:.82rem;color:var(--muted);margin-top:2px;}
+.emo-gend{font-size:.72rem;color:var(--coral);font-weight:700;margin-top:4px;}
+.emo-play{margin-top:8px;background:var(--purple-light);border:none;color:var(--purple);
+  border-radius:999px;padding:4px 12px;font-size:.7rem;cursor:pointer;
+  font-family:'Nunito',sans-serif;font-weight:800;transition:background .2s;}
+.emo-play:hover{background:var(--purple);color:#fff;}
+
+/* DIVIDER */
+.divider{height:2px;background:linear-gradient(90deg,var(--purple-light),var(--coral-light));
+  border-radius:999px;margin:24px 0;}
+
+/* DIALOGUE */
+.dlg-box{background:var(--card);border-radius:var(--radius);padding:22px;
+  box-shadow:0 4px 16px rgba(0,0,0,.07);margin-bottom:18px;}
+.dlg-line{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.spk{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;
+  border-radius:999px;padding:4px 13px;font-size:.75rem;font-weight:800;white-space:nowrap;}
+.spk.b{background:linear-gradient(135deg,var(--coral),#fb7185);}
+.dlg-txt .de{font-weight:800;font-size:.92rem;cursor:pointer;}
+.dlg-txt .de:hover{color:var(--purple);}
+.dlg-txt .dn{font-size:.78rem;color:var(--muted);margin-top:2px;}
+.play-dlg{background:linear-gradient(90deg,var(--purple),var(--coral));color:#fff;border:none;
+  border-radius:999px;padding:10px 22px;font-family:'Nunito',sans-serif;font-weight:800;
+  font-size:.88rem;cursor:pointer;margin-bottom:18px;transition:all .2s;}
+.play-dlg:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(124,58,237,.3);}
+
+/* QUIZ */
+.quiz-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.score-pill{background:linear-gradient(90deg,var(--purple),var(--coral));color:#fff;
+  border-radius:999px;padding:8px 22px;font-weight:900;font-size:.95rem;}
+.qprog{background:var(--purple-light);border-radius:999px;height:10px;margin-bottom:18px;overflow:hidden;}
+.qbar{height:100%;background:linear-gradient(90deg,var(--purple),var(--coral));
+  border-radius:999px;transition:width .4s;}
+.q-card{background:var(--card);border-radius:18px;padding:26px;
+  box-shadow:0 6px 26px rgba(0,0,0,.07);margin-bottom:18px;}
+.q-label{font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;}
+.q-text{font-size:1.1rem;font-weight:800;margin-bottom:18px;line-height:1.5;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+@media(max-width:480px){.opts{grid-template-columns:1fr;}}
+.opt{background:var(--purple-light);border:2px solid transparent;color:var(--purple);
+  border-radius:12px;padding:11px 14px;font-family:'Nunito',sans-serif;
+  font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
+.opt:hover:not(:disabled){background:var(--purple);color:#fff;}
+.opt.correct{background:var(--green-light)!important;border-color:var(--green)!important;color:#065f46!important;}
+.opt.wrong{background:var(--coral-light)!important;border-color:var(--coral)!important;color:#9f1239!important;}
+.opt:disabled{cursor:default;}
+.fb-box{border-radius:12px;padding:12px 16px;margin-top:12px;font-weight:700;font-size:.9rem;display:none;}
+.fb-box.show{display:block;}
+.fb-box.ok{background:var(--green-light);color:#065f46;border:2px solid var(--green);}
+.fb-box.bad{background:var(--coral-light);color:#9f1239;border:2px solid var(--coral);}
+.fill-inp{width:100%;padding:12px 16px;border:2px solid var(--purple-light);border-radius:12px;
+  font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);
+  outline:none;transition:border .2s;margin-bottom:10px;}
+.fill-inp:focus{border-color:var(--purple);}
+.fill-inp.correct{border-color:var(--green);background:var(--green-light);}
+.fill-inp.wrong{border-color:var(--coral);background:var(--coral-light);}
+.qnav{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.btn-pri{background:linear-gradient(90deg,var(--purple),var(--coral));color:#fff;border:none;
+  border-radius:999px;padding:11px 26px;font-family:'Nunito',sans-serif;font-weight:800;
+  font-size:.9rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(124,58,237,.3);}
+.btn-pri:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(124,58,237,.4);}
+.btn-sec{background:var(--purple-light);color:var(--purple);border:none;border-radius:999px;
+  padding:11px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.result-card{background:linear-gradient(135deg,var(--purple),var(--coral));color:#fff;
+  border-radius:20px;padding:36px;text-align:center;display:none;animation:popIn .4s;}
+.result-card.show{display:block;}
+.big-score{font-size:3.5rem;font-weight:900;margin:10px 0;}
+@keyframes popIn{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+/* GAMES */
+/* Memory */
+.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;max-width:520px;margin:0 auto 18px;}
+@media(max-width:460px){.mem-grid{grid-template-columns:repeat(3,1fr);}}
+.mc{height:78px;perspective:600px;cursor:pointer;}
+.mci{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .4s;}
+.mc.flipped .mci,.mc.matched .mci{transform:rotateY(180deg);}
+.mf,.mb{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;
+  text-align:center;padding:6px;}
+.mf{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;}
+.mb{transform:rotateY(180deg);background:linear-gradient(135deg,var(--coral),#fb7185);color:#fff;}
+.mc.matched .mf,.mc.matched .mb{opacity:.45;}
+.gstat{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.gstat-badge{background:var(--card);border-radius:999px;padding:7px 16px;font-weight:700;
+  font-size:.85rem;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.gstat-badge span{color:var(--purple);font-weight:900;}
+
+/* Scramble */
+.scr-word{font-size:2rem;font-weight:900;color:var(--purple);letter-spacing:.2em;text-align:center;margin:14px 0;}
+.scr-hint{text-align:center;color:var(--muted);font-size:.88rem;margin-bottom:12px;}
+.scr-inp{width:100%;max-width:340px;display:block;margin:0 auto 10px;padding:13px 18px;
+  border:2px solid var(--purple-light);border-radius:12px;font-size:1.1rem;font-weight:800;
+  text-align:center;font-family:'Nunito',sans-serif;outline:none;}
+.scr-inp:focus{border-color:var(--purple);}
+
+/* Match */
+.match-area{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.match-col{display:flex;flex-direction:column;gap:7px;}
+.mi{padding:11px 14px;border-radius:12px;font-weight:700;font-size:.87rem;cursor:pointer;
+  transition:all .2s;user-select:none;border:2px solid transparent;}
+.mi-esp{background:var(--purple-light);color:var(--purple);}
+.mi-eng{background:var(--gold-light);color:#92400e;}
+.mi.sel{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.22);}
+.mi.ok{background:var(--green-light)!important;color:#065f46!important;border-color:var(--green)!important;cursor:default;}
+.mi.bad{background:var(--coral-light)!important;border-color:var(--coral)!important;}
+
+/* FOOTER */
+.footer{background:linear-gradient(135deg,#4c1d95,#f43f5e);color:#fff;text-align:center;
+  padding:30px 20px;margin-top:40px;}
+.footer h3{font-size:1.3rem;font-weight:900;}
+.footer p{opacity:.9;margin-top:6px;font-size:.9rem;}
+
+/* ══════════════════════════════════════
+   PRINT STYLES
+══════════════════════════════════════ */
+@media print{
+  body{background:#fff;font-family:'Nunito',sans-serif;color:#000;font-size:10pt;}
+  .hero,.top-bar,.footer,.section:not(#print-guide),
+  .aud-btn,.play-dlg,.emo-play,.btn-pri,.btn-sec,.print-btn-top{display:none!important;}
+  #print-guide{display:block!important;padding:0;max-width:100%;}
+  .pg-cover{text-align:center;padding:24pt 0 16pt;border-bottom:3pt solid #7c3aed;margin-bottom:18pt;}
+  .pg-cover h1{font-size:22pt;font-weight:900;color:#7c3aed;}
+  .pg-cover p{font-size:10pt;color:#6b7280;margin-top:4pt;}
+  .pg-sec{page-break-inside:avoid;margin-bottom:18pt;}
+  .pg-sec h2{font-size:13pt;font-weight:900;color:#7c3aed;border-bottom:2pt solid #ede9fe;
+    padding-bottom:4pt;margin-bottom:8pt;}
+  .pg-sec h3{font-size:11pt;font-weight:800;color:#f43f5e;margin:10pt 0 5pt;}
+  .pg-tbl{width:100%;border-collapse:collapse;margin-bottom:10pt;font-size:8.5pt;}
+  .pg-tbl th{background:#7c3aed;color:#fff;padding:5pt 7pt;text-align:left;font-weight:700;}
+  .pg-tbl td{padding:4pt 7pt;border:0.5pt solid #e5e7eb;vertical-align:top;}
+  .pg-tbl tr:nth-child(even){background:#faf5ff;}
+  .pg-vocab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6pt;margin-bottom:10pt;}
+  .pg-vocab-item{border:1pt solid #e5e7eb;border-radius:4pt;padding:5pt;font-size:8pt;}
+  .pg-vocab-item .pv-esp{font-weight:800;color:#7c3aed;font-size:9pt;}
+  .pg-vocab-item .pv-eng{color:#6b7280;margin-top:1pt;}
+  .pg-vocab-item .pv-ex{color:#374151;font-style:italic;margin-top:2pt;font-size:7.5pt;}
+  .pg-rule{background:#faf5ff;border-left:3pt solid #7c3aed;padding:6pt 10pt;margin-bottom:8pt;font-size:8.5pt;}
+  .pg-rule.estar{border-left-color:#f43f5e;}
+  .pg-ex{margin:3pt 0;padding-left:10pt;}
+  .pg-ex .es{font-weight:700;color:#4c1d95;}
+  .pg-ex .en{color:#6b7280;}
+  .pg-emo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4pt;margin-bottom:10pt;}
+  .pg-emo{border:0.5pt solid #e5e7eb;border-radius:3pt;padding:4pt;font-size:7.5pt;}
+  .pg-emo .pe-num{color:#9ca3af;font-size:6.5pt;}
+  .pg-emo .pe-esp{font-weight:800;color:#7c3aed;}
+  .pg-emo .pe-eng{color:#6b7280;}
+  .pg-quiz{margin-bottom:10pt;font-size:9pt;}
+  .pg-quiz .pq-q{font-weight:700;margin:7pt 0 3pt;}
+  .pg-quiz .pq-opts{padding-left:14pt;}
+  .pg-quiz .pq-opt{margin-bottom:2pt;}
+  .pg-quiz .pq-ans{color:#065f46;font-size:8pt;margin-top:3pt;}
+  .pg-badge{display:inline-block;padding:1pt 6pt;border-radius:3pt;font-size:7pt;
+    font-weight:800;background:#ede9fe;color:#7c3aed;}
+  .pg-badge.estar{background:#ffe4e6;color:#f43f5e;}
+  .pg-tip{background:#fef3c7;border:1pt solid #f59e0b;border-radius:3pt;
+    padding:5pt 8pt;font-size:8pt;margin-top:5pt;}
+  .pg-tip strong{color:#92400e;}
+  .pg-page-break{page-break-before:always;}
+  .pg-cols2{display:grid;grid-template-columns:1fr 1fr;gap:10pt;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+  <h1>🌟 Mastering SER &amp; ESTAR</h1>
+  <p>Complete Spanish Course — Interactive Lessons, Audio, Quizzes &amp; Games</p>
+  <div class="hero-badges">
+    <span class="hero-badge">👩‍🏫 Games</span>
+    <span class="hero-badge">🔊 Audio Pronunciation</span>
+    <span class="hero-badge">🎮 3 Games</span>
+    <span class="hero-badge">🎯 20-Question Quiz</span>
+    <span class="hero-badge">🖨️ Printable Guide</span>
+  </div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<div class="top-bar">
+  <button class="tab-btn active" onclick="showTab('pronouns',this)">📋 Pronouns</button>
+  <button class="tab-btn" onclick="showTab('ser',this)">🔵 SER</button>
+  <button class="tab-btn" onclick="showTab('estar',this)">🔴 ESTAR</button>
+  <button class="tab-btn" onclick="showTab('vocab',this)">📚 Vocabulary</button>
+  <button class="tab-btn" onclick="showTab('dialogue',this)">💬 Dialogues</button>
+  <button class="tab-btn" onclick="showTab('quiz',this)">🎯 Quiz</button>
+  <button class="tab-btn" onclick="showTab('games',this)">🎮 Games</button>
+  <button class="print-btn-top" onclick="printGuide()">🖨️ Print Study Guide</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: PRONOUNS
+══════════════════════════════════════════════ -->
+<div id="tab-pronouns" class="section active">
+  <div class="sec-title">📋 Spanish Pronouns</div>
+  <div class="sec-sub">The foundation of every Spanish sentence. Click any Spanish word to hear it 🔊</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Person</th><th>English</th><th>Masc. (Spanish)</th><th>Fem. (Spanish)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1st Singular</strong></td><td>I</td><td class="sp" onclick="say('yo')">yo 🔊</td><td class="sp" onclick="say('yo')">yo 🔊</td></tr>
+        <tr><td><strong>1st Plural</strong></td><td>We</td><td class="sp" onclick="say('nosotros')">nosotros 🔊</td><td class="sp" onclick="say('nosotras')">nosotras 🔊</td></tr>
+        <tr><td><strong>2nd Informal Sing.</strong></td><td>You</td><td class="sp" onclick="say('tú')">tú 🔊</td><td class="sp" onclick="say('tú')">tú 🔊</td></tr>
+        <tr><td><strong>2nd Formal Sing.</strong></td><td>You (formal)</td><td class="sp" onclick="say('usted')">usted 🔊</td><td class="sp" onclick="say('usted')">usted 🔊</td></tr>
+        <tr><td><strong>2nd Plural</strong></td><td>You all</td><td class="sp" onclick="say('ustedes, vosotros')">ustedes / vosotros 🔊</td><td class="sp" onclick="say('ustedes, vosotras')">ustedes / vosotras 🔊</td></tr>
+        <tr><td><strong>3rd Singular</strong></td><td>He / She</td><td class="sp" onclick="say('él')">él 🔊</td><td class="sp" onclick="say('ella')">ella 🔊</td></tr>
+        <tr><td><strong>3rd Plural</strong></td><td>They</td><td class="sp" onclick="say('ellos')">ellos 🔊</td><td class="sp" onclick="say('ellas')">ellas 🔊</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip">💡 <strong>Latin America vs Spain:</strong> In Latin America <em>ustedes</em> is used for all "you all." In Spain, <em>vosotros/vosotras</em> is the informal plural.</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: SER
+══════════════════════════════════════════════ -->
+<div id="tab-ser" class="section">
+  <div class="sec-title">🔵 SER — Permanent States</div>
+  <div class="sec-sub">Use SER for identity, origin, occupation, time, and inherent characteristics.</div>
+
+  <div class="rule">
+    <h3>🔵 DOCTOR — When to use SER</h3>
+    <ul>
+      <li>🪪 <strong>D</strong>escription / Identity: <span class="esp">Yo soy Carmen.</span> <span class="eng">— I am Carmen.</span></li>
+      <li>🌍 <strong>O</strong>rigin: <span class="esp">Olga es de Bolivia.</span> <span class="eng">— Olga is from Bolivia.</span></li>
+      <li>💼 <strong>C</strong>haracteristic / Occupation: <span class="esp">Ella es doctora.</span> <span class="eng">— She is a doctor.</span></li>
+      <li>⏰ <strong>T</strong>ime: <span class="esp">¡Es las cinco en punto!</span> <span class="eng">— It's five o'clock!</span></li>
+      <li>🌐 <strong>O</strong>wnership / Origin: <span class="esp">Él es australiano.</span> <span class="eng">— He is Australian.</span></li>
+      <li>❤️ <strong>R</strong>elationship: <span class="esp">Ella es mi amiga.</span> <span class="eng">— She is my friend.</span></li>
+    </ul>
+    <div class="tip">💡 <strong>Memory trick:</strong> <strong>DOCTOR</strong> = Description, Origin, Characteristic, Time, Origin, Relationship → always SER!</div>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="itab active" onclick="showPanel('ser','present',this)">🟢 Present</button>
+    <button class="itab" onclick="showPanel('ser','past',this)">🟡 Past</button>
+    <button class="itab" onclick="showPanel('ser','future',this)">🔷 Future</button>
+  </div>
+
+  <div id="ser-present" class="ipanel active">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish — click to hear 🔊</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I am</td><td class="sp" onclick="say('yo soy')">yo soy 🔊</td></tr>
+        <tr><td>tú</td><td>you are (inf.)</td><td class="sp" onclick="say('tú eres')">tú eres 🔊</td></tr>
+        <tr><td>usted</td><td>you are (formal)</td><td class="sp" onclick="say('usted es')">usted es 🔊</td></tr>
+        <tr><td>él / ella</td><td>he / she is</td><td class="sp" onclick="say('él es, ella es')">él es / ella es 🔊</td></tr>
+        <tr><td>nosotros/as</td><td>we are</td><td class="sp" onclick="say('nosotros somos')">nosotros somos 🔊</td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all are</td><td class="sp" onclick="say('ustedes son')">ustedes son / vosotros sois 🔊</td></tr>
+        <tr><td>ellos / ellas</td><td>they are</td><td class="sp" onclick="say('ellos son')">ellos son / ellas son 🔊</td></tr>
+      </tbody>
+    </table></div>
+    <div class="rule"><h3>📝 Examples — SER Present</h3>
+      <ul>
+        <li><span class="esp" onclick="say('Soy Carmen')" style="cursor:pointer">Soy Carmen. 🔊</span> <span class="eng">— I am Carmen.</span></li>
+        <li><span class="esp" onclick="say('Ella es feliz')" style="cursor:pointer">Ella es feliz. 🔊</span> <span class="eng">— She is happy. (inherent)</span></li>
+        <li><span class="esp" onclick="say('Nosotros somos de Bolivia')" style="cursor:pointer">Nosotros somos de Bolivia. 🔊</span> <span class="eng">— We are from Bolivia.</span></li>
+        <li><span class="esp" onclick="say('Él es soltero')" style="cursor:pointer">Él es soltero. 🔊</span> <span class="eng">— He is single.</span></li>
+        <li><span class="esp" onclick="say('Ellas son australianas')" style="cursor:pointer">Ellas son australianas. 🔊</span> <span class="eng">— They are Australian. (girls)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="ser-past" class="ipanel">
+    <div class="tip" style="margin-bottom:14px;">⚡ <strong>Two past forms:</strong> <em>era/éramos</em> (imperfect — ongoing/repeated) vs <em>fui/fuimos</em> (preterite — completed)</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronoun</th><th>English</th><th>Imperfect</th><th>Preterite</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I was</td><td class="sp" onclick="say('yo era')">yo era 🔊</td><td class="sp" onclick="say('yo fui')">yo fui 🔊</td></tr>
+        <tr><td>tú</td><td>you were</td><td class="sp" onclick="say('tú eras')">tú eras 🔊</td><td class="sp" onclick="say('tú fuiste')">tú fuiste 🔊</td></tr>
+        <tr><td>él / ella</td><td>he/she was</td><td class="sp" onclick="say('él era')">él era 🔊</td><td class="sp" onclick="say('él fue')">él fue 🔊</td></tr>
+        <tr><td>nosotros/as</td><td>we were</td><td class="sp" onclick="say('nosotros éramos')">nosotros éramos 🔊</td><td class="sp" onclick="say('nosotros fuimos')">nosotros fuimos 🔊</td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all were</td><td class="sp" onclick="say('ustedes eran')">ustedes eran 🔊</td><td class="sp" onclick="say('vosotros fuisteis')">vosotros fuisteis 🔊</td></tr>
+        <tr><td>ellos / ellas</td><td>they were</td><td class="sp" onclick="say('ellos eran')">ellos eran 🔊</td><td class="sp" onclick="say('ellos fueron')">ellos fueron 🔊</td></tr>
+      </tbody>
+    </table></div>
+    <div class="rule"><h3>⚖️ Profession Examples — Past</h3>
+      <ul>
+        <li><span class="esp" onclick="say('Yo fui abogado')" style="cursor:pointer">Yo fui abogado. 🔊</span> <span class="eng">— I was a lawyer. (completed)</span></li>
+        <li><span class="esp" onclick="say('Él fue un abogado')" style="cursor:pointer">Él fue un abogado. 🔊</span> <span class="eng">— He was a lawyer.</span></li>
+        <li><span class="esp" onclick="say('Ella fue una abogada')" style="cursor:pointer">Ella fue una abogada. 🔊</span> <span class="eng">— She was a lawyer.</span></li>
+        <li><span class="esp" onclick="say('Nosotras fuimos abogadas')" style="cursor:pointer">Nosotras fuimos abogadas. 🔊</span> <span class="eng">— We (girls) were lawyers.</span></li>
+        <li><span class="esp" onclick="say('Vosotros fuisteis abogados')" style="cursor:pointer">Vosotros fuisteis abogados. 🔊</span> <span class="eng">— You all were lawyers. (Spain)</span></li>
+        <li><span class="esp" onclick="say('Ellos fueron abogados')" style="cursor:pointer">Ellos fueron abogados. 🔊</span> <span class="eng">— They were lawyers.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="ser-future" class="ipanel">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish — click to hear 🔊</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I will be</td><td class="sp" onclick="say('yo seré')">yo seré 🔊</td></tr>
+        <tr><td>tú</td><td>you will be</td><td class="sp" onclick="say('tú serás')">tú serás 🔊</td></tr>
+        <tr><td>él / ella</td><td>he/she will be</td><td class="sp" onclick="say('él será')">él será 🔊</td></tr>
+        <tr><td>nosotros/as</td><td>we will be</td><td class="sp" onclick="say('nosotros seremos')">nosotros seremos 🔊</td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all will be</td><td class="sp" onclick="say('ustedes serán')">ustedes serán 🔊</td></tr>
+        <tr><td>ellos / ellas</td><td>they will be</td><td class="sp" onclick="say('ellos serán')">ellos serán 🔊</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: ESTAR
+══════════════════════════════════════════════ -->
+<div id="tab-estar" class="section">
+  <div class="sec-title">🔴 ESTAR — Temporary States</div>
+  <div class="sec-sub">Use ESTAR for temporary conditions, emotions, and locations.</div>
+
+  <div class="rule estar">
+    <h3>🔴 PLACE — When to use ESTAR</h3>
+    <ul>
+      <li>📍 <strong>P</strong>osition / Location: <span class="esp">Mi casa está enfrente del cine.</span> <span class="eng">— My house is opposite the cinema.</span></li>
+      <li>🙋 <strong>L</strong>ocation of a person: <span class="esp">Estamos en casa.</span> <span class="eng">— We're at home.</span></li>
+      <li>🏃 <strong>A</strong>ction (progressive): <span class="esp">Estoy comiendo.</span> <span class="eng">— I am eating.</span></li>
+      <li>😷 <strong>C</strong>ondition (temporary): <span class="esp">Yo estoy enferma.</span> <span class="eng">— I'm ill.</span></li>
+      <li>😢 <strong>E</strong>motion (changeable): <span class="esp">Él está triste hoy.</span> <span class="eng">— He's sad today.</span></li>
+    </ul>
+    <div class="tip">💡 <strong>Memory trick:</strong> <strong>PLACE</strong> = Position, Location, Action, Condition, Emotion → always ESTAR!</div>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="itab active" onclick="showPanel('estar','present',this)">🟢 Present</button>
+    <button class="itab" onclick="showPanel('estar','past',this)">🟡 Past</button>
+    <button class="itab" onclick="showPanel('estar','future',this)">🔷 Future</button>
+  </div>
+
+  <div id="estar-present" class="ipanel active">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish — click to hear 🔊</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I am</td><td class="sp" onclick="say('yo estoy')">yo estoy 🔊</td></tr>
+        <tr><td>tú</td><td>you are (inf.)</td><td class="sp" onclick="say('tú estás')">tú estás 🔊</td></tr>
+        <tr><td>usted</td><td>you are (formal)</td><td class="sp" onclick="say('usted está')">usted está 🔊</td></tr>
+        <tr><td>él / ella</td><td>he/she is</td><td class="sp" onclick="say('él está')">él está / ella está 🔊</td></tr>
+        <tr><td>nosotros/as</td><td>we are</td><td class="sp" onclick="say('nosotros estamos')">nosotros estamos 🔊</td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all are</td><td class="sp" onclick="say('ustedes están')">ustedes están / vosotros estáis 🔊</td></tr>
+        <tr><td>ellos / ellas</td><td>they are</td><td class="sp" onclick="say('ellos están')">ellos están / ellas están 🔊</td></tr>
+      </tbody>
+    </table></div>
+    <div class="rule estar"><h3>📝 BUENO vs BIEN</h3>
+      <ul>
+        <li><strong>Bueno/a</strong> (SER) = inherently good person/thing:<br><span class="esp" onclick="say('Gerardo es un hombre bueno')" style="cursor:pointer">Gerardo es un hombre bueno. 🔊</span> <span class="eng">— Gerardo is a good man.</span></li>
+        <li><strong>Bien</strong> (ESTAR) = feeling fine / doing well:<br><span class="esp" onclick="say('Yo estoy muy bien, gracias')" style="cursor:pointer">Yo estoy muy bien, gracias. 🔊</span> <span class="eng">— I am very well, thanks.</span></li>
+        <li><span class="esp" onclick="say('Cristiano Ronaldo es un buen futbolista')" style="cursor:pointer">Cristiano Ronaldo es un buen futbolista. 🔊</span> <span class="eng">— Cristiano Ronaldo is a good soccer player.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="estar-past" class="ipanel">
+    <div class="tip" style="margin-bottom:14px;">⚡ <strong>estaba</strong> = imperfect (ongoing) · <strong>estuve</strong> = preterite (specific moment with clear start/end)</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronoun</th><th>English</th><th>Imperfect</th><th>Preterite</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I was</td><td class="sp" onclick="say('yo estaba')">yo estaba 🔊</td><td class="sp" onclick="say('yo estuve')">yo estuve 🔊</td></tr>
+        <tr><td>tú</td><td>you were</td><td class="sp" onclick="say('tú estabas')">tú estabas 🔊</td><td class="sp" onclick="say('tú estuviste')">tú estuviste 🔊</td></tr>
+        <tr><td>él / ella</td><td>he/she was</td><td class="sp" onclick="say('él estaba')">él estaba 🔊</td><td class="sp" onclick="say('él estuvo')">él estuvo 🔊</td></tr>
+        <tr><td>nosotros/as</td><td>we were</td><td class="sp" onclick="say('nosotros estábamos')">nosotros estábamos 🔊</td><td class="sp" onclick="say('nosotros estuvimos')">nosotros estuvimos 🔊</td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all were</td><td class="sp" onclick="say('ustedes estaban')">ustedes estaban 🔊</td><td class="sp" onclick="say('vosotros estuvisteis')">vosotros estuvisteis 🔊</td></tr>
+        <tr><td>ellos / ellas</td><td>they were</td><td class="sp" onclick="say('ellos estaban')">ellos estaban 🔊</td><td class="sp" onclick="say('ellos estuvieron')">ellos estuvieron 🔊</td></tr>
+      </tbody>
+    </table></div>
+    <div class="rule estar"><h3>📝 ESTAR Past Examples</h3>
+      <ul>
+        <li><span class="esp" onclick="say('Yo estaba hambriento')" style="cursor:pointer">Yo estaba hambriento. 🔊</span> <span class="eng">— I was hungry. (ongoing feeling)</span></li>
+        <li><span class="esp" onclick="say('Nosotros estábamos hambrientos')" style="cursor:pointer">Nosotros estábamos hambrientos. 🔊</span> <span class="eng">— We were hungry.</span></li>
+        <li><span class="esp" onclick="say('Vosotros estuvisteis hambrientos')" style="cursor:pointer">Vosotros estuvisteis hambrientos. 🔊</span> <span class="eng">— You all were hungry.</span></li>
+        <li><span class="esp" onclick="say('Estuve en casa todo el día')" style="cursor:pointer">Estuve en casa todo el día. 🔊</span> <span class="eng">— I was at home all day. (preterite — complete event)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="estar-future" class="ipanel">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish — click to hear 🔊</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I will be</td><td class="sp" onclick="say('yo estaré')">yo estaré 🔊</td></tr>
+        <tr><td>tú</td><td>you will be</td><td class="sp" onclick="say('tú estarás')">tú estarás 🔊</td></tr>
+        <tr><td>él / ella</td><td>he/she will be</td><td class="sp" onclick="say('él estará')">él estará 🔊</td></tr>
+        <tr><td>nosotros/as</td><td>we will be</td><td class="sp" onclick="say('nosotros estaremos')">nosotros estaremos 🔊</td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all will be</td><td class="sp" onclick="say('ustedes estarán')">ustedes estarán 🔊</td></tr>
+        <tr><td>ellos / ellas</td><td>they will be</td><td class="sp" onclick="say('ellos estarán')">ellos estarán 🔊</td></tr>
+      </tbody>
+    </table></div>
+    <div class="rule estar"><h3>📝 ESTAR Future Examples</h3>
+      <ul>
+        <li><span class="esp" onclick="say('Ella estará cansada mañana')" style="cursor:pointer">Ella estará cansada mañana. 🔊</span> <span class="eng">— She will be tired tomorrow.</span></li>
+        <li><span class="esp" onclick="say('Nosotros estaremos en clase')" style="cursor:pointer">Nosotros estaremos en clase. 🔊</span> <span class="eng">— We will be in class.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: VOCABULARY
+══════════════════════════════════════════════ -->
+<div id="tab-vocab" class="section">
+  <div class="sec-title">📚 Vocabulary Cards</div>
+  <div class="sec-sub">Click a card to flip it 🔄 &nbsp;|&nbsp; Hit 🔊 to hear the Spanish pronunciation</div>
+
+  <div class="inner-tabs">
+    <button class="itab active" onclick="showPanel('vocab','adj',this)">😊 Adjectives (18)</button>
+    <button class="itab" onclick="showPanel('vocab','emo',this)">❤️ Emotions (20)</button>
+    <button class="itab" onclick="showPanel('vocab','food',this)">🍽️ Food Adj. (9)</button>
+    <button class="itab" onclick="showPanel('vocab','extra',this)">✨ More Adj. (8)</button>
+  </div>
+
+  <div id="vocab-adj" class="ipanel active"><div class="vocab-grid" id="grid-adj"></div></div>
+  <div id="vocab-emo" class="ipanel"><div class="emo-grid" id="grid-emo"></div></div>
+  <div id="vocab-food" class="ipanel"><div class="vocab-grid" id="grid-food"></div></div>
+  <div id="vocab-extra" class="ipanel"><div class="vocab-grid" id="grid-extra"></div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: DIALOGUES
+══════════════════════════════════════════════ -->
+<div id="tab-dialogue" class="section">
+  <div class="sec-title">💬 Conversation Practice</div>
+  <div class="sec-sub">Real dialogues using SER &amp; ESTAR — click any line to hear it, or play the full scene 🎙️</div>
+
+  <div class="dlg-box">
+    <h3 style="font-size:1rem;color:var(--purple);margin-bottom:14px;">🤝 Scene 1 — Meeting Someone New</h3>
+    <div class="dlg-line"><div class="spk">Ana</div><div class="dlg-txt">
+      <div class="de" onclick="say('¡Hola! ¿Cómo estás?')">¡Hola! ¿Cómo estás? 🔊</div>
+      <div class="dn">Hi! How are you?</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk b">Luis</div><div class="dlg-txt">
+      <div class="de" onclick="say('Estoy muy bien, gracias. ¿Y tú?')">Estoy muy bien, gracias. ¿Y tú? 🔊</div>
+      <div class="dn">I'm very well, thank you. And you?</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk">Ana</div><div class="dlg-txt">
+      <div class="de" onclick="say('Yo soy Ana. Soy de Bolivia.')">Yo soy Ana. Soy de Bolivia. 🔊</div>
+      <div class="dn">I am Ana. I am from Bolivia.</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk b">Luis</div><div class="dlg-txt">
+      <div class="de" onclick="say('Mucho gusto. Yo soy Luis. Soy médico.')">Mucho gusto. Yo soy Luis. Soy médico. 🔊</div>
+      <div class="dn">Nice to meet you. I am Luis. I am a doctor.</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk">Ana</div><div class="dlg-txt">
+      <div class="de" onclick="say('¿Dónde estás ahora?')">¿Dónde estás ahora? 🔊</div>
+      <div class="dn">Where are you now?</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk b">Luis</div><div class="dlg-txt">
+      <div class="de" onclick="say('Estoy en el hospital. Estoy muy cansado hoy.')">Estoy en el hospital. Estoy muy cansado hoy. 🔊</div>
+      <div class="dn">I'm at the hospital. I'm very tired today.</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk">Ana</div><div class="dlg-txt">
+      <div class="de" onclick="say('Mañana estarás mejor. ¡Descansa!')">Mañana estarás mejor. ¡Descansa! 🔊</div>
+      <div class="dn">Tomorrow you will be better. Rest!</div>
+    </div></div>
+  </div>
+  <button class="play-dlg" onclick="playDlg(0)">🔊 Play Full Scene 1</button>
+
+  <div class="dlg-box">
+    <h3 style="font-size:1rem;color:var(--coral);margin-bottom:14px;">🍽️ Scene 2 — At a Restaurant</h3>
+    <div class="dlg-line"><div class="spk">Mesero</div><div class="dlg-txt">
+      <div class="de" onclick="say('Buenas noches. ¿Cómo están ustedes?')">Buenas noches. ¿Cómo están ustedes? 🔊</div>
+      <div class="dn">Good evening. How are you all?</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk b">Cliente</div><div class="dlg-txt">
+      <div class="de" onclick="say('Estamos bien, gracias. ¿Qué hay de delicioso hoy?')">Estamos bien, gracias. ¿Qué hay de delicioso hoy? 🔊</div>
+      <div class="dn">We're well, thanks. What's delicious today?</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk">Mesero</div><div class="dlg-txt">
+      <div class="de" onclick="say('La sopa es muy sabrosa y está caliente.')">La sopa es muy sabrosa y está caliente. 🔊</div>
+      <div class="dn">The soup is very tasty and it's hot.</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk b">Cliente</div><div class="dlg-txt">
+      <div class="de" onclick="say('Perfecto. Estoy hambriento. Voy a pedir la sopa.')">Perfecto. Estoy hambriento. Voy a pedir la sopa. 🔊</div>
+      <div class="dn">Perfect. I'm hungry. I'll order the soup.</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk">Mesero</div><div class="dlg-txt">
+      <div class="de" onclick="say('¿Quiere algo dulce de postre?')">¿Quiere algo dulce de postre? 🔊</div>
+      <div class="dn">Would you like something sweet for dessert?</div>
+    </div></div>
+    <div class="dlg-line"><div class="spk b">Cliente</div><div class="dlg-txt">
+      <div class="de" onclick="say('Sí, el pastel es delicioso. ¿Es picante o dulce?')">Sí, el pastel es delicioso. ¿Es picante o dulce? 🔊</div>
+      <div class="dn">Yes, the cake is delicious. Is it spicy or sweet?</div>
+    </div></div>
+  </div>
+  <button class="play-dlg" onclick="playDlg(1)">🔊 Play Full Scene 2</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: QUIZ
+══════════════════════════════════════════════ -->
+<div id="tab-quiz" class="section">
+  <div class="sec-title">🎯 Interactive Quiz</div>
+  <div class="sec-sub">20 questions — SER, ESTAR, vocabulary &amp; more. ¡Buena suerte! 🍀</div>
+  <div class="quiz-hdr">
+    <div class="score-pill">⭐ <span id="sc-num">0</span> / <span id="sc-tot">20</span></div>
+    <div style="color:var(--muted);font-size:.85rem">Q <span id="qcur">1</span> of <span id="qtot">20</span></div>
+  </div>
+  <div class="qprog"><div class="qbar" id="qbar" style="width:5%"></div></div>
+  <div id="quiz-area"></div>
+  <div class="result-card" id="res-card">
+    <div style="font-size:2.5rem">🎉</div>
+    <div class="big-score" id="final-sc">0/20</div>
+    <div id="res-msg" style="font-size:1rem;opacity:.93;margin-bottom:18px;"></div>
+    <button class="btn-pri" onclick="initQuiz()">🔄 Try Again</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION: GAMES
+══════════════════════════════════════════════ -->
+<div id="tab-games" class="section">
+  <div class="sec-title">🎮 Language Games</div>
+  <div class="sec-sub">Make learning fun! Three games to master your Spanish vocabulary.</div>
+  <div class="inner-tabs">
+    <button class="itab active" onclick="showPanel('games','memory',this)">🃏 Memory Match</button>
+    <button class="itab" onclick="showPanel('games','scramble',this)">🔀 Word Scramble</button>
+    <button class="itab" onclick="showPanel('games','match',this)">🔗 Match Up</button>
+  </div>
+
+  <!-- MEMORY -->
+  <div id="games-memory" class="ipanel active">
+    <h3 style="color:var(--purple);margin-bottom:8px;">🃏 Match Spanish ↔ English pairs!</h3>
+    <p style="color:var(--muted);font-size:.85rem;margin-bottom:14px;">Click two cards — find the pair. Match all 8 to win!</p>
+    <div class="gstat">
+      <div class="gstat-badge">Moves: <span id="m-moves">0</span></div>
+      <div class="gstat-badge">Matched: <span id="m-matched">0</span>/8</div>
+      <div class="gstat-badge">Time: <span id="m-time">0</span>s</div>
+    </div>
+    <div class="mem-grid" id="mem-grid"></div>
+    <button class="btn-pri" onclick="initMemory()">🔄 New Game</button>
+  </div>
+
+  <!-- SCRAMBLE -->
+  <div id="games-scramble" class="ipanel">
+    <h3 style="color:var(--purple);margin-bottom:8px;">🔀 Unscramble the Spanish word!</h3>
+    <p style="color:var(--muted);font-size:.85rem;margin-bottom:14px;">Use the English hint to figure out what word it is, then type it.</p>
+    <div class="gstat">
+      <div class="gstat-badge">Score: <span id="s-score">0</span></div>
+      <div class="gstat-badge">Round: <span id="s-round">1</span>/10</div>
+    </div>
+    <div class="scr-word" id="s-word">? ? ? ? ?</div>
+    <div class="scr-hint" id="s-hint">🇬🇧 Hint: ...</div>
+    <input class="scr-inp" id="s-inp" placeholder="Type answer..." onkeydown="if(event.key==='Enter')chkScr()"/>
+    <div style="text-align:center;display:flex;gap:10px;justify-content:center;margin-bottom:10px;">
+      <button class="btn-pri" onclick="chkScr()">✅ Check</button>
+      <button class="btn-sec" onclick="skipScr()">⏭️ Skip</button>
+    </div>
+    <div class="fb-box" id="s-fb"></div>
+    <div id="s-done" style="display:none;text-align:center;margin-top:16px;">
+      <div style="font-size:1.4rem;font-weight:900;color:var(--purple);">¡Juego terminado! 🎉</div>
+      <div style="margin:8px 0;color:var(--muted);">Score: <strong id="s-final">0</strong>/10</div>
+      <button class="btn-pri" onclick="initScramble()">🔄 Play Again</button>
+    </div>
+  </div>
+
+  <!-- MATCH UP -->
+  <div id="games-match" class="ipanel">
+    <h3 style="color:var(--purple);margin-bottom:8px;">🔗 Click a Spanish word then its English meaning!</h3>
+    <p style="color:var(--muted);font-size:.85rem;margin-bottom:14px;">Match all 8 pairs. Each wrong guess counts as an error!</p>
+    <div class="gstat">
+      <div class="gstat-badge">Matched: <span id="mt-ok">0</span>/8</div>
+      <div class="gstat-badge">Errors: <span id="mt-err">0</span></div>
+    </div>
+    <div class="match-area">
+      <div class="match-col" id="mc-esp"></div>
+      <div class="match-col" id="mc-eng"></div>
+    </div>
+    <div class="fb-box" id="mt-fb"></div>
+    <button class="btn-pri" onclick="initMatch()" style="margin-top:10px;">🔄 New Round</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PRINT GUIDE (hidden on screen, visible on print)
+══════════════════════════════════════════════ -->
+<div id="print-guide" class="section" style="display:none">
+
+  <div class="pg-cover">
+    <h1>🌟 SER &amp; ESTAR — Complete Study Guide</h1>
+    <p>Paolita Spanish Course &nbsp;|&nbsp; Pronouns · Conjugations · Vocabulary · Practice Exercises</p>
+    <p style="margin-top:4pt;font-size:9pt;color:#9ca3af;">Printed: <span id="pg-date"></span></p>
+  </div>
+
+  <!-- PRONOUNS -->
+  <div class="pg-sec">
+    <h2>📋 Spanish Pronouns</h2>
+    <table class="pg-tbl">
+      <thead><tr><th>Person</th><th>English</th><th>Masculine</th><th>Feminine</th></tr></thead>
+      <tbody>
+        <tr><td>1st Singular</td><td>I</td><td>yo</td><td>yo</td></tr>
+        <tr><td>1st Plural</td><td>We</td><td>nosotros</td><td>nosotras</td></tr>
+        <tr><td>2nd Informal Sing.</td><td>You</td><td>tú</td><td>tú</td></tr>
+        <tr><td>2nd Formal Sing.</td><td>You (formal)</td><td>usted</td><td>usted</td></tr>
+        <tr><td>2nd Plural</td><td>You all</td><td>ustedes / vosotros</td><td>ustedes / vosotras</td></tr>
+        <tr><td>3rd Singular</td><td>He / She</td><td>él</td><td>ella</td></tr>
+        <tr><td>3rd Plural</td><td>They</td><td>ellos</td><td>ellas</td></tr>
+      </tbody>
+    </table>
+    <div class="pg-tip">💡 In Latin America <em>ustedes</em> covers all "you all." In Spain, <em>vosotros/vosotras</em> is informal plural.</div>
+  </div>
+
+  <!-- SER -->
+  <div class="pg-sec">
+    <h2>🔵 SER — Permanent States <span class="pg-badge">DOCTOR rule</span></h2>
+    <div class="pg-rule">
+      <strong>Use SER for:</strong> Description · Origin · Characteristic · Time · Occupation · Relationship<br>
+      <em>Mnemonic: DOCTOR</em>
+    </div>
+    <h3>Present Tense</h3>
+    <table class="pg-tbl">
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I am</td><td><strong>yo soy</strong></td></tr>
+        <tr><td>tú</td><td>you are (inf.)</td><td><strong>tú eres</strong></td></tr>
+        <tr><td>usted</td><td>you are (formal)</td><td><strong>usted es</strong></td></tr>
+        <tr><td>él / ella</td><td>he/she is</td><td><strong>él es / ella es</strong></td></tr>
+        <tr><td>nosotros/as</td><td>we are</td><td><strong>nosotros somos</strong></td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all are</td><td><strong>ustedes son / vosotros sois</strong></td></tr>
+        <tr><td>ellos / ellas</td><td>they are</td><td><strong>ellos son / ellas son</strong></td></tr>
+      </tbody>
+    </table>
+    <h3>Past Tense</h3>
+    <table class="pg-tbl">
+      <thead><tr><th>Pronoun</th><th>English</th><th>Imperfect</th><th>Preterite</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I was</td><td>yo era</td><td><strong>yo fui</strong></td></tr>
+        <tr><td>tú</td><td>you were</td><td>tú eras</td><td><strong>tú fuiste</strong></td></tr>
+        <tr><td>él / ella</td><td>he/she was</td><td>él era</td><td><strong>él fue</strong></td></tr>
+        <tr><td>nosotros/as</td><td>we were</td><td>nosotros éramos</td><td><strong>nosotros fuimos</strong></td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all were</td><td>ustedes eran</td><td><strong>vosotros fuisteis</strong></td></tr>
+        <tr><td>ellos / ellas</td><td>they were</td><td>ellos eran</td><td><strong>ellos fueron</strong></td></tr>
+      </tbody>
+    </table>
+    <h3>Future Tense</h3>
+    <table class="pg-tbl">
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I will be</td><td><strong>yo seré</strong></td></tr>
+        <tr><td>tú</td><td>you will be</td><td><strong>tú serás</strong></td></tr>
+        <tr><td>él / ella</td><td>he/she will be</td><td><strong>él será</strong></td></tr>
+        <tr><td>nosotros/as</td><td>we will be</td><td><strong>nosotros seremos</strong></td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all will be</td><td><strong>ustedes serán</strong></td></tr>
+        <tr><td>ellos / ellas</td><td>they will be</td><td><strong>ellos serán</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pg-page-break"></div>
+
+  <!-- ESTAR -->
+  <div class="pg-sec">
+    <h2>🔴 ESTAR — Temporary States <span class="pg-badge estar">PLACE rule</span></h2>
+    <div class="pg-rule estar">
+      <strong>Use ESTAR for:</strong> Position · Location · Action · Condition · Emotion<br>
+      <em>Mnemonic: PLACE</em>
+    </div>
+    <h3>Present Tense</h3>
+    <table class="pg-tbl">
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I am</td><td><strong>yo estoy</strong></td></tr>
+        <tr><td>tú</td><td>you are</td><td><strong>tú estás</strong></td></tr>
+        <tr><td>usted</td><td>you are (formal)</td><td><strong>usted está</strong></td></tr>
+        <tr><td>él / ella</td><td>he/she is</td><td><strong>él está / ella está</strong></td></tr>
+        <tr><td>nosotros/as</td><td>we are</td><td><strong>nosotros estamos</strong></td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all are</td><td><strong>ustedes están / vosotros estáis</strong></td></tr>
+        <tr><td>ellos / ellas</td><td>they are</td><td><strong>ellos están / ellas están</strong></td></tr>
+      </tbody>
+    </table>
+    <h3>Past Tense</h3>
+    <table class="pg-tbl">
+      <thead><tr><th>Pronoun</th><th>English</th><th>Imperfect</th><th>Preterite</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I was</td><td>yo estaba</td><td><strong>yo estuve</strong></td></tr>
+        <tr><td>tú</td><td>you were</td><td>tú estabas</td><td><strong>tú estuviste</strong></td></tr>
+        <tr><td>él / ella</td><td>he/she was</td><td>él estaba</td><td><strong>él estuvo</strong></td></tr>
+        <tr><td>nosotros/as</td><td>we were</td><td>nosotros estábamos</td><td><strong>nosotros estuvimos</strong></td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all were</td><td>ustedes estaban</td><td><strong>vosotros estuvisteis</strong></td></tr>
+        <tr><td>ellos / ellas</td><td>they were</td><td>ellos estaban</td><td><strong>ellos estuvieron</strong></td></tr>
+      </tbody>
+    </table>
+    <h3>Future Tense</h3>
+    <table class="pg-tbl">
+      <thead><tr><th>Pronoun</th><th>English</th><th>Spanish</th></tr></thead>
+      <tbody>
+        <tr><td>yo</td><td>I will be</td><td><strong>yo estaré</strong></td></tr>
+        <tr><td>tú</td><td>you will be</td><td><strong>tú estarás</strong></td></tr>
+        <tr><td>él / ella</td><td>he/she will be</td><td><strong>él estará</strong></td></tr>
+        <tr><td>nosotros/as</td><td>we will be</td><td><strong>nosotros estaremos</strong></td></tr>
+        <tr><td>ustedes / vosotros</td><td>you all will be</td><td><strong>ustedes estarán</strong></td></tr>
+        <tr><td>ellos / ellas</td><td>they will be</td><td><strong>ellos estarán</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pg-page-break"></div>
+
+  <!-- VOCAB -->
+  <div class="pg-sec">
+    <h2>📚 Vocabulary — Adjectives (18)</h2>
+    <div class="pg-vocab-grid" id="pv-adj"></div>
+  </div>
+
+  <div class="pg-sec">
+    <h2>❤️ Emotions (20)</h2>
+    <div class="pg-emo-grid" id="pv-emo"></div>
+  </div>
+
+  <div class="pg-page-break"></div>
+
+  <div class="pg-sec">
+    <h2>🍽️ Food Adjectives (9)</h2>
+    <div class="pg-vocab-grid" id="pv-food"></div>
+  </div>
+
+  <div class="pg-sec">
+    <h2>✨ More Adjectives (8)</h2>
+    <div class="pg-vocab-grid" id="pv-extra"></div>
+  </div>
+
+  <div class="pg-page-break"></div>
+
+  <!-- PRACTICE EXERCISES -->
+  <div class="pg-sec">
+    <h2>✏️ Practice Exercises</h2>
+    <div class="pg-quiz">
+      <div class="pq-q">1. Complete with SER or ESTAR: "Nosotros _______ en la clase de español." (present)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. somos</div><div class="pq-opt">B. estamos</div>
+        <div class="pq-opt">C. son</div><div class="pq-opt">D. están</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. estamos — ESTAR for location.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">2. "Yo _______ cansada." (past — ongoing)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. era</div><div class="pq-opt">B. estaba</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. estaba — ESTAR imperfect for ongoing temporary state.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">3. "Nosotros _______ cansados." (past — ongoing)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. éramos</div><div class="pq-opt">B. estábamos</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. estábamos — ESTAR imperfect plural.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">4. "Ella _______ cansada." (future)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. estará</div><div class="pq-opt">B. será</div>
+      </div>
+      <div class="pq-ans">✅ Answer: A. estará — ESTAR future for temporary condition.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">5. Translate: "They were lawyers." (completed action)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. Ellos eran abogados</div><div class="pq-opt">B. Ellos fueron abogados</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. Ellos fueron abogados — SER preterite for completed past.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">6. Which is correct for "She is a doctor"?</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. Ella está doctora</div><div class="pq-opt">B. Ella es doctora</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. Ella es doctora — SER for occupation.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">7. Translate: "I was at home all day." (specific complete event)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. Estaba en casa todo el día</div><div class="pq-opt">B. Estuve en casa todo el día</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. Estuve — preterite for event with clear beginning and end.</div>
+    </div>
+    <div class="pg-quiz">
+      <div class="pq-q">8. Fill in: "La sopa _______ fría." (the soup is currently cold)</div>
+      <div class="pq-opts">
+        <div class="pq-opt">A. es</div><div class="pq-opt">B. está</div>
+      </div>
+      <div class="pq-ans">✅ Answer: B. está — ESTAR for current temporary condition.</div>
+    </div>
+  </div>
+
+  <div class="pg-page-break"></div>
+
+  <!-- VOCAB REFERENCE -->
+  <div class="pg-sec">
+    <h2>🔖 Quick Reference Card</h2>
+    <div class="pg-cols2">
+      <div>
+        <h3>SER uses</h3>
+        <ul style="font-size:8.5pt;padding-left:14pt;line-height:1.8;">
+          <li>Identity: Yo soy Carmen.</li>
+          <li>Origin: Somos de Bolivia.</li>
+          <li>Occupation: Ella es doctora.</li>
+          <li>Nationality: Él es australiano.</li>
+          <li>Time: Es las cinco.</li>
+          <li>Relationships: Es mi amiga.</li>
+          <li>Material/color: La mesa es de madera.</li>
+          <li>Inherent traits: El cielo es azul.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>ESTAR uses</h3>
+        <ul style="font-size:8.5pt;padding-left:14pt;line-height:1.8;">
+          <li>Location: Estamos en casa.</li>
+          <li>Temporary condition: Estoy enferma.</li>
+          <li>Changeable emotion: Él está triste.</li>
+          <li>Progressive: Estoy comiendo.</li>
+          <li>Result of action: La puerta está abierta.</li>
+          <li>Weather: Está nublado.</li>
+          <li>Price (current): ¿A cuánto está?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pg-tip" style="margin-top:8pt;">
+      💡 <strong>Key contrast:</strong> "La sopa <em>es</em> sabrosa" (it's always tasty — recipe) vs "La sopa <em>está</em> fría" (it's cold right now — temporary state).
+    </div>
+  </div>
+
+</div><!-- end print-guide -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <h3>👩‍🏫 ¡Buen trabajo! — Great work!</h3>
+  <p>Practice every day and you'll be fluent before you know it! 🌟</p>
+  <p style="margin-top:6px;font-size:.8rem;opacity:.7;">Paolita · SER &amp; ESTAR Complete Course · Interactive + Printable</p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script>
+/* ── SPEECH ── */
+function say(t,r=0.85){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);
+  u.lang='es-ES';u.rate=r;
+  window.speechSynthesis.speak(u);
+}
+
+/* ── TABS ── */
+function showTab(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById('tab-'+id);
+  if(el)el.classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+function showPanel(grp,id,btn){
+  const sec=btn.closest('.section, .ipanel')?.parentElement?.closest('.section')||document.querySelector('.section.active');
+  sec?.querySelectorAll('.ipanel').forEach(p=>p.classList.remove('active'));
+  btn.parentElement.querySelectorAll('.itab').forEach(b=>b.classList.remove('active'));
+  const panel=document.getElementById(grp+'-'+id);
+  if(panel)panel.classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── VOCAB DATA ── */
+const adjData=[
+  {esp:'hermoso/a',eng:'Beautiful',ph:'er-MO-so',ex:'Ella es hermosa. — She is beautiful.'},
+  {esp:'joven',eng:'Young',ph:'HO-ven',ex:'Él es muy joven. — He is very young.'},
+  {esp:'viejo/a',eng:'Old',ph:'BYEH-ho',ex:'Mi abuelo es viejo. — My grandpa is old.'},
+  {esp:'bonito/a',eng:'Pretty / Nice',ph:'bo-NEE-to',ex:'¡Qué bonita! — How pretty!'},
+  {esp:'enojado/a',eng:'Angry',ph:'en-o-HA-do',ex:'Él está enojado. — He is angry.'},
+  {esp:'triste',eng:'Sad',ph:'TREES-te',ex:'Ella está triste. — She is sad.'},
+  {esp:'asustado/a',eng:'Scared',ph:'a-sus-TA-do',ex:'Estoy asustada. — I am scared.'},
+  {esp:'emocionado/a',eng:'Excited',ph:'e-mo-syo-NA-do',ex:'Están emocionados. — They are excited.'},
+  {esp:'amigo/a',eng:'Friend',ph:'a-MEE-go',ex:'Ella es mi amiga. — She is my friend.'},
+  {esp:'sediento/a',eng:'Thirsty',ph:'se-DYEN-to',ex:'Estoy sediento. — I am thirsty.'},
+  {esp:'hambriento/a',eng:'Hungry',ph:'am-BRYEN-to',ex:'Estamos hambrientos. — We are hungry.'},
+  {esp:'amable',eng:'Kind',ph:'a-MA-ble',ex:'Ella es muy amable. — She is very kind.'},
+  {esp:'bueno/a',eng:'Good (SER)',ph:'BWE-no',ex:'Él es un hombre bueno. — He is a good man.'},
+  {esp:'malo/a',eng:'Bad (SER)',ph:'MA-lo',ex:'Eso es muy malo. — That is very bad.'},
+  {esp:'enfermo/a',eng:'Sick',ph:'en-FER-mo',ex:'Estoy enferma. — I am sick.'},
+  {esp:'cansado/a',eng:'Tired',ph:'kan-SA-do',ex:'Estoy muy cansado. — I am very tired.'},
+  {esp:'limpio/a',eng:'Clean',ph:'LEEM-pyo',ex:'La casa está limpia. — The house is clean.'},
+  {esp:'sucio/a',eng:'Dirty',ph:'SOO-syo',ex:'El perro está sucio. — The dog is dirty.'},
+];
+const emoData=[
+  {n:1,esp:'tranquilo/a',eng:'calm',m:'tranquilo',f:'tranquila'},
+  {n:2,esp:'aburrido/a',eng:'bored',m:'aburrido',f:'aburrida'},
+  {n:3,esp:'deprimido/a',eng:'depressed',m:'deprimido',f:'deprimida'},
+  {n:4,esp:'impactado/a',eng:'impressed',m:'impactado',f:'impactada'},
+  {n:5,esp:'nervioso/a',eng:'nervous',m:'nervioso',f:'nerviosa'},
+  {n:6,esp:'envidioso/a',eng:'jealous',m:'envidioso',f:'envidiosa'},
+  {n:7,esp:'preocupado/a',eng:'worried',m:'preocupado',f:'preocupada'},
+  {n:8,esp:'agotado/a',eng:'exhausted',m:'agotado',f:'agotada'},
+  {n:9,esp:'contento/a',eng:'happy / content',m:'contento',f:'contenta'},
+  {n:10,esp:'de mal humor',eng:'in a bad mood',m:'de mal humor',f:'de mal humor'},
+  {n:11,esp:'de buen humor',eng:'in a good mood',m:'de buen humor',f:'de buen humor'},
+  {n:12,esp:'avergonzado/a',eng:'ashamed',m:'avergonzado',f:'avergonzada'},
+  {n:13,esp:'molesto/a',eng:'upset',m:'molesto',f:'molesta'},
+  {n:14,esp:'orgulloso/a',eng:'proud',m:'orgulloso',f:'orgullosa'},
+  {n:15,esp:'perdido/a',eng:'lost',m:'perdido',f:'perdida'},
+  {n:16,esp:'enamorado/a',eng:'in love',m:'enamorado',f:'enamorada'},
+  {n:17,esp:'harto/a',eng:'fed up',m:'harto',f:'harta'},
+  {n:18,esp:'decepcionado/a',eng:'disappointed',m:'decepcionado',f:'decepcionada'},
+  {n:19,esp:'frío/a',eng:'cold (feeling)',m:'frío',f:'fría'},
+  {n:20,esp:'caliente',eng:'hot (feeling)',m:'caliente',f:'caliente'},
+];
+const foodData=[
+  {esp:'sabroso/a',eng:'Tasty',ph:'sa-BRO-so',ex:'¡Qué sabroso! — How tasty!'},
+  {esp:'tibio/a',eng:'Lukewarm',ph:'TEE-byo',ex:'El café está tibio. — The coffee is lukewarm.'},
+  {esp:'frío/a',eng:'Cold',ph:'FREE-o',ex:'La sopa está fría. — The soup is cold.'},
+  {esp:'caliente',eng:'Hot',ph:'ka-LYEN-te',ex:'El té está caliente. — The tea is hot.'},
+  {esp:'delicioso/a',eng:'Delicious',ph:'de-li-SYO-so',ex:'¡Está delicioso! — It is delicious!'},
+  {esp:'picante',eng:'Spicy',ph:'pi-KAN-te',ex:'La salsa es picante. — The sauce is spicy.'},
+  {esp:'dulce',eng:'Sweet',ph:'DOOL-se',ex:'El postre es dulce. — The dessert is sweet.'},
+  {esp:'salado/a',eng:'Salty',ph:'sa-LA-do',ex:'La sopa está salada. — The soup is salty.'},
+  {esp:'azucarado/a',eng:'Sweetened',ph:'a-su-ka-RA-do',ex:'El jugo está azucarado. — The juice is sweetened.'},
+];
+const extraData=[
+  {esp:'educado/a',eng:'Polite',ph:'e-du-KA-do',ex:'Ella es muy educada. — She is very polite.'},
+  {esp:'débil',eng:'Weak',ph:'DE-bil',ex:'Él está débil. — He is weak.'},
+  {esp:'pequeño/a',eng:'Tiny / Small',ph:'pe-KE-nyo',ex:'El gato es pequeño. — The cat is small.'},
+  {esp:'fuerte',eng:'Strong',ph:'FWER-te',ex:'Él es muy fuerte. — He is very strong.'},
+  {esp:'divertido/a',eng:'Fun',ph:'di-ver-TEE-do',ex:'La clase es divertida. — The class is fun.'},
+  {esp:'flaco/a',eng:'Thin',ph:'FLA-ko',ex:'El perro está flaco. — The dog is thin.'},
+  {esp:'cochino/a',eng:'Filthy',ph:'ko-CHEE-no',ex:'¡Estás cochino! — You are filthy!'},
+  {esp:'casado/a',eng:'Married',ph:'ka-SA-do',ex:'Ellos están casados. — They are married.'},
+];
+
+/* ── BUILD FLIP CARDS ── */
+function buildFlips(data,id){
+  const g=document.getElementById(id);
+  if(!g)return;
+  const cols=['#7c3aed','#f43f5e','#f59e0b','#10b981','#3b82f6','#8b5cf6'];
+  g.innerHTML=data.map((w,i)=>{
+    const word=w.esp.split('/')[0].trim().replace(/[()]/g,'');
+    return`<div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="fci">
+        <div class="ff" style="background:linear-gradient(135deg,${cols[i%cols.length]},${cols[(i+2)%cols.length]})">
+          <div class="fw">${w.esp}</div>
+          <div class="fp">${w.ph||''}</div>
+          <button class="aud-btn" onclick="event.stopPropagation();say('${word}')">🔊 Listen</button>
+          <div class="fh">Tap to flip →</div>
+        </div>
+        <div class="fb">
+          <div class="ft">🇬🇧 ${w.eng}</div>
+          <div class="fe">${w.ex||''}</div>
+        </div>
+      </div></div>`;
+  }).join('');
+}
+
+/* ── BUILD EMOTION CARDS ── */
+function buildEmo(){
+  const g=document.getElementById('grid-emo');
+  if(!g)return;
+  const c=['#7c3aed','#f43f5e','#f59e0b','#10b981','#3b82f6','#8b5cf6','#ec4899','#14b8a6'];
+  g.innerHTML=emoData.map((e,i)=>`
+    <div class="emo-card" style="border-top-color:${c[i%c.length]}">
+      <div class="emo-num">#${e.n}</div>
+      <div class="emo-esp" style="color:${c[i%c.length]}">${e.esp}</div>
+      <div class="emo-eng">🇬🇧 ${e.eng}</div>
+      <div class="emo-gend">♂ ${e.m} · ♀ ${e.f}</div>
+      <button class="emo-play" onclick="say('${e.m}')">🔊 Listen</button>
+    </div>`).join('');
+}
+
+/* ── BUILD PRINT VOCAB ── */
+function buildPrintVocab(data,id){
+  const g=document.getElementById(id);
+  if(!g)return;
+  g.innerHTML=data.map(w=>`
+    <div class="pg-vocab-item">
+      <div class="pv-esp">${w.esp}</div>
+      <div class="pv-eng">🇬🇧 ${w.eng}</div>
+      <div class="pv-ex">${w.ex||''}</div>
+    </div>`).join('');
+}
+function buildPrintEmo(){
+  const g=document.getElementById('pv-emo');
+  if(!g)return;
+  g.innerHTML=emoData.map(e=>`
+    <div class="pg-emo">
+      <div class="pe-num">#${e.n}</div>
+      <div class="pe-esp">${e.esp}</div>
+      <div class="pe-eng">${e.eng}</div>
+    </div>`).join('');
+}
+
+/* ── DIALOGUES ── */
+const dlgLines=[
+  ['¡Hola! ¿Cómo estás?','Estoy muy bien, gracias. ¿Y tú?','Yo soy Ana. Soy de Bolivia.',
+   'Mucho gusto. Yo soy Luis. Soy médico.','¿Dónde estás ahora?',
+   'Estoy en el hospital. Estoy muy cansado hoy.','Mañana estarás mejor. ¡Descansa!'],
+  ['Buenas noches. ¿Cómo están ustedes?','Estamos bien, gracias. ¿Qué hay de delicioso hoy?',
+   'La sopa es muy sabrosa y está caliente.','Perfecto. Estoy hambriento. Voy a pedir la sopa.',
+   '¿Quiere algo dulce de postre?','Sí, el pastel es delicioso. ¿Es picante o dulce?']
+];
+let dlgI=0,dlgSet=0;
+function playDlg(set){dlgSet=set;dlgI=0;sayDlgNext();}
+function sayDlgNext(){
+  if(dlgI>=dlgLines[dlgSet].length)return;
+  const u=new SpeechSynthesisUtterance(dlgLines[dlgSet][dlgI]);
+  u.lang='es-ES';u.rate=0.82;
+  u.onend=()=>{dlgI++;setTimeout(sayDlgNext,450);};
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+/* ── QUIZ ── */
+const qBank=[
+  {type:'mc',q:'Which verb is used to say where someone is from?',opts:['SER','ESTAR','TENER','IR'],ans:0,exp:'SER for origin: "Soy de México."'},
+  {type:'mc',q:'"I am tired right now" — which verb?',opts:['yo soy cansado','yo estoy cansado','yo fui cansado','yo era cansado'],ans:1,exp:'ESTAR for temporary conditions.'},
+  {type:'mc',q:'Choose: "Ella ___ doctora."',opts:['está','estoy','es','somos'],ans:2,exp:'Occupations use SER.'},
+  {type:'mc',q:'How do you say "We are at home"?',opts:['Somos en casa','Estamos en casa','Somos de casa','Estamos casa'],ans:1,exp:'ESTAR for location.'},
+  {type:'mc',q:'What does "hambriento/a" mean?',opts:['thirsty','tired','hungry','scared'],ans:2,exp:'Hambriento/a = hungry.'},
+  {type:'mc',q:'Correct for "It is 5 o\'clock"?',opts:['Está las cinco','Son las cinco','Es las cinco','Están las cinco'],ans:2,exp:'Time expressions use SER.'},
+  {type:'mc',q:'"They were lawyers" — completed past?',opts:['Ellos eran abogados','Ellos fueron abogados','Ellos estuvieron abogados','Ellos son abogados'],ans:1,exp:'SER preterite: fueron.'},
+  {type:'mc',q:'What does "enamorado/a" mean?',opts:['tired','in love','bored','proud'],ans:1,exp:'Enamorado/a = in love.'},
+  {type:'mc',q:'"La comida ___ deliciosa." — inherent quality?',opts:['es','está','son','somos'],ans:0,exp:'SER for inherent qualities.'},
+  {type:'mc',q:'"You (tú) will be" — ESTAR future?',opts:['tú estarás','tú estás','tú serás','tú fuiste'],ans:0,exp:'ESTAR future tú: estarás.'},
+  {type:'mc',q:'What does "tranquilo/a" mean?',opts:['worried','nervous','calm','proud'],ans:2,exp:'Tranquilo/a = calm.'},
+  {type:'mc',q:'Which word means "spicy"?',opts:['dulce','salado','picante','tibio'],ans:2,exp:'Picante = spicy.'},
+  {type:'mc',q:'"I was at home all day." — specific event?',opts:['yo estaba','yo fui','yo era','yo estuve'],ans:3,exp:'Preterite estuve for clear start/end.'},
+  {type:'mc',q:'What does "avergonzado/a" mean?',opts:['excited','ashamed','happy','fed up'],ans:1,exp:'Avergonzado/a = ashamed.'},
+  {type:'mc',q:'"La sopa ___ fría." — current condition?',opts:['es','está','fue','era'],ans:1,exp:'ESTAR for temporary condition.'},
+  {type:'fill',q:'Complete: "Yo ___ enferma." (I am sick — temporary)',ans:'estoy',exp:'ESTAR for temporary states.'},
+  {type:'fill',q:'Complete: "Nosotros ___ de Australia." (We are from Australia)',ans:'somos',exp:'SER for origin.'},
+  {type:'fill',q:'Complete: "Ella ___ triste ayer." (She was sad — imperfect)',ans:'estaba',exp:'ESTAR imperfect: estaba.'},
+  {type:'fill',q:'Complete: "Ellos ___ abogados." (They are lawyers — occupation)',ans:'son',exp:'SER for occupations: son.'},
+  {type:'fill',q:'Translate: "I will be a doctor." (use yo)',ans:'yo seré doctor',exp:'SER future: seré. Also accepted: seré doctora.'},
+];
+let qList=[],qIdx=0,qScore=0,qAns=false;
+const sh=a=>[...a].sort(()=>Math.random()-.5);
+function initQuiz(){
+  qList=sh([...qBank]);qIdx=0;qScore=0;qAns=false;
+  document.getElementById('res-card').classList.remove('show');
+  document.getElementById('sc-num').textContent=0;
+  document.getElementById('sc-tot').textContent=qList.length;
+  document.getElementById('qtot').textContent=qList.length;
+  renderQ();
+}
+function renderQ(){
+  if(qIdx>=qList.length){showRes();return;}
+  const q=qList[qIdx];qAns=false;
+  document.getElementById('qcur').textContent=qIdx+1;
+  document.getElementById('qbar').style.width=((qIdx/qList.length)*100)+'%';
+  const a=document.getElementById('quiz-area');
+  if(q.type==='mc'){
+    a.innerHTML=`<div class="q-card">
+      <div class="q-label">Q${qIdx+1}/${qList.length} · Multiple Choice</div>
+      <div class="q-text">${q.q}</div>
+      <div class="opts">${q.opts.map((o,i)=>`<button class="opt" id="o${i}" onclick="chkMC(${i},${q.ans},'${esc(q.exp)}')">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div>
+      <div class="fb-box" id="fb"></div>
+    </div><div class="qnav"><button class="btn-sec" id="nxt" onclick="nxtQ()" style="display:none">Next →</button></div>`;
+  } else {
+    a.innerHTML=`<div class="q-card">
+      <div class="q-label">Q${qIdx+1}/${qList.length} · Fill in the Blank</div>
+      <div class="q-text">${q.q}</div>
+      <input class="fill-inp" id="fi" placeholder="Type your answer..." onkeydown="if(event.key==='Enter')chkFill('${esc(q.ans)}','${esc(q.exp)}')"/>
+      <div class="qnav"><button class="btn-pri" onclick="chkFill('${esc(q.ans)}','${esc(q.exp)}')">✅ Check</button></div>
+      <div class="fb-box" id="fb"></div>
+    </div><div class="qnav"><button class="btn-sec" id="nxt" onclick="nxtQ()" style="display:none">Next →</button></div>`;
+    setTimeout(()=>{const f=document.getElementById('fi');f&&f.focus();},80);
+  }
+}
+function esc(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+function chkMC(c,a,exp){
+  if(qAns)return;qAns=true;
+  for(let i=0;i<4;i++){const b=document.getElementById('o'+i);if(b)b.disabled=true;}
+  const fb=document.getElementById('fb');
+  if(c===a){
+    document.getElementById('o'+c).classList.add('correct');
+    qScore++;document.getElementById('sc-num').textContent=qScore;
+    fb.className='fb-box ok show';fb.innerHTML='✅ ¡Correcto! '+exp;
+    say('¡Correcto! Muy bien.');
+  } else {
+    document.getElementById('o'+c).classList.add('wrong');
+    document.getElementById('o'+a).classList.add('correct');
+    fb.className='fb-box bad show';fb.innerHTML='❌ Not quite. '+exp;
+    say('Incorrecto. Inténtalo de nuevo.');
+  }
+  document.getElementById('nxt').style.display='inline-block';
+}
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
+function chkFill(ans,exp){
+  if(qAns)return;qAns=true;
+  const inp=document.getElementById('fi');if(!inp)return;
+  const v=norm(inp.value),a=norm(ans);
+  inp.disabled=true;
+  const ok=v===a||a.includes(v)&&v.length>3;
+  inp.classList.add(ok?'correct':'wrong');
+  const fb=document.getElementById('fb');
+  if(ok){qScore++;document.getElementById('sc-num').textContent=qScore;
+    fb.className='fb-box ok show';fb.innerHTML='✅ ¡Correcto! '+exp;say('¡Correcto!');
+  } else {
+    fb.className='fb-box bad show';fb.innerHTML=`❌ Answer: <strong>${ans}</strong>. ${exp}`;say('Incorrecto.');
+  }
+  document.getElementById('nxt').style.display='inline-block';
+}
+function nxtQ(){qIdx++;renderQ();}
+function showRes(){
+  document.getElementById('quiz-area').innerHTML='';
+  document.getElementById('qbar').style.width='100%';
+  const rc=document.getElementById('res-card');rc.classList.add('show');
+  document.getElementById('final-sc').textContent=qScore+'/'+qList.length;
+  const p=qScore/qList.length;
+  document.getElementById('res-msg').textContent=
+    p>=.9?'🏆 ¡Excelente! You are a Spanish superstar!':
+    p>=.7?'🌟 ¡Muy bien! Great job — keep going!':
+    p>=.5?'💪 ¡Bien! You are getting there. Review and try again!':
+    '📚 Keep studying — Paolita believes in you! 💜';
+  say(p>=.7?'¡Felicidades! ¡Muy bien hecho!':'¡Sigue practicando! Tú puedes.');
+}
+
+/* ── MEMORY GAME ── */
+const memPairs=[
+  {es:'feliz',en:'happy'},{es:'triste',en:'sad'},{es:'hambriento',en:'hungry'},
+  {es:'cansado',en:'tired'},{es:'tranquilo',en:'calm'},{es:'enojado',en:'angry'},
+  {es:'nervioso',en:'nervous'},{es:'enamorado',en:'in love'},
+];
+let mFlip=[],mMatch=0,mMoves=0,mTime=0,mInt=null,mLock=false;
+function initMemory(){
+  mFlip=[];mMatch=0;mMoves=0;mLock=false;clearInterval(mInt);mTime=0;
+  ['m-moves','m-matched','m-time'].forEach(id=>document.getElementById(id).textContent=
+    id==='m-matched'?'0':0);
+  mInt=setInterval(()=>{mTime++;document.getElementById('m-time').textContent=mTime;},1000);
+  const cards=[];
+  memPairs.forEach((p,i)=>{
+    cards.push({id:'e'+i,txt:p.es,pair:i,lang:'es'});
+    cards.push({id:'n'+i,txt:p.en,pair:i,lang:'en'});
+  });
+  sh(cards);
+  document.getElementById('mem-grid').innerHTML=cards.map(c=>`
+    <div class="mc" id="mc${c.id}" onclick="flipMem('${c.id}',${c.pair},'${c.lang}')">
+      <div class="mci"><div class="mf">🌟</div><div class="mb">${c.txt}</div></div>
+    </div>`).join('');
+}
+function flipMem(id,pair,lang){
+  if(mLock)return;
+  const el=document.getElementById('mc'+id);
+  if(!el||el.classList.contains('flipped')||el.classList.contains('matched'))return;
+  el.classList.add('flipped');mFlip.push({id,pair,lang,el});
+  if(mFlip.length===2){
+    mMoves++;document.getElementById('m-moves').textContent=mMoves;mLock=true;
+    const [a,b]=mFlip;
+    if(a.pair===b.pair&&a.lang!==b.lang){
+      setTimeout(()=>{
+        a.el.classList.add('matched');b.el.classList.add('matched');
+        mMatch++;document.getElementById('m-matched').textContent=mMatch;
+        mFlip=[];mLock=false;say(memPairs[a.pair].es);
+        if(mMatch===8){clearInterval(mInt);setTimeout(()=>alert('🎉 ¡Ganaste! '+mMoves+' moves in '+mTime+'s!'),200);}
+      },500);
+    } else {
+      setTimeout(()=>{a.el.classList.remove('flipped');b.el.classList.remove('flipped');mFlip=[];mLock=false;},900);
+    }
+  }
+}
+
+/* ── SCRAMBLE GAME ── */
+const scrWords=[
+  {w:'feliz',h:'happy'},{w:'triste',h:'sad'},{w:'hambriento',h:'hungry'},
+  {w:'nosotros',h:'we'},{w:'cansado',h:'tired'},{w:'hermosa',h:'beautiful'},
+  {w:'delicioso',h:'delicious'},{w:'nervioso',h:'nervous'},
+  {w:'tranquilo',h:'calm'},{w:'enamorado',h:'in love'},
+];
+let scrList=[],scrI=0,scrSc=0;
+function scramble(s){const a=[...s];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a.join('')===s&&s.length>1?scramble(s):a.join('').toUpperCase();}
+function initScramble(){scrList=sh([...scrWords]);scrI=0;scrSc=0;document.getElementById('s-score').textContent=0;document.getElementById('s-done').style.display='none';document.getElementById('s-inp').style.display='block';showScr();}
+function showScr(){
+  if(scrI>=scrList.length){document.getElementById('s-word').textContent='🎉';document.getElementById('s-hint').textContent='';document.getElementById('s-inp').style.display='none';document.getElementById('s-done').style.display='block';document.getElementById('s-final').textContent=scrSc;return;}
+  document.getElementById('s-round').textContent=scrI+1;
+  document.getElementById('s-word').textContent=scramble(scrList[scrI].w);
+  document.getElementById('s-hint').textContent='🇬🇧 Hint: '+scrList[scrI].h;
+  document.getElementById('s-inp').value='';
+  document.getElementById('s-inp').classList.remove('correct','wrong');
+  const fb=document.getElementById('s-fb');fb.className='fb-box';
+}
+function chkScr(){
+  if(scrI>=scrList.length)return;
+  const v=document.getElementById('s-inp').value.trim().toLowerCase();
+  const fb=document.getElementById('s-fb');
+  if(v===scrList[scrI].w){
+    document.getElementById('s-inp').classList.add('correct');
+    scrSc++;document.getElementById('s-score').textContent=scrSc;
+    fb.className='fb-box ok show';fb.innerHTML='✅ ¡Correcto! <strong>'+scrList[scrI].w+'</strong>';
+    say(scrList[scrI].w);setTimeout(()=>{scrI++;showScr();},1100);
+  } else {
+    document.getElementById('s-inp').classList.add('wrong');
+    fb.className='fb-box bad show';fb.innerHTML='❌ Try again!';say('Inténtalo de nuevo.');
+    setTimeout(()=>{document.getElementById('s-inp').classList.remove('wrong');document.getElementById('s-inp').value='';fb.className='fb-box';},900);
+  }
+}
+function skipScr(){scrI++;showScr();}
+
+/* ── MATCH GAME ── */
+const matchBank=[
+  {es:'tranquilo',en:'calm'},{es:'aburrido',en:'bored'},{es:'nervioso',en:'nervous'},
+  {es:'orgulloso',en:'proud'},{es:'perdido',en:'lost'},{es:'harto',en:'fed up'},
+  {es:'deprimido',en:'depressed'},{es:'agotado',en:'exhausted'},
+  {es:'feliz',en:'happy'},{es:'picante',en:'spicy'},{es:'dulce',en:'sweet'},{es:'fuerte',en:'strong'},
+];
+let mSel=null,mtOk=0,mtErr=0,mtPairs=[];
+function initMatch(){
+  mSel=null;mtOk=0;mtErr=0;
+  document.getElementById('mt-ok').textContent=0;
+  document.getElementById('mt-err').textContent=0;
+  const fb=document.getElementById('mt-fb');fb.className='fb-box';
+  mtPairs=sh([...matchBank]).slice(0,8);
+  const sEs=sh([...mtPairs]),sEn=sh([...mtPairs]);
+  document.getElementById('mc-esp').innerHTML=sEs.map(p=>`<div class="mi mi-esp" id="mes-${p.es}" onclick="selMatch('es','${p.es}')">${p.es}</div>`).join('');
+  document.getElementById('mc-eng').innerHTML=sEn.map(p=>`<div class="mi mi-eng" id="men-${p.es}" onclick="selMatch('en','${p.es}')">${p.en}</div>`).join('');
+}
+function selMatch(lang,key){
+  const fb=document.getElementById('mt-fb');
+  const el=document.getElementById((lang==='es'?'mes-':'men-')+key);
+  if(!el||el.classList.contains('ok'))return;
+  if(!mSel){
+    document.querySelectorAll('.mi.sel').forEach(e=>e.classList.remove('sel'));
+    el.classList.add('sel');mSel={lang,key,el};return;
+  }
+  if(mSel.lang===lang){mSel.el.classList.remove('sel');el.classList.add('sel');mSel={lang,key,el};return;}
+  const eK=lang==='en'?mSel.key:key,nK=lang==='en'?key:mSel.key;
+  const pair=mtPairs.find(p=>p.es===eK);
+  if(pair&&pair.es===nK){
+    document.getElementById('mes-'+eK).classList.add('ok');document.getElementById('men-'+eK).classList.add('ok');
+    say(eK);mtOk++;document.getElementById('mt-ok').textContent=mtOk;
+    fb.className='fb-box ok show';fb.innerHTML='✅ ¡Correcto! <strong>'+eK+'</strong> = '+pair.en;
+    if(mtOk===8)setTimeout(()=>alert('🎉 ¡Perfecto! Errors: '+mtErr),200);
+  } else {
+    mtErr++;document.getElementById('mt-err').textContent=mtErr;
+    fb.className='fb-box bad show';fb.innerHTML='❌ Not a match — try again!';
+    mSel.el.classList.remove('sel');el.classList.add('bad');
+    setTimeout(()=>el.classList.remove('bad','sel'),700);
+  }
+  mSel=null;document.querySelectorAll('.mi.sel').forEach(e=>e.classList.remove('sel'));
+}
+
+/* ── PRINT ── */
+function printGuide(){
+  document.getElementById('pg-date').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  window.print();
+}
+
+/* ── INIT ── */
+window.addEventListener('DOMContentLoaded',()=>{
+  buildFlips(adjData,'grid-adj');
+  buildEmo();
+  buildFlips(foodData,'grid-food');
+  buildFlips(extraData,'grid-extra');
+  buildPrintVocab(adjData,'pv-adj');
+  buildPrintEmo();
+  buildPrintVocab(foodData,'pv-food');
+  buildPrintVocab(extraData,'pv-extra');
+  initQuiz();
+  initMemory();
+  initScramble();
+  initMatch();
+});
+</script>
+</body>
+</html>
