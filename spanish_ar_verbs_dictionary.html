@@ -1,0 +1,384 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.app{padding:1rem 0;max-width:680px}
+.tabs{display:flex;gap:5px;margin-bottom:1.25rem;flex-wrap:wrap}
+.tab{font-size:12px;padding:5px 12px;border-radius:20px;border:0.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.active{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.tts-note{font-size:12px;color:var(--color-text-tertiary);margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.spd-row{display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.spd-lbl{font-size:12px;color:var(--color-text-tertiary)}
+.spd-btn{font-size:12px;padding:4px 10px;border-radius:20px;border:0.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.spd-btn.on{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.cf{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.cf-btn{font-size:12px;padding:4px 12px;border-radius:20px;border:0.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.cf-btn.on{background:var(--color-background-primary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.sec-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-tertiary);margin:14px 0 8px}
+.conj-table{width:100%;border-collapse:collapse;margin-bottom:10px}
+.conj-table td{border:0.5px solid var(--color-border-tertiary);padding:7px 10px;font-size:13px}
+.conj-table .pn{color:var(--color-text-secondary);width:42%}
+.conj-table .vb{font-weight:500;color:var(--color-text-primary);cursor:pointer}
+.conj-table .vb:hover{background:var(--color-background-secondary)}
+.conj-table tr:nth-child(even){background:var(--color-background-secondary)}
+.tense-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:10px}
+.tense-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.tense-en{font-size:11px;color:var(--color-text-tertiary);font-weight:400}
+.ex-row{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;margin-bottom:6px;cursor:pointer;font-size:14px;color:var(--color-text-primary)}
+.ex-row:hover{border-color:var(--color-border-primary)}
+.ex-row.playing{border-color:#1D9E75;background:#E1F5EE}
+.ex-en{font-size:12px;color:var(--color-text-secondary);margin-top:2px;font-style:italic}
+.mistake-card{background:#FCEBEB;border:0.5px solid #F09595;border-radius:var(--border-radius-md);padding:10px 12px;margin-bottom:6px;font-size:13px}
+.mistake-wrong{color:#791F1F;text-decoration:line-through;display:flex;align-items:center;gap:5px}
+.mistake-right{color:#27500A;display:flex;align-items:center;gap:5px;margin-top:4px}
+.hud{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.hpill{background:var(--color-background-secondary);border-radius:20px;padding:5px 14px;font-size:13px;color:var(--color-text-secondary)}
+.hpill span{font-weight:500;color:var(--color-text-primary)}
+.pbar{flex:1;height:3px;background:var(--color-border-tertiary);border-radius:2px;overflow:hidden;min-width:60px}
+.pfill{height:100%;background:#378ADD;border-radius:2px;transition:width .3s}
+.qcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:10px}
+.qtype{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-tertiary);margin-bottom:6px}
+.qtext{font-size:15px;font-weight:500;color:var(--color-text-primary);line-height:1.6;margin-bottom:14px}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;font-size:14px;color:var(--color-text-primary);background:transparent;text-align:left}
+.opt:hover:not(:disabled){background:var(--color-background-secondary)}
+.opt.correct{background:#E1F5EE;border-color:#1D9E75;color:#04342C}
+.opt.wrong{background:#FCEBEB;border-color:#E24B4A;color:#501313}
+.opt:disabled{cursor:default}
+.ol{width:22px;height:22px;border-radius:50%;border:0.5px solid var(--color-border-secondary);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--color-text-secondary)}
+.opt.correct .ol{background:#1D9E75;border-color:#1D9E75;color:#E1F5EE}
+.opt.wrong .ol{background:#E24B4A;border-color:#E24B4A;color:#FCEBEB}
+.fb{font-size:13px;padding:10px 14px;border-left:3px solid transparent;border-radius:0;margin-top:10px;line-height:1.6;display:none}
+.fb.show{display:block}
+.fb.ok{background:#E1F5EE;border-left-color:#1D9E75;color:#04342C}
+.fb.bad{background:#FCEBEB;border-left-color:#E24B4A;color:#501313}
+.nxt{margin-top:12px;font-size:14px;padding:7px 18px;border:0.5px solid var(--color-border-primary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500;display:none}
+.rbox{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:2rem;text-align:center}
+.rscore{font-size:36px;font-weight:500;color:var(--color-text-primary);margin:8px 0 4px}
+.rmsg{font-size:15px;color:var(--color-text-secondary);margin-bottom:1.25rem}
+.rbtn{font-size:14px;padding:8px 22px;border:0.5px solid var(--color-border-primary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-primary);font-weight:500}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.mcol{display:flex;flex-direction:column;gap:6px}
+.mtile{padding:9px 11px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:13px;cursor:pointer;background:var(--color-background-primary);color:var(--color-text-primary);text-align:center}
+.mtile:hover:not([disabled]){background:var(--color-background-secondary)}
+.mtile.sel{border-color:#378ADD;background:#E6F1FB;color:#0C447C}
+.mtile.matched{border-color:#1D9E75;background:#E1F5EE;color:#04342C;cursor:default}
+.mtile.flash{border-color:#E24B4A;background:#FCEBEB}
+.fill-row{font-size:14px;color:var(--color-text-primary);margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 12px}
+.fill-input{font-size:14px;border:none;border-bottom:1.5px solid var(--color-border-primary);background:transparent;color:var(--color-text-primary);font-family:var(--font-sans);width:100px;padding:0 2px;outline:none}
+.fill-input.correct{border-bottom-color:#1D9E75;color:#0F6E56}
+.fill-input.wrong{border-bottom-color:#E24B4A}
+.check-row{display:flex;gap:8px;margin:10px 0}
+.chk-btn{font-size:13px;padding:6px 16px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.chk-btn:hover{background:var(--color-background-secondary)}
+</style>
+
+<div class="app">
+<h2 class="sr-only">Spanish -ar verbs visual dictionary with audio, English subtitles, conjugation tables for hablar, dar and estar, games and quizzes</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('hablar',this)"><i class="ti ti-message" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Hablar</button>
+  <button class="tab" onclick="showTab('dar',this)"><i class="ti ti-gift" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Dar</button>
+  <button class="tab" onclick="showTab('estar',this)"><i class="ti ti-map-pin" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Estar</button>
+  <button class="tab" onclick="showTab('mistakes',this)"><i class="ti ti-alert-triangle" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Mistakes</button>
+  <button class="tab" onclick="showTab('fill',this)"><i class="ti ti-pencil" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Fill in</button>
+  <button class="tab" onclick="showTab('match',this)"><i class="ti ti-puzzle" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Match</button>
+  <button class="tab" onclick="showTab('quiz',this)"><i class="ti ti-bulb" style="font-size:13px;vertical-align:-2px;margin-right:3px" aria-hidden="true"></i>Quiz</button>
+</div>
+
+<div class="tts-note"><i class="ti ti-volume" style="font-size:14px" aria-hidden="true"></i> Tap any conjugated form to hear Spanish audio</div>
+<div class="spd-row">
+  <span class="spd-lbl">Speed:</span>
+  <button class="spd-btn" onclick="setSp(0.7,this)">Slow</button>
+  <button class="spd-btn on" onclick="setSp(0.9,this)">Normal</button>
+  <button class="spd-btn" onclick="setSp(1.1,this)">Fast</button>
+</div>
+
+<div id="hablar" class="sec active"></div>
+<div id="dar" class="sec"></div>
+<div id="estar" class="sec"></div>
+
+<div id="mistakes" class="sec">
+  <div class="sec-lbl">Common mistakes — errores comunes</div>
+  <div id="mistakes-body"></div>
+</div>
+
+<div id="fill" class="sec">
+  <div class="sec-lbl">Fill in the correct verb form</div>
+  <div id="fill-body"></div>
+  <div class="check-row">
+    <button class="chk-btn" onclick="checkFills()">Check answers</button>
+    <button class="chk-btn" onclick="resetFills()">Reset</button>
+  </div>
+</div>
+
+<div id="match" class="sec">
+  <div class="hud">
+    <div class="hpill">Pairs: <span id="msc">0</span> / 8</div>
+    <div class="hpill">Tries: <span id="mtr">0</span></div>
+    <button style="margin-left:auto;font-size:12px;padding:5px 12px;border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;background:transparent;color:var(--color-text-secondary)" onclick="initMatch()">Restart</button>
+  </div>
+  <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:10px">Match each Spanish sentence to its English meaning</div>
+  <div class="mgrid"><div class="mcol" id="m-es"></div><div class="mcol" id="m-en"></div></div>
+  <div id="mres" style="font-size:14px;color:var(--color-text-secondary);text-align:center;padding:8px 0"></div>
+</div>
+
+<div id="quiz" class="sec">
+  <div class="hud">
+    <div class="hpill"><i class="ti ti-star" style="font-size:13px" aria-hidden="true"></i> <span id="qsc">0</span> pts</div>
+    <div class="pbar"><div class="pfill" id="qprog" style="width:0%"></div></div>
+    <div class="hpill" id="qctr">1 / 12</div>
+  </div>
+  <div id="quiz-body"></div>
+</div>
+</div>
+
+<script>
+const pronouns=['yo','tú','él/ella/usted','nosotros/as','vosotros/as','ellos/ellas/ustedes'];
+
+const tenses={
+  hablar:[
+    {name:'Present',en:'(I speak)',forms:['hablo','hablas','habla','hablamos','habláis','hablan']},
+    {name:'Present Progressive',en:'(I am speaking)',forms:['estoy hablando','estás hablando','está hablando','estamos hablando','estáis hablando','están hablando']},
+    {name:'Preterite',en:'(I spoke)',forms:['hablé','hablaste','habló','hablamos','hablasteis','hablaron']},
+    {name:'Imperfect',en:'(I used to speak)',forms:['hablaba','hablabas','hablaba','hablábamos','hablabais','hablaban']},
+    {name:'Future',en:'(I will speak)',forms:['hablaré','hablarás','hablará','hablaremos','hablaréis','hablarán']},
+    {name:'Conditional',en:'(I would speak)',forms:['hablaría','hablarías','hablaría','hablaríamos','hablaríais','hablarían']},
+  ],
+  dar:[
+    {name:'Present',en:'(I give)',forms:['doy','das','da','damos','dais','dan']},
+    {name:'Present Progressive',en:'(I am giving)',forms:['estoy dando','estás dando','está dando','estamos dando','estáis dando','están dando']},
+    {name:'Preterite',en:'(I gave)',forms:['di','diste','dio','dimos','disteis','dieron']},
+    {name:'Imperfect',en:'(I used to give)',forms:['daba','dabas','daba','dábamos','dabais','daban']},
+    {name:'Future',en:'(I will give)',forms:['daré','darás','dará','daremos','daréis','darán']},
+    {name:'Conditional',en:'(I would give)',forms:['daría','darías','daría','daríamos','daríais','darían']},
+  ],
+  estar:[
+    {name:'Present',en:'(I am)',forms:['estoy','estás','está','estamos','estáis','están']},
+    {name:'Present Progressive',en:'(I am being)',forms:['estoy estando','estás estando','está estando','estamos estando','estáis estando','están estando']},
+    {name:'Preterite',en:'(I was)',forms:['estuve','estuviste','estuvo','estuvimos','estuvisteis','estuvieron']},
+    {name:'Imperfect',en:'(I used to be)',forms:['estaba','estabas','estaba','estábamos','estabais','estaban']},
+    {name:'Future',en:'(I will be)',forms:['estaré','estarás','estará','estaremos','estaréis','estarán']},
+    {name:'Conditional',en:'(I would be)',forms:['estaría','estarías','estaría','estaríamos','estaríais','estarían']},
+  ]
+};
+
+const examplesByVerb={
+  hablar:[
+    {es:'Los fines de semana nosotros caminamos en el parque.',en:'We walk in the park on weekends.'},
+    {es:'Yolanda toca la guitarra muy bien.',en:'Yolanda plays the guitar very well.'},
+    {es:'Ellos hablan cuatro idiomas.',en:'They speak four languages.'},
+    {es:'Ayer hablé con mis padres por teléfono.',en:'Yesterday, I spoke to my parents over the phone.'},
+    {es:'La semana pasada viajamos a París.',en:'Last week we traveled to Paris.'},
+    {es:'Ella terminó el informe anoche.',en:'She finished the report last night.'},
+    {es:'Ayer hablé con María.',en:'Yesterday I spoke with Maria.'},
+    {es:'Hablen entre ustedes.',en:'Talk to each other.'},
+    {es:'Antes mis abuelos y yo hablábamos más.',en:'My grandparents and I used to talk more.'},
+  ],
+  dar:[
+    {es:'Dame un abrazo.',en:'Give me a hug.'},
+    {es:'Te doy la mitad de mi sandwich.',en:'I\'ll give you half my sandwich.'},
+    {es:'Juan dio la vuelta al mundo.',en:'Juan went around the world.'},
+    {es:'Nunca daba explicaciones.',en:'He never gave explanations.'},
+  ],
+  estar:[
+    {es:'Estaría mejor de vacaciones.',en:'I would be better off on vacation.'},
+    {es:'La casa estaba en la montaña.',en:'The house was in the mountains.'},
+    {es:'El año pasado estuve en Argentina.',en:'Last year I was in Argentina.'},
+    {es:'Estoy cansada.',en:'I am tired.'},
+  ]
+};
+
+const mistakes=[
+  {wrong:'Yo trabaja en una oficina.',right:'Yo trabajo en una oficina.',note:'1st person singular always ends in -o.'},
+  {wrong:'Me gusto la playa.',right:'Me gusta la playa.',note:'"Gustar" needs gusta (it pleases me), not gusto.'},
+  {wrong:'Nosotros ayer trabajimos mucho.',right:'Nosotros ayer trabajamos mucho.',note:'Nosotros form is identical in present & preterite for -ar verbs.'},
+  {wrong:'La semana pasada hable contigo sobre eso.',right:'La semana pasada hablé contigo sobre eso.',note:'Missing tilde on "hablé" — confuses preterite with subjunctive.'},
+  {wrong:'De las gracias a su amigo.',right:'Dé las gracias a su amigo.',note:'"Dé" needs a tilde to differ from the preposition "de".'},
+  {wrong:'Espero que este bien.',right:'Espero que esté bien.',note:'"Esté" needs a tilde to differ from the demonstrative "este".'},
+];
+
+let spd=0.9,speaking=null;
+
+function setSp(s,btn){spd=s;document.querySelectorAll('.spd-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+
+function speak(text,el){
+  window.speechSynthesis.cancel();
+  if(speaking===el){speaking=null;document.querySelectorAll('.playing-mark').forEach(c=>{c.classList.remove('playing-mark');c.style.background='';});return;}
+  document.querySelectorAll('.playing-mark').forEach(c=>{c.classList.remove('playing-mark');c.style.background='';});
+  speaking=el;el.classList.add('playing-mark');el.style.background='#E1F5EE';
+  const u=new SpeechSynthesisUtterance(text);u.lang='es-MX';u.rate=spd;
+  u.onend=()=>{el.style.background='';el.classList.remove('playing-mark');if(speaking===el)speaking=null;};
+  window.speechSynthesis.speak(u);
+}
+
+function buildVerbSection(verbId, title, icon){
+  let h=`<h3 style="font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px">${title}</h3>`;
+  tenses[verbId].forEach((t,ti)=>{
+    h+=`<div class="tense-card">
+      <div class="tense-title">${t.name} <span class="tense-en">${t.en}</span></div>
+      <table class="conj-table"><tbody>`;
+    t.forms.forEach((f,i)=>{
+      h+=`<tr><td class="pn">${pronouns[i]}</td><td class="vb" onclick="speak('${f.replace(/'/g,"\\'")}',this)">${f}</td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  });
+  h+=`<div class="sec-lbl">Examples — ejemplos</div>`;
+  examplesByVerb[verbId].forEach((e,i)=>{
+    h+=`<div class="ex-row" id="${verbId}ex${i}" onclick="speak('${e.es.replace(/'/g,"\\'")}',this)">
+      <div>${e.es}</div><div class="ex-en">${e.en}</div>
+    </div>`;
+  });
+  document.getElementById(verbId).innerHTML=h;
+}
+
+function buildMistakes(){
+  document.getElementById('mistakes-body').innerHTML=mistakes.map(m=>`
+    <div class="mistake-card">
+      <div class="mistake-wrong"><i class="ti ti-x" style="font-size:13px" aria-hidden="true"></i> ${m.wrong}</div>
+      <div class="mistake-right" onclick="speak('${m.right.replace(/'/g,"\\'")}',this)" style="cursor:pointer"><i class="ti ti-check" style="font-size:13px" aria-hidden="true"></i> ${m.right} <i class="ti ti-volume" style="font-size:11px;margin-left:4px" aria-hidden="true"></i></div>
+      <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px">${m.note}</div>
+    </div>`).join('');
+}
+
+const fillItems=[
+  {pre:'Yo', post:'en una oficina.', hint:'(trabajar — yo)', ans:'trabajo'},
+  {pre:'Tú', post:'cuatro idiomas.', hint:'(hablar — tú)', ans:'hablas'},
+  {pre:'Ayer yo', post:'con mis padres.', hint:'(hablar — preterite, yo)', ans:'hablé'},
+  {pre:'Nosotros ayer', post:'mucho.', hint:'(trabajar — preterite, nosotros)', ans:'trabajamos'},
+  {pre:'Juan', post:'la vuelta al mundo.', hint:'(dar — preterite, él)', ans:'dio'},
+  {pre:'Nunca', post:'explicaciones.', hint:'(dar — imperfect, él)', ans:'daba'},
+  {pre:'El año pasado yo', post:'en Argentina.', hint:'(estar — preterite, yo)', ans:'estuve'},
+  {pre:'La casa', post:'en la montaña.', hint:'(estar — imperfect, ella)', ans:'estaba'},
+];
+
+const matchPairs=[
+  {es:'Dame un abrazo.',en:'Give me a hug.'},
+  {es:'Estoy cansada.',en:'I am tired.'},
+  {es:'Ellos hablan cuatro idiomas.',en:'They speak four languages.'},
+  {es:'Juan dio la vuelta al mundo.',en:'Juan went around the world.'},
+  {es:'La casa estaba en la montaña.',en:'The house was in the mountains.'},
+  {es:'Nunca daba explicaciones.',en:'He never gave explanations.'},
+  {es:'Ella terminó el informe anoche.',en:'She finished the report last night.'},
+  {es:'Antes hablábamos más.',en:'We used to talk more before.'},
+];
+
+const questions=[
+  {q:'What is the regular -ar present tense ending for "yo"?',opts:['-as','-o','-amos','-an'],ans:1,exp:'The first person singular (yo) for -ar verbs always ends in -o: hablo, trabajo, camino.',es:'La primera persona singular (yo) siempre termina en -o.'},
+  {q:'Which is correct: "Yo _____ en una oficina."',opts:['trabaja','trabajo','trabajas','trabajamos'],ans:1,exp:'"Trabajo" is correct — yo + -o ending. A common mistake is "trabaja" which is actually él/ella.',es:'"Trabajo" es correcto — yo + terminación -o.'},
+  {q:'How do you conjugate "hablar" in the preterite for "yo"?',opts:['hablo','hablaba','hablé','hablaría'],ans:2,exp:'"Hablé" is the preterite yo form — note the accent on the é, which is essential to distinguish it from subjunctive.',es:'"Hablé" es la forma del pretérito — el acento en la é es esencial.'},
+  {q:'Why is the tilde important in "hablé" vs "hable"?',opts:['It changes pronunciation only','It distinguishes preterite from present subjunctive','It has no real importance','It only matters in writing exams'],ans:1,exp:'Without the tilde, "hable" could be confused with the present subjunctive form. The tilde marks "hablé" as preterite, first person.',es:'El acento distingue el pretérito (hablé) del subjuntivo (hable).'},
+  {q:'Is "estar" a regular or irregular -ar verb?',opts:['Regular','Irregular'],ans:1,exp:'Even though "estar" ends in -ar, it follows an irregular pattern, especially in the preterite (estuve, estuviste, estuvo...).',es:'"Estar" es irregular, especialmente en el pretérito.'},
+  {q:'What is the preterite "yo" form of "estar"?',opts:['estoy','estaba','estuve','estaré'],ans:2,exp:'"Estuve" is the irregular preterite form for "yo" — note it does not follow the regular -ar pattern (-é).',es:'"Estuve" es la forma irregular del pretérito para "yo".'},
+  {q:'Which sentence is correct?',opts:['Nosotros ayer trabajimos mucho.','Nosotros ayer trabajamos mucho.','Nosotros ayer trabaja mucho.','Nosotros ayer trabajar mucho.'],ans:1,exp:'"Trabajamos" is correct for both present and preterite nosotros forms — they are identical for regular -ar verbs!',es:'"Trabajamos" es correcto — la forma nosotros es igual en presente y pretérito.'},
+  {q:'What does "dé" (with accent) mean, compared to "de" (no accent)?',opts:['They mean the same thing','"Dé" is a command form of dar; "de" is the preposition "of/from"','"Dé" is past tense; "de" is present','There is no difference'],ans:1,exp:'"Dé" is the formal command/subjunctive of "dar" (give). "De" without the accent is the preposition meaning "of" or "from".',es:'"Dé" es del verbo dar; "de" es la preposición "de".'},
+  {q:'Complete: "Juan _____ la vuelta al mundo." (preterite)',opts:['da','dio','daba','dará'],ans:1,exp:'"Dio" is the irregular preterite third person form of "dar". Note: no accent needed here, unlike "di" (yo).',es:'"Dio" es la forma irregular del pretérito (él/ella).'},
+  {q:'What is the present progressive of "hablar" for "yo"?',opts:['hablo','estoy hablando','hablaba','he hablado'],ans:1,exp:'"Estoy hablando" — estar (conjugated) + gerund (-ando/-iendo) forms the present progressive.',es:'"Estoy hablando" — estar conjugado + gerundio.'},
+  {q:'Which tense is used for habitual or repeated past actions, like "I used to talk"?',opts:['Preterite','Imperfect','Future','Conditional'],ans:1,exp:'The imperfect tense (hablaba, hablabas...) is used for ongoing or habitual past actions: "Antes hablábamos más."',es:'El imperfecto se usa para acciones habituales en el pasado.'},
+  {q:'What is the common mistake students make with "Me gusta la playa"?',opts:['Saying "Me gusto la playa"','Saying "Yo gusta la playa"','Saying "Me gustas la playa"','There is no common mistake'],ans:0,exp:'A common mistake is "Me gusto" (confusing it with -ar conjugation), when it should be "Me gusta" (gustar agrees with "la playa", not with "yo").',es:'Un error común es decir "Me gusto" en vez de "Me gusta".'},
+];
+
+let qCur=0,qScore=0,qAns=false;
+const qOrd=[...Array(questions.length).keys()].sort(()=>Math.random()-.5);
+let mSel=null,mMatched=0,mTries=0;
+
+function buildFills(){
+  document.getElementById('fill-body').innerHTML=fillItems.map((f,i)=>`
+    <div class="fill-row">
+      <span>${f.pre}</span>
+      <input class="fill-input" id="fi-${i}" data-ans="${f.ans}" placeholder="___">
+      <span>${f.post}</span>
+      <span style="font-size:11px;color:var(--color-text-tertiary)">${f.hint}</span>
+    </div>`).join('');
+}
+function checkFills(){
+  fillItems.forEach((_,i)=>{
+    const inp=document.getElementById('fi-'+i);
+    const val=inp.value.trim().toLowerCase();
+    inp.classList.remove('correct','wrong');
+    if(val===inp.dataset.ans.toLowerCase())inp.classList.add('correct');
+    else if(val.length>0)inp.classList.add('wrong');
+  });
+}
+function resetFills(){
+  fillItems.forEach((_,i)=>{
+    const inp=document.getElementById('fi-'+i);
+    inp.value='';inp.classList.remove('correct','wrong');
+  });
+}
+
+function initMatch(){
+  mSel=null;mMatched=0;mTries=0;
+  document.getElementById('msc').textContent='0';
+  document.getElementById('mtr').textContent='0';
+  document.getElementById('mres').textContent='';
+  const se=[...matchPairs].sort(()=>Math.random()-.5);
+  const en=[...matchPairs].sort(()=>Math.random()-.5);
+  document.getElementById('m-es').innerHTML=se.map(p=>`<button class="mtile" data-key="${p.es}" data-side="es" onclick="handleMatch(this)">${p.es}</button>`).join('');
+  document.getElementById('m-en').innerHTML=en.map(p=>`<button class="mtile" data-key="${p.es}" data-side="en" onclick="handleMatch(this)">${p.en}</button>`).join('');
+}
+function handleMatch(tile){
+  if(tile.classList.contains('matched'))return;
+  if(mSel===tile){tile.classList.remove('sel');mSel=null;return;}
+  if(mSel&&mSel.dataset.side===tile.dataset.side){mSel.classList.remove('sel');mSel=tile;tile.classList.add('sel');return;}
+  if(!mSel){mSel=tile;tile.classList.add('sel');return;}
+  mTries++;document.getElementById('mtr').textContent=mTries;
+  if(mSel.dataset.key===tile.dataset.key){
+    [mSel,tile].forEach(t=>{t.classList.remove('sel');t.classList.add('matched');t.disabled=true;});
+    mMatched++;document.getElementById('msc').textContent=mMatched;
+    mSel=null;
+    if(mMatched===matchPairs.length)document.getElementById('mres').textContent='All matched in '+mTries+' tries!';
+  } else {
+    const prev=mSel;
+    [prev,tile].forEach(t=>{t.classList.add('flash');setTimeout(()=>t.classList.remove('flash'),600);});
+    prev.classList.remove('sel');mSel=null;
+  }
+}
+
+function renderQuiz(){
+  if(qCur>=questions.length){showQRes();return;}
+  qAns=false;
+  const qi=qOrd[qCur];const q=questions[qi];
+  document.getElementById('qprog').style.width=Math.round(qCur/questions.length*100)+'%';
+  document.getElementById('qctr').textContent=(qCur+1)+' / '+questions.length;
+  document.getElementById('quiz-body').innerHTML=`<div class="qcard">
+    <div class="qtype">-ar verbs: hablar, dar, estar</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,i)=>`<button class="opt" id="qo${i}" onclick="pickQ(${i},${q.ans},${qi})"><span class="ol">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>
+    <div class="fb" id="qfb"></div>
+    <button class="nxt" id="qnxt" onclick="qCur++;renderQuiz()">${qCur===questions.length-1?'See result':'Next'} &#8594;</button>
+  </div>`;
+}
+function pickQ(ch,cor,qi){
+  if(qAns)return;qAns=true;
+  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  const ok=ch===cor;
+  document.getElementById('qo'+ch).classList.add(ok?'correct':'wrong');
+  if(!ok)document.getElementById('qo'+cor).classList.add('correct');
+  const q=questions[qi];
+  const fb=document.getElementById('qfb');
+  fb.className='fb show '+(ok?'ok':'bad');
+  fb.innerHTML=(ok?'<i class="ti ti-circle-check" style="font-size:14px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>Correct! ':'<i class="ti ti-circle-x" style="font-size:14px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>Not quite. ')+q.exp+'<br><span style="font-size:12px;font-style:italic;opacity:.8">'+q.es+'</span>';
+  if(ok){qScore+=10;document.getElementById('qsc').textContent=qScore;}
+  document.getElementById('qnxt').style.display='inline-block';
+}
+function showQRes(){
+  document.getElementById('qprog').style.width='100%';
+  const pct=Math.round(qScore/120*100);
+  const msg=pct===100?'Perfect! You master -ar verbs.':pct>=70?'Great work!':pct>=50?'Good effort — review and retry.':'Keep practicing!';
+  document.getElementById('quiz-body').innerHTML=`<div class="rbox"><div style="font-size:13px;color:var(--color-text-secondary)">Final score</div><div class="rscore">${qScore} / 120</div><div class="rmsg">${msg}</div><button class="rbtn" onclick="qCur=0;qScore=0;qOrd.sort(()=>Math.random()-.5);renderQuiz()"><i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px" aria-hidden="true"></i>Play again</button></div>`;
+}
+
+function showTab(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+buildVerbSection('hablar','Hablar — to speak','ti-message');
+buildVerbSection('dar','Dar — to give','ti-gift');
+buildVerbSection('estar','Estar — to be','ti-map-pin');
+buildMistakes();buildFills();initMatch();renderQuiz();
+</script>

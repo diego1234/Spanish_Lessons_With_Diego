@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/302224d8-9f89-4dc5-b11e-e7caa8bdd85d/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇪🇸 Indirect Object Pronouns — Spanish</title>
+<style>
+  :root {
+    --red: #C0392B;
+    --gold: #F39C12;
+    --navy: #1A2A4A;
+    --cream: #FDF6E3;
+    --light: #FEF9F0;
+    --green: #27AE60;
+    --blue: #2980B9;
+    --gray: #7F8C8D;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav .brand { color: var(--gold); font-size: 1.3rem; font-weight: 700; letter-spacing: 1px; }
+  nav .nav-links { display: flex; gap: 16px; }
+  nav .nav-links a {
+    color: #ccc; text-decoration: none; font-size: 0.85rem;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+  }
+  nav .nav-links a:hover { background: var(--gold); color: var(--navy); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--red) 0%, #8B1A1A 50%, var(--navy) 100%);
+    color: white; text-align: center; padding: 60px 24px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🇪🇸'; font-size: 120px; position: absolute;
+    top: -20px; right: -20px; opacity: 0.08;
+  }
+  .hero .badge {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: 0.8rem; padding: 4px 14px;
+    border-radius: 20px; margin-bottom: 16px; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .hero h1 { font-size: 2.4rem; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+  .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 560px; margin: 0 auto; }
+  .hero .meta {
+    margin-top: 20px; display: flex; gap: 20px; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .meta span {
+    background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px;
+    font-size: 0.85rem;
+  }
+
+  /* SECTIONS */
+  section { max-width: 860px; margin: 0 auto; padding: 40px 20px; }
+  .section-title {
+    font-size: 1.5rem; font-weight: 700; color: var(--navy);
+    border-left: 5px solid var(--red); padding-left: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* AUDIO LESSON */
+  .audio-box {
+    background: var(--white); border-radius: 16px; padding: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px;
+  }
+  .audio-controls {
+    display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .btn-audio {
+    background: var(--red); color: white; border: none; padding: 10px 22px;
+    border-radius: 30px; cursor: pointer; font-size: 0.95rem; font-weight: 600;
+    transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+  }
+  .btn-audio:hover { background: #A93226; transform: scale(1.04); }
+  .btn-audio.pause { background: var(--gold); color: var(--navy); }
+  .btn-audio.replay { background: var(--blue); }
+  .dialogue-line {
+    border-left: 3px solid var(--gold); padding: 10px 16px;
+    margin-bottom: 10px; border-radius: 0 8px 8px 0;
+    background: #FFFBF0; transition: background 0.3s;
+  }
+  .dialogue-line.active { background: #FFF3CD; border-left-color: var(--red); }
+  .dialogue-line .es {
+    font-size: 1.05rem; font-weight: 600; color: var(--navy);
+    cursor: pointer; display: flex; align-items: center; gap: 8px;
+  }
+  .dialogue-line .es:hover { color: var(--red); }
+  .dialogue-line .en {
+    font-size: 0.9rem; color: var(--gray); margin-top: 4px;
+    font-style: italic;
+  }
+  .iop-highlight { color: var(--red); font-weight: 800; }
+
+  /* VOCAB TABLE */
+  .vocab-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .vocab-table thead { background: var(--navy); color: white; }
+  .vocab-table th { padding: 14px 16px; text-align: left; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .vocab-table td { padding: 12px 16px; border-bottom: 1px solid #EEE; background: white; }
+  .vocab-table tr:last-child td { border-bottom: none; }
+  .vocab-table tr:hover td { background: #FFF8F0; }
+  .vocab-word {
+    font-weight: 700; color: var(--red); cursor: pointer; font-size: 1.05rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .vocab-word:hover { color: #8B1A1A; }
+  .phonetic { color: var(--gray); font-size: 0.85rem; }
+  .meaning { font-weight: 600; }
+  .example-es { font-style: italic; color: var(--navy); font-size: 0.9rem; }
+  .example-en { color: var(--gray); font-size: 0.82rem; }
+
+  /* GRAMMAR TIP */
+  .tip-card {
+    background: linear-gradient(135deg, var(--navy), #2C4A7A);
+    color: white; border-radius: 16px; padding: 28px 32px;
+    position: relative; overflow: hidden;
+  }
+  .tip-card::after {
+    content: '💡'; font-size: 80px; position: absolute;
+    right: 20px; top: 50%; transform: translateY(-50%); opacity: 0.15;
+  }
+  .tip-card h3 { color: var(--gold); margin-bottom: 14px; font-size: 1.2rem; }
+  .tip-card p { opacity: 0.9; line-height: 1.7; }
+  .tip-card .example-block {
+    margin-top: 16px; background: rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 14px 18px;
+  }
+  .tip-card .example-block p { font-size: 0.95rem; margin-bottom: 6px; }
+  .tip-card .example-block .iop { color: var(--gold); font-weight: 800; }
+
+  /* QUIZ */
+  .quiz-wrap { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
+  .quiz-header { background: var(--navy); color: white; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; }
+  .quiz-header h3 { font-size: 1.1rem; }
+  .score-badge { background: var(--gold); color: var(--navy); padding: 4px 14px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; }
+  .quiz-body { padding: 28px; }
+  .question-block { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #EEE; }
+  .question-block:last-of-type { border-bottom: none; }
+  .q-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin-bottom: 6px; }
+  .q-text { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-label {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; border: 2px solid #E8E8E8; border-radius: 10px;
+    cursor: pointer; transition: all 0.2s; font-size: 0.95rem;
+    background: #FAFAFA;
+  }
+  .option-label:hover { border-color: var(--gold); background: #FFFBF0; }
+  .option-label input { accent-color: var(--red); width: 18px; height: 18px; }
+  .option-label.correct { border-color: var(--green); background: #E8F8EE; color: #1A5C32; }
+  .option-label.wrong { border-color: var(--red); background: #FDEDEB; color: var(--red); }
+  .feedback { font-size: 0.85rem; margin-top: 10px; padding: 8px 14px; border-radius: 8px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #E8F8EE; color: #1A5C32; }
+  .feedback.wrong { background: #FDEDEB; color: var(--red); }
+  .quiz-submit {
+    background: var(--red); color: white; border: none; width: 100%;
+    padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; margin-top: 10px; transition: all 0.2s; letter-spacing: 0.5px;
+  }
+  .quiz-submit:hover { background: #A93226; transform: translateY(-1px); }
+  .quiz-submit:disabled { background: var(--gray); cursor: default; transform: none; }
+  .results-panel {
+    display: none; text-align: center; padding: 32px;
+    background: linear-gradient(135deg, #FFFBF0, #FFF3CC);
+    border-radius: 12px; margin-top: 20px;
+  }
+  .results-panel.show { display: block; }
+  .results-panel .score-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: var(--navy); color: white;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .results-panel .score-circle .num { font-size: 2.2rem; font-weight: 800; color: var(--gold); }
+  .results-panel .score-circle .denom { font-size: 1rem; color: #aaa; }
+  .results-panel h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 8px; }
+  .results-panel p { color: var(--gray); }
+  .results-panel .retry-btn {
+    margin-top: 16px; background: var(--navy); color: white; border: none;
+    padding: 10px 28px; border-radius: 30px; cursor: pointer; font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .results-panel .retry-btn:hover { background: var(--red); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--navy); color: white; text-align: center; padding: 40px 20px;
+    margin-top: 40px;
+  }
+  .footer h3 { color: var(--gold); margin-bottom: 10px; font-size: 1.3rem; }
+  .footer p { opacity: 0.75; font-size: 0.9rem; max-width: 500px; margin: 0 auto; }
+  .footer .stars { font-size: 2rem; margin-bottom: 12px; }
+
+  /* PULSE ANIMATION */
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+  .pulsing { animation: pulse 1s infinite; }
+
+  /* RESPONSIVE */
+  @media(max-width:600px){
+    .hero h1{font-size:1.6rem}
+    nav .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">🇪🇸 Spanish</div>
+  <div class="nav-links">
+    <a href="#audio">🔊 Audio</a>
+    <a href="#vocab">📖 Vocab</a>
+    <a href="#tip">💡 Tip</a>
+    <a href="#quiz">✏️ Quiz</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Elementary A2</div>
+  <h1>Indirect Object Pronouns<br>Real Talk 🎤</h1>
+  <p>Learn how to say who receives the action — <em>me, te, le, nos, les</em> — with real conversations and instant audio!</p>
+  <div class="meta">
+    <span>📚 10 vocab words</span>
+    <span>🎙️ 5-line dialogue</span>
+    <span>✏️ 5 quiz questions</span>
+    <span>💡 Grammar tip</span>
+  </div>
+</div>
+
+<!-- AUDIO LESSON -->
+<section id="audio">
+  <div class="section-title">🔊 Audio Lesson — Escucha y Repite</div>
+  <div class="audio-box">
+    <p style="color:var(--gray);font-size:0.9rem;margin-bottom:16px;">Listen to the dialogue. Each indirect object pronoun is <strong style="color:var(--red);">highlighted in red</strong>. Click any line to hear it individually.</p>
+    <div class="audio-controls">
+      <button class="btn-audio" onclick="playAll()" id="play-btn">▶️ Play All</button>
+      <button class="btn-audio pause" onclick="stopAll()">⏹ Stop</button>
+      <button class="btn-audio replay" onclick="replayAll()">🔁 Replay</button>
+    </div>
+
+    <div id="dialogue">
+      <div class="dialogue-line" id="line-0">
+        <div class="es" onclick="speakLine('¿Te gusta el español?', this.closest('.dialogue-line'))">🔊 — ¿<span class="iop-highlight">Te</span> gusta el español?</div>
+        <div class="en">— Do you like Spanish?</div>
+      </div>
+      <div class="dialogue-line" id="line-1">
+        <div class="es" onclick="speakLine('Sí, me encanta. Mi profesora me enseña mucho.', this.closest('.dialogue-line'))">🔊 — Sí, <span class="iop-highlight">me</span> encanta. Mi profesora <span class="iop-highlight">me</span> enseña mucho.</div>
+        <div class="en">— Yes, I love it. My teacher teaches me a lot.</div>
+      </div>
+      <div class="dialogue-line" id="line-2">
+        <div class="es" onclick="speakLine('¿Le mandas mensajes en español?', this.closest('.dialogue-line'))">🔊 — ¿<span class="iop-highlight">Le</span> mandas mensajes en español?</div>
+        <div class="en">— Do you send her messages in Spanish?</div>
+      </div>
+      <div class="dialogue-line" id="line-3">
+        <div class="es" onclick="speakLine('Sí, le escribo todos los días.', this.closest('.dialogue-line'))">🔊 — Sí, <span class="iop-highlight">le</span> escribo todos los días.</div>
+        <div class="en">— Yes, I write to her every day.</div>
+      </div>
+      <div class="dialogue-line" id="line-4">
+        <div class="es" onclick="speakLine('Genial. Nos ayuda practicar juntos.', this.closest('.dialogue-line'))">🔊 — ¡Genial! <span class="iop-highlight">Nos</span> ayuda practicar juntos.</div>
+        <div class="en">— Great! It helps us to practice together.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOCAB TABLE -->
+<section id="vocab">
+  <div class="section-title">📖 Vocabulario — Click to Hear</div>
+  <table class="vocab-table">
+    <thead>
+      <tr>
+        <th>Word / Phrase</th>
+        <th>Pronunciation</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody id="vocab-body"></tbody>
+  </table>
+</section>
+
+<!-- GRAMMAR TIP -->
+<section id="tip">
+  <div class="section-title">💡 Grammar Tip</div>
+  <div class="tip-card">
+    <h3>Indirect Object Pronouns — Before the Verb!</h3>
+    <p>In Spanish, indirect object pronouns tell us <strong>WHO receives the action</strong>. They usually go <strong>directly before</strong> the conjugated verb. Think of them as answering "to whom?" or "for whom?"</p>
+    <div class="example-block">
+      <p>👤 <span class="iop">me</span> — to/for me &nbsp;|&nbsp; <span class="iop">te</span> — to/for you &nbsp;|&nbsp; <span class="iop">le</span> — to/for him/her/you(formal)</p>
+      <p>👥 <span class="iop">nos</span> — to/for us &nbsp;|&nbsp; <span class="iop">les</span> — to/for them/you all</p>
+      <p style="margin-top:10px;">✅ <em>"<span class="iop">Te</span> doy un regalo."</em> → I give <span class="iop">you</span> a gift.</p>
+      <p>✅ <em>"<span class="iop">Nos</span> compra pizza."</em> → He buys <span class="iop">us</span> pizza.</p>
+      <p style="margin-top:10px;opacity:0.75;font-size:0.85rem;">💡 A2 Tip: Don't confuse with direct object pronouns (lo/la/los/las) — IOPs answer "to whom," not "what."</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="section-title">✏️ Interactive Quiz</div>
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <h3>🎯 Test Your Knowledge</h3>
+      <div class="score-badge" id="score-display">Score: 0 / 5</div>
+    </div>
+    <div class="quiz-body" id="quiz-body">
+      <!-- Questions injected by JS -->
+    </div>
+    <div class="results-panel" id="results-panel">
+      <div class="score-circle">
+        <div class="num" id="final-num">0</div>
+        <div class="denom">/ 5</div>
+      </div>
+      <h3 id="results-msg">¡Buen trabajo!</h3>
+      <p id="results-sub">Keep practicing to master Spanish pronouns!</p>
+      <button class="retry-btn" onclick="resetQuiz()">🔄 Try Again</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="stars">⭐⭐⭐</div>
+  <h3>¡Muy bien hecho! 🎉</h3>
+  <p>You just completed a lesson on indirect object pronouns. Keep practicing — every conversation brings you closer to fluency! Powered by <strong>Rupertspanish</strong>.</p>
+</div>
+
+<script>
+// ——— VOCABULARY DATA ———
+const vocabData = [
+  { word: "me", phonetic: "/meh/", meaning: "to/for me", exEs: "Ella me llama.", exEn: "She calls me." },
+  { word: "te", phonetic: "/teh/", meaning: "to/for you (informal)", exEs: "Te compro un café.", exEn: "I buy you a coffee." },
+  { word: "le", phonetic: "/leh/", meaning: "to/for him/her/you (formal)", exEs: "Le digo la verdad.", exEn: "I tell him/her the truth." },
+  { word: "nos", phonetic: "/nohs/", meaning: "to/for us", exEs: "Nos mandan un regalo.", exEn: "They send us a gift." },
+  { word: "les", phonetic: "/lehs/", meaning: "to/for them/you all", exEs: "Les explico la lección.", exEn: "I explain the lesson to them." },
+  { word: "dar", phonetic: "/dahr/", meaning: "to give", exEs: "Te doy un abrazo.", exEn: "I give you a hug." },
+  { word: "decir", phonetic: "/deh-SEER/", meaning: "to say / tell", exEs: "Le digo todo.", exEn: "I tell him everything." },
+  { word: "comprar", phonetic: "/kohm-PRAHR/", meaning: "to buy", exEs: "Nos compra pizza.", exEn: "He buys us pizza." },
+  { word: "mandar", phonetic: "/mahn-DAHR/", meaning: "to send", exEs: "Les mando un mensaje.", exEn: "I send them a message." },
+  { word: "escribir", phonetic: "/ehs-kree-BEER/", meaning: "to write", exEs: "Le escribo una carta.", exEn: "I write her a letter." }
+];
+
+// ——— QUIZ DATA ———
+const quizData = [
+  {
+    q: "What does 'me' mean in the sentence: Ella me llama?",
+    options: ["She calls", "She calls me", "I call her", "Me calls"],
+    correct: 1,
+    explanation: "✅ 'me' = 'to/for me'. Ella me llama = She calls ME."
+  },
+  {
+    q: "Which sentence means 'I buy you a coffee'?",
+    options: ["Me compras un café", "Te compro un café", "Le compro un café", "Nos compro un café"],
+    correct: 1,
+    explanation: "✅ 'te compro' = I buy you. 'Te' is the indirect object pronoun for 'you (informal)'."
+  },
+  {
+    q: "What does 'Le digo la verdad' mean?",
+    options: ["He tells me the truth", "I tell him/her the truth", "We tell the truth", "They tell the truth"],
+    correct: 1,
+    explanation: "✅ 'le' = to him/her/you(formal). 'Le digo' = I tell him/her. La verdad = the truth."
+  },
+  {
+    q: "Which indirect object pronoun means 'to us'?",
+    options: ["me", "te", "le", "nos"],
+    correct: 3,
+    explanation: "✅ 'nos' = to/for us. Example: Nos mandan un regalo (They send us a gift)."
+  },
+  {
+    q: "What does 'Nos mandan un mensaje' mean?",
+    options: ["We send a message", "They send us a message", "We receive a gift", "I send them a message"],
+    correct: 1,
+    explanation: "✅ 'nos' = us. 'mandan' = they send. Together: They send US a message."
+  }
+];
+
+let score = 0;
+let answered = 0;
+let userAnswers = new Array(quizData.length).fill(null);
+let submitted = false;
+
+// ——— BUILD VOCAB TABLE ———
+const tbody = document.getElementById('vocab-body');
+vocabData.forEach(v => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><div class="vocab-word" onclick="speakWord('${v.word}')" title="Click to hear">🔊 ${v.word}</div></td>
+    <td><div class="phonetic">${v.phonetic}</div></td>
+    <td><div class="meaning">${v.meaning}</div></td>
+    <td>
+      <div class="example-es">${v.exEs}</div>
+      <div class="example-en">${v.exEn}</div>
+    </td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// ——— BUILD QUIZ ———
+const quizBody = document.getElementById('quiz-body');
+quizData.forEach((q, qi) => {
+  const block = document.createElement('div');
+  block.className = 'question-block';
+  block.id = `q-block-${qi}`;
+  block.innerHTML = `
+    <div class="q-num">Question ${qi + 1} of ${quizData.length}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="options" id="opts-${qi}">
+      ${q.options.map((opt, oi) => `
+        <label class="option-label" id="opt-${qi}-${oi}">
+          <input type="radio" name="q${qi}" value="${oi}" onchange="selectAnswer(${qi}, ${oi})">
+          ${String.fromCharCode(65 + oi)}. ${opt}
+        </label>
+      `).join('')}
+    </div>
+    <div class="feedback" id="fb-${qi}"></div>
+  `;
+  quizBody.appendChild(block);
+});
+
+const submitBtn = document.createElement('button');
+submitBtn.className = 'quiz-submit';
+submitBtn.textContent = '✅ Submit All Answers';
+submitBtn.onclick = submitQuiz;
+quizBody.appendChild(submitBtn);
+
+function selectAnswer(qi, oi) {
+  userAnswers[qi] = oi;
+}
+
+function submitQuiz() {
+  if (submitted) return;
+  submitted = true;
+  score = 0;
+  quizData.forEach((q, qi) => {
+    const chosen = userAnswers[qi];
+    const fb = document.getElementById(`fb-${qi}`);
+    // Disable all options
+    for (let oi = 0; oi < q.options.length; oi++) {
+      const lbl = document.getElementById(`opt-${qi}-${oi}`);
+      const inp = lbl.querySelector('input');
+      inp.disabled = true;
+      if (oi === q.correct) lbl.classList.add('correct');
+      if (chosen === oi && oi !== q.correct) lbl.classList.add('wrong');
+    }
+    fb.classList.add('show');
+    if (chosen === q.correct) {
+      score++;
+      fb.className = 'feedback show correct';
+      fb.textContent = q.explanation;
+    } else {
+      fb.className = 'feedback show wrong';
+      fb.textContent = (chosen === null ? '⚠️ No answer selected. ' : '❌ Incorrect. ') + q.explanation;
+    }
+  });
+  document.getElementById('score-display').textContent = `Score: ${score} / ${quizData.length}`;
+  submitBtn.disabled = true;
+  // Show results
+  const panel = document.getElementById('results-panel');
+  document.getElementById('final-num').textContent = score;
+  const pct = score / quizData.length;
+  let msg, sub;
+  if (pct === 1) { msg = '🏆 ¡Perfecto! ¡Excelente!'; sub = "Perfect score! You've mastered indirect object pronouns!"; }
+  else if (pct >= 0.8) { msg = '⭐ ¡Muy bien!'; sub = "Great job! Just a small review and you'll be perfect."; }
+  else if (pct >= 0.6) { msg = '👍 ¡Bien!'; sub = "Good effort! Review the vocabulary and try again."; }
+  else { msg = '💪 ¡Sigue practicando!'; sub = "Keep practicing — review the grammar tip and dialogue above."; }
+  document.getElementById('results-msg').textContent = msg;
+  document.getElementById('results-sub').textContent = sub;
+  panel.classList.add('show');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+  submitted = false;
+  score = 0;
+  userAnswers = new Array(quizData.length).fill(null);
+  document.getElementById('score-display').textContent = 'Score: 0 / 5';
+  document.getElementById('results-panel').classList.remove('show');
+  submitBtn.disabled = false;
+  quizData.forEach((q, qi) => {
+    document.getElementById(`fb-${qi}`).className = 'feedback';
+    document.getElementById(`fb-${qi}`).textContent = '';
+    for (let oi = 0; oi < q.options.length; oi++) {
+      const lbl = document.getElementById(`opt-${qi}-${oi}`);
+      lbl.classList.remove('correct', 'wrong');
+      const inp = lbl.querySelector('input');
+      inp.disabled = false;
+      inp.checked = false;
+    }
+  });
+}
+
+// ——— SPEECH SYNTHESIS ———
+const dialogueLines = [
+  '¿Te gusta el español?',
+  'Sí, me encanta. Mi profesora me enseña mucho.',
+  '¿Le mandas mensajes en español?',
+  'Sí, le escribo todos los días.',
+  '¡Genial! Nos ayuda practicar juntos.'
+];
+
+let currentUtterance = null;
+let allTimeout = null;
+
+function speak(text, onEnd) {
+  if (!window.speechSynthesis) { alert('Speech synthesis not supported in your browser.'); return; }
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'es-ES';
+  utt.rate = 0.88;
+  utt.pitch = 1;
+  if (onEnd) utt.onend = onEnd;
+  currentUtterance = utt;
+  window.speechSynthesis.speak(utt);
+}
+
+function speakWord(word) {
+  speak(word);
+}
+
+function speakLine(text, lineEl) {
+  document.querySelectorAll('.dialogue-line').forEach(l => l.classList.remove('active'));
+  if (lineEl) lineEl.classList.add('active');
+  speak(text, () => { if (lineEl) lineEl.classList.remove('active'); });
+}
+
+let lineIndex = 0;
+function playAll() {
+  lineIndex = 0;
+  document.getElementById('play-btn').classList.add('pulsing');
+  playNextLine();
+}
+
+function playNextLine() {
+  if (lineIndex >= dialogueLines.length) {
+    document.getElementById('play-btn').classList.remove('pulsing');
+    document.querySelectorAll('.dialogue-line').forEach(l => l.classList.remove('active'));
+    return;
+  }
+  const lineEl = document.getElementById(`line-${lineIndex}`);
+  document.querySelectorAll('.dialogue-line').forEach(l => l.classList.remove('active'));
+  lineEl.classList.add('active');
+  lineEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  speak(dialogueLines[lineIndex], () => {
+    lineIndex++;
+    setTimeout(playNextLine, 500);
+  });
+}
+
+function stopAll() {
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  document.getElementById('play-btn').classList.remove('pulsing');
+  document.querySelectorAll('.dialogue-line').forEach(l => l.classList.remove('active'));
+}
+
+function replayAll() {
+  stopAll();
+  setTimeout(playAll, 300);
+}
+</script>
+</body>
+</html>

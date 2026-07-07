@@ -1,0 +1,1038 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/4d9b8f61-b9e3-4c92-b342-4edb8f2d3b3b/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇪🇸 Spanish Verb Dictionary</title>
+<style>
+  :root {
+    --red: #c0392b; --yellow: #f39c12; --dark: #1a1a2e; --card: #16213e;
+    --accent: #e74c3c; --green: #27ae60; --blue: #2980b9; --purple: #8e44ad;
+    --light: #ecf0f1; --muted: #7f8c8d; --teal: #16a085;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: var(--dark); color: var(--light); min-height: 100vh; }
+
+  /* HEADER */
+  header { background: linear-gradient(135deg, var(--red) 0%, #8b0000 50%, var(--yellow) 100%);
+    padding: 30px 20px; text-align: center; position: relative; overflow: hidden; }
+  header::before { content: '🇪🇸'; font-size: 80px; position: absolute; left: 20px; top: 10px; opacity: .15; }
+  header::after  { content: '🇪🇸'; font-size: 80px; position: absolute; right: 20px; top: 10px; opacity: .15; }
+  header h1 { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 900; text-shadow: 2px 2px 8px rgba(0,0,0,.5); }
+  header p  { margin-top: 8px; opacity: .9; font-size: 1rem; }
+
+  /* NAV TABS */
+  .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 16px; background: #0f0f23; border-bottom: 2px solid #333; }
+  .nav button { background: var(--card); border: 2px solid #333; color: var(--light); padding: 10px 18px; border-radius: 25px;
+    cursor: pointer; font-size: .9rem; transition: all .25s; font-weight: 600; }
+  .nav button:hover, .nav button.active { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(231,76,60,.4); }
+
+  /* SECTIONS */
+  section { display: none; padding: 24px 16px; max-width: 1100px; margin: 0 auto; }
+  section.active { display: block; }
+
+  /* CARDS */
+  .card { background: var(--card); border-radius: 14px; padding: 22px; margin-bottom: 20px; border: 1px solid #2a2a4a; }
+  .card h2 { font-size: 1.4rem; color: var(--yellow); margin-bottom: 6px; }
+  .card h3 { font-size: 1.1rem; color: #a0b4ff; margin: 14px 0 8px; }
+  .card p  { line-height: 1.7; color: #ccc; margin-bottom: 10px; }
+  .tag  { display: inline-block; background: var(--accent); color: #fff; font-size: .7rem; padding: 2px 8px; border-radius: 10px; margin-right: 6px; vertical-align: middle; }
+  .tag.irreg { background: var(--purple); }
+  .tag.stem  { background: var(--teal); }
+
+  /* AUDIO BUTTON */
+  .audio-btn { background: linear-gradient(135deg, #e74c3c, #c0392b); border: none; color: #fff;
+    padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: .85rem; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 6px; margin: 4px; transition: all .2s; }
+  .audio-btn:hover { transform: scale(1.05); box-shadow: 0 3px 10px rgba(231,76,60,.5); }
+  .audio-btn:active { transform: scale(.97); }
+
+  /* CONJUGATION TABLE */
+  .conj-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .92rem; }
+  .conj-table th { background: var(--accent); color: #fff; padding: 10px 14px; text-align: left; }
+  .conj-table td { padding: 9px 14px; border-bottom: 1px solid #2a2a4a; cursor: pointer; transition: background .2s; }
+  .conj-table tr:hover td { background: rgba(231,76,60,.15); }
+  .conj-table .pronoun { color: #a0b4ff; font-weight: 600; }
+  .conj-table .form    { color: #fff; font-weight: 700; }
+  .conj-table .eng     { color: #aaa; font-size: .82rem; font-style: italic; }
+
+  /* TENSE TABS inside card */
+  .tense-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tense-tab  { background: #2a2a4a; border: 1px solid #3a3a6a; color: #aaa; padding: 6px 14px; border-radius: 15px;
+    cursor: pointer; font-size: .82rem; transition: all .2s; }
+  .tense-tab:hover, .tense-tab.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+  /* EXAMPLES */
+  .example { background: rgba(255,255,255,.05); border-left: 4px solid var(--yellow); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 8px 0; }
+  .example .es { font-size: 1rem; font-weight: 700; color: #fff; }
+  .example .en { font-size: .88rem; color: #a0c4ff; margin-top: 2px; }
+
+  /* MISTAKE */
+  .mistake { background: rgba(231,76,60,.08); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 6px 0; }
+  .mistake .correct { color: var(--green); font-weight: 700; }
+  .mistake .wrong   { color: var(--accent); text-decoration: line-through; }
+
+  /* SEARCH */
+  .search-bar { display: flex; gap: 10px; margin-bottom: 20px; }
+  .search-bar input { flex: 1; background: var(--card); border: 2px solid #333; color: #fff; padding: 12px 18px; border-radius: 25px; font-size: 1rem; outline: none; }
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar button { background: var(--accent); border: none; color: #fff; padding: 12px 22px; border-radius: 25px; cursor: pointer; font-weight: 700; }
+
+  /* QUIZ */
+  .quiz-q  { font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; color: #fff; }
+  .quiz-subtitle { font-size: .85rem; color: #a0c4ff; margin-bottom: 14px; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .option  { background: var(--card); border: 2px solid #333; color: #ddd; padding: 12px 16px; border-radius: 10px; cursor: pointer; font-size: .95rem; transition: all .2s; text-align: center; }
+  .option:hover { border-color: var(--blue); color: #fff; }
+  .option.correct { background: rgba(39,174,96,.25); border-color: var(--green); color: var(--green); font-weight: 700; }
+  .option.wrong   { background: rgba(231,76,60,.25); border-color: var(--accent); color: var(--accent); }
+  .feedback { padding: 14px 18px; border-radius: 10px; font-weight: 700; margin-bottom: 14px; display: none; }
+  .feedback.ok  { background: rgba(39,174,96,.2); border: 2px solid var(--green); color: var(--green); }
+  .feedback.bad { background: rgba(231,76,60,.2); border: 2px solid var(--accent); color: #ff8080; }
+  .quiz-btn { background: var(--accent); border: none; color: #fff; padding: 12px 28px; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 700; margin-top: 8px; }
+  .quiz-btn:hover { background: #a93226; }
+  .score-bar { height: 8px; background: #2a2a4a; border-radius: 4px; overflow: hidden; margin: 10px 0; }
+  .score-fill { height: 100%; background: linear-gradient(90deg, var(--red), var(--yellow)); border-radius: 4px; transition: width .5s; }
+
+  /* FILL IN THE BLANK */
+  .fill-input { background: transparent; border: none; border-bottom: 2px solid var(--yellow); color: var(--yellow);
+    font-size: 1rem; font-weight: 700; width: 100px; text-align: center; outline: none; padding: 2px 4px; }
+  .fill-sentence { font-size: 1.1rem; line-height: 2; color: #fff; margin: 14px 0; }
+
+  /* MATCH GAME */
+  .match-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 14px 0; }
+  .match-card { background: var(--card); border: 2px solid #3a3a6a; padding: 16px 10px; border-radius: 10px; cursor: pointer;
+    text-align: center; font-size: .9rem; transition: all .2s; font-weight: 600; min-height: 70px; display: flex; align-items: center; justify-content: center; }
+  .match-card:hover  { border-color: var(--yellow); }
+  .match-card.sel    { border-color: var(--yellow); background: rgba(243,156,18,.15); }
+  .match-card.matched { border-color: var(--green); background: rgba(39,174,96,.2); color: var(--green); pointer-events: none; }
+  .match-card.wrong  { border-color: var(--accent); background: rgba(231,76,60,.2); }
+
+  /* SCRAMBLE */
+  .scramble-tiles { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .tile { background: var(--blue); color: #fff; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 1rem; transition: all .2s; }
+  .tile:hover { background: #1f6ea8; transform: translateY(-2px); }
+  .tile.used  { opacity: .3; pointer-events: none; }
+  .answer-zone { min-height: 52px; background: rgba(255,255,255,.05); border: 2px dashed #3a3a6a; border-radius: 10px;
+    padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .answer-tile { background: var(--purple); color: #fff; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 1rem; }
+
+  /* PROGRESS */
+  .progress { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .prog-num { color: var(--yellow); font-weight: 700; font-size: .95rem; min-width: 80px; }
+
+  /* GRID DICTIONARY */
+  .verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .verb-mini { background: var(--card); border: 2px solid #2a2a4a; border-radius: 12px; padding: 18px; cursor: pointer; transition: all .25s; }
+  .verb-mini:hover { border-color: var(--yellow); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+  .verb-mini h3 { font-size: 1.2rem; color: var(--yellow); }
+  .verb-mini p  { font-size: .85rem; color: #aaa; margin-top: 4px; }
+  .verb-mini .badges { margin-top: 8px; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.8); z-index: 1000; align-items: center; justify-content: center; padding: 16px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--card); border-radius: 16px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 28px; border: 2px solid #3a3a6a; }
+  .modal h2 { color: var(--yellow); font-size: 1.6rem; margin-bottom: 6px; }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: var(--accent); border: none; color: #fff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; }
+  .modal { position: relative; }
+
+  /* RESPONSIVE */
+  @media(max-width:600px){ .options { grid-template-columns: 1fr; } .match-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* TOOLTIP */
+  [data-tip] { position: relative; }
+  [data-tip]:hover::after { content: attr(data-tip); position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
+    background: #000; color: #fff; font-size: .75rem; padding: 4px 8px; border-radius: 6px; white-space: nowrap; z-index: 10; }
+
+  .section-title { font-size: 1.6rem; color: var(--yellow); margin-bottom: 6px; }
+  .section-sub   { color: #888; margin-bottom: 20px; font-size: .95rem; }
+  hr { border: none; border-top: 1px solid #2a2a4a; margin: 18px 0; }
+
+  /* Stars */
+  .stars { color: var(--yellow); font-size: 1.4rem; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎙️ Spanish Verb Dictionary</h1>
+  <p>Audio · Conjugations · Games · Quizzes · English Subtitles</p>
+</header>
+
+<div class="nav">
+  <button class="active" onclick="showSection('dictionary',this)">📖 Dictionary</button>
+  <button onclick="showSection('lessons',this)">📚 Lessons</button>
+  <button onclick="showSection('match',this)">🎯 Match Game</button>
+  <button onclick="showSection('scramble',this)">🔀 Scramble</button>
+  <button onclick="showSection('fillblank',this)">✏️ Fill-in-Blank</button>
+  <button onclick="showSection('quiz',this)">🏆 Quiz</button>
+</div>
+
+<!-- ══════════════ DICTIONARY ══════════════ -->
+<section id="dictionary" class="active">
+  <h2 class="section-title">📖 Verb Dictionary</h2>
+  <p class="section-sub">Click any verb card to hear audio & see full conjugations. Tap any table row to pronounce.</p>
+  <div class="search-bar">
+    <input id="searchInput" type="text" placeholder="Search verb or meaning…" oninput="filterVerbs()">
+    <button onclick="filterVerbs()">🔍</button>
+  </div>
+  <div class="verb-grid" id="verbGrid"></div>
+</section>
+
+<!-- ══════════════ LESSONS ══════════════ -->
+<section id="lessons">
+  <h2 class="section-title">📚 Grammar Lessons</h2>
+  <p class="section-sub">Study each verb group with explanations, examples & audio.</p>
+  <div id="lessonsContainer"></div>
+</section>
+
+<!-- ══════════════ MATCH GAME ══════════════ -->
+<section id="match">
+  <h2 class="section-title">🎯 Match Game</h2>
+  <p class="section-sub">Match Spanish conjugations with their English translations. Click two cards to pair them!</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+    <button class="quiz-btn" onclick="startMatch('easy')">🌱 Easy</button>
+    <button class="quiz-btn" onclick="startMatch('medium')" style="background:var(--purple)">⚡ Medium</button>
+    <button class="quiz-btn" onclick="startMatch('hard')" style="background:var(--teal)">🔥 Hard</button>
+  </div>
+  <div class="card">
+    <div class="progress"><span class="prog-num" id="matchScore">Pairs: 0 / 8</span>
+      <div class="score-bar" style="flex:1"><div class="score-fill" id="matchBar" style="width:0%"></div></div>
+    </div>
+    <div class="match-grid" id="matchGrid"></div>
+    <div id="matchMsg" style="text-align:center;font-size:1.2rem;color:var(--yellow);margin-top:12px;"></div>
+  </div>
+</section>
+
+<!-- ══════════════ SCRAMBLE ══════════════ -->
+<section id="scramble">
+  <h2 class="section-title">🔀 Word Scramble</h2>
+  <p class="section-sub">Tap the tiles in the correct order to build the conjugated form.</p>
+  <div class="card">
+    <div class="progress"><span class="prog-num" id="scrambleScore">Score: 0</span>
+      <div class="score-bar" style="flex:1"><div class="score-fill" id="scrambleBar" style="width:0%"></div></div>
+    </div>
+    <div id="scramblePrompt" style="font-size:1.1rem;color:#a0b4ff;margin-bottom:10px;"></div>
+    <div id="scrambleEnglish" style="font-size:.9rem;color:#888;margin-bottom:14px;font-style:italic;"></div>
+    <div class="answer-zone" id="answerZone"></div>
+    <div class="scramble-tiles" id="scrambleTiles"></div>
+    <div class="feedback" id="scrambleFeedback"></div>
+    <div style="display:flex;gap:10px;margin-top:10px;">
+      <button class="quiz-btn" onclick="checkScramble()">✅ Check</button>
+      <button class="quiz-btn" onclick="clearScramble()" style="background:var(--muted)">🔄 Clear</button>
+      <button class="quiz-btn" onclick="nextScramble()" style="background:var(--purple)">⏭ Next</button>
+      <button class="quiz-btn" onclick="speakCurrent()" style="background:var(--teal)">🔊 Hear</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FILL IN THE BLANK ══════════════ -->
+<section id="fillblank">
+  <h2 class="section-title">✏️ Fill in the Blank</h2>
+  <p class="section-sub">Complete the sentence with the correct conjugation.</p>
+  <div class="card">
+    <div class="progress"><span class="prog-num" id="fillScore">0 / 0</span>
+      <div class="score-bar" style="flex:1"><div class="score-fill" id="fillBar" style="width:0%"></div></div>
+    </div>
+    <div id="fillSentence" class="fill-sentence"></div>
+    <div id="fillHint" style="color:#888;font-size:.85rem;margin:-8px 0 12px;"></div>
+    <div class="feedback" id="fillFeedback"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+      <button class="quiz-btn" onclick="checkFill()">✅ Check</button>
+      <button class="quiz-btn" onclick="nextFill()" style="background:var(--purple)">⏭ Next</button>
+      <button class="quiz-btn" onclick="hintFill()" style="background:var(--teal)">💡 Hint</button>
+      <button class="quiz-btn" onclick="speakFill()" style="background:var(--blue)">🔊 Hear</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ QUIZ ══════════════ -->
+<section id="quiz">
+  <h2 class="section-title">🏆 Quiz</h2>
+  <p class="section-sub">Test your knowledge of Spanish verb conjugations!</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+    <button class="quiz-btn" onclick="startQuiz('conjugation')">🔤 Conjugations</button>
+    <button class="quiz-btn" onclick="startQuiz('meaning')" style="background:var(--purple)">📝 Meanings</button>
+    <button class="quiz-btn" onclick="startQuiz('tense')" style="background:var(--teal)">⏳ Tenses</button>
+    <button class="quiz-btn" onclick="startQuiz('mixed')" style="background:var(--blue)">🎲 Mixed</button>
+  </div>
+  <div class="card" id="quizCard">
+    <div class="progress">
+      <span class="prog-num" id="quizProg">Q 1 / 10</span>
+      <div class="score-bar" style="flex:1"><div class="score-fill" id="quizBar" style="width:0%"></div></div>
+      <span style="color:var(--yellow);font-weight:700;" id="quizScoreDisplay">✨ 0</span>
+    </div>
+    <div id="quizQuestion" class="quiz-q">Choose a quiz type to begin!</div>
+    <div id="quizSubtitle" class="quiz-subtitle"></div>
+    <div class="options" id="quizOptions"></div>
+    <div class="feedback" id="quizFeedback"></div>
+    <button class="quiz-btn" id="quizNext" onclick="nextQuestion()" style="display:none">Next ➡</button>
+  </div>
+  <div id="quizResult" style="display:none" class="card">
+    <h2 style="color:var(--yellow);text-align:center;margin-bottom:10px;">🎉 Quiz Complete!</h2>
+    <p style="text-align:center;font-size:1.3rem;" id="quizFinalScore"></p>
+    <div style="text-align:center;margin:14px 0;" class="stars" id="quizStars"></div>
+    <div style="text-align:center;"><button class="quiz-btn" onclick="restartQuiz()">🔄 Try Again</button></div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="verbModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════════
+const VERBS = [
+  {
+    id:'hablar', es:'hablar', en:'to speak / to talk', type:'regular -ar',
+    tags:['regular','ar'],
+    tenses:{
+      'Present':     [['yo','hablo','I speak'],['tú','hablas','you speak'],['él/ella','habla','he/she speaks'],['nosotros','hablamos','we speak'],['vosotros','habláis','you all speak'],['ellos','hablan','they speak']],
+      'Preterite':   [['yo','hablé','I spoke'],['tú','hablaste','you spoke'],['él/ella','habló','he/she spoke'],['nosotros','hablamos','we spoke'],['vosotros','hablasteis','you all spoke'],['ellos','hablaron','they spoke']],
+      'Imperfect':   [['yo','hablaba','I used to speak'],['tú','hablabas','you used to speak'],['él/ella','hablaba','he/she used to speak'],['nosotros','hablábamos','we used to speak'],['vosotros','hablabais','you all used to speak'],['ellos','hablaban','they used to speak']],
+      'Future':      [['yo','hablaré','I will speak'],['tú','hablarás','you will speak'],['él/ella','hablará','he/she will speak'],['nosotros','hablaremos','we will speak'],['vosotros','hablaréis','you all will speak'],['ellos','hablarán','they will speak']],
+      'Conditional': [['yo','hablaría','I would speak'],['tú','hablarías','you would speak'],['él/ella','hablaría','he/she would speak'],['nosotros','hablaríamos','we would speak'],['vosotros','hablaríais','you all would speak'],['ellos','hablarían','they would speak']],
+      'Subjunctive': [['yo','hable','I speak (subj.)'],['tú','hables','you speak (subj.)'],['él/ella','hable','he/she speak (subj.)'],['nosotros','hablemos','we speak (subj.)'],['vosotros','habléis','you all speak (subj.)'],['ellos','hablen','they speak (subj.)']],
+    },
+    examples:[['Ayer hablé con mis padres.','Yesterday I spoke to my parents.'],['Ellos hablan cuatro idiomas.','They speak four languages.'],['Antes mis abuelos y yo hablábamos más.','My grandparents and I used to talk more.']]
+  },
+  {
+    id:'comer', es:'comer', en:'to eat', type:'regular -er',
+    tags:['regular','er'],
+    tenses:{
+      'Present':     [['yo','como','I eat'],['tú','comes','you eat'],['él/ella','come','he/she eats'],['nosotros','comemos','we eat'],['vosotros','coméis','you all eat'],['ellos','comen','they eat']],
+      'Preterite':   [['yo','comí','I ate'],['tú','comiste','you ate'],['él/ella','comió','he/she ate'],['nosotros','comimos','we ate'],['vosotros','comisteis','you all ate'],['ellos','comieron','they ate']],
+      'Imperfect':   [['yo','comía','I used to eat'],['tú','comías','you used to eat'],['él/ella','comía','he/she used to eat'],['nosotros','comíamos','we used to eat'],['vosotros','comíais','you all used to eat'],['ellos','comían','they used to eat']],
+      'Future':      [['yo','comeré','I will eat'],['tú','comerás','you will eat'],['él/ella','comerá','he/she will eat'],['nosotros','comeremos','we will eat'],['vosotros','comeréis','you all will eat'],['ellos','comerán','they will eat']],
+      'Conditional': [['yo','comería','I would eat'],['tú','comerías','you would eat'],['él/ella','comería','he/she would eat'],['nosotros','comeríamos','we would eat'],['vosotros','comeríais','you all would eat'],['ellos','comerían','they would eat']],
+      'Subjunctive': [['yo','coma','I eat (subj.)'],['tú','comas','you eat (subj.)'],['él/ella','coma','he/she eat (subj.)'],['nosotros','comamos','we eat (subj.)'],['vosotros','comáis','you all eat (subj.)'],['ellos','coman','they eat (subj.)']],
+    },
+    examples:[['Ayer comieron en nuestra casa.','Yesterday they ate at our house.'],['Antes los domingos comíamos en un restaurante.','We used to eat in a restaurant on Sundays.'],['Me comería un pollo entero.','I would eat a whole chicken.']]
+  },
+  {
+    id:'estar', es:'estar', en:'to be (state/condition)', type:'irregular -ar',
+    tags:['irregular','ar'],
+    tenses:{
+      'Present':     [['yo','estoy','I am'],['tú','estás','you are'],['él/ella','está','he/she is'],['nosotros','estamos','we are'],['vosotros','estáis','you all are'],['ellos','están','they are']],
+      'Preterite':   [['yo','estuve','I was'],['tú','estuviste','you were'],['él/ella','estuvo','he/she was'],['nosotros','estuvimos','we were'],['vosotros','estuvisteis','you all were'],['ellos','estuvieron','they were']],
+      'Imperfect':   [['yo','estaba','I was'],['tú','estabas','you were'],['él/ella','estaba','he/she was'],['nosotros','estábamos','we were'],['vosotros','estabais','you all were'],['ellos','estaban','they were']],
+      'Future':      [['yo','estaré','I will be'],['tú','estarás','you will be'],['él/ella','estará','he/she will be'],['nosotros','estaremos','we will be'],['vosotros','estaréis','you all will be'],['ellos','estarán','they will be']],
+      'Conditional': [['yo','estaría','I would be'],['tú','estarías','you would be'],['él/ella','estaría','he/she would be'],['nosotros','estaríamos','we would be'],['vosotros','estaríais','you all would be'],['ellos','estarían','they would be']],
+      'Subjunctive': [['yo','esté','I be (subj.)'],['tú','estés','you be (subj.)'],['él/ella','esté','he/she be (subj.)'],['nosotros','estemos','we be (subj.)'],['vosotros','estéis','you all be (subj.)'],['ellos','estén','they be (subj.)']],
+    },
+    examples:[['Estoy cansada.','I am tired.'],['El año pasado estuve en Argentina.','Last year I was in Argentina.'],['La casa estaba en la montaña.','The house was in the mountains.'],['Estaría mejor de vacaciones.','I would be better off on vacation.']]
+  },
+  {
+    id:'dar', es:'dar', en:'to give', type:'irregular -ar',
+    tags:['irregular','ar'],
+    tenses:{
+      'Present':     [['yo','doy','I give'],['tú','das','you give'],['él/ella','da','he/she gives'],['nosotros','damos','we give'],['vosotros','dais','you all give'],['ellos','dan','they give']],
+      'Preterite':   [['yo','di','I gave'],['tú','diste','you gave'],['él/ella','dio','he/she gave'],['nosotros','dimos','we gave'],['vosotros','disteis','you all gave'],['ellos','dieron','they gave']],
+      'Imperfect':   [['yo','daba','I used to give'],['tú','dabas','you used to give'],['él/ella','daba','he/she used to give'],['nosotros','dábamos','we used to give'],['vosotros','dabais','you all used to give'],['ellos','daban','they used to give']],
+      'Future':      [['yo','daré','I will give'],['tú','darás','you will give'],['él/ella','dará','he/she will give'],['nosotros','daremos','we will give'],['vosotros','daréis','you all will give'],['ellos','darán','they will give']],
+      'Conditional': [['yo','daría','I would give'],['tú','darías','you would give'],['él/ella','daría','he/she would give'],['nosotros','daríamos','we would give'],['vosotros','daríais','you all would give'],['ellos','darían','they would give']],
+      'Subjunctive': [['yo','dé','I give (subj.)'],['tú','des','you give (subj.)'],['él/ella','dé','he/she give (subj.)'],['nosotros','demos','we give (subj.)'],['vosotros','deis','you all give (subj.)'],['ellos','den','they give (subj.)']],
+    },
+    examples:[['Dame un abrazo.','Give me a hug.'],['Te doy la mitad de mi sandwich.','I\'ll give you half my sandwich.'],['Juan dio la vuelta al mundo.','Juan went around the world.'],['Nunca daba explicaciones.','He never gave explanations.']]
+  },
+  {
+    id:'hacer', es:'hacer', en:'to do / to make', type:'irregular -er',
+    tags:['irregular','er'],
+    tenses:{
+      'Present':     [['yo','hago','I do/make'],['tú','haces','you do/make'],['él/ella','hace','he/she does/makes'],['nosotros','hacemos','we do/make'],['vosotros','hacéis','you all do/make'],['ellos','hacen','they do/make']],
+      'Preterite':   [['yo','hice','I did/made'],['tú','hiciste','you did/made'],['él/ella','hizo','he/she did/made'],['nosotros','hicimos','we did/made'],['vosotros','hicisteis','you all did/made'],['ellos','hicieron','they did/made']],
+      'Imperfect':   [['yo','hacía','I used to do/make'],['tú','hacías','you used to do/make'],['él/ella','hacía','he/she used to do/make'],['nosotros','hacíamos','we used to do/make'],['vosotros','hacíais','you all used to do/make'],['ellos','hacían','they used to do/make']],
+      'Future':      [['yo','haré','I will do/make'],['tú','harás','you will do/make'],['él/ella','hará','he/she will do/make'],['nosotros','haremos','we will do/make'],['vosotros','haréis','you all will do/make'],['ellos','harán','they will do/make']],
+      'Conditional': [['yo','haría','I would do/make'],['tú','harías','you would do/make'],['él/ella','haría','he/she would do/make'],['nosotros','haríamos','we would do/make'],['vosotros','haríais','you all would do/make'],['ellos','harían','they would do/make']],
+      'Subjunctive': [['yo','haga','I do (subj.)'],['tú','hagas','you do (subj.)'],['él/ella','haga','he/she do (subj.)'],['nosotros','hagamos','we do (subj.)'],['vosotros','hagáis','you all do (subj.)'],['ellos','hagan','they do (subj.)']],
+    },
+    examples:[['Ayer hice la siesta.','Yesterday I took a nap.'],['Yo hago deporte.','I do sports.'],['Haría lo que me pides pero no puedo ahora.','I would do what you ask but I can\'t right now.']]
+  },
+  {
+    id:'ver', es:'ver', en:'to see / to watch', type:'irregular -er',
+    tags:['irregular','er'],
+    tenses:{
+      'Present':     [['yo','veo','I see'],['tú','ves','you see'],['él/ella','ve','he/she sees'],['nosotros','vemos','we see'],['vosotros','veis','you all see'],['ellos','ven','they see']],
+      'Preterite':   [['yo','vi','I saw'],['tú','viste','you saw'],['él/ella','vio','he/she saw'],['nosotros','vimos','we saw'],['vosotros','visteis','you all saw'],['ellos','vieron','they saw']],
+      'Imperfect':   [['yo','veía','I used to see'],['tú','veías','you used to see'],['él/ella','veía','he/she used to see'],['nosotros','veíamos','we used to see'],['vosotros','veíais','you all used to see'],['ellos','veían','they used to see']],
+      'Future':      [['yo','veré','I will see'],['tú','verás','you will see'],['él/ella','verá','he/she will see'],['nosotros','veremos','we will see'],['vosotros','veréis','you all will see'],['ellos','verán','they will see']],
+      'Conditional': [['yo','vería','I would see'],['tú','verías','you would see'],['él/ella','vería','he/she would see'],['nosotros','veríamos','we would see'],['vosotros','veríais','you all would see'],['ellos','verían','they would see']],
+      'Subjunctive': [['yo','vea','I see (subj.)'],['tú','veas','you see (subj.)'],['él/ella','vea','he/she see (subj.)'],['nosotros','veamos','we see (subj.)'],['vosotros','veáis','you all see (subj.)'],['ellos','vean','they see (subj.)']],
+    },
+    examples:[['Ayer vimos un accidente.','Yesterday we saw an accident.'],['No veo bien sin gafas.','I can\'t see well without glasses.'],['Antes veía más tiempo la tele.','I used to watch TV longer.']]
+  },
+  {
+    id:'conocer', es:'conocer', en:'to know (a person/place)', type:'irregular -er',
+    tags:['irregular','er'],
+    tenses:{
+      'Present':     [['yo','conozco','I know'],['tú','conoces','you know'],['él/ella','conoce','he/she knows'],['nosotros','conocemos','we know'],['vosotros','conocéis','you all know'],['ellos','conocen','they know']],
+      'Preterite':   [['yo','conocí','I met/knew'],['tú','conociste','you met/knew'],['él/ella','conoció','he/she met/knew'],['nosotros','conocimos','we met/knew'],['vosotros','conocisteis','you all met/knew'],['ellos','conocieron','they met/knew']],
+      'Imperfect':   [['yo','conocía','I used to know'],['tú','conocías','you used to know'],['él/ella','conocía','he/she used to know'],['nosotros','conocíamos','we used to know'],['vosotros','conocíais','you all used to know'],['ellos','conocían','they used to know']],
+      'Future':      [['yo','conoceré','I will know'],['tú','conocerás','you will know'],['él/ella','conocerá','he/she will know'],['nosotros','conoceremos','we will know'],['vosotros','conoceréis','you all will know'],['ellos','conocerán','they will know']],
+      'Conditional': [['yo','conocería','I would know'],['tú','conocerías','you would know'],['él/ella','conocería','he/she would know'],['nosotros','conoceríamos','we would know'],['vosotros','conoceríais','you all would know'],['ellos','conocerían','they would know']],
+      'Subjunctive': [['yo','conozca','I know (subj.)'],['tú','conozcas','you know (subj.)'],['él/ella','conozca','he/she know (subj.)'],['nosotros','conozcamos','we know (subj.)'],['vosotros','conozcáis','you all know (subj.)'],['ellos','conozcan','they know (subj.)']],
+    },
+    examples:[['No conozco al nuevo profesor.','I don\'t know the new teacher.'],['¿Cuándo conociste a tu marido?','When did you meet your husband?'],['Si viajas al extranjero, conocerás mucha gente.','If you travel abroad, you will meet a lot of people.']]
+  },
+  {
+    id:'saber', es:'saber', en:'to know (facts/how to)', type:'irregular -er',
+    tags:['irregular','er'],
+    tenses:{
+      'Present': [['yo','sé','I know'],['tú','sabes','you know'],['él/ella','sabe','he/she knows'],['nosotros','sabemos','we know'],['vosotros','sabéis','you all know'],['ellos','saben','they know']],
+    },
+    examples:[['Yo sé hablar francés.','I know how to speak French.'],['Ella sabe mucho sobre geografía.','She knows a lot about geography.']]
+  },
+  {
+    id:'querer', es:'querer', en:'to want / to love', type:'stem-changing e>ie',
+    tags:['stem-change'],
+    tenses:{
+      'Present': [['yo','quiero','I want/love'],['tú','quieres','you want/love'],['él/ella','quiere','he/she wants/loves'],['nosotros','queremos','we want/love'],['vosotros','queréis','you all want/love'],['ellos','quieren','they want/love']],
+    },
+    examples:[['Quiero una habitación grande, por favor.','I want a big room, please.'],['Gloria quiere mucho a su papá.','Gloria loves her daddy very much.']]
+  },
+  {
+    id:'tener', es:'tener', en:'to have', type:'irregular -er',
+    tags:['irregular','er'],
+    tenses:{
+      'Present': [['yo','tengo','I have'],['tú','tienes','you have'],['él/ella','tiene','he/she has'],['nosotros','tenemos','we have'],['vosotros','tenéis','you all have'],['ellos','tienen','they have']],
+    },
+    examples:[['Yo tengo un perro.','I have a dog.'],['Tú tienes una casa.','You have a house.'],['Él tiene un coche.','He has a car.']]
+  },
+  {
+    id:'poder', es:'poder', en:'to be able to / can', type:'stem-changing o>ue',
+    tags:['stem-change'],
+    tenses:{
+      'Present': [['yo','puedo','I can'],['tú','puedes','you can'],['él/ella','puede','he/she can'],['nosotros','podemos','we can'],['vosotros','podéis','you all can'],['ellos','pueden','they can']],
+    },
+    examples:[['¿Podemos usar su teléfono?','May we use your phone?']]
+  },
+  {
+    id:'deber', es:'deber', en:'must / to have to', type:'regular -er',
+    tags:['regular','er'],
+    tenses:{
+      'Present': [['yo','debo','I must'],['tú','debes','you must'],['él/ella','debe','he/she must'],['nosotros','debemos','we must'],['vosotros','debéis','you all must'],['ellos','deben','they must']],
+    },
+    examples:[['Debemos entregar este informe hoy.','We have to submit this report today.']]
+  },
+  {
+    id:'pedir', es:'pedir', en:'to ask for / to order', type:'stem-changing e>i',
+    tags:['stem-change','ir'],
+    tenses:{
+      'Present':   [['yo','pido','I ask for'],['tú','pides','you ask for'],['él/ella','pide','he/she asks for'],['nosotros','pedimos','we ask for'],['vosotros','pedís','you all ask for'],['ellos','piden','they ask for']],
+      'Preterite': [['yo','pedí','I asked for'],['tú','pediste','you asked for'],['él/ella','pidió','he/she asked for'],['nosotros','pedimos','we asked for'],['vosotros','pedisteis','you all asked for'],['ellos','pidieron','they asked for']],
+    },
+    examples:[['Pide lo que necesites.','Ask for what you need.'],['Pedimos demasiado a nuestros empleados.','We ask too much of our employees.']]
+  },
+  {
+    id:'pensar', es:'pensar', en:'to think', type:'stem-changing e>ie',
+    tags:['stem-change','ar'],
+    tenses:{
+      'Present':   [['yo','pienso','I think'],['tú','piensas','you think'],['él/ella','piensa','he/she thinks'],['nosotros','pensamos','we think'],['vosotros','pensáis','you all think'],['ellos','piensan','they think']],
+      'Preterite': [['yo','pensé','I thought'],['tú','pensaste','you thought'],['él/ella','pensó','he/she thought'],['nosotros','pensamos','we thought'],['vosotros','pensasteis','you all thought'],['ellos','pensaron','they thought']],
+    },
+    examples:[['El año pasado pensé en mudarme de ciudad.','Last year I thought about moving out of town.'],['Pensáis demasiado.','You think too much.']]
+  },
+  // ── 10 NEW VERBS ──
+  {
+    id:'ser', es:'ser', en:'to be (permanent characteristic)', type:'irregular -er',
+    tags:['irregular','er'],
+    tenses:{
+      'Present':     [['yo','soy','I am'],['tú','eres','you are'],['él/ella','es','he/she is'],['nosotros','somos','we are'],['vosotros','sois','you all are'],['ellos','son','they are']],
+      'Preterite':   [['yo','fui','I was'],['tú','fuiste','you were'],['él/ella','fue','he/she was'],['nosotros','fuimos','we were'],['vosotros','fuisteis','you all were'],['ellos','fueron','they were']],
+      'Imperfect':   [['yo','era','I used to be'],['tú','eras','you used to be'],['él/ella','era','he/she used to be'],['nosotros','éramos','we used to be'],['vosotros','erais','you all used to be'],['ellos','eran','they used to be']],
+      'Future':      [['yo','seré','I will be'],['tú','serás','you will be'],['él/ella','será','he/she will be'],['nosotros','seremos','we will be'],['vosotros','seréis','you all will be'],['ellos','serán','they will be']],
+      'Conditional': [['yo','sería','I would be'],['tú','serías','you would be'],['él/ella','sería','he/she would be'],['nosotros','seríamos','we would be'],['vosotros','seríais','you all would be'],['ellos','serían','they would be']],
+      'Subjunctive': [['yo','sea','I be (subj.)'],['tú','seas','you be (subj.)'],['él/ella','sea','he/she be (subj.)'],['nosotros','seamos','we be (subj.)'],['vosotros','seáis','you all be (subj.)'],['ellos','sean','they be (subj.)']],
+    },
+    examples:[['Soy médico.','I am a doctor.'],['Ella es muy inteligente.','She is very intelligent.'],['Fuimos amigos durante años.','We were friends for years.'],['Seré feliz contigo.','I will be happy with you.']]
+  },
+  {
+    id:'ir', es:'ir', en:'to go', type:'irregular -ir',
+    tags:['irregular','ir'],
+    tenses:{
+      'Present':     [['yo','voy','I go'],['tú','vas','you go'],['él/ella','va','he/she goes'],['nosotros','vamos','we go'],['vosotros','vais','you all go'],['ellos','van','they go']],
+      'Preterite':   [['yo','fui','I went'],['tú','fuiste','you went'],['él/ella','fue','he/she went'],['nosotros','fuimos','we went'],['vosotros','fuisteis','you all went'],['ellos','fueron','they went']],
+      'Imperfect':   [['yo','iba','I used to go'],['tú','ibas','you used to go'],['él/ella','iba','he/she used to go'],['nosotros','íbamos','we used to go'],['vosotros','ibais','you all used to go'],['ellos','iban','they used to go']],
+      'Future':      [['yo','iré','I will go'],['tú','irás','you will go'],['él/ella','irá','he/she will go'],['nosotros','iremos','we will go'],['vosotros','iréis','you all will go'],['ellos','irán','they will go']],
+      'Conditional': [['yo','iría','I would go'],['tú','irías','you would go'],['él/ella','iría','he/she would go'],['nosotros','iríamos','we would go'],['vosotros','iríais','you all would go'],['ellos','irían','they would go']],
+      'Subjunctive': [['yo','vaya','I go (subj.)'],['tú','vayas','you go (subj.)'],['él/ella','vaya','he/she go (subj.)'],['nosotros','vayamos','we go (subj.)'],['vosotros','vayáis','you all go (subj.)'],['ellos','vayan','they go (subj.)']],
+    },
+    examples:[['Voy al trabajo todos los días.','I go to work every day.'],['¿Adónde vas este verano?','Where are you going this summer?'],['Íbamos a la playa cada año.','We used to go to the beach every year.'],['Mañana iremos al cine.','Tomorrow we will go to the cinema.']]
+  },
+  {
+    id:'venir', es:'venir', en:'to come', type:'irregular -ir',
+    tags:['irregular','ir'],
+    tenses:{
+      'Present':     [['yo','vengo','I come'],['tú','vienes','you come'],['él/ella','viene','he/she comes'],['nosotros','venimos','we come'],['vosotros','venís','you all come'],['ellos','vienen','they come']],
+      'Preterite':   [['yo','vine','I came'],['tú','viniste','you came'],['él/ella','vino','he/she came'],['nosotros','vinimos','we came'],['vosotros','vinisteis','you all came'],['ellos','vinieron','they came']],
+      'Imperfect':   [['yo','venía','I used to come'],['tú','venías','you used to come'],['él/ella','venía','he/she used to come'],['nosotros','veníamos','we used to come'],['vosotros','veníais','you all used to come'],['ellos','venían','they used to come']],
+      'Future':      [['yo','vendré','I will come'],['tú','vendrás','you will come'],['él/ella','vendrá','he/she will come'],['nosotros','vendremos','we will come'],['vosotros','vendréis','you all will come'],['ellos','vendrán','they will come']],
+      'Conditional': [['yo','vendría','I would come'],['tú','vendrías','you would come'],['él/ella','vendría','he/she would come'],['nosotros','vendríamos','we would come'],['vosotros','vendríais','you all would come'],['ellos','vendrían','they would come']],
+      'Subjunctive': [['yo','venga','I come (subj.)'],['tú','vengas','you come (subj.)'],['él/ella','venga','he/she come (subj.)'],['nosotros','vengamos','we come (subj.)'],['vosotros','vengáis','you all come (subj.)'],['ellos','vengan','they come (subj.)']],
+    },
+    examples:[['Vengo del trabajo.','I am coming from work.'],['¿Cuándo vienes a visitarme?','When are you coming to visit me?'],['Vendré a las ocho.','I will come at eight.'],['Vino tarde a la reunión.','He came late to the meeting.']]
+  },
+  {
+    id:'decir', es:'decir', en:'to say / to tell', type:'irregular -ir',
+    tags:['irregular','ir'],
+    tenses:{
+      'Present':     [['yo','digo','I say'],['tú','dices','you say'],['él/ella','dice','he/she says'],['nosotros','decimos','we say'],['vosotros','decís','you all say'],['ellos','dicen','they say']],
+      'Preterite':   [['yo','dije','I said'],['tú','dijiste','you said'],['él/ella','dijo','he/she said'],['nosotros','dijimos','we said'],['vosotros','dijisteis','you all said'],['ellos','dijeron','they said']],
+      'Imperfect':   [['yo','decía','I used to say'],['tú','decías','you used to say'],['él/ella','decía','he/she used to say'],['nosotros','decíamos','we used to say'],['vosotros','decíais','you all used to say'],['ellos','decían','they used to say']],
+      'Future':      [['yo','diré','I will say'],['tú','dirás','you will say'],['él/ella','dirá','he/she will say'],['nosotros','diremos','we will say'],['vosotros','diréis','you all will say'],['ellos','dirán','they will say']],
+      'Conditional': [['yo','diría','I would say'],['tú','dirías','you would say'],['él/ella','diría','he/she would say'],['nosotros','diríamos','we would say'],['vosotros','diríais','you all would say'],['ellos','dirían','they would say']],
+      'Subjunctive': [['yo','diga','I say (subj.)'],['tú','digas','you say (subj.)'],['él/ella','diga','he/she say (subj.)'],['nosotros','digamos','we say (subj.)'],['vosotros','digáis','you all say (subj.)'],['ellos','digan','they say (subj.)']],
+    },
+    examples:[['Te digo la verdad.','I am telling you the truth.'],['¿Qué dijiste?','What did you say?'],['Siempre decía lo mismo.','He always used to say the same thing.'],['Dirán lo que piensan.','They will say what they think.']]
+  },
+  {
+    id:'salir', es:'salir', en:'to leave / to go out', type:'irregular -ir',
+    tags:['irregular','ir'],
+    tenses:{
+      'Present':     [['yo','salgo','I leave'],['tú','sales','you leave'],['él/ella','sale','he/she leaves'],['nosotros','salimos','we leave'],['vosotros','salís','you all leave'],['ellos','salen','they leave']],
+      'Preterite':   [['yo','salí','I left'],['tú','saliste','you left'],['él/ella','salió','he/she left'],['nosotros','salimos','we left'],['vosotros','salisteis','you all left'],['ellos','salieron','they left']],
+      'Imperfect':   [['yo','salía','I used to go out'],['tú','salías','you used to go out'],['él/ella','salía','he/she used to go out'],['nosotros','salíamos','we used to go out'],['vosotros','salíais','you all used to go out'],['ellos','salían','they used to go out']],
+      'Future':      [['yo','saldré','I will leave'],['tú','saldrás','you will leave'],['él/ella','saldrá','he/she will leave'],['nosotros','saldremos','we will leave'],['vosotros','saldréis','you all will leave'],['ellos','saldrán','they will leave']],
+      'Conditional': [['yo','saldría','I would leave'],['tú','saldrías','you would leave'],['él/ella','saldría','he/she would leave'],['nosotros','saldríamos','we would leave'],['vosotros','saldríais','you all would leave'],['ellos','saldrían','they would leave']],
+      'Subjunctive': [['yo','salga','I leave (subj.)'],['tú','salgas','you leave (subj.)'],['él/ella','salga','he/she leave (subj.)'],['nosotros','salgamos','we leave (subj.)'],['vosotros','salgáis','you all leave (subj.)'],['ellos','salgan','they leave (subj.)']],
+    },
+    examples:[['Salgo del trabajo a las cinco.','I leave work at five.'],['Ayer salí de casa a las 3 pm.','Yesterday I left the house at 3 pm.'],['¿Saldremos a cenar esta noche?','Shall we go out for dinner tonight?'],['Siempre salía con amigos los viernes.','I always used to go out with friends on Fridays.']]
+  },
+  {
+    id:'vivir', es:'vivir', en:'to live', type:'regular -ir',
+    tags:['regular','ir'],
+    tenses:{
+      'Present':     [['yo','vivo','I live'],['tú','vives','you live'],['él/ella','vive','he/she lives'],['nosotros','vivimos','we live'],['vosotros','vivís','you all live'],['ellos','viven','they live']],
+      'Preterite':   [['yo','viví','I lived'],['tú','viviste','you lived'],['él/ella','vivió','he/she lived'],['nosotros','vivimos','we lived'],['vosotros','vivisteis','you all lived'],['ellos','vivieron','they lived']],
+      'Imperfect':   [['yo','vivía','I used to live'],['tú','vivías','you used to live'],['él/ella','vivía','he/she used to live'],['nosotros','vivíamos','we used to live'],['vosotros','vivíais','you all used to live'],['ellos','vivían','they used to live']],
+      'Future':      [['yo','viviré','I will live'],['tú','vivirás','you will live'],['él/ella','vivirá','he/she will live'],['nosotros','viviremos','we will live'],['vosotros','viviréis','you all will live'],['ellos','vivirán','they will live']],
+      'Conditional': [['yo','viviría','I would live'],['tú','vivirías','you would live'],['él/ella','viviría','he/she would live'],['nosotros','viviríamos','we would live'],['vosotros','viviríais','you all would live'],['ellos','vivirían','they would live']],
+      'Subjunctive': [['yo','viva','I live (subj.)'],['tú','vivas','you live (subj.)'],['él/ella','viva','he/she live (subj.)'],['nosotros','vivamos','we live (subj.)'],['vosotros','viváis','you all live (subj.)'],['ellos','vivan','they live (subj.)']],
+    },
+    examples:[['Vivo en Madrid desde hace cinco años.','I have lived in Madrid for five years.'],['Antes vivíamos en el campo.','We used to live in the countryside.'],['¿Dónde vivirás cuando te jubiles?','Where will you live when you retire?'],['Vivimos para aprender.','We live to learn.']]
+  },
+  {
+    id:'escribir', es:'escribir', en:'to write', type:'regular -ir',
+    tags:['regular','ir'],
+    tenses:{
+      'Present':     [['yo','escribo','I write'],['tú','escribes','you write'],['él/ella','escribe','he/she writes'],['nosotros','escribimos','we write'],['vosotros','escribís','you all write'],['ellos','escriben','they write']],
+      'Preterite':   [['yo','escribí','I wrote'],['tú','escribiste','you wrote'],['él/ella','escribió','he/she wrote'],['nosotros','escribimos','we wrote'],['vosotros','escribisteis','you all wrote'],['ellos','escribieron','they wrote']],
+      'Imperfect':   [['yo','escribía','I used to write'],['tú','escribías','you used to write'],['él/ella','escribía','he/she used to write'],['nosotros','escribíamos','we used to write'],['vosotros','escribíais','you all used to write'],['ellos','escribían','they used to write']],
+      'Future':      [['yo','escribiré','I will write'],['tú','escribirás','you will write'],['él/ella','escribirá','he/she will write'],['nosotros','escribiremos','we will write'],['vosotros','escribiréis','you all will write'],['ellos','escribirán','they will write']],
+      'Conditional': [['yo','escribiría','I would write'],['tú','escribirías','you would write'],['él/ella','escribiría','he/she would write'],['nosotros','escribiríamos','we would write'],['vosotros','escribiríais','you all would write'],['ellos','escribirían','they would write']],
+      'Subjunctive': [['yo','escriba','I write (subj.)'],['tú','escribas','you write (subj.)'],['él/ella','escriba','he/she write (subj.)'],['nosotros','escribamos','we write (subj.)'],['vosotros','escribáis','you all write (subj.)'],['ellos','escriban','they write (subj.)']],
+    },
+    examples:[['Escribo cartas a mi abuela.','I write letters to my grandmother.'],['Ayer escribí un correo importante.','Yesterday I wrote an important email.'],['Ella escribía poesía de joven.','She used to write poetry when she was young.'],['Escribiremos el informe mañana.','We will write the report tomorrow.']]
+  },
+  {
+    id:'beber', es:'beber', en:'to drink', type:'regular -er',
+    tags:['regular','er'],
+    tenses:{
+      'Present':     [['yo','bebo','I drink'],['tú','bebes','you drink'],['él/ella','bebe','he/she drinks'],['nosotros','bebemos','we drink'],['vosotros','bebéis','you all drink'],['ellos','beben','they drink']],
+      'Preterite':   [['yo','bebí','I drank'],['tú','bebiste','you drank'],['él/ella','bebió','he/she drank'],['nosotros','bebimos','we drank'],['vosotros','bebisteis','you all drank'],['ellos','bebieron','they drank']],
+      'Imperfect':   [['yo','bebía','I used to drink'],['tú','bebías','you used to drink'],['él/ella','bebía','he/she used to drink'],['nosotros','bebíamos','we used to drink'],['vosotros','bebíais','you all used to drink'],['ellos','bebían','they used to drink']],
+      'Future':      [['yo','beberé','I will drink'],['tú','beberás','you will drink'],['él/ella','beberá','he/she will drink'],['nosotros','beberemos','we will drink'],['vosotros','beberéis','you all will drink'],['ellos','beberán','they will drink']],
+      'Conditional': [['yo','bebería','I would drink'],['tú','beberías','you would drink'],['él/ella','bebería','he/she would drink'],['nosotros','beberíamos','we would drink'],['vosotros','beberíais','you all would drink'],['ellos','beberían','they would drink']],
+      'Subjunctive': [['yo','beba','I drink (subj.)'],['tú','bebas','you drink (subj.)'],['él/ella','beba','he/she drink (subj.)'],['nosotros','bebamos','we drink (subj.)'],['vosotros','bebáis','you all drink (subj.)'],['ellos','beban','they drink (subj.)']],
+    },
+    examples:[['Bebo agua todos los días.','I drink water every day.'],['Bebimos vino en la cena.','We drank wine at dinner.'],['Antes bebía mucho café.','I used to drink a lot of coffee.'],['¿Beberás algo en la fiesta?','Will you drink something at the party?']]
+  },
+  {
+    id:'trabajar', es:'trabajar', en:'to work', type:'regular -ar',
+    tags:['regular','ar'],
+    tenses:{
+      'Present':     [['yo','trabajo','I work'],['tú','trabajas','you work'],['él/ella','trabaja','he/she works'],['nosotros','trabajamos','we work'],['vosotros','trabajáis','you all work'],['ellos','trabajan','they work']],
+      'Preterite':   [['yo','trabajé','I worked'],['tú','trabajaste','you worked'],['él/ella','trabajó','he/she worked'],['nosotros','trabajamos','we worked'],['vosotros','trabajasteis','you all worked'],['ellos','trabajaron','they worked']],
+      'Imperfect':   [['yo','trabajaba','I used to work'],['tú','trabajabas','you used to work'],['él/ella','trabajaba','he/she used to work'],['nosotros','trabajábamos','we used to work'],['vosotros','trabajabais','you all used to work'],['ellos','trabajaban','they used to work']],
+      'Future':      [['yo','trabajaré','I will work'],['tú','trabajarás','you will work'],['él/ella','trabajará','he/she will work'],['nosotros','trabajaremos','we will work'],['vosotros','trabajaréis','you all will work'],['ellos','trabajarán','they will work']],
+      'Conditional': [['yo','trabajaría','I would work'],['tú','trabajarías','you would work'],['él/ella','trabajaría','he/she would work'],['nosotros','trabajaríamos','we would work'],['vosotros','trabajaríais','you all would work'],['ellos','trabajarían','they would work']],
+      'Subjunctive': [['yo','trabaje','I work (subj.)'],['tú','trabajes','you work (subj.)'],['él/ella','trabaje','he/she work (subj.)'],['nosotros','trabajemos','we work (subj.)'],['vosotros','trabajéis','you all work (subj.)'],['ellos','trabajen','they work (subj.)']],
+    },
+    examples:[['Trabajo en una oficina.','I work in an office.'],['Ayer trabajamos mucho.','Yesterday we worked a lot.'],['Antes trabajaba de noche.','I used to work at night.'],['Trabajaré desde casa mañana.','I will work from home tomorrow.']]
+  },
+  {
+    id:'llamar', es:'llamar', en:'to call', type:'regular -ar',
+    tags:['regular','ar'],
+    tenses:{
+      'Present':     [['yo','llamo','I call'],['tú','llamas','you call'],['él/ella','llama','he/she calls'],['nosotros','llamamos','we call'],['vosotros','llamáis','you all call'],['ellos','llaman','they call']],
+      'Preterite':   [['yo','llamé','I called'],['tú','llamaste','you called'],['él/ella','llamó','he/she called'],['nosotros','llamamos','we called'],['vosotros','llamasteis','you all called'],['ellos','llamaron','they called']],
+      'Imperfect':   [['yo','llamaba','I used to call'],['tú','llamabas','you used to call'],['él/ella','llamaba','he/she used to call'],['nosotros','llamábamos','we used to call'],['vosotros','llamabais','you all used to call'],['ellos','llamaban','they used to call']],
+      'Future':      [['yo','llamaré','I will call'],['tú','llamarás','you will call'],['él/ella','llamará','he/she will call'],['nosotros','llamaremos','we will call'],['vosotros','llamaréis','you all will call'],['ellos','llamarán','they will call']],
+      'Conditional': [['yo','llamaría','I would call'],['tú','llamarías','you would call'],['él/ella','llamaría','he/she would call'],['nosotros','llamaríamos','we would call'],['vosotros','llamaríais','you all would call'],['ellos','llamarían','they would call']],
+      'Subjunctive': [['yo','llame','I call (subj.)'],['tú','llames','you call (subj.)'],['él/ella','llame','he/she call (subj.)'],['nosotros','llamemos','we call (subj.)'],['vosotros','llaméis','you all call (subj.)'],['ellos','llamen','they call (subj.)']],
+    },
+    examples:[['Te llamo esta tarde.','I will call you this afternoon.'],['Ayer llamé a mis padres.','Yesterday I called my parents.'],['Ella llamaba todos los domingos.','She used to call every Sunday.'],['¿Cómo te llamas?','What is your name? (lit: What do you call yourself?)']]
+  },
+];
+
+const LESSONS = [
+  { title:'Regular -ar Verbs (Present)', icon:'📗', desc:'Learn the standard endings for -ar verbs in the present tense.',
+    explanation:'Drop the -ar ending, then add: -o, -as, -a, -amos, -áis, -an based on the subject pronoun.',
+    examples:[['Los fines de semana nosotros caminamos en el parque.','We walk in the park on weekends.'],['Yolanda toca la guitarra muy bien.','Yolanda plays the guitar very well.'],['Ellos hablan cuatro idiomas.','They speak four languages.']],
+    tip:'The first person singular (yo) always ends in -o for regular verbs.' },
+  { title:'Preterite of -ar Verbs', icon:'📘', desc:'Past tense endings for -ar verbs.',
+    explanation:'Drop the -ar ending, then add: -é, -aste, -ó, -amos, -asteis, -aron.',
+    examples:[['Ayer hablé con mis padres por teléfono.','Yesterday, I spoke to my parents over the phone.'],['La semana pasada viajamos a París.','Last week we traveled to Paris.']],
+    tip:'The nosotros form is the same in present AND preterite (-amos). Context tells the difference!' },
+  { title:'Irregular Verbs: hacer, poner, traer', icon:'⚡', desc:'Verbs with -go in the yo form.',
+    explanation:'These verbs add -g in the first person singular (yo): hago, pongo, traigo. All other forms follow regular -er/-ir patterns.',
+    examples:[['Yo hago deporte.','I do sports.'],['Yo pongo la radio por las mañanas.','I play the radio in the mornings.'],['Yo traigo los niños a casa.','I bring the kids home.']],
+    tip:'They are ONLY irregular in the yo form (first person singular).' },
+  { title:'Saber vs. Conocer', icon:'🧠', desc:'Two ways to say "to know".',
+    explanation:'SABER = to know facts, information, or how to do something. CONOCER = to be acquainted with a person, place, or thing.',
+    examples:[['Yo sé hablar francés.','I know how to speak French.'],['Tú conoces a María.','You know María.'],['Conocemos a tus padres.','We know your parents.']],
+    tip:'If the object of conocer is a person, always use the preposition "a".' },
+  { title:'Imperfect Tense (-er/-ir verbs)', icon:'🕰️', desc:'Describing ongoing past states and habits.',
+    explanation:'Add these endings to the stem: -ía, -ías, -ía, -íamos, -íais, -ían. Used for background info, habits, and descriptions in the past.',
+    examples:[['Ella tenía el pelo rojo y largo.','She had long red hair.'],['Mi abuelo tenía setenta años, estaba triste.','My grandfather was seventy years old, he was sad.']],
+    tip:'Hay (there is/are) comes from haber — always use "hay" in the present, not "han".' },
+  { title:'Stem-Changing Verbs', icon:'🔄', desc:'Verbs that change their stem vowel.',
+    explanation:'E→IE: pienso, piensas, piensa, pensamos, pensáis, piensan (pensar). E→I: pido, pides, pide, pedimos, pedís, piden (pedir). Note: nosotros/vosotros do NOT change.',
+    examples:[['Pensáis demasiado.','You think too much.'],['Pide lo que necesites.','Ask for what you need.'],['El año pasado pensé en mudarme de ciudad.','Last year I thought about moving out of town.']],
+    tip:'In the present tense, nosotros and vosotros keep the original vowel — no stem change!' },
+];
+
+// ═══════════════════════════════════════════════
+//  SPEECH
+// ═══════════════════════════════════════════════
+function speak(text, lang='es-ES') {
+  if(!('speechSynthesis' in window)) return alert('Speech not supported in this browser.');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang; u.rate = 0.85; u.pitch = 1;
+  // prefer a Spanish voice
+  const voices = speechSynthesis.getVoices();
+  const spVoice = voices.find(v=>v.lang.startsWith('es')) || null;
+  if(spVoice) u.voice = spVoice;
+  speechSynthesis.speak(u);
+}
+window.speechSynthesis && speechSynthesis.getVoices(); // prime voices
+
+// ═══════════════════════════════════════════════
+//  NAV
+// ═══════════════════════════════════════════════
+function showSection(id, btn) {
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+
+// ═══════════════════════════════════════════════
+//  DICTIONARY
+// ═══════════════════════════════════════════════
+function buildVerbGrid(verbs) {
+  const grid = document.getElementById('verbGrid');
+  grid.innerHTML = '';
+  verbs.forEach(v => {
+    const div = document.createElement('div');
+    div.className = 'verb-mini';
+    div.innerHTML = `
+      <h3>${v.es}</h3>
+      <p>${v.en}</p>
+      <div class="badges">
+        <span class="tag ${v.tags.includes('irregular')?'irreg':v.tags.includes('stem-change')?'stem':''}">${v.type}</span>
+      </div>`;
+    div.onclick = () => openVerbModal(v);
+    grid.appendChild(div);
+  });
+}
+
+function filterVerbs() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  buildVerbGrid(VERBS.filter(v => v.es.includes(q) || v.en.toLowerCase().includes(q) || v.type.toLowerCase().includes(q)));
+}
+
+function openVerbModal(v) {
+  const tenseNames = Object.keys(v.tenses);
+  let tenseTabs = tenseNames.map((t,i)=>`<span class="tense-tab ${i===0?'active':''}" onclick="switchTense(event,'${v.id}','${t}')">${t}</span>`).join('');
+  let tables = tenseNames.map((t,i)=>{
+    let rows = v.tenses[t].map(([pr,form,eng])=>`<tr onclick="speak('${form}')">
+      <td class="pronoun">${pr}</td><td class="form">${form}</td>
+      <td class="eng">${eng}</td>
+      <td><button class="audio-btn" onclick="event.stopPropagation();speak('${form}')">🔊</button></td></tr>`).join('');
+    return `<div class="tense-panel ${i===0?'':'hidden'}" data-verb="${v.id}" data-tense="${t}">
+      <table class="conj-table"><thead><tr><th>Pronoun</th><th>Spanish</th><th>English</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }).join('');
+  let examples = v.examples.map(([es,en])=>`<div class="example">
+    <div class="es">${es} <button class="audio-btn" onclick="speak('${es.replace(/'/g,"\\'")}')">🔊</button></div>
+    <div class="en">🇬🇧 ${en}</div></div>`).join('');
+  document.getElementById('modalContent').innerHTML = `
+    <h2>${v.es} <button class="audio-btn" onclick="speak('${v.es}')">🔊 Hear</button></h2>
+    <p style="color:#a0b4ff;margin-bottom:14px;">${v.en} &nbsp;<span class="tag ${v.tags.includes('irregular')?'irreg':v.tags.includes('stem-change')?'stem':''}">${v.type}</span></p>
+    <h3>Conjugation Tables</h3>
+    <div class="tense-tabs">${tenseTabs}</div>
+    ${tables}
+    <h3>Example Sentences</h3>${examples}`;
+  document.getElementById('verbModal').classList.add('open');
+}
+
+function switchTense(e, verbId, tense) {
+  document.querySelectorAll('.tense-tab').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll(`.tense-panel[data-verb="${verbId}"]`).forEach(p=>{
+    p.classList.toggle('hidden', p.dataset.tense !== tense);
+  });
+}
+
+function closeModal() { document.getElementById('verbModal').classList.remove('open'); }
+document.getElementById('verbModal').addEventListener('click', e => { if(e.target===document.getElementById('verbModal')) closeModal(); });
+
+// ═══════════════════════════════════════════════
+//  LESSONS
+// ═══════════════════════════════════════════════
+function buildLessons() {
+  const c = document.getElementById('lessonsContainer');
+  c.innerHTML = LESSONS.map(l=>`
+    <div class="card">
+      <h2>${l.icon} ${l.title}</h2>
+      <p style="color:#888;margin-bottom:12px;">${l.desc}</p>
+      <h3>📖 Explanation</h3>
+      <p>${l.explanation}</p>
+      <h3>✅ Examples</h3>
+      ${l.examples.map(([es,en])=>`<div class="example">
+        <div class="es">${es} <button class="audio-btn" onclick="speak('${es.replace(/'/g,"\\'")}')">🔊</button></div>
+        <div class="en">🇬🇧 ${en}</div></div>`).join('')}
+      <h3>💡 Key Tip</h3>
+      <div class="mistake"><div class="correct">✔ ${l.tip}</div></div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+//  MATCH GAME
+// ═══════════════════════════════════════════════
+let matchPairs=[], matchSel=null, matchMatched=0, matchTotal=8;
+const MATCH_POOLS = {
+  easy:[
+    ['hablo','I speak'],['comes','you eat'],['tiene','he has'],['damos','we give'],
+    ['hacen','they do'],['estoy','I am'],['veo','I see'],['quiero','I want'],
+    ['sé','I know'],['pueden','they can'],['hablé','I spoke'],['comí','I ate']
+  ],
+  medium:[
+    ['hablaré','I will speak'],['comerías','you would eat'],['estuviste','you were'],
+    ['hice','I did'],['viste','you saw'],['conocías','you used to know'],
+    ['pedimos','we ask for'],['pensaban','they used to think'],['daría','I would give'],
+    ['sabemos','we know'],['quieren','they want'],['tenéis','you all have']
+  ],
+  hard:[
+    ['habláramos','we speak (subj.)'],['comiera','I eat (subj.)'],['hubiera','there were (subj.)'],
+    ['hicieras','you do (subj.)'],['vean','they see (subj.)'],['dé','give (subj.)'],
+    ['conozca','I know (subj.)'],['pidan','they ask (subj.)'],['estuvieran','they were (pret.)'],
+    ['hablabais','you all used to speak'],['comiéramos','we eat (subj.)'],['supieran','they know (subj.)']
+  ]
+};
+
+function startMatch(level) {
+  matchMatched=0;
+  const pool = MATCH_POOLS[level];
+  const picked = shuffle(pool).slice(0,8);
+  matchPairs = picked;
+  matchTotal = picked.length;
+  document.getElementById('matchScore').textContent = `Pairs: 0 / ${matchTotal}`;
+  document.getElementById('matchBar').style.width = '0%';
+  document.getElementById('matchMsg').textContent = '';
+  const cards = [];
+  picked.forEach((p,i) => {
+    cards.push({id:i, text:p[0], type:'es', pairId:i});
+    cards.push({id:i+100, text:p[1], type:'en', pairId:i});
+  });
+  shuffle(cards);
+  const grid = document.getElementById('matchGrid');
+  grid.innerHTML = '';
+  matchSel = null;
+  cards.forEach(c => {
+    const div = document.createElement('div');
+    div.className='match-card';
+    div.dataset.pairid = c.pairId;
+    div.dataset.type = c.type;
+    div.dataset.cardid = c.id;
+    div.textContent = c.text;
+    div.onclick = () => selectMatchCard(div, c);
+    grid.appendChild(div);
+  });
+}
+
+function selectMatchCard(el, c) {
+  if(el.classList.contains('matched')) return;
+  if(matchSel && matchSel.el===el) { el.classList.remove('sel'); matchSel=null; return; }
+  el.classList.add('sel');
+  speak(c.type==='es' ? c.text : '');
+  if(!matchSel) { matchSel={el,c}; return; }
+  const prev = matchSel;
+  matchSel = null;
+  if(prev.c.pairId===c.pairId && prev.c.type!==c.type) {
+    prev.el.classList.remove('sel'); prev.el.classList.add('matched');
+    el.classList.remove('sel'); el.classList.add('matched');
+    matchMatched++;
+    document.getElementById('matchScore').textContent = `Pairs: ${matchMatched} / ${matchTotal}`;
+    document.getElementById('matchBar').style.width = (matchMatched/matchTotal*100)+'%';
+    if(matchMatched===matchTotal) document.getElementById('matchMsg').textContent = '🎉 All matched! ¡Excelente!';
+  } else {
+    prev.el.classList.add('wrong'); el.classList.add('wrong');
+    setTimeout(()=>{ prev.el.classList.remove('sel','wrong'); el.classList.remove('sel','wrong'); },700);
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  SCRAMBLE
+// ═══════════════════════════════════════════════
+const SCRAMBLE_DATA = [
+  {prompt:'yo — hablar (Present)', answer:'hablo', en:'I speak'},
+  {prompt:'ellos — comer (Preterite)', answer:'comieron', en:'they ate'},
+  {prompt:'yo — hacer (Present)', answer:'hago', en:'I do/make'},
+  {prompt:'nosotros — estar (Preterite)', answer:'estuvimos', en:'we were'},
+  {prompt:'tú — ver (Imperfect)', answer:'veías', en:'you used to see'},
+  {prompt:'yo — conocer (Present)', answer:'conozco', en:'I know'},
+  {prompt:'ellas — hablar (Future)', answer:'hablarán', en:'they will speak'},
+  {prompt:'yo — dar (Preterite)', answer:'di', en:'I gave'},
+  {prompt:'él — hacer (Future)', answer:'hará', en:'he will do/make'},
+  {prompt:'nosotros — pensar (Present)', answer:'pensamos', en:'we think'},
+  {prompt:'yo — querer (Present)', answer:'quiero', en:'I want/love'},
+  {prompt:'tú — poder (Present)', answer:'puedes', en:'you can'},
+  {prompt:'ellos — pedir (Preterite)', answer:'pidieron', en:'they asked for'},
+  {prompt:'yo — estar (Present)', answer:'estoy', en:'I am'},
+  {prompt:'vosotros — comer (Present)', answer:'coméis', en:'you all eat'},
+];
+let scIdx=0, scScore=0, scAnswered=[], scCurrentAnswer='';
+
+function nextScramble() {
+  scIdx = (scIdx+1) % SCRAMBLE_DATA.length;
+  loadScramble();
+}
+function loadScramble() {
+  const d = SCRAMBLE_DATA[scIdx];
+  scCurrentAnswer = d.answer;
+  document.getElementById('scramblePrompt').textContent = '🔀 Build the conjugation for: ' + d.prompt;
+  document.getElementById('scrambleEnglish').textContent = '🇬🇧 English: ' + d.en;
+  document.getElementById('answerZone').innerHTML = '';
+  document.getElementById('scrambleFeedback').style.display='none';
+  // build tiles from shuffled letters
+  const letters = shuffle(d.answer.split(''));
+  const tilesEl = document.getElementById('scrambleTiles');
+  tilesEl.innerHTML = '';
+  letters.forEach((l,i) => {
+    const t = document.createElement('span');
+    t.className='tile'; t.textContent=l; t.dataset.idx=i;
+    t.onclick = () => addTile(t, l);
+    tilesEl.appendChild(t);
+  });
+}
+function addTile(el, letter) {
+  el.classList.add('used');
+  const zone = document.getElementById('answerZone');
+  const at = document.createElement('span');
+  at.className='answer-tile'; at.textContent=letter; at.dataset.srcidx=el.dataset.idx;
+  at.onclick = () => removeTile(at, el);
+  zone.appendChild(at);
+}
+function removeTile(at, srcEl) {
+  document.querySelector(`.tile[data-idx="${at.dataset.srcidx}"]`).classList.remove('used');
+  at.remove();
+}
+function clearScramble() {
+  document.querySelectorAll('.tile').forEach(t=>t.classList.remove('used'));
+  document.getElementById('answerZone').innerHTML='';
+  document.getElementById('scrambleFeedback').style.display='none';
+}
+function checkScramble() {
+  const attempt = Array.from(document.getElementById('answerZone').children).map(c=>c.textContent).join('');
+  const fb = document.getElementById('scrambleFeedback');
+  fb.style.display='block';
+  if(attempt===scCurrentAnswer) {
+    fb.className='feedback ok'; fb.textContent='✅ ¡Correcto! '+scCurrentAnswer+' — '+SCRAMBLE_DATA[scIdx].en;
+    scScore++; document.getElementById('scrambleScore').textContent='Score: '+scScore;
+    document.getElementById('scrambleBar').style.width = Math.min(scScore*5,100)+'%';
+    speak(scCurrentAnswer);
+  } else {
+    fb.className='feedback bad'; fb.textContent='❌ Try again! Answer: '+scCurrentAnswer;
+  }
+}
+function speakCurrent() { speak(scCurrentAnswer); }
+function speakFill() { if(currentFill) speak(currentFill.sentence.replace('___', currentFill.answer)); }
+
+// ═══════════════════════════════════════════════
+//  FILL IN THE BLANK
+// ═══════════════════════════════════════════════
+const FILL_DATA = [
+  {sentence:'Ayer ___ (yo/hablar/Preterite) con mis padres.',answer:'hablé',hint:'yo + hablar → preterite',en:'Yesterday I spoke with my parents.'},
+  {sentence:'Ellos ___ (ellos/comer/Preterite) en nuestra casa.',answer:'comieron',hint:'ellos + comer → preterite',en:'They ate at our house.'},
+  {sentence:'Yo ___ (yo/hacer/Present) deporte todos los días.',answer:'hago',hint:'yo + hacer → irregular present',en:'I do sports every day.'},
+  {sentence:'No ___ (yo/ver/Present) bien sin gafas.',answer:'veo',hint:'yo + ver → keep the "e"',en:'I can\'t see well without glasses.'},
+  {sentence:'¿___ (tú/querer/Present) una habitación grande?',answer:'Quieres',hint:'tú + querer → stem change e>ie',en:'Do you want a big room?'},
+  {sentence:'Dame un abrazo — ___ (yo/dar/Preterite) todo.',answer:'di',hint:'yo + dar → irregular preterite',en:'Give me a hug — I gave everything.'},
+  {sentence:'La semana pasada nosotros ___ (nosotros/viajar/Preterite) a París.',answer:'viajamos',hint:'nosotros + viajar → preterite (same as present!)',en:'Last week we traveled to Paris.'},
+  {sentence:'Ella ___ (ella/estar/Imperfect) triste.',answer:'estaba',hint:'ella + estar → imperfect',en:'She was sad.'},
+  {sentence:'¿___ (tú/conocer/Preterite) a tu marido en España?',answer:'Conociste',hint:'tú + conocer → preterite',en:'Did you meet your husband in Spain?'},
+  {sentence:'Mañana yo ___ (yo/hablar/Future) con el director.',answer:'hablaré',hint:'yo + hablar → future',en:'Tomorrow I will speak with the director.'},
+  {sentence:'Nosotros ___ (nosotros/pensar/Present) demasiado.',answer:'pensamos',hint:'nosotros + pensar → no stem change!',en:'We think too much.'},
+  {sentence:'Yo ___ (yo/conocer/Present) a Pedro muy bien.',answer:'conozco',hint:'yo + conocer → add "zc"',en:'I know Pedro very well.'},
+];
+let fillIdx=0, fillScore=0, fillTotal=0;
+let currentFill = FILL_DATA[0];
+
+function loadFill() {
+  currentFill = FILL_DATA[fillIdx];
+  const parts = currentFill.sentence.split('___');
+  document.getElementById('fillSentence').innerHTML =
+    parts[0] + `<input class="fill-input" id="fillAnswer" placeholder="___" autocomplete="off" onkeydown="if(event.key==='Enter')checkFill()">` + (parts[1]||'');
+  document.getElementById('fillHint').textContent = '';
+  document.getElementById('fillFeedback').style.display='none';
+  document.getElementById('fillScore').textContent = fillScore + ' / ' + fillTotal;
+}
+function nextFill() {
+  fillIdx=(fillIdx+1)%FILL_DATA.length; loadFill();
+}
+function checkFill() {
+  const val = (document.getElementById('fillAnswer').value||'').trim();
+  const correct = currentFill.answer;
+  const fb = document.getElementById('fillFeedback');
+  fillTotal++;
+  fb.style.display='block';
+  if(val.toLowerCase()===correct.toLowerCase()) {
+    fb.className='feedback ok';
+    fb.textContent='✅ ¡Correcto! "'+correct+'" — 🇬🇧 '+currentFill.en;
+    speak(currentFill.sentence.replace('___',correct));
+    fillScore++;
+  } else {
+    fb.className='feedback bad';
+    fb.textContent='❌ The answer is: "'+correct+'" — 🇬🇧 '+currentFill.en;
+  }
+  document.getElementById('fillScore').textContent = fillScore + ' / ' + fillTotal;
+  document.getElementById('fillBar').style.width = Math.min(fillScore/fillTotal*100,100)+'%';
+}
+function hintFill() {
+  document.getElementById('fillHint').textContent = '💡 Hint: '+currentFill.hint;
+}
+
+// ═══════════════════════════════════════════════
+//  QUIZ
+// ═══════════════════════════════════════════════
+const QUIZ_BANKS = {
+  conjugation:[
+    {q:'What is "yo" form of HABLAR in the present?',sub:'hablar = to speak', opts:['hablo','hablas','hablé','hablar'],ans:0},
+    {q:'What is "ellos" form of COMER in the preterite?',sub:'comer = to eat', opts:['comieron','comieron','comeron','comian'],ans:0},
+    {q:'What is the "yo" form of ESTAR in the present?',sub:'estar = to be', opts:['estoy','esto','está','soy'],ans:0},
+    {q:'What is the "yo" form of HACER in the present?',sub:'hacer = to do/make', opts:['hago','haco','hace','hacé'],ans:0},
+    {q:'What is the "yo" form of CONOCER in the present?',sub:'conocer = to know', opts:['conozco','conoco','conozca','conocé'],ans:0},
+    {q:'What is "tú" form of VER in the imperfect?',sub:'ver = to see', opts:['veías','vías','veas','veabas'],ans:0},
+    {q:'What is "yo" form of DAR in the preterite?',sub:'dar = to give', opts:['di','dé','dao','dé'],ans:0},
+    {q:'What is "nosotros" form of HABLAR in the future?',sub:'hablar = to speak', opts:['hablaremos','hablaramos','hablaramos','hablaríamos'],ans:0},
+    {q:'What is "él" form of QUERER in the present?',sub:'querer = to want', opts:['quiere','quere','quiera','queire'],ans:0},
+    {q:'What is "yo" form of PODER in the present?',sub:'poder = to be able to', opts:['puedo','podo','puede','peudo'],ans:0},
+  ],
+  meaning:[
+    {q:'What does HABLAR mean?',sub:'Choose the English meaning', opts:['to speak','to eat','to see','to give'],ans:0},
+    {q:'What does ESTAR mean?',sub:'Choose the English meaning', opts:['to be (condition/state)','to have','to want','to know'],ans:0},
+    {q:'What does HACER mean?',sub:'Choose the English meaning', opts:['to do / to make','to eat','to give','to see'],ans:0},
+    {q:'What does SABER mean?',sub:'Choose the English meaning', opts:['to know facts/how to','to know a person','to have','to want'],ans:0},
+    {q:'What does CONOCER mean?',sub:'Choose the English meaning', opts:['to be acquainted with','to know facts','to eat','to give'],ans:0},
+    {q:'What does PODER mean?',sub:'Choose the English meaning', opts:['to be able to / can','to want','to have','to must'],ans:0},
+    {q:'What does DEBER mean?',sub:'Choose the English meaning', opts:['must / to have to','to see','to speak','to think'],ans:0},
+    {q:'What does QUERER mean?',sub:'Choose the English meaning', opts:['to want / to love','to see','to eat','to give'],ans:0},
+    {q:'What does VER mean?',sub:'Choose the English meaning', opts:['to see / to watch','to speak','to make','to know'],ans:0},
+    {q:'What does PEDIR mean?',sub:'Choose the English meaning', opts:['to ask for / to order','to think','to give','to can'],ans:0},
+  ],
+  tense:[
+    {q:'Which tense is used for HABITUAL past actions?',sub:'Example: "I used to speak every day"', opts:['Imperfect','Preterite','Present','Future'],ans:0},
+    {q:'Which tense uses -é, -aste, -ó endings for -ar verbs?',sub:'Completed past actions', opts:['Preterite','Imperfect','Future','Present'],ans:0},
+    {q:'"Hablaré" — what tense is this?',sub:'yo hablaré', opts:['Future','Conditional','Preterite','Subjunctive'],ans:0},
+    {q:'"Hablaría" — what tense is this?',sub:'yo hablaría', opts:['Conditional','Future','Imperfect','Present'],ans:0},
+    {q:'"Hable" — what mood is this?',sub:'yo hable', opts:['Subjunctive','Imperative','Future','Present'],ans:0},
+    {q:'What are the present tense -ar endings (yo, tú, él)?',sub:'Regular -ar verb', opts:['-o, -as, -a','-o, -es, -e','-é, -aste, -ó','-o, -ás, -á'],ans:0},
+    {q:'In stem-changing verb PENSAR, what is "nosotros" in present?',sub:'pensar = e>ie', opts:['pensamos','piensamos','pensemos','piensan'],ans:0},
+    {q:'HAY means...',sub:'from the verb haber', opts:['there is / there are','he/she has','I have','they are'],ans:0},
+    {q:'Which verb form means "I would eat"?',sub:'comer conditional', opts:['comería','comeré','comí','comía'],ans:0},
+    {q:'The verb VER in the imperfect — which is correct?',sub:'yo form', opts:['veía','vía','vea','veé'],ans:0},
+  ],
+  mixed:[]
+};
+// build mixed
+QUIZ_BANKS.mixed = shuffle([...QUIZ_BANKS.conjugation,...QUIZ_BANKS.meaning,...QUIZ_BANKS.tense]).slice(0,10);
+
+let quizBank=[], quizIdx=0, quizScore=0, quizAnswered=false, currentQuizType='';
+
+function startQuiz(type) {
+  currentQuizType = type;
+  quizBank = shuffle([...QUIZ_BANKS[type]]).slice(0,10);
+  quizIdx=0; quizScore=0;
+  document.getElementById('quizResult').style.display='none';
+  nextQuestion(true);
+}
+function loadQuestion() {
+  if(quizIdx>=quizBank.length) { endQuiz(); return; }
+  quizAnswered=false;
+  const q = quizBank[quizIdx];
+  document.getElementById('quizProg').textContent = `Q ${quizIdx+1} / ${quizBank.length}`;
+  document.getElementById('quizBar').style.width = (quizIdx/quizBank.length*100)+'%';
+  document.getElementById('quizScoreDisplay').textContent = '✨ '+quizScore;
+  document.getElementById('quizQuestion').textContent = q.q;
+  document.getElementById('quizSubtitle').textContent = q.sub;
+  document.getElementById('quizFeedback').style.display='none';
+  document.getElementById('quizNext').style.display='none';
+  // shuffle options but track correct
+  const opts = q.opts.map((o,i)=>({text:o,correct:i===q.ans}));
+  shuffle(opts);
+  const div = document.getElementById('quizOptions');
+  div.innerHTML = opts.map((o,i)=>`<div class="option" onclick="answerQuiz(${i},${o.correct},'${o.text.replace(/'/g,"\\'")}',this)">${o.text}</div>`).join('');
+}
+function answerQuiz(i, correct, text, el) {
+  if(quizAnswered) return;
+  quizAnswered=true;
+  const fb = document.getElementById('quizFeedback');
+  fb.style.display='block';
+  if(correct) {
+    el.classList.add('correct'); quizScore++;
+    fb.className='feedback ok'; fb.textContent='✅ ¡Correcto! Well done!';
+    speak(text);
+  } else {
+    el.classList.add('wrong');
+    fb.className='feedback bad'; fb.textContent='❌ Not quite — the correct answer was highlighted below.';
+    document.querySelectorAll('.option').forEach(o=>{ if(o.textContent===quizBank[quizIdx].opts[quizBank[quizIdx].ans]) o.classList.add('correct'); });
+  }
+  document.getElementById('quizScoreDisplay').textContent='✨ '+quizScore;
+  document.getElementById('quizNext').style.display='inline-block';
+}
+function nextQuestion(reset) {
+  if(!reset) quizIdx++;
+  loadQuestion();
+}
+function endQuiz() {
+  document.getElementById('quizResult').style.display='block';
+  const pct = Math.round(quizScore/quizBank.length*100);
+  document.getElementById('quizFinalScore').textContent = `${quizScore} / ${quizBank.length} (${pct}%)`;
+  const stars = pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':pct>=50?'⭐':'😅 Keep practicing!';
+  document.getElementById('quizStars').textContent = stars;
+  document.getElementById('quizBar').style.width='100%';
+}
+function restartQuiz() { startQuiz(currentQuizType); }
+
+// ═══════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════
+function shuffle(arr) { return [...arr].sort(()=>Math.random()-.5); }
+
+// ═══════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════
+buildVerbGrid(VERBS);
+buildLessons();
+loadScramble();
+loadFill();
+startMatch('easy');
+startQuiz('conjugation');
+
+// hidden style for tense panels
+const style = document.createElement('style');
+style.textContent = '.hidden{display:none}';
+document.head.appendChild(style);
+</script>
+</body>
+</html>

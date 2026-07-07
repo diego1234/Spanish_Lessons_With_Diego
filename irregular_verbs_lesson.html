@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/edd6f9d9-e4f3-4d08-bec8-6a0c4ae952ba/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish Irregular Verbs: -AR, -ER, -IR | Verbos Irregulares</title>
+<style>
+  :root{
+    --blue:#1e3a8a; --orange:#f97316; --green:#16a34a; --red:#dc2626; --bg:#fef9f5;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#fef9f5,#eef2ff);margin:0;padding:0;color:#1f2937;}
+  header{background:linear-gradient(135deg,var(--blue),#3730a3);color:#fff;padding:30px 20px;text-align:center;}
+  header h1{margin:0 0 8px;font-size:2em;}
+  header p{margin:0;opacity:.9;}
+  nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;background:#fff;padding:14px;position:sticky;top:0;z-index:50;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+  nav button{background:#eef2ff;border:2px solid var(--blue);color:var(--blue);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:.9em;}
+  nav button:hover, nav button.active{background:var(--blue);color:#fff;}
+  section{max-width:960px;margin:30px auto;padding:20px;background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  h2{color:var(--blue);border-bottom:3px solid var(--orange);padding-bottom:8px;}
+  .tag{display:inline-block;background:var(--orange);color:#fff;padding:2px 10px;border-radius:12px;font-size:.75em;margin-left:8px;}
+  /* Flashcards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px;}
+  .card{perspective:1000px;height:150px;cursor:pointer;}
+  .card-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d;}
+  .card.flipped .card-inner{transform:rotateY(180deg);}
+  .card-front,.card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;text-align:center;}
+  .card-front{background:linear-gradient(135deg,#fde68a,#f97316);color:#fff;font-size:1.3em;font-weight:700;}
+  .card-back{background:linear-gradient(135deg,#bfdbfe,#3b82f6);color:#fff;transform:rotateY(180deg);font-size:1em;}
+  .card small{display:block;margin-top:6px;font-weight:400;font-size:.8em;}
+  .listen-btn{margin-top:8px;background:#fff;color:var(--blue);border:none;padding:5px 12px;border-radius:16px;cursor:pointer;font-weight:600;font-size:.8em;}
+  /* Grammar tables */
+  table{width:100%;border-collapse:collapse;margin:14px 0;}
+  th,td{border:1px solid #e5e7eb;padding:8px 10px;text-align:center;}
+  th{background:var(--blue);color:#fff;}
+  tr:nth-child(even){background:#f9fafb;}
+  .subtitle-line{display:flex;justify-content:space-between;align-items:center;background:#f3f4f6;border-left:4px solid var(--orange);padding:10px 14px;margin:8px 0;border-radius:8px;flex-wrap:wrap;gap:8px;}
+  .subtitle-line .es{font-weight:700;color:var(--blue);}
+  .subtitle-line .en{color:#555;font-style:italic;}
+  .play-btn{background:var(--green);color:#fff;border:none;padding:6px 12px;border-radius:16px;cursor:pointer;}
+  /* Games */
+  .scramble-word{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;}
+  .letter-box{width:36px;height:36px;border:2px dashed var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;background:#eef2ff;cursor:grab;user-select:none;}
+  .letter-bank{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;min-height:44px;padding:8px;background:#fef3c7;border-radius:8px;}
+  .drop-zone{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;min-height:44px;padding:8px;background:#e0f2fe;border-radius:8px;}
+  .match-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:14px;}
+  .match-item{background:#eef2ff;border:2px solid var(--blue);border-radius:10px;padding:14px;text-align:center;cursor:pointer;font-weight:600;}
+  .match-item.selected{background:var(--orange);color:#fff;}
+  .match-item.matched{background:var(--green);color:#fff;opacity:.6;cursor:default;}
+  .fill-blank input{padding:6px 10px;border:2px solid var(--blue);border-radius:6px;font-size:1em;width:140px;}
+  /* Quiz */
+  .quiz-q{margin-bottom:22px;padding:14px;background:#f9fafb;border-radius:10px;}
+  .quiz-q p.question{font-weight:700;margin-bottom:10px;}
+  .quiz-opt{display:block;width:100%;text-align:left;padding:8px 12px;margin:6px 0;border:2px solid #d1d5db;border-radius:8px;background:#fff;cursor:pointer;}
+  .quiz-opt.correct{background:var(--green);color:#fff;border-color:var(--green);}
+  .quiz-opt.wrong{background:var(--red);color:#fff;border-color:var(--red);}
+  .feedback{margin-top:6px;font-weight:600;}
+  #scoreBox{text-align:center;font-size:1.3em;font-weight:700;color:var(--blue);margin-top:16px;}
+  button.action{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;}
+  .hidden{display:none;}
+  footer{text-align:center;padding:20px;color:#777;font-size:.85em;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇪🇸 Verbos Irregulares Comunes / Common Irregular Verbs</h1>
+  <p>-AR &nbsp;•&nbsp; -ER &nbsp;•&nbsp; -IR &nbsp;| Flashcards • Audio • Grammar • Games • Quiz</p>
+</header>
+
+<nav>
+  <button onclick="showSection('flashcards')" class="active">🃏 Flashcards</button>
+  <button onclick="showSection('grammar')">📖 Grammar</button>
+  <button onclick="showSection('subtitles')">🎧 Dialogue</button>
+  <button onclick="showSection('games')">🎮 Games</button>
+  <button onclick="showSection('quiz')">📝 Quiz</button>
+</nav>
+
+<!-- ================= FLASHCARDS ================= -->
+<section id="flashcards">
+  <h2>🃏 Audio Flashcards <span class="tag">Click to flip &amp; listen</span></h2>
+  <p>Each card shows the infinitive in Spanish. Click the card to flip and see the English meaning + irregular <em>yo</em> form. Click "Escuchar" to hear it in Spanish, then English.</p>
+  <div class="cards" id="cardContainer"></div>
+</section>
+
+<!-- ================= GRAMMAR ================= -->
+<section id="grammar" class="hidden">
+  <h2>📖 Grammar: Present Tense Irregulars</h2>
+  <p>Irregular verbs don't follow the regular -AR/-ER/-IR patterns. Here are the most important ones, grouped by ending, with present tense conjugations.</p>
+
+  <h3>-AR Verbs <span class="tag">estar, dar</span></h3>
+  <table>
+    <tr><th>Subject</th><th>ESTAR (to be)</th><th>DAR (to give)</th></tr>
+    <tr><td>yo</td><td>estoy</td><td>doy</td></tr>
+    <tr><td>tú</td><td>estás</td><td>das</td></tr>
+    <tr><td>él/ella/usted</td><td>está</td><td>da</td></tr>
+    <tr><td>nosotros</td><td>estamos</td><td>damos</td></tr>
+    <tr><td>vosotros</td><td>estáis</td><td>dais</td></tr>
+    <tr><td>ellos/ustedes</td><td>están</td><td>dan</td></tr>
+  </table>
+
+  <h3>-ER Verbs <span class="tag">tener, hacer, poder, querer, saber, ver</span></h3>
+  <table>
+    <tr><th>Subject</th><th>TENER (to have)</th><th>HACER (to do/make)</th><th>PODER (can/to be able)</th><th>QUERER (to want)</th></tr>
+    <tr><td>yo</td><td>tengo</td><td>hago</td><td>puedo</td><td>quiero</td></tr>
+    <tr><td>tú</td><td>tienes</td><td>haces</td><td>puedes</td><td>quieres</td></tr>
+    <tr><td>él/ella/usted</td><td>tiene</td><td>hace</td><td>puede</td><td>quiere</td></tr>
+    <tr><td>nosotros</td><td>tenemos</td><td>hacemos</td><td>podemos</td><td>queremos</td></tr>
+    <tr><td>vosotros</td><td>tenéis</td><td>hacéis</td><td>podéis</td><td>queréis</td></tr>
+    <tr><td>ellos/ustedes</td><td>tienen</td><td>hacen</td><td>pueden</td><td>quieren</td></tr>
+  </table>
+
+  <h3>-IR Verbs <span class="tag">ir, decir, venir, sentir</span></h3>
+  <table>
+    <tr><th>Subject</th><th>IR (to go)</th><th>DECIR (to say)</th><th>VENIR (to come)</th><th>SENTIR (to feel)</th></tr>
+    <tr><td>yo</td><td>voy</td><td>digo</td><td>vengo</td><td>siento</td></tr>
+    <tr><td>tú</td><td>vas</td><td>dices</td><td>vienes</td><td>sientes</td></tr>
+    <tr><td>él/ella/usted</td><td>va</td><td>dice</td><td>viene</td><td>siente</td></tr>
+    <tr><td>nosotros</td><td>vamos</td><td>decimos</td><td>venimos</td><td>sentimos</td></tr>
+    <tr><td>vosotros</td><td>vais</td><td>decís</td><td>venís</td><td>sentís</td></tr>
+    <tr><td>ellos/ustedes</td><td>van</td><td>dicen</td><td>vienen</td><td>sienten</td></tr>
+  </table>
+
+  <h3>💡 Quick Tips / Consejos rápidos</h3>
+  <ul>
+    <li><b>SER</b> vs <b>ESTAR</b>: SER = permanent traits ("Soy alto" - I am tall); ESTAR = temporary states/location ("Estoy cansado" - I am tired).</li>
+    <li>Many -ER/-IR irregulars only change in the "yo" form: hago, tengo, digo, vengo, pongo, salgo.</li>
+    <li>Stem-changing verbs like QUERER (e→ie) and PODER (o→ue) change in all forms except nosotros/vosotros.</li>
+    <li>SER (to be) is one of the most irregular verbs: soy, eres, es, somos, sois, son.</li>
+  </ul>
+  <button class="listen-btn" style="background:var(--blue);color:#fff;padding:8px 16px;" onclick="speakSeq(['Yo soy','I am','Yo estoy','I am (temporary)'])">🔊 Escuchar SER vs ESTAR</button>
+</section>
+
+<!-- ================= SUBTITLES / DIALOGUE ================= -->
+<section id="subtitles" class="hidden">
+  <h2>🎧 Dialogue Practice <span class="tag">Bilingual subtitles</span></h2>
+  <p>Click ▶ to hear each line in Spanish, then read the English subtitle below.</p>
+  <div id="dialogueContainer"></div>
+  <button class="action" onclick="playAllDialogue()">▶ Play Full Dialogue</button>
+</section>
+
+<!-- ================= GAMES ================= -->
+<section id="games" class="hidden">
+  <h2>🎮 Games</h2>
+
+  <h3>1️⃣ Word Scramble</h3>
+  <p>Unscramble the letters to form an irregular verb infinitive. Click letters in order.</p>
+  <div id="scrambleGame"></div>
+  <button class="action" onclick="newScramble()">🔄 New Word</button>
+  <p id="scrambleResult" class="feedback"></p>
+
+  <h3>2️⃣ Memory Match: Verb ↔ Meaning</h3>
+  <p>Click two cards to match the Spanish verb with its English meaning.</p>
+  <div class="match-grid" id="matchGrid"></div>
+  <p id="matchResult" class="feedback"></p>
+
+  <h3>3️⃣ Fill in the Blank</h3>
+  <div id="fillGame"></div>
+  <button class="action" onclick="checkFill()">✅ Check Answers</button>
+  <p id="fillResult" class="feedback"></p>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz" class="hidden">
+  <h2>📝 Quiz</h2>
+  <p>Answer all questions, then check your score!</p>
+  <div id="quizContainer"></div>
+  <button class="action" onclick="gradeQuiz()">📊 Submit Quiz</button>
+  <div id="scoreBox"></div>
+</section>
+
+<footer>Hecho con ❤️ para aprender español | Made with ❤️ for learning Spanish — Click 🔊 buttons to hear Spanish then English audio (uses your browser's built-in voice).</footer>
+
+<script>
+/* ---------------- Data ---------------- */
+const verbs = [
+  {es:"estar", en:"to be (temporary)", ending:"AR", yo:"estoy", emoji:"📍"},
+  {es:"dar", en:"to give", ending:"AR", yo:"doy", emoji:"🎁"},
+  {es:"ser", en:"to be (permanent)", ending:"IR*", yo:"soy", emoji:"🧬"},
+  {es:"tener", en:"to have", ending:"ER", yo:"tengo", emoji:"🎒"},
+  {es:"hacer", en:"to do / make", ending:"ER", yo:"hago", emoji:"🔨"},
+  {es:"poder", en:"to be able / can", ending:"ER", yo:"puedo", emoji:"💪"},
+  {es:"querer", en:"to want / love", ending:"ER", yo:"quiero", emoji:"❤️"},
+  {es:"saber", en:"to know (facts)", ending:"ER", yo:"sé", emoji:"🧠"},
+  {es:"ver", en:"to see", ending:"ER", yo:"veo", emoji:"👀"},
+  {es:"ir", en:"to go", ending:"IR", yo:"voy", emoji:"🚶"},
+  {es:"decir", en:"to say / tell", ending:"IR", yo:"digo", emoji:"💬"},
+  {es:"venir", en:"to come", ending:"IR", yo:"vengo", emoji:"🚪"},
+  {es:"sentir", en:"to feel", ending:"IR", yo:"siento", emoji:"😊"},
+  {es:"salir", en:"to leave / go out", ending:"IR", yo:"salgo", emoji:"🚪"},
+  {es:"poner", en:"to put", ending:"ER", yo:"pongo", emoji:"📦"}
+];
+
+const dialogue = [
+  {es:"¡Hola! ¿Cómo estás?", en:"Hi! How are you?"},
+  {es:"Estoy muy bien, gracias. ¿Y tú?", en:"I'm very well, thanks. And you?"},
+  {es:"Yo tengo mucho trabajo hoy.", en:"I have a lot of work today."},
+  {es:"¿Puedes venir a la fiesta esta noche?", en:"Can you come to the party tonight?"},
+  {es:"Sí, quiero ir, pero primero hago la tarea.", en:"Yes, I want to go, but first I do my homework."},
+  {es:"¿Sabes dónde está el restaurante?", en:"Do you know where the restaurant is?"},
+  {es:"No sé, pero digo que está cerca del parque.", en:"I don't know, but I say it's near the park."}
+];
+
+/* ---------------- Navigation ---------------- */
+function showSection(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+/* ---------------- TTS helper ---------------- */
+function speak(text, lang){
+  return new Promise(resolve=>{
+    if(!window.speechSynthesis){ resolve(); return; }
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = lang;
+    u.rate = 0.9;
+    u.onend = resolve;
+    u.onerror = resolve;
+    speechSynthesis.speak(u);
+  });
+}
+async function speakSeq(arr){
+  // alternating es/en text with implied language pattern: es then en
+  for(let i=0;i<arr.length;i++){
+    const lang = (i%2===0)?'es-ES':'en-US';
+    await speak(arr[i], lang);
+  }
+}
+function speakVerbCard(es, en){
+  speakSeq([es, en]);
+}
+
+/* ---------------- Flashcards ---------------- */
+const cardContainer = document.getElementById('cardContainer');
+verbs.forEach((v,i)=>{
+  const card = document.createElement('div');
+  card.className='card';
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">${v.emoji}<br>${v.es}<small>-${v.ending}</small></div>
+      <div class="card-back">${v.en}<small>yo → ${v.yo}</small>
+        <button class="listen-btn" onclick="event.stopPropagation(); speakVerbCard('${v.es}','${v.en}')">🔊 Escuchar</button>
+      </div>
+    </div>`;
+  card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+  cardContainer.appendChild(card);
+});
+
+/* ---------------- Dialogue ---------------- */
+const dialogueContainer = document.getElementById('dialogueContainer');
+dialogue.forEach((line,i)=>{
+  const div = document.createElement('div');
+  div.className='subtitle-line';
+  div.innerHTML = `
+    <div>
+      <div class="es">🇪🇸 ${line.es}</div>
+      <div class="en">🇬🇧 ${line.en}</div>
+    </div>
+    <button class="play-btn" onclick="speakSeq(['${line.es.replace(/'/g,"\\'")}','${line.en.replace(/'/g,"\\'")}'])">▶ Play</button>`;
+  dialogueContainer.appendChild(div);
+});
+async function playAllDialogue(){
+  for(const line of dialogue){
+    await speak(line.es,'es-ES');
+    await speak(line.en,'en-US');
+  }
+}
+
+/* ---------------- Game 1: Scramble ---------------- */
+let currentScrambleWord = '';
+let scrambleProgress = [];
+function scrambleStr(str){
+  const arr = str.split('');
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+function newScramble(){
+  const v = verbs[Math.floor(Math.random()*verbs.length)];
+  currentScrambleWord = v.es;
+  scrambleProgress = [];
+  const letters = scrambleStr(v.es);
+  const gameDiv = document.getElementById('scrambleGame');
+  gameDiv.innerHTML = `
+    <p><b>Meaning: </b>${v.en}</p>
+    <div class="drop-zone" id="scrambleAnswer"></div>
+    <div class="letter-bank" id="scrambleBank"></div>`;
+  document.getElementById('scrambleResult').textContent='';
+  const bank = document.getElementById('scrambleBank');
+  letters.forEach((ch,idx)=>{
+    const box = document.createElement('div');
+    box.className='letter-box';
+    box.textContent = ch;
+    box.onclick = ()=>{
+      if(box.dataset.used) return;
+      box.dataset.used='1';
+      box.style.opacity='0.3';
+      scrambleProgress.push(ch);
+      const ansBox = document.createElement('div');
+      ansBox.className='letter-box';
+      ansBox.textContent = ch;
+      document.getElementById('scrambleAnswer').appendChild(ansBox);
+      if(scrambleProgress.length === currentScrambleWord.length){
+        const guess = scrambleProgress.join('');
+        const result = document.getElementById('scrambleResult');
+        if(guess === currentScrambleWord){
+          result.textContent = '✅ ¡Correcto! Correct! "'+guess+'" = '+v.en;
+          result.style.color='var(--green)';
+        } else {
+          result.textContent = '❌ Not quite. The word was: '+currentScrambleWord;
+          result.style.color='var(--red)';
+        }
+      }
+    };
+    bank.appendChild(box);
+  });
+}
+newScramble();
+
+/* ---------------- Game 2: Memory Match ---------------- */
+const matchPairs = verbs.slice(0,6);
+let matchItems = [];
+matchPairs.forEach((v,i)=>{
+  matchItems.push({id:'es'+i, text:v.es, pair:i, type:'es'});
+  matchItems.push({id:'en'+i, text:v.en, pair:i, type:'en'});
+});
+matchItems = matchItems.sort(()=>Math.random()-0.5);
+let selectedMatch = null;
+let matchedCount = 0;
+const matchGrid = document.getElementById('matchGrid');
+matchItems.forEach(item=>{
+  const div = document.createElement('div');
+  div.className='match-item';
+  div.textContent = item.text;
+  div.dataset.pair = item.pair;
+  div.dataset.type = item.type;
+  div.onclick = ()=> handleMatchClick(div);
+  matchGrid.appendChild(div);
+});
+function handleMatchClick(div){
+  if(div.classList.contains('matched') || div === selectedMatch) return;
+  if(!selectedMatch){
+    selectedMatch = div;
+    div.classList.add('selected');
+  } else {
+    if(selectedMatch.dataset.pair === div.dataset.pair && selectedMatch.dataset.type !== div.dataset.type){
+      selectedMatch.classList.remove('selected');
+      selectedMatch.classList.add('matched');
+      div.classList.add('matched');
+      matchedCount++;
+      document.getElementById('matchResult').textContent = `¡Bien hecho! Matched ${matchedCount}/${matchPairs.length}`;
+      document.getElementById('matchResult').style.color='var(--green)';
+      selectedMatch = null;
+      if(matchedCount === matchPairs.length){
+        document.getElementById('matchResult').textContent = '🎉 ¡Completado! All matched!';
+      }
+    } else {
+      div.classList.add('selected');
+      setTimeout(()=>{
+        selectedMatch.classList.remove('selected');
+        div.classList.remove('selected');
+        selectedMatch = null;
+      }, 600);
+    }
+  }
+}
+
+/* ---------------- Game 3: Fill in the Blank ---------------- */
+const fillSentences = [
+  {sentence:"Yo _____ (tener) veinte años.", answer:"tengo"},
+  {sentence:"Ella _____ (ir) al mercado.", answer:"va"},
+  {sentence:"Nosotros _____ (querer) aprender español.", answer:"queremos"},
+  {sentence:"¿Tú _____ (saber) la respuesta?", answer:"sabes"},
+  {sentence:"Yo _____ (hacer) la tarea todos los días.", answer:"hago"}
+];
+const fillGame = document.getElementById('fillGame');
+fillSentences.forEach((f,i)=>{
+  const div = document.createElement('div');
+  div.className='fill-blank';
+  div.style.margin='10px 0';
+  div.innerHTML = `<label>${i+1}. ${f.sentence.replace('_____', '<input type="text" id="fill'+i+'">')}</label>`;
+  fillGame.appendChild(div);
+});
+function checkFill(){
+  let correct = 0;
+  fillSentences.forEach((f,i)=>{
+    const input = document.getElementById('fill'+i);
+    const val = input.value.trim().toLowerCase();
+    if(val === f.answer){
+      input.style.borderColor='var(--green)';
+      correct++;
+    } else {
+      input.style.borderColor='var(--red)';
+    }
+  });
+  const result = document.getElementById('fillResult');
+  result.textContent = `Score: ${correct}/${fillSentences.length} — ${correct===fillSentences.length ? '¡Perfecto! Perfect!' : 'Try again / Inténtalo de nuevo'}`;
+  result.style.color = correct===fillSentences.length ? 'var(--green)' : 'var(--orange)';
+}
+
+/* ---------------- Quiz ---------------- */
+const quizQuestions = [
+  {q:"What is the correct 'yo' form of TENER?", opts:["teno","tengo","tiengo","tenio"], answer:1,
+   fb_correct:"¡Correcto! 'Tengo' is the irregular yo form.", fb_wrong:"Not quite — it's 'tengo'."},
+  {q:"How do you say 'I am going' in Spanish (IR)?", opts:["Voy","Vo","Vas","Va"], answer:0,
+   fb_correct:"¡Sí! 'Voy' = I go/I am going.", fb_wrong:"The correct answer is 'Voy'."},
+  {q:"Which verb means 'to want' or 'to love'?", opts:["saber","querer","poder","hacer"], answer:1,
+   fb_correct:"¡Exacto! Querer = to want/love.", fb_wrong:"The right answer is 'querer'."},
+  {q:"SER vs ESTAR: Which is used for temporary states?", opts:["SER","ESTAR"], answer:1,
+   fb_correct:"¡Correcto! ESTAR is for temporary states/location.", fb_wrong:"ESTAR is used for temporary states, not SER."},
+  {q:"What is the 'yo' form of HACER?", opts:["hazo","hago","haco","hace"], answer:1,
+   fb_correct:"¡Bien! 'Hago' is correct.", fb_wrong:"It's 'hago', not that."},
+  {q:"Which verb means 'to know facts/information'?", opts:["conocer","saber","ver","decir"], answer:1,
+   fb_correct:"¡Correcto! 'Saber' = to know facts.", fb_wrong:"The answer is 'saber'."},
+  {q:"How do you say 'I say/tell' (DECIR)?", opts:["Digo","Dico","Dizo","Deco"], answer:0,
+   fb_correct:"¡Sí! 'Digo' is correct.", fb_wrong:"Correct answer: 'Digo'."}
+];
+const quizContainer = document.getElementById('quizContainer');
+quizQuestions.forEach((q,i)=>{
+  const div = document.createElement('div');
+  div.className='quiz-q';
+  div.innerHTML = `<p class="question">${i+1}. ${q.q}</p>` +
+    q.opts.map((o,j)=>`<button class="quiz-opt" data-q="${i}" data-o="${j}" onclick="selectOption(this)">${o}</button>`).join('') +
+    `<p class="feedback" id="fb${i}"></p>`;
+  quizContainer.appendChild(div);
+});
+const userAnswers = {};
+function selectOption(btn){
+  const qi = btn.dataset.q;
+  const oi = parseInt(btn.dataset.o);
+  userAnswers[qi] = oi;
+  const siblings = document.querySelectorAll(`[data-q="${qi}"]`);
+  siblings.forEach(s=>s.classList.remove('selected'));
+  btn.style.outline = '3px solid var(--blue)';
+  siblings.forEach(s=>{ if(s!==btn) s.style.outline='none'; });
+}
+function gradeQuiz(){
+  let score = 0;
+  quizQuestions.forEach((q,i)=>{
+    const fb = document.getElementById('fb'+i);
+    const opts = document.querySelectorAll(`[data-q="${i}"]`);
+    const chosen = userAnswers[i];
+    opts.forEach((o,j)=>{
+      o.classList.remove('correct','wrong');
+      if(j===q.answer) o.classList.add('correct');
+      else if(j===chosen) o.classList.add('wrong');
+    });
+    if(chosen === q.answer){
+      score++;
+      fb.textContent = '✅ ' + q.fb_correct;
+      fb.style.color = 'var(--green)';
+    } else {
+      fb.textContent = '❌ ' + q.fb_wrong + (chosen===undefined ? ' (No answer selected)' : '');
+      fb.style.color = 'var(--red)';
+    }
+  });
+  const scoreBox = document.getElementById('scoreBox');
+  scoreBox.textContent = `🏆 Your score: ${score} / ${quizQuestions.length} — ${score===quizQuestions.length ? '¡Excelente! Excellent!' : score>=quizQuestions.length/2 ? '¡Buen trabajo! Good job!' : 'Sigue practicando / Keep practicing!'}`;
+}
+</script>
+</body>
+</html>
