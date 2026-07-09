@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#A7FF37;
+  --secondary:#586CEC;
+  --black:#000;
+  --white:#fff;
+  --dark:#1c1c1c;
+  --gray:#555555;
+  --light:#f6ffeb;
+  --font:'Poppins',sans-serif;
+  --heading:'Unbounded',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f3f3f3;font-family:var(--font);font-size:15px;color:var(--black)}
+.wrap{max-width:860px;margin:0 auto;padding:1rem}
+
+/* NAV TABS */
+.nav-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;background:var(--dark);border-radius:10px;padding:12px}
+.nav-tab{font-family:var(--font);font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:#aaa;transition:.3s;letter-spacing:.02em}
+.nav-tab:hover{color:var(--primary)}
+.nav-tab.active{background:var(--primary);color:var(--black)}
+.sec{display:none}.sec.active{display:block}
+
+/* HERO */
+.hero{background:var(--dark);border-radius:12px;padding:2rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:var(--primary);border-radius:50%;opacity:.08}
+.hero-tag{display:inline-block;background:var(--primary);color:var(--black);font-family:var(--heading);font-size:10px;font-weight:700;padding:4px 12px;border-radius:4px;margin-bottom:12px;letter-spacing:.08em}
+.hero h1{font-family:var(--heading);font-size:clamp(18px,4vw,28px);color:var(--white);line-height:1.3;margin-bottom:8px}
+.hero p{font-size:13px;color:#aaa;line-height:1.6;max-width:600px}
+
+/* SECTION LABEL */
+.sec-label{font-family:var(--heading);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--secondary);text-transform:uppercase;margin:1.25rem 0 .75rem;display:flex;align-items:center;gap:8px}
+.sec-label::after{content:'';flex:1;height:1px;background:#e5e7eb}
+
+/* SPEED ROW */
+.speed-row{display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
+.speed-lbl{font-size:12px;color:var(--gray)}
+.speed-btn{font-size:12px;padding:4px 12px;border-radius:20px;border:1.5px solid #ddd;cursor:pointer;background:#fff;font-family:var(--font);transition:.3s}
+.speed-btn:hover{border-color:var(--secondary);color:var(--secondary)}
+.speed-btn.on{background:var(--primary);border-color:var(--primary);color:var(--black);font-weight:600}
+.tts-note{font-size:12px;color:var(--gray);margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+
+/* DICT CARDS */
+.dict-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:1rem}
+.dict-card{background:#fff;border-radius:10px;padding:14px;cursor:pointer;border:2px solid transparent;transition:.3s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.dict-card:hover{border-color:var(--secondary);transform:translateY(-2px)}
+.dict-card.playing{border-color:var(--primary);background:#f6ffeb}
+.dc-badge{display:inline-block;font-family:var(--heading);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:8px;letter-spacing:.06em}
+.dc-badge.ar{background:#A7FF37;color:#000}
+.dc-badge.er{background:#586CEC;color:#fff}
+.dc-badge.ir{background:#1c1c1c;color:#A7FF37}
+.dc-badge.expr{background:#ff6b6b;color:#fff}
+.dc-es{font-family:var(--heading);font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px}
+.dc-en{font-size:12px;color:var(--gray);margin-bottom:4px;font-style:italic}
+.dc-def{font-size:11px;color:#888;line-height:1.5;margin-bottom:8px}
+.dc-ex{font-size:11px;color:var(--secondary);border-left:3px solid var(--primary);padding-left:8px;line-height:1.5}
+.listen-btn{font-size:11px;display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;border:1.5px solid #ddd;background:transparent;cursor:pointer;font-family:var(--font);transition:.3s;margin-top:6px}
+.listen-btn:hover{border-color:var(--secondary);color:var(--secondary)}
+.dict-card.playing .listen-btn{border-color:var(--primary);background:var(--primary);color:#000}
+
+/* DIALOGUE */
+.dial-card{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer;border:2px solid transparent;transition:.3s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.dial-card:hover{border-color:var(--secondary)}
+.dial-card.playing{border-color:var(--primary);background:#f6ffeb}
+.dc-who{font-family:var(--heading);font-size:10px;font-weight:700;letter-spacing:.08em;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.dc-who .tag{font-size:9px;padding:2px 7px;border-radius:20px;font-weight:600}
+.dial-es{font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px;line-height:1.5}
+.dial-en{font-size:12px;color:var(--gray);font-style:italic;line-height:1.5}
+.dial-verb{font-size:10px;color:var(--secondary);margin-top:6px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.verb-chip{background:#ede9fe;color:var(--secondary);border-radius:20px;padding:1px 8px;font-size:10px;font-weight:600}
+.expr-chip{background:#fef3c7;color:#92400e;border-radius:20px;padding:1px 8px;font-size:10px;font-weight:600}
+
+/* EXPRESSIONS BOX */
+.expr-box{background:var(--dark);border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer;border:2px solid transparent;transition:.3s}
+.expr-box:hover{border-color:var(--primary)}
+.expr-box.playing{border-color:var(--primary)}
+.expr-title{font-family:var(--heading);font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.expr-es{font-size:13px;color:#fff;font-weight:500;margin-bottom:2px}
+.expr-en{font-size:12px;color:#aaa;font-style:italic;margin-bottom:8px}
+.expr-dial{font-size:12px;color:#ddd;line-height:1.7}
+.expr-dial .esp{color:var(--primary);font-weight:600}
+.expr-dial .eng{color:#aaa;font-style:italic}
+
+/* QUIZ */
+.hud{display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap}
+.hpill{background:#fff;border-radius:20px;padding:5px 14px;font-size:13px;color:var(--gray);box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.hpill span{font-weight:700;color:var(--black)}
+.pbar-wrap{flex:1;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden;min-width:60px}
+.pbar-fill{height:100%;background:var(--primary);border-radius:3px;transition:width .3s}
+.qcard{background:#fff;border-radius:12px;padding:1.25rem;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.qtype{font-family:var(--heading);font-size:10px;font-weight:700;color:var(--secondary);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.qtext{font-size:15px;font-weight:600;color:var(--black);line-height:1.6;margin-bottom:14px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;font-size:13px;color:var(--black);background:#fff;text-align:left;font-family:var(--font);transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--secondary);background:#f0effe}
+.opt.correct{background:#f6ffeb;border-color:var(--primary);color:#1a4d00}
+.opt.wrong{background:#fff1f1;border-color:#ff4d4d;color:#7f1d1d}
+.opt:disabled{cursor:default}
+.ol{width:24px;height:24px;border-radius:50%;border:2px solid #ddd;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--heading)}
+.opt.correct .ol{background:var(--primary);border-color:var(--primary);color:#000}
+.opt.wrong .ol{background:#ff4d4d;border-color:#ff4d4d;color:#fff}
+.fb{font-size:13px;padding:10px 14px;border-left:4px solid transparent;border-radius:0 6px 6px 0;margin-top:10px;line-height:1.6;display:none}
+.fb.show{display:block}
+.fb.ok{background:#f6ffeb;border-left-color:var(--primary);color:#1a4d00}
+.fb.bad{background:#fff1f1;border-left-color:#ff4d4d;color:#7f1d1d}
+.nxt-btn{margin-top:12px;font-size:13px;padding:10px 24px;border-radius:6px;border:none;cursor:pointer;background:var(--primary);color:var(--black);font-weight:700;font-family:var(--heading);letter-spacing:.04em;transition:.3s;display:none}
+.nxt-btn:hover{background:var(--secondary);color:#fff}
+.rbox{background:var(--dark);border-radius:12px;padding:2rem;text-align:center}
+.rscore{font-family:var(--heading);font-size:42px;font-weight:800;color:var(--primary);margin:10px 0 6px}
+.rmsg{font-size:15px;color:#ddd;margin-bottom:1.5rem}
+.restart-btn{font-size:13px;padding:10px 24px;border-radius:6px;border:none;cursor:pointer;background:var(--primary);color:var(--black);font-weight:700;font-family:var(--heading);transition:.3s}
+.restart-btn:hover{background:var(--secondary);color:#fff}
+
+/* FILL IN */
+.fill-row{background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;border:2px solid #e5e7eb;font-size:14px;color:var(--black);display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.fill-input{font-size:14px;font-family:var(--font);border:none;border-bottom:2px solid var(--secondary);background:transparent;color:var(--black);width:110px;padding:0 4px;outline:none;transition:.3s}
+.fill-input.ok{border-bottom-color:var(--primary);color:#1a4d00}
+.fill-input.err{border-bottom-color:#ff4d4d}
+.fill-hint{font-size:11px;color:#aaa}
+.fill-en{font-size:11px;color:var(--gray);font-style:italic}
+.chk-row{display:flex;gap:8px;margin:12px 0}
+.chk-btn{font-size:13px;padding:8px 20px;border-radius:6px;border:2px solid var(--secondary);cursor:pointer;background:#fff;color:var(--secondary);font-weight:600;font-family:var(--font);transition:.3s}
+.chk-btn:hover{background:var(--secondary);color:#fff}
+
+/* MATCH */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.match-col{display:flex;flex-direction:column;gap:6px}
+.mtile{padding:10px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:12px;cursor:pointer;background:#fff;color:var(--black);text-align:center;font-family:var(--font);transition:.3s;line-height:1.4}
+.mtile:hover:not([disabled]){border-color:var(--secondary);background:#f0effe}
+.mtile.sel{border-color:var(--secondary);background:#ede9fe;color:var(--secondary);font-weight:600}
+.mtile.matched{border-color:var(--primary);background:#f6ffeb;color:#1a4d00;cursor:default;font-weight:600}
+.mtile.flash{border-color:#ff4d4d;background:#fff1f1}
+.match-result{font-size:14px;color:var(--secondary);text-align:center;padding:10px;font-weight:600}
+
+/* GRAMMAR */
+.gram-box{background:#fff;border-radius:10px;padding:1rem 1.25rem;margin-bottom:10px;border-left:4px solid var(--primary);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.gram-title{font-family:var(--heading);font-size:13px;font-weight:700;color:var(--black);margin-bottom:8px}
+.gram-body{font-size:13px;color:var(--gray);line-height:1.7}
+.gram-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}
+.gram-table th{background:var(--dark);color:var(--primary);font-family:var(--heading);font-size:10px;padding:7px 10px;text-align:left;font-weight:700;letter-spacing:.06em}
+.gram-table td{padding:7px 10px;border-bottom:1px solid #e5e7eb;color:var(--black)}
+.gram-table tr:nth-child(even) td{background:#f9fafb}
+.gram-table .verb{font-weight:700;color:var(--secondary)}
+.gram-table .conj{font-weight:600}
+
+/* CF FILTERS */
+.cf{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.cf-btn{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:2px solid #ddd;cursor:pointer;background:#fff;font-family:var(--heading);transition:.3s;letter-spacing:.04em}
+.cf-btn:hover{border-color:var(--secondary);color:var(--secondary)}
+.cf-btn.on{background:var(--primary);border-color:var(--primary);color:#000}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="hero-tag">🇪🇸 Spanish Irregular Verbs</div>
+  <h1>Verbos Irregulares + Expresiones Reales</h1>
+  <p>Real conversations using irregular -AR, -ER and -IR verbs with authentic everyday expressions. Spanish audio · English subtitles · Games & Quizzes</p>
+</div>
+
+<div class="nav-tabs" id="navtabs">
+  <button class="nav-tab active" onclick="showTab('dict',this)">📖 Dictionary</button>
+  <button class="nav-tab" onclick="showTab('grammar',this)">📐 Grammar</button>
+  <button class="nav-tab" onclick="showTab('expr',this)">💬 Expressions</button>
+  <button class="nav-tab" onclick="showTab('dial',this)">🗣 Dialogue</button>
+  <button class="nav-tab" onclick="showTab('fill',this)">✏️ Fill in</button>
+  <button class="nav-tab" onclick="showTab('match',this)">🧩 Match</button>
+  <button class="nav-tab" onclick="showTab('quiz',this)">💡 Quiz</button>
+</div>
+
+<!-- DICTIONARY -->
+<div id="dict" class="sec active">
+  <div class="tts-note">🔊 Tap any card to hear Spanish audio — English subtitles included</div>
+  <div class="speed-row">
+    <span class="speed-lbl">Speed:</span>
+    <button class="speed-btn" onclick="setSp(0.7,this)">Slow</button>
+    <button class="speed-btn on" onclick="setSp(0.9,this)">Normal</button>
+    <button class="speed-btn" onclick="setSp(1.1,this)">Fast</button>
+  </div>
+  <div class="cf" id="cf"></div>
+  <div class="dict-grid" id="dict-grid"></div>
+</div>
+
+<!-- GRAMMAR -->
+<div id="grammar" class="sec">
+  <div class="sec-label">Why are irregular verbs important?</div>
+  <div class="gram-box">
+    <div class="gram-title">What makes a verb irregular?</div>
+    <div class="gram-body">Irregular verbs don't follow the standard -AR/-ER/-IR ending patterns. Their stems change in certain forms — making them essential to master for real conversation.<br><br><em>Los verbos irregulares no siguen los patrones estándar. Sus raíces cambian en ciertas formas.</em></div>
+  </div>
+  <div class="gram-box">
+    <div class="gram-title">Irregular -AR verbs — pattern changes</div>
+    <table class="gram-table">
+      <tr><th>Infinitive</th><th>English</th><th>yo</th><th>tú</th><th>él/ella</th><th>nosotros</th><th>ellos</th></tr>
+      <tr><td class="verb">ir</td><td>to go</td><td class="conj">voy</td><td>vas</td><td>va</td><td>vamos</td><td>van</td></tr>
+      <tr><td class="verb">dar</td><td>to give</td><td class="conj">doy</td><td>das</td><td>da</td><td>damos</td><td>dan</td></tr>
+      <tr><td class="verb">estar</td><td>to be (temp)</td><td class="conj">estoy</td><td>estás</td><td>está</td><td>estamos</td><td>están</td></tr>
+    </table>
+  </div>
+  <div class="gram-box">
+    <div class="gram-title">Irregular -ER verbs — pattern changes</div>
+    <table class="gram-table">
+      <tr><th>Infinitive</th><th>English</th><th>yo</th><th>tú</th><th>él/ella</th><th>nosotros</th><th>ellos</th></tr>
+      <tr><td class="verb">ser</td><td>to be</td><td class="conj">soy</td><td>eres</td><td>es</td><td>somos</td><td>son</td></tr>
+      <tr><td class="verb">tener</td><td>to have</td><td class="conj">tengo</td><td>tienes</td><td>tiene</td><td>tenemos</td><td>tienen</td></tr>
+      <tr><td class="verb">poder</td><td>can / to be able</td><td class="conj">puedo</td><td>puedes</td><td>puede</td><td>podemos</td><td>pueden</td></tr>
+      <tr><td class="verb">querer</td><td>to want</td><td class="conj">quiero</td><td>quieres</td><td>quiere</td><td>queremos</td><td>quieren</td></tr>
+      <tr><td class="verb">hacer</td><td>to do / make</td><td class="conj">hago</td><td>haces</td><td>hace</td><td>hacemos</td><td>hacen</td></tr>
+    </table>
+  </div>
+  <div class="gram-box">
+    <div class="gram-title">Irregular -IR verbs — pattern changes</div>
+    <table class="gram-table">
+      <tr><th>Infinitive</th><th>English</th><th>yo</th><th>tú</th><th>él/ella</th><th>nosotros</th><th>ellos</th></tr>
+      <tr><td class="verb">venir</td><td>to come</td><td class="conj">vengo</td><td>vienes</td><td>viene</td><td>venimos</td><td>vienen</td></tr>
+      <tr><td class="verb">decir</td><td>to say / tell</td><td class="conj">digo</td><td>dices</td><td>dice</td><td>decimos</td><td>dicen</td></tr>
+      <tr><td class="verb">salir</td><td>to leave / go out</td><td class="conj">salgo</td><td>sales</td><td>sale</td><td>salimos</td><td>salen</td></tr>
+      <tr><td class="verb">seguir</td><td>to follow / continue</td><td class="conj">sigo</td><td>sigues</td><td>sigue</td><td>seguimos</td><td>siguen</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- EXPRESSIONS -->
+<div id="expr" class="sec">
+  <div class="sec-label">Real everyday expressions</div>
+  <div id="expr-body"></div>
+</div>
+
+<!-- DIALOGUE -->
+<div id="dial" class="sec">
+  <div class="tts-note">🔊 Tap any line to hear it in Spanish</div>
+  <div class="sec-label">Un día normal — A normal day (real conversation)</div>
+  <div id="dial-body"></div>
+</div>
+
+<!-- FILL IN -->
+<div id="fill" class="sec">
+  <div class="sec-label">Fill in the gaps — conjugate the irregular verb</div>
+  <div id="fill-body"></div>
+  <div class="chk-row">
+    <button class="chk-btn" onclick="checkFills()">✅ Check answers</button>
+    <button class="chk-btn" onclick="resetFills()">🔄 Reset</button>
+  </div>
+</div>
+
+<!-- MATCH -->
+<div id="match" class="sec">
+  <div class="hud">
+    <div class="hpill">Pairs: <span id="msc">0</span> / 8</div>
+    <div class="hpill">Tries: <span id="mtr">0</span></div>
+    <button class="chk-btn" onclick="initMatch()" style="margin-left:auto">🔄 Restart</button>
+  </div>
+  <div style="font-size:13px;color:var(--gray);margin-bottom:10px">Match each Spanish expression or verb to its English meaning</div>
+  <div class="match-grid"><div class="match-col" id="m-es"></div><div class="match-col" id="m-en"></div></div>
+  <div class="match-result" id="mres"></div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="sec">
+  <div class="hud">
+    <div class="hpill">⭐ <span id="qsc">0</span> pts</div>
+    <div class="pbar-wrap"><div class="pbar-fill" id="qprog" style="width:0%"></div></div>
+    <div class="hpill" id="qctr">1 / 12</div>
+  </div>
+  <div id="quiz-body"></div>
+</div>
+
+</div>
+
+<script>
+const vocab=[
+  {cat:'ar',badge:'ar',es:'ir',en:'to go',def:'Completely irregular — one of the most used verbs in Spanish.',ex:'¿A dónde vas? — Where are you going?'},
+  {cat:'ar',badge:'ar',es:'dar',en:'to give',def:'Irregular in yo: doy (not daro). Common in daily speech.',ex:'Te doy mi número. — I\'ll give you my number.'},
+  {cat:'ar',badge:'ar',es:'estar',en:'to be (temporary)',def:'Used for temporary states, location, and feelings.',ex:'Estoy bien, gracias. — I\'m fine, thank you.'},
+  {cat:'er',badge:'er',es:'ser',en:'to be (permanent)',def:'Describes identity, origin, profession and permanent characteristics.',ex:'Soy de México. — I am from Mexico.'},
+  {cat:'er',badge:'er',es:'tener',en:'to have',def:'Irregular yo: tengo. Also used in expressions like "tener hambre".',ex:'Tengo mucho trabajo hoy. — I have a lot of work today.'},
+  {cat:'er',badge:'er',es:'poder',en:'can / to be able to',def:'Stem-changing: o→ue. Essential for making requests.',ex:'¿Puedes ayudarme? — Can you help me?'},
+  {cat:'er',badge:'er',es:'querer',en:'to want',def:'Stem-changing: e→ie. Very common in daily requests.',ex:'Quiero un café, por favor. — I want a coffee, please.'},
+  {cat:'er',badge:'er',es:'hacer',en:'to do / to make',def:'Irregular yo: hago. Very common in questions.',ex:'¿Qué haces el fin de semana? — What are you doing this weekend?'},
+  {cat:'ir',badge:'ir',es:'venir',en:'to come',def:'Irregular yo: vengo. Used to invite and describe arrival.',ex:'¿Vienes a la fiesta? — Are you coming to the party?'},
+  {cat:'ir',badge:'ir',es:'decir',en:'to say / to tell',def:'Irregular yo: digo. Essential for conversations.',ex:'¿Qué dices? — What are you saying?'},
+  {cat:'ir',badge:'ir',es:'salir',en:'to leave / go out',def:'Irregular yo: salgo. Common for social plans.',ex:'Salgo a las ocho. — I leave at eight.'},
+  {cat:'ir',badge:'ir',es:'seguir',en:'to follow / to continue',def:'Stem-changing: e→i. Used for directions and continuing.',ex:'Sigue recto. — Continue straight ahead.'},
+  {cat:'expr',badge:'expr',es:'No pasa nada',en:'No problem / It\'s okay',def:'Used to reassure someone that a mistake or delay doesn\'t matter.',ex:'Perdón, llegué tarde. — No pasa nada. / Sorry I\'m late. — No problem.'},
+  {cat:'expr',badge:'expr',es:'¿Qué onda?',en:'What\'s up? / How\'s it going?',def:'Informal Mexican Spanish greeting. Very common among friends.',ex:'¡Hola! ¿Qué onda? — Hey! What\'s up?'},
+  {cat:'expr',badge:'expr',es:'Está bien',en:'It\'s fine / Okay',def:'Used to agree, confirm, or accept a situation.',ex:'¿Te parece bien a las cinco? — Está bien. / Five o\'clock work for you? — That\'s fine.'},
+  {cat:'expr',badge:'expr',es:'¡Buena onda!',en:'Cool! / Good vibes!',def:'Informal expression for something positive or someone easygoing.',ex:'Tu amigo es muy buena onda. — Your friend is really cool.'},
+  {cat:'expr',badge:'expr',es:'¿Y qué?',en:'So what? / And?',def:'Used to challenge or dismiss what someone says, or ask for more detail.',ex:'Llegué tarde. — ¿Y qué? — I arrived late. — So what?'},
+  {cat:'expr',badge:'expr',es:'Ya viene',en:'He/She\'s on the way / Coming soon',def:'Used to say someone is coming or something is about to happen.',ex:'¿Dónde está Luis? — Ya viene. / Where\'s Luis? — He\'s on his way.'},
+];
+
+const expressions=[
+  {es:'No pasa nada',en:'No problem / It\'s okay',note:'Used to reassure — a mistake or delay doesn\'t matter',dialogs:[
+    {ctx:'Student forgets homework',sp:'Estudiante',tp:'Maestra',s:'Perdón, olvidé mi tarea.',e:'Sorry, I forgot my homework.',s2:'No pasa nada, tráela mañana.',e2:'No problem, bring it tomorrow.'},
+    {ctx:'Someone arrives late',sp:'Amiga',tp:'Amiga',s:'Llegué tarde, lo siento.',e:'I arrived late, I\'m sorry.',s2:'No pasa nada, apenas empezamos.',e2:'No problem, we\'re just starting.'},
+  ]},
+  {es:'¿Qué onda?',en:'What\'s up? / How\'s it going?',note:'Very informal Mexican greeting between friends',dialogs:[
+    {ctx:'Friends meeting on the street',sp:'Carlos',tp:'Luis',s:'¡Ey! ¿Qué onda?',e:'Hey! What\'s up?',s2:'Todo bien, ¿y tú?',e2:'All good, and you?'},
+  ]},
+  {es:'Está bien',en:'It\'s fine / Okay',note:'Versatile agreement or acceptance expression',dialogs:[
+    {ctx:'Making plans',sp:'Ana',tp:'Pedro',s:'¿Nos vemos a las seis?',e:'Shall we meet at six?',s2:'Está bien, ahí estaré.',e2:'That\'s fine, I\'ll be there.'},
+  ]},
+  {es:'Ya viene',en:'He/She\'s on the way',note:'Said when someone is about to arrive',dialogs:[
+    {ctx:'Waiting for someone',sp:'Sofía',tp:'Marco',s:'¿Dónde está María?',e:'Where\'s María?',s2:'Ya viene, salió hace cinco minutos.',e2:'She\'s on her way, she left five minutes ago.'},
+  ]},
+  {es:'¿Y qué?',en:'So what? / And?',note:'Can dismiss or show curiosity depending on tone',dialogs:[
+    {ctx:'Someone sharing news',sp:'Jorge',tp:'Claudia',s:'Fui al médico ayer.',e:'I went to the doctor yesterday.',s2:'¿Y qué? ¿Estás bien?',e2:'And? Are you okay?'},
+  ]},
+];
+
+const dialogue=[
+  {who:'Ana',color:'#586CEC',es:'Buenos días. ¿Qué haces tan temprano?',en:'Good morning. What are you doing so early?',verbs:['hacer → haces'],exprs:[]},
+  {who:'Luis',color:'#A7FF37',dark:true,es:'Voy al mercado. ¿Quieres algo?',en:'I\'m going to the market. Do you want anything?',verbs:['ir → voy','querer → quieres'],exprs:[]},
+  {who:'Ana',color:'#586CEC',es:'Sí, puedes traerme pan, por favor.',en:'Yes, can you bring me some bread, please?',verbs:['poder → puedes','venir → traerme'],exprs:[]},
+  {who:'Luis',color:'#A7FF37',dark:true,es:'Claro. Oye, ¿sabes dónde está mi cartera?',en:'Sure. Hey, do you know where my wallet is?',verbs:['estar → está'],exprs:[]},
+  {who:'Ana',color:'#586CEC',es:'Está en la mesa. Perdón por el desorden.',en:'It\'s on the table. Sorry for the mess.',verbs:['estar → está'],exprs:['Perdón']},
+  {who:'Luis',color:'#A7FF37',dark:true,es:'No pasa nada. ¿Tienes algo de efectivo?',en:'No problem. Do you have any cash?',verbs:['tener → tienes'],exprs:['No pasa nada']},
+  {who:'Ana',color:'#586CEC',es:'No tengo mucho, pero te doy cien pesos.',en:'I don\'t have much, but I\'ll give you a hundred pesos.',verbs:['tener → tengo','dar → doy'],exprs:[]},
+  {who:'Luis',color:'#A7FF37',dark:true,es:'Gracias. Oye, viene tu mamá hoy, ¿verdad?',en:'Thanks. Hey, your mom is coming today, right?',verbs:['venir → viene'],exprs:[]},
+  {who:'Ana',color:'#586CEC',es:'Sí, viene a las dos. Dice que trae comida.',en:'Yes, she\'s coming at two. She says she\'s bringing food.',verbs:['venir → viene','decir → dice'],exprs:[]},
+  {who:'Luis',color:'#A7FF37',dark:true,es:'¡Qué buena onda! Salgo a las once y ya vengo.',en:'How cool! I\'m leaving at eleven and I\'ll be right back.',verbs:['salir → salgo','venir → vengo'],exprs:['¡Qué buena onda!']},
+  {who:'Ana',color:'#586CEC',es:'Está bien. Sigue el camino de siempre.',en:'Okay. Take the usual route.',verbs:['seguir → sigue'],exprs:['Está bien']},
+  {who:'Luis',color:'#A7FF37',dark:true,es:'Perfecto. Ya vengo.',en:'Perfect. I\'ll be right back.',verbs:[],exprs:[]},
+];
+
+const fillItems=[
+  {pre:'¿A dónde',mid:'(ir - tú)',post:'esta noche?',hint:'to go — tú form',ans:'vas',en:'Where are you going tonight?'},
+  {pre:'Yo',mid:'(tener)',post:'mucho que hacer hoy.',hint:'to have — yo form',ans:'tengo',en:'I have a lot to do today.'},
+  {pre:'Ella no',mid:'(poder)',post:'venir a la reunión.',hint:'to be able — ella form',ans:'puede',en:'She can\'t come to the meeting.'},
+  {pre:'¿Qué',mid:'(hacer - tú)',post:'el fin de semana?',hint:'to do — tú form',ans:'haces',en:'What are you doing this weekend?'},
+  {pre:'Nosotros',mid:'(salir)',post:'a las ocho.',hint:'to leave — nosotros form',ans:'salimos',en:'We leave at eight.'},
+  {pre:'Él',mid:'(decir)',post:'que ya viene.',hint:'to say — él form',ans:'dice',en:'He says he\'s on his way.'},
+  {pre:'Yo',mid:'(venir)',post:'cuando pueda.',hint:'to come — yo form',ans:'vengo',en:'I\'ll come when I can.'},
+  {pre:'¿',mid:'(querer - tú)',post:'un café?',hint:'to want — tú form',ans:'quieres',en:'Do you want a coffee?'},
+];
+
+const matchPairs=[
+  {es:'No pasa nada',en:'No problem / It\'s okay'},
+  {es:'¿Qué onda?',en:'What\'s up?'},
+  {es:'Ya viene',en:'He\'s on the way'},
+  {es:'Está bien',en:'It\'s fine / Okay'},
+  {es:'tengo',en:'I have (tener)'},
+  {es:'salgo',en:'I leave (salir)'},
+  {es:'digo',en:'I say (decir)'},
+  {es:'voy',en:'I go (ir)'},
+];
+
+const questions=[
+  {q:'What is the "yo" form of "ir" (to go)?',opts:['iro','yo','voy','ibo'],ans:2,exp:'"Ir" is completely irregular. The yo form is "voy" — not "iro".',es:'"Ir" es completamente irregular. La forma yo es "voy".'},
+  {q:'Complete: "¿___ a la fiesta esta noche?" (venir - tú)',opts:['venes','vienes','vengas','viene'],ans:1,exp:'"Venir" is a stem-changing verb: e→ie. Tú form = "vienes".',es:'"Venir" cambia la raíz: e→ie. La forma tú es "vienes".'},
+  {q:'What does "No pasa nada" mean?',opts:['Nothing is happening','No problem / It\'s okay','I don\'t understand','It doesn\'t matter to me'],ans:1,exp:'"No pasa nada" literally means "nothing is happening" but in daily use it means "no problem" or "it\'s okay" — used to reassure someone.',es:'"No pasa nada" se usa para tranquilizar a alguien.'},
+  {q:'What is the "yo" form of "hacer" (to do)?',opts:['haceo','haco','hace','hago'],ans:3,exp:'"Hacer" is irregular in yo only: "hago". All other forms follow a pattern (haces, hace, hacemos...).',es:'"Hacer" es irregular solo en yo: "hago".'},
+  {q:'Complete: "Yo no ___ mucho efectivo." (tener)',opts:['tienen','tengo','tenemos','tienes'],ans:1,exp:'"Tener" yo form is "tengo" — irregular (not "tenero").',es:'"Tener" yo es "tengo" — irregular.'},
+  {q:'Which verb is used for TEMPORARY states like feelings or location?',opts:['ser','ir','estar','tener'],ans:2,exp:'"Estar" is used for temporary states: Estoy cansado (I\'m tired), Estoy en casa (I\'m at home).',es:'"Estar" se usa para estados temporales.'},
+  {q:'What is "salgo" in English?',opts:['I come out','You leave','I leave / I go out','He exits'],ans:2,exp:'"Salgo" is the yo form of "salir" (to leave / go out). It\'s irregular in yo only.',es:'"Salgo" es la forma yo de "salir".'},
+  {q:'What does "¿Qué onda?" mean?',opts:['What\'s the frequency?','What\'s up? / How\'s it going?','What\'s the problem?','What wave?'],ans:1,exp:'"¿Qué onda?" is Mexican informal slang for "What\'s up?" or "How\'s it going?" Very common among friends.',es:'"¿Qué onda?" es una expresión informal mexicana que significa "¿Qué pasa?"'},
+  {q:'What is "decir" yo form?',opts:['deco','deces','digo','dicho'],ans:2,exp:'"Digo" is the irregular yo form of "decir" (to say). All other forms: dices, dice, decimos, decís, dicen.',es:'"Digo" es la forma yo irregular de "decir".'},
+  {q:'Complete: "¿___ venir a cenar?" (poder - tú)',opts:['podres','puedes','pueden','podemos'],ans:1,exp:'"Poder" is stem-changing: o→ue. Tú form = "puedes".',es:'"Poder" cambia la raíz: o→ue. Tú = "puedes".'},
+  {q:'Which sentence uses an expression correctly?',opts:['¡Buena onda! Está muy difícil.','No pasa nada, llegué tarde a propósito.','Está bien, nos vemos a las cinco.','¿Y qué? Soy tu maestro.'],ans:2,exp:'"Está bien, nos vemos a las cinco" = "That\'s fine, we\'ll meet at five" — correct use of "está bien" to confirm a plan.',es:'"Está bien, nos vemos a las cinco" es el uso correcto de la expresión.'},
+  {q:'What is the "ellos" form of "querer" (to want)?',opts:['queremos','queréis','querian','quieren'],ans:3,exp:'"Querer" is stem-changing: e→ie. Ellos/Ellas form = "quieren".',es:'"Querer" cambia la raíz: e→ie. Ellos = "quieren".'},
+];
+
+let spd=0.9,activeCat='all',speaking=null,qCur=0,qScore=0,qAns=false;
+const qOrd=[...Array(questions.length).keys()].sort(()=>Math.random()-.5);
+let mSel=null,mMatched=0,mTries=0;
+
+function setSp(s,btn){spd=s;document.querySelectorAll('.speed-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+
+function speak(text,el){
+  window.speechSynthesis.cancel();
+  if(el){
+    if(speaking===el){speaking=null;document.querySelectorAll('.playing').forEach(c=>c.classList.remove('playing'));return;}
+    document.querySelectorAll('.playing').forEach(c=>c.classList.remove('playing'));
+    speaking=el;el.classList.add('playing');
+  }
+  const u=new SpeechSynthesisUtterance(text);u.lang='es-MX';u.rate=spd;
+  u.onend=()=>{if(el){el.classList.remove('playing');if(speaking===el)speaking=null;}};
+  window.speechSynthesis.speak(u);
+}
+
+// BUILD FILTERS
+function buildCF(){
+  const cf=document.getElementById('cf');
+  [{id:'all',lbl:'All'},{id:'ar',lbl:'-AR'},{id:'er',lbl:'-ER'},{id:'ir',lbl:'-IR'},{id:'expr',lbl:'Expressions'}].forEach(c=>{
+    const b=document.createElement('button');
+    b.className='cf-btn'+(c.id==='all'?' on':'');
+    b.textContent=c.lbl;
+    b.onclick=()=>{activeCat=c.id;document.querySelectorAll('.cf-btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');buildDict();};
+    cf.appendChild(b);
+  });
+}
+
+function buildDict(){
+  const fl=activeCat==='all'?vocab:vocab.filter(v=>v.cat===activeCat);
+  document.getElementById('dict-grid').innerHTML=fl.map((t,i)=>`
+    <div class="dict-card" id="dc${i}" onclick="speak('${t.es.replace(/'/g,"\\'")}',this)">
+      <span class="dc-badge ${t.badge}">${t.badge.toUpperCase()}</span>
+      <div class="dc-es">${t.es}</div>
+      <div class="dc-en">${t.en}</div>
+      <div class="dc-def">${t.def}</div>
+      <div class="dc-ex">${t.ex}</div>
+      <button class="listen-btn" onclick="event.stopPropagation();speak('${t.es.replace(/'/g,"\\'")}',this.closest('.dict-card'))">🔊 Listen</button>
+    </div>`).join('');
+}
+
+function buildExpr(){
+  document.getElementById('expr-body').innerHTML=expressions.map((e,i)=>`
+    <div class="expr-box" id="ex${i}" onclick="speak('${e.es.replace(/'/g,"\\'")}',this)">
+      <div class="expr-title">"${e.es}"</div>
+      <div class="expr-en">${e.en}</div>
+      <div style="font-size:11px;color:#aaa;margin-bottom:10px">${e.note}</div>
+      ${e.dialogs.map(d=>`
+        <div style="font-size:11px;color:#888;margin-bottom:4px;font-style:italic">${d.ctx}</div>
+        <div class="expr-dial">
+          <div><span class="esp">${d.sp}: "${d.s}"</span> <span class="eng">[${d.e}]</span></div>
+          <div><span class="esp">${d.tp}: "${d.s2}"</span> <span class="eng">[${d.e2}]</span></div>
+        </div>`).join('<hr style="border:none;border-top:1px solid #333;margin:8px 0">')}
+    </div>`).join('');
+}
+
+function buildDial(){
+  document.getElementById('dial-body').innerHTML=dialogue.map((l,i)=>`
+    <div class="dial-card" id="dl${i}" onclick="speak('${l.es.replace(/'/g,"\\'")}',this)">
+      <div class="dc-who" style="color:${l.dark?l.color:'var(--secondary)'}">
+        ${l.who} 🔊
+        ${l.exprs.map(e=>`<span class="tag expr-chip">${e}</span>`).join('')}
+      </div>
+      <div class="dial-es">${l.es}</div>
+      <div class="dial-en">${l.en}</div>
+      <div class="dial-verb">
+        ${l.verbs.map(v=>`<span class="verb-chip">${v}</span>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function buildFills(){
+  document.getElementById('fill-body').innerHTML=fillItems.map((f,i)=>`
+    <div class="fill-row">
+      <span>${f.pre}</span>
+      <input class="fill-input" id="fi${i}" data-ans="${f.ans}" placeholder="___" autocomplete="off">
+      <span style="font-size:13px;color:var(--gray)">${f.mid}</span>
+      <span>${f.post}</span>
+      <span class="fill-hint">${f.hint}</span>
+      <span class="fill-en">[${f.en}]</span>
+    </div>`).join('');
+}
+function checkFills(){
+  fillItems.forEach((_,i)=>{
+    const inp=document.getElementById('fi'+i);
+    const val=inp.value.trim().toLowerCase();
+    inp.classList.remove('ok','err');
+    if(val===inp.dataset.ans)inp.classList.add('ok');
+    else if(val.length>0)inp.classList.add('err');
+  });
+}
+function resetFills(){fillItems.forEach((_,i)=>{const inp=document.getElementById('fi'+i);inp.value='';inp.classList.remove('ok','err');});}
+
+function initMatch(){
+  mSel=null;mMatched=0;mTries=0;
+  document.getElementById('msc').textContent='0';document.getElementById('mtr').textContent='0';document.getElementById('mres').textContent='';
+  const se=[...matchPairs].sort(()=>Math.random()-.5);
+  const en=[...matchPairs].sort(()=>Math.random()-.5);
+  document.getElementById('m-es').innerHTML=se.map(p=>`<button class="mtile" data-key="${p.es}" data-side="es" onclick="handleMatch(this)">${p.es}</button>`).join('');
+  document.getElementById('m-en').innerHTML=en.map(p=>`<button class="mtile" data-key="${p.es}" data-side="en" onclick="handleMatch(this)">${p.en}</button>`).join('');
+}
+function handleMatch(tile){
+  if(tile.classList.contains('matched'))return;
+  if(mSel===tile){tile.classList.remove('sel');mSel=null;return;}
+  if(mSel&&mSel.dataset.side===tile.dataset.side){mSel.classList.remove('sel');mSel=tile;tile.classList.add('sel');return;}
+  if(!mSel){mSel=tile;tile.classList.add('sel');return;}
+  mTries++;document.getElementById('mtr').textContent=mTries;
+  if(mSel.dataset.key===tile.dataset.key){
+    [mSel,tile].forEach(t=>{t.classList.remove('sel');t.classList.add('matched');t.disabled=true;});
+    mMatched++;document.getElementById('msc').textContent=mMatched;mSel=null;
+    if(mMatched===matchPairs.length)document.getElementById('mres').textContent='🎉 ¡Perfecto! All matched in '+mTries+' tries!';
+  } else {
+    const prev=mSel;[prev,tile].forEach(t=>{t.classList.add('flash');setTimeout(()=>t.classList.remove('flash'),600);});
+    prev.classList.remove('sel');mSel=null;
+  }
+}
+
+function renderQuiz(){
+  if(qCur>=questions.length){showQRes();return;}
+  qAns=false;
+  const qi=qOrd[qCur];const q=questions[qi];
+  document.getElementById('qprog').style.width=Math.round(qCur/questions.length*100)+'%';
+  document.getElementById('qctr').textContent=(qCur+1)+' / '+questions.length;
+  document.getElementById('quiz-body').innerHTML=`<div class="qcard">
+    <div class="qtype">Irregular verbs & expressions</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,i)=>`<button class="opt" id="qo${i}" onclick="pickQ(${i},${q.ans},${qi})"><span class="ol">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>
+    <div class="fb" id="qfb"></div>
+    <button class="nxt-btn" id="qnxt" onclick="qCur++;renderQuiz()">${qCur===questions.length-1?'See result →':'Next →'}</button>
+  </div>`;
+}
+function pickQ(ch,cor,qi){
+  if(qAns)return;qAns=true;
+  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  const ok=ch===cor;
+  document.getElementById('qo'+ch).classList.add(ok?'correct':'wrong');
+  if(!ok)document.getElementById('qo'+cor).classList.add('correct');
+  const q=questions[qi];
+  const fb=document.getElementById('qfb');
+  fb.className='fb show '+(ok?'ok':'bad');
+  fb.innerHTML=(ok?'✅ Correct! ':'❌ Not quite. ')+q.exp+'<br><em style="font-size:12px;opacity:.8">'+q.es+'</em>';
+  if(ok){qScore+=10;document.getElementById('qsc').textContent=qScore;}
+  document.getElementById('qnxt').style.display='inline-block';
+}
+function showQRes(){
+  document.getElementById('qprog').style.width='100%';
+  const pct=Math.round(qScore/120*100);
+  const msg=pct===100?'¡Perfecto! Eres un maestro de los verbos irregulares.':pct>=70?'¡Muy bien! Great progress!':pct>=50?'Buen intento — review and retry.':'¡Sigue practicando! Keep going!';
+  document.getElementById('quiz-body').innerHTML=`<div class="rbox"><div style="font-size:13px;color:#aaa">Final score</div><div class="rscore">${qScore} / 120</div><div class="rmsg">${msg}</div><button class="restart-btn" onclick="qCur=0;qScore=0;qOrd.sort(()=>Math.random()-.5);renderQuiz()">🔄 Play again</button></div>`;
+}
+
+function showTab(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');btn.classList.add('active');
+}
+
+buildCF();buildDict();buildExpr();buildDial();buildFills();initMatch();renderQuiz();
+</script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/ed3e7d33-5160-40cd-ab5e-93b533356499/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Tense Irregular Verbs — AR/ER/IR | Verbos Irregulares en Pasado</title>
+<style>
+  :root{
+    --primary:#5b2a86; --accent:#ff6f61; --green:#2ecc71; --red:#e74c3c;
+    --bg:#f7f3ff; --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'Segoe UI',Tahoma,Arial,sans-serif; background:linear-gradient(135deg,#f7f3ff,#e9e4ff); margin:0; padding:0; color:#2d2140;}
+  header{background:linear-gradient(135deg,var(--primary),#8e44ad); color:#fff; padding:30px 20px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,.15);}
+  header h1{margin:0 0 6px; font-size:2em;}
+  header p{margin:0; opacity:.9; font-size:1.05em;}
+  nav{display:flex; justify-content:center; flex-wrap:wrap; gap:10px; padding:16px; background:#fff; position:sticky; top:0; z-index:50; box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav button{background:var(--bg); border:2px solid var(--primary); color:var(--primary); padding:10px 18px; border-radius:25px; cursor:pointer; font-weight:600; font-size:.95em; transition:.2s;}
+  nav button:hover, nav button.active{background:var(--primary); color:#fff;}
+  section{max-width:960px; margin:30px auto; padding:0 20px;}
+  .section-card{background:var(--card); border-radius:16px; padding:28px; box-shadow:0 6px 20px rgba(0,0,0,.08); margin-bottom:20px;}
+  h2{color:var(--primary); border-bottom:3px solid var(--accent); padding-bottom:8px; display:inline-block;}
+  .sub{color:#666; margin-top:-8px; margin-bottom:20px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;}
+  .flash{background:linear-gradient(135deg,#fff,#f3edff); border:2px solid #e0d4ff; border-radius:14px; padding:16px; text-align:center; transition:.2s;}
+  .flash:hover{transform:translateY(-4px); box-shadow:0 6px 16px rgba(91,42,134,.2);}
+  .flash .emoji{font-size:2.2em;}
+  .flash .en{font-weight:700; font-size:1.15em; color:var(--primary); margin-top:6px;}
+  .flash .es{font-style:italic; color:var(--accent); margin-top:2px;}
+  .flash .conj{font-size:.85em; color:#555; margin-top:6px; line-height:1.4;}
+  .listen-btn{margin-top:10px; background:var(--primary); color:#fff; border:none; padding:8px 14px; border-radius:20px; cursor:pointer; font-size:.9em;}
+  .listen-btn:hover{background:#43206b;}
+  table{width:100%; border-collapse:collapse; margin-top:10px;}
+  th,td{border:1px solid #e0d4ff; padding:10px; text-align:center;}
+  th{background:var(--primary); color:#fff;}
+  tr:nth-child(even){background:#f7f3ff;}
+  .dialogue-line{display:flex; justify-content:space-between; align-items:center; background:#f7f3ff; border-left:5px solid var(--accent); padding:10px 14px; margin:8px 0; border-radius:8px; flex-wrap:wrap;}
+  .dialogue-line .txt{flex:1; min-width:200px;}
+  .dialogue-line .en-line{font-weight:600; color:var(--primary);}
+  .dialogue-line .es-line{font-style:italic; color:#555; font-size:.95em;}
+  .play-line{background:var(--accent); color:#fff; border:none; padding:6px 12px; border-radius:16px; cursor:pointer;}
+  .expr-card{background:#fff9ee; border:2px dashed var(--accent); border-radius:12px; padding:14px; margin:10px 0;}
+  .expr-card .es{font-weight:700; color:var(--primary); font-size:1.05em;}
+  .expr-card .en{color:#555;}
+  .expr-card .literal{font-size:.85em; color:#999;}
+  .game-box{background:#f7f3ff; border-radius:12px; padding:20px; margin-top:16px;}
+  #scramble-letters{display:flex; gap:6px; flex-wrap:wrap; margin:14px 0; min-height:50px;}
+  .letter-tile{background:var(--primary); color:#fff; padding:10px 14px; border-radius:8px; cursor:grab; font-weight:700; font-size:1.1em; user-select:none;}
+  #scramble-answer{min-height:50px; border:3px dashed var(--accent); border-radius:8px; padding:10px; display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;}
+  .memory-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:14px;}
+  .memory-card{background:var(--primary); color:#fff; border-radius:10px; height:80px; display:flex; align-items:center; justify-content:center; font-size:.95em; cursor:pointer; text-align:center; padding:6px;}
+  .memory-card.flipped{background:#fff; color:var(--primary); border:2px solid var(--primary);}
+  .memory-card.matched{background:var(--green); color:#fff; cursor:default;}
+  .fill-blank{margin:10px 0; padding:10px; background:#fff; border-radius:10px; border:1px solid #e0d4ff;}
+  .fill-blank input{padding:6px 10px; border:2px solid var(--primary); border-radius:6px; width:140px; font-size:1em;}
+  button.action-btn{background:var(--accent); color:#fff; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; font-weight:600; margin-top:10px;}
+  button.action-btn:hover{background:#e85a4d;}
+  .quiz-q{margin-bottom:22px; padding:16px; background:#fff; border-radius:12px; border:1px solid #e0d4ff;}
+  .quiz-q p.question{font-weight:700; color:var(--primary);}
+  .quiz-q label{display:block; background:#f7f3ff; margin:6px 0; padding:10px; border-radius:8px; cursor:pointer;}
+  .quiz-q label:hover{background:#eee0ff;}
+  .feedback{margin-top:8px; padding:8px; border-radius:8px; display:none; font-size:.95em;}
+  .feedback.correct{background:#e8f9ee; color:#1e7e42; display:block;}
+  .feedback.incorrect{background:#fdeaea; color:#c0392b; display:block;}
+  #score-box{text-align:center; font-size:1.3em; font-weight:700; color:var(--primary); margin-top:16px; display:none;}
+  footer{text-align:center; padding:20px; color:#888; font-size:.9em;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🕰️ Verbos Irregulares en Pasado / Past Tense Irregular Verbs</h1>
+  <p>-AR · -ER · -IR — Pretérito Indefinido | English subtitles included / Subtítulos en inglés incluidos</p>
+</header>
+
+<nav>
+  <button onclick="showSection('flashcards')" class="active">🔊 Flashcards</button>
+  <button onclick="showSection('grammar')">📖 Grammar & Subtitles</button>
+  <button onclick="showSection('expressions')">💬 Expressions</button>
+  <button onclick="showSection('games')">🎮 Games</button>
+  <button onclick="showSection('quiz')">📝 Quiz</button>
+</nav>
+
+<!-- ================= FLASHCARDS ================= -->
+<section id="flashcards">
+  <div class="section-card">
+    <h2>🔊 Audio Flashcards — Irregular Verbs in the Past</h2>
+    <p class="sub">Click "Listen" to hear the verb in English, then in Spanish. Haz clic en "Escuchar" para oír el verbo en inglés y luego en español.</p>
+    <div class="grid" id="flash-grid"></div>
+  </div>
+</section>
+
+<!-- ================= GRAMMAR / SUBTITLES ================= -->
+<section id="grammar" style="display:none;">
+  <div class="section-card">
+    <h2>📖 Grammar Table — Pretérito Indefinido (Irregular Verbs)</h2>
+    <p class="sub">Irregular verbs don't follow the regular -AR/-ER/-IR past endings — they use special stems and endings. / Los verbos irregulares no siguen las terminaciones regulares del pasado — usan raíces y terminaciones especiales.</p>
+    <table>
+      <tr><th>Verb (Type)</th><th>yo</th><th>tú</th><th>él/ella</th><th>nosotros</th><th>ellos</th></tr>
+      <tr><td><b>ESTAR</b> (-ar) <br><i>to be</i></td><td>estuve</td><td>estuviste</td><td>estuvo</td><td>estuvimos</td><td>estuvieron</td></tr>
+      <tr><td><b>DAR</b> (-ar) <br><i>to give</i></td><td>di</td><td>diste</td><td>dio</td><td>dimos</td><td>dieron</td></tr>
+      <tr><td><b>TENER</b> (-er) <br><i>to have</i></td><td>tuve</td><td>tuviste</td><td>tuvo</td><td>tuvimos</td><td>tuvieron</td></tr>
+      <tr><td><b>HACER</b> (-er) <br><i>to do/make</i></td><td>hice</td><td>hiciste</td><td>hizo</td><td>hicimos</td><td>hicieron</td></tr>
+      <tr><td><b>PODER</b> (-er) <br><i>to be able</i></td><td>pude</td><td>pudiste</td><td>pudo</td><td>pudimos</td><td>pudieron</td></tr>
+      <tr><td><b>QUERER</b> (-er) <br><i>to want</i></td><td>quise</td><td>quisiste</td><td>quiso</td><td>quisimos</td><td>quisieron</td></tr>
+      <tr><td><b>SABER</b> (-er) <br><i>to know</i></td><td>supe</td><td>supiste</td><td>supo</td><td>supimos</td><td>supieron</td></tr>
+      <tr><td><b>VER</b> (-er) <br><i>to see</i></td><td>vi</td><td>viste</td><td>vio</td><td>vimos</td><td>vieron</td></tr>
+      <tr><td><b>IR</b> (-ir) <br><i>to go</i></td><td>fui</td><td>fuiste</td><td>fue</td><td>fuimos</td><td>fueron</td></tr>
+      <tr><td><b>DECIR</b> (-ir) <br><i>to say</i></td><td>dije</td><td>dijiste</td><td>dijo</td><td>dijimos</td><td>dijeron</td></tr>
+      <tr><td><b>VENIR</b> (-ir) <br><i>to come</i></td><td>vine</td><td>viniste</td><td>vino</td><td>vinimos</td><td>vinieron</td></tr>
+      <tr><td><b>SENTIR</b> (-ir) <br><i>to feel</i></td><td>sentí</td><td>sentiste</td><td>sintió</td><td>sentimos</td><td>sintieron</td></tr>
+    </table>
+    <button class="action-btn" onclick="playTable()">🔊 Play All Verbs (EN + ES)</button>
+
+    <h2 style="margin-top:30px;">💬 Bilingual Dialogue / Diálogo Bilingüe</h2>
+    <p class="sub">Click each line to hear it. Haz clic en cada línea para escucharla.</p>
+    <div id="dialogue-box"></div>
+  </div>
+</section>
+
+<!-- ================= EXPRESSIONS ================= -->
+<section id="expressions" style="display:none;">
+  <div class="section-card">
+    <h2>💬 Real Spanish Expressions with Irregular Past Verbs</h2>
+    <p class="sub">Common phrases native speakers actually use. / Frases comunes que usan los hablantes nativos.</p>
+    <div id="expr-box"></div>
+  </div>
+</section>
+
+<!-- ================= GAMES ================= -->
+<section id="games" style="display:none;">
+  <div class="section-card">
+    <h2>🎮 Game 1: Word Scramble — Unscramble the Verb</h2>
+    <p class="sub">Click the letters in order to spell the correct past-tense form. / Haz clic en las letras en orden para formar el verbo en pasado.</p>
+    <div class="game-box">
+      <p id="scramble-clue" style="font-weight:600;"></p>
+      <div id="scramble-answer"></div>
+      <div id="scramble-letters"></div>
+      <button class="action-btn" onclick="checkScramble()">✅ Check</button>
+      <button class="action-btn" onclick="resetScramble()" style="background:#999;">🔄 Reset</button>
+      <p id="scramble-feedback" style="font-weight:700;"></p>
+      <button class="action-btn" onclick="nextScramble()">➡️ Next Word</button>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>🎮 Game 2: Memory Match — Verb ↔ Translation</h2>
+    <p class="sub">Find the matching pairs of English and Spanish past-tense verbs. / Encuentra los pares en inglés y español.</p>
+    <div class="game-box">
+      <div class="memory-grid" id="memory-grid"></div>
+      <p id="memory-status" style="font-weight:700; margin-top:10px;"></p>
+      <button class="action-btn" onclick="initMemory()">🔄 Restart Game</button>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>🎮 Game 3: Fill in the Blank</h2>
+    <p class="sub">Type the correct irregular past-tense form. / Escribe la forma correcta del pasado irregular.</p>
+    <div class="game-box" id="fill-box"></div>
+    <button class="action-btn" onclick="checkFillBlanks()">✅ Check Answers</button>
+    <p id="fill-feedback" style="font-weight:700;"></p>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz" style="display:none;">
+  <div class="section-card">
+    <h2>📝 Final Quiz</h2>
+    <p class="sub">Choose the correct answer for each question. / Elige la respuesta correcta para cada pregunta.</p>
+    <div id="quiz-box"></div>
+    <button class="action-btn" onclick="gradeQuiz()">🏆 Submit Quiz</button>
+    <div id="score-box"></div>
+  </div>
+</section>
+
+<footer>Made with 💜 for Spanish learners — Práctica los verbos irregulares en pasado (-AR / -ER / -IR)</footer>
+
+<script>
+/* ============ DATA ============ */
+const verbs = [
+  {emoji:"🧍", en:"was/were (estar)", es:"estuve / estuviste / estuvo", infinitive:"estar", type:"-AR", past:"estuvo", meaning:"was (he/she)"},
+  {emoji:"🎁", en:"gave (dar)", es:"di / diste / dio", infinitive:"dar", type:"-AR", past:"dio", meaning:"gave (he/she)"},
+  {emoji:"👜", en:"had (tener)", es:"tuve / tuviste / tuvo", infinitive:"tener", type:"-ER", past:"tuvo", meaning:"had (he/she)"},
+  {emoji:"🔨", en:"did/made (hacer)", es:"hice / hiciste / hizo", infinitive:"hacer", type:"-ER", past:"hizo", meaning:"did/made (he/she)"},
+  {emoji:"💪", en:"could (poder)", es:"pude / pudiste / pudo", infinitive:"poder", type:"-ER", past:"pudo", meaning:"could (he/she)"},
+  {emoji:"❤️", en:"wanted (querer)", es:"quise / quisiste / quiso", infinitive:"querer", type:"-ER", past:"quiso", meaning:"wanted (he/she)"},
+  {emoji:"🧠", en:"knew (saber)", es:"supe / supiste / supo", infinitive:"saber", type:"-ER", past:"supo", meaning:"knew (he/she)"},
+  {emoji:"👀", en:"saw (ver)", es:"vi / viste / vio", infinitive:"ver", type:"-ER", past:"vio", meaning:"saw (he/she)"},
+  {emoji:"🚶", en:"went (ir)", es:"fui / fuiste / fue", infinitive:"ir", type:"-IR", past:"fue", meaning:"went (he/she)"},
+  {emoji:"🗣️", en:"said (decir)", es:"dije / dijiste / dijo", infinitive:"decir", type:"-IR", past:"dijo", meaning:"said (he/she)"},
+  {emoji:"🚪", en:"came (venir)", es:"vine / viniste / vino", infinitive:"venir", type:"-IR", past:"vino", meaning:"came (he/she)"},
+  {emoji:"😊", en:"felt (sentir)", es:"sentí / sentiste / sintió", infinitive:"sentir", type:"-IR", past:"sintió", meaning:"felt (he/she)"}
+];
+
+const dialogue = [
+  {en:"Yesterday I was very busy at work.", es:"Ayer estuve muy ocupado en el trabajo."},
+  {en:"He gave me a gift for my birthday.", es:"Él me dio un regalo por mi cumpleaños."},
+  {en:"We had a big problem yesterday.", es:"Tuvimos un gran problema ayer."},
+  {en:"She made a delicious dinner.", es:"Ella hizo una cena deliciosa."},
+  {en:"I couldn't sleep last night.", es:"No pude dormir anoche."},
+  {en:"They wanted to travel to Spain.", es:"Ellos quisieron viajar a España."},
+  {en:"I found out the truth yesterday.", es:"Supe la verdad ayer."},
+  {en:"I saw a beautiful sunset.", es:"Vi un atardecer hermoso."},
+  {en:"We went to the beach last weekend.", es:"Fuimos a la playa el fin de semana pasado."},
+  {en:"He said he was tired.", es:"Él dijo que estaba cansado."},
+  {en:"They came home late.", es:"Ellos vinieron a casa tarde."},
+  {en:"She felt very happy at the party.", es:"Ella sintió mucha felicidad en la fiesta."}
+];
+
+const expressions = [
+  {es:"¡No lo pude creer!", en:"I couldn't believe it!", lit:"literally: I couldn't believe-it"},
+  {es:"Fue lo que fue.", en:"It was what it was.", lit:"used to accept an outcome"},
+  {es:"Tuve que hacerlo.", en:"I had to do it.", lit:"I had-to do-it"},
+  {es:"Se hizo tarde.", en:"It got late.", lit:"literally: it made-itself late"},
+  {es:"Vino como caído del cielo.", en:"It came like a gift from heaven.", lit:"came as fallen from the sky"},
+  {es:"Dijo lo que pensaba.", en:"He/she said what he/she thought.", lit:"said what thought"},
+  {es:"Estuvo a punto de llorar.", en:"He/she was about to cry.", lit:"was at point of cry"},
+  {es:"No supe qué decir.", en:"I didn't know what to say.", lit:"not knew what to-say"}
+];
+
+/* ============ TTS ============ */
+function speakQueue(list){
+  window.speechSynthesis.cancel();
+  list.forEach(item=>{
+    const u = new SpeechSynthesisUtterance(item.text);
+    u.lang = item.lang;
+    u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+  });
+}
+function speakEnEs(en, es){
+  speakQueue([{text:en, lang:'en-US'},{text:es, lang:'es-ES'}]);
+}
+
+/* ============ NAV ============ */
+function showSection(id){
+  ['flashcards','grammar','expressions','games','quiz'].forEach(s=>{
+    document.getElementById(s).style.display = (s===id)?'block':'none';
+  });
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+/* ============ FLASHCARDS ============ */
+function renderFlashcards(){
+  const grid = document.getElementById('flash-grid');
+  verbs.forEach(v=>{
+    const div = document.createElement('div');
+    div.className = 'flash';
+    div.innerHTML = `
+      <div class="emoji">${v.emoji}</div>
+      <div class="en">${v.en}</div>
+      <div class="es">${v.es}</div>
+      <div class="conj">${v.type} verb — 3rd person: <b>${v.past}</b></div>
+      <button class="listen-btn" onclick='speakEnEs("${v.meaning}","${v.past}")'>🔊 Listen / Escuchar</button>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+/* ============ GRAMMAR / DIALOGUE ============ */
+function renderDialogue(){
+  const box = document.getElementById('dialogue-box');
+  dialogue.forEach(d=>{
+    const div = document.createElement('div');
+    div.className = 'dialogue-line';
+    div.innerHTML = `
+      <div class="txt">
+        <div class="en-line">${d.en}</div>
+        <div class="es-line">${d.es}</div>
+      </div>
+      <button class="play-line" onclick='speakEnEs("${d.en}","${d.es}")'>▶️</button>
+    `;
+    box.appendChild(div);
+  });
+}
+function playTable(){
+  const list = [];
+  verbs.forEach(v=>{
+    list.push({text:v.meaning, lang:'en-US'});
+    list.push({text:v.past, lang:'es-ES'});
+  });
+  speakQueue(list);
+}
+
+/* ============ EXPRESSIONS ============ */
+function renderExpressions(){
+  const box = document.getElementById('expr-box');
+  expressions.forEach(e=>{
+    const div = document.createElement('div');
+    div.className = 'expr-card';
+    div.innerHTML = `
+      <div class="es">🇪🇸 ${e.es}</div>
+      <div class="en">🇬🇧 ${e.en}</div>
+      <div class="literal">${e.lit}</div>
+      <button class="listen-btn" onclick='speakEnEs("${e.en}","${e.es}")'>🔊 Listen / Escuchar</button>
+    `;
+    box.appendChild(div);
+  });
+}
+
+/* ============ GAME 1: SCRAMBLE ============ */
+let scrambleIndex = 0;
+let scrambleOrder = [];
+function shuffle(arr){ return arr.map(a=>[Math.random(),a]).sort((a,b)=>a[0]-b[0]).map(a=>a[1]); }
+function loadScramble(){
+  const v = verbs[scrambleIndex];
+  document.getElementById('scramble-clue').innerHTML = `Clue / Pista: <b>${v.meaning}</b> (${v.infinitive}, ${v.type})`;
+  const letters = shuffle(v.past.split(''));
+  scrambleOrder = [];
+  const container = document.getElementById('scramble-letters');
+  container.innerHTML = '';
+  letters.forEach((l,i)=>{
+    const tile = document.createElement('div');
+    tile.className = 'letter-tile';
+    tile.textContent = l;
+    tile.onclick = ()=>{
+      document.getElementById('scramble-answer').appendChild(tile);
+      tile.onclick = ()=>{
+        document.getElementById('scramble-letters').appendChild(tile);
+        tile.onclick = arguments.callee;
+      };
+    };
+    container.appendChild(tile);
+  });
+  document.getElementById('scramble-answer').innerHTML = '';
+  document.getElementById('scramble-feedback').textContent = '';
+}
+function checkScramble(){
+  const answer = Array.from(document.getElementById('scramble-answer').children).map(t=>t.textContent).join('');
+  const v = verbs[scrambleIndex];
+  const fb = document.getElementById('scramble-feedback');
+  if(answer.toLowerCase() === v.past.toLowerCase()){
+    fb.style.color = 'green';
+    fb.textContent = `✅ Correct! / ¡Correcto! "${v.past}" — ${v.meaning}`;
+    speakEnEs(v.meaning, v.past);
+  } else {
+    fb.style.color = 'red';
+    fb.textContent = `❌ Try again / Intenta de nuevo. Correct answer: "${v.past}"`;
+  }
+}
+function resetScramble(){ loadScramble(); }
+function nextScramble(){
+  scrambleIndex = (scrambleIndex+1) % verbs.length;
+  loadScramble();
+}
+
+/* ============ GAME 2: MEMORY MATCH ============ */
+let memoryFlipped = [];
+let memoryMatched = 0;
+function initMemory(){
+  const chosen = shuffle(verbs).slice(0,4);
+  let cards = [];
+  chosen.forEach((v,i)=>{
+    cards.push({id:'en'+i, label:v.meaning, pair:i});
+    cards.push({id:'es'+i, label:v.past, pair:i});
+  });
+  cards = shuffle(cards);
+  memoryFlipped = [];
+  memoryMatched = 0;
+  document.getElementById('memory-status').textContent = '';
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
+  cards.forEach(c=>{
+    const div = document.createElement('div');
+    div.className = 'memory-card';
+    div.dataset.pair = c.pair;
+    div.dataset.label = c.label;
+    div.textContent = '❓';
+    div.onclick = ()=>flipMemory(div);
+    grid.appendChild(div);
+  });
+}
+function flipMemory(div){
+  if(div.classList.contains('flipped') || div.classList.contains('matched') || memoryFlipped.length>=2) return;
+  div.classList.add('flipped');
+  div.textContent = div.dataset.label;
+  memoryFlipped.push(div);
+  if(memoryFlipped.length===2){
+    setTimeout(()=>{
+      const [a,b] = memoryFlipped;
+      if(a.dataset.pair === b.dataset.pair){
+        a.classList.add('matched'); b.classList.add('matched');
+        memoryMatched++;
+        speakEnEs(a.dataset.label, b.dataset.label);
+        if(memoryMatched===4){
+          document.getElementById('memory-status').textContent = '🎉 All matched! / ¡Todo emparejado!';
+        }
+      } else {
+        a.classList.remove('flipped'); a.textContent='❓';
+        b.classList.remove('flipped'); b.textContent='❓';
+      }
+      memoryFlipped = [];
+    }, 700);
+  }
+}
+
+/* ============ GAME 3: FILL IN BLANK ============ */
+const fillItems = [
+  {sentence:"Ayer yo ___ (estar) muy cansado.", answer:"estuve", en:"Yesterday I was very tired."},
+  {sentence:"Ella ___ (hacer) la tarea rápido.", answer:"hizo", en:"She did the homework quickly."},
+  {sentence:"Nosotros ___ (ir) al cine el sábado.", answer:"fuimos", en:"We went to the movies Saturday."},
+  {sentence:"Tú no ___ (poder) venir a la fiesta.", answer:"pudiste", en:"You couldn't come to the party."},
+  {sentence:"Ellos ___ (decir) la verdad.", answer:"dijeron", en:"They told the truth."}
+];
+function renderFillBlanks(){
+  const box = document.getElementById('fill-box');
+  fillItems.forEach((f,i)=>{
+    const div = document.createElement('div');
+    div.className = 'fill-blank';
+    div.innerHTML = `<p>${i+1}. ${f.sentence} <span style="color:#888;font-size:.85em;">(${f.en})</span></p>
+      <input type="text" id="fill-${i}" placeholder="respuesta">`;
+    box.appendChild(div);
+  });
+}
+function checkFillBlanks(){
+  let correct = 0;
+  fillItems.forEach((f,i)=>{
+    const val = document.getElementById(`fill-${i}`).value.trim().toLowerCase();
+    if(val === f.answer.toLowerCase()) correct++;
+  });
+  const fb = document.getElementById('fill-feedback');
+  fb.style.color = correct===fillItems.length ? 'green' : '#c0392b';
+  fb.textContent = `You got ${correct}/${fillItems.length} correct! / ¡Obtuviste ${correct}/${fillItems.length} correctas!`;
+}
+
+/* ============ QUIZ ============ */
+const quizData = [
+  {q:"What is the correct past form of 'estar' for 'él'?", options:["estó","estuvo","estaba","estai"], answer:"estuvo",
+   fb_correct:"✅ Correct! 'Estuvo' is the él/ella preterite form of estar. / ¡Correcto!", fb_wrong:"❌ Incorrect. The right answer is 'estuvo'. / Incorrecto."},
+  {q:"'Hicimos' comes from which verb?", options:["hacer","haber","tener","decir"], answer:"hacer",
+   fb_correct:"✅ Correct! 'Hicimos' = we did/made, from 'hacer'.", fb_wrong:"❌ Incorrect. 'Hicimos' comes from 'hacer' (to do/make)."},
+  {q:"Choose the correct past tense: 'Ellos ___ a la playa.' (ir)", options:["fue","fueron","iban","van"], answer:"fueron",
+   fb_correct:"✅ Correct! 'Fueron' = they went.", fb_wrong:"❌ Incorrect. Correct answer: 'fueron' (they went)."},
+  {q:"What does 'quise' mean?", options:["I know","I wanted","I could","I gave"], answer:"I wanted",
+   fb_correct:"✅ Correct! 'Quise' = I wanted (from querer).", fb_wrong:"❌ Incorrect. 'Quise' means 'I wanted'."},
+  {q:"'Vine' is the yo-form of which verb?", options:["ver","venir","ir","ser"], answer:"venir",
+   fb_correct:"✅ Correct! 'Vine' = I came, from 'venir'.", fb_wrong:"❌ Incorrect. 'Vine' comes from 'venir' (to come)."},
+  {q:"Which is a real Spanish expression meaning 'I couldn't believe it'?", options:["¡No lo pude creer!","¡No lo hago!","¡Voy a creer!","¡Estuve creyendo!"], answer:"¡No lo pude creer!",
+   fb_correct:"✅ Correct! That's the natural expression.", fb_wrong:"❌ Incorrect. The correct expression is '¡No lo pude creer!'"},
+  {q:"What is the correct 3rd person past of 'sentir' (irregular stem-change -ir verb)?", options:["sintió","sentió","sentó","sinta"], answer:"sintió",
+   fb_correct:"✅ Correct! 'Sintió' = he/she felt (stem change e→i).", fb_wrong:"❌ Incorrect. Correct answer: 'sintió'."}
+];
+function renderQuiz(){
+  const box = document.getElementById('quiz-box');
+  quizData.forEach((q,i)=>{
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    div.innerHTML = `<p class="question">${i+1}. ${q.q}</p>` +
+      q.options.map(o=>`<label><input type="radio" name="q${i}" value="${o}"> ${o}</label>`).join('') +
+      `<div class="feedback" id="fb-${i}"></div>`;
+    box.appendChild(div);
+  });
+}
+function gradeQuiz(){
+  let score = 0;
+  quizData.forEach((q,i)=>{
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById(`fb-${i}`);
+    if(selected){
+      if(selected.value === q.answer){
+        score++;
+        fb.className = 'feedback correct';
+        fb.textContent = q.fb_correct;
+      } else {
+        fb.className = 'feedback incorrect';
+        fb.textContent = q.fb_wrong;
+      }
+    } else {
+      fb.className = 'feedback incorrect';
+      fb.textContent = '⚠️ Please select an answer / Por favor selecciona una respuesta.';
+    }
+  });
+  const scoreBox = document.getElementById('score-box');
+  scoreBox.style.display = 'block';
+  scoreBox.textContent = `🏆 Final Score: ${score} / ${quizData.length} — ${score===quizData.length ? '¡Perfecto!' : score>=quizData.length/2 ? '¡Buen trabajo!' : '¡Sigue practicando!'}`;
+}
+
+/* ============ INIT ============ */
+renderFlashcards();
+renderDialogue();
+renderExpressions();
+loadScramble();
+initMemory();
+renderFillBlanks();
+renderQuiz();
+</script>
+</body>
+</html>
