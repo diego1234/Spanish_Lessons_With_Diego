@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/2ceb18d9-e225-450f-bde4-7499f6752360/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Homework: Irregular Verbs + Real Expressions</title>
+<style>
+:root{--primary:#A7FF37;--secondary:#586CEC;--dark:#1c1c1c;--gray:#555;--light:#f6ffeb;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f3f3f3;color:#1c1c1c;line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding:24px}
+.hero{background:var(--dark);color:#fff;border-radius:12px;padding:24px;margin-bottom:24px}
+.hero h1{font-size:24px;margin-bottom:6px}
+.hero p{color:#ccc;font-size:14px}
+h2.sec{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--secondary);margin:28px 0 12px;border-bottom:2px solid #e5e7eb;padding-bottom:6px}
+.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+table{width:100%;border-collapse:collapse;margin-bottom:10px}
+th,td{border:1px solid #ddd;padding:8px;text-align:left;font-size:14px}
+th{background:var(--light)}
+input[type=text]{padding:6px 8px;border:1px solid #ccc;border-radius:6px;font-size:14px;width:140px}
+.blank{border:none;border-bottom:2px dashed var(--secondary);width:120px;font-size:14px;padding:2px 4px;background:transparent}
+.q{margin-bottom:16px}
+.q p.qtext{font-weight:600;margin-bottom:6px}
+label.opt{display:block;padding:6px 8px;border:1px solid #ddd;border-radius:6px;margin-bottom:6px;cursor:pointer;font-size:14px}
+label.opt:hover{border-color:var(--secondary)}
+.dial-line{margin-bottom:8px;font-size:14px}
+.dial-line b{color:var(--secondary)}
+.check-btn{background:var(--primary);border:none;padding:10px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px;margin:16px 0}
+#score{font-weight:700;font-size:16px;margin-top:10px}
+.answer-key{display:none;background:var(--light);border-left:4px solid var(--secondary);padding:14px;border-radius:8px;margin-top:20px;font-size:13px}
+.answer-key.show{display:block}
+.toggle-btn{background:transparent;border:2px solid var(--secondary);color:var(--secondary);padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px}
+ol{margin-left:20px;font-size:14px}
+li{margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>📝 Homework: Verbos Irregulares + Expresiones Reales</h1>
+    <p>Practice worksheet based on the lesson "Irregular Verbs + Real Expressions" — irregular -AR/-ER/-IR verbs (ir, dar, estar, ser, tener, poder, querer, hacer, venir, decir, salir, seguir) and authentic Mexican Spanish expressions.</p>
+  </div>
+
+  <h2 class="sec">1. Fill in the Blank — Conjugate the Irregular Verb</h2>
+  <div class="card">
+    <ol>
+      <li>¿A dónde <input class="blank" type="text" data-ans="vas"> esta noche? <span style="color:#888">(ir – tú)</span></li>
+      <li>Yo <input class="blank" type="text" data-ans="tengo"> mucho que hacer hoy. <span style="color:#888">(tener – yo)</span></li>
+      <li>Ella no <input class="blank" type="text" data-ans="puede"> venir a la reunión. <span style="color:#888">(poder – ella)</span></li>
+      <li>¿Qué <input class="blank" type="text" data-ans="haces"> el fin de semana? <span style="color:#888">(hacer – tú)</span></li>
+      <li>Nosotros <input class="blank" type="text" data-ans="salimos"> a las ocho. <span style="color:#888">(salir – nosotros)</span></li>
+      <li>Él <input class="blank" type="text" data-ans="dice"> que ya viene. <span style="color:#888">(decir – él)</span></li>
+      <li>Yo <input class="blank" type="text" data-ans="vengo"> cuando pueda. <span style="color:#888">(venir – yo)</span></li>
+      <li>¿<input class="blank" type="text" data-ans="quieres"> un café? <span style="color:#888">(querer – tú)</span></li>
+    </ol>
+    <button class="check-btn" onclick="checkFill()">✅ Check Fill-in Answers</button>
+    <div id="fillScore"></div>
+  </div>
+
+  <h2 class="sec">2. Conjugation Table — Complete the Missing Forms</h2>
+  <div class="card">
+    <p style="margin-bottom:10px;color:#888;font-size:13px">Fill in the blank cells with the correct present-tense conjugation.</p>
+    <table>
+      <tr><th>Infinitive</th><th>English</th><th>yo</th><th>tú</th><th>él/ella</th><th>nosotros</th><th>ellos</th></tr>
+      <tr><td>ir</td><td>to go</td><td><input class="blank" style="width:70px" data-ans="voy"></td><td>vas</td><td>va</td><td>vamos</td><td><input class="blank" style="width:70px" data-ans="van"></td></tr>
+      <tr><td>dar</td><td>to give</td><td>doy</td><td><input class="blank" style="width:70px" data-ans="das"></td><td>da</td><td><input class="blank" style="width:70px" data-ans="damos"></td><td>dan</td></tr>
+      <tr><td>estar</td><td>to be (temp)</td><td>estoy</td><td>estás</td><td><input class="blank" style="width:70px" data-ans="está"></td><td>estamos</td><td>están</td></tr>
+      <tr><td>ser</td><td>to be (perm)</td><td>soy</td><td><input class="blank" style="width:70px" data-ans="eres"></td><td>es</td><td>somos</td><td><input class="blank" style="width:70px" data-ans="son"></td></tr>
+      <tr><td>tener</td><td>to have</td><td>tengo</td><td>tienes</td><td>tiene</td><td><input class="blank" style="width:70px" data-ans="tenemos"></td><td>tienen</td></tr>
+      <tr><td>poder</td><td>can/to be able</td><td><input class="blank" style="width:70px" data-ans="puedo"></td><td>puedes</td><td>puede</td><td>podemos</td><td><input class="blank" style="width:70px" data-ans="pueden"></td></tr>
+      <tr><td>querer</td><td>to want</td><td>quiero</td><td><input class="blank" style="width:70px" data-ans="quieres"></td><td>quiere</td><td>queremos</td><td>quieren</td></tr>
+      <tr><td>hacer</td><td>to do/make</td><td>hago</td><td>haces</td><td><input class="blank" style="width:70px" data-ans="hace"></td><td>hacemos</td><td>hacen</td></tr>
+      <tr><td>venir</td><td>to come</td><td>vengo</td><td><input class="blank" style="width:70px" data-ans="vienes"></td><td>viene</td><td>venimos</td><td>vienen</td></tr>
+      <tr><td>decir</td><td>to say/tell</td><td>digo</td><td>dices</td><td>dice</td><td><input class="blank" style="width:70px" data-ans="decimos"></td><td>dicen</td></tr>
+      <tr><td>salir</td><td>to leave/go out</td><td>salgo</td><td><input class="blank" style="width:70px" data-ans="sales"></td><td>sale</td><td>salimos</td><td>salen</td></tr>
+      <tr><td>seguir</td><td>to follow/continue</td><td><input class="blank" style="width:70px" data-ans="sigo"></td><td>sigues</td><td>sigue</td><td>seguimos</td><td>siguen</td></tr>
+    </table>
+    <button class="check-btn" onclick="checkFill()">✅ Check Table Answers</button>
+  </div>
+
+  <h2 class="sec">3. Read the Dialogue — Ana & Luis</h2>
+  <div class="card">
+    <div class="dial-line"><b>Ana:</b> Buenos días. ¿Qué haces tan temprano? <i>(Good morning. What are you doing so early?)</i></div>
+    <div class="dial-line"><b>Luis:</b> Voy al mercado. ¿Quieres algo? <i>(I'm going to the market. Do you want anything?)</i></div>
+    <div class="dial-line"><b>Ana:</b> Sí, puedes traerme pan, por favor. <i>(Yes, can you bring me some bread, please?)</i></div>
+    <div class="dial-line"><b>Luis:</b> Claro. Oye, ¿sabes dónde está mi cartera? <i>(Sure. Hey, do you know where my wallet is?)</i></div>
+    <div class="dial-line"><b>Ana:</b> Está en la mesa. Perdón por el desorden. <i>(It's on the table. Sorry for the mess.)</i></div>
+    <div class="dial-line"><b>Luis:</b> No pasa nada. ¿Tienes algo de efectivo? <i>(No problem. Do you have any cash?)</i></div>
+    <div class="dial-line"><b>Ana:</b> No tengo mucho, pero te doy cien pesos. <i>(I don't have much, but I'll give you a hundred pesos.)</i></div>
+    <div class="dial-line"><b>Luis:</b> Gracias. Oye, viene tu mamá hoy, ¿verdad? <i>(Thanks. Hey, your mom is coming today, right?)</i></div>
+    <div class="dial-line"><b>Ana:</b> Sí, viene a las dos. Dice que trae comida. <i>(Yes, she's coming at two. She says she's bringing food.)</i></div>
+    <div class="dial-line"><b>Luis:</b> ¡Qué buena onda! Salgo a las once y ya vengo. <i>(How cool! I'm leaving at eleven and I'll be right back.)</i></div>
+    <div class="dial-line"><b>Ana:</b> Está bien. Sigue el camino de siempre. <i>(Okay. Take the usual route.)</i></div>
+    <div class="dial-line"><b>Luis:</b> Perfecto. Ya vengo. <i>(Perfect. I'll be right back.)</i></div>
+
+    <p style="margin-top:14px;font-weight:600">Comprehension questions:</p>
+    <ol style="margin-top:8px">
+      <li>Where is Luis going, and why?<br><input type="text" style="width:100%;margin-top:4px;padding:6px"></li>
+      <li>Where is Luis's wallet?<br><input type="text" style="width:100%;margin-top:4px;padding:6px"></li>
+      <li>What does Ana give Luis, and how much?<br><input type="text" style="width:100%;margin-top:4px;padding:6px"></li>
+      <li>What does Luis's mom bring, and at what time is she coming?<br><input type="text" style="width:100%;margin-top:4px;padding:6px"></li>
+      <li>List the 3 real expressions used in the dialogue (e.g. "No pasa nada").<br><input type="text" style="width:100%;margin-top:4px;padding:6px"></li>
+    </ol>
+  </div>
+
+  <h2 class="sec">4. Match the Expression to its Meaning</h2>
+  <div class="card">
+    <table>
+      <tr><th>Spanish Expression</th><th>Write the English Meaning</th></tr>
+      <tr><td>No pasa nada</td><td><input type="text" style="width:100%"></td></tr>
+      <tr><td>¿Qué onda?</td><td><input type="text" style="width:100%"></td></tr>
+      <tr><td>Está bien</td><td><input type="text" style="width:100%"></td></tr>
+      <tr><td>¡Buena onda!</td><td><input type="text" style="width:100%"></td></tr>
+      <tr><td>¿Y qué?</td><td><input type="text" style="width:100%"></td></tr>
+      <tr><td>Ya viene</td><td><input type="text" style="width:100%"></td></tr>
+    </table>
+  </div>
+
+  <h2 class="sec">5. Multiple Choice Quiz</h2>
+  <div class="card" id="quiz"></div>
+  <button class="check-btn" onclick="gradeQuiz()">✅ Submit Quiz</button>
+  <div id="score"></div>
+
+  <h2 class="sec">6. Answer Key</h2>
+  <button class="toggle-btn" onclick="document.getElementById('key').classList.toggle('show')">👁 Show / Hide Answer Key</button>
+  <div class="answer-key" id="key">
+    <p><b>Fill-in-blank:</b> 1. vas · 2. tengo · 3. puede · 4. haces · 5. salimos · 6. dice · 7. vengo · 8. quieres</p>
+    <p style="margin-top:8px"><b>Conjugation table:</b> ir(voy,van) · dar(das,damos) · estar(está) · ser(eres,son) · tener(tenemos) · poder(puedo,pueden) · querer(quieres) · hacer(hace) · venir(vienes) · decir(decimos) · salir(sales) · seguir(sigo)</p>
+    <p style="margin-top:8px"><b>Dialogue comprehension:</b> 1. To the market, to buy bread · 2. On the table · 3. 100 pesos · 4. She brings food, comes at 2:00 · 5. No pasa nada / ¡Qué buena onda! / Está bien</p>
+    <p style="margin-top:8px"><b>Expressions:</b> No pasa nada = No problem/It's okay · ¿Qué onda? = What's up? · Está bien = It's fine/Okay · ¡Buena onda! = Cool!/Good vibes! · ¿Y qué? = So what?/And? · Ya viene = He/She's on the way</p>
+    <p style="margin-top:8px"><b>Quiz answers:</b> 1.voy · 2.vienes · 3.No problem/It's okay · 4.hago · 5.tengo · 6.estar · 7.I leave/I go out · 8.What's up? · 9.digo · 10.puedes · 11.Está bien, nos vemos a las cinco · 12.quieren</p>
+  </div>
+</div>
+
+<script>
+function checkFill(){
+  document.querySelectorAll('.blank').forEach(inp=>{
+    const ans=(inp.dataset.ans||'').toLowerCase().trim();
+    const val=inp.value.toLowerCase().trim().replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i').replace(/ó/g,'o').replace(/ú/g,'u');
+    const cleanAns=ans.replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i').replace(/ó/g,'o').replace(/ú/g,'u');
+    inp.style.borderColor = (val===cleanAns) ? '#3ecf5b' : '#ff5b5b';
+    inp.style.borderWidth='2px';
+  });
+}
+
+const questions=[
+  {q:'What is the "yo" form of "ir" (to go)?',opts:['iro','yo','voy','ibo'],ans:2},
+  {q:'Complete: "¿___ a la fiesta esta noche?" (venir - tú)',opts:['venes','vienes','vengas','viene'],ans:1},
+  {q:'What does "No pasa nada" mean?',opts:['Nothing is happening','No problem / It\'s okay','I don\'t understand','It doesn\'t matter to me'],ans:1},
+  {q:'What is the "yo" form of "hacer" (to do)?',opts:['haceo','haco','hace','hago'],ans:3},
+  {q:'Complete: "Yo no ___ mucho efectivo." (tener)',opts:['tienen','tengo','tenemos','tienes'],ans:1},
+  {q:'Which verb is used for TEMPORARY states like feelings or location?',opts:['ser','ir','estar','tener'],ans:2},
+  {q:'What is "salgo" in English?',opts:['I come out','You leave','I leave / I go out','He exits'],ans:2},
+  {q:'What does "¿Qué onda?" mean?',opts:['What\'s the frequency?','What\'s up? / How\'s it going?','What\'s the problem?','What wave?'],ans:1},
+  {q:'What is "decir" yo form?',opts:['deco','deces','digo','dicho'],ans:2},
+  {q:'Complete: "¿___ venir a cenar?" (poder - tú)',opts:['podres','puedes','pueden','podemos'],ans:1},
+  {q:'Which sentence uses an expression correctly?',opts:['¡Buena onda! Está muy difícil.','No pasa nada, llegué tarde a propósito.','Está bien, nos vemos a las cinco.','¿Y qué? Soy tu maestro.'],ans:2},
+  {q:'What is the "ellos" form of "querer" (to want)?',opts:['queremos','queréis','querian','quieren'],ans:3},
+];
+
+const quizDiv=document.getElementById('quiz');
+questions.forEach((item,i)=>{
+  const div=document.createElement('div');
+  div.className='q';
+  div.innerHTML=`<p class="qtext">${i+1}. ${item.q}</p>`+
+    item.opts.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('');
+  quizDiv.appendChild(div);
+});
+
+function gradeQuiz(){
+  let score=0;
+  questions.forEach((item,i)=>{
+    const sel=document.querySelector(`input[name="q${i}"]:checked`);
+    const labels=document.querySelectorAll(`input[name="q${i}"]`);
+    labels.forEach(l=>l.parentElement.style.background='');
+    if(sel){
+      const correctLabel=labels[item.ans].parentElement;
+      if(parseInt(sel.value)===item.ans){score++;correctLabel.style.background='#d7ffd9';}
+      else{sel.parentElement.style.background='#ffd7d7';correctLabel.style.background='#d7ffd9';}
+    }
+  });
+  document.getElementById('score').innerText=`Score: ${score} / ${questions.length}`;
+}
+</script>
+</body>
+</html>
