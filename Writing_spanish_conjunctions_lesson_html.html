@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/3f963f41-094b-4ff6-9181-39fa023f5d01/files/">
+<meta charset="UTF-8">
+<title>Conjunciones Españolas / Spanish Conjunctions</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg,#fdf6ff,#eafaf1); margin:0; padding:0; color:#222; }
+  header { background:#c0392b; color:#fff; padding:24px; text-align:center; }
+  header h1 { margin:0; font-size:2em; }
+  header p { margin:6px 0 0; font-size:1.05em; opacity:.9;}
+  nav { display:flex; justify-content:center; flex-wrap:wrap; background:#2c3e50; }
+  nav button { background:none; border:none; color:#fff; padding:14px 18px; cursor:pointer; font-size:1em; }
+  nav button:hover, nav button.active { background:#e67e22; }
+  section { display:none; max-width:900px; margin:24px auto; padding:20px; background:#fff; border-radius:12px; box-shadow:0 4px 14px rgba(0,0,0,.08);}
+  section.active { display:block; }
+  h2 { color:#c0392b; border-bottom:3px solid #e67e22; padding-bottom:6px;}
+  .card { background:#fff8f0; border:1px solid #f0d9c0; border-radius:10px; padding:14px; margin:10px 0; display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .emoji { font-size:2em; }
+  .word-en { font-weight:bold; color:#2c3e50; min-width:150px;}
+  .word-es { color:#c0392b; font-style:italic; min-width:150px;}
+  .listen-btn { background:#27ae60; color:#fff; border:none; padding:8px 14px; border-radius:20px; cursor:pointer; }
+  .listen-btn:hover { background:#1e8449; }
+  table { width:100%; border-collapse:collapse; margin:14px 0; }
+  th, td { border:1px solid #eadbc8; padding:10px; text-align:left; vertical-align:top; font-size:.95em;}
+  th { background:#f9e6d8; }
+  .example { color:#555; font-size:.9em; }
+  .dialogue-line { padding:8px 10px; margin:6px 0; border-left:4px solid #e67e22; background:#fefaf5; border-radius:0 8px 8px 0; cursor:pointer;}
+  .dialogue-line:hover { background:#fdf0e0; }
+  .es-line { font-weight:bold; }
+  .en-line { color:#777; font-size:.9em; }
+  .game-box { background:#f4faf6; border:2px dashed #27ae60; border-radius:10px; padding:16px; margin:14px 0;}
+  .tiles { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;}
+  .tile { background:#e67e22; color:#fff; padding:8px 12px; border-radius:6px; cursor:pointer; user-select:none;}
+  .tile.used { opacity:.3; pointer-events:none;}
+  .dropzone { min-height:40px; border:2px dashed #999; border-radius:8px; padding:8px; margin:8px 0; background:#fff;}
+  #scramble-feedback, #match-feedback, #fill-feedback { margin-top:8px; font-weight:bold;}
+  .match-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px;}
+  .match-card { background:#2c3e50; color:#fff; border-radius:8px; padding:18px 6px; text-align:center; cursor:pointer; font-size:.95em; min-height:40px;}
+  .match-card.flipped { background:#e67e22; }
+  .match-card.matched { background:#27ae60; pointer-events:none; }
+  .quiz-q { margin:16px 0; padding:14px; background:#fdf6ec; border-radius:10px;}
+  .quiz-opt { display:block; width:100%; text-align:left; margin:6px 0; padding:10px; border:1px solid #ddd; border-radius:8px; background:#fff; cursor:pointer;}
+  .quiz-opt.correct { background:#d5f5e3; border-color:#27ae60;}
+  .quiz-opt.wrong { background:#fadbd8; border-color:#c0392b;}
+  #score-box { text-align:center; font-size:1.2em; font-weight:bold; margin-top:16px;}
+  .fill-input { padding:6px; border-radius:6px; border:1px solid #ccc; width:110px;}
+  .btn { background:#c0392b; color:#fff; border:none; padding:10px 18px; border-radius:20px; cursor:pointer; margin-top:10px;}
+  .btn:hover { background:#a5281c; }
+  .note { background:#eaf2f8; border-left:4px solid #2980b9; padding:10px 14px; border-radius:0 8px 8px 0; margin:10px 0; font-size:.92em;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🔗 Conjunciones Españolas / Spanish Conjunctions</h1>
+  <p>Audio Dictionary · Grammar · Games · Quiz — Bilingüe ES/EN</p>
+</header>
+<nav>
+  <button class="navbtn active" data-tab="dict">🔊 Audio Dictionary</button>
+  <button class="navbtn" data-tab="grammar">📖 Grammar & Subtitles</button>
+  <button class="navbtn" data-tab="games">🎮 Games</button>
+  <button class="navbtn" data-tab="quiz">📝 Quiz</button>
+</nav>
+
+<!-- ============ 1. AUDIO DICTIONARY ============ -->
+<section id="dict" class="active">
+  <h2>🔊 Diccionario de Audio / Audio Dictionary</h2>
+  <p class="note">Haz clic en "Listen" para escuchar cada conjunción en español y luego en inglés. / Click "Listen" to hear each conjunction in Spanish then English.</p>
+  <div id="dict-list"></div>
+</section>
+
+<!-- ============ 2. GRAMMAR & SUBTITLES ============ -->
+<section id="grammar">
+  <h2>📖 Gramática y Subtítulos / Grammar & Subtitles</h2>
+
+  <div class="note"><b>ES:</b> Las conjunciones son partes invariables de la oración que conectan palabras, frases u oraciones y expresan relaciones entre ellas.<br>
+  <b>EN:</b> Conjunctions are invariable parts of speech used to connect words, phrases, or clauses within a sentence, expressing relationships between elements.</div>
+
+  <h3>➕ Conjunciones de adición / Conjunctions of Addition</h3>
+  <table id="tbl-add"></table>
+
+  <h3>🔀 Conjunciones de alternativa / Conjunctions of Alternative</h3>
+  <table id="tbl-alt"></table>
+
+  <h3>💬 Conjunciones de explicación / Conjunctions of Explanation</h3>
+  <table id="tbl-exp"></table>
+
+  <h3>⚖️ Conjunciones de contraste / Conjunctions of Contrast</h3>
+  <table id="tbl-con"></table>
+
+  <h3>🗣️ Diálogo práctico / Practice Dialogue (con subtítulos)</h3>
+  <p class="note">Haz clic en cada línea para escucharla. / Click each line to hear it.</p>
+  <div id="dialogue-list"></div>
+</section>
+
+<!-- ============ 3. GAMES ============ -->
+<section id="games">
+  <h2>🎮 Juegos / Games</h2>
+
+  <div class="game-box">
+    <h3>🧩 Juego 1: Ordena la Palabra / Word Scramble</h3>
+    <p id="scramble-clue">Cargando...</p>
+    <div class="tiles" id="scramble-tiles"></div>
+    <div class="dropzone" id="scramble-drop"></div>
+    <button class="btn" onclick="checkScramble()">Comprobar / Check</button>
+    <button class="btn" onclick="nextScramble()">Siguiente / Next</button>
+    <div id="scramble-feedback"></div>
+  </div>
+
+  <div class="game-box">
+    <h3>🃏 Juego 2: Memoria (Emparejar) / Memory Match</h3>
+    <p>Empareja la conjunción en español con su traducción en inglés. / Match the Spanish conjunction with its English meaning.</p>
+    <div class="match-grid" id="match-grid"></div>
+    <div id="match-feedback"></div>
+  </div>
+
+  <div class="game-box">
+    <h3>✏️ Juego 3: Completa la Frase / Fill in the Blank</h3>
+    <div id="fill-list"></div>
+    <button class="btn" onclick="checkFill()">Comprobar / Check</button>
+    <div id="fill-feedback"></div>
+  </div>
+</section>
+
+<!-- ============ 4. QUIZ ============ -->
+<section id="quiz">
+  <h2>📝 Quiz Final</h2>
+  <div id="quiz-list"></div>
+  <button class="btn" onclick="submitQuiz()">Enviar Respuestas / Submit</button>
+  <div id="score-box"></div>
+</section>
+
+<script>
+/* ---------- DATA ---------- */
+const vocab = [
+  {emoji:"➕", es:"y", en:"and"},
+  {emoji:"➕", es:"e", en:"and (before i- sound)"},
+  {emoji:"🚫", es:"ni...ni", en:"neither...nor"},
+  {emoji:"🔀", es:"o", en:"or"},
+  {emoji:"🔀", es:"u", en:"or (before o- sound)"},
+  {emoji:"⚖️", es:"o...o", en:"either...or"},
+  {emoji:"💬", es:"es decir", en:"that is to say"},
+  {emoji:"⚠️", es:"aunque", en:"although / even though"},
+  {emoji:"↔️", es:"pero", en:"but"},
+  {emoji:"📜", es:"mas", en:"but (formal)"},
+  {emoji:"🔁", es:"sino", en:"but (rather)"},
+  {emoji:"🧭", es:"no obstante", en:"however / nevertheless"},
+  {emoji:"🌤️", es:"sin embargo", en:"however / though"}
+];
+
+function speakSeq(esText, enText){
+  window.speechSynthesis.cancel();
+  const u1 = new SpeechSynthesisUtterance(esText);
+  u1.lang = "es-ES";
+  const u2 = new SpeechSynthesisUtterance(enText);
+  u2.lang = "en-US";
+  u1.onend = () => window.speechSynthesis.speak(u2);
+  window.speechSynthesis.speak(u1);
+}
+
+/* ---------- 1. Dictionary ---------- */
+const dictList = document.getElementById("dict-list");
+vocab.forEach(v=>{
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `<span class="emoji">${v.emoji}</span>
+    <span class="word-es">${v.es}</span>
+    <span class="word-en">${v.en}</span>
+    <button class="listen-btn">🔊 Listen</button>`;
+  card.querySelector(".listen-btn").onclick = ()=> speakSeq(v.es, v.en);
+  dictList.appendChild(card);
+});
+
+/* ---------- 2. Grammar Tables ---------- */
+function buildTable(id, rows){
+  const t = document.getElementById(id);
+  t.innerHTML = `<tr><th>Conjunción / Conjunction</th><th>Uso / Usage</th><th>Ejemplos / Examples</th></tr>` +
+    rows.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td class="example">${r[2].replace(/\n/g,"<br>")}</td></tr>`).join("");
+}
+buildTable("tbl-add", [
+ ["y (and)","Une 2 o más palabras, frases u oraciones. / Joins 2+ words, clauses, or sentences.",
+  "Me gustan el amarillo y el azul. (I like the yellow and blue ones.)<br>Antonio fue de compras y preparó el almuerzo. (Antonio went shopping and made lunch.)"],
+ ["e (and)","Se usa en vez de 'y' antes de una palabra que empieza con sonido 'i'. / Used instead of 'y' before a word starting with an 'i' sound.",
+  "Juan e Isa se acaban de casar. (Juan and Isa just got married.)<br>Luis es alto, guapo e inteligente. (Luis is tall, handsome and intelligent.)"],
+ ["ni / ni...ni (neither / neither...nor)","Expresa negación; une elementos negativos. / Expresses negation; joins negative elements.",
+  "No me gusta la carne ni el pescado. (I don't like meat or fish.)<br>Ni España ni Portugal tienen más de 100 millones de habitantes. (Neither Spain nor Portugal has more than 100 million inhabitants.)"]
+]);
+buildTable("tbl-alt", [
+ ["o (or)","Elegir 1 entre 2 o más opciones. / Choose 1 from 2+ options.",
+  "¿Quieres café o té? (Do you want coffee or tea?)"],
+ ["u (or)","Se usa en vez de 'o' antes de una palabra que empieza con sonido 'o'. / Used instead of 'o' before a word starting with an 'o' sound.",
+  "Tendrá siete u ocho años. (He must be seven or eight.)"],
+ ["o...o (either...or)","Solo hay 2 opciones. / Only 2 options.",
+  "Puedes elegir o el blanco o el negro. (You can choose either the white one or the black one.)"]
+]);
+buildTable("tbl-exp", [
+ ["es decir (that is to say)","Añade una explicación; se escribe entre comas. / Adds an explanation; written between commas.",
+  "Soy hijo único, es decir, no tengo hermanos. (I'm an only child, that is to say, I have no siblings.)"]
+]);
+buildTable("tbl-con", [
+ ["aunque (although)","Expresa una contradicción o algo inesperado. / Expresses contradiction or the unexpected.",
+  "Aunque hace frío, vamos a pasear al parque. (Even though it's cold, we're going for a walk.)"],
+ ["pero (but)","Indica contradicción o énfasis. / Indicates contradiction or emphasis.",
+  "Es bajo pero es un buen jugador. (He's short, but he's a good player.)"],
+ ["mas (but, formal)","Forma formal de 'pero', sin tilde. / Formal counterpart of 'pero', no accent.",
+  "Tengo dinero, mas no soy rico. (I have money, but I'm not rich.)"],
+ ["sino (but rather)","Se usa tras una parte negativa (no...sino). / Used after a negative clause (no...sino).",
+  "No es febrero sino marzo. (It's not February but March.)"],
+ ["no obstante (however)","Formal; tras un punto y antes de coma. / Formal; after a period, before a comma.",
+  "Me mintió. No obstante, lo perdoné. (He lied to me. However, I forgave him.)"],
+ ["sin embargo (however)","Menos formal que 'no obstante'. / Less formal than 'no obstante'.",
+  "Soy estudiante. Sin embargo, ya tengo trabajo. (I'm a student. However, I already have a job.)"]
+]);
+
+/* Dialogue */
+const dialogue = [
+ {es:"Aunque hace frío, ¿quieres pasear al parque?", en:"Even though it's cold, do you want to walk to the park?"},
+ {es:"Es bajo pero es un buen jugador, ¿verdad?", en:"He's short, but he's a good player, right?"},
+ {es:"No quiero café ni té, gracias.", en:"I don't want coffee or tea, thanks."},
+ {es:"¿Prefieres el rojo o el azul?", en:"Do you prefer the red one or the blue one?"},
+ {es:"Soy estudiante; sin embargo, ya tengo trabajo.", en:"I'm a student; however, I already have a job."}
+];
+const dlWrap = document.getElementById("dialogue-list");
+dialogue.forEach(l=>{
+  const div = document.createElement("div");
+  div.className = "dialogue-line";
+  div.innerHTML = `<div class="es-line">${l.es}</div><div class="en-line">${l.en}</div>`;
+  div.onclick = ()=> speakSeq(l.es, l.en);
+  dlWrap.appendChild(div);
+});
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll(".navbtn").forEach(btn=>{
+  btn.onclick = ()=>{
+    document.querySelectorAll(".navbtn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  };
+});
+
+/* ---------- Game 1: Scramble ---------- */
+const scrambleWords = ["AUNQUE","PERO","SINO","ENTONCES".slice(0,0)||"EMBARGO"];
+const scrambleData = [
+ {word:"AUNQUE", clue:"Although / even though"},
+ {word:"PERO", clue:"But"},
+ {word:"SINO", clue:"But rather"},
+ {word:"EMBARGO", clue:"...sin ___ = however"}
+];
+let scrambleIdx = 0;
+let currentLetters = [];
+function shuffle(arr){ return arr.slice().sort(()=>Math.random()-0.5); }
+function loadScramble(){
+  const item = scrambleData[scrambleIdx % scrambleData.length];
+  document.getElementById("scramble-clue").textContent = "Pista / Clue: " + item.clue;
+  currentLetters = shuffle(item.word.split(""));
+  const tilesDiv = document.getElementById("scramble-tiles");
+  tilesDiv.innerHTML = "";
+  const drop = document.getElementById("scramble-drop");
+  drop.innerHTML = "";
+  drop.dataset.answer = item.word;
+  currentLetters.forEach((ch,i)=>{
+    const t = document.createElement("span");
+    t.className = "tile";
+    t.textContent = ch;
+    t.onclick = ()=>{
+      if(t.classList.contains("used")) return;
+      drop.textContent += ch;
+      t.classList.add("used");
+    };
+    tilesDiv.appendChild(t);
+  });
+  document.getElementById("scramble-feedback").textContent = "";
+}
+function checkScramble(){
+  const drop = document.getElementById("scramble-drop");
+  const fb = document.getElementById("scramble-feedback");
+  if(drop.textContent.toUpperCase() === drop.dataset.answer){
+    fb.style.color = "#27ae60";
+    fb.textContent = "✅ ¡Correcto! / Correct!";
+  } else {
+    fb.style.color = "#c0392b";
+    fb.textContent = "❌ Intenta de nuevo / Try again";
+  }
+}
+function nextScramble(){
+  scrambleIdx++;
+  loadScramble();
+}
+loadScramble();
+
+/* ---------- Game 2: Memory Match ---------- */
+const matchPairs = [
+  {es:"pero", en:"but"},
+  {es:"aunque", en:"although"},
+  {es:"o...o", en:"either...or"},
+  {es:"sin embargo", en:"however"}
+];
+let matchCards = [];
+matchPairs.forEach((p,i)=>{
+  matchCards.push({id:"es"+i, text:p.es, pair:i});
+  matchCards.push({id:"en"+i, text:p.en, pair:i});
+});
+matchCards = shuffle(matchCards);
+let flipped = [];
+let matchedCount = 0;
+const grid = document.getElementById("match-grid");
+matchCards.forEach(c=>{
+  const div = document.createElement("div");
+  div.className = "match-card";
+  div.dataset.pair = c.pair;
+  div.dataset.text = c.text;
+  div.textContent = "❓";
+  div.onclick = ()=> flipCard(div);
+  grid.appendChild(div);
+});
+function flipCard(div){
+  if(div.classList.contains("flipped") || div.classList.contains("matched") || flipped.length===2) return;
+  div.classList.add("flipped");
+  div.textContent = div.dataset.text;
+  flipped.push(div);
+  if(flipped.length===2){
+    setTimeout(()=>{
+      const [a,b] = flipped;
+      const fb = document.getElementById("match-feedback");
+      if(a.dataset.pair === b.dataset.pair && a!==b){
+        a.classList.add("matched"); b.classList.add("matched");
+        matchedCount++;
+        fb.style.color="#27ae60";
+        fb.textContent = "✅ ¡Emparejado! / Matched!";
+        if(matchedCount === matchPairs.length){
+          fb.textContent = "🎉 ¡Completado! / Completed!";
+        }
+      } else {
+        a.classList.remove("flipped"); a.textContent="❓";
+        b.classList.remove("flipped"); b.textContent="❓";
+        fb.style.color="#c0392b";
+        fb.textContent = "❌ No coincide / No match";
+      }
+      flipped = [];
+    }, 700);
+  }
+}
+
+/* ---------- Game 3: Fill in the blank ---------- */
+const fillData = [
+  {sentence:"No me gusta la carne ___ el pescado. (I don't like meat or fish.)", answer:"ni"},
+  {sentence:"Aunque hace frío, vamos a pasear. ___ hace frío. (Even though it's cold...)", answer:"aunque"},
+  {sentence:"Es bajo ___ es un buen jugador. (He's short but he's a good player.)", answer:"pero"},
+  {sentence:"No es febrero ___ marzo. (It's not February but March.)", answer:"sino"}
+];
+const fillWrap = document.getElementById("fill-list");
+fillData.forEach((f,i)=>{
+  const div = document.createElement("div");
+  div.style.margin="10px 0";
+  div.innerHTML = `<span>${i+1}. ${f.sentence.replace("___", '<input type="text" class="fill-input" id="fill-'+i+'">')}</span>`;
+  fillWrap.appendChild(div);
+});
+function checkFill(){
+  let correct=0;
+  fillData.forEach((f,i)=>{
+    const input = document.getElementById("fill-"+i);
+    if(input.value.trim().toLowerCase() === f.answer){
+      input.style.background="#d5f5e3"; correct++;
+    } else {
+      input.style.background="#fadbd8";
+    }
+  });
+  const fb = document.getElementById("fill-feedback");
+  fb.textContent = `Puntuación / Score: ${correct}/${fillData.length}`;
+}
+
+/* ---------- Quiz ---------- */
+const quizData = [
+  {q:"¿Qué conjunción se usa en vez de 'y' antes de una palabra que empieza con 'i'?", opts:["e","u","ni","o"], correct:0,
+   fbCorrect:"✅ ¡Correcto! 'e' se usa antes de sonido 'i'. / Correct! 'e' is used before an 'i' sound.",
+   fbWrong:"❌ Incorrecto. La respuesta es 'e'. / Incorrect. The answer is 'e'."},
+  {q:"'Aunque hace frío, vamos a pasear' expresses...", opts:["Addition","Alternative","Contrast","Explanation"], correct:2,
+   fbCorrect:"✅ ¡Correcto! 'Aunque' expresa contraste. / Correct! 'Aunque' expresses contrast.",
+   fbWrong:"❌ Incorrecto. 'Aunque' expresa contraste. / Incorrect. 'Aunque' expresses contrast."},
+  {q:"¿Cuál es la forma más formal de 'pero'?", opts:["sino","mas","no obstante","es decir"], correct:1,
+   fbCorrect:"✅ ¡Correcto! 'Mas' es el equivalente formal de 'pero'. / Correct! 'Mas' is the formal counterpart of 'pero'.",
+   fbWrong:"❌ Incorrecto. La respuesta es 'mas'. / Incorrect. The answer is 'mas'."},
+  {q:"Complete: 'No es febrero ___ marzo.'", opts:["pero","sino","aunque","ni"], correct:1,
+   fbCorrect:"✅ ¡Correcto! Se usa 'sino' tras una negación. / Correct! 'Sino' follows a negative clause.",
+   fbWrong:"❌ Incorrecto. La respuesta es 'sino'. / Incorrect. The answer is 'sino'."},
+  {q:"'u' se usa en lugar de 'o' cuando la siguiente palabra empieza con...", opts:["sonido 'a'","sonido 'o'","sonido 'e'","sonido 'u'"], correct:1,
+   fbCorrect:"✅ ¡Correcto! / Correct!",
+   fbWrong:"❌ Incorrecto. Se usa antes de sonido 'o'. / Incorrect. It's used before an 'o' sound."},
+  {q:"¿Qué expresión significa 'that is to say'?", opts:["sin embargo","es decir","no obstante","mas"], correct:1,
+   fbCorrect:"✅ ¡Correcto! 'Es decir' = that is to say. / Correct!",
+   fbWrong:"❌ Incorrecto. La respuesta es 'es decir'. / Incorrect. The answer is 'es decir'."}
+];
+const quizWrap = document.getElementById("quiz-list");
+let userAnswers = new Array(quizData.length).fill(null);
+quizData.forEach((q,i)=>{
+  const div = document.createElement("div");
+  div.className = "quiz-q";
+  div.innerHTML = `<p><b>${i+1}. ${q.q}</b></p>` +
+    q.opts.map((o,j)=>`<button class="quiz-opt" data-q="${i}" data-o="${j}">${o}</button>`).join("");
+  quizWrap.appendChild(div);
+});
+quizWrap.querySelectorAll(".quiz-opt").forEach(btn=>{
+  btn.onclick = ()=>{
+    const qi = +btn.dataset.q, oi = +btn.dataset.o;
+    userAnswers[qi] = oi;
+    const parent = btn.parentElement;
+    parent.querySelectorAll(".quiz-opt").forEach(b=>b.classList.remove("correct","wrong"));
+    btn.classList.add(oi === quizData[qi].correct ? "correct":"wrong");
+  };
+});
+function submitQuiz(){
+  let score = 0;
+  const box = document.getElementById("score-box");
+  let detail = "";
+  quizData.forEach((q,i)=>{
+    const parent = quizWrap.children[i];
+    parent.querySelectorAll(".quiz-opt").forEach((b,j)=>{
+      if(j===q.correct) b.classList.add("correct");
+    });
+    if(userAnswers[i] === q.correct){
+      score++;
+      detail += `<p>${i+1}. ${q.fbCorrect}</p>`;
+    } else {
+      detail += `<p>${i+1}. ${q.fbWrong}</p>`;
+    }
+  });
+  box.innerHTML = `Puntuación / Score: ${score} / ${quizData.length}<br><div style="font-weight:normal;font-size:.9em;text-align:left;margin-top:10px;">${detail}</div>`;
+}
+</script>
+</body>
+</html>
