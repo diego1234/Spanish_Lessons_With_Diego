@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/WBVVCxveSoALXdABZfOioT26dM6LV1os/d2097a48-86df-4bf9-ba27-7e7386fbc42c/files/">
+<meta charset="UTF-8">
+<title>💍 Vocabulario de Boda / Wedding Vocabulary — ES/EN</title>
+<style>
+  :root{
+    --pink:#e91e8c; --gold:#c9a24b; --cream:#fff8f0; --dark:#3a2b2b; --green:#2e7d32; --red:#c62828;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif; margin:0; background:linear-gradient(135deg,#fdf2f8,#fff8e7);
+    color:var(--dark); padding:20px;
+  }
+  .container{max-width:900px;margin:0 auto;}
+  h1{text-align:center;color:var(--pink);font-size:2.2em;margin-bottom:0;}
+  .subtitle{text-align:center;color:var(--gold);margin-top:4px;margin-bottom:30px;font-style:italic;}
+  nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px;}
+  nav button{
+    background:white;border:2px solid var(--pink);color:var(--pink);padding:10px 18px;border-radius:25px;
+    cursor:pointer;font-weight:bold;font-size:0.95em;transition:.2s;
+  }
+  nav button.active, nav button:hover{background:var(--pink);color:white;}
+  section{display:none;background:white;border-radius:16px;padding:25px;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-bottom:20px;}
+  section.active{display:block;}
+  h2{color:var(--pink);border-bottom:3px solid var(--gold);padding-bottom:8px;}
+
+  /* Dictionary */
+  .word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
+  .word-card{
+    background:var(--cream);border:2px solid #f3d9e6;border-radius:12px;padding:14px;text-align:center;
+  }
+  .word-card .emoji{font-size:2.2em;}
+  .word-card .en{font-weight:bold;font-size:1.1em;color:var(--dark);margin-top:6px;}
+  .word-card .es{color:var(--pink);font-style:italic;margin:2px 0 8px;}
+  .listen-btn{
+    background:var(--gold);color:white;border:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-size:0.85em;
+  }
+  .listen-btn:hover{background:#a9832e;}
+
+  /* Dialogue */
+  .dialogue-line{margin:14px 0;padding:12px 16px;border-radius:12px;background:var(--cream);border-left:5px solid var(--pink);}
+  .dialogue-line .speaker{font-weight:bold;color:var(--pink);}
+  .dialogue-line .en-text{margin:4px 0;}
+  .dialogue-line .es-text{color:#555;font-style:italic;}
+  .play-line{background:var(--pink);color:white;border:none;border-radius:15px;padding:4px 12px;cursor:pointer;margin-top:6px;font-size:0.8em;}
+
+  /* Flashcards */
+  .flash-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .flashcard{
+    width:280px;height:180px;perspective:1000px;cursor:pointer;
+  }
+  .flash-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d;}
+  .flashcard.flipped .flash-inner{transform:rotateY(180deg);}
+  .flash-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1.4em;font-weight:bold;padding:10px;text-align:center;}
+  .flash-front{background:linear-gradient(135deg,var(--pink),#f06ab0);color:white;}
+  .flash-back{background:linear-gradient(135deg,var(--gold),#e0bd6e);color:white;transform:rotateY(180deg);}
+  .flash-controls{display:flex;gap:12px;}
+  .flash-controls button{background:var(--pink);color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;}
+  .flash-counter{color:#777;}
+
+  /* Quiz */
+  .quiz-q{margin-bottom:22px;padding:16px;background:var(--cream);border-radius:12px;}
+  .quiz-q p.question{font-weight:bold;margin-bottom:10px;}
+  .quiz-q label{display:block;padding:8px 12px;margin:6px 0;background:white;border:1px solid #eee;border-radius:8px;cursor:pointer;}
+  .quiz-q label:hover{background:#fce4ef;}
+  #submit-quiz{display:block;margin:20px auto;background:var(--green);color:white;border:none;padding:12px 28px;border-radius:25px;font-size:1.05em;cursor:pointer;}
+  .feedback{margin-top:8px;font-weight:bold;padding:6px;border-radius:6px;}
+  .correct{background:#e6f4ea;color:var(--green);}
+  .incorrect{background:#fdecea;color:var(--red);}
+  #quiz-score{text-align:center;font-size:1.3em;font-weight:bold;margin-top:20px;color:var(--pink);}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>💍 Vocabulario de Boda</h1>
+  <p class="subtitle">Wedding Vocabulary — Español / English</p>
+
+  <nav>
+    <button class="tab-btn active" data-tab="dict">🔊 Diccionario</button>
+    <button class="tab-btn" data-tab="dialogue">💬 Diálogo</button>
+    <button class="tab-btn" data-tab="flash">🃏 Tarjetas</button>
+    <button class="tab-btn" data-tab="quiz">📝 Quiz</button>
+  </nav>
+
+  <!-- DICTIONARY -->
+  <section id="dict" class="active">
+    <h2>Diccionario de Audio / Audio Dictionary</h2>
+    <p>Haz clic en "Escuchar" para oír la palabra en inglés y luego en español.</p>
+    <div class="word-grid" id="word-grid"></div>
+  </section>
+
+  <!-- DIALOGUE -->
+  <section id="dialogue">
+    <h2>Diálogo Básico / Basic Dialogue</h2>
+    <p>Una conversación sobre los planes de boda. Haz clic en ▶ para escuchar cada línea.</p>
+    <div id="dialogue-box"></div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flash">
+    <h2>Tarjetas de Memoria / Flashcards</h2>
+    <p>Haz clic en la tarjeta para voltearla.</p>
+    <div class="flash-wrap">
+      <div class="flashcard" id="flashcard">
+        <div class="flash-inner">
+          <div class="flash-face flash-front" id="flash-front"></div>
+          <div class="flash-face flash-back" id="flash-back"></div>
+        </div>
+      </div>
+      <div class="flash-controls">
+        <button id="flash-prev">⬅ Anterior</button>
+        <button id="flash-listen">🔊 Escuchar</button>
+        <button id="flash-next">Siguiente ➡</button>
+      </div>
+      <div class="flash-counter" id="flash-counter"></div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <h2>Quiz Básico / Basic Quiz</h2>
+    <div id="quiz-box"></div>
+    <button id="submit-quiz">Enviar respuestas / Submit</button>
+    <div id="quiz-score"></div>
+  </section>
+</div>
+
+<script>
+const VOCAB = [
+  {en:"Bride", es:"Novia", emoji:"👰"},
+  {en:"Groom", es:"Novio", emoji:"🤵"},
+  {en:"Wedding ring", es:"Anillo de boda", emoji:"💍"},
+  {en:"Wedding dress", es:"Vestido de novia", emoji:"👗"},
+  {en:"Bridesmaid", es:"Dama de honor", emoji:"👯"},
+  {en:"Best man", es:"Padrino / testigo", emoji:"🎩"},
+  {en:"Wedding cake", es:"Pastel de boda", emoji:"🎂"},
+  {en:"Bouquet", es:"Ramo de flores", emoji:"💐"},
+  {en:"Vows", es:"Votos matrimoniales", emoji:"📜"},
+  {en:"Reception", es:"Recepción / banquete", emoji:"🥂"},
+  {en:"Guest", es:"Invitado", emoji:"🧑‍🤝‍🧑"},
+  {en:"Wedding invitation", es:"Invitación de boda", emoji:"✉️"},
+  {en:"Church / venue", es:"Iglesia / lugar", emoji:"⛪"},
+  {en:"Honeymoon", es:"Luna de miel", emoji:"🏝️"},
+  {en:"To get married", es:"Casarse", emoji:"💒"},
+  {en:"Officiant / priest", es:"Oficiante / sacerdote", emoji:"🙏"}
+];
+
+const DIALOGUE = [
+  {speaker:"Ana", en:"Hi Marta! How are the wedding plans going?", es:"¡Hola Marta! ¿Cómo van los planes de la boda?"},
+  {speaker:"Marta", en:"Great! We already chose the venue and the wedding dress.", es:"¡Genial! Ya elegimos el lugar y el vestido de novia."},
+  {speaker:"Ana", en:"Who is going to be your maid of honor?", es:"¿Quién va a ser tu dama de honor?"},
+  {speaker:"Marta", en:"My sister. And my fiancé asked his best friend to be the best man.", es:"Mi hermana. Y mi prometido le pidió a su mejor amigo ser el padrino."},
+  {speaker:"Ana", en:"That's beautiful! When are you sending out the invitations?", es:"¡Qué bonito! ¿Cuándo van a enviar las invitaciones?"},
+  {speaker:"Marta", en:"Next week, along with the details about the reception.", es:"La próxima semana, junto con los detalles de la recepción."},
+  {speaker:"Ana", en:"And where are you going for the honeymoon?", es:"¿Y a dónde van para la luna de miel?"},
+  {speaker:"Marta", en:"We're not sure yet — maybe an island somewhere warm!", es:"Todavía no estamos seguros — ¡tal vez una isla en algún lugar cálido!"}
+];
+
+const QUIZ = [
+  {q:"¿Cómo se dice 'novia' en inglés?", options:["Groom","Bride","Guest","Vow"], answer:1,
+   fb_correct:"¡Correcto! 'Bride' significa novia.", fb_incorrect:"Incorrecto. La respuesta correcta es 'Bride'."},
+  {q:"What does 'ramo de flores' mean in English?", options:["Bouquet","Cake","Ring","Dress"], answer:0,
+   fb_correct:"Correct! 'Bouquet' = ramo de flores.", fb_incorrect:"Incorrect. The correct answer is 'Bouquet'."},
+  {q:"'Best man' en español es:", options:["Novio","Sacerdote","Padrino / testigo","Invitado"], answer:2,
+   fb_correct:"¡Correcto! 'Best man' es el padrino o testigo del novio.", fb_incorrect:"Incorrecto. 'Best man' = padrino / testigo."},
+  {q:"¿Qué significa 'honeymoon'?", options:["Anillo de boda","Luna de miel","Recepción","Vestido de novia"], answer:1,
+   fb_correct:"¡Correcto! 'Honeymoon' = luna de miel.", fb_incorrect:"Incorrecto. La respuesta correcta es 'Luna de miel'."},
+  {q:"'To get married' en español significa:", options:["Divorciarse","Casarse","Comprometerse","Celebrar"], answer:1,
+   fb_correct:"¡Correcto! 'To get married' = casarse.", fb_incorrect:"Incorrecto. La respuesta correcta es 'Casarse'."},
+  {q:"¿Cómo se dice 'invitado' en inglés?", options:["Officiant","Groom","Guest","Bridesmaid"], answer:2,
+   fb_correct:"¡Correcto! 'Guest' significa invitado.", fb_incorrect:"Incorrecto. La respuesta correcta es 'Guest'."}
+];
+
+/* --- Tabs --- */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* --- TTS helper: speak EN then ES --- */
+function speakBilingual(en, es){
+  if(!('speechSynthesis' in window)){ alert('Tu navegador no soporta audio (Web Speech API).'); return; }
+  window.speechSynthesis.cancel();
+  const uEn = new SpeechSynthesisUtterance(en);
+  uEn.lang = 'en-US';
+  const uEs = new SpeechSynthesisUtterance(es);
+  uEs.lang = 'es-ES';
+  uEn.onend = ()=> window.speechSynthesis.speak(uEs);
+  window.speechSynthesis.speak(uEn);
+}
+function speakOne(text, lang){
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  window.speechSynthesis.speak(u);
+}
+
+/* --- Dictionary --- */
+const grid = document.getElementById('word-grid');
+VOCAB.forEach(w=>{
+  const card = document.createElement('div');
+  card.className='word-card';
+  card.innerHTML = `<div class="emoji">${w.emoji}</div>
+    <div class="en">${w.en}</div>
+    <div class="es">${w.es}</div>
+    <button class="listen-btn">🔊 Escuchar</button>`;
+  card.querySelector('.listen-btn').addEventListener('click', ()=>speakBilingual(w.en, w.es));
+  grid.appendChild(card);
+});
+
+/* --- Dialogue --- */
+const dBox = document.getElementById('dialogue-box');
+DIALOGUE.forEach(line=>{
+  const div = document.createElement('div');
+  div.className='dialogue-line';
+  div.innerHTML = `<div class="speaker">${line.speaker}:</div>
+    <div class="en-text">${line.en}</div>
+    <div class="es-text">${line.es}</div>
+    <button class="play-line">▶ Escuchar</button>`;
+  div.querySelector('.play-line').addEventListener('click', ()=>speakBilingual(line.en, line.es));
+  dBox.appendChild(div);
+});
+
+/* --- Flashcards --- */
+let flashIndex = 0;
+const flashcardEl = document.getElementById('flashcard');
+const frontEl = document.getElementById('flash-front');
+const backEl = document.getElementById('flash-back');
+const counterEl = document.getElementById('flash-counter');
+
+function renderFlash(){
+  const w = VOCAB[flashIndex];
+  frontEl.innerHTML = `${w.emoji}<br>${w.en}`;
+  backEl.innerHTML = w.es;
+  flashcardEl.classList.remove('flipped');
+  counterEl.textContent = `${flashIndex+1} / ${VOCAB.length}`;
+}
+flashcardEl.addEventListener('click', ()=> flashcardEl.classList.toggle('flipped'));
+document.getElementById('flash-next').addEventListener('click', ()=>{
+  flashIndex = (flashIndex+1) % VOCAB.length; renderFlash();
+});
+document.getElementById('flash-prev').addEventListener('click', ()=>{
+  flashIndex = (flashIndex-1+VOCAB.length) % VOCAB.length; renderFlash();
+});
+document.getElementById('flash-listen').addEventListener('click', ()=>{
+  const w = VOCAB[flashIndex];
+  speakBilingual(w.en, w.es);
+});
+renderFlash();
+
+/* --- Quiz --- */
+const quizBox = document.getElementById('quiz-box');
+QUIZ.forEach((q,i)=>{
+  const div = document.createElement('div');
+  div.className='quiz-q';
+  let optsHtml = q.options.map((opt,j)=>
+    `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`
+  ).join('');
+  div.innerHTML = `<p class="question">${i+1}. ${q.q}</p>${optsHtml}<div class="feedback" id="fb-${i}" style="display:none;"></div>`;
+  quizBox.appendChild(div);
+});
+
+document.getElementById('submit-quiz').addEventListener('click', ()=>{
+  let score = 0;
+  QUIZ.forEach((q,i)=>{
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById(`fb-${i}`);
+    fb.style.display='block';
+    if(selected && parseInt(selected.value)===q.answer){
+      score++;
+      fb.textContent = q.fb_correct;
+      fb.className='feedback correct';
+    } else {
+      fb.textContent = q.fb_incorrect;
+      fb.className='feedback incorrect';
+    }
+  });
+  document.getElementById('quiz-score').textContent =
+    `Puntaje / Score: ${score} / ${QUIZ.length}`;
+});
+</script>
+</body>
+</html>
