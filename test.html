@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/I3bdcQQIxqFzJGC73YEdnjpL0P5CaZi3/40752a04-920d-4558-b0f6-838caa705a1b/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish Irregular Verb Lab — Flashcards, Quiz & Match Game</title>
+<style>
+  :root{
+    --go:#E67E22; --zco:#8E44AD; --ie:#C0392B; --ue:#2980B9; --i:#27AE60;
+    --bg1:#fef3ec; --bg2:#e8f4fd; --dark:#2b2b2b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    margin:0; padding:16px;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+    color:var(--dark);
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+  h1{text-align:center;color:#c0392b;font-size:clamp(1.4em,4vw,2em);margin-bottom:4px;}
+  .subtitle{text-align:center;color:#666;margin-bottom:18px;font-size:0.95em;}
+  .tabs{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap;}
+  .tab-btn{padding:10px 18px;border:none;border-radius:999px;background:#ddd;cursor:pointer;font-weight:600;font-size:0.95em;}
+  .tab-btn.active{background:#c0392b;color:white;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .card-box{background:white;border-radius:16px;padding:clamp(14px,3vw,26px);box-shadow:0 6px 20px rgba(0,0,0,0.1);margin-bottom:18px;}
+
+  /* ---------- FLASHCARDS ---------- */
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;}
+  .filter-chip{padding:6px 14px;border-radius:999px;border:2px solid #ddd;background:#fafafa;cursor:pointer;font-size:0.85em;font-weight:600;}
+  .filter-chip.active{color:white;}
+  .flash-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .flash-nav button{padding:8px 14px;border:none;border-radius:8px;background:#2b2b2b;color:white;cursor:pointer;font-weight:600;}
+  #flash-counter{font-weight:600;color:#555;}
+  .flip-card{perspective:1200px;height:min(70vh,480px);cursor:pointer;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;}
+  .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;padding:20px;overflow-y:auto;
+    display:flex;flex-direction:column;}
+  .flip-front{background:#fff;align-items:center;justify-content:center;text-align:center;border:3px solid #eee;}
+  .flip-back{background:#fff;transform:rotateY(180deg);border:3px solid #eee;}
+  .pattern-badge{display:inline-block;padding:4px 12px;border-radius:999px;color:white;font-size:0.8em;font-weight:700;margin-bottom:14px;}
+  .verb-big{font-size:clamp(1.6em,5vw,2.4em);font-weight:800;margin:6px 0;}
+  .verb-meaning{color:#777;font-style:italic;margin-bottom:14px;}
+  .hint{color:#999;font-size:0.85em;margin-top:16px;}
+  .boot-diagram{display:flex;gap:10px;margin:12px 0;}
+  .boot-col{flex:1;border-radius:10px;padding:10px;font-size:0.8em;text-align:center;}
+  .boot-col.change{background:#fde3d0;}
+  .boot-col.regular{background:#eafaf1;}
+  .boot-col b{display:block;margin-bottom:6px;font-size:0.95em;}
+  .sent-list{margin-top:10px;}
+  .sent-item{display:flex;gap:8px;padding:8px 10px;border-radius:8px;background:#f8f8f8;margin-bottom:6px;align-items:baseline;flex-wrap:wrap;}
+  .sent-tag{font-weight:700;font-size:0.75em;padding:2px 8px;border-radius:6px;background:#eee;color:#555;min-width:64px;text-align:center;}
+  .sent-es{font-weight:600;}
+  .sent-en{color:#888;font-size:0.88em;font-style:italic;}
+
+  /* ---------- QUIZ ---------- */
+  #q-score{text-align:center;font-size:1.05em;margin-bottom:12px;font-weight:600;}
+  .question{font-size:clamp(1.1em,3vw,1.35em);margin-bottom:16px;text-align:center;font-weight:600;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:480px){.options{grid-template-columns:1fr;}}
+  .opt-btn{padding:14px;border-radius:10px;border:2px solid #ddd;background:#fafafa;cursor:pointer;font-size:1em;transition:0.2s;}
+  .opt-btn:hover{border-color:#c0392b;}
+  .opt-btn.correct{background:#d4edda;border-color:#28a745;}
+  .opt-btn.wrong{background:#f8d7da;border-color:#dc3545;}
+  #q-feedback{text-align:center;min-height:24px;font-weight:bold;margin-top:10px;}
+
+  /* ---------- MATCH GAME ---------- */
+  .match-stats{display:flex;justify-content:center;gap:20px;margin-bottom:14px;font-weight:600;flex-wrap:wrap;}
+  .match-stats span{background:#fafafa;padding:6px 14px;border-radius:8px;}
+  .match-board{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:600px){.match-board{grid-template-columns:1fr;}}
+  .match-col h3{text-align:center;margin-top:0;}
+  .match-item{padding:12px;margin-bottom:10px;border-radius:10px;background:#fafafa;border:2px solid #ddd;cursor:grab;text-align:center;font-weight:600;user-select:none;transition:0.15s;}
+  .match-item.selected{border-color:#c0392b;background:#fdecea;}
+  .match-item.matched{opacity:0.35;pointer-events:none;}
+  .match-item.dragover{border-color:#2980b9;background:#eaf3fb;}
+  .pulse-correct{animation:pulseGreen 0.5s;}
+  .shake-wrong{animation:shakeRed 0.4s;}
+  @keyframes pulseGreen{0%{box-shadow:0 0 0 0 rgba(40,167,69,0.6);}70%{box-shadow:0 0 0 14px rgba(40,167,69,0);}100%{box-shadow:0 0 0 0 rgba(40,167,69,0);}}
+  @keyframes shakeRed{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+  #reveal-box{margin-top:16px;text-align:center;}
+  #reveal-btn, .action-btn, #new-round-btn{padding:10px 20px;border:none;border-radius:8px;background:#c0392b;color:white;font-weight:600;cursor:pointer;display:block;margin:14px auto 0;}
+  #reveal-text{margin-top:10px;font-size:0.95em;color:#444;background:#f8f8f8;padding:10px;border-radius:8px;display:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Spanish Irregular Verb Lab</h1>
+  <p class="subtitle">Boot verbs · -GO verbs · -ZCO verbs — practice with flashcards, quizzes & a matching game</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="flash">🃏 Flashcards</button>
+    <button class="tab-btn" data-tab="quiz">📝 Quiz</button>
+    <button class="tab-btn" data-tab="match">🎮 Match Game</button>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div class="panel active" id="flash">
+    <div class="filter-row" id="filter-row"></div>
+    <div class="card-box">
+      <div class="flash-nav">
+        <button id="prev-btn">◀ Prev</button>
+        <span id="flash-counter"></span>
+        <button id="next-btn">Next ▶</button>
+      </div>
+      <div class="flip-card" id="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front" id="flip-front"></div>
+          <div class="flip-face flip-back" id="flip-back"></div>
+        </div>
+      </div>
+      <p class="hint" style="text-align:center;">Tap/click the card to flip — front shows the verb, back shows the boot diagram + 5 example sentences (yo / tú / él-ella / nosotros / ellos).</p>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="panel" id="quiz">
+    <div class="card-box">
+      <div id="q-score">Score: 0 / 0</div>
+      <div class="question" id="q-text"></div>
+      <div class="options" id="q-options"></div>
+      <div id="q-feedback"></div>
+    </div>
+  </div>
+
+  <!-- MATCH GAME -->
+  <div class="panel" id="match">
+    <div class="card-box">
+      <div class="match-stats">
+        <span id="m-score">✅ Correct: 0</span>
+        <span id="m-attempts">🎯 Attempts: 0</span>
+        <span id="m-accuracy">📊 Accuracy: 0%</span>
+      </div>
+      <div class="match-board">
+        <div class="match-col"><h3>Verb</h3><div id="match-left"></div></div>
+        <div class="match-col"><h3>Yo form</h3><div id="match-right"></div></div>
+      </div>
+      <div id="reveal-box">
+        <button id="reveal-btn">Reveal Example Sentence</button>
+        <div id="reveal-text"></div>
+      </div>
+      <button id="new-round-btn">🔄 New Round (5 random verbs)</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const VERBS = [{"inf": "tener", "meaning": "to have", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "tengo", "tu": "tienes", "el": "tiene", "nosotros": "tenemos", "ellos": "tienen"}, "sent": {"yo": ["Yo tengo un perro.", "I have a dog."], "tu": ["Tú tienes dos hermanos.", "You have two siblings."], "el": ["Ella tiene mucha tarea.", "She has a lot of homework."], "nosotros": ["Nosotros tenemos una casa grande.", "We have a big house."], "ellos": ["Ellos tienen hambre.", "They are hungry."]}}, {"inf": "salir", "meaning": "to leave / go out", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "salgo", "tu": "sales", "el": "sale", "nosotros": "salimos", "ellos": "salen"}, "sent": {"yo": ["Yo salgo temprano.", "I leave early."], "tu": ["Tú sales los viernes.", "You go out on Fridays."], "el": ["Él sale con sus amigos.", "He goes out with his friends."], "nosotros": ["Nosotros salimos a las ocho.", "We leave at eight."], "ellos": ["Ellos salen de vacaciones.", "They're leaving on vacation."]}}, {"inf": "poner", "meaning": "to put / set", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "pongo", "tu": "pones", "el": "pone", "nosotros": "ponemos", "ellos": "ponen"}, "sent": {"yo": ["Yo pongo la mesa.", "I set the table."], "tu": ["Tú pones música.", "You put on music."], "el": ["Ella pone atención en clase.", "She pays attention in class."], "nosotros": ["Nosotros ponemos las maletas en el coche.", "We put the suitcases in the car."], "ellos": ["Ellos ponen la película.", "They put the movie on."]}}, {"inf": "hacer", "meaning": "to do / make", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "hago", "tu": "haces", "el": "hace", "nosotros": "hacemos", "ellos": "hacen"}, "sent": {"yo": ["Yo hago la tarea.", "I do the homework."], "tu": ["Tú haces ejercicio.", "You exercise."], "el": ["Él hace la cena.", "He makes dinner."], "nosotros": ["Nosotros hacemos un pastel.", "We make a cake."], "ellos": ["Ellos hacen mucho ruido.", "They make a lot of noise."]}}, {"inf": "venir", "meaning": "to come", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "vengo", "tu": "vienes", "el": "viene", "nosotros": "venimos", "ellos": "vienen"}, "sent": {"yo": ["Yo vengo mañana.", "I'm coming tomorrow."], "tu": ["Tú vienes a la fiesta.", "You're coming to the party."], "el": ["Ella viene en tren.", "She's coming by train."], "nosotros": ["Nosotros venimos juntos.", "We're coming together."], "ellos": ["Ellos vienen tarde.", "They come late."]}}, {"inf": "decir", "meaning": "to say", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "digo", "tu": "dices", "el": "dice", "nosotros": "decimos", "ellos": "dicen"}, "sent": {"yo": ["Yo digo la verdad.", "I tell the truth."], "tu": ["Tú dices tonterías.", "You say silly things."], "el": ["Él dice que sí.", "He says yes."], "nosotros": ["Nosotros decimos gracias.", "We say thank you."], "ellos": ["Ellos dicen la misma cosa.", "They say the same thing."]}}, {"inf": "traer", "meaning": "to bring", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "traigo", "tu": "traes", "el": "trae", "nosotros": "traemos", "ellos": "traen"}, "sent": {"yo": ["Yo traigo el postre.", "I bring dessert."], "tu": ["Tú traes las bebidas.", "You bring the drinks."], "el": ["Ella trae su libro.", "She brings her book."], "nosotros": ["Nosotros traemos regalos.", "We bring gifts."], "ellos": ["Ellos traen la guitarra.", "They bring the guitar."]}}, {"inf": "oír", "meaning": "to hear", "pat": "go", "patLabel": "Pattern 1: -GO", "forms": {"yo": "oigo", "tu": "oyes", "el": "oye", "nosotros": "oímos", "ellos": "oyen"}, "sent": {"yo": ["Yo oigo música.", "I hear music."], "tu": ["¿Tú oyes eso?", "Do you hear that?"], "el": ["Él oye la radio.", "He listens to the radio."], "nosotros": ["Nosotros oímos las noticias.", "We hear the news."], "ellos": ["Ellos oyen el timbre.", "They hear the doorbell."]}}, {"inf": "conocer", "meaning": "to know (people/places)", "pat": "zco", "patLabel": "Pattern 2: -ZCO", "forms": {"yo": "conozco", "tu": "conoces", "el": "conoce", "nosotros": "conocemos", "ellos": "conocen"}, "sent": {"yo": ["Yo conozco a tu hermano.", "I know your brother."], "tu": ["Tú conoces la ciudad bien.", "You know the city well."], "el": ["Ella conoce el camino.", "She knows the way."], "nosotros": ["Nosotros conocemos ese restaurante.", "We know that restaurant."], "ellos": ["Ellos conocen España.", "They know Spain."]}}, {"inf": "conducir", "meaning": "to drive", "pat": "zco", "patLabel": "Pattern 2: -ZCO", "forms": {"yo": "conduzco", "tu": "conduces", "el": "conduce", "nosotros": "conducimos", "ellos": "conducen"}, "sent": {"yo": ["Yo conduzco un coche rojo.", "I drive a red car."], "tu": ["Tú conduces muy rápido.", "You drive very fast."], "el": ["Él conduce al trabajo.", "He drives to work."], "nosotros": ["Nosotros conducimos toda la noche.", "We drive all night."], "ellos": ["Ellos conducen con cuidado.", "They drive carefully."]}}, {"inf": "traducir", "meaning": "to translate", "pat": "zco", "patLabel": "Pattern 2: -ZCO", "forms": {"yo": "traduzco", "tu": "traduces", "el": "traduce", "nosotros": "traducimos", "ellos": "traducen"}, "sent": {"yo": ["Yo traduzco del inglés.", "I translate from English."], "tu": ["Tú traduces muy bien.", "You translate very well."], "el": ["Ella traduce el documento.", "She translates the document."], "nosotros": ["Nosotros traducimos el libro.", "We translate the book."], "ellos": ["Ellos traducen para la ONU.", "They translate for the UN."]}}, {"inf": "parecer", "meaning": "to seem", "pat": "zco", "patLabel": "Pattern 2: -ZCO", "forms": {"yo": "parezco", "tu": "pareces", "el": "parece", "nosotros": "parecemos", "ellos": "parecen"}, "sent": {"yo": ["Yo parezco cansado.", "I seem tired."], "tu": ["Tú pareces feliz hoy.", "You seem happy today."], "el": ["Ella parece nerviosa.", "She seems nervous."], "nosotros": ["Nosotros parecemos hermanos.", "We look like brothers."], "ellos": ["Ellos parecen confundidos.", "They seem confused."]}}, {"inf": "querer", "meaning": "to want / love", "pat": "ie", "patLabel": "Pattern 3A: e→ie", "forms": {"yo": "quiero", "tu": "quieres", "el": "quiere", "nosotros": "queremos", "ellos": "quieren"}, "sent": {"yo": ["Yo quiero café.", "I want coffee."], "tu": ["Tú quieres viajar.", "You want to travel."], "el": ["Ella quiere aprender español.", "She wants to learn Spanish."], "nosotros": ["Nosotros queremos descansar.", "We want to rest."], "ellos": ["Ellos quieren ganar.", "They want to win."]}}, {"inf": "pensar", "meaning": "to think", "pat": "ie", "patLabel": "Pattern 3A: e→ie", "forms": {"yo": "pienso", "tu": "piensas", "el": "piensa", "nosotros": "pensamos", "ellos": "piensan"}, "sent": {"yo": ["Yo pienso mucho.", "I think a lot."], "tu": ["Tú piensas rápido.", "You think fast."], "el": ["Él piensa en el futuro.", "He thinks about the future."], "nosotros": ["Nosotros pensamos igual.", "We think alike."], "ellos": ["Ellos piensan viajar pronto.", "They plan to travel soon."]}}, {"inf": "empezar", "meaning": "to start", "pat": "ie", "patLabel": "Pattern 3A: e→ie", "forms": {"yo": "empiezo", "tu": "empiezas", "el": "empieza", "nosotros": "empezamos", "ellos": "empiezan"}, "sent": {"yo": ["Yo empiezo hoy.", "I start today."], "tu": ["Tú empiezas el lunes.", "You start on Monday."], "el": ["La clase empieza a las nueve.", "Class starts at nine."], "nosotros": ["Nosotros empezamos juntos.", "We start together."], "ellos": ["Ellos empiezan el proyecto.", "They start the project."]}}, {"inf": "entender", "meaning": "to understand", "pat": "ie", "patLabel": "Pattern 3A: e→ie", "forms": {"yo": "entiendo", "tu": "entiendes", "el": "entiende", "nosotros": "entendemos", "ellos": "entienden"}, "sent": {"yo": ["Yo entiendo español.", "I understand Spanish."], "tu": ["¿Tú entiendes la pregunta?", "Do you understand the question?"], "el": ["Ella entiende el problema.", "She understands the problem."], "nosotros": ["Nosotros entendemos la lección.", "We understand the lesson."], "ellos": ["Ellos entienden las reglas.", "They understand the rules."]}}, {"inf": "preferir", "meaning": "to prefer", "pat": "ie", "patLabel": "Pattern 3A: e→ie", "forms": {"yo": "prefiero", "tu": "prefieres", "el": "prefiere", "nosotros": "preferimos", "ellos": "prefieren"}, "sent": {"yo": ["Yo prefiero té.", "I prefer tea."], "tu": ["Tú prefieres el verano.", "You prefer summer."], "el": ["Él prefiere quedarse en casa.", "He prefers to stay home."], "nosotros": ["Nosotros preferimos caminar.", "We prefer to walk."], "ellos": ["Ellos prefieren la playa.", "They prefer the beach."]}}, {"inf": "poder", "meaning": "to be able to", "pat": "ue", "patLabel": "Pattern 3B: o→ue", "forms": {"yo": "puedo", "tu": "puedes", "el": "puede", "nosotros": "podemos", "ellos": "pueden"}, "sent": {"yo": ["Yo puedo hacerlo.", "I can do it."], "tu": ["Tú puedes venir mañana.", "You can come tomorrow."], "el": ["Ella puede ayudarte.", "She can help you."], "nosotros": ["Nosotros podemos intentarlo.", "We can try it."], "ellos": ["Ellos pueden ganar el partido.", "They can win the game."]}}, {"inf": "dormir", "meaning": "to sleep", "pat": "ue", "patLabel": "Pattern 3B: o→ue", "forms": {"yo": "duermo", "tu": "duermes", "el": "duerme", "nosotros": "dormimos", "ellos": "duermen"}, "sent": {"yo": ["Yo duermo ocho horas.", "I sleep eight hours."], "tu": ["Tú duermes muy tarde.", "You sleep very late."], "el": ["El bebé duerme mucho.", "The baby sleeps a lot."], "nosotros": ["Nosotros dormimos en el sofá.", "We sleep on the couch."], "ellos": ["Ellos duermen la siesta.", "They take a nap."]}}, {"inf": "volver", "meaning": "to return", "pat": "ue", "patLabel": "Pattern 3B: o→ue", "forms": {"yo": "vuelvo", "tu": "vuelves", "el": "vuelve", "nosotros": "volvemos", "ellos": "vuelven"}, "sent": {"yo": ["Yo vuelvo a casa.", "I return home."], "tu": ["¿A qué hora vuelves?", "What time are you coming back?"], "el": ["Él vuelve del trabajo.", "He's returning from work."], "nosotros": ["Nosotros volvemos el domingo.", "We're returning on Sunday."], "ellos": ["Ellos vuelven pronto.", "They're coming back soon."]}}, {"inf": "contar", "meaning": "to count / tell", "pat": "ue", "patLabel": "Pattern 3B: o→ue", "forms": {"yo": "cuento", "tu": "cuentas", "el": "cuenta", "nosotros": "contamos", "ellos": "cuentan"}, "sent": {"yo": ["Yo cuento el dinero.", "I count the money."], "tu": ["Tú cuentas un buen chiste.", "You tell a good joke."], "el": ["Ella cuenta una historia.", "She tells a story."], "nosotros": ["Nosotros contamos las horas.", "We count the hours."], "ellos": ["Ellos cuentan sus secretos.", "They tell their secrets."]}}, {"inf": "almorzar", "meaning": "to have lunch", "pat": "ue", "patLabel": "Pattern 3B: o→ue", "forms": {"yo": "almuerzo", "tu": "almuerzas", "el": "almuerza", "nosotros": "almorzamos", "ellos": "almuerzan"}, "sent": {"yo": ["Yo almuerzo a la una.", "I have lunch at one."], "tu": ["Tú almuerzas en la oficina.", "You have lunch at the office."], "el": ["Él almuerza rápido.", "He has a quick lunch."], "nosotros": ["Nosotros almorzamos juntos.", "We have lunch together."], "ellos": ["Ellos almuerzan afuera.", "They have lunch outside."]}}, {"inf": "pedir", "meaning": "to ask for / order", "pat": "i", "patLabel": "Pattern 3C: e→i", "forms": {"yo": "pido", "tu": "pides", "el": "pide", "nosotros": "pedimos", "ellos": "piden"}, "sent": {"yo": ["Yo pido una pizza.", "I order a pizza."], "tu": ["Tú pides ayuda.", "You ask for help."], "el": ["Ella pide un favor.", "She asks for a favor."], "nosotros": ["Nosotros pedimos la cuenta.", "We ask for the bill."], "ellos": ["Ellos piden más tiempo.", "They ask for more time."]}}, {"inf": "servir", "meaning": "to serve", "pat": "i", "patLabel": "Pattern 3C: e→i", "forms": {"yo": "sirvo", "tu": "sirves", "el": "sirve", "nosotros": "servimos", "ellos": "sirven"}, "sent": {"yo": ["Yo sirvo la cena.", "I serve dinner."], "tu": ["Tú sirves el café.", "You serve the coffee."], "el": ["El mesero sirve la mesa.", "The waiter serves the table."], "nosotros": ["Nosotros servimos comida rápida.", "We serve fast food."], "ellos": ["Ellos sirven los platos.", "They serve the dishes."]}}, {"inf": "repetir", "meaning": "to repeat", "pat": "i", "patLabel": "Pattern 3C: e→i", "forms": {"yo": "repito", "tu": "repites", "el": "repite", "nosotros": "repetimos", "ellos": "repiten"}, "sent": {"yo": ["Yo repito la palabra.", "I repeat the word."], "tu": ["Tú repites el ejercicio.", "You repeat the exercise."], "el": ["Ella repite la pregunta.", "She repeats the question."], "nosotros": ["Nosotros repetimos la lección.", "We repeat the lesson."], "ellos": ["Ellos repiten el curso.", "They repeat the course."]}}, {"inf": "seguir", "meaning": "to follow / continue", "pat": "i", "patLabel": "Pattern 3C: e→i", "forms": {"yo": "sigo", "tu": "sigues", "el": "sigue", "nosotros": "seguimos", "ellos": "siguen"}, "sent": {"yo": ["Yo sigo las reglas.", "I follow the rules."], "tu": ["Tú sigues sin entender.", "You still don't understand."], "el": ["Él sigue trabajando.", "He keeps working."], "nosotros": ["Nosotros seguimos el mapa.", "We follow the map."], "ellos": ["Ellos siguen adelante.", "They keep going."]}}];
+
+const PATTERN_META = {
+  go:  {color:"#E67E22", name:"-GO", changeLabel:"YO changes", regLabel:"tú/él/nosotros/ellos: regular"},
+  zco: {color:"#8E44AD", name:"-ZCO", changeLabel:"YO changes (c→zc)", regLabel:"tú/él/nosotros/ellos: regular"},
+  ie:  {color:"#C0392B", name:"e→ie", changeLabel:"yo/tú/él/ellos: CHANGE (ie)", regLabel:"nosotros/vosotros: regular (e)"},
+  ue:  {color:"#2980B9", name:"o→ue", changeLabel:"yo/tú/él/ellos: CHANGE (ue)", regLabel:"nosotros/vosotros: regular (o)"},
+  i:   {color:"#27AE60", name:"e→i", changeLabel:"yo/tú/él/ellos: CHANGE (i)", regLabel:"nosotros/vosotros: regular (e)"},
+};
+
+const PERSON_LABELS = {yo:"YO", tu:"TÚ", el:"ÉL/ELLA", nosotros:"NOSOTROS", ellos:"ELLOS"};
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* ================= TABS ================= */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ================= FLASHCARDS ================= */
+let activePattern = 'all';
+let flashDeck = [...VERBS];
+let flashIdx = 0;
+
+function buildFilters(){
+  const row = document.getElementById('filter-row');
+  const patterns = [['all','All',"#555"], ...Object.entries(PATTERN_META).map(([k,v])=>[k, v.name, v.color])];
+  row.innerHTML = '';
+  patterns.forEach(([key,label,color])=>{
+    const chip = document.createElement('button');
+    chip.className = 'filter-chip' + (key===activePattern ? ' active':'');
+    chip.textContent = label;
+    if(key===activePattern) chip.style.background = color;
+    chip.onclick = ()=>{
+      activePattern = key;
+      flashDeck = key==='all' ? [...VERBS] : VERBS.filter(v=>v.pat===key);
+      flashIdx = 0;
+      buildFilters();
+      renderFlashcard();
+    };
+    row.appendChild(chip);
+  });
+}
+
+function renderFlashcard(){
+  const card = document.getElementById('flip-card');
+  card.classList.remove('flipped');
+  const v = flashDeck[flashIdx];
+  const meta = PATTERN_META[v.pat];
+  document.getElementById('flash-counter').textContent = `${flashIdx+1} / ${flashDeck.length}`;
+
+  document.getElementById('flip-front').innerHTML = `
+    <div class="pattern-badge" style="background:${meta.color}">${v.patLabel}</div>
+    <div class="verb-big">${v.inf}</div>
+    <div class="verb-meaning">${v.meaning}</div>
+    <div class="hint">Tap to reveal: yo-form, boot diagram &amp; 5 example sentences</div>
+  `;
+
+  const sentRows = ['yo','tu','el','nosotros','ellos'].map(p=>{
+    const [es,en] = v.sent[p];
+    return `<div class="sent-item">
+      <span class="sent-tag">${PERSON_LABELS[p]}</span>
+      <span class="sent-es">${es}</span>
+      <span class="sent-en">${en}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('flip-back').innerHTML = `
+    <div class="pattern-badge" style="background:${meta.color}">${v.inf} → ${v.forms.yo}</div>
+    <div class="boot-diagram">
+      <div class="boot-col change"><b>Changes</b>${meta.changeLabel}</div>
+      <div class="boot-col regular"><b>Regular</b>${meta.regLabel}</div>
+    </div>
+    <div class="sent-list">${sentRows}</div>
+  `;
+}
+
+document.getElementById('flip-card').addEventListener('click', ()=>{
+  document.getElementById('flip-card').classList.toggle('flipped');
+});
+document.getElementById('prev-btn').addEventListener('click', ()=>{
+  flashIdx = (flashIdx - 1 + flashDeck.length) % flashDeck.length;
+  renderFlashcard();
+});
+document.getElementById('next-btn').addEventListener('click', ()=>{
+  flashIdx = (flashIdx + 1) % flashDeck.length;
+  renderFlashcard();
+});
+
+buildFilters();
+renderFlashcard();
+
+/* ================= QUIZ ================= */
+const PEOPLE = ['yo','tu','el','nosotros','ellos'];
+let qCorrect = 0, qTotal = 0;
+let qPool = shuffle(VERBS);
+let qi = 0;
+
+function buildQuizQuestion(){
+  if(qi >= qPool.length){ qPool = shuffle(VERBS); qi = 0; }
+  const v = qPool[qi];
+  const person = PEOPLE[Math.floor(Math.random()*PEOPLE.length)];
+  const correctAns = v.forms[person];
+  const [esSentence] = v.sent[person];
+  const blankSentence = esSentence.replace(new RegExp(correctAns, 'i'), 'ـ____ـ');
+  document.getElementById('q-text').innerHTML =
+    `Fill in the blank (${PERSON_LABELS[person]} form of <b>${v.inf}</b>):<br><span style="font-size:0.85em;color:#555">${blankSentence}</span>`;
+
+  // build distractors: other forms of same verb + forms from other verbs of same pattern
+  let distractors = new Set();
+  Object.values(v.forms).forEach(f=>{ if(f!==correctAns) distractors.add(f); });
+  const samePatternVerbs = VERBS.filter(x=>x.pat===v.pat && x.inf!==v.inf);
+  shuffle(samePatternVerbs).forEach(x=>{
+    if(distractors.size < 3) distractors.add(x.forms[person]);
+  });
+  let opts = shuffle([correctAns, ...Array.from(distractors)].slice(0,4));
+  if(!opts.includes(correctAns)) opts[0] = correctAns;
+  opts = shuffle(opts);
+
+  const optsDiv = document.getElementById('q-options');
+  optsDiv.innerHTML = '';
+  opts.forEach(opt=>{
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = opt;
+    btn.onclick = ()=>checkQuizAnswer(opt, correctAns, btn);
+    optsDiv.appendChild(btn);
+  });
+  document.getElementById('q-feedback').textContent = '';
+}
+
+function checkQuizAnswer(chosen, correctAns, btn){
+  qTotal++;
+  document.querySelectorAll('#q-options .opt-btn').forEach(b=>{
+    b.disabled = true;
+    if(b.textContent === correctAns) b.classList.add('correct');
+  });
+  if(chosen === correctAns){
+    qCorrect++;
+    document.getElementById('q-feedback').textContent = '✅ ¡Correcto!';
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('q-feedback').textContent = `❌ Correct answer: ${correctAns}`;
+  }
+  document.getElementById('q-score').textContent = `Score: ${qCorrect} / ${qTotal}`;
+  qi++;
+  setTimeout(buildQuizQuestion, 1500);
+}
+
+buildQuizQuestion();
+
+/* ================= MATCH GAME ================= */
+let mCorrect = 0, mAttempts = 0;
+let mRoundVerbs = [];
+let mSelectedLeft = null;
+let mMatchedCount = 0;
+
+function updateMatchStats(){
+  document.getElementById('m-score').textContent = `✅ Correct: ${mCorrect}`;
+  document.getElementById('m-attempts').textContent = `🎯 Attempts: ${mAttempts}`;
+  const acc = mAttempts ? Math.round((mCorrect/mAttempts)*100) : 0;
+  document.getElementById('m-accuracy').textContent = `📊 Accuracy: ${acc}%`;
+}
+
+function startMatchRound(){
+  mRoundVerbs = shuffle(VERBS).slice(0,5);
+  mMatchedCount = 0;
+  mSelectedLeft = null;
+  document.getElementById('reveal-text').style.display = 'none';
+  document.getElementById('reveal-text').textContent = '';
+
+  const leftCol = document.getElementById('match-left');
+  const rightCol = document.getElementById('match-right');
+  leftCol.innerHTML = '';
+  rightCol.innerHTML = '';
+
+  const leftItems = mRoundVerbs.map(v=>({inf:v.inf, ans:v.forms.yo}));
+  const rightItems = shuffle(mRoundVerbs.map(v=>v.forms.yo));
+
+  leftItems.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'match-item';
+    div.textContent = item.inf;
+    div.draggable = true;
+    div.dataset.answer = item.ans;
+    div.addEventListener('click', ()=>selectLeft(div));
+    div.addEventListener('dragstart', e=>{
+      e.dataTransfer.setData('text/plain', item.ans);
+      div.classList.add('selected');
+    });
+    div.addEventListener('dragend', ()=> div.classList.remove('selected'));
+    leftCol.appendChild(div);
+  });
+
+  rightItems.forEach(formText=>{
+    const div = document.createElement('div');
+    div.className = 'match-item';
+    div.textContent = formText;
+    div.addEventListener('click', ()=>selectRight(div, formText));
+    div.addEventListener('dragover', e=>{ e.preventDefault(); div.classList.add('dragover'); });
+    div.addEventListener('dragleave', ()=> div.classList.remove('dragover'));
+    div.addEventListener('drop', e=>{
+      e.preventDefault();
+      div.classList.remove('dragover');
+      const draggedAns = e.dataTransfer.getData('text/plain');
+      handleMatchAttempt(draggedAns, formText, div, findLeftByAnswer(draggedAns));
+    });
+    rightCol.appendChild(div);
+  });
+
+  updateMatchStats();
+}
+
+function findLeftByAnswer(ans){
+  return Array.from(document.getElementById('match-left').children).find(el=>el.dataset.answer===ans && !el.classList.contains('matched'));
+}
+
+function selectLeft(div){
+  if(div.classList.contains('matched')) return;
+  document.querySelectorAll('#match-left .match-item').forEach(el=>el.classList.remove('selected'));
+  div.classList.add('selected');
+  mSelectedLeft = div;
+}
+
+function selectRight(div, formText){
+  if(div.classList.contains('matched')) return;
+  if(!mSelectedLeft){
+    flashInvalid(div);
+    return;
+  }
+  handleMatchAttempt(mSelectedLeft.dataset.answer, formText, div, mSelectedLeft);
+}
+
+function flashInvalid(div){
+  div.classList.add('shake-wrong');
+  setTimeout(()=>div.classList.remove('shake-wrong'), 400);
+}
+
+function handleMatchAttempt(draggedAns, formText, rightDiv, leftDiv){
+  if(!leftDiv) return;
+  mAttempts++;
+  if(draggedAns === formText){
+    mCorrect++;
+    leftDiv.classList.add('matched','pulse-correct');
+    rightDiv.classList.add('matched','pulse-correct');
+    mMatchedCount++;
+    mSelectedLeft = null;
+    if(mMatchedCount === mRoundVerbs.length){
+      setTimeout(()=>{ document.getElementById('q-feedback'); }, 200);
+    }
+  } else {
+    rightDiv.classList.add('shake-wrong');
+    leftDiv.classList.add('shake-wrong');
+    setTimeout(()=>{
+      rightDiv.classList.remove('shake-wrong');
+      leftDiv.classList.remove('shake-wrong');
+    }, 400);
+  }
+  updateMatchStats();
+}
+
+document.getElementById('reveal-btn').addEventListener('click', ()=>{
+  const box = document.getElementById('reveal-text');
+  const lines = mRoundVerbs.map(v=>{
+    const [es,en] = v.sent.yo;
+    return `<b>${v.inf}</b> (${v.forms.yo}): ${es} <span style="color:#888;font-style:italic;">— ${en}</span>`;
+  }).join('<br><br>');
+  box.innerHTML = lines;
+  box.style.display = 'block';
+});
+
+document.getElementById('new-round-btn').addEventListener('click', startMatchRound);
+
+startMatchRound();
+</script>
+</body>
+</html>

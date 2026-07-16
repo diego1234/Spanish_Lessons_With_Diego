@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Cumbia de los Trapos — Spanish Vocabulary Lab</title>
+<style>
+  :root{
+    --reg:#2980B9; --irr:#C0392B; --adj:#27AE60;
+    --bg1:#fef3ec; --bg2:#e8f4fd; --dark:#2b2b2b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    margin:0; padding:16px;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+    color:var(--dark);
+  }
+  .wrap{max-width:960px;margin:0 auto;}
+  h1{text-align:center;color:#c0392b;font-size:clamp(1.3em,4vw,2em);margin-bottom:2px;}
+  .subtitle{text-align:center;color:#666;margin-bottom:18px;font-size:0.9em;}
+  .tabs{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap;}
+  .tab-btn{padding:10px 16px;border:none;border-radius:999px;background:#ddd;cursor:pointer;font-weight:600;font-size:0.9em;}
+  .tab-btn.active{background:#c0392b;color:white;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .card-box{background:white;border-radius:16px;padding:clamp(12px,3vw,26px);box-shadow:0 6px 20px rgba(0,0,0,0.1);margin-bottom:18px;}
+
+  /* ---------- VOCAB TABLE ---------- */
+  .legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;font-size:0.85em;}
+  .legend span{display:flex;align-items:center;gap:6px;}
+  .dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+  table{width:100%;border-collapse:collapse;font-size:0.92em;}
+  th,td{padding:10px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top;}
+  th{background:#f5f5f5;}
+  .pos-badge{display:inline-block;padding:3px 10px;border-radius:999px;color:white;font-size:0.72em;font-weight:700;white-space:nowrap;}
+  .lyric-line{font-style:italic;color:#555;font-size:0.88em;}
+  @media(max-width:650px){
+    table, thead, tbody, th, td, tr{display:block;}
+    thead tr{display:none;}
+    td{border:none;padding:4px 0;}
+    tr{margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #eee;}
+    td::before{content:attr(data-label);font-weight:700;display:block;color:#999;font-size:0.75em;text-transform:uppercase;}
+  }
+
+  /* ---------- FLASHCARDS ---------- */
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;}
+  .filter-chip{padding:6px 14px;border-radius:999px;border:2px solid #ddd;background:#fafafa;cursor:pointer;font-size:0.85em;font-weight:600;}
+  .flash-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .flash-nav button{padding:8px 14px;border:none;border-radius:8px;background:#2b2b2b;color:white;cursor:pointer;font-weight:600;}
+  #flash-counter{font-weight:600;color:#555;}
+  .flip-card{perspective:1200px;height:min(60vh,380px);cursor:pointer;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;}
+  .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;padding:20px;overflow-y:auto;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:3px solid #eee;background:#fff;}
+  .flip-back{transform:rotateY(180deg);}
+  .pos-tag{display:inline-block;padding:4px 12px;border-radius:999px;color:white;font-size:0.8em;font-weight:700;margin-bottom:14px;}
+  .word-big{font-size:clamp(1.5em,5vw,2.2em);font-weight:800;margin:6px 0;}
+  .word-meaning{color:#777;font-style:italic;margin-bottom:10px;}
+  .hint{color:#999;font-size:0.85em;margin-top:14px;}
+  .lyric-box{background:#f8f8f8;padding:12px;border-radius:10px;margin-top:10px;width:100%;}
+  .note-box{background:#fff6e6;padding:10px;border-radius:10px;margin-top:10px;font-size:0.85em;width:100%;color:#7a5c00;}
+
+  /* ---------- QUIZ ---------- */
+  #q-score{text-align:center;font-size:1.05em;margin-bottom:12px;font-weight:600;}
+  .question{font-size:clamp(1.05em,3vw,1.3em);margin-bottom:16px;text-align:center;font-weight:600;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:480px){.options{grid-template-columns:1fr;}}
+  .opt-btn{padding:14px;border-radius:10px;border:2px solid #ddd;background:#fafafa;cursor:pointer;font-size:1em;}
+  .opt-btn.correct{background:#d4edda;border-color:#28a745;}
+  .opt-btn.wrong{background:#f8d7da;border-color:#dc3545;}
+  #q-feedback{text-align:center;min-height:24px;font-weight:bold;margin-top:10px;}
+
+  /* ---------- MEMORY GAME ---------- */
+  .mem-stats{display:flex;justify-content:center;gap:16px;margin-bottom:14px;font-weight:600;flex-wrap:wrap;}
+  .mem-stats span{background:#fafafa;padding:6px 14px;border-radius:8px;}
+  .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  @media(max-width:600px){.mem-grid{grid-template-columns:repeat(3,1fr);}}
+  .mem-card{aspect-ratio:1/1;perspective:800px;cursor:pointer;}
+  .mem-inner{position:relative;width:100%;height:100%;transition:transform 0.4s;transform-style:preserve-3d;}
+  .mem-card.flip .mem-inner{transform:rotateY(180deg);}
+  .mem-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    text-align:center;font-size:0.78em;font-weight:700;padding:6px;}
+  .mem-back-face{background:linear-gradient(135deg,#c0392b,#e67e22);color:white;font-size:1.4em;}
+  .mem-front-face{transform:rotateY(180deg);background:#fff;border:2px solid #ddd;color:#333;}
+  .mem-card.matched .mem-front-face{background:#d4edda;border-color:#28a745;}
+  .mem-card.wrong-flash .mem-front-face{animation:shakeRed 0.4s;}
+  @keyframes shakeRed{0%,100%{transform:translateX(0) rotateY(180deg);}25%{transform:translateX(-6px) rotateY(180deg);}75%{transform:translateX(6px) rotateY(180deg);}}
+  #new-mem-btn{padding:10px 20px;border:none;border-radius:8px;background:#c0392b;color:white;font-weight:600;cursor:pointer;display:block;margin:14px auto 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎵 La Cumbia de los Trapos — Vocabulary Lab</h1>
+  <p class="subtitle">Spanish vocabulary from the song lyrics: regular verbs, irregular verbs & adjectives</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="vocab">📖 Vocabulary</button>
+    <button class="tab-btn" data-tab="flash">🃏 Flashcards</button>
+    <button class="tab-btn" data-tab="quiz">📝 Quiz</button>
+    <button class="tab-btn" data-tab="memory">🧠 Memory Game</button>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="panel active" id="vocab">
+    <div class="card-box">
+      <div class="legend">
+        <span><span class="dot" style="background:#2980B9"></span> Regular verb</span>
+        <span><span class="dot" style="background:#C0392B"></span> Irregular verb</span>
+        <span><span class="dot" style="background:#27AE60"></span> Adjective</span>
+      </div>
+      <table id="vocab-table">
+        <thead><tr><th>Word</th><th>Type</th><th>Form in lyrics</th><th>Meaning</th><th>Lyric line &amp; note</th></tr></thead>
+        <tbody id="vocab-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FLASHCARDS -->
+  <div class="panel" id="flash">
+    <div class="filter-row" id="filter-row"></div>
+    <div class="card-box">
+      <div class="flash-nav">
+        <button id="prev-btn">◀ Prev</button>
+        <span id="flash-counter"></span>
+        <button id="next-btn">Next ▶</button>
+      </div>
+      <div class="flip-card" id="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front" id="flip-front"></div>
+          <div class="flip-face flip-back" id="flip-back"></div>
+        </div>
+      </div>
+      <p class="hint" style="text-align:center;">Tap/click the card to flip — front shows the word, back shows meaning, the original lyric line, and a grammar note.</p>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="panel" id="quiz">
+    <div class="card-box">
+      <div id="q-score">Score: 0 / 0</div>
+      <div class="question" id="q-text"></div>
+      <div class="options" id="q-options"></div>
+      <div id="q-feedback"></div>
+    </div>
+  </div>
+
+  <!-- MEMORY GAME -->
+  <div class="panel" id="memory">
+    <div class="card-box">
+      <div class="mem-stats">
+        <span id="mem-moves">🎯 Moves: 0</span>
+        <span id="mem-matches">✅ Matches: 0 / 8</span>
+      </div>
+      <div class="mem-grid" id="mem-grid"></div>
+      <button id="new-mem-btn">🔄 New Memory Round</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORDS = [{"word": "preparar", "pos": "verb-regular", "form": "preparado", "meaning": "to prepare / to get ready", "line": "Ya está todo preparado", "lineEn": "Everything is already prepared", "note": "Regular -AR verb (past participle: preparado)"}, {"word": "llevar", "pos": "verb-regular", "form": "llevo", "meaning": "to carry / to take", "line": "Lo llevo dentro del corazón", "lineEn": "I carry it inside my heart", "note": "Regular -AR verb, yo form: llevo"}, {"word": "saltar", "pos": "verb-regular", "form": "saltando", "meaning": "to jump", "line": "Saltando, cantando, prendidos a los trapos", "lineEn": "Jumping, singing, attached to the flags", "note": "Regular -AR verb, gerund: saltando"}, {"word": "cantar", "pos": "verb-regular", "form": "cantando / voy cantando", "meaning": "to sing", "line": "Borracho, yo voy cantando", "lineEn": "Drunk, I go along singing", "note": "Regular -AR verb, used with 'ir + gerundio'"}, {"word": "prender", "pos": "verb-regular", "form": "prendidos", "meaning": "to attach / to light", "line": "Prendidos a los trapos", "lineEn": "Attached to the flags", "note": "Regular -ER verb, past participle: prendidos"}, {"word": "dejar", "pos": "verb-regular", "form": "dejamos", "meaning": "to leave (behind)", "line": "Dejamos el alma en el tablón", "lineEn": "We leave our soul on the stands", "note": "Regular -AR verb, nosotros form: dejamos"}, {"word": "festejar", "pos": "verb-regular", "form": "festejando", "meaning": "to celebrate", "line": "Voy festejando un triunfo más", "lineEn": "I go along celebrating one more triumph", "note": "Regular -AR verb, gerund: festejando"}, {"word": "venir", "pos": "verb-irregular", "form": "viene", "meaning": "to come", "line": "Se viene el fin de semana", "lineEn": "The weekend is coming", "note": "Boot verb e→ie: viene (irregular yo: vengo)"}, {"word": "ir", "pos": "verb-irregular", "form": "vamos / voy", "meaning": "to go", "line": "Todo' a la cancha, vamos a ir", "lineEn": "Everyone to the stadium, we're going to go", "note": "Fully irregular: voy, vas, va, vamos, van"}, {"word": "tener", "pos": "verb-irregular", "form": "tiene", "meaning": "to have", "line": "Al equipo que tiene más aguante", "lineEn": "To the team that has more endurance", "note": "Boot verb e→ie + -GO yo-form: tengo, tienes, tiene"}, {"word": "seguir", "pos": "verb-irregular", "form": "sigo", "meaning": "to follow", "line": "Te sigo a muerte, por donde vas", "lineEn": "I follow you to the death, wherever you go", "note": "Boot verb e→i + -GO yo-form: sigo, sigues, sigue"}, {"word": "querer", "pos": "verb-irregular", "form": "queremos", "meaning": "to want", "line": "Porque la vuelta queremos dar", "lineEn": "Because we want to take the victory lap", "note": "Boot verb e→ie — but 'queremos' is OUTSIDE the boot, so it stays regular!"}, {"word": "dar", "pos": "verb-irregular", "form": "dar / doy", "meaning": "to give", "line": "Porque la vuelta queremos dar", "lineEn": "Because we want to give/take the lap", "note": "Irregular yo-form: doy (like ir/ser/estar/ver)"}, {"word": "borracho", "pos": "adjective", "form": "borracho/a", "meaning": "drunk", "line": "Borracho, yo voy cantando", "lineEn": "Drunk, I go along singing", "note": "Adjective, agrees in gender/number: borracho/borracha/borrachos/borrachas"}, {"word": "loco", "pos": "adjective", "form": "loco/a", "meaning": "crazy", "line": "Loco soy por mi trapo", "lineEn": "I'm crazy about my flag", "note": "Adjective, agrees in gender/number: loco/loca/locos/locas"}, {"word": "preparado", "pos": "adjective", "form": "preparado/a", "meaning": "prepared / ready", "line": "Ya está todo preparado", "lineEn": "Everything is already ready", "note": "Used here as an adjective (past participle acting as adjective) after 'estar'"}];
+
+const POS_META = {
+  "verb-regular":  {color:"#2980B9", label:"Regular Verb"},
+  "verb-irregular":{color:"#C0392B", label:"Irregular Verb"},
+  "adjective":     {color:"#27AE60", label:"Adjective"},
+};
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* ================= TABS ================= */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ================= VOCAB TABLE ================= */
+function buildVocabTable(){
+  const body = document.getElementById('vocab-body');
+  body.innerHTML = '';
+  WORDS.forEach(w=>{
+    const meta = POS_META[w.pos];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td data-label="Word"><b>${w.word}</b></td>
+      <td data-label="Type"><span class="pos-badge" style="background:${meta.color}">${meta.label}</span></td>
+      <td data-label="Form in lyrics">${w.form}</td>
+      <td data-label="Meaning">${w.meaning}</td>
+      <td data-label="Lyric line">
+        <div class="lyric-line">"${w.line}"<br>— ${w.lineEn}</div>
+        <div style="font-size:0.8em;color:#888;margin-top:4px;">${w.note}</div>
+      </td>
+    `;
+    body.appendChild(tr);
+  });
+}
+buildVocabTable();
+
+/* ================= FLASHCARDS ================= */
+let activeFilter = 'all';
+let flashDeck = [...WORDS];
+let flashIdx = 0;
+
+function buildFilters(){
+  const row = document.getElementById('filter-row');
+  const opts = [['all','All','#555'], ...Object.entries(POS_META).map(([k,v])=>[k,v.label,v.color])];
+  row.innerHTML = '';
+  opts.forEach(([key,label,color])=>{
+    const chip = document.createElement('button');
+    chip.className = 'filter-chip' + (key===activeFilter ? ' active':'');
+    chip.textContent = label;
+    if(key===activeFilter){ chip.style.background=color; chip.style.color='white'; }
+    chip.onclick = ()=>{
+      activeFilter = key;
+      flashDeck = key==='all' ? [...WORDS] : WORDS.filter(w=>w.pos===key);
+      flashIdx = 0;
+      buildFilters();
+      renderFlashcard();
+    };
+    row.appendChild(chip);
+  });
+}
+
+function renderFlashcard(){
+  const card = document.getElementById('flip-card');
+  card.classList.remove('flipped');
+  const w = flashDeck[flashIdx];
+  const meta = POS_META[w.pos];
+  document.getElementById('flash-counter').textContent = `${flashIdx+1} / ${flashDeck.length}`;
+
+  document.getElementById('flip-front').innerHTML = `
+    <div class="pos-tag" style="background:${meta.color}">${meta.label}</div>
+    <div class="word-big">${w.word}</div>
+    <div class="hint">Tap to reveal meaning &amp; lyric context</div>
+  `;
+
+  document.getElementById('flip-back').innerHTML = `
+    <div class="pos-tag" style="background:${meta.color}">${w.form}</div>
+    <div class="word-meaning" style="font-size:1.1em;color:#333;font-weight:600;font-style:normal;">${w.meaning}</div>
+    <div class="lyric-box">"${w.line}"<br><span style="color:#888;font-style:italic;">${w.lineEn}</span></div>
+    <div class="note-box">${w.note}</div>
+  `;
+}
+
+document.getElementById('flip-card').addEventListener('click', ()=>{
+  document.getElementById('flip-card').classList.toggle('flipped');
+});
+document.getElementById('prev-btn').addEventListener('click', ()=>{
+  flashIdx = (flashIdx - 1 + flashDeck.length) % flashDeck.length;
+  renderFlashcard();
+});
+document.getElementById('next-btn').addEventListener('click', ()=>{
+  flashIdx = (flashIdx + 1) % flashDeck.length;
+  renderFlashcard();
+});
+
+buildFilters();
+renderFlashcard();
+
+/* ================= QUIZ ================= */
+let qCorrect = 0, qTotal = 0;
+let qPool = shuffle(WORDS);
+let qi = 0;
+
+function buildQuizQuestion(){
+  if(qi >= qPool.length){ qPool = shuffle(WORDS); qi = 0; }
+  const w = qPool[qi];
+  const askType = Math.random() < 0.5 ? 'meaning' : 'lyric';
+
+  let questionHTML, correctAns, opts;
+
+  if(askType === 'meaning'){
+    questionHTML = `What does <b>"${w.word}"</b> (${POS_META[w.pos].label.toLowerCase()}) mean in the song?`;
+    correctAns = w.meaning;
+    let distractors = shuffle(WORDS.filter(x=>x.word!==w.word)).slice(0,3).map(x=>x.meaning);
+    opts = shuffle([correctAns, ...distractors]);
+  } else {
+    const blanked = w.line.replace(new RegExp(w.form.split(' / ')[0].split(' ').pop(), 'i'), '____');
+    questionHTML = `Fill in the blank from the lyrics:<br><span style="font-size:0.85em;color:#555">"${blanked}"</span><br><span style="font-size:0.75em;color:#999">(${w.word} — ${w.meaning})</span>`;
+    correctAns = w.form.split(' / ')[0];
+    let distractors = shuffle(WORDS.filter(x=>x.word!==w.word && x.pos===w.pos)).slice(0,3).map(x=>x.form.split(' / ')[0]);
+    if(distractors.length < 3){
+      distractors = distractors.concat(shuffle(WORDS.filter(x=>x.word!==w.word)).map(x=>x.form.split(' / ')[0])).slice(0,3);
+    }
+    opts = shuffle([correctAns, ...distractors]);
+  }
+
+  document.getElementById('q-text').innerHTML = questionHTML;
+  const optsDiv = document.getElementById('q-options');
+  optsDiv.innerHTML = '';
+  opts.forEach(opt=>{
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = opt;
+    btn.onclick = ()=>checkQuizAnswer(opt, correctAns, btn);
+    optsDiv.appendChild(btn);
+  });
+  document.getElementById('q-feedback').textContent = '';
+}
+
+function checkQuizAnswer(chosen, correctAns, btn){
+  qTotal++;
+  document.querySelectorAll('#q-options .opt-btn').forEach(b=>{
+    b.disabled = true;
+    if(b.textContent === correctAns) b.classList.add('correct');
+  });
+  if(chosen === correctAns){
+    qCorrect++;
+    document.getElementById('q-feedback').textContent = '✅ ¡Correcto!';
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('q-feedback').textContent = `❌ Correct answer: ${correctAns}`;
+  }
+  document.getElementById('q-score').textContent = `Score: ${qCorrect} / ${qTotal}`;
+  qi++;
+  setTimeout(buildQuizQuestion, 1600);
+}
+
+buildQuizQuestion();
+
+/* ================= MEMORY GAME ================= */
+let memFlipped = [];
+let memMatches = 0;
+let memMoves = 0;
+let memLock = false;
+
+function startMemoryGame(){
+  memFlipped = [];
+  memMatches = 0;
+  memMoves = 0;
+  memLock = false;
+  updateMemStats();
+
+  const chosen = shuffle(WORDS).slice(0,8);
+  let pairs = [];
+  chosen.forEach((w,idx)=>{
+    pairs.push({id:idx, type:'es', text:w.word, pos:w.pos});
+    pairs.push({id:idx, type:'en', text:w.meaning, pos:w.pos});
+  });
+  pairs = shuffle(pairs);
+
+  const grid = document.getElementById('mem-grid');
+  grid.innerHTML = '';
+  pairs.forEach((p,i)=>{
+    const div = document.createElement('div');
+    div.className = 'mem-card';
+    div.dataset.id = p.id;
+    div.dataset.type = p.type;
+    div.innerHTML = `
+      <div class="mem-inner">
+        <div class="mem-face mem-back-face">?</div>
+        <div class="mem-face mem-front-face">${p.text}</div>
+      </div>
+    `;
+    div.addEventListener('click', ()=>flipMemCard(div));
+    grid.appendChild(div);
+  });
+}
+
+function updateMemStats(){
+  document.getElementById('mem-moves').textContent = `🎯 Moves: ${memMoves}`;
+  document.getElementById('mem-matches').textContent = `✅ Matches: ${memMatches} / 8`;
+}
+
+function flipMemCard(div){
+  if(memLock || div.classList.contains('flip') || div.classList.contains('matched')) return;
+  div.classList.add('flip');
+  memFlipped.push(div);
+  if(memFlipped.length === 2){
+    memMoves++;
+    updateMemStats();
+    memLock = true;
+    const [a,b] = memFlipped;
+    if(a.dataset.id === b.dataset.id && a.dataset.type !== b.dataset.type){
+      setTimeout(()=>{
+        a.classList.add('matched');
+        b.classList.add('matched');
+        memMatches++;
+        updateMemStats();
+        memFlipped = [];
+        memLock = false;
+      }, 400);
+    } else {
+      a.classList.add('wrong-flash');
+      b.classList.add('wrong-flash');
+      setTimeout(()=>{
+        a.classList.remove('flip','wrong-flash');
+        b.classList.remove('flip','wrong-flash');
+        memFlipped = [];
+        memLock = false;
+      }, 900);
+    }
+  }
+}
+
+document.getElementById('new-mem-btn').addEventListener('click', startMemoryGame);
+startMemoryGame();
+</script>
+</body>
+</html>

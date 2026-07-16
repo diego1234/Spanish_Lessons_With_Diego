@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/I3bdcQQIxqFzJGC73YEdnjpL0P5CaZi3/40752a04-920d-4558-b0f6-838caa705a1b/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Cumbia de los Trapos — Listening Comprehension</title>
+<style>
+  :root{ --dark:#2b2b2b; --accent:#c0392b; }
+  *{box-sizing:border-box;}
+  body{font-family:'Segoe UI', Arial, sans-serif;margin:0;padding:16px;
+    background:linear-gradient(135deg,#fef3ec,#e8f4fd);color:var(--dark);}
+  .wrap{max-width:880px;margin:0 auto;}
+  h1{text-align:center;color:var(--accent);font-size:clamp(1.3em,4vw,2em);margin-bottom:4px;}
+  .subtitle{text-align:center;color:#666;margin-bottom:6px;font-size:0.92em;}
+  .disclaimer{text-align:center;color:#999;font-size:0.78em;margin-bottom:18px;font-style:italic;}
+  .progress-bar{height:10px;background:#eee;border-radius:6px;overflow:hidden;margin-bottom:18px;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,#e67e22,#c0392b);width:0%;transition:width 0.4s;}
+  .card-box{background:white;border-radius:16px;padding:clamp(14px,3vw,26px);box-shadow:0 6px 20px rgba(0,0,0,0.1);margin-bottom:18px;}
+  .seg-title{font-size:1.15em;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  audio{width:100%;margin-bottom:14px;}
+  .reveal-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+  .toggle-btn{padding:8px 16px;border:none;border-radius:8px;background:#2b2b2b;color:white;cursor:pointer;font-weight:600;font-size:0.88em;}
+  .transcript-box{background:#f8f8f8;padding:12px;border-radius:10px;margin-bottom:14px;display:none;white-space:pre-line;font-size:0.92em;}
+  .transcript-box.es{font-weight:600;}
+  .transcript-box.en{color:#777;font-style:italic;}
+  .qblock{margin-top:18px;padding-top:14px;border-top:1px dashed #ddd;}
+  .qtext{font-weight:600;margin-bottom:10px;font-size:1em;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(max-width:520px){.options{grid-template-columns:1fr;}}
+  .opt-btn{padding:12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;cursor:pointer;font-size:0.92em;text-align:left;}
+  .opt-btn:hover{border-color:var(--accent);}
+  .opt-btn.correct{background:#d4edda;border-color:#28a745;}
+  .opt-btn.wrong{background:#f8d7da;border-color:#dc3545;}
+  .qfeedback{min-height:20px;font-weight:bold;margin-top:8px;font-size:0.9em;}
+  .nav-row{display:flex;justify-content:space-between;margin-top:20px;}
+  .nav-btn{padding:10px 20px;border:none;border-radius:8px;background:var(--accent);color:white;font-weight:600;cursor:pointer;}
+  .nav-btn:disabled{background:#ccc;cursor:not-allowed;}
+  #final-score{text-align:center;}
+  #final-score h2{color:var(--accent);}
+  .score-big{font-size:2.2em;font-weight:800;margin:10px 0;}
+  .restart-btn{padding:12px 24px;border:none;border-radius:8px;background:#2b2b2b;color:white;font-weight:600;cursor:pointer;display:block;margin:16px auto 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎧 Listening Comprehension: La Cumbia de los Trapos</h1>
+  <p class="subtitle">Play each segment, then answer questions testing both vocabulary retention and real listening skills.</p>
+  <p class="disclaimer">Audio is a warm spoken-word narration of the lyrics for language learning — not a reproduction of the original recording.</p>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  <div id="segment-container"></div>
+  <div id="final-score" class="card-box" style="display:none;"></div>
+</div>
+
+<script>
+const DATA = {"audio": {"intro": "enthusiasm_esta_es_la_cumbia_de_los_trap_c349f832.mp3", "v1": "enthusiasm_se_viene_el_fin_de_semana_sho_da2a18a3.mp3", "v2": "enthusiasm_al_equipo_que_tiene_m_s_aguan_dcd4b3bb.mp3", "chorus": "enthusiasm_borracho_yo_voy_cantando_shor_ba49c897.mp3"}, "segments": [{"key": "intro", "title": "Segment 1 — Intro", "transcript": "Esta es la cumbia de los trapos.\nEste es el grupo Yerba Brava.", "translation": "This is the cumbia of the flags.\nThis is the group Yerba Brava.", "questions": [{"q": "What type of song is being introduced?", "opts": ["Una cumbia (a cumbia)", "Un tango", "Una balada", "Un rap"], "a": "Una cumbia (a cumbia)"}, {"q": "What is the name of the group mentioned?", "opts": ["Los Trapos", "Yerba Brava", "La Cancha", "El Bombo"], "a": "Yerba Brava"}]}, {"key": "v1", "title": "Segment 2 — Verse 1", "transcript": "Se viene el fin de semana\nTodo' a la cancha, vamos a ir\nYa está todo preparado\nEl bombo y el trapo para salir", "translation": "The weekend is coming\nEveryone to the stadium, we're going to go\nEverything is already prepared\nThe drum and the flag, ready to go out", "questions": [{"q": "Listen carefully: what is coming according to the lyrics?", "opts": ["El fin de semana (the weekend)", "El verano (summer)", "La noche (the night)", "El partido (the match)"], "a": "El fin de semana (the weekend)"}, {"q": "'Vamos a ir' uses which irregular verb, and what does it mean?", "opts": ["ir — to go", "ver — to see", "venir — to come", "hacer — to do"], "a": "ir — to go"}, {"q": "What two objects are mentioned as 'ready to go out'?", "opts": ["El bombo y el trapo (the drum and the flag)", "El coche y las llaves (the car and the keys)", "La radio y el micrófono", "El balón y los zapatos"], "a": "El bombo y el trapo (the drum and the flag)"}]}, {"key": "v2", "title": "Segment 3 — Verse 2", "transcript": "Al equipo que tiene más aguante\nLo llevo dentro del corazón\nSaltando, cantando, prendidos a los trapos\nDejamos el alma en el tablón", "translation": "To the team with the most endurance\nI carry it inside my heart\nJumping, singing, attached to the flags\nWe leave our soul on the stands", "questions": [{"q": "'Tiene' is the boot-verb form of which infinitive, and what does it mean?", "opts": ["tener — to have", "tomar — to take", "tirar — to throw", "traer — to bring"], "a": "tener — to have"}, {"q": "Where does the singer say they carry the team?", "opts": ["Dentro del corazón (inside the heart)", "En la mochila (in the backpack)", "En el bolsillo (in the pocket)", "En la mente (in the mind)"], "a": "Dentro del corazón (inside the heart)"}, {"q": "Which two actions are described with -ando/-iendo (gerund) endings?", "opts": ["Saltando y cantando (jumping and singing)", "Comiendo y bebiendo (eating and drinking)", "Corriendo y nadando (running and swimming)", "Llorando y riendo (crying and laughing)"], "a": "Saltando y cantando (jumping and singing)"}]}, {"key": "chorus", "title": "Segment 4 — Chorus", "transcript": "Borracho, yo voy cantando\nCon mis amigos, voy festejando un triunfo más\nLoco soy por mi trapo\nTe sigo a muerte, por donde vas\nPorque la vuelta queremos dar\nQueremos dar", "translation": "Drunk, I go along singing\nWith my friends, I go along celebrating one more triumph\nI'm crazy about my flag\nI follow you to the death, wherever you go\nBecause we want to take the victory lap\nWe want to take it", "questions": [{"q": "What adjective describes the singer's state while singing?", "opts": ["Borracho (drunk)", "Cansado (tired)", "Nervioso (nervous)", "Triste (sad)"], "a": "Borracho (drunk)"}, {"q": "'Sigo' is the irregular yo-form of which verb?", "opts": ["seguir — to follow", "salir — to leave", "servir — to serve", "sentir — to feel"], "a": "seguir — to follow"}, {"q": "Listen for the boot-rule exception: which form stays REGULAR because it's outside the boot?", "opts": ["queremos (we want)", "quiero (I want)", "quieres (you want)", "quieren (they want)"], "a": "queremos (we want)"}, {"q": "What is the singer 'crazy about'?", "opts": ["Mi trapo (my flag)", "Mi equipo (my team)", "Mi ciudad (my city)", "Mi música (my music)"], "a": "Mi trapo (my flag)"}]}]};
+const AUDIO = DATA.audio;
+const SEGMENTS = DATA.segments;
+
+let segIdx = 0;
+let answers = {}; // segKey -> {qIndex: correctBool}
+let totalQ = SEGMENTS.reduce((s,seg)=>s+seg.questions.length, 0);
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function updateProgress(){
+  const answered = Object.values(answers).reduce((s,seg)=>s+Object.keys(seg).length,0);
+  document.getElementById('progress-fill').style.width = `${Math.round((answered/totalQ)*100)}%`;
+}
+
+function renderSegment(){
+  const container = document.getElementById('segment-container');
+  container.innerHTML = '';
+  const seg = SEGMENTS[segIdx];
+  answers[seg.key] = answers[seg.key] || {};
+
+  const box = document.createElement('div');
+  box.className = 'card-box';
+
+  box.innerHTML = `
+    <div class="seg-title">${seg.title} (${segIdx+1} / ${SEGMENTS.length})</div>
+    <audio controls src="${AUDIO[seg.key]}"></audio>
+    <div class="reveal-row">
+      <button class="toggle-btn" id="toggle-es">Show Spanish Transcript</button>
+      <button class="toggle-btn" id="toggle-en">Show English Translation</button>
+    </div>
+    <div class="transcript-box es" id="box-es">${seg.transcript}</div>
+    <div class="transcript-box en" id="box-en">${seg.translation}</div>
+    <div id="questions-holder"></div>
+  `;
+  container.appendChild(box);
+
+  document.getElementById('toggle-es').onclick = ()=>{
+    const b = document.getElementById('box-es');
+    b.style.display = b.style.display==='block' ? 'none' : 'block';
+  };
+  document.getElementById('toggle-en').onclick = ()=>{
+    const b = document.getElementById('box-en');
+    b.style.display = b.style.display==='block' ? 'none' : 'block';
+  };
+
+  const qHolder = document.getElementById('questions-holder');
+  seg.questions.forEach((q, qi)=>{
+    const qdiv = document.createElement('div');
+    qdiv.className = 'qblock';
+    qdiv.innerHTML = `<div class="qtext">Q${qi+1}. ${q.q}</div><div class="options"></div><div class="qfeedback"></div>`;
+    qHolder.appendChild(qdiv);
+    const optsDiv = qdiv.querySelector('.options');
+    const feedback = qdiv.querySelector('.qfeedback');
+    const already = answers[seg.key][qi];
+    shuffle(q.opts).forEach(opt=>{
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+      btn.textContent = opt;
+      if(already !== undefined){
+        btn.disabled = true;
+        if(opt === q.a) btn.classList.add('correct');
+        if(already === false && opt !== q.a) { /* leave neutral, we don't know which was clicked after reload */ }
+      }
+      btn.onclick = ()=>{
+        if(answers[seg.key][qi] !== undefined) return;
+        const correct = opt === q.a;
+        answers[seg.key][qi] = correct;
+        Array.from(optsDiv.children).forEach(b=>{
+          b.disabled = true;
+          if(b.textContent === q.a) b.classList.add('correct');
+        });
+        if(!correct) btn.classList.add('wrong');
+        feedback.textContent = correct ? '✅ ¡Correcto!' : `❌ Correct answer: ${q.a}`;
+        updateProgress();
+        updateNavButtons();
+      };
+      optsDiv.appendChild(btn);
+    });
+    if(already !== undefined){
+      feedback.textContent = already ? '✅ ¡Correcto!' : `❌ Correct answer: ${q.a}`;
+    }
+  });
+
+  renderNav();
+  updateProgress();
+}
+
+function segAnswered(seg){
+  return Object.keys(answers[seg.key] || {}).length === seg.questions.length;
+}
+
+function renderNav(){
+  const container = document.getElementById('segment-container');
+  const nav = document.createElement('div');
+  nav.className = 'nav-row';
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'nav-btn';
+  prevBtn.textContent = '◀ Previous';
+  prevBtn.disabled = segIdx === 0;
+  prevBtn.onclick = ()=>{ segIdx--; renderSegment(); };
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'nav-btn';
+  nextBtn.id = 'next-btn';
+  nextBtn.textContent = segIdx === SEGMENTS.length-1 ? 'See Results' : 'Next Segment ▶';
+  nextBtn.disabled = !segAnswered(SEGMENTS[segIdx]);
+  nextBtn.onclick = ()=>{
+    if(segIdx === SEGMENTS.length-1){
+      showResults();
+    } else {
+      segIdx++;
+      renderSegment();
+    }
+  };
+
+  nav.appendChild(prevBtn);
+  nav.appendChild(nextBtn);
+  container.appendChild(nav);
+}
+
+function updateNavButtons(){
+  const nextBtn = document.getElementById('next-btn');
+  if(nextBtn) nextBtn.disabled = !segAnswered(SEGMENTS[segIdx]);
+}
+
+function showResults(){
+  document.getElementById('segment-container').style.display = 'none';
+  const resultBox = document.getElementById('final-score');
+  resultBox.style.display = 'block';
+  let correct = 0;
+  Object.values(answers).forEach(seg=>{
+    Object.values(seg).forEach(v=>{ if(v) correct++; });
+  });
+  const pct = Math.round((correct/totalQ)*100);
+  let msg = '';
+  if(pct >= 90) msg = '🏆 Excellent listening — you caught nearly everything!';
+  else if(pct >= 70) msg = '👍 Great job — solid comprehension of the lyrics.';
+  else if(pct >= 50) msg = '🙂 Good start — replay the segments you missed and try again.';
+  else msg = '🔁 Keep practicing — replay the audio and review the transcripts.';
+
+  resultBox.innerHTML = `
+    <h2 style="text-align:center;">Listening Comprehension Results</h2>
+    <div class="score-big" style="text-align:center;">${correct} / ${totalQ} (${pct}%)</div>
+    <p style="text-align:center;">${msg}</p>
+    <button class="restart-btn" id="restart-btn">🔄 Restart Exercise</button>
+  `;
+  document.getElementById('restart-btn').onclick = ()=>{
+    answers = {};
+    segIdx = 0;
+    resultBox.style.display = 'none';
+    document.getElementById('segment-container').style.display = 'block';
+    renderSegment();
+  };
+}
+
+renderSegment();
+</script>
+</body>
+</html>
