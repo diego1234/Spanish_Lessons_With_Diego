@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/I3bdcQQIxqFzJGC73YEdnjpL0P5CaZi3/93bb2222-90b1-46ed-b98d-36e310f1f048/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish Greetings Dictionary — Learn, Play, Speak</title>
+<style>
+  :root{
+    --primary:#e63946; --secondary:#457b9d; --bg:#f1faee; --dark:#1d3557; --accent:#f4a261; --green:#2a9d8f;
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:linear-gradient(135deg,#f1faee,#e8f4f8);color:var(--dark);}
+  header{background:var(--dark);color:#fff;padding:1.2rem 1rem;text-align:center;}
+  header h1{margin:0;font-size:1.6rem;}
+  header p{margin:.3rem 0 0;opacity:.85;font-size:.95rem;}
+  nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;background:#fff;padding:.6rem;position:sticky;top:0;z-index:50;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+  nav button{border:none;background:var(--bg);color:var(--dark);padding:.6rem 1rem;border-radius:20px;cursor:pointer;font-weight:600;font-size:.9rem;transition:.2s;}
+  nav button.active,nav button:hover{background:var(--primary);color:#fff;}
+  main{max-width:960px;margin:0 auto;padding:1rem;}
+  section{display:none;animation:fade .3s ease;}
+  section.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .card{background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);padding:1rem;margin-bottom:1rem;}
+  input[type=text]{width:100%;padding:.7rem 1rem;border-radius:24px;border:2px solid #ddd;font-size:1rem;margin-bottom:.8rem;}
+  .cat-btns{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem;}
+  .cat-btns span{background:var(--secondary);color:#fff;padding:.3rem .8rem;border-radius:14px;font-size:.8rem;cursor:pointer;}
+  .cat-btns span.active{background:var(--primary);}
+  .dict-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+  .word-card{background:#fff;border-left:5px solid var(--primary);border-radius:10px;padding:.8rem 1rem;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+  .word-card .es{font-weight:700;font-size:1.1rem;color:var(--dark);}
+  .word-card .en{color:var(--secondary);font-size:.95rem;margin:.2rem 0;}
+  .word-card .cat{font-size:.7rem;color:#999;}
+  .speak-btn{background:var(--green);color:#fff;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1rem;float:right;}
+  /* Flashcards */
+  #flash-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+  .flashcard{width:100%;max-width:420px;height:220px;perspective:1000px;cursor:pointer;}
+  .flashcard-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d;}
+  .flashcard.flipped .flashcard-inner{transform:rotateY(180deg);}
+  .face{position:absolute;width:100%;height:100%;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;padding:1rem;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.15);}
+  .front{background:var(--dark);color:#fff;font-size:1.5rem;font-weight:700;}
+  .back{background:var(--accent);color:#1d3557;transform:rotateY(180deg);font-size:1.1rem;}
+  .flash-controls{display:flex;gap:.6rem;}
+  .flash-controls button, .btn{background:var(--secondary);color:#fff;border:none;padding:.6rem 1.2rem;border-radius:22px;cursor:pointer;font-weight:600;}
+  .btn.primary{background:var(--primary);}
+  .btn.green{background:var(--green);}
+  /* Quiz */
+  .quiz-q{font-size:1.15rem;font-weight:700;margin-bottom:.8rem;}
+  .quiz-opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid #ddd;border-radius:10px;padding:.7rem 1rem;margin-bottom:.5rem;cursor:pointer;font-size:1rem;}
+  .quiz-opt.correct{background:#d4edda;border-color:var(--green);}
+  .quiz-opt.incorrect{background:#f8d7da;border-color:var(--primary);}
+  #quiz-progress{font-weight:600;color:var(--secondary);margin-bottom:.5rem;}
+  /* Matching game */
+  #game-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem;margin-top:.8rem;}
+  .game-card{background:#fff;border:2px solid #ddd;border-radius:10px;padding:.7rem;text-align:center;cursor:grab;font-weight:600;min-height:70px;display:flex;align-items:center;justify-content:center;transition:.2s;position:relative;}
+  .game-card.selected{border-color:var(--secondary);background:#e8f4f8;}
+  .game-card.matched{opacity:.4;pointer-events:none;}
+  .game-card.correct-pulse{animation:pulseGreen .5s;}
+  .game-card.wrong-shake{animation:shakeRed .4s;}
+  @keyframes pulseGreen{0%{box-shadow:0 0 0 0 rgba(42,157,143,.7);}70%{box-shadow:0 0 0 14px rgba(42,157,143,0);}100%{box-shadow:none;}}
+  @keyframes shakeRed{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+  .example-box{margin-top:.5rem;font-size:.8rem;font-style:italic;color:var(--secondary);}
+  #score-tracker{display:flex;gap:1rem;flex-wrap:wrap;margin:.6rem 0;font-weight:600;}
+  #score-tracker span{background:var(--bg);padding:.4rem .8rem;border-radius:12px;}
+  /* Conversation */
+  audio{width:100%;margin:.6rem 0;}
+  .transcript-line{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid #eee;flex-wrap:wrap;}
+  .transcript-line .es{flex:1;min-width:200px;font-weight:600;}
+  .transcript-line .en{flex:1;min-width:200px;color:var(--secondary);}
+  footer{text-align:center;padding:1.5rem;color:#888;font-size:.8rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇪🇸 Spanish Greetings Dictionary</h1>
+  <p>Interactive dictionary · flashcards · quizzes · game · real conversation practice</p>
+</header>
+
+<nav id="nav">
+  <button data-tab="dict" class="active">📖 Dictionary</button>
+  <button data-tab="flash">🃏 Flashcards</button>
+  <button data-tab="quiz">📝 Quiz</button>
+  <button data-tab="game">🎯 Match Game</button>
+  <button data-tab="convo">🗣️ Real Conversation</button>
+</nav>
+
+<main>
+
+  <!-- DICTIONARY -->
+  <section id="dict" class="active">
+    <div class="card">
+      <input type="text" id="dict-search" placeholder="🔍 Search Spanish or English...">
+      <div class="cat-btns" id="cat-btns"></div>
+      <div class="dict-grid" id="dict-grid"></div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flash">
+    <div class="card" id="flash-wrap">
+      <div id="flash-count" style="font-weight:600;color:var(--secondary);"></div>
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="face front" id="flash-front"></div>
+          <div class="face back" id="flash-back"></div>
+        </div>
+      </div>
+      <div class="flash-controls">
+        <button class="btn" onclick="prevFlash()">⬅ Prev</button>
+        <button class="btn green" onclick="speak(flashDeck[flashIdx].es)">🔊 Listen</button>
+        <button class="btn primary" onclick="nextFlash()">Next ➡</button>
+      </div>
+      <button class="btn" onclick="newFlashDeck()">🔀 New Random Set (5)</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <div class="card">
+      <div id="quiz-progress"></div>
+      <div id="quiz-body"></div>
+      <div id="quiz-result" style="font-weight:700;margin-top:1rem;"></div>
+      <button class="btn primary" onclick="startQuiz()" style="margin-top:1rem;">🔄 Restart Quiz</button>
+    </div>
+  </section>
+
+  <!-- MATCH GAME -->
+  <section id="game">
+    <div class="card">
+      <p>Drag a Spanish card onto its English match, or tap one card then its match. Click "Reveal Example" to see the phrase in context.</p>
+      <div id="score-tracker">
+        <span id="score-attempts">Attempts: 0</span>
+        <span id="score-correct">Correct: 0</span>
+        <span id="score-accuracy">Accuracy: 0%</span>
+      </div>
+      <button class="btn primary" onclick="newGameRound()">🔀 New Round (5 cards)</button>
+      <div id="game-board"></div>
+    </div>
+  </section>
+
+  <!-- CONVERSATION -->
+  <section id="convo">
+    <div class="card">
+      <h3>🎧 Real Spoken Conversation (spoken interpretation, TTS)</h3>
+      <p>A natural greeting exchange built from the vocabulary. This is an AI spoken-word interpretation, not a reproduction of any original recording.</p>
+      <audio controls src="warm_hola_qu_tal_short_pause_muy_bien_gr_8eb7aeb7.mp3"></audio>
+      <div id="transcript"></div>
+    </div>
+    <div class="card">
+      <h3>📼 Original Uploaded Audio: Greetings in Spanish</h3>
+      <audio controls src="greetings-in-spanish.mp3"></audio>
+      <p>Full narrated list of the 50 greetings (see Dictionary tab for text + translations).</p>
+    </div>
+    <div class="card">
+      <h3>📄 Bilingual Subtitles (.srt)</h3>
+      <p>Download: <a href="conversation.srt" download>conversation.srt</a> — English/Spanish line-by-line subtitle file for the conversation above (works with any video player or hard-burn tool).</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>Made for iterative Spanish practice · Data: 50 greetings dictionary · TTS is a spoken interpretation for learning purposes.</footer>
+
+<script>
+const VOCAB = [
+{es:"Hola",en:"Hello / Hi",cat:"Basic",ex:"¡Hola! ¿Qué tal?"},
+{es:"Buenos días",en:"Good morning",cat:"Basic",ex:"Buenos días, ¿cómo amaneciste?"},
+{es:"Buenas tardes",en:"Good afternoon",cat:"Basic",ex:"Buenas tardes, señora."},
+{es:"Buenas noches",en:"Good evening / Good night",cat:"Basic",ex:"Buenas noches, que descanses."},
+{es:"Buenas",en:"Hi there (casual)",cat:"Basic",ex:"¡Buenas! ¿Todo bien?"},
+{es:"Saludos",en:"Greetings",cat:"Basic",ex:"Saludos desde España."},
+{es:"Hola a todos",en:"Hello everyone",cat:"Basic",ex:"Hola a todos, bienvenidos a la clase."},
+{es:"Bienvenido/Bienvenida",en:"Welcome (m/f)",cat:"Basic",ex:"Bienvenida a nuestra casa."},
+{es:"Bienvenidos",en:"Welcome (plural/group)",cat:"Basic",ex:"Bienvenidos, pasen adelante."},
+{es:"¡Hola! ¿Qué tal?",en:"Hi! How's it going?",cat:"Basic",ex:"¡Hola! ¿Qué tal? Tanto tiempo."},
+{es:"¿Cómo estás?",en:"How are you? (informal)",cat:"HowAreYou",ex:"¿Cómo estás hoy?"},
+{es:"¿Cómo está usted?",en:"How are you? (formal)",cat:"HowAreYou",ex:"Buenas tardes, ¿cómo está usted?"},
+{es:"¿Cómo están?",en:"How are you all? (plural)",cat:"HowAreYou",ex:"¿Cómo están todos ustedes?"},
+{es:"¿Qué tal?",en:"How's it going? / What's up?",cat:"HowAreYou",ex:"Oye, ¿qué tal?"},
+{es:"¿Cómo te va?",en:"How's it going for you?",cat:"HowAreYou",ex:"¿Cómo te va en el trabajo?"},
+{es:"¿Cómo le va?",en:"How's it going for you? (formal)",cat:"HowAreYou",ex:"Doctor, ¿cómo le va?"},
+{es:"¿Cómo andas?",en:"How are you doing?",cat:"HowAreYou",ex:"¿Cómo andas, amigo?"},
+{es:"¿Cómo va todo?",en:"How's everything going?",cat:"HowAreYou",ex:"¿Cómo va todo por casa?"},
+{es:"¿Qué hay de nuevo?",en:"What's new?",cat:"HowAreYou",ex:"¿Qué hay de nuevo contigo?"},
+{es:"¿Todo bien?",en:"Everything good?",cat:"HowAreYou",ex:"¿Todo bien por ahí?"},
+{es:"¿Qué onda?",en:"What's up? (Mexico)",cat:"Casual",ex:"¡Qué onda, carnal!"},
+{es:"¿Qué pasa?",en:"What's happening? / What's up?",cat:"Casual",ex:"¿Qué pasa, tío?"},
+{es:"¿Qué hubo? / Quiubo",en:"What's up? (Colombia, Mexico)",cat:"Casual",ex:"Quiubo, ¿cómo vas?"},
+{es:"¿Qué más?",en:"What else? / What's up? (Colombia)",cat:"Casual",ex:"¿Qué más, parcero?"},
+{es:"¿Qué cuentas?",en:"What's new with you?",cat:"Casual",ex:"¿Qué cuentas de tu viaje?"},
+{es:"¿Qué hay?",en:"What's up? / What's new?",cat:"Casual",ex:"¿Qué hay, familia?"},
+{es:"¿Qué se cuenta?",en:"What's going on?",cat:"Casual",ex:"¿Qué se cuenta por aquí?"},
+{es:"Ey / Oye",en:"Hey",cat:"Casual",ex:"Oye, ven acá."},
+{es:"¿Todo bien o qué?",en:"All good or what? (very casual)",cat:"Casual",ex:"¿Todo bien o qué, güey?"},
+{es:"¿Cómo vamos?",en:"How are we doing?",cat:"Casual",ex:"Equipo, ¿cómo vamos?"},
+{es:"Bien, gracias",en:"Good, thanks",cat:"Responses",ex:"Bien, gracias, ¿y tú?"},
+{es:"Muy bien, gracias",en:"Very well, thanks",cat:"Responses",ex:"Muy bien, gracias por preguntar."},
+{es:"Más o menos",en:"So-so",cat:"Responses",ex:"Más o menos, un poco cansado."},
+{es:"Todo bien",en:"All good",cat:"Responses",ex:"Todo bien por aquí."},
+{es:"No me quejo",en:"Can't complain",cat:"Responses",ex:"No me quejo, gracias a Dios."},
+{es:"Aquí, en la lucha",en:"Here, still getting by",cat:"Responses",ex:"Aquí, en la lucha, como siempre."},
+{es:"¿Y tú? / ¿Y usted?",en:"And you? (informal/formal)",cat:"Responses",ex:"Bien, gracias, ¿y usted?"},
+{es:"Mucho gusto",en:"Nice to meet you",cat:"FirstMeeting",ex:"Mucho gusto, soy Carlos."},
+{es:"Encantado/Encantada",en:"Delighted (to meet you)",cat:"FirstMeeting",ex:"Encantada de conocerte."},
+{es:"Es un placer",en:"It's a pleasure",cat:"FirstMeeting",ex:"Es un placer trabajar contigo."},
+{es:"Es un placer conocerte",en:"It's a pleasure to meet you",cat:"FirstMeeting",ex:"Es un placer conocerte, Ana."},
+{es:"¿Cómo te llamas?",en:"What's your name? (informal)",cat:"FirstMeeting",ex:"Hola, ¿cómo te llamas?"},
+{es:"¿Cómo se llama usted?",en:"What's your name? (formal)",cat:"FirstMeeting",ex:"Perdón, ¿cómo se llama usted?"},
+{es:"Feliz día",en:"Have a nice day",cat:"TimeSpecific",ex:"¡Feliz día, nos vemos pronto!"},
+{es:"Que tengas un buen día",en:"Have a good day",cat:"TimeSpecific",ex:"Que tengas un buen día en el trabajo."},
+{es:"Que tenga un buen día",en:"Have a good day (formal)",cat:"TimeSpecific",ex:"Que tenga un buen día, señor."},
+{es:"Feliz semana",en:"Happy week",cat:"TimeSpecific",ex:"Feliz semana a todos."},
+{es:"Hasta luego",en:"See you later",cat:"Farewells",ex:"Bueno, hasta luego."},
+{es:"Nos vemos",en:"See you around",cat:"Farewells",ex:"Nos vemos el lunes."},
+{es:"Chao / Chau",en:"Bye",cat:"Farewells",ex:"¡Chao, cuídate mucho!"}
+];
+
+const CONVO = [
+["¡Hola! ¿Qué tal?","Hi! How's it going?"],
+["Muy bien, gracias. ¿Y tú?","Very well, thanks. And you?"],
+["Todo bien, no me quejo.","All good, can't complain."],
+["Oye, mucho gusto, ¿cómo te llamas?","Hey, nice to meet you, what's your name?"],
+["Encantada, me llamo Ana. Es un placer conocerte.","Delighted, my name is Ana. It's a pleasure to meet you."],
+["¿Qué hay de nuevo?","What's new?"],
+["Pues nada, aquí en la lucha.","Well, nothing, just getting by."],
+["Bueno, que tengas un buen día.","Well, have a good day."],
+["Igualmente, hasta luego.","Same to you, see you later."],
+["¡Nos vemos!","See you around!"]
+];
+
+function speak(text){
+  if(!('speechSynthesis' in window)) return alert('Speech synthesis not supported in this browser.');
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'es-ES'; u.rate = 0.9;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
+
+/* NAV */
+document.getElementById('nav').addEventListener('click', e=>{
+  const btn = e.target.closest('button'); if(!btn) return;
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+});
+
+/* DICTIONARY */
+const cats = [...new Set(VOCAB.map(v=>v.cat))];
+let activeCat = 'All';
+function renderCats(){
+  const wrap = document.getElementById('cat-btns');
+  wrap.innerHTML = '';
+  ['All',...cats].forEach(c=>{
+    const s = document.createElement('span');
+    s.textContent = c; if(c===activeCat) s.classList.add('active');
+    s.onclick = ()=>{ activeCat=c; renderCats(); renderDict(); };
+    wrap.appendChild(s);
+  });
+}
+function renderDict(){
+  const q = document.getElementById('dict-search').value.toLowerCase();
+  const grid = document.getElementById('dict-grid'); grid.innerHTML='';
+  VOCAB.filter(v => (activeCat==='All'||v.cat===activeCat) &&
+    (v.es.toLowerCase().includes(q)||v.en.toLowerCase().includes(q))
+  ).forEach(v=>{
+    const c = document.createElement('div'); c.className='word-card';
+    c.innerHTML = `<button class="speak-btn" title="Listen">🔊</button>
+      <div class="es">${v.es}</div>
+      <div class="en">${v.en}</div>
+      <div class="cat">${v.cat}</div>
+      <div class="example-box">e.g. "${v.ex}"</div>`;
+    c.querySelector('.speak-btn').onclick = ()=>speak(v.es);
+    grid.appendChild(c);
+  });
+}
+document.getElementById('dict-search').addEventListener('input', renderDict);
+renderCats(); renderDict();
+
+/* FLASHCARDS */
+let flashDeck=[], flashIdx=0;
+function shuffle(arr){ return [...arr].sort(()=>Math.random()-.5); }
+function newFlashDeck(){
+  flashDeck = shuffle(VOCAB).slice(0,5);
+  flashIdx = 0;
+  document.getElementById('flashcard').classList.remove('flipped');
+  renderFlash();
+}
+function renderFlash(){
+  const v = flashDeck[flashIdx];
+  document.getElementById('flash-front').textContent = v.es;
+  document.getElementById('flash-back').innerHTML = `<strong>${v.en}</strong><div class="example-box">"${v.ex}"</div>`;
+  document.getElementById('flash-count').textContent = `Card ${flashIdx+1} / ${flashDeck.length}`;
+}
+document.getElementById('flashcard').onclick = ()=> document.getElementById('flashcard').classList.toggle('flipped');
+function nextFlash(){ flashIdx=(flashIdx+1)%flashDeck.length; document.getElementById('flashcard').classList.remove('flipped'); renderFlash(); }
+function prevFlash(){ flashIdx=(flashIdx-1+flashDeck.length)%flashDeck.length; document.getElementById('flashcard').classList.remove('flipped'); renderFlash(); }
+newFlashDeck();
+
+/* QUIZ */
+let quizQs=[], quizIdx=0, quizScore=0;
+function buildQuiz(){
+  const pool = shuffle(VOCAB).slice(0,10);
+  return pool.map(v=>{
+    const wrongs = shuffle(VOCAB.filter(x=>x.en!==v.en)).slice(0,3).map(x=>x.en);
+    const opts = shuffle([v.en,...wrongs]);
+    return {q:v.es, answer:v.en, opts, ex:v.ex};
+  });
+}
+function startQuiz(){
+  quizQs = buildQuiz(); quizIdx=0; quizScore=0;
+  document.getElementById('quiz-result').textContent='';
+  renderQuiz();
+}
+function renderQuiz(){
+  if(quizIdx>=quizQs.length){
+    document.getElementById('quiz-progress').textContent='Quiz complete!';
+    document.getElementById('quiz-body').innerHTML='';
+    document.getElementById('quiz-result').textContent = `Score: ${quizScore} / ${quizQs.length} (${Math.round(quizScore/quizQs.length*100)}%)`;
+    return;
+  }
+  document.getElementById('quiz-progress').textContent = `Question ${quizIdx+1} / ${quizQs.length}`;
+  const q = quizQs[quizIdx];
+  const body = document.getElementById('quiz-body');
+  body.innerHTML = `<div class="quiz-q">What does "${q.q}" mean?</div>`;
+  q.opts.forEach(o=>{
+    const b = document.createElement('button');
+    b.className='quiz-opt'; b.textContent=o;
+    b.onclick = ()=>{
+      document.querySelectorAll('.quiz-opt').forEach(x=>x.disabled=true);
+      if(o===q.answer){ b.classList.add('correct'); quizScore++; }
+      else{ b.classList.add('incorrect');
+        [...document.querySelectorAll('.quiz-opt')].find(x=>x.textContent===q.answer).classList.add('correct');
+      }
+      setTimeout(()=>{ quizIdx++; renderQuiz(); }, 900);
+    };
+    body.appendChild(b);
+  });
+}
+startQuiz();
+
+/* MATCHING GAME */
+let gameDeck=[], selectedCard=null, attempts=0, correct=0;
+function updateScore(){
+  document.getElementById('score-attempts').textContent = `Attempts: ${attempts}`;
+  document.getElementById('score-correct').textContent = `Correct: ${correct}`;
+  document.getElementById('score-accuracy').textContent = `Accuracy: ${attempts? Math.round(correct/attempts*100):0}%`;
+}
+function newGameRound(){
+  gameDeck = shuffle(VOCAB).slice(0,5);
+  selectedCard=null;
+  const board = document.getElementById('game-board'); board.innerHTML='';
+  let cards = shuffle([
+    ...gameDeck.map(v=>({id:v.es,text:v.es,match:v.en,ex:v.ex,side:'es'})),
+    ...gameDeck.map(v=>({id:v.es,text:v.en,match:v.es,ex:v.ex,side:'en'}))
+  ]);
+  cards.forEach(c=>{
+    const el = document.createElement('div');
+    el.className='game-card'; el.draggable=true;
+    el.dataset.id=c.id; el.dataset.side=c.side;
+    el.innerHTML = `<div>${c.text}</div>`;
+    el.addEventListener('click', ()=>handleClick(el,c));
+    el.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', JSON.stringify({id:c.id,side:c.side})));
+    el.addEventListener('dragover', e=>e.preventDefault());
+    el.addEventListener('drop', e=>{
+      e.preventDefault();
+      const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+      attemptMatch(data.id, data.side, c.id, c.side, el);
+    });
+    board.appendChild(el);
+  });
+  // reveal example buttons row
+  const revWrap = document.createElement('div'); revWrap.style.gridColumn='1/-1';
+  gameDeck.forEach(v=>{
+    const b = document.createElement('button');
+    b.className='btn'; b.style.margin='.2rem'; b.textContent = `Reveal Example: ${v.es}`;
+    b.onclick = ()=> alert(`"${v.ex}"\n(${v.en})`);
+    revWrap.appendChild(b);
+  });
+  board.appendChild(revWrap);
+  attempts=0; correct=0; updateScore();
+}
+function handleClick(el,c){
+  if(el.classList.contains('matched')) return;
+  if(!selectedCard){ selectedCard={el,c}; el.classList.add('selected'); return; }
+  if(selectedCard.el===el){ el.classList.remove('selected'); selectedCard=null; return; }
+  attemptMatch(selectedCard.c.id, selectedCard.c.side, c.id, c.side, el, selectedCard.el);
+}
+function attemptMatch(id1, side1, id2, side2, dropEl, srcElOverride){
+  const srcEl = srcElOverride || document.querySelector(`.game-card[data-id="${id1}"][data-side="${side1}"]`);
+  if(!srcEl || srcEl===dropEl || side1===side2){ return; }
+  attempts++;
+  if(id1===id2){
+    correct++;
+    [srcEl,dropEl].forEach(e=>{ e.classList.add('matched','correct-pulse'); e.classList.remove('selected'); });
+  } else {
+    [srcEl,dropEl].forEach(e=>{ e.classList.add('wrong-shake'); e.classList.remove('selected'); });
+    setTimeout(()=> [srcEl,dropEl].forEach(e=>e.classList.remove('wrong-shake')), 500);
+  }
+  selectedCard=null;
+  updateScore();
+}
+newGameRound();
+
+/* CONVERSATION TRANSCRIPT */
+const t = document.getElementById('transcript');
+CONVO.forEach(([es,en])=>{
+  const d = document.createElement('div'); d.className='transcript-line';
+  d.innerHTML = `<div class="es">🇪🇸 ${es}</div><div class="en">🇬🇧 ${en}</div>`;
+  t.appendChild(d);
+});
+</script>
+</body>
+</html>
