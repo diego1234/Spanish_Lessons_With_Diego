@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padre e Hija</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root {
+  --bg: oklch(98% 0.004 240);
+  --surface: oklch(100% 0 0);
+  --fg: oklch(20% 0.02 240);
+  --muted: oklch(50% 0.018 240);
+  --border: oklch(90% 0.006 240);
+  --accent: oklch(56% 0.12 170);
+  --accent-light: oklch(92% 0.04 170);
+  --accent-dark: oklch(42% 0.14 170);
+  --success: oklch(55% 0.15 145);
+  --success-light: oklch(92% 0.04 145);
+  --warn: oklch(70% 0.14 75);
+  --warn-light: oklch(93% 0.04 75);
+  --danger: oklch(55% 0.18 25);
+  --danger-light: oklch(93% 0.04 25);
+  --purple: oklch(55% 0.14 300);
+  --purple-light: oklch(92% 0.04 300);
+  --orange: oklch(65% 0.15 55);
+  --orange-light: oklch(93% 0.04 55);
+  --pink: oklch(60% 0.14 350);
+  --pink-light: oklch(93% 0.04 350);
+  --font-display: 'Söhne', 'Avenir Next', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--fg); line-height: 1.6; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; }
+.app-layout { display: flex; min-height: 100vh; }
+/* Sidebar */
+.sidebar { width: 280px; background: var(--surface); border-right: 1px solid var(--border); position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 100; transition: transform 0.3s ease; }
+.sidebar-header { padding: 24px 20px 16px; border-bottom: 1px solid var(--border); }
+.sidebar-header h2 { font-size: 18px; letter-spacing: -0.01em; margin-bottom: 4px; }
+.sidebar-header p { font-size: 13px; color: var(--muted); letter-spacing: 0.01em; }
+.sidebar-stats { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-pill { display: flex; align-items: center; gap: 6px; background: var(--bg); padding: 6px 10px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; }
+.stat-pill .icon { font-size: 16px; }
+.stat-pill .val { font-family: var(--font-mono); font-size: 12px; }
+.sidebar-nav { padding: 12px 0; }
+.nav-lesson { display: block; padding: 12px 20px; text-decoration: none; color: var(--fg); font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; cursor: pointer; }
+.nav-lesson:hover { background: var(--bg); }
+.nav-lesson.active { background: var(--accent-light); border-left-color: var(--accent); color: var(--accent-dark); }
+.nav-lesson .lesson-num { font-family: var(--font-mono); font-size: 11px; color: var(--muted); display: block; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+.nav-lesson .lesson-title { font-weight: 500; }
+.nav-lesson .lesson-progress { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.nav-lesson .progress-bar-bg { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.nav-lesson .progress-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
+.nav-lesson .progress-pct { font-size: 11px; color: var(--muted); font-family: var(--font-mono); min-width: 30px; text-align: right; }
+.sidebar-badges { padding: 16px 20px; border-top: 1px solid var(--border); }
+.sidebar-badges h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+.badge-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge-icon { width: 32px; height: 32px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--bg); border: 1px solid var(--border); opacity: 0.4; transition: all 0.3s; }
+.badge-icon.unlocked { opacity: 1; border-color: var(--accent); background: var(--accent-light); }
+/* Main content */
+.main-content { margin-left: 280px; flex: 1; min-height: 100vh; }
+.top-bar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; }
+.top-bar-left { display: flex; align-items: center; gap: 12px; }
+.top-bar-left h1 { font-size: 16px; font-weight: 600; }
+.top-bar-right { display: flex; align-items: center; gap: 16px; }
+.overall-progress { display: flex; align-items: center; gap: 8px; }
+.overall-progress .bar { width: 120px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.overall-progress .fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.5s; }
+.overall-progress .pct { font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
+.hamburger { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--fg); padding: 4px; }
+/* Lesson content */
+.lesson-container { max-width: 900px; margin: 0 auto; padding: 32px 24px 80px; }
+.lesson-hero { text-align: center; padding: 40px 20px 32px; margin-bottom: 32px; }
+.lesson-hero .lesson-badge { display: inline-block; background: var(--accent-light); color: var(--accent-dark); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+.lesson-hero h1 { font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; margin-bottom: 8px; }
+.lesson-hero p { color: var(--muted); font-size: 16px; max-width: 600px; margin: 0 auto; }
+/* Sections */
+.lesson-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.section-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.section-icon.mission { background: var(--accent-light); color: var(--accent-dark); }
+.section-icon.warmup { background: var(--orange-light); color: var(--orange); }
+.section-icon.vocab { background: var(--success-light); color: var(--success); }
+.section-icon.pattern { background: var(--purple-light); color: var(--purple); }
+.section-icon.grammar { background: var(--warn-light); color: var(--warn); }
+.section-icon.activity { background: var(--pink-light); color: var(--pink); }
+.section-icon.listening { background: var(--accent-light); color: var(--accent); }
+.section-icon.speaking { background: var(--orange-light); color: var(--orange); }
+.section-icon.challenge { background: var(--danger-light); color: var(--danger); }
+.section-icon.reflection { background: var(--purple-light); color: var(--purple); }
+.section-icon.project { background: var(--success-light); color: var(--success); }
+.section-icon.progress { background: var(--warn-light); color: var(--warn); }
+.section-icon.gamification { background: var(--pink-light); color: var(--pink); }
+.section-header h2 { font-size: 20px; letter-spacing: -0.01em; }
+.section-header .section-tag { font-size: 11px; background: var(--bg); color: var(--muted); padding: 2px 8px; border-radius: 10px; margin-left: auto; font-weight: 500; }
+/* Mission card */
+.mission-card { background: linear-gradient(135deg, var(--accent-light), oklch(95% 0.03 170)); border-radius: var(--radius-md); padding: 24px; text-align: center; }
+.mission-card .mission-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); font-weight: 600; margin-bottom: 8px; }
+.mission-card .mission-text { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: 12px; }
+.mission-card .objective { font-size: 14px; color: var(--muted); }
+.mission-card .objective strong { color: var(--fg); }
+/* Vocab grid */
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.vocab-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; text-align: center; transition: all 0.2s; cursor: pointer; }
+.vocab-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.vocab-card .emoji { font-size: 32px; margin-bottom: 8px; display: block; }
+.vocab-card .spanish { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--fg); }
+.vocab-card .english { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.vocab-card .pronunciation { font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-top: 4px; }
+.vocab-card .sentence { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; border-top: 1px solid var(--border); padding-top: 8px; }
+/* Audio button */
+.audio-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.audio-btn:hover { background: var(--accent-dark); }
+.audio-btn.playing { animation: pulse 1s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+/* Pattern cards */
+.pattern-list { display: flex; flex-direction: column; gap: 12px; }
+.pattern-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+.pattern-num { width: 28px; height: 28px; background: var(--purple-light); color: var(--purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.pattern-text { font-family: var(--font-display); font-size: 17px; font-weight: 500; }
+.pattern-translation { font-size: 13px; color: var(--muted); }
+/* Grammar box */
+.grammar-box { background: var(--warn-light); border: 1px solid oklch(85% 0.04 75); border-radius: var(--radius-md); padding: 20px; }
+.grammar-box h3 { font-size: 16px; color: var(--warn); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.grammar-example { background: white; border-radius: var(--radius-sm); padding: 12px 16px; margin-top: 8px; font-size: 14px; }
+.grammar-example .es { font-weight: 600; color: var(--fg); }
+.grammar-example .en { color: var(--muted); font-size: 13px; }
+/* Flashcard */
+.flashcard-container { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.flashcard-wrapper { perspective: 1000px; width: 100%; max-width: 400px; height: 240px; cursor: pointer; }
+.flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s ease; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.flashcard-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+.flashcard-front { background: linear-gradient(135deg, var(--accent-light), oklch(94% 0.03 170)); border: 2px solid var(--accent); }
+.flashcard-front .fc-emoji { font-size: 48px; margin-bottom: 12px; }
+.flashcard-front .fc-word { font-family: var(--font-display); font-size: 28px; font-weight: 600; }
+.flashcard-front .fc-hint { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.flashcard-back { background: linear-gradient(135deg, var(--success-light), oklch(94% 0.03 145)); border: 2px solid var(--success); transform: rotateY(180deg); }
+.flashcard-back .fc-word { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--success); margin-bottom: 8px; }
+.flashcard-back .fc-pronunciation { font-family: var(--font-mono); font-size: 16px; color: var(--muted); margin-bottom: 8px; }
+.flashcard-back .fc-sentence { font-size: 14px; color: var(--fg); text-align: center; font-style: italic; }
+.flashcard-nav { display: flex; gap: 12px; align-items: center; }
+.flashcard-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); font-size: 18px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+.flashcard-nav button:hover { background: var(--accent-light); border-color: var(--accent); }
+.flashcard-counter { font-size: 13px; color: var(--muted); font-family: var(--font-mono); }
+/* Quiz */
+.quiz-container { display: flex; flex-direction: column; gap: 16px; }
+.quiz-question { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-option { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; cursor: pointer; transition: all 0.2s; font-size: 15px; text-align: left; width: 100%; }
+.quiz-option:hover { border-color: var(--accent); background: var(--accent-light); }
+.quiz-option.correct { border-color: var(--success); background: var(--success-light); color: var(--success); }
+.quiz-option.incorrect { border-color: var(--danger); background: var(--danger-light); color: var(--danger); }
+.quiz-option:disabled { cursor: default; opacity: 0.7; }
+.quiz-feedback { padding: 12px 16px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; display: none; }
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct { background: var(--success-light); color: var(--success); }
+.quiz-feedback.incorrect { background: var(--danger-light); color: var(--danger); }
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.quiz-score { font-size: 13px; color: var(--muted); font-family: var(--font-mono); }
+/* Fill blank */
+.fill-blank { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 16px; line-height: 2; }
+.fill-blank input { border: none; border-bottom: 2px solid var(--border); background: transparent; font-size: 16px; font-family: var(--font-body); padding: 2px 8px; width: 140px; text-align: center; transition: border-color 0.2s; outline: none; }
+.fill-blank input:focus { border-bottom-color: var(--accent); }
+.fill-blank input.correct { border-bottom-color: var(--success); color: var(--success); }
+.fill-blank input.incorrect { border-bottom-color: var(--danger); color: var(--danger); }
+.fill-blank .word { font-weight: 500; }
+/* Drag & drop matching */
+.match-container { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+.match-column { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 200px; }
+.match-item { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font-size: 14px; text-align: center; transition: all 0.2s; }
+.match-item.draggable { cursor: grab; user-select: none; }
+.match-item.draggable:hover { border-color: var(--accent); background: var(--accent-light); }
+.match-item.draggable:active { cursor: grabbing; }
+.match-item.draggable.dragging { opacity: 0.5; }
+.match-item.dropzone { min-height: 48px; border-style: dashed; }
+.match-item.dropzone.over { border-color: var(--accent); background: var(--accent-light); }
+.match-item.matched { border-color: var(--success); background: var(--success-light); cursor: default; }
+.match-item.wrong { border-color: var(--danger); background: var(--danger-light); animation: shake 0.4s; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+.match-score { text-align: center; margin-top: 12px; font-size: 14px; color: var(--muted); }
+/* Sentence builder */
+.sentence-builder { display: flex; flex-direction: column; gap: 12px; }
+.sentence-prompt { font-size: 15px; color: var(--muted); margin-bottom: 4px; }
+.sentence-target { font-family: var(--font-display); font-size: 18px; font-weight: 500; padding: 12px 16px; background: var(--bg); border-radius: var(--radius-sm); border: 1px solid var(--border); min-height: 48px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.sentence-target .placed-word { background: var(--accent-light); color: var(--accent-dark); padding: 4px 12px; border-radius: 16px; font-size: 14px; cursor: pointer; transition: all 0.2s; border: 1px solid var(--accent); }
+.sentence-target .placed-word:hover { background: var(--danger-light); border-color: var(--danger); }
+.word-bank { display: flex; flex-wrap: wrap; gap: 8px; }
+.word-chip { background: var(--surface); border: 2px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 14px; cursor: pointer; transition: all 0.2s; user-select: none; }
+.word-chip:hover { border-color: var(--accent); background: var(--accent-light); }
+.word-chip.used { opacity: 0.3; pointer-events: none; }
+/* Dialogue */
+.dialogue { display: flex; flex-direction: column; gap: 12px; }
+.dialogue-line { display: flex; gap: 12px; align-items: flex-start; }
+.dialogue-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.dialogue-avatar.papa { background: var(--accent-light); color: var(--accent-dark); }
+.dialogue-avatar.hija { background: var(--pink-light); color: var(--pink); }
+.dialogue-bubble { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 10px 14px; max-width: 80%; }
+.dialogue-bubble .es { font-size: 15px; font-weight: 500; }
+.dialogue-bubble .en { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.dialogue-speed { display: flex; gap: 8px; margin-bottom: 12px; }
+.speed-btn { padding: 6px 14px; border: 1px solid var(--border); background: var(--surface); border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+.speed-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+/* Speaking practice */
+.roleplay-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; margin-bottom: 12px; }
+.roleplay-card h4 { font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.roleplay-card .scenario { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.roleplay-lines { display: flex; flex-direction: column; gap: 6px; }
+.roleplay-line { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+.roleplay-line .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); min-width: 50px; }
+.roleplay-line .text { font-weight: 500; }
+/* Challenge card */
+.challenge-card { background: linear-gradient(135deg, var(--danger-light), oklch(95% 0.03 25)); border: 1px solid oklch(85% 0.04 25); border-radius: var(--radius-md); padding: 24px; }
+.challenge-card h3 { color: var(--danger); font-size: 16px; margin-bottom: 16px; }
+.challenge-list { list-style: none; padding: 0; }
+.challenge-list li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.challenge-list li:last-child { border-bottom: none; }
+.challenge-list .ask { color: var(--accent-dark); font-weight: 500; }
+.challenge-list .say { color: var(--success); font-weight: 500; }
+/* Reflection */
+.reflection-form { display: flex; flex-direction: column; gap: 12px; }
+.reflection-form label { font-size: 14px; font-weight: 500; }
+.reflection-form textarea { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; font-family: var(--font-body); font-size: 14px; resize: vertical; min-height: 60px; outline: none; transition: border-color 0.2s; }
+.reflection-form textarea:focus { border-color: var(--accent); }
+/* Progress bars */
+.progress-section { display: flex; flex-direction: column; gap: 16px; }
+.progress-item { display: flex; align-items: center; gap: 12px; }
+.progress-item .label { font-size: 14px; min-width: 140px; font-weight: 500; }
+.progress-item .bar { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.progress-item .fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+.progress-item .value { font-size: 13px; color: var(--muted); font-family: var(--font-mono); min-width: 40px; text-align: right; }
+/* XP & Gamification */
+.xp-bar { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: linear-gradient(135deg, var(--purple-light), oklch(94% 0.03 300)); border-radius: var(--radius-md); margin-bottom: 16px; }
+.xp-bar .level { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--purple); }
+.xp-bar .level-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.xp-bar .xp-progress { flex: 1; }
+.xp-bar .xp-text { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.xp-bar .bar { height: 8px; background: rgba(255,255,255,0.5); border-radius: 4px; overflow: hidden; }
+.xp-bar .fill { height: 100%; background: var(--purple); border-radius: 4px; transition: width 0.5s; }
+.badges-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.badge-card { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); min-width: 100px; text-align: center; transition: all 0.3s; }
+.badge-card.unlocked { border-color: var(--accent); background: var(--accent-light); }
+.badge-card .badge-emoji { font-size: 32px; }
+.badge-card .badge-name { font-size: 12px; font-weight: 500; }
+.badge-card .badge-desc { font-size: 11px; color: var(--muted); }
+/* Celebration animation */
+.celebration { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+.confetti { position: absolute; width: 8px; height: 8px; border-radius: 2px; animation: confetti-fall 3s ease-out forwards; }
+@keyframes confetti-fall { 0% { transform: translateY(-100px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+/* English subtitles */
+.en-subtitle { font-size: 13px; color: var(--muted); font-style: italic; margin-top: 4px; line-height: 1.4; }
+.en-subtitle-inline { font-size: 12px; color: var(--muted); font-style: italic; }
+.en-badge { display: inline-block; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 2px 8px; font-size: 11px; color: var(--muted); font-style: italic; margin-top: 4px; letter-spacing: 0.01em; }
+.section-subtitle { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 12px; padding: 8px 12px; background: var(--bg); border-radius: var(--radius-sm); border-left: 3px solid var(--border); }
+/* Toast */
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 20px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 10px; font-size: 14px; animation: slideIn 0.3s ease; }
+.toast.xp { border-left: 4px solid var(--purple); }
+.toast.badge { border-left: 4px solid var(--accent); }
+.toast.success { border-left: 4px solid var(--success); }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+/* Buttons */
+.btn-primary-custom { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.btn-primary-custom:hover { background: var(--accent-dark); }
+.btn-secondary-custom { background: var(--surface); color: var(--fg); border: 1px solid var(--border); padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.btn-secondary-custom:hover { background: var(--bg); }
+.btn-check { background: var(--success); color: white; border: none; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-check:hover { background: oklch(48% 0.15 145); }
+/* Welcome screen */
+.welcome-screen { text-align: center; padding: 60px 20px; }
+.welcome-screen .welcome-icon { font-size: 64px; margin-bottom: 20px; }
+.welcome-screen h1 { font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; margin-bottom: 12px; }
+.welcome-screen p { font-size: 16px; color: var(--muted); max-width: 500px; margin: 0 auto 24px; }
+.welcome-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 32px; }
+.welcome-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-align: left; cursor: pointer; transition: all 0.2s; }
+.welcome-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.welcome-card .wc-num { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.welcome-card h3 { font-size: 17px; margin-bottom: 4px; }
+.welcome-card p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.welcome-card .wc-progress { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.welcome-card .wc-progress .fill { height: 100%; background: var(--accent); border-radius: 2px; }
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); box-shadow: var(--shadow-lg); }
+  .main-content { margin-left: 0; }
+  .hamburger { display: block; }
+  .top-bar { padding: 12px 16px; }
+  .lesson-container { padding: 16px 12px 60px; }
+  .lesson-section { padding: 20px 16px; }
+  .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .match-container { flex-direction: column; }
+  .dialogue-bubble { max-width: 90%; }
+  .welcome-cards { grid-template-columns: 1fr; }
+  .overall-progress .bar { width: 80px; }
+}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Conectando en Español</h2>
+      <p>Curso para Jack</p>
+    </div>
+    <div class="sidebar-stats">
+      <div class="stat-pill"><span class="icon">⚡</span><span class="val" id="sidebar-xp">0 XP</span></div>
+      <div class="stat-pill"><span class="icon">🔥</span><span class="val" id="sidebar-streak">0 días</span></div>
+      <div class="stat-pill"><span class="icon">⭐</span><span class="val" id="sidebar-level">Nivel 1</span></div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-badges">
+      <h4>Insignias</h4>
+      <div class="badge-grid" id="sidebar-badges"></div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menú">☰</button>
+        <h1 id="top-bar-title">Inicio</h1>
+      </div>
+      <div class="top-bar-right">
+        <div class="overall-progress">
+          <div class="bar"><div class="fill" id="overall-fill" style="width:0%"></div></div>
+          <span class="pct" id="overall-pct">0%</span>
+        </div>
+      </div>
+    </div>
+    <div id="app-root"></div>
+  </main>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+<div class="celebration" id="celebration"></div>
+
+<script>
+// ========== DATA ==========
+const COURSE_DATA = [
+  {
+    id: "leccion-1",
+    num: 1,
+    title: "Mi Familia",
+    subtitle: "Conoce a la familia",
+    icon: "👨‍👧",
+    mission: "Presenta a tu hija a tu familia en español",
+    mission_en: "Introduce your daughter to your family in Spanish",
+    objective: "Mantener una conversación de 3 minutos sobre familia",
+    objective_en: "Hold a 3-minute conversation about family",
+    vocabulary: [
+      { es: "familia", en: "family", emoji: "👨‍👩‍👧‍👦", pron: "fah-MEE-lyah", sentence: "Esta es mi familia." },
+      { es: "mamá", en: "mom", emoji: "👩", pron: "mah-MAH", sentence: "Mi mamá es muy amable." },
+      { es: "papá", en: "dad", emoji: "👨", pron: "pah-PAH", sentence: "Yo soy tu papá." },
+      { es: "hermana", en: "sister", emoji: "👧", pron: "ehr-MAH-nah", sentence: "Tu hermana es simpática." },
+      { es: "hermano", en: "brother", emoji: "👦", pron: "ehr-MAH-noh", sentence: "Mi hermano juega fútbol." },
+      { es: "abuelo", en: "grandpa", emoji: "👴", pron: "ah-BWEH-loh", sentence: "Mi abuelo cuenta historias." },
+      { es: "abuela", en: "grandma", emoji: "👵", pron: "ah-BWEH-lah", sentence: "Mi abuela cocina muy bien." },
+      { es: "hija", en: "daughter", emoji: "👧", pron: "EE-hah", sentence: "Tú eres mi hija." },
+      { es: "amigo", en: "friend", emoji: "🤝", pron: "ah-MEE-goh", sentence: "Este es mi amigo." },
+      { es: "casa", en: "house", emoji: "🏠", pron: "KAH-sah", sentence: "Mi casa es tu casa." }
+    ],
+    patterns: [
+      { es: "¿Cómo se llama...?", en: "What is ...'s name?" },
+      { es: "¿Quién es...?", en: "Who is ...?" },
+      { es: "Esta es mi...", en: "This is my..." },
+      { es: "Yo soy tu papá.", en: "I am your dad." },
+      { es: "Tú eres mi hija.", en: "You are my daughter." }
+    ],
+    grammar: {
+      title: "Ser — Identidad y Nacionalidad",
+      rules: [
+        { es: "Yo soy papá.", en: "I am (your) dad." },
+        { es: "Tú eres mi hija.", en: "You are my daughter." },
+        { es: "Ella es mi mamá.", en: "She is my mom." },
+        { es: "Nosotros somos una familia.", en: "We are a family." }
+      ],
+      tip: "Ser describe quién eres — identidad, relación, origen. No cambia.",
+      tip_en: "Ser describes who you are — identity, relationship, origin. It doesn't change."
+    },
+    dialogue: [
+      { role: "papa", es: "¡Hola, mi amor! ¿Cómo estás?", en: "Hi, my love! How are you?" },
+      { role: "hija", es: "¡Bien, papá! ¿Y tú?", en: "Good, dad! And you?" },
+      { role: "papa", es: "Muy bien. Hoy quiero mostrarte a la familia.", en: "Very good. Today I want to show you the family." },
+      { role: "hija", es: "¡Sí! ¿Quién es esa señora?", en: "Yes! Who is that lady?" },
+      { role: "papa", es: "Esa es tu abuela. Ella cocina muy rico.", en: "That is your grandma. She cooks very well." },
+      { role: "hija", es: "¡Me encanta la abuela! ¿Y ese señor?", en: "I love grandma! And that gentleman?" },
+      { role: "papa", es: "Ese es tu abuelo. Él cuenta historias increíbles.", en: "That is your grandpa. He tells incredible stories." },
+      { role: "hija", es: "¡Quiero escuchar una historia!", en: "I want to hear a story!" }
+    ],
+    challenge: {
+      asks: ["¿Cómo estás?", "¿Quién es...?", "¿Cómo se llama...?"],
+      asks_en: ["How are you?", "Who is...?", "What is ...'s name?"],
+      says: ["Te quiero.", "Estoy orgulloso de ti.", "Te echo de menos.", "Eres increíble.", "Nos vemos la próxima semana."],
+      says_en: ["I love you.", "I'm proud of you.", "I miss you.", "You're amazing.", "See you next week."]
+    },
+    reflection: [
+      "¿Qué dijo tu hija?",
+      "¿Cuáles palabras fueron difíciles?",
+      "¿Qué nueva frase usaste?",
+      "¿Cómo reaccionó ella?",
+      "¿Qué quieres decir la próxima semana?"
+    ],
+    reflection_en: [
+      "What did your daughter say?",
+      "Which words were difficult?",
+      "What new sentence did you use?",
+      "How did she react?",
+      "What do you want to say next week?"
+    ],
+    weeklyProject: "Crear un árbol familiar juntos — dibujen o recorten fotos de cada miembro de la familia y pónganlo en un papel grande.",
+    weeklyProject_en: "Create a family tree together — draw or cut out photos of each family member and put them on a large piece of paper."
+  },
+  {
+    id: "leccion-2",
+    num: 2,
+    title: "Cómo Estás",
+    subtitle: "Expresa cómo te sientes",
+    icon: "💛",
+    mission: "Preguntar a tu hija cómo se siente hoy",
+    mission_en: "Ask your daughter how she feels today",
+    objective: "Expresar emociones básicas y preguntar por los sentimientos",
+    objective_en: "Express basic emotions and ask about feelings",
+    vocabulary: [
+      { es: "bien", en: "well / good", emoji: "😊", pron: "byehn", sentence: "Estoy muy bien hoy." },
+      { es: "mal", en: "bad / not well", emoji: "😔", pron: "mahl", sentence: "No estoy nada mal." },
+      { es: "feliz", en: "happy", emoji: "😄", pron: "feh-LEES", sentence: "Estoy feliz contigo." },
+      { es: "triste", en: "sad", emoji: "😢", pron: "TREES-teh", sentence: "No estés triste, mi amor." },
+      { es: "cansado", en: "tired", emoji: "😫", pron: "kahn-SAH-doh", sentence: "Estoy un poco cansado." },
+      { es: "enojado", en: "angry", emoji: "😠", en2: "angry", pron: "eh-noh-HAH-doh", sentence: "No estoy enojado." },
+      { es: "contento", en: "happy / pleased", emoji: "😃", pron: "kohn-TEHN-toh", sentence: "Estoy muy contento de verte." },
+      { es: "preocupado", en: "worried", emoji: "😟", pron: "preh-oh-koo-PAH-doh", sentence: "No te preocupes." },
+      { es: "emocionado", en: "excited", emoji: "🤩", pron: "eh-moh-syoh-NAH-doh", sentence: "Estoy emocionado de hablar contigo." },
+      { es: "tranquilo", en: "calm", emoji: "😌", pron: "trahn-KEE-loh", sentence: "Estoy tranquilo." }
+    ],
+    patterns: [
+      { es: "¿Cómo estás?", en: "How are you?" },
+      { es: "¿Qué te pasa?", en: "What's wrong?" },
+      { es: "Estoy + emoción.", en: "I am + emotion." },
+      { es: "¿Por qué estás triste?", en: "Why are you sad?" },
+      { es: "Estoy contento de verte.", en: "I'm happy to see you." }
+    ],
+    grammar: {
+      title: "Estar — Estados de Ánimo",
+      rules: [
+        { es: "Yo estoy feliz.", en: "I am happy." },
+        { es: "Tú estás cansada.", en: "You (f) are tired." },
+        { es: "Ella está triste.", en: "She is sad." },
+        { es: "Nosotros estamos bien.", en: "We are well." }
+      ],
+      tip: "Estar describe cómo te sientes AHORA — emociones y estados temporales. Ser es identidad; Estar es cómo te sientes.",
+      tip_en: "Estar describes how you feel NOW — emotions and temporary states. Ser is identity; Estar is how you feel."
+    },
+    dialogue: [
+      { role: "papa", es: "¡Hola, mi amor! ¿Cómo estás hoy?", en: "Hi, my love! How are you today?" },
+      { role: "hija", es: "Estoy un poco triste, papá.", en: "I'm a little sad, dad." },
+      { role: "papa", es: "¿Por qué estás triste?", en: "Why are you sad?" },
+      { role: "hija", es: "No tengo amigos en la escuela nueva.", en: "I don't have friends at the new school." },
+      { role: "papa", es: "Ay, mi amor. Estoy preocupado por ti.", en: "Oh, my love. I'm worried about you." },
+      { role: "papa", es: "Pero pronto harás amigos. Tú eres muy simpática.", en: "But soon you'll make friends. You are very nice." },
+      { role: "hija", es: "¿De verdad?", en: "Really?" },
+      { role: "papa", es: "¡Sí! Yo estoy muy orgulloso de ti.", en: "Yes! I am very proud of you." }
+    ],
+    challenge: {
+      asks: ["¿Cómo estás hoy?", "¿Qué te pasa?", "¿Por qué estás triste/enojada?"],
+      asks_en: ["How are you today?", "What's wrong?", "Why are you sad/angry?"],
+      says: ["Estoy feliz de verte.", "No estés triste.", "Te quiero mucho.", "Estoy orgulloso de ti.", "Eres muy valiente."],
+      says_en: ["I'm happy to see you.", "Don't be sad.", "I love you very much.", "I'm proud of you.", "You're very brave."]
+    },
+    reflection: [
+      "¿Cómo se sentía tu hija?",
+      "¿Qué palabra de emociones usaste más?",
+      "¿Pudiste explicar cómo te sientes?",
+      "¿Qué reacción tuvo?",
+      "¿Qué quieres preguntar la próxima semana?"
+    ],
+    reflection_en: [
+      "How did your daughter feel?",
+      "Which emotion word did you use the most?",
+      "Could you explain how you feel?",
+      "What was her reaction?",
+      "What do you want to ask next week?"
+    ],
+    weeklyProject: "Crear un diario de emociones juntos — cada día, dibujen una cara que muestre cómo se sienten y escriban una palabra en español.",
+    weeklyProject_en: "Create an emotions journal together — each day, draw a face showing how you feel and write a word in Spanish."
+  },
+  {
+    id: "leccion-3",
+    num: 3,
+    title: "Mi Día",
+    subtitle: "Cuenta tu día a tu hija",
+    icon: "☀️",
+    mission: "Contarle a tu hija cómo fue tu día",
+    mission_en: "Tell your daughter about your day",
+    objective: "Describir rutinas diarias en presente simple",
+    objective_en: "Describe daily routines in present simple",
+    vocabulary: [
+      { es: "mañana", en: "morning", emoji: "🌅", pron: "mah-NYAH-nah", sentence: "Por la mañana despierto temprano." },
+      { es: "tarde", en: "afternoon", emoji: "🌤️", pron: "TAHR-deh", sentence: "Por la tarde trabajo." },
+      { es: "noche", en: "night / evening", emoji: "🌙", pron: "NOH-cheh", sentence: "Por la noche ceno con la familia." },
+      { es: "comer", en: "to eat", emoji: "🍽️", pron: "koh-MEHR", sentence: "Voy a comer ahora." },
+      { es: "trabajar", en: "to work", emoji: "💼", pron: "trah-bah-HAHR", sentence: "Yo trabajo en una oficina." },
+      { es: "jugar", en: "to play", emoji: "🎮", pron: "hoo-GAHR", sentence: "Me gusta jugar contigo." },
+      { es: "dormir", en: "to sleep", emoji: "😴", pron: "dohr-MEER", sentence: "A las diez voy a dormir." },
+      { es: "despertar", en: "to wake up", emoji: "⏰", pron: "dehs-pehr-TAHR", sentence: "Me despierto a las seis." },
+      { es: "leer", en: "to read", emoji: "📖", pron: "leh-EHR", sentence: "Me gusta leer antes de dormir." },
+      { es: "cocinar", en: "to cook", emoji: "👨‍🍳", pron: "koh-see-NAHR", sentence: "Hoy voy a cocinar pasta." }
+    ],
+    patterns: [
+      { es: "Hoy...", en: "Today..." },
+      { es: "Esta mañana...", en: "This morning..." },
+      { es: "Ayer...", en: "Yesterday..." },
+      { es: "Por la tarde...", en: "In the afternoon..." },
+      { es: "¿Qué hiciste hoy?", en: "What did you do today?" }
+    ],
+    grammar: {
+      title: "Presente Simple — Rutinas",
+      rules: [
+        { es: "Yo trabajo todos los días.", en: "I work every day." },
+        { es: "Tú despiertas temprano.", en: "You wake up early." },
+        { es: "Ella come en la escuela.", en: "She eats at school." },
+        { es: "Nosotros jugamos juntos.", en: "We play together." }
+      ],
+      tip: "El presente simple describe rutinas y hábitos. Los verbos regulares: -ar (trabajo), -er (como), -ir (vivo).",
+      tip_en: "The present simple describes routines and habits. Regular verbs: -ar (trabajo), -er (como), -ir (vivo)."
+    },
+    dialogue: [
+      { role: "papa", es: "¡Hola, mi amor! ¿Cómo estuvo tu día?", en: "Hi, my love! How was your day?" },
+      { role: "hija", es: "Fue muy divertido. Jugé con mis amigos.", en: "It was very fun. I played with my friends." },
+      { role: "papa", es: "¡Qué bueno! ¿Y qué comiste?", en: "Great! And what did you eat?" },
+      { role: "hija", es: "Comí un sándwich y una manzana.", en: "I ate a sandwich and an apple." },
+      { role: "papa", es: "Yo trabajé toda la mañana. Estoy un poco cansado.", en: "I worked all morning. I'm a little tired." },
+      { role: "hija", es: "¿Y por la tarde, qué hiciste?", en: "And in the afternoon, what did you do?" },
+      { role: "papa", es: "Por la tarde leí un libro. Después cociné pasta.", en: "In the afternoon I read a book. Then I cooked pasta." },
+      { role: "hija", es: "¡Me encanta tu pasta, papá!", en: "I love your pasta, dad!" }
+    ],
+    challenge: {
+      asks: ["¿Qué hiciste hoy?", "¿Qué comiste?", "¿Jugaste con amigos?"],
+      asks_en: ["What did you do today?", "What did you eat?", "Did you play with friends?"],
+      says: ["Hoy trabajé mucho.", "Esta mañana despierto temprano.", "Me gusta cocinar para ti.", "Eres mi hija favorita.", "Nos vemos el sábado."],
+      says_en: ["I worked a lot today.", "This morning I wake up early.", "I like cooking for you.", "You're my favorite daughter.", "See you on Saturday."]
+    },
+    reflection: [
+      "¿Qué hizo tu hija hoy?",
+      "¿Pudiste describir tu día?",
+      "¿Qué verbos nuevos usaste?",
+      "¿Se interesó en tu día?",
+      "¿Qué quieres contarle la próxima semana?"
+    ],
+    reflection_en: [
+      "What did your daughter do today?",
+      "Could you describe your day?",
+      "What new verbs did you use?",
+      "Was she interested in your day?",
+      "What do you want to tell her next week?"
+    ],
+    weeklyProject: "Dibujen su rutina diaria juntos — cada uno dibuja su día: mañana, tarde y noche. Compartan los dibujos en la videollamada.",
+    weeklyProject_en: "Draw your daily routine together — each one draws their day: morning, afternoon, and night. Share the drawings on the video call."
+  },
+  {
+    id: "leccion-4",
+    num: 4,
+    title: "Mis Gustos",
+    subtitle: "Descubre lo que le gusta a tu hija",
+    icon: "❤️",
+    mission: "Descubrir qué le gusta y no le gusta a tu hija",
+    mission_en: "Discover what your daughter likes and doesn't like",
+    objective: "Expresar preferencias y gustos personales",
+    objective_en: "Express personal preferences and tastes",
+    vocabulary: [
+      { es: "gustar", en: "to like", emoji: "😍", pron: "goo-STAHR", sentence: "Me gusta mucho contigo." },
+      { es: "comer", en: "to eat", emoji: "🍕", pron: "koh-MEHR", sentence: "¿Qué te gusta comer?" },
+      { es: "jugar", en: "to play", emoji: "⚽", pron: "hoo-GAHR", sentence: "Me gusta jugar fútbol." },
+      { es: "leer", en: "to read", emoji: "📚", pron: "leh-EHR", sentence: "A ella le gusta leer cuentos." },
+      { es: "ver", en: "to watch", emoji: "📺", pron: "behr", sentence: "¿Qué te gusta ver?" },
+      { es: "correr", en: "to run", emoji: "🏃", pron: "koh-REHR", sentence: "Me gusta correr en el parque." },
+      { es: "bailar", en: "to dance", emoji: "💃", pron: "bahy-LAHR", sentence: "¿Te gusta bailar?" },
+      { es: "cantar", en: "to sing", emoji: "🎤", pron: "kahn-TAHR", sentence: "Me encanta cantar contigo." },
+      { es: "dibujar", en: "to draw", emoji: "🎨", pron: "dee-boo-HAHR", sentence: "Ella le gusta dibujar animales." },
+      { es: "nadar", en: "to swim", emoji: "🏊", pron: "nah-DAHR", sentence: "En verano me gusta nadar." }
+    ],
+    patterns: [
+      { es: "¿Qué te gusta + verbo?", en: "What do you like to...?" },
+      { es: "Me gusta + verbo.", en: "I like to..." },
+      { es: "No me gusta + verbo.", en: "I don't like to..." },
+      { es: "¿Te gusta...?", en: "Do you like...?" },
+      { es: "Me encanta + verbo.", en: "I love to..." }
+    ],
+    grammar: {
+      title: "Gustar — Expresar Gustos",
+      rules: [
+        { es: "A mí me gusta leer.", en: "I like to read." },
+        { es: "A ti te gusta bailar.", en: "You like to dance." },
+        { es: "A ella le gusta cantar.", en: "She likes to sing." },
+        { es: "A nosotros nos gusta jugar.", en: "We like to play." }
+      ],
+      tip: "Gustar funciona al revés: 'A mí me gusta' (lit: to me it pleases). Para más énfasis: 'Me encanta' (I love it).",
+      tip_en: "Gustar works backwards: 'A mí me gusta' (lit: to me it pleases). For more emphasis: 'Me encanta' (I love it)."
+    },
+    dialogue: [
+      { role: "papa", es: "¡Hola, mi amor! Hoy quiero saber qué te gusta.", en: "Hi, my love! Today I want to know what you like." },
+      { role: "hija", es: "¡Sí! Me gusta mucho dibujar.", en: "Yes! I really like to draw." },
+      { role: "papa", es: "¿Qué dibujas?", en: "What do you draw?" },
+      { role: "hija", es: "Dibujos animales y flores. ¿Y a ti, papá?", en: "Animals and flowers. And you, dad?" },
+      { role: "papa", es: "A mí me gusta cocinar y leer.", en: "I like to cook and read." },
+      { role: "hija", es: "¿Qué libros lees?", en: "What books do you read?" },
+      { role: "papa", es: "Leo libros de aventuras. ¡Y a veces leo cuentos para ti!", en: "I read adventure books. And sometimes I read stories for you!" },
+      { role: "hija", es: "¡Me encanta cuando lees cuentos!", en: "I love it when you read stories!" }
+    ],
+    challenge: {
+      asks: ["¿Qué te gusta comer?", "¿Qué te gusta hacer?", "¿Qué no te gusta?"],
+      asks_en: ["What do you like to eat?", "What do you like to do?", "What don't you like?"],
+      says: ["Me gusta mucho hablar contigo.", "Me encanta jugar contigo.", "Lo que más me gusta es verte feliz.", "Te quiero muchísimo.", "Nos vemos el viernes."],
+      says_en: ["I really like talking to you.", "I love playing with you.", "What I like most is seeing you happy.", "I love you very much.", "See you on Friday."]
+    },
+    reflection: [
+      "¿Qué le gusta a tu hija?",
+      "¿Tienen gustos en común?",
+      "¿Pudiste explicar tus gustos?",
+      "¿Se sorprendió de algo?",
+      "¿Qué actividad pueden hacer juntos?"
+    ],
+    reflection_en: [
+      "What does your daughter like?",
+      "Do you have things in common?",
+      "Could you explain your tastes?",
+      "Was she surprised by anything?",
+      "What activity can you do together?"
+    ],
+    weeklyProject: "Hacer una lista de 'Lo que nos gusta' juntos — cada uno escribe 5 cosas que le gustan y comparan. ¡Busquen cosas en común!",
+    weeklyProject_en: "Make a 'What We Like' list together — each one writes 5 things they like and compare. Look for things in common!"
+  },
+  {
+    id: "leccion-5",
+    num: 5,
+    title: "Nuestros Planes",
+    subtitle: "Planifiquen actividades juntos",
+    icon: "📅",
+    mission: "Hacer planes con tu hija para la próxima semana",
+    mission_en: "Make plans with your daughter for next week",
+    objective: "Usar el futuro cercano para planificar actividades",
+    objective_en: "Use the near future to plan activities",
+    vocabulary: [
+      { es: "mañana", en: "tomorrow", emoji: "📅", pron: "mah-NYAH-nah", sentence: "Mañana vamos al parque." },
+      { es: "próxima semana", en: "next week", emoji: "📆", pron: "PROK-see-mah seh-MAH-nah", sentence: "La próxima semana cocinamos juntos." },
+      { es: "juntos", en: "together", emoji: "🫂", pron: "HOON-tohs", sentence: "Vamos a hacerlo juntos." },
+      { es: "hacer", en: "to do / to make", emoji: "🔨", pron: "hah-SEHR", sentence: "¿Qué vamos a hacer?" },
+      { es: "ir", en: "to go", emoji: "🚶", pron: "eer", sentence: "Vamos a ir al cine." },
+      { es: "ver", en: "to watch / to see", emoji: "👀", pron: "behr", sentence: "Vamos a ver una película." },
+      { es: "comer", en: "to eat", emoji: "🍽️", pron: "koh-MEHR", sentence: "Vamos a comer helado." },
+      { es: "pasear", en: "to walk / to stroll", emoji: "🚶‍♀️", pron: "pah-seh-AHR", sentence: "Vamos a pasear en la playa." },
+      { es: "pintar", en: "to paint", emoji: "🎨", pron: "peen-TAHR", sentence: "Vamos a pintar algo bonito." },
+      { es: "soñar", en: "to dream", emoji: "💭", pron: "soh-NYAHR", sentence: "Vamos a soñar juntos." }
+    ],
+    patterns: [
+      { es: "Vamos a + verbo.", en: "We are going to..." },
+      { es: "¿Quieres + verbo?", en: "Do you want to...?" },
+      { es: "Podemos + verbo.", en: "We can..." },
+      { es: "¿Qué vamos a hacer?", en: "What are we going to do?" },
+      { es: "Me gustaría + verbo.", en: "I would like to..." }
+    ],
+    grammar: {
+      title: "Ir + a + Infinitivo — Futuro Cercano",
+      rules: [
+        { es: "Vamos a jugar.", en: "We are going to play." },
+        { es: "Voy a cocinar.", en: "I am going to cook." },
+        { es: "Vamos a ver una película.", en: "We are going to watch a movie." },
+        { es: "¿Qué vamos a hacer mañana?", en: "What are we going to do tomorrow?" }
+      ],
+      tip: "Ir + a + verbo = futuro cercano. Es más fácil que el futuro simple y muy usado en conversación.",
+      tip_en: "Ir + a + verb = near future. It's easier than the simple future and very commonly used in conversation."
+    },
+    dialogue: [
+      { role: "papa", es: "¡Hola, mi amor! ¿Qué quieres hacer este fin de semana?", en: "Hi, my love! What do you want to do this weekend?" },
+      { role: "hija", es: "¡Quiero ir al parque! ¿Y tú, papá?", en: "I want to go to the park! And you, dad?" },
+      { role: "papa", es: "A mí me gustaría cocinar contigo.", en: "I would like to cook with you." },
+      { role: "hija", es: "¡Sí! Vamos a hacer galletas.", en: "Yes! Let's make cookies." },
+      { role: "papa", es: "Perfecto. Primero vamos al parque, después cocinamos.", en: "Perfect. First we go to the park, then we cook." },
+      { role: "hija", es: "¿Y podemos ver una película por la noche?", en: "And can we watch a movie at night?" },
+      { role: "papa", es: "¡Claro que sí! Vamos a ver tu película favorita.", en: "Of course! Let's watch your favorite movie." },
+      { role: "hija", es: "¡Eres el mejor papá del mundo!", en: "You are the best dad in the world!" }
+    ],
+    challenge: {
+      asks: ["¿Qué quieres hacer?", "¿Quieres...?", "¿Qué vamos a hacer?"],
+      asks_en: ["What do you want to do?", "Do you want to...?", "What are we going to do?"],
+      says: ["Vamos a hacer algo especial.", "Me gustaría verte pronto.", "Vamos a cocinar juntos.", "Te quiero mucho.", "¡Nos vemos el sábado!"],
+      says_en: ["Let's do something special.", "I'd like to see you soon.", "Let's cook together.", "I love you very much.", "See you on Saturday!"]
+    },
+    reflection: [
+      "¿Qué planes hicieron?",
+      "¿Qué actividad les emociona más?",
+      "¿Pudiste usar 'ir + a'?",
+      "¿Se emocionó tu hija?",
+      "¿Qué planes pueden hacer la próxima semana?"
+    ],
+    reflection_en: [
+      "What plans did you make?",
+      "Which activity excites you most?",
+      "Could you use 'ir + a'?",
+      "Was your daughter excited?",
+      "What plans can you make next week?"
+    ],
+    weeklyProject: "Crear una 'Lista de Deseos Familiar' — cada uno escribe 5 cosas que quiere hacer juntos. Elijan una actividad para hacer en la próxima videollamada.",
+    weeklyProject_en: "Create a 'Family Wish List' — each one writes 5 things they want to do together. Choose one activity to do on the next video call."
+  }
+];
+
+const BADGES = [
+  { id: "first-lesson", name: "Primer Paso", emoji: "🌱", desc: "Completar Lección 1", xpRequired: 50 },
+  { id: "vocab-master", name: "Vocabulario", emoji: "📚", desc: "Aprender 30 palabras", wordsRequired: 30 },
+  { id: "five-lessons", name: "Estudiante", emoji: "🎓", desc: "Completar 5 lecciones", lessonsRequired: 5 },
+  { id: "streak-3", name: "Constancia", emoji: "🔥", desc: "Racha de 3 días", streakRequired: 3 },
+  { id: "streak-7", name: "Dedicación", emoji: "💪", desc: "Racha de 7 días", streakRequired: 7 },
+  { id: "perfect-quiz", name: "Perfecto", emoji: "⭐", desc: "Quiz sin errores", perfectQuiz: true },
+  { id: "speaker", name: "Hablante", emoji: "🗣️", desc: "Completar práctica de speaking", speaking: true },
+  { id: "listener", name: "Oyente", emoji: "👂", desc: "Escuchar todos los diálogos", listening: true },
+  { id: "reflective", name: "Reflexivo", emoji: "💭", desc: "Completar 3 reflexiones", reflections: 3 },
+  { id: "builder", name: "Constructor", emoji: "🧩", desc: "Completar 10 oraciones", sentences: 10 },
+  { id: "match-master", name: "Emparejador", emoji: "🔗", desc: "Completar 5 ejercicios de matching", matches: 5 },
+  { id: "all-done", name: "¡Completado!", emoji: "🏆", desc: "Terminar todo el curso", allComplete: true }
+];
+
+const LEVELS = [
+  { level: 1, xp: 0, title: "Aprendiz" },
+  { level: 2, xp: 100, title: "Explorador" },
+  { level: 3, xp: 250, title: "Comunicador" },
+  { level: 4, xp: 500, title: "Conversador" },
+  { level: 5, xp: 800, title: "Hablante" },
+  { level: 6, xp: 1200, title: "Maestro" }
+];
+
+// ========== STATE ==========
+let state = {
+  currentLesson: null,
+  xp: 0,
+  streak: 0,
+  lastVisit: null,
+  lessonProgress: {},
+  badges: [],
+  quizScores: {},
+  reflectionCount: 0,
+  sentenceCount: 0,
+  matchCount: 0,
+  speakingDone: false,
+  listeningDone: false,
+  perfectQuiz: false,
+  wordsLearned: 0
+};
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem('conectando-espanol');
+    if (saved) state = { ...state, ...JSON.parse(saved) };
+    updateStreak();
+  } catch(e) {}
+}
+
+function saveState() {
+  try { localStorage.setItem('conectando-espanol', JSON.stringify(state)); } catch(e) {}
+}
+
+function updateStreak() {
+  const today = new Date().toDateString();
+  if (state.lastVisit === today) return;
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  if (state.lastVisit === yesterday) {
+    state.streak++;
+  } else if (state.lastVisit !== today) {
+    state.streak = 1;
+  }
+  state.lastVisit = today;
+  saveState();
+}
+
+// ========== XP & LEVELS ==========
+function addXP(amount, source) {
+  state.xp += amount;
+  saveState();
+  showToast(`+${amount} XP — ${source}`, 'xp');
+  checkBadges();
+  updateUI();
+  if (amount >= 20) triggerCelebration();
+}
+
+function getLevel() {
+  let lvl = LEVELS[0];
+  for (const l of LEVELS) {
+    if (state.xp >= l.xp) lvl = l;
+  }
+  return lvl;
+}
+
+function getNextLevel() {
+  const lvl = getLevel();
+  const idx = LEVELS.findIndex(l => l.level === lvl.level);
+  return idx < LEVELS.length - 1 ? LEVELS[idx + 1] : null;
+}
+
+function getXPProgress() {
+  const lvl = getLevel();
+  const next = getNextLevel();
+  if (!next) return 100;
+  return Math.min(100, ((state.xp - lvl.xp) / (next.xp - lvl.xp)) * 100);
+}
+
+// ========== BADGES ==========
+function checkBadges() {
+  const totalWords = state.wordsLearned || 0;
+  const newBadges = [];
+
+  function tryUnlock(id) {
+    if (!state.badges.includes(id)) {
+      state.badges.push(id);
+      newBadges.push(id);
+    }
+  }
+
+  if (state.xp >= 50) tryUnlock('first-lesson');
+  if (totalWords >= 30) tryUnlock('vocab-master');
+  if (state.streak >= 3) tryUnlock('streak-3');
+  if (state.streak >= 7) tryUnlock('streak-7');
+  if (state.perfectQuiz) tryUnlock('perfect-quiz');
+  if (state.speakingDone) tryUnlock('speaker');
+  if (state.listeningDone) tryUnlock('listener');
+  if (state.reflectionCount >= 3) tryUnlock('reflective');
+  if (state.sentenceCount >= 10) tryUnlock('builder');
+  if (state.matchCount >= 5) tryUnlock('match-master');
+
+  const completedLessons = Object.values(state.lessonProgress).filter(p => p >= 100).length;
+  if (completedLessons >= 5) tryUnlock('all-done');
+  if (completedLessons >= 5) tryUnlock('five-lessons');
+
+  newBadges.forEach(id => {
+    const badge = BADGES.find(b => b.id === id);
+    if (badge) showToast(`Insignia desbloqueada / Badge unlocked: ${badge.emoji} ${badge.name}`, 'badge');
+  });
+
+  saveState();
+}
+
+// ========== PROGRESS ==========
+function getLessonProgress(lessonIdx) {
+  return state.lessonProgress[lessonIdx] || 0;
+}
+
+function markSectionComplete(lessonIdx, section) {
+  if (!state.lessonProgress[lessonIdx]) state.lessonProgress[lessonIdx] = {};
+  if (!state.lessonProgress[lessonIdx].sections) state.lessonProgress[lessonIdx].sections = {};
+
+  if (state.lessonProgress[lessonIdx].sections[section]) return;
+  state.lessonProgress[lessonIdx].sections[section] = true;
+
+  const totalSections = 14;
+  const completed = Object.keys(state.lessonProgress[lessonIdx].sections).length;
+  state.lessonProgress[lessonIdx] = Math.min(100, Math.round((completed / totalSections) * 100));
+
+  saveState();
+  updateUI();
+}
+
+function getOverallProgress() {
+  const total = COURSE_DATA.length * 100;
+  let done = 0;
+  for (let i = 0; i < COURSE_DATA.length; i++) {
+    done += getLessonProgress(i);
+  }
+  return Math.round((done / total) * 100);
+}
+
+// ========== RENDERING ==========
+function renderSidebar() {
+  const nav = document.getElementById('sidebar-nav');
+  nav.innerHTML = COURSE_DATA.map((lesson, i) => {
+    const pct = getLessonProgress(i);
+    return `<a class="nav-lesson ${state.currentLesson === i ? 'active' : ''}" onclick="navigateToLesson(${i})">
+      <span class="lesson-num">Lección ${lesson.num}</span>
+      <span class="lesson-title">${lesson.icon} ${lesson.title}</span>
+      <div class="lesson-progress">
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+        <span class="progress-pct">${pct}%</span>
+      </div>
+    </a>`;
+  }).join('');
+
+  document.getElementById('sidebar-badges').innerHTML = BADGES.map(b => {
+    const unlocked = state.badges.includes(b.id);
+    return `<div class="badge-icon ${unlocked ? 'unlocked' : ''}" title="${b.name}: ${b.desc}">${b.emoji}</div>`;
+  }).join('');
+}
+
+function renderWelcome() {
+  document.getElementById('top-bar-title').textContent = 'Conectando en Español';
+  const root = document.getElementById('app-root');
+  root.innerHTML = `
+    <div class="lesson-container">
+      <div class="welcome-screen">
+        <div class="welcome-icon">🇪🇸</div>
+        <h1>Conectando en Español</h1>
+        <p>Un curso para papás que quieren hablar español con sus hijos. Aprende conversaciones reales, no gramática aburrida.</p>
+        <div class="en-subtitle" style="margin-bottom:16px">A course for dads who want to speak Spanish with their kids. Learn real conversations, not boring grammar.</div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <button class="btn-primary-custom" onclick="navigateToLesson(0)">Empezar Lección 1 / Start Lesson 1</button>
+          ${state.xp > 0 ? `<button class="btn-secondary-custom" onclick="navigateToLesson(${findNextLesson()})">Continuar / Continue</button>` : ''}
+        </div>
+        <div class="welcome-cards">
+          ${COURSE_DATA.map((lesson, i) => {
+            const pct = getLessonProgress(i);
+            return `<div class="welcome-card" onclick="navigateToLesson(${i})">
+              <div class="wc-num">Lección ${lesson.num}</div>
+              <h3>${lesson.icon} ${lesson.title}</h3>
+              <p>${lesson.subtitle}</p>
+              <div class="wc-progress"><div class="fill" style="width:${pct}%"></div></div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function findNextLesson() {
+  for (let i = 0; i < COURSE_DATA.length; i++) {
+    if (getLessonProgress(i) < 100) return i;
+  }
+  return 0;
+}
+
+function renderLesson(idx) {
+  const lesson = COURSE_DATA[idx];
+  document.getElementById('top-bar-title').textContent = `Lección ${lesson.num}: ${lesson.title}`;
+  const root = document.getElementById('app-root');
+
+  root.innerHTML = `
+    <div class="lesson-container">
+      <div class="lesson-hero">
+        <span class="lesson-badge">Lección ${lesson.num}</span>
+        <h1>${lesson.icon} ${lesson.title}</h1>
+        <p>${lesson.subtitle}</p>
+      </div>
+
+      ${renderMission(lesson, idx)}
+      ${renderWarmup(lesson, idx)}
+      ${renderVocabulary(lesson, idx)}
+      ${renderPatterns(lesson, idx)}
+      ${renderGrammar(lesson, idx)}
+      ${renderActivities(lesson, idx)}
+      ${renderListening(lesson, idx)}
+      ${renderSpeaking(lesson, idx)}
+      ${renderChallenge(lesson, idx)}
+      ${renderReflection(lesson, idx)}
+      ${renderWeeklyProject(lesson, idx)}
+      ${renderProgressSection(lesson, idx)}
+      ${renderGamification(lesson, idx)}
+
+      <div style="text-align:center;padding:24px 0">
+        <button class="btn-primary-custom" onclick="markLessonComplete(${idx})" style="padding:14px 32px;font-size:16px">
+          ${getLessonProgress(idx) >= 100 ? '✓ Lección Completada / Lesson Complete' : 'Marcar Lección como Completada / Mark Lesson Complete'}
+        </button>
+      </div>
+    </div>`;
+
+  initLessonInteractivity(idx);
+  window.scrollTo(0, 0);
+}
+
+function renderMission(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon mission">🎯</div>
+      <h2>Misión del Día</h2>
+      <span class="section-tag">Objetivo</span>
+    </div>
+    <div class="mission-card">
+      <div class="mission-label">Misión</div>
+      <div class="mission-text">${lesson.mission}</div>
+      <div class="en-subtitle">${lesson.mission_en || ''}</div>
+      <div class="objective" style="margin-top:12px"><strong>Objetivo de aprendizaje:</strong> ${lesson.objective}</div>
+      <div class="en-subtitle">${lesson.objective_en || ''}</div>
+    </div>
+  </div>`;
+}
+
+function renderWarmup(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon warmup">🔥</div>
+      <h2>Calentamiento</h2>
+      <span class="section-tag">Repaso</span>
+    </div>
+    <div class="section-subtitle">Review previous vocabulary with flashcards. Click the card to see the answer.</div>
+    <p style="color:var(--muted);margin-bottom:16px;font-size:14px">Revisa el vocabulario anterior con tarjetas de memoria. Haz clic en la tarjeta para ver la respuesta.</p>
+    <div class="flashcard-container" id="warmup-flashcards-${idx}">
+      <div class="flashcard-wrapper" onclick="flipFlashcard(this)">
+        <div class="flashcard" id="flashcard-${idx}">
+          <div class="flashcard-face flashcard-front">
+            <span class="fc-emoji" id="fc-emoji-${idx}">👨‍👧</span>
+            <span class="fc-word" id="fc-word-${idx}">${lesson.vocabulary[0].es}</span>
+            <span class="fc-hint">Toca para ver la traducción / Tap to see translation</span>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <span class="fc-word" id="fc-word-en-${idx}" style="color:var(--success)">${lesson.vocabulary[0].en}</span>
+            <span class="fc-pronunciation" id="fc-pron-${idx}">${lesson.vocabulary[0].pron}</span>
+            <span class="fc-sentence" id="fc-sent-${idx}">"${lesson.vocabulary[0].sentence}"</span>
+          </div>
+        </div>
+      </div>
+      <div class="flashcard-nav">
+        <button onclick="prevFlashcard(${idx})" aria-label="Anterior">←</button>
+        <span class="flashcard-counter" id="fc-counter-${idx}">1 / ${lesson.vocabulary.length}</span>
+        <button onclick="nextFlashcard(${idx})" aria-label="Siguiente">→</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderVocabulary(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon vocab">📝</div>
+      <h2>Vocabulario Nuevo</h2>
+      <span class="section-tag">10 palabras</span>
+    </div>
+    <div class="vocab-grid" id="vocab-grid-${idx}">
+      ${lesson.vocabulary.map((v, vi) => `
+        <div class="vocab-card" onclick="learnWord(${idx}, ${vi})" data-idx="${vi}">
+          <span class="emoji">${v.emoji}</span>
+          <div class="spanish">${v.es}</div>
+          <div class="english">${v.en}</div>
+          <div class="pronunciation">${v.pron}</div>
+          <button class="audio-btn" onclick="event.stopPropagation();speak('${v.es}')" aria-label="Escuchar pronunciation">🔊 Escuchar / Listen</button>
+          <div class="sentence">"${v.sentence}"</div>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderPatterns(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon pattern">💬</div>
+      <h2>Patrones de Conversación</h2>
+      <span class="section-tag">Práctica</span>
+    </div>
+    <div class="pattern-list">
+      ${lesson.patterns.map((p, pi) => `
+        <div class="pattern-item">
+          <div class="pattern-num">${pi + 1}</div>
+          <div>
+            <div class="pattern-text">${p.es}</div>
+            <div class="pattern-translation">${p.en}</div>
+          </div>
+          <button class="audio-btn" onclick="speak('${p.es}')" aria-label="Escuchar">🔊</button>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderGrammar(lesson, idx) {
+  const g = lesson.grammar;
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon grammar">📖</div>
+      <h2>Gramática en Contexto</h2>
+      <span class="section-tag">Solo lo necesario</span>
+    </div>
+    <div class="section-subtitle">Grammar in context — only what you need for today's mission.</div>
+    <div class="grammar-box">
+      <h3>💡 ${g.title}</h3>
+      <p style="font-size:14px;margin-bottom:4px">${g.tip}</p>
+      <p class="en-subtitle" style="margin-bottom:12px">${g.tip_en || ''}</p>
+      ${g.rules.map(r => `
+        <div class="grammar-example">
+          <div class="es">${r.es}</div>
+          <div class="en">${r.en}</div>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderActivities(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon activity">🎮</div>
+      <h2>Actividades Interactivas</h2>
+      <span class="section-tag">Practica</span>
+    </div>
+    <div class="section-subtitle">Interactive activities — practice what you've learned with games and exercises.</div>
+
+    <h3 style="font-size:16px;margin-bottom:4px;color:var(--accent-dark)">Quiz — Elige la respuesta correcta</h3>
+    <div class="en-subtitle" style="margin-bottom:12px">Quiz — Choose the correct answer</div>
+    <div class="quiz-container" id="quiz-${idx}">
+      <div class="quiz-question" id="quiz-q-${idx}"></div>
+      <div class="quiz-options" id="quiz-opts-${idx}"></div>
+      <div class="quiz-feedback" id="quiz-fb-${idx}"></div>
+      <div class="quiz-nav">
+        <span class="quiz-score" id="quiz-score-${idx}">Pregunta 1 / 5</span>
+        <button class="btn-primary-custom" id="quiz-next-${idx}" onclick="nextQuizQuestion(${idx})" style="display:none">Siguiente →</button>
+      </div>
+    </div>
+
+    <hr style="margin:24px 0;border-color:var(--border)">
+
+    <h3 style="font-size:16px;margin-bottom:4px;color:var(--accent-dark)">Rellena el espacio en blanco</h3>
+    <div class="en-subtitle" style="margin-bottom:12px">Fill in the blank</div>
+    <div id="fillblank-${idx}"></div>
+
+    <hr style="margin:24px 0;border-color:var(--border)">
+
+    <h3 style="font-size:16px;margin-bottom:4px;color:var(--accent-dark)">Empareja — Arrastra las palabras</h3>
+    <div class="en-subtitle" style="margin-bottom:12px">Match — Drag the words to pair them</div>
+    <div class="match-container" id="match-${idx}"></div>
+    <div class="match-score" id="match-score-${idx}"></div>
+
+    <hr style="margin:24px 0;border-color:var(--border)">
+
+    <h3 style="font-size:16px;margin-bottom:4px;color:var(--accent-dark)">Construye la oración</h3>
+    <div class="en-subtitle" style="margin-bottom:12px">Build the sentence — put the words in the right order</div>
+    <div class="sentence-builder" id="sentence-${idx}"></div>
+  </div>`;
+}
+
+function renderListening(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon listening">👂</div>
+      <h2>Práctica de Escucha</h2>
+      <span class="section-tag">Diálogo</span>
+    </div>
+    <div class="section-subtitle">Listening practice — natural father-daughter dialogues with English translations.</div>
+    <div class="dialogue-speed">
+      <button class="speed-btn active" onclick="setDialogueSpeed('slow', ${idx})" id="speed-slow-${idx}">🐢 Lento / Slow</button>
+      <button class="speed-btn" onclick="setDialogueSpeed('natural', ${idx})" id="speed-natural-${idx}">🗣️ Natural</button>
+      <button class="audio-btn" onclick="playDialogue(${idx})">▶ Reproducir todo / Play All</button>
+    </div>
+    <div class="dialogue" id="dialogue-${idx}">
+      ${lesson.dialogue.map((d, di) => `
+        <div class="dialogue-line">
+          <div class="dialogue-avatar ${d.role}">${d.role === 'papa' ? '👨' : '👧'}</div>
+          <div class="dialogue-bubble">
+            <div class="es">${d.es}</div>
+            <div class="en">${d.en}</div>
+          </div>
+          <button class="audio-btn" onclick="speak('${d.es}')" aria-label="Escuchar línea" style="flex-shrink:0">🔊</button>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+function renderSpeaking(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon speaking">🗣️</div>
+      <h2>Práctica de Speaking</h2>
+      <span class="section-tag">Roleplay</span>
+    </div>
+    <div class="section-subtitle">Speaking practice — role-play video calls before your real conversation.</div>
+    <p style="color:var(--muted);margin-bottom:16px;font-size:14px">Practica estos diálogos antes de tu videollamada. Lee en voz alta cada línea.</p>
+    <div class="roleplay-card">
+      <h4>📞 Llamada después de la escuela</h4>
+      <div class="scenario">Simula una llamada con tu hija después de la escuela.</div>
+      <div class="en-subtitle" style="margin-bottom:12px">Roleplay: Calling after school</div>
+      <div class="roleplay-lines">
+        <div class="roleplay-line"><span class="role">Papá:</span><span class="text">¡Hola, mi amor! ¿Cómo estuvo la escuela?</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">Hi, my love! How was school?</span></div>
+        <div class="roleplay-line"><span class="role">Hija:</span><span class="text">¡Bien! Aprendí cosas nuevas.</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">Good! I learned new things.</span></div>
+        <div class="roleplay-line"><span class="role">Papá:</span><span class="text">¿Qué aprendiste hoy?</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">What did you learn today?</span></div>
+        <div class="roleplay-line"><span class="role">Hija:</span><span class="text">Aprendí sobre los animales.</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">I learned about animals.</span></div>
+        <div class="roleplay-line"><span class="role">Papá:</span><span class="text">¡Qué divertido! Yo también quiero aprender.</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">How fun! I want to learn too.</span></div>
+      </div>
+    </div>
+    <div class="roleplay-card">
+      <h4>🎂 Conversación de cumpleaños</h4>
+      <div class="scenario">Simula una conversación de cumpleaños con tu hija.</div>
+      <div class="en-subtitle" style="margin-bottom:12px">Roleplay: Birthday conversation</div>
+      <div class="roleplay-lines">
+        <div class="roleplay-line"><span class="role">Papá:</span><span class="text">¡Feliz cumpleaños, mi amor!</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">Happy birthday, my love!</span></div>
+        <div class="roleplay-line"><span class="role">Hija:</span><span class="text">¡Gracias, papá!</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">Thanks, dad!</span></div>
+        <div class="roleplay-line"><span class="role">Papá:</span><span class="text">¿Qué quieres hacer hoy?</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">What do you want to do today?</span></div>
+        <div class="roleplay-line"><span class="role">Hija:</span><span class="text">Quiero jugar y comer pastel.</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">I want to play and eat cake.</span></div>
+        <div class="roleplay-line"><span class="role">Papá:</span><span class="text">¡Perfecto! Yo estoy muy orgulloso de ti.</span></div>
+        <div class="roleplay-line" style="margin-left:50px"><span class="en-subtitle-inline">Perfect! I'm very proud of you.</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <button class="btn-primary-custom" onclick="completeSpeaking(${idx})">✓ Marcar como Practicado</button>
+      <div class="en-subtitle" style="margin-top:4px">Mark as Practiced</div>
+    </div>
+  </div>`;
+}
+
+function renderChallenge(lesson, idx) {
+  const ch = lesson.challenge;
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon challenge">🏆</div>
+      <h2>Desafío de Videollamada</h2>
+      <span class="section-tag">Misión real</span>
+    </div>
+    <div class="section-subtitle">Video call challenge — real mission for your next call with your daughter.</div>
+    <div class="challenge-card">
+      <h3>Esta semana, pregunta a tu hija:</h3>
+      <div class="en-subtitle" style="margin-bottom:8px">This week, ask your daughter:</div>
+      <ul class="challenge-list">
+        ${ch.asks.map((a, i) => `<li><span class="ask">→ ${a}</span><br><span class="en-subtitle-inline">${ch.asks_en ? ch.asks_en[i] : ''}</span></li>`).join('')}
+      </ul>
+      <h3 style="margin-top:16px">Dile:</h3>
+      <div class="en-subtitle" style="margin-bottom:8px">Tell her:</div>
+      <ul class="challenge-list">
+        ${ch.says.map((s, i) => `<li><span class="say">♥ ${s}</span><br><span class="en-subtitle-inline">${ch.says_en ? ch.says_en[i] : ''}</span></li>`).join('')}
+      </ul>
+    </div>
+  </div>`;
+}
+
+function renderReflection(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon reflection">💭</div>
+      <h2>Reflexión</h2>
+      <span class="section-tag">Tu progreso</span>
+    </div>
+    <div class="section-subtitle">Reflection — track your progress and plan for next week.</div>
+    <div class="reflection-form" id="reflection-${idx}">
+      ${lesson.reflection.map((q, qi) => `
+        <div>
+          <label>${q}</label>
+          <div class="en-subtitle">${lesson.reflection_en ? lesson.reflection_en[qi] : ''}</div>
+          <textarea id="ref-${idx}-${qi}" placeholder="Escribe tu respuesta aquí... / Write your answer here..." oninput="autoSaveReflection(${idx})"></textarea>
+        </div>
+      `).join('')}
+      <button class="btn-primary-custom" onclick="saveReflection(${idx})">Guardar Reflexión / Save Reflection</button>
+      <div class="en-subtitle" style="margin-top:4px">Save Reflection</div>
+    </div>
+  </div>`;
+}
+
+function renderWeeklyProject(lesson, idx) {
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon project">🎨</div>
+      <h2>Proyecto Semanal</h2>
+      <span class="section-tag">Actividad</span>
+    </div>
+    <div class="section-subtitle">Weekly project — a meaningful activity to do together.</div>
+    <div style="background:var(--success-light);border:1px solid oklch(85% 0.04 145);border-radius:var(--radius-md);padding:20px">
+      <p style="font-size:15px;line-height:1.7">${lesson.weeklyProject}</p>
+      <p class="en-subtitle" style="margin-top:8px;font-style:italic">${lesson.weeklyProject_en || ''}</p>
+    </div>
+  </div>`;
+}
+
+function renderProgressSection(lesson, idx) {
+  const vocabPct = Math.round((state.wordsLearned || 0) / 50 * 100);
+  const quizPct = state.quizScores[idx] ? Math.round(state.quizScores[idx] * 100) : 0;
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon progress">📊</div>
+      <h2>Tu Progreso</h2>
+      <span class="section-tag">Lección ${lesson.num}</span>
+    </div>
+    <div class="section-subtitle">Your progress — track how far you've come.</div>
+    <div class="progress-section">
+      <div class="progress-item">
+        <span class="label">Vocabulario<br><span class="en-subtitle-inline">Vocabulary</span></span>
+        <div class="bar"><div class="fill" style="width:${vocabPct}%;background:var(--accent)"></div></div>
+        <span class="value">${state.wordsLearned || 0}/50</span>
+      </div>
+      <div class="progress-item">
+        <span class="label">Quiz</span>
+        <div class="bar"><div class="fill" style="width:${quizPct}%;background:var(--success)"></div></div>
+        <span class="value">${quizPct}%</span>
+      </div>
+      <div class="progress-item">
+        <span class="label">Listening<br><span class="en-subtitle-inline">Escucha</span></span>
+        <div class="bar"><div class="fill" style="width:${state.listeningDone ? 100 : 0}%;background:var(--purple)"></div></div>
+        <span class="value">${state.listeningDone ? '✓' : '—'}</span>
+      </div>
+      <div class="progress-item">
+        <span class="label">Speaking<br><span class="en-subtitle-inline">Hablar</span></span>
+        <div class="bar"><div class="fill" style="width:${state.speakingDone ? 100 : 0}%;background:var(--orange)"></div></div>
+        <span class="value">${state.speakingDone ? '✓' : '—'}</span>
+      </div>
+      <div class="progress-item">
+        <span class="label">Racha<br><span class="en-subtitle-inline">Streak</span></span>
+        <div class="bar"><div class="fill" style="width:${Math.min(100, state.streak * 14)}%;background:var(--danger)"></div></div>
+        <span class="value">${state.streak} días</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderGamification(lesson, idx) {
+  const lvl = getLevel();
+  const nextLvl = getNextLevel();
+  const progress = getXPProgress();
+
+  return `<div class="lesson-section">
+    <div class="section-header">
+      <div class="section-icon gamification">🎮</div>
+      <h2>Gamificación</h2>
+      <span class="section-tag">Tu nivel</span>
+    </div>
+    <div class="section-subtitle">Gamification — earn XP, level up, and unlock badges.</div>
+    <div class="xp-bar">
+      <div>
+        <div class="level">${lvl.level}</div>
+        <div class="level-label">${lvl.title}</div>
+      </div>
+      <div class="xp-progress">
+        <div class="xp-text">${state.xp} XP ${nextLvl ? `/ ${nextLvl.xp} XP para ${nextLvl.title} / to ${nextLvl.title}` : '— ¡Nivel máximo! / Max level!'}</div>
+        <div class="bar"><div class="fill" style="width:${progress}%"></div></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px;margin-bottom:4px">Insignias</h3>
+    <div class="en-subtitle" style="margin-bottom:12px">Badges</div>
+    <div class="badges-grid">
+      ${BADGES.map(b => {
+        const unlocked = state.badges.includes(b.id);
+        return `<div class="badge-card ${unlocked ? 'unlocked' : ''}">
+          <div class="badge-emoji">${unlocked ? b.emoji : '🔒'}</div>
+          <div class="badge-name">${b.name}</div>
+          <div class="badge-desc">${b.desc}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+// ========== INTERACTIVITY ==========
+let flashcardState = {};
+let quizState = {};
+
+function initLessonInteractivity(idx) {
+  initQuiz(idx);
+  initFillBlank(idx);
+  initMatch(idx);
+  initSentenceBuilder(idx);
+  flashcardState[idx] = { current: 0, flipped: false };
+}
+
+// Flashcards
+function flipFlashcard(wrapper) {
+  const fc = wrapper.querySelector('.flashcard');
+  fc.classList.toggle('flipped');
+}
+
+function nextFlashcard(idx) {
+  const lesson = COURSE_DATA[idx];
+  const s = flashcardState[idx] || { current: 0 };
+  s.current = (s.current + 1) % lesson.vocabulary.length;
+  flashcardState[idx] = s;
+  updateFlashcard(idx);
+}
+
+function prevFlashcard(idx) {
+  const lesson = COURSE_DATA[idx];
+  const s = flashcardState[idx] || { current: 0 };
+  s.current = (s.current - 1 + lesson.vocabulary.length) % lesson.vocabulary.length;
+  flashcardState[idx] = s;
+  updateFlashcard(idx);
+}
+
+function updateFlashcard(idx) {
+  const lesson = COURSE_DATA[idx];
+  const s = flashcardState[idx];
+  const v = lesson.vocabulary[s.current];
+  document.getElementById(`fc-emoji-${idx}`).textContent = v.emoji;
+  document.getElementById(`fc-word-${idx}`).textContent = v.es;
+  document.getElementById(`fc-word-en-${idx}`).textContent = v.en;
+  document.getElementById(`fc-pron-${idx}`).textContent = v.pron;
+  document.getElementById(`fc-sent-${idx}`).textContent = `"${v.sentence}"`;
+  document.getElementById(`fc-counter-${idx}`).textContent = `${s.current + 1} / ${lesson.vocabulary.length}`;
+  const fc = document.getElementById(`flashcard-${idx}`);
+  fc.classList.remove('flipped');
+}
+
+// Quiz
+function initQuiz(idx) {
+  const lesson = COURSE_DATA[idx];
+  const questions = generateQuizQuestions(lesson, idx);
+  quizState[idx] = { questions, current: 0, score: 0, answered: false };
+  renderQuizQuestion(idx);
+}
+
+function generateQuizQuestions(lesson, idx) {
+  const vocab = lesson.vocabulary;
+  const questions = [];
+  for (let i = 0; i < Math.min(5, vocab.length); i++) {
+    const correct = vocab[i];
+    const others = vocab.filter((_, j) => j !== i);
+    const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
+    const options = [correct.en, ...shuffled.map(v => v.en)].sort(() => Math.random() - 0.5);
+    questions.push({
+      question: `¿Qué significa "${correct.es}"?`,
+      question_en: `What does "${correct.es}" mean?`,
+      options,
+      correct: correct.en
+    });
+  }
+  return questions;
+}
+
+function renderQuizQuestion(idx) {
+  const qs = quizState[idx];
+  if (!qs || qs.current >= qs.questions.length) {
+    document.getElementById(`quiz-q-${idx}`).innerHTML = `¡Quiz completado! Puntuación: ${qs.score}/${qs.questions.length}<br><span class="en-subtitle">Quiz complete! Score: ${qs.score}/${qs.questions.length}</span>`;
+    document.getElementById(`quiz-opts-${idx}`).innerHTML = '';
+    document.getElementById(`quiz-fb-${idx}`).className = 'quiz-feedback';
+    document.getElementById(`quiz-next-${idx}`).style.display = 'none';
+    const pct = qs.score / qs.questions.length;
+    state.quizScores[idx] = pct;
+    if (pct === 1) state.perfectQuiz = true;
+    addXP(qs.score * 10, 'Quiz');
+    checkBadges();
+    saveState();
+    return;
+  }
+  const q = qs.questions[qs.current];
+  document.getElementById(`quiz-q-${idx}`).innerHTML = `${q.question}<br><span class="en-subtitle">${q.question_en || ''}</span>`;
+  document.getElementById(`quiz-opts-${idx}`).innerHTML = q.options.map((opt, oi) =>
+    `<button class="quiz-option" onclick="answerQuiz(${idx}, '${opt.replace(/'/g, "\\'")}', this)">${opt}</button>`
+  ).join('');
+  document.getElementById(`quiz-fb-${idx}`).className = 'quiz-feedback';
+  document.getElementById(`quiz-fb-${idx}`).textContent = '';
+  document.getElementById(`quiz-next-${idx}`).style.display = 'none';
+  document.getElementById(`quiz-score-${idx}`).textContent = `Pregunta ${qs.current + 1} / ${qs.questions.length} — Question ${qs.current + 1} of ${qs.questions.length}`;
+  quizState[idx].answered = false;
+}
+
+function answerQuiz(idx, answer, btn) {
+  const qs = quizState[idx];
+  if (qs.answered) return;
+  qs.answered = true;
+  const q = qs.questions[qs.current];
+  const fb = document.getElementById(`quiz-fb-${idx}`);
+  const buttons = document.querySelectorAll(`#quiz-opts-${idx} .quiz-option`);
+  buttons.forEach(b => {
+    b.disabled = true;
+    if (b.textContent === q.correct) b.classList.add('correct');
+  });
+  if (answer === q.correct) {
+    btn.classList.add('correct');
+    fb.className = 'quiz-feedback show correct';
+    fb.textContent = '¡Correcto! / Correct! 🎉';
+    qs.score++;
+  } else {
+    btn.classList.add('incorrect');
+    fb.className = 'quiz-feedback show incorrect';
+    fb.textContent = `Incorrecto. La respuesta correcta es: ${q.correct} / Wrong. The correct answer is: ${q.correct}`;
+  }
+  document.getElementById(`quiz-next-${idx}`).style.display = 'inline-block';
+}
+
+function nextQuizQuestion(idx) {
+  quizState[idx].current++;
+  renderQuizQuestion(idx);
+}
+
+// Fill in the Blank
+function initFillBlank(idx) {
+  const lesson = COURSE_DATA[idx];
+  const container = document.getElementById(`fillblank-${idx}`);
+  if (!container) return;
+
+  const items = lesson.patterns.slice(0, 3).map((p, pi) => {
+    const words = p.es.split(' ');
+    const blankIdx = Math.floor(words.length / 2);
+    const blankWord = words[blankIdx];
+    words[blankIdx] = '_____';
+    return { words, blankWord, translation: p.en };
+  });
+
+  container.innerHTML = items.map((item, ii) => `
+    <div style="margin-bottom:16px;padding:16px;background:var(--bg);border-radius:var(--radius-md);border:1px solid var(--border)">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:4px">${item.translation}</div>
+      <div class="fill-blank">
+        ${item.words.map((w, wi) => w === '_____'
+          ? `<input type="text" id="fb-${idx}-${ii}" placeholder="?" onkeydown="if(event.key==='Enter')checkFillBlank(${idx},${ii},'${item.blankWord}')">`
+          : `<span class="word">${w}</span>`
+        ).join(' ')}
+      </div>
+      <button class="btn-check" onclick="checkFillBlank(${idx},${ii},'${item.blankWord}')" style="margin-top:8px">Comprobar / Check</button>
+    </div>
+  `).join('');
+}
+
+function checkFillBlank(idx, qi, correct) {
+  const input = document.getElementById(`fb-${idx}-${qi}`);
+  if (!input) return;
+  const val = input.value.trim().toLowerCase();
+  if (val === correct.toLowerCase()) {
+    input.classList.add('correct');
+    input.classList.remove('incorrect');
+    addXP(5, 'Relleno correcto / Fill-in correct');
+    markSectionComplete(idx, 'activities');
+  } else {
+    input.classList.add('incorrect');
+    input.classList.remove('correct');
+    input.value = correct;
+  }
+}
+
+// Drag & Drop Match
+function initMatch(idx) {
+  const lesson = COURSE_DATA[idx];
+  const container = document.getElementById(`match-${idx}`);
+  if (!container) return;
+
+  const pairs = lesson.vocabulary.slice(0, 5).map(v => ({ es: v.es, en: v.en }));
+  const shuffledEn = [...pairs].sort(() => Math.random() - 0.5);
+
+  container.innerHTML = `
+    <div class="match-column" id="match-left-${idx}">
+      <div style="font-size:13px;font-weight:600;color:var(--muted);text-align:center;margin-bottom:4px">ESPAÑOL</div>
+      ${pairs.map((p, pi) => `
+        <div class="match-item draggable" draggable="true" data-word="${p.en}" id="match-es-${idx}-${pi}">${p.es}</div>
+      `).join('')}
+    </div>
+    <div class="match-column" id="match-right-${idx}">
+      <div style="font-size:13px;font-weight:600;color:var(--muted);text-align:center;margin-bottom:4px">ENGLISH</div>
+      ${shuffledEn.map((p, pi) => `
+        <div class="match-item dropzone" data-answer="${p.en}" id="match-en-${idx}-${pi}">${p.en}</div>
+      `).join('')}
+    </div>
+    <div style="width:100%;text-align:center;font-size:12px;color:var(--muted);margin-top:4px">Drag Spanish words to their English match / Arrastra las palabras españolas a su equivalente en inglés</div>`;
+
+  let matchCorrect = 0;
+  let draggedItem = null;
+
+  container.querySelectorAll('.draggable').forEach(item => {
+    item.addEventListener('dragstart', e => {
+      draggedItem = item;
+      item.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', item.dataset.word);
+    });
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+      draggedItem = null;
+    });
+  });
+
+  container.querySelectorAll('.dropzone').forEach(zone => {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('over');
+      const word = e.dataTransfer.getData('text/plain');
+      if (word === zone.dataset.answer) {
+        zone.classList.add('matched');
+        if (draggedItem) draggedItem.classList.add('matched');
+        matchCorrect++;
+        addXP(5, 'Match correcto / Match correct');
+        if (matchCorrect >= pairs.length) {
+          document.getElementById(`match-score-${idx}`).innerHTML = '¡Perfecto! Todos emparejados. 🎉<br><span class="en-subtitle">Perfect! All matched.</span>';
+          state.matchCount = (state.matchCount || 0) + 1;
+          checkBadges();
+          saveState();
+        }
+      } else {
+        zone.classList.add('wrong');
+        setTimeout(() => zone.classList.remove('wrong'), 500);
+      }
+    });
+  });
+}
+
+// Sentence Builder
+function initSentenceBuilder(idx) {
+  const lesson = COURSE_DATA[idx];
+  const container = document.getElementById(`sentence-${idx}`);
+  if (!container) return;
+
+  const sentence = lesson.patterns[0];
+  const words = sentence.es.replace(/[¿¡?!,.]/g, '').split(' ');
+  const shuffled = [...words].sort(() => Math.random() - 0.5);
+
+  container.innerHTML = `
+    <div class="sentence-prompt">Traduce: "${sentence.en}"</div>
+    <div class="en-subtitle" style="margin-bottom:8px">Translate: "${sentence.en}"</div>
+    <div class="sentence-target" id="sentence-target-${idx}"></div>
+    <div class="word-bank" id="word-bank-${idx}">
+      ${shuffled.map((w, wi) => `
+        <div class="word-chip" onclick="addWordToSentence(${idx}, '${w}', this)">${w}</div>
+      `).join('')}
+    </div>
+    <button class="btn-check" onclick="checkSentence(${idx}, '${words.join(' ')}')">Comprobar / Check</button>`;
+}
+
+function addWordToSentence(idx, word, chip) {
+  const target = document.getElementById(`sentence-target-${idx}`);
+  const placed = document.createElement('span');
+  placed.className = 'placed-word';
+  placed.textContent = word;
+  placed.onclick = () => {
+    placed.remove();
+    chip.classList.remove('used');
+  };
+  target.appendChild(placed);
+  chip.classList.add('used');
+}
+
+function checkSentence(idx, correct) {
+  const target = document.getElementById(`sentence-target-${idx}`);
+  const placed = Array.from(target.querySelectorAll('.placed-word')).map(el => el.textContent);
+  const attempt = placed.join(' ');
+  if (attempt === correct) {
+    addXP(10, 'Oración correcta / Sentence correct');
+    state.sentenceCount = (state.sentenceCount || 0) + 1;
+    checkBadges();
+    saveState();
+    showToast('¡Oración correcta! / Sentence correct! 🎉', 'success');
+  } else {
+    showToast('Intenta de nuevo / Try again — las palabras no están en el orden correcto / words are not in the right order.', 'incorrect');
+  }
+}
+
+// Dialogue speed
+let dialogueSpeeds = {};
+function setDialogueSpeed(speed, idx) {
+  dialogueSpeeds[idx] = speed;
+  document.getElementById(`speed-slow-${idx}`).classList.toggle('active', speed === 'slow');
+  document.getElementById(`speed-natural-${idx}`).classList.toggle('active', speed === 'natural');
+}
+
+function playDialogue(idx) {
+  const lesson = COURSE_DATA[idx];
+  const speed = dialogueSpeeds[idx] === 'slow' ? 0.7 : 1;
+  lesson.dialogue.forEach((d, i) => {
+    setTimeout(() => speak(d.es, speed), i * 3000);
+  });
+  state.listeningDone = true;
+  checkBadges();
+  saveState();
+}
+
+// Text-to-speech
+function speak(text, rate = 1) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'es-ES';
+    utter.rate = rate;
+    const voices = window.speechSynthesis.getVoices();
+    const esVoice = voices.find(v => v.lang.startsWith('es'));
+    if (esVoice) utter.voice = esVoice;
+    window.speechSynthesis.speak(utter);
+  }
+}
+
+// Learn word
+function learnWord(idx, vi) {
+  if (!state.wordsLearned) state.wordsLearned = 0;
+  state.wordsLearned = Math.min(50, state.wordsLearned + 1);
+  saveState();
+  checkBadges();
+}
+
+// Complete speaking
+function completeSpeaking(idx) {
+  state.speakingDone = true;
+  addXP(15, 'Práctica de speaking / Speaking practice');
+  checkBadges();
+  saveState();
+  showToast('¡Práctica de speaking completada! / Speaking practice completed! 🗣️', 'success');
+}
+
+// Reflection
+function autoSaveReflection(idx) {}
+
+function saveReflection(idx) {
+  state.reflectionCount = (state.reflectionCount || 0) + 1;
+  addXP(10, 'Reflexión guardada / Reflection saved');
+  checkBadges();
+  saveState();
+  showToast('Reflexión guardada. ¡Buen trabajo! / Reflection saved. Great job! 💭', 'success');
+}
+
+// Mark lesson complete
+function markLessonComplete(idx) {
+  for (let s = 0; s < 14; s++) {
+    markSectionComplete(idx, s);
+  }
+  state.lessonProgress[idx] = 100;
+  addXP(25, `Lección ${idx + 1} completada / Lesson ${idx + 1} completed`);
+  checkBadges();
+  saveState();
+  showToast(`¡Lección ${idx + 1} completada! / Lesson ${idx + 1} completed! 🎉`, 'success');
+  triggerCelebration();
+  renderSidebar();
+}
+
+// ========== NAVIGATION ==========
+function navigateToLesson(idx) {
+  state.currentLesson = idx;
+  saveState();
+  renderSidebar();
+  renderLesson(idx);
+  closeSidebar();
+}
+
+function navigateHome() {
+  state.currentLesson = null;
+  saveState();
+  renderSidebar();
+  renderWelcome();
+  closeSidebar();
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+// ========== UI UPDATES ==========
+function updateUI() {
+  const lvl = getLevel();
+  document.getElementById('sidebar-xp').textContent = `${state.xp} XP`;
+  document.getElementById('sidebar-streak').textContent = `${state.streak} días`;
+  document.getElementById('sidebar-level').textContent = `Nivel ${lvl.level}`;
+  const overall = getOverallProgress();
+  document.getElementById('overall-fill').style.width = `${overall}%`;
+  document.getElementById('overall-pct').textContent = `${overall}%`;
+  renderSidebar();
+}
+
+// ========== TOAST ==========
+function showToast(message, type = 'xp') {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span>${message}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// ========== CELEBRATION ==========
+function triggerCelebration() {
+  const container = document.getElementById('celebration');
+  const colors = ['var(--accent)', 'var(--success)', 'var(--purple)', 'var(--orange)', 'var(--pink)', 'var(--warn)'];
+  for (let i = 0; i < 40; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.top = '-10px';
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDelay = Math.random() * 1 + 's';
+    confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+    container.appendChild(confetti);
+  }
+  setTimeout(() => container.innerHTML = '', 4000);
+}
+
+// ========== INIT ==========
+loadState();
+if (state.currentLesson !== null) {
+  renderLesson(state.currentLesson);
+} else {
+  renderWelcome();
+}
+renderSidebar();
+updateUI();
+
+// Load voices for TTS
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
