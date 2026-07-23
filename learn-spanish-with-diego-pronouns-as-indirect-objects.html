@@ -1,0 +1,1051 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indirect Object Pronouns - Interactive Spanish Lesson</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f5;--sf:#fff;--fg:#1a1a2e;--mt:#6b7280;--bd:#e5e1db;--ac:#e05d3b;--acs:#fdf0ed;--tl:#0d9488;--tls:#e6f7f5;--vl:#7c3aed;--vls:#f3edff;--am:#d97706;--ams:#fef3c7;--sc:#16a34a;--scs:#dcfce7;--dn:#dc2626;--dns:#fef2f2;--fd:'DM Serif Display',Georgia,serif;--fb:'DM Sans',system-ui,sans-serif;--fm:'JetBrains Mono',monospace;--r:12px;--rs:8px}
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--fg);line-height:1.6;font-size:16px;margin:0;padding:0}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:400;line-height:1.2}
+h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.5vw,2.2rem);letter-spacing:-.015em}
+h3{font-size:clamp(1.15rem,2.5vw,1.5rem);letter-spacing:-.01em}
+.pw{position:sticky;top:0;z-index:100;background:var(--sf);border-bottom:1px solid var(--bd);padding:10px 0}
+.pbf{height:4px;border-radius:2px;background:var(--ac);transition:width .4s}
+.pl{font-size:.75rem;color:var(--mt);letter-spacing:.02em}
+.ln{position:sticky;top:60px;max-height:calc(100vh - 80px);overflow-y:auto;padding:16px 0}
+.ln a{display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:var(--rs);color:var(--mt);text-decoration:none;font-size:.85rem;transition:all .2s}
+.ln a:hover,.ln a.active{background:var(--acs);color:var(--ac)}
+.ln .nn{width:22px;height:22px;border-radius:50%;background:var(--bd);color:var(--mt);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;flex-shrink:0;transition:all .2s}
+.ln a.active .nn{background:var(--ac);color:#fff}
+.ln a.done .nn{background:var(--sc);color:#fff}
+.ls{padding:48px 0 32px;border-bottom:1px solid var(--bd)}.ls:last-child{border-bottom:none}
+.sb{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.bw{background:var(--ams);color:var(--am)}.bg{background:var(--vls);color:var(--vl)}.bp{background:var(--tls);color:var(--tl)}.br{background:var(--acs);color:var(--ac)}
+.cl{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);transition:box-shadow .2s}
+.gt{width:100%;border-collapse:separate;border-spacing:0}
+.gt th{background:var(--ac);color:#fff;padding:10px 16px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-align:left}
+.gt th:first-child{border-radius:var(--rs) 0 0 0}.gt th:last-child{border-radius:0 var(--rs) 0 0}
+.gt td{padding:12px 16px;border-bottom:1px solid var(--bd);font-size:1rem}
+.gt tr:last-child td:first-child{border-radius:0 0 0 var(--rs)}.gt tr:last-child td:last-child{border-radius:0 0 var(--rs) 0}
+.pc{font-family:var(--fm);font-weight:500;color:var(--ac);font-size:1.05rem}
+.pk{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:20px;border-left:4px solid var(--ac)}
+.pk h4{font-family:var(--fb);font-weight:600;font-size:1rem;margin-bottom:8px;color:var(--ac)}
+.pe{font-family:var(--fm);font-size:.95rem;padding:8px 14px;background:var(--bg);border-radius:var(--rs);margin:6px 0;border-left:3px solid var(--tl)}
+.pn{color:var(--ac);font-weight:600}
+.sf{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;padding:20px}
+.fp{padding:10px 18px;border-radius:var(--rs);font-family:var(--fm);font-weight:500;font-size:.95rem;text-align:center}
+.fa{color:var(--mt);font-size:1.2rem;padding:0 4px}
+.fsu{background:var(--tls);color:var(--tl)}.fpr{background:var(--acs);color:var(--ac)}.fve{background:var(--vls);color:var(--vl)}.fth{background:var(--ams);color:var(--am)}
+.ba{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;border:1px solid var(--bd);background:var(--sf);color:var(--mt);font-size:.8rem;cursor:pointer;transition:all .2s;border:none}
+.ba:hover{border-color:var(--ac);color:var(--ac)}
+.eq{padding:20px;margin-bottom:16px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r)}
+.qn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--ac);color:#fff;font-size:.8rem;font-weight:600;margin-right:10px;flex-shrink:0}
+.qs{font-family:var(--fm);font-size:1.05rem;margin:10px 0;padding:10px 14px;background:var(--bg);border-radius:var(--rs)}
+.bl{display:inline-block;min-width:80px;border-bottom:2px dashed var(--ac);text-align:center;color:var(--ac);font-weight:600}
+.mo{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mop{padding:8px 18px;border-radius:var(--rs);border:2px solid var(--bd);background:var(--sf);cursor:pointer;font-size:.95rem;transition:all .2s}
+.mop:hover{border-color:var(--ac)}.mop.cor{border-color:var(--sc);background:var(--scs);color:var(--sc)}.mop.wro{border-color:var(--dn);background:var(--dns);color:var(--dn)}
+.dz{min-height:44px;min-width:80px;border:2px dashed var(--bd);border-radius:var(--rs);display:inline-flex;align-items:center;justify-content:center;padding:6px 14px;transition:all .2s;background:var(--bg)}
+.dz.over{border-color:var(--ac);background:var(--acs)}.dz.filled{border-style:solid;border-color:var(--tl);background:var(--tls)}
+.di{display:inline-flex;align-items:center;padding:6px 14px;background:var(--ac);color:#fff;border-radius:var(--rs);cursor:grab;font-family:var(--fm);font-weight:500;font-size:.9rem;user-select:none;transition:transform .15s}
+.di:active{cursor:grabbing;transform:scale(.95)}
+.dp{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.fi{border:none;border-bottom:2px solid var(--bd);background:transparent;font-family:var(--fm);font-size:1rem;padding:4px 8px;width:120px;outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--ac)}.fi.cor{border-color:var(--sc);color:var(--sc)}.fi.wro{border-color:var(--dn);color:var(--dn)}
+.bb{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--bg);border-radius:var(--rs);min-height:50px;margin-bottom:10px}
+.bba{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--sf);border:2px dashed var(--bd);border-radius:var(--rs);min-height:50px;margin-bottom:10px}
+.bw2{padding:6px 14px;background:var(--vls);color:var(--vl);border-radius:var(--rs);font-family:var(--fm);font-size:.9rem;cursor:pointer;transition:all .2s;user-select:none}
+.bw2:hover{background:var(--vl);color:#fff}.bw2.placed{opacity:.3;pointer-events:none}
+.fcc{perspective:1000px;cursor:pointer}
+.fc{position:relative;width:100%;min-height:220px;transition:transform .5s;transform-style:preserve-3d}
+.fc.fl{transform:rotateY(180deg)}
+.ff{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ffr{background:linear-gradient(135deg,var(--tls),var(--sf));border:2px solid var(--tl)}
+.ffb{background:linear-gradient(135deg,var(--acs),var(--sf));border:2px solid var(--ac);transform:rotateY(180deg)}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.mgc{aspect-ratio:1;border-radius:var(--rs);background:var(--vl);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-size:.85rem;cursor:pointer;transition:all .3s;user-select:none}
+.mgc:hover{transform:scale(1.03)}.mgc.rev{background:var(--sf);color:var(--fg);border:2px solid var(--vl)}.mgc.match{background:var(--scs);color:var(--sc);border:2px solid var(--sc);pointer-events:none}
+.qo{display:block;width:100%;text-align:left;padding:12px 18px;margin-bottom:8px;border:2px solid var(--bd);border-radius:var(--rs);background:var(--sf);cursor:pointer;font-size:.95rem;transition:all .2s}
+.qo:hover{border-color:var(--ac)}.qo.cor{border-color:var(--sc);background:var(--scs)}.qo.wro{border-color:var(--dn);background:var(--dns)}.qo.dis{pointer-events:none}
+.fm{padding:10px 14px;border-radius:var(--rs);font-size:.9rem;margin-top:8px;display:none}.fm.show{display:block}.fm.cor{background:var(--scs);color:var(--sc)}.fm.wro{background:var(--dns);color:var(--dn)}
+.dlg{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}.dlg.rt{flex-direction:row-reverse}
+.dsp{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0}
+.sa{background:var(--tl)}.sb2{background:var(--vl)}
+.dbb{padding:10px 14px;border-radius:12px;max-width:75%;font-size:.95rem;line-height:1.5}
+.dlg:not(.rt) .dbb{background:var(--tls);border-bottom-left-radius:4px}
+.dlg.rt .dbb{background:var(--vls);border-bottom-right-radius:4px}
+.mcc{border-left:4px solid var(--dn);background:var(--dns);border-radius:0 var(--rs) var(--rs) 0;padding:14px 18px;margin-bottom:12px}
+.ix{text-decoration:line-through;color:var(--dn);font-family:var(--fm);font-size:.9rem}
+.cx{color:var(--sc);font-family:var(--fm);font-weight:600;font-size:.9rem}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ai{animation:fu .4s ease both}
+.mnt{display:none;position:fixed;bottom:20px;left:20px;z-index:101;width:48px;height:48px;border-radius:50%;background:var(--ac);color:#fff;border:none;font-size:1.2rem;align-items:center;justify-content:center}
+.mnp{display:none;position:fixed;bottom:80px;left:20px;z-index:101;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:16px;max-height:60vh;overflow-y:auto;width:260px}
+.mnp.open{display:block}
+@media(max-width:768px){.lnd{display:none!important}.sf{gap:4px}.fp{padding:6px 10px;font-size:.8rem}.fc{min-height:180px}.mnt{display:flex}}
+</style>
+</head>
+<body>
+<div class="pw" data-od-id="progress-bar"><div class="container"><div class="d-flex justify-content-between align-items-center mb-1"><span class="pl" id="progressText">Section 1 of 13</span><span class="pl" id="scoreText">Score: 0</span></div><div class="pbf" id="progressFill" style="width:7.7%"></div></div></div>
+<div class="container-fluid"><div class="row">
+<nav class="col-lg-2 d-none d-lg-block lnd" data-od-id="lesson-nav"><div class="ln" id="lessonNav">
+<a href="#sec-1" class="active" data-section="1"><span class="nn">1</span> Warm-up</a>
+<a href="#sec-2" data-section="2"><span class="nn">2</span> Grammar</a>
+<a href="#sec-3" data-section="3"><span class="nn">3</span> Patterns</a>
+<a href="#sec-4" data-section="4"><span class="nn">4</span> Visual Summary</a>
+<a href="#sec-5" data-section="5"><span class="nn">5</span> Practice</a>
+<a href="#sec-6" data-section="6"><span class="nn">6</span> Listening</a>
+<a href="#sec-7" data-section="7"><span class="nn">7</span> Speaking</a>
+<a href="#sec-8" data-section="8"><span class="nn">8</span> Flashcards</a>
+<a href="#sec-9" data-section="9"><span class="nn">9</span> Memory Game</a>
+<a href="#sec-10" data-section="10"><span class="nn">10</span> Quiz</a>
+<a href="#sec-11" data-section="11"><span class="nn">11</span> Common Mistakes</a>
+<a href="#sec-12" data-section="12"><span class="nn">12</span> Conversation</a>
+<a href="#sec-13" data-section="13"><span class="nn">13</span> Review</a>
+</div></nav>
+<main class="col-lg-10 col-md-12" style="padding:0 24px">
+<section style="padding:56px 0 32px;text-align:center" data-od-id="hero">
+<div class="sb bw"><i class="bi bi-translate"></i> A1-A2 Spanish</div>
+<h1 style="margin-bottom:12px">Indirect Object Pronouns</h1>
+<p style="margin:0 auto 20px;color:var(--mt);font-size:1.1rem;max-width:55ch">Master <strong style="color:var(--ac)">me, te, le, nos, les</strong> &mdash; the words that tell us <em>to whom</em> or <em>for whom</em> something happens.</p>
+<div class="d-flex justify-content-center gap-2 flex-wrap">
+<span class="sb bg"><i class="bi bi-book"></i> 13 sections</span>
+<span class="sb bp"><i class="bi bi-controller"></i> Interactive</span>
+<span class="sb br"><i class="bi bi-clock"></i> ~45 min</span>
+</div></section>
+
+<!-- SECTION 1: WARM-UP -->
+<section class="ls" id="sec-1" data-od-id="warmup-section">
+<div class="sb bw"><i class="bi bi-fire"></i> Section 1</div>
+<h2>Warm-up</h2>
+<p style="color:var(--mt);margin-bottom:24px">Think about these questions before we start.</p>
+<div class="cl ai" style="margin-bottom:16px"><div class="d-flex align-items-start gap-3"><span style="font-size:1.8rem">&#127873;</span><div>
+<h3 style="margin-bottom:4px">Who gives you gifts?</h3>
+<p style="color:var(--mt);font-size:.9rem;margin:0"><em>My mom gives <strong>me</strong> gifts.</em> &mdash; \"me\" is an indirect object pronoun!</p>
+<button class="ba" onclick="speak('Who gives you gifts?','en')"><i class="bi bi-volume-up"></i> EN</button>
+<button class="ba" onclick="speak('&#191;Qui&#233;n te da regalos?','es')"><i class="bi bi-volume-up"></i> ES</button>
+</div></div></div>
+<div class="cl ai" style="margin-bottom:16px;animation-delay:.1s"><div class="d-flex align-items-start gap-3"><span style="font-size:1.8rem">&#128172;</span><div>
+<h3 style="margin-bottom:4px">Who sends you messages?</h3>
+<p style="color:var(--mt);font-size:.9rem;margin:0"><em>My friend sends <strong>me</strong> messages.</em></p>
+<button class="ba" onclick="speak('Who sends you messages?','en')"><i class="bi bi-volume-up"></i> EN</button>
+<button class="ba" onclick="speak('&#191;Qui&#233;n te env&#237;a mensajes?','es')"><i class="bi bi-volume-up"></i> ES</button>
+</div></div></div>
+<div class="cl ai" style="animation-delay:.2s"><div class="d-flex align-items-start gap-3"><span style="font-size:1.8rem">&#127859;</span><div>
+<h3 style="margin-bottom:4px">Who cooks for you?</h3>
+<p style="color:var(--mt);font-size:.9rem;margin:0"><em>My dad cooks <strong>for me</strong>.</em></p>
+<button class="ba" onclick="speak('Who cooks for you?','en')"><i class="bi bi-volume-up"></i> EN</button>
+<button class="ba" onclick="speak('&#191;Qui&#233;n cocina para ti?','es')"><i class="bi bi-volume-up"></i> ES</button>
+</div></div></div>
+<p style="margin-top:20px;font-size:.95rem;color:var(--mt)"><strong>Key idea:</strong> \"me\" and \"to me\" appear in every answer. That's the pattern we're learning today.</p>
+</section>
+
+<!-- SECTION 2: GRAMMAR -->
+<section class="ls" id="sec-2" data-od-id="grammar-section">
+<div class="sb bg"><i class="bi bi-book-half"></i> Section 2</div>
+<h2>Grammar Discovery</h2>
+<p style="color:var(--mt);margin-bottom:24px">Spanish has five indirect object pronouns. They answer: <em>To whom?</em> / <em>For whom?</em></p>
+<div class="cl" style="overflow-x:auto">
+<table class="gt" data-od-id="pronoun-table">
+<thead><tr><th>Pronoun</th><th>English</th><th>Example</th><th></th></tr></thead>
+<tbody>
+<tr><td class="pc">me</td><td>to me / for me</td><td>Mam&#225; <strong>me</strong> compra ropa.</td><td><button class="ba" onclick="speak('Mam&#225; me compra ropa.','es')"><i class="bi bi-volume-up"></i></button></td></tr>
+<tr><td class="pc">te</td><td>to you / for you</td><td>Yo <strong>te</strong> doy dinero.</td><td><button class="ba" onclick="speak('Yo te doy dinero.','es')"><i class="bi bi-volume-up"></i></button></td></tr>
+<tr><td class="pc">le</td><td>to him/her</td><td>Ella <strong>le</strong> explica la lecci&#243;n.</td><td><button class="ba" onclick="speak('Ella le explica la lecci&#243;n.','es')"><i class="bi bi-volume-up"></i></button></td></tr>
+<tr><td class="pc">nos</td><td>to us / for us</td><td><strong>Nos</strong> cuentan una historia.</td><td><button class="ba" onclick="speak('Nos cuentan una historia.','es')"><i class="bi bi-volume-up"></i></button></td></tr>
+<tr><td class="pc">les</td><td>to them / for them</td><td>Mi padre <strong>les</strong> compra comida.</td><td><button class="ba" onclick="speak('Mi padre les compra comida.','es')"><i class="bi bi-volume-up"></i></button></td></tr>
+</tbody></table></div>
+<div class="cl" style="margin-top:20px;border-left:4px solid var(--vl)">
+<h3><i class="bi bi-lightbulb" style="color:var(--am)"></i> Why before the verb?</h3>
+<p style="margin:8px 0;font-size:.95rem">In Spanish, indirect object pronouns go <strong>before</strong> the conjugated verb:</p>
+<div class="pe">Ella <span class="pn">me</span> da un libro. <span style="color:var(--mt);font-size:.85rem">&larr; pronoun before verb</span></div>
+<div class="pe">Ella da <span class="pn">me</span> un libro. <span style="color:var(--dn);font-size:.85rem">&larr; wrong order!</span></div>
+</div></section>
+
+<!-- SECTION 3: PATTERNS -->
+<section class="ls" id="sec-3" data-od-id="patterns-section">
+<div class="sb bg"><i class="bi bi-grid-3x3-gap"></i> Section 3</div>
+<h2>Pattern Recognition</h2>
+<p style="color:var(--mt);margin-bottom:24px">The same five pronouns repeat across everyday actions:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+<div class="pk" data-od-id="pattern-giving"><h4><i class="bi bi-gift"></i> Giving</h4>
+<div class="pe">Ella <span class="pn">me</span> da un regalo. <button class="ba" onclick="speak('Ella me da un regalo.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe">Yo <span class="pn">te</span> doy dinero. <button class="ba" onclick="speak('Yo te doy dinero.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe">Mi padre <span class="pn">les</span> compra comida. <button class="ba" onclick="speak('Mi padre les compra comida.','es')"><i class="bi bi-volume-up"></i></button></div></div>
+<div class="pk" data-od-id="pattern-saying"><h4><i class="bi bi-chat-dots"></i> Saying</h4>
+<div class="pe"><span class="pn">Te</span> digo la verdad. <button class="ba" onclick="speak('Te digo la verdad.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe"><span class="pn">Le</span> explico la lecci&#243;n. <button class="ba" onclick="speak('Le explico la lecci&#243;n.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe"><span class="pn">Nos</span> cuentan una historia. <button class="ba" onclick="speak('Nos cuentan una historia.','es')"><i class="bi bi-volume-up"></i></button></div></div>
+<div class="pk" data-od-id="pattern-bringing"><h4><i class="bi bi-box-arrow-in-right"></i> Bringing</h4>
+<div class="pe"><span class="pn">Me</span> trae caf&#233;. <button class="ba" onclick="speak('Me trae caf&#233;.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe"><span class="pn">Les</span> llevo comida. <button class="ba" onclick="speak('Les llevo comida.','es')"><i class="bi bi-volume-up"></i></button></div></div>
+<div class="pk" data-od-id="pattern-buying"><h4><i class="bi bi-bag"></i> Buying</h4>
+<div class="pe"><span class="pn">Te</span> compro un libro. <button class="ba" onclick="speak('Te compro un libro.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe"><span class="pn">Le</span> compra flores. <button class="ba" onclick="speak('Le compra flores.','es')"><i class="bi bi-volume-up"></i></button></div></div>
+<div class="pk" data-od-id="pattern-sending"><h4><i class="bi bi-envelope"></i> Sending</h4>
+<div class="pe"><span class="pn">Nos</span> env&#237;a un mensaje. <button class="ba" onclick="speak('Nos env&#237;a un mensaje.','es')"><i class="bi bi-volume-up"></i></button></div>
+<div class="pe"><span class="pn">Les</span> mando un correo. <button class="ba" onclick="speak('Les mando un correo.','es')"><i class="bi bi-volume-up"></i></button></div></div>
+</div></section>
+
+<!-- SECTION 4: VISUAL SUMMARY -->
+<section class="ls" id="sec-4" data-od-id="visual-summary">
+<div class="sb bg"><i class="bi bi-diagram-3"></i> Section 4</div>
+<h2>Visual Pattern Summary</h2>
+<p style="color:var(--mt);margin-bottom:24px">Every sentence follows this structure:</p>
+<div class="cl" style="text-align:center;padding:32px">
+<div class="sf" style="margin-bottom:24px">
+<span class="fp fsu">Subject</span><span class="fa">&rarr;</span>
+<span class="fp fpr">Pronoun</span><span class="fa">&rarr;</span>
+<span class="fp fve">Verb</span><span class="fa">&rarr;</span>
+<span class="fp fth">Thing</span></div>
+<div class="sf ai"><span class="fp fsu">Ella</span><span class="fa">&rarr;</span><span class="fp fpr">me</span><span class="fa">&rarr;</span><span class="fp fve">da</span><span class="fa">&rarr;</span><span class="fp fth">un libro</span></div>
+<p style="margin-top:12px"><em>She gives <strong>me</strong> a book.</em> <button class="ba" onclick="speak('Ella me da un libro.','es')"><i class="bi bi-volume-up"></i></button></p>
+<hr style="border-color:var(--bd);margin:24px 0">
+<div class="sf ai" style="animation-delay:.15s"><span class="fp fsu">Mi mam&#225;</span><span class="fa">&rarr;</span><span class="fp fpr">nos</span><span class="fa">&rarr;</span><span class="fp fve">cocina</span><span class="fa">&rarr;</span><span class="fp fth">la cena</span></div>
+<p style="margin-top:12px"><em>My mom cooks <strong>us</strong> dinner.</em> <button class="ba" onclick="speak('Mi mam&#225; nos cocina la cena.','es')"><i class="bi bi-volume-up"></i></button></p>
+</div></section>
+
+<!-- SECTION 5: PRACTICE -->
+<section class="ls" id="sec-5" data-od-id="practice-section">
+<div class="sb bp"><i class="bi bi-pencil-square"></i> Section 5</div>
+<h2>Interactive Practice</h2>
+<p style="color:var(--mt);margin-bottom:24px">Five types of exercises to test your understanding.</p>
+<h3 style="margin-bottom:16px">Multiple Choice &mdash; Choose the correct pronoun</h3>
+<div id="mcExercises"></div>
+<h3 style="margin-top:32px;margin-bottom:16px">Drag and Drop &mdash; Place the pronoun</h3>
+<div id="ddExercises"></div>
+<h3 style="margin-top:32px;margin-bottom:16px">Fill in the Blank</h3>
+<div id="fbExercises"></div>
+<h3 style="margin-top:32px;margin-bottom:16px">Sentence Builder &mdash; Arrange the words</h3>
+<div id="sbExercises"></div>
+<h3 style="margin-top:32px;margin-bottom:16px">Translation Exercises</h3>
+<div id="trExercises"></div>
+</section>
+
+<!-- SECTION 6: LISTENING -->
+<section class="ls" id="sec-6" data-od-id="listening-section">
+<div class="sb bp"><i class="bi bi-ear"></i> Section 6</div>
+<h2>Listening Practice</h2>
+<p style="color:var(--mt);margin-bottom:24px">Listen to each dialogue, then reveal the translation.</p>
+<div id="listeningDialogues"></div>
+</section>
+
+<!-- SECTION 7: SPEAKING -->
+<section class="ls" id="sec-7" data-od-id="speaking-section">
+<div class="sb bp"><i class="bi bi-mic"></i> Section 7</div>
+<h2>Speaking Practice</h2>
+<p style="color:var(--mt);margin-bottom:24px">Read these role-play conversations aloud!</p>
+<div id="speakingDialogues"></div>
+</section>
+
+<!-- SECTION 8: FLASHCARDS -->
+<section class="ls" id="sec-8" data-od-id="flashcards-section">
+<div class="sb bp"><i class="bi bi-card-heading"></i> Section 8</div>
+<h2>Flashcards</h2>
+<p style="color:var(--mt);margin-bottom:8px">Click a card to flip. Use arrows to navigate.</p>
+<p style="color:var(--mt);margin-bottom:24px;font-size:.9rem" id="flashcardCounter">Card 1 of 15</p>
+<div class="row justify-content-center"><div class="col-md-6">
+<div class="fcc" onclick="flipFlashcard()" data-od-id="flashcard-area">
+<div class="fc" id="flashcard">
+<div class="ff ffr" id="flashcardFront"><div style="font-size:.8rem;color:var(--mt);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase">English</div><div id="flashcardEN" style="font-size:1.2rem;font-weight:500"></div></div>
+<div class="ff ffb" id="flashcardBack"><div style="font-size:.8rem;color:var(--mt);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase">Spanish</div><div id="flashcardES" style="font-size:1.2rem;font-weight:500"></div><div style="margin-top:12px;font-size:.85rem;color:var(--mt)" id="flashcardGrammar"></div><button class="ba" style="margin-top:10px" onclick="event.stopPropagation();speakFC()"><i class="bi bi-volume-up"></i> Listen</button></div>
+</div></div>
+<div class="d-flex justify-content-center gap-3 mt-3">
+<button class="btn btn-outline-secondary btn-sm" onclick="prevFC()"><i class="bi bi-chevron-left"></i> Prev</button>
+<button class="btn btn-outline-secondary btn-sm" onclick="nextFC()">Next <i class="bi bi-chevron-right"></i></button>
+</div></div></div></section>
+
+<!-- SECTION 9: MEMORY GAME -->
+<section class="ls" id="sec-9" data-od-id="memory-section">
+<div class="sb bp"><i class="bi bi-grid"></i> Section 9</div>
+<h2>Memory Game</h2>
+<p style="color:var(--mt);margin-bottom:8px">Match English with Spanish translations and the correct pronoun.</p>
+<p style="color:var(--mt);margin-bottom:24px;font-size:.9rem" id="memoryScore">Matches: 0 / 6</p>
+<div class="mg" id="memoryGrid" data-od-id="memory-game"></div>
+<button class="btn btn-outline-secondary btn-sm mt-3" onclick="resetMemory()"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+</section>
+
+<!-- SECTION 10: QUIZ -->
+<section class="ls" id="sec-10" data-od-id="quiz-section">
+<div class="sb br"><i class="bi bi-clipboard-check"></i> Section 10</div>
+<h2>Quiz</h2>
+<p style="color:var(--mt);margin-bottom:24px">30 questions &mdash; instant feedback on each.</p>
+<h3 style="margin-bottom:16px">Part A &mdash; Multiple Choice (10)</h3><div id="quizMC"></div>
+<h3 style="margin-top:32px;margin-bottom:16px">Part B &mdash; True or False (10)</h3><div id="quizTF"></div>
+<h3 style="margin-top:32px;margin-bottom:16px">Part C &mdash; Translation (10)</h3><div id="quizTrans"></div>
+</section>
+
+<!-- SECTION 11: COMMON MISTAKES -->
+<section class="ls" id="sec-11" data-od-id="mistakes-section">
+<div class="sb br"><i class="bi bi-exclamation-triangle"></i> Section 11</div>
+<h2>Common Mistakes</h2>
+<p style="color:var(--mt);margin-bottom:24px">English speakers often make these errors. Avoid them!</p>
+<div class="mcc" data-od-id="mistake-1"><strong style="font-size:.85rem;color:var(--dn)">Mistake 1: Wrong word order</strong>
+<p style="margin:6px 0"><span class="ix">Ella da me un libro.</span></p>
+<p style="margin:6px 0"><span class="cx">Ella me da un libro.</span></p>
+<p style="font-size:.85rem;color:var(--mt);margin:0">The pronoun goes <strong>before</strong> the verb.</p></div>
+<div class="mcc" data-od-id="mistake-2"><strong style="font-size:.85rem;color:var(--dn)">Mistake 2: Using \"le\" for everything</strong>
+<p style="margin:6px 0"><span class="ix">Le amo mucho. (meaning \"I love you\")</span></p>
+<p style="margin:6px 0"><span class="cx">Te amo mucho.</span></p>
+<p style="font-size:.85rem;color:var(--mt);margin:0">Use <strong>te</strong> for \"you\" (informal), <strong>le</strong> for \"him/her.\"</p></div>
+<div class="mcc" data-od-id="mistake-3"><strong style="font-size:.85rem;color:var(--dn)">Mistake 3: Forgetting the pronoun with \"gustar\"</strong>
+<p style="margin:6px 0"><span class="ix">Gusta el caf&#233;. (meaning \"I like coffee\")</span></p>
+<p style="margin:6px 0"><span class="cx">Me gusta el caf&#233;.</span></p>
+<p style="font-size:.85rem;color:var(--mt);margin:0">\"Gustar\" needs a pronoun to say <strong>who</strong> likes it.</p></div>
+<div class="mcc" data-od-id="mistake-4"><strong style="font-size:.85rem;color:var(--dn)">Mistake 4: Mixing up \"nos\" and \"les\"</strong>
+<p style="margin:6px 0"><span class="ix">Les damos las gracias. (meaning \"We thank you\")</span></p>
+<p style="margin:6px 0"><span class="cx">Te damos las gracias.</span></p>
+<p style="font-size:.85rem;color:var(--mt);margin:0"><strong>Nos</strong> = us, <strong>les</strong> = them. Don't mix them!</p></div>
+<div class="mcc" data-od-id="mistake-5"><strong style="font-size:.85rem;color:var(--dn)">Mistake 5: Repeating the pronoun</strong>
+<p style="margin:6px 0"><span class="ix">A m&#237; me me gusta el chocolate.</span></p>
+<p style="margin:6px 0"><span class="cx">Me gusta el chocolate.</span></p>
+<p style="font-size:.85rem;color:var(--mt);margin:0"><strong>Me</strong> already means \"to me.\" Don't double up.</p></div>
+</section>
+
+<!-- SECTION 12: CONVERSATION -->
+<section class="ls" id="sec-12" data-od-id="conversation-section">
+<div class="sb bp"><i class="bi bi-people"></i> Section 12</div>
+<h2>Conversation Challenge</h2>
+<p style="color:var(--mt);margin-bottom:24px">Read this natural conversation. Every indirect object pronoun is in <strong style="color:var(--ac)">bold red</strong>.</p>
+<div class="cl" id="conversationDialogue" data-od-id="conversation-chat"></div>
+</section>
+
+<!-- SECTION 13: REVIEW -->
+<section class="ls" id="sec-13" data-od-id="review-section">
+<div class="sb br"><i class="bi bi-trophy"></i> Section 13</div>
+<h2>Review</h2>
+<p style="color:var(--mt);margin-bottom:24px">Let's review everything we covered today.</p>
+<div class="row g-4">
+<div class="col-md-6"><div class="cl">
+<h3 style="margin-bottom:12px">The Five Pronouns</h3>
+<table class="gt"><thead><tr><th>Pronoun</th><th>Meaning</th></tr></thead><tbody>
+<tr><td class="pc">me</td><td>to/for me</td></tr>
+<tr><td class="pc">te</td><td>to/for you</td></tr>
+<tr><td class="pc">le</td><td>to/for him/her</td></tr>
+<tr><td class="pc">nos</td><td>to/for us</td></tr>
+<tr><td class="pc">les</td><td>to/for them</td></tr>
+</tbody></table></div></div>
+<div class="col-md-6"><div class="cl">
+<h3 style="margin-bottom:12px">The Sentence Pattern</h3>
+<div class="sf"><span class="fp fsu">Subject</span><span class="fa">&rarr;</span><span class="fp fpr">Pronoun</span><span class="fa">&rarr;</span><span class="fp fve">Verb</span><span class="fa">&rarr;</span><span class="fp fth">Thing</span></div>
+<p style="margin-top:12px;font-size:.9rem;color:var(--mt)">The pronoun always goes <strong>before</strong> the conjugated verb.</p>
+</div></div>
+<div class="col-12"><div class="cl">
+<h3 style="margin-bottom:12px">Five Key Rules</h3>
+<ol style="font-size:.95rem;line-height:1.8">
+<li>Pronouns go <strong>before</strong> the conjugated verb: <em>Ella <span class="pn">me</span> da un libro.</em></li>
+<li>Use <strong>me, te, le, nos, les</strong> &mdash; they don't change for gender.</li>
+<li><strong>Le</strong> = him/her/you(formal). Use <strong>te</strong> for informal \"you.\"</li>
+<li>Pronouns are <strong>mandatory</strong> with verbs like <em>gustar</em>: <em><span class="pn">Me</span> gusta el caf&#233;.</em></li>
+<li>For emphasis, add \"a + noun/pronoun\" after the verb: <em>El libro es <strong>a m&#237;</strong>.</em></li>
+</ol></div></div>
+<div class="col-12"><div class="cl">
+<h3 style="margin-bottom:12px">Five Real-Life Examples</h3>
+<div class="pe"><span class="pn">Me</span> env&#237;an un paquete. <button class="ba" onclick="speak('Me env&#237;an un paquete.','es')"><i class="bi bi-volume-up"></i></button> <span style="color:var(--mt);font-size:.85rem">&mdash; They send me a package.</span></div>
+<div class="pe"><span class="pn">Te</span> recomiendo esta pel&#237;cula. <button class="ba" onclick="speak('Te recomiendo esta pel&#237;cula.','es')"><i class="bi bi-volume-up"></i></button> <span style="color:var(--mt);font-size:.85rem">&mdash; I recommend this movie to you.</span></div>
+<div class="pe"><span class="pn">Le</span> compr&#233; flores a mi mam&#225;. <button class="ba" onclick="speak('Le compr&#233; flores a mi mam&#225;.','es')"><i class="bi bi-volume-up"></i></button> <span style="color:var(--mt);font-size:.85rem">&mdash; I bought flowers for my mom.</span></div>
+<div class="pe"><span class="pn">Nos</span> dieron buenas noticias. <button class="ba" onclick="speak('Nos dieron buenas noticias.','es')"><i class="bi bi-volume-up"></i></button> <span style="color:var(--mt);font-size:.85rem">&mdash; They gave us good news.</span></div>
+<div class="pe"><span class="pn">Les</span> escrib&#237; una carta. <button class="ba" onclick="speak('Les escrib&#237; una carta.','es')"><i class="bi bi-volume-up"></i></button> <span style="color:var(--mt);font-size:.85rem">&mdash; I wrote them a letter.</span></div>
+</div></div>
+</div>
+<div style="text-align:center;padding:48px 0 32px">
+<h2>&#127881; &#191;Felicitaciones!</h2>
+<p style="margin:0 auto;color:var(--mt);font-size:1.1rem">You've completed the lesson on Indirect Object Pronouns.<br>Keep practicing and these patterns will become second nature.</p>
+</div>
+</section>
+</main>
+</div></div>
+
+<button class="mnt" id="mobileNavBtn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><i class="bi bi-list"></i></button>
+<div class="mnp" id="mobileNav">
+<a href="#sec-1" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">1. Warm-up</a>
+<a href="#sec-2" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">2. Grammar</a>
+<a href="#sec-3" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">3. Patterns</a>
+<a href="#sec-4" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">4. Visual Summary</a>
+<a href="#sec-5" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">5. Practice</a>
+<a href="#sec-6" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">6. Listening</a>
+<a href="#sec-7" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">7. Speaking</a>
+<a href="#sec-8" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">8. Flashcards</a>
+<a href="#sec-9" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">9. Memory Game</a>
+<a href="#sec-10" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">10. Quiz</a>
+<a href="#sec-11" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">11. Common Mistakes</a>
+<a href="#sec-12" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">12. Conversation</a>
+<a href="#sec-13" style="display:block;padding:6px 0;color:var(--fg);text-decoration:none;font-size:.9rem">13. Review</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== TTS =====
+function speak(text, lang) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang === 'es' ? 'es-ES' : 'en-US';
+  u.rate = 0.9;
+  window.speechSynthesis.speak(u);
+}
+
+// ===== PROGRESS TRACKING =====
+let totalScore = 0;
+let sectionsComplete = new Set();
+function updateProgress(secNum) {
+  sectionsComplete.add(secNum);
+  const pct = Math.round((sectionsComplete.size / 13) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = 'Section ' + Math.min(secNum, 13) + ' of 13';
+  document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+  // Update nav
+  document.querySelectorAll('#lessonNav a').forEach(a => {
+    const s = parseInt(a.dataset.section);
+    if (sectionsComplete.has(s)) a.classList.add('done');
+  });
+}
+
+// ===== SECTION 5: MULTIPLE CHOICE =====
+const mcData = [
+  {q: 'Ella _____ da un regalo.', opts: ['me','te','le','nos'], ans: 'me'},
+  {q: 'Yo _____ doy dinero.', opts: ['me','te','le','les'], ans: 'te'},
+  {q: 'Mi padre _____ compra comida.', opts: ['me','nos','le','les'], ans: 'les'},
+  {q: '_____ digo la verdad.', opts: ['Te','Me','Le','Nos'], ans: 'Te'},
+  {q: '_____ explico la lecci\u00f3n.', opts: ['Te','Le','Les','Me'], ans: 'Le'},
+  {q: 'Nos _____ una historia.', opts: ['dan','cuentan','dan'], ans: 'cuentan'},
+  {q: 'Me _____ caf\u00e9.', opts: ['trae','traen','traigo'], ans: 'trae'},
+  {q: '_____ compro un libro.', opts: ['Me','Te','Le','Les'], ans: 'Te'},
+  {q: 'Le _____ flores.', opts: ['compro','compras','compra'], ans: 'compra'},
+  {q: 'Les _____ un correo.', opts: ['mando','mandas','mandamos'], ans: 'mando'},
+];
+let mcDone = 0;
+mcData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center"><span class="qn">' + (i+1) + '</span><span>' + d.q.replace('_____', '<strong style="color:var(--ac)">_____</strong>') + '</span></div><div class="mo" id="mc' + i + '"></div><div class="fm" id="mcf' + i + '"></div>';
+  document.getElementById('mcExercises').appendChild(div);
+  const mo = div.querySelector('.mo');
+  d.opts.forEach(o => {
+    const b = document.createElement('button');
+    b.className = 'mop';
+    b.textContent = o;
+    b.onclick = function() {
+      if (mo.dataset.done) return;
+      mo.dataset.done = '1';
+      mcDone++;
+      const fb = document.getElementById('mcf' + i);
+      if (o === d.ans) {
+        b.classList.add('cor');
+        fb.className = 'fm show cor';
+        fb.textContent = '\u2705 Correct!';
+        totalScore++;
+      } else {
+        b.classList.add('wro');
+        mo.querySelectorAll('.mop').forEach(x => { if (x.textContent === d.ans) x.classList.add('cor'); });
+        fb.className = 'fm show wro';
+        fb.textContent = '\u274c The answer is: ' + d.ans;
+      }
+      document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+      if (mcDone === mcData.length) updateProgress(5);
+    };
+    mo.appendChild(b);
+  });
+});
+
+// ===== SECTION 5: DRAG AND DROP =====
+const ddData = [
+  {before: 'Ella', after: 'da un regalo.', ans: 'me'},
+  {before: 'Yo', after: 'doy dinero.', ans: 'te'},
+  {before: 'Mi padre', after: 'compra comida.', ans: 'les'},
+  {before: '', after: 'digo la verdad.', ans: 'Te'},
+  {before: '', after: 'explico la lecci\u00f3n.', ans: 'Le'},
+  {before: '', after: 'cuentan una historia.', ans: 'Nos'},
+  {before: '', after: 'trae caf\u00e9.', ans: 'Me'},
+  {before: '', after: 'compro un libro.', ans: 'Te'},
+];
+let ddDone = 0;
+ddData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center gap-2"><span class="qn">' + (i+1) + '</span><span>' + d.before + ' <span class="dz" id="dz' + i + '" data-i="' + i + '"></span> ' + d.after + '</span></div><div class="dp" id="dp' + i + '"></div><div class="fm" id="ddf' + i + '"></div>';
+  document.getElementById('ddExercises').appendChild(div);
+  // Add drag items
+  const pool = div.querySelector('#dp' + i);
+  const pronouns = ['me','te','le','nos','les'];
+  pronouns.forEach(p => {
+    const di = document.createElement('span');
+    di.className = 'di';
+    di.textContent = p;
+    di.draggable = true;
+    di.dataset.val = p;
+    di.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', p); e.dataTransfer.setData('i', i); });
+    pool.appendChild(di);
+  });
+  const dz = div.querySelector('#dz' + i);
+  dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('over'));
+  dz.addEventListener('drop', e => {
+    e.preventDefault();
+    dz.classList.remove('over');
+    const val = e.dataTransfer.getData('text');
+    const fi = parseInt(e.dataTransfer.getData('i'));
+    if (fi !== i) return;
+    if (dz.dataset.done) return;
+    dz.dataset.done = '1';
+    dz.textContent = val;
+    dz.classList.add('filled');
+    ddDone++;
+    const fb = document.getElementById('ddf' + i);
+    if (val === d.ans) {
+      fb.className = 'fm show cor';
+      fb.textContent = '\u2705 Correct!';
+      totalScore++;
+    } else {
+      fb.className = 'fm show wro';
+      fb.textContent = '\u274c The answer is: ' + d.ans;
+    }
+    document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+    if (ddDone === ddData.length) updateProgress(5);
+  });
+  // Touch support
+  dz.addEventListener('click', () => {
+    if (dz.dataset.done) return;
+    // Simple: cycle through pronouns on tap
+    const idx = (parseInt(dz.dataset.tapIdx || -1) + 1) % 5;
+    dz.dataset.tapIdx = idx;
+    dz.textContent = pronouns[idx];
+  });
+  // Check on a separate button
+  const checkBtn = document.createElement('button');
+  checkBtn.className = 'btn btn-outline-secondary btn-sm mt-2';
+  checkBtn.textContent = 'Check';
+  checkBtn.onclick = function() {
+    if (dz.dataset.checked) return;
+    dz.dataset.checked = '1';
+    const val = dz.textContent.trim();
+    if (!val || !pronouns.includes(val)) { dz.textContent = d.ans; dz.classList.add('filled'); }
+    const finalVal = dz.textContent.trim();
+    dz.dataset.done = '1';
+    ddDone++;
+    const fb = document.getElementById('ddf' + i);
+    if (finalVal === d.ans) {
+      dz.classList.add('filled');
+      fb.className = 'fm show cor';
+      fb.textContent = '\u2705 Correct!';
+      totalScore++;
+    } else {
+      dz.classList.add('filled');
+      dz.textContent = d.ans;
+      fb.className = 'fm show wro';
+      fb.textContent = '\u274c Answer: ' + d.ans;
+    }
+    document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+    if (ddDone === ddData.length) updateProgress(5);
+  };
+  div.appendChild(checkBtn);
+});
+
+// ===== SECTION 5: FILL IN THE BLANK =====
+const fbData = [
+  {before: 'Ella', blank: 'me', after: 'da un regalo.'},
+  {before: 'Yo', blank: 'te', after: 'doy dinero.'},
+  {before: 'Mi padre', blank: 'les', after: 'compra comida.'},
+  {before: '', blank: 'Te', after: 'digo la verdad.'},
+  {before: '', blank: 'Le', after: 'explico la lecci\u00f3n.'},
+  {before: '', blank: 'Nos', after: 'cuentan una historia.'},
+  {before: '', blank: 'Me', after: 'trae caf\u00e9.'},
+  {before: '', blank: 'Te', after: 'compro un libro.'},
+];
+let fbDone = 0;
+fbData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  const sent = (d.before ? d.before + ' ' : '') + '<input class="fi" id="fi' + i + '" placeholder="..." maxlength="10"> ' + d.after;
+  div.innerHTML = '<div class="d-flex align-items-center gap-2"><span class="qn">' + (i+1) + '</span><div class="qs">' + sent + '</div></div><div class="fm" id="fbf' + i + '"></div>';
+  document.getElementById('fbExercises').appendChild(div);
+  const inp = div.querySelector('#fi' + i);
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      if (div.dataset.done) return;
+      div.dataset.done = '1';
+      fbDone++;
+      const val = inp.value.trim().toLowerCase();
+      const ans = d.blank.toLowerCase();
+      const fb = document.getElementById('fbf' + i);
+      if (val === ans) {
+        inp.classList.add('cor');
+        fb.className = 'fm show cor';
+        fb.textContent = '\u2705 Correct!';
+        totalScore++;
+      } else {
+        inp.classList.add('wro');
+        fb.className = 'fm show wro';
+        fb.textContent = '\u274c Answer: ' + d.blank;
+      }
+      document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+      if (fbDone === fbData.length) updateProgress(5);
+    }
+  });
+});
+
+// ===== SECTION 5: SENTENCE BUILDER =====
+const sbData = [
+  {words: ['Ella','me','da','un','libro'], correct: ['Ella','me','da','un','libro']},
+  {words: ['Yo','te','doy','dinero'], correct: ['Yo','te','doy','dinero']},
+  {words: ['Mi','padre','les','compra','comida'], correct: ['Mi','padre','les','compra','comida']},
+  {words: ['Te','digo','la','verdad'], correct: ['Te','digo','la','verdad']},
+  {words: ['Le','explico','la','lecci\u00f3n'], correct: ['Le','explico','la','lecci\u00f3n']},
+  {words: ['Me','trae','caf\u00e9'], correct: ['Me','trae','caf\u00e9']},
+  {words: ['Nos','env\u00eda','un','mensaje'], correct: ['Nos','env\u00eda','un','mensaje']},
+  {words: ['Les','mando','un','correo'], correct: ['Les','mando','un','correo']},
+];
+sbData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center gap-2 mb-2"><span class="qn">' + (i+1) + '</span><span style="font-size:.9rem;color:var(--mt)">Arrange the words in order:</span></div><div class="bba" id="sbans' + i + '"></div><div class="bb" id="sbbank' + i + '"></div><button class="btn btn-outline-secondary btn-sm" id="sbcheck' + i + '">Check</button><div class="fm" id="sbf' + i + '"></div>';
+  document.getElementById('sbExercises').appendChild(div);
+  const bank = div.querySelector('#sbbank' + i);
+  const ans = div.querySelector('#sbans' + i);
+  const shuffled = [...d.words].sort(() => Math.random() - 0.5);
+  const placed = [];
+  shuffled.forEach((w, wi) => {
+    const sp = document.createElement('span');
+    sp.className = 'bw2';
+    sp.textContent = w;
+    sp.dataset.idx = wi;
+    sp.onclick = function() {
+      if (sp.classList.contains('placed')) return;
+      sp.classList.add('placed');
+      placed.push(w);
+      const as = document.createElement('span');
+      as.className = 'bw2';
+      as.textContent = w;
+      as.style.background = 'var(--tl)';
+      as.style.color = '#fff';
+      as.onclick = function() { as.remove(); placed.splice(placed.indexOf(w), 1); sp.classList.remove('placed'); };
+      ans.appendChild(as);
+    };
+    bank.appendChild(sp);
+  });
+  document.getElementById('sbcheck' + i).onclick = function() {
+    if (div.dataset.done) return;
+    div.dataset.done = '1';
+    const fb = document.getElementById('sbf' + i);
+    if (placed.join(' ') === d.correct.join(' ')) {
+      fb.className = 'fm show cor';
+      fb.textContent = '\u2705 Correct! ' + d.correct.join(' ');
+      totalScore++;
+    } else {
+      fb.className = 'fm show wro';
+      fb.textContent = '\u274c Correct order: ' + d.correct.join(' ');
+    }
+    document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+  };
+});
+
+// ===== SECTION 5: TRANSLATION =====
+const trData = [
+  {en: 'She gives me a book.', es: 'Ella me da un libro.'},
+  {en: 'I tell you the truth.', es: 'Te digo la verdad.'},
+  {en: 'He explains the lesson to her.', es: 'Le explica la lecci\u00f3n.'},
+  {en: 'They tell us a story.', es: 'Nos cuentan una historia.'},
+  {en: 'My dad buys food for them.', es: 'Mi padre les compra comida.'},
+];
+trData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center gap-2 mb-2"><span class="qn">' + (i+1) + '</span><span>' + d.en + '</span><button class="ba" onclick="speak(\'' + d.es.replace(/'/g,"\\'") + '\',\'es\')"><i class="bi bi-volume-up"></i></button></div><div style="font-family:var(--fm);color:var(--mt);font-size:.9rem">Spanish: <em>' + d.es + '</em></div>';
+  document.getElementById('trExercises').appendChild(div);
+});
+
+// ===== SECTION 6: LISTENING PRACTICE =====
+const listenData = [
+  {title: 'At the cafe', lines: [
+    {s:'Buenos d\u00edas. \u00bfQu\u00e9 le puedo traer?', t:'Good morning. What can I bring you?'},
+    {s:'\u00bfMe trae un caf\u00e9, por favor?', t:'Can you bring me a coffee, please?'},
+    {s:'\u00bfLe pongo az\u00facar?', t:'Should I put sugar in it?'},
+    {s:'S\u00ed, s\u00ed. Y tambi\u00e9n me trae un croissant.', t:'Yes, yes. And also bring me a croissant.'},
+    {s:'\u00bfLe traigo algo m\u00e1s?', t:'Should I bring you anything else?'},
+    {s:'No, eso es todo. \u00bfCu\u00e1nto le debo?', t:'No, that\'s all. How much do I owe you?'},
+  ]},
+  {title: 'Family dinner', lines: [
+    {s:'\u00bfQui\u00e9n cocina la cena hoy?', t:'Who is cooking dinner today?'},
+    {s:'Yo cocino. \u00bfQu\u00e9 les preparation?', t:'I\'m cooking. What should I prepare for them?'},
+    {s:'Les encanta la pasta.', t:'They love pasta.'},
+    {s:'\u00bfLes pongo queso parmesano?', t:'Should I put parmesan on it for them?'},
+    {s:'S\u00ed, y tambi\u00e9n les traigo pan.', t:'Yes, and I also bring them bread.'},
+    {s:'\u00bfMe das la sal, por favor?', t:'Can you pass me the salt, please?'},
+  ]},
+  {title: 'At school', lines: [
+    {s:'Profesor, \u00bfme puede explicar esta palabra?', t:'Teacher, can you explain this word to me?'},
+    {s:'\u00bfCu\u00e1l es?', t:'Which one?'},
+    {s:'Esta palabra. \u00bfMe la puede explicar otra vez?', t:'This word. Can you explain it to me again?'},
+    {s:'Claro. Yo te explico. \u00bfMe entiendes?', t:'Of course. I\'ll explain it to you. Do you understand me?'},
+    {s:'S\u00ed, gracias. \u00bfMe da un ejemplo?', t:'Yes, thanks. Can you give me an example?'},
+    {s:'\u00bfQui\u00e9n les trae los libros a los estudiantes?', t:'Who brings the books to the students?'},
+  ]},
+];
+listenData.forEach((d, di) => {
+  const card = document.createElement('div');
+  card.className = 'cl mb-4';
+  card.innerHTML = '<h3 style="margin-bottom:16px"><i class="bi bi-ear" style="color:var(--tl)"></i> ' + d.title + '</h3>';
+  d.lines.forEach((l, li) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap';
+    row.innerHTML = '<button class="ba" onclick="speak(\'' + l.s.replace(/'/g,"\\'") + '\',\'es\')"><i class="bi bi-volume-up"></i></button><span style="font-family:var(--fm);font-size:.95rem">' + l.s + '</span><button class="ba" onclick="this.nextElementSibling.style.display=\'inline\';this.style.display=\'none\'"><i class="bi bi-eye"></i> EN</button><span style="display:none;color:var(--mt);font-size:.85rem">' + l.t + '</span>';
+    card.appendChild(row);
+  });
+  document.getElementById('listeningDialogues').appendChild(card);
+});
+
+// ===== SECTION 7: SPEAKING PRACTICE =====
+const speakData = [
+  {title: '\ud83c\udf5d Restaurant', lines: [
+    {a:'Buenas tardes. \u00bfQu\u00e9 desea?', b:'Hola. Me trae la carta, por favor?'},
+    {a:'Aqu\u00ed tiene. \u00bfQu\u00e9 le voy a traer?', b:'\u00bfMe recomienda algo?'},
+    {a:'Le recomiendo la paella. Es muy buena.', b:'Perfecto. Me trae una paella, por favor.'},
+    {a:'\u00bfLe pongo algo m\u00e1s?', b:'No, gracias. \u00bfMe trae agua tambi\u00e9n?'},
+    {a:'Claro. Le traigo agua en seguida.', b:'Gracias.'},
+  ]},
+  {title: '\ud83c\udfeb School', lines: [
+    {a:'Profesor, \u00bfme puede explicar este ejercicio?', b:'Claro. \u00bfQu\u00e9 parte no entiendes?'},
+    {a:'No entiendo esta palabra. \u00bfMe la puede explicar?', b:'S\u00ed. Yo te explico.'},
+    {a:'\u00bfMe da un ejemplo m\u00e1s?', b:'Claro. Te doy un ejemplo.'},
+    {a:'\u00bfMe entiende ahora?', b:'\u00bfQui\u00e9n les da las notas a los estudiantes?'},
+    {a:'El profesor nos las da.', b:'\u00bfLes da buenas notas?'},
+  ]},
+  {title: '\ud83c\udfe0 Family', lines: [
+    {a:'\u00bfQui\u00e9n cocina hoy?', b:'Yo cocino. \u00bfQu\u00e9 les preparation?'},
+    {a:'Les encanta la pizza.', b:'\u00bfLes pongo mucho queso?'},
+    {a:'S\u00ed, a ellos les encanta el queso.', b:'\u00bfMe das los ingredientes?'},
+    {a:'Te doy todo. \u00bfLes trae algo a los ni\u00f1os?', b:'S\u00ed, les traigo jugo de naranja.'},
+    {a:'\u00bfQui\u00e9n les sirve la cena?', b:'Yo les sirvo. \u00bfMe ayudas?'},
+  ]},
+  {title: '\ud83d\udcbc Work', lines: [
+    {a:'Buenos d\u00edas. \u00bfMe puede traer los informes?', b:'S\u00ed, se\u00f1or. \u00bfTodos los informes?'},
+    {a:'S\u00ed. \u00bfQui\u00e9n les da la presentaci\u00f3n a los clientes?', b:'Yo les doy la presentaci\u00f3n.'},
+    {a:'Perfecto. \u00bfMe prepara las diapositivas?', b:'S\u00ed, le preparo todo.'},
+    {a:'\u00bfMe puede enviar un correo despu\u00e9s?', b:'Claro. Le mando un correo con todo.'},
+    {a:'Gracias. \u00bfQui\u00e9n nos ayuda con el proyecto?', b:'Mar\u00eda nos ayuda.'},
+  ]},
+];
+speakData.forEach((d, di) => {
+  const card = document.createElement('div');
+  card.className = 'cl mb-4';
+  card.innerHTML = '<h3 style="margin-bottom:16px"><i class="bi bi-mic" style="color:var(--vl)"></i> ' + d.title + '</h3>';
+  d.lines.forEach((l, li) => {
+    card.innerHTML += '<div class="dlg"><div class="dsp sa">A</div><div class="dbb">' + l.a + '<br><button class="ba" onclick="speak(this.closest(\'.dbb\').childNodes[0].textContent,\'es\')"><i class="bi bi-volume-up"></i></button></div></div>';
+    card.innerHTML += '<div class="dlg rt"><div class="dsp sb2">B</div><div class="dbb">' + l.b + '<br><button class="ba" onclick="speak(this.closest(\'.dbb\').childNodes[0].textContent,\'es\')"><i class="bi bi-volume-up"></i></button></div></div>';
+  });
+  document.getElementById('speakingDialogues').appendChild(card);
+});
+
+// ===== SECTION 8: FLASHCARDS =====
+const fcData = [
+  {en:'She gives me a book.',es:'Ella me da un libro.',g:'\"me\" = to me',lang:'es'},
+  {en:'I tell you the truth.',es:'Te digo la verdad.',g:'\"te\" = to you',lang:'es'},
+  {en:'He explains the lesson to her.',es:'Le explica la lecci\u00f3n.',g:'\"le\" = to him/her',lang:'es'},
+  {en:'They tell us a story.',es:'Nos cuentan una historia.',g:'\"nos\" = to us',lang:'es'},
+  {en:'My dad buys food for them.',es:'Mi padre les compra comida.',g:'\"les\" = to them',lang:'es'},
+  {en:'Mom buys me clothes.',es:'Mam\u00e1 me compra ropa.',g:'\"me\" before the verb',lang:'es'},
+  {en:'I bring you coffee.',es:'Te traigo caf\u00e9.',g:'\"te\" = to you',lang:'es'},
+  {en:'He sends us a message.',es:'Nos env\u00eda un mensaje.',g:'\"nos\" = to us',lang:'es'},
+  {en:'She writes them a letter.',es:'Les escribe una carta.',g:'\"les\" = to them',lang:'es'},
+  {en:'I like coffee.',es:'Me gusta el caf\u00e9.',g:'gustar needs a pronoun',lang:'es'},
+  {en:'She cooks us dinner.',es:'Ella nos cocina la cena.',g:'\"nos\" = to us',lang:'es'},
+  {en:'I recommend this movie to you.',es:'Te recomiendo esta pel\u00edcula.',g:'\"te\" = to you',lang:'es'},
+  {en:'They give me good news.',es:'Me dan buenas noticias.',g:'\"me\" = to me',lang:'es'},
+  {en:'He buys her flowers.',es:'Le compra flores.',g:'\"le\" = to him/her',lang:'es'},
+  {en:'We send them an email.',es:'Les mandamos un correo.',g:'\"les\" = to them',lang:'es'},
+];
+let fcIdx = 0;
+function renderFC() {
+  const d = fcData[fcIdx];
+  document.getElementById('flashcardEN').textContent = d.en;
+  document.getElementById('flashcardES').textContent = d.es;
+  document.getElementById('flashcardGrammar').textContent = d.g;
+  document.getElementById('flashcardCounter').textContent = 'Card ' + (fcIdx + 1) + ' of ' + fcData.length;
+  document.getElementById('flashcard').classList.remove('fl');
+}
+function flipFlashcard() { document.getElementById('flashcard').classList.toggle('fl'); }
+function nextFC() { fcIdx = (fcIdx + 1) % fcData.length; renderFC(); }
+function prevFC() { fcIdx = (fcIdx - 1 + fcData.length) % fcData.length; renderFC(); }
+function speakFC() { speak(fcData[fcIdx].es, 'es'); }
+renderFC();
+
+// ===== SECTION 9: MEMORY GAME =====
+const memPairs = [
+  {en:'She gives me a book.',es:'Ella me da un libro.',pron:'me'},
+  {en:'I tell you the truth.',es:'Te digo la verdad.',pron:'te'},
+  {en:'He explains to her.',es:'Le explica la lecci\u00f3n.',pron:'le'},
+  {en:'They tell us a story.',es:'Nos cuentan una historia.',pron:'nos'},
+  {en:'My dad buys for them.',es:'Mi padre les compra comida.',pron:'les'},
+  {en:'I like coffee.',es:'Me gusta el caf\u00e9.',pron:'me'},
+];
+let memCards = [];
+let memRevealed = [];
+let memMatched = 0;
+let memLocked = false;
+function initMemory() {
+  memMatched = 0;
+  memRevealed = [];
+  memLocked = false;
+  document.getElementById('memoryScore').textContent = 'Matches: 0 / ' + memPairs.length;
+  const grid = document.getElementById('memoryGrid');
+  grid.innerHTML = '';
+  // Create cards: each pair gets 3 cards (en, es, pronoun)
+  memCards = [];
+  memPairs.forEach((p, i) => {
+    memCards.push({text: p.en, pairId: i, type: 'en'});
+    memCards.push({text: p.es, pairId: i, type: 'es'});
+    memCards.push({text: p.pron, pairId: i, type: 'pron'});
+  });
+  // Shuffle
+  memCards.sort(() => Math.random() - 0.5);
+  memCards.forEach((c, i) => {
+    const div = document.createElement('div');
+    div.className = 'mgc';
+    div.innerHTML = '<span class="card-front">?</span>';
+    div.dataset.idx = i;
+    div.onclick = function() { revealCard(i); };
+    grid.appendChild(div);
+  });
+}
+function revealCard(idx) {
+  if (memLocked) return;
+  const el = document.querySelectorAll('.mgc')[idx];
+  if (el.classList.contains('rev') || el.classList.contains('match')) return;
+  el.classList.add('rev');
+  el.innerHTML = '<span>' + memCards[idx].text + '</span>';
+  memRevealed.push(idx);
+  if (memRevealed.length === 3) {
+    memLocked = true;
+    const [a, b, c] = memRevealed;
+    if (memCards[a].pairId === memCards[b].pairId && memCards[a].pairId === memCards[c].pairId && a !== b && b !== c && a !== c) {
+      // Match!
+      [a, b, c].forEach(i => document.querySelectorAll('.mgc')[i].classList.add('match'));
+      memMatched++;
+      totalScore += 3;
+      document.getElementById('memoryScore').textContent = 'Matches: ' + memMatched + ' / ' + memPairs.length;
+      document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+      memRevealed = [];
+      memLocked = false;
+      if (memMatched === memPairs.length) updateProgress(9);
+    } else {
+      setTimeout(() => {
+        [a, b, c].forEach(i => {
+          const el = document.querySelectorAll('.mgc')[i];
+          el.classList.remove('rev');
+          el.innerHTML = '<span class="card-front">?</span>';
+        });
+        memRevealed = [];
+        memLocked = false;
+      }, 1000);
+    }
+  }
+}
+function resetMemory() { initMemory(); }
+initMemory();
+
+// ===== SECTION 10: QUIZ =====
+// Part A: Multiple Choice
+const quizMCData = [
+  {q:'Which pronoun means \"to me\"?', opts:['me','te','le','nos'], ans:'me'},
+  {q:'Ella _____ da un regalo.', opts:['me','te','le','les'], ans:'me'},
+  {q:'Yo _____ doy dinero.', opts:['me','te','le','nos'], ans:'te'},
+  {q:'Which means \"to them\"?', opts:['nos','les','le','te'], ans:'les'},
+  {q:'Mi padre _____ compra comida.', opts:['me','nos','le','les'], ans:'les'},
+  {q:'_____ explico la lecci\u00f3n.', opts:['Te','Me','Le','Les'], ans:'Le'},
+  {q:'Where does the pronoun go?', opts:['After the verb','Before the verb','At the end','After the subject'], ans:'Before the verb'},
+  {q:'Me _____ el caf\u00e9.', opts:['gusta','gustar','gustas','gustan'], ans:'gusta'},
+  {q:'Which means \"to us\"?', opts:['me','te','nos','les'], ans:'nos'},
+  {q:'Les _____ un correo.', opts:['mando','mandas','mandamos','mandan'], ans:'mando'},
+];
+quizMCData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center mb-2"><span class="qn">' + (i+1) + '</span><span>' + d.q + '</span></div><div id="qmc' + i + '"></div><div class="fm" id="qmcf' + i + '"></div>';
+  document.getElementById('quizMC').appendChild(div);
+  const ct = div.querySelector('#qmc' + i);
+  d.opts.forEach(o => {
+    const b = document.createElement('button');
+    b.className = 'qo';
+    b.textContent = o;
+    b.onclick = function() {
+      if (ct.dataset.done) return;
+      ct.dataset.done = '1';
+      const fb = document.getElementById('qmcf' + i);
+      ct.querySelectorAll('.qo').forEach(x => x.classList.add('dis'));
+      if (o === d.ans) {
+        b.classList.add('cor');
+        fb.className = 'fm show cor';
+        fb.textContent = '\u2705 Correct!';
+        totalScore++;
+      } else {
+        b.classList.add('wro');
+        ct.querySelectorAll('.qo').forEach(x => { if (x.textContent === d.ans) x.classList.add('cor'); });
+        fb.className = 'fm show wro';
+        fb.textContent = '\u274c Answer: ' + d.ans;
+      }
+      document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+    };
+    ct.appendChild(b);
+  });
+});
+
+// Part B: True/False
+const quizTFData = [
+  {q:'\"Me\" means \"to me\".', ans:true},
+  {q:'Pronouns go after the verb.', ans:false},
+  {q:'There are 5 indirect object pronouns.', ans:true},
+  {q:'\"Le\" means \"to us\".', ans:false},
+  {q:'\"Gustar\" needs an indirect object pronoun.', ans:true},
+  {q:'Pronouns change for gender in Spanish.', ans:false},
+  {q:'\"Les\" means \"to them\".', ans:true},
+  {q:'\"Te\" means \"to him\".', ans:false},
+  {q:'In Spanish, \"me gusta\" means \"I like\".', ans:true},
+  {q:'\"Nos\" means \"to them\".', ans:false},
+];
+quizTFData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center mb-2"><span class="qn">' + (i+11) + '</span><span>' + d.q + '</span></div><div class="d-flex gap-2" id="qtf' + i + '"></div><div class="fm" id="qtff' + i + '"></div>';
+  document.getElementById('quizTF').appendChild(div);
+  const ct = div.querySelector('#qtf' + i);
+  ['True','False'].forEach(o => {
+    const b = document.createElement('button');
+    b.className = 'qo';
+    b.style.width = 'auto';
+    b.style.flex = '1';
+    b.textContent = o;
+    b.onclick = function() {
+      if (ct.dataset.done) return;
+      ct.dataset.done = '1';
+      const fb = document.getElementById('qtff' + i);
+      ct.querySelectorAll('.qo').forEach(x => x.classList.add('dis'));
+      const userAns = o === 'True';
+      if (userAns === d.ans) {
+        b.classList.add('cor');
+        fb.className = 'fm show cor';
+        fb.textContent = '\u2705 Correct!';
+        totalScore++;
+      } else {
+        b.classList.add('wro');
+        fb.className = 'fm show wro';
+        fb.textContent = '\u274c Answer: ' + (d.ans ? 'True' : 'False');
+      }
+      document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+    };
+    ct.appendChild(b);
+  });
+});
+
+// Part C: Translation
+const quizTransData = [
+  {q:'\"She gives me a book\" in Spanish:', opts:['Ella me da un libro.','Ella te da un libro.','Ella le da un libro.','Ella nos da un libro.'], ans:'Ella me da un libro.'},
+  {q:'\"I tell you the truth\" in Spanish:', opts:['Me digo la verdad.','Te digo la verdad.','Le digo la verdad.','Les digo la verdad.'], ans:'Te digo la verdad.'},
+  {q:'\"He explains the lesson to her\" in Spanish:', opts:['Me explica la lecci\u00f3n.','Te explica la lecci\u00f3n.','Le explica la lecci\u00f3n.','Les explica la lecci\u00f3n.'], ans:'Le explica la lecci\u00f3n.'},
+  {q:'\"They tell us a story\" in Spanish:', opts:['Me cuentan una historia.','Te cuentan una historia.','Le cuentan una historia.','Nos cuentan una historia.'], ans:'Nos cuentan una historia.'},
+  {q:'\"I buy food for them\" in Spanish:', opts:['Les compro comida.','Me compro comida.','Te compro comida.','Le compro comida.'], ans:'Les compro comida.'},
+  {q:'\"I like coffee\" in Spanish:', opts:['Gusta el caf\u00e9.','Me gusta el caf\u00e9.','Te gusta el caf\u00e9.','Le gusta el caf\u00e9.'], ans:'Me gusta el caf\u00e9.'},
+  {q:'\"She brings us coffee\" in Spanish:', opts:['Me trae caf\u00e9.','Te trae caf\u00e9.','Le trae caf\u00e9.','Nos trae caf\u00e9.'], ans:'Nos trae caf\u00e9.'},
+  {q:'\"I send them a message\" in Spanish:', opts:['Les mando un mensaje.','Me mando un mensaje.','Te mando un mensaje.','Le mando un mensaje.'], ans:'Les mando un mensaje.'},
+  {q:'\"We cook you dinner\" in Spanish:', opts:['Me cocinamos la cena.','Te cocinamos la cena.','Le cocinamos la cena.','Les cocinamos la cena.'], ans:'Te cocinamos la cena.'},
+  {q:'\"He writes me a letter\" in Spanish:', opts:['Me escribe una carta.','Te escribe una carta.','Le escribe una carta.','Nos escribe una carta.'], ans:'Me escribe una carta.'},
+];
+quizTransData.forEach((d, i) => {
+  const div = document.createElement('div');
+  div.className = 'eq';
+  div.innerHTML = '<div class="d-flex align-items-center mb-2"><span class="qn">' + (i+21) + '</span><span>' + d.q + '</span></div><div id="qtr' + i + '"></div><div class="fm" id="qtrf' + i + '"></div>';
+  document.getElementById('quizTrans').appendChild(div);
+  const ct = div.querySelector('#qtr' + i);
+  d.opts.forEach(o => {
+    const b = document.createElement('button');
+    b.className = 'qo';
+    b.textContent = o;
+    b.onclick = function() {
+      if (ct.dataset.done) return;
+      ct.dataset.done = '1';
+      const fb = document.getElementById('qtrf' + i);
+      ct.querySelectorAll('.qo').forEach(x => x.classList.add('dis'));
+      if (o === d.ans) {
+        b.classList.add('cor');
+        fb.className = 'fm show cor';
+        fb.textContent = '\u2705 Correct!';
+        totalScore++;
+      } else {
+        b.classList.add('wro');
+        ct.querySelectorAll('.qo').forEach(x => { if (x.textContent === d.ans) x.classList.add('cor'); });
+        fb.className = 'fm show wro';
+        fb.textContent = '\u274c Answer: ' + d.ans;
+      }
+      document.getElementById('scoreText').textContent = 'Score: ' + totalScore;
+    };
+    ct.appendChild(b);
+  });
+});
+
+// ===== SECTION 12: CONVERSATION =====
+const convLines = [
+  {a:'Hola, Mar\u00eda. \u00bfQu\u00e9 tal est\u00e1s?', right:false},
+  {a:'Hola, Carlos. Estoy bien. \u00bfMe puedes hacer una pregunta?', right:true},
+  {a:'Claro. \u00bfQu\u00e9 quieres saber?', right:false},
+  {a:'\u00bfQui\u00e9n te cocin\u00f3 el almuerzo hoy?', right:true},
+  {a:'Mi mam\u00e1 <span class="pn">me</span> cocin\u00f3 arroz con pollo.', right:false},
+  {a:'\u00bfA ti? \u00bfQui\u00e9n te cocin\u00f3 a ti?', right:true},
+  {a:'Mi pap\u00e1 <span class="pn">me</span> trajo pizza del trabajo.', right:false},
+  {a:'\u00bfLes gust\u00f3 la comida a ustedes?', right:true},
+  {a:'S\u00ed, <span class="pn">nos</span> encant\u00f3. \u00bfY a ti qu\u00e9 te gust\u00f3 m\u00e1s?', right:false},
+  {a:'A m\u00ed <span class="pn">me</span> gust\u00f3 mucho el arroz. \u00bfMe puedes dar la receta?', right:true},
+  {a:'Claro, <span class="pn">te</span> la puedo dar. \u00bfSe la mando por correo?', right:false},
+  {a:'S\u00ed, por favor. <span class="pn">Me</span> la env\u00edas hoy?', right:true},
+  {a:'<span class="pn">Te</span> la mando ahora mismo.', right:false},
+  {a:'\u00bfY qu\u00e9 le vas a cocinar a tu mam\u00e1?', right:true},
+  {a:'<span class="pn">Le</span> voy a cocinar pasta esta noche.', right:false},
+  {a:'\u00bfQu\u00e9 tipo de pasta?', right:true},
+  {a:'Espaguetis. A ella <span class="pn">le</span> encantan los espaguetis.', right:false},
+  {a:'\u00bfLe pones mucho queso?', right:true},
+  {a:'S\u00ed, <span class="pn">le</span> pongo queso parmesano.', right:false},
+  {a:'\u00bfQui\u00e9n les va a traer el postre a los ni\u00f1os?', right:true},
+  {a:'Yo <span class="pn">les</span> traigo helado. A ellos <span class="pn">les</span> encanta el helado.', right:false},
+  {a:'\u00bfQu\u00e9 sabor?', right:true},
+  {a:'Chocolate, por supuesto. <span class="pn">Les</span> compro una caja grande.', right:false},
+  {a:'\u00bfMe das tambi\u00e9n un poco?', right:true},
+  {a:'\u00bfA ti tambi\u00e9n te gusta el helado de chocolate?', right:false},
+  {a:'S\u00ed, <span class="pn">me</span> encanta. \u00bfMe puedes guardar un poco?', right:true},
+  {a:'Claro, <span class="pn">te</span> guardo un cuenco. <span class="pn">Te</span> lo traigo a tu casa.', right:false},
+];
+const convDiv = document.getElementById('conversationDialogue');
+convLines.forEach(l => {
+  const row = document.createElement('div');
+  row.className = 'dlg' + (l.right ? ' rt' : '');
+  row.innerHTML = '<div class="dsp ' + (l.right ? 'sb2' : 'sa') + '">' + (l.right ? 'B' : 'A') + '</div><div class="dbb">' + l.a + '</div>';
+  convDiv.appendChild(row);
+});
+
+// ===== SCROLL SPY =====
+const secs = document.querySelectorAll('.ls');
+const navLinks = document.querySelectorAll('#lessonNav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      const num = id.replace('sec-', '');
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('#lessonNav a[data-section="' + num + '"]');
+      if (active) active.classList.add('active');
+      document.getElementById('progressText').textContent = 'Section ' + num + ' of 13';
+    }
+  });
+}, {threshold: 0.3});
+secs.forEach(s => observer.observe(s));
+
+// Close mobile nav on link click
+document.querySelectorAll('#mobileNav a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+});
+</script>
+</body>
+</html>
