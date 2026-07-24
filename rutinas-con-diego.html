@@ -1,0 +1,1171 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rutinas Diarias: Tiempos Verbales en Inglés</title>
+<style>
+:root{--bg:#f5f5f0;--surface:#fff;--surface-alt:#fafaf5;--fg:#2d2d2d;--muted:#6b6b6b;--border:#e0ddd4;--accent:#58a832;--accent-hover:#4a9028;--accent-light:#e8f5e0;--accent2:#ff6b35;--accent2-light:#fff0e8;--danger:#e74c3c;--danger-light:#fdeaea;--success:#27ae60;--success-light:#eafaf1;--warning:#f39c12;--warning-light:#fef9e7;--info:#3498db;--info-light:#ebf5fb;--purple:#8e44ad;--purple-light:#f4ecf7;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 8px 30px rgba(0,0,0,.12);--radius:16px;--radius-sm:10px;--radius-xs:6px;--font-display:Georgia,'Times New Roman',serif;--font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--font-mono:'SF Mono',Consolas,monospace;--transition:.3s cubic-bezier(.4,0,.2,1)}
+[data-theme="dark"]{--bg:#0f0f18;--surface:#181828;--surface-alt:#1e1e32;--fg:#e8e8f0;--muted:#9898b0;--border:rgba(255,255,255,0.08);--accent:#6bc940;--accent-hover:#5ab832;--accent-light:#1a2a14;--accent2:#ff8855;--accent2-light:#2a1a14;--danger:#ff6b6b;--danger-light:#2a1414;--success:#4cd97b;--success-light:#142a1a;--warning:#ffb84d;--warning-light:#2a2414;--info:#5dade2;--info-light:#14202a;--purple:#b070d0;--purple-light:#201430;--shadow-sm:0 1px 3px rgba(0,0,0,.3);--shadow-md:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 8px 30px rgba(0,0,0,.5)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--fg);line-height:1.6;transition:background var(--transition),color var(--transition);min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+button{cursor:pointer;font-family:inherit;border:none;outline:none}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.2}
+#progress-bar-container{position:fixed;top:0;left:0;right:0;height:5px;background:var(--border);z-index:1000}
+#progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .5s ease;width:0%;border-radius:0 3px 3px 0}
+#navbar{position:fixed;top:5px;left:0;right:0;z-index:999;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm);transition:all var(--transition)}
+#navbar-inner{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+#nav-logo{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--accent);letter-spacing:-.02em}
+#nav-links{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex:1;margin:0 1rem}
+#nav-links::-webkit-scrollbar{display:none}
+.nav-link{padding:.4rem .75rem;border-radius:var(--radius-xs);font-size:.8rem;font-weight:500;white-space:nowrap;color:var(--muted);background:transparent;transition:all var(--transition);letter-spacing:.01em}
+.nav-link:hover{color:var(--fg);background:var(--surface-alt)}
+.nav-link.active{color:var(--accent);background:var(--accent-light);font-weight:600}
+#nav-controls{display:flex;align-items:center;gap:.5rem}
+#theme-toggle{width:38px;height:38px;border-radius:50%;background:var(--surface-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all var(--transition);color:var(--fg)}
+#theme-toggle:hover{background:var(--accent-light);border-color:var(--accent)}
+#menu-toggle{display:none;width:38px;height:38px;border-radius:var(--radius-xs);background:var(--surface-alt);border:1px solid var(--border);font-size:1.2rem;color:var(--fg)}
+@media(max-width:768px){#nav-links{position:fixed;top:61px;left:0;right:0;bottom:0;background:var(--surface);flex-direction:column;padding:1rem;gap:.25rem;transform:translateX(-100%);transition:transform var(--transition);z-index:998;overflow-y:auto}#nav-links.open{transform:translateX(0)}.nav-link{padding:.75rem 1rem;font-size:.95rem}#menu-toggle{display:flex;align-items:center;justify-content:center}}
+#main-content{max-width:900px;margin:0 auto;padding:80px 1.5rem 3rem}
+.section{display:none;animation:fadeIn .4s ease}.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section-header{text-align:center;margin-bottom:2rem;padding:2rem 0}
+.section-header .emoji{font-size:2.5rem;margin-bottom:.5rem}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:.5rem;letter-spacing:-.02em}
+.section-header p{color:var(--muted);font-size:1.05rem;max-width:600px;margin:0 auto}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-sm);transition:all var(--transition)}.card:hover{box-shadow:var(--shadow-md)}
+.tense-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:all var(--transition);position:relative;overflow:hidden}
+.tense-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent);transition:height var(--transition)}
+.tense-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}.tense-card:hover::before{height:6px}
+.tense-card h3{font-size:1.25rem;margin-bottom:.75rem;color:var(--accent)}
+.tense-card .formula{font-family:var(--font-mono);font-size:.95rem;background:var(--accent-light);padding:.75rem 1rem;border-radius:var(--radius-xs);margin-bottom:1rem;border-left:3px solid var(--accent)}
+.tense-card .example{padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem}.tense-card .example:last-child{border-bottom:none}
+.tense-card .example em{color:var(--accent);font-style:normal;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:var(--radius-sm);font-weight:600;font-size:.95rem;transition:all var(--transition);letter-spacing:.01em}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-secondary{background:var(--surface-alt);color:var(--fg);border:1px solid var(--border)}.btn-secondary:hover{background:var(--border)}
+.btn-sm{padding:.4rem .9rem;font-size:.85rem}
+.btn-icon{width:40px;height:40px;border-radius:50%;padding:0;display:inline-flex;align-items:center;justify-content:center;background:var(--surface-alt);border:1px solid var(--border);font-size:1.1rem;transition:all var(--transition)}.btn-icon:hover{background:var(--accent-light);border-color:var(--accent)}
+#intro{text-align:center;padding-top:2rem}#intro h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:.5rem;letter-spacing:-.03em;line-height:1.1}#intro h1 span{color:var(--accent)}
+#intro .subtitle{font-size:1.15rem;color:var(--muted);margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+#intro .start-btn{font-size:1.1rem;padding:1rem 2.5rem;border-radius:99px;background:var(--accent);color:#fff;font-weight:700;transition:all var(--transition);box-shadow:0 4px 15px rgba(88,168,50,.3)}
+#intro .start-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(88,168,50,.4)}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:3rem;text-align:left}
+.feature-item{padding:1.25rem;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);transition:all var(--transition)}.feature-item:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.feature-item .fi-icon{margin-bottom:.5rem;display:flex;align-items:center;height:28px}
+.feature-item h4{font-size:.95rem;margin-bottom:.25rem;font-family:var(--font-body)}
+.feature-item p{font-size:.82rem;color:var(--muted);line-height:1.4}
+.tense-section-intro{background:var(--surface);border-radius:var(--radius);padding:2rem;margin-bottom:2rem;border:1px solid var(--border)}
+.tense-section-intro h3{font-size:1.5rem;margin-bottom:1rem}
+.tense-section-intro .usage-list{list-style:none;padding:0}
+.tense-section-intro .usage-list li{padding:.5rem 0;padding-left:1.5rem;position:relative;font-size:.95rem}
+.tense-section-intro .usage-list li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
+.vocab-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;text-align:center;cursor:pointer;transition:all var(--transition);position:relative}
+.vocab-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.vocab-card .v-icon{font-size:2rem;margin-bottom:.5rem;display:block}
+.vocab-card .v-word{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
+.vocab-card .v-translation{font-size:.8rem;color:var(--muted)}
+.vocab-card .v-check{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:var(--success);color:#fff;display:none;align-items:center;justify-content:center;font-size:.7rem}
+.vocab-card.learned .v-check{display:flex}
+.flashcard-area{perspective:1000px;max-width:400px;margin:0 auto 1.5rem}
+.flashcard-wrapper{position:relative;width:100%;height:280px;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;cursor:pointer}
+.flashcard-wrapper.flipped{transform:rotateY(180deg)}
+.flashcard-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;border:2px solid var(--border)}
+.flashcard-front{background:linear-gradient(135deg,var(--accent-light),var(--surface))}
+.flashcard-back{background:linear-gradient(135deg,var(--accent2-light),var(--surface));transform:rotateY(180deg)}
+.flashcard-face .fc-icon{font-size:3rem;margin-bottom:.75rem}
+.flashcard-face .fc-word{font-size:1.5rem;font-weight:700;font-family:var(--font-display)}
+.flashcard-face .fc-def{font-size:1rem;color:var(--muted);margin-bottom:.5rem}
+.flashcard-face .fc-example{font-size:.9rem;font-style:italic}
+.flashcard-controls{display:flex;gap:.75rem;justify-content:center;align-items:center}
+.grammar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.grammar-card{border-radius:var(--radius);padding:1.5rem;border:2px solid;position:relative;overflow:hidden}
+.grammar-card h4{font-size:1.1rem;margin-bottom:.75rem}
+.grammar-card .g-formula{font-family:var(--font-mono);padding:.5rem .75rem;border-radius:var(--radius-xs);margin-bottom:.75rem;font-size:.9rem;display:inline-block}
+.grammar-card .g-section{margin-bottom:.5rem}
+.grammar-card .g-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.grammar-card .g-example{font-size:.9rem;padding:.2rem 0}
+.game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.game-header h3{font-size:1.2rem}
+.game-score{font-weight:700;font-size:1rem;color:var(--accent);padding:.4rem 1rem;background:var(--accent-light);border-radius:99px}
+.matching-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.match-column h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.75rem}
+.match-item{padding:.75rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition);font-size:.9rem;margin-bottom:.5rem;background:var(--surface)}
+.match-item:hover{border-color:var(--accent);background:var(--accent-light)}
+.match-item.selected{border-color:var(--accent);background:var(--accent-light);font-weight:600}
+.match-item.correct{border-color:var(--success);background:var(--success-light);pointer-events:none}
+.match-item.wrong{border-color:var(--danger);background:var(--danger-light);animation:shake .4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.dnd-container{display:flex;flex-direction:column;gap:1rem}
+.dnd-bucket{background:var(--surface);border:2px dashed var(--border);border-radius:var(--radius);padding:1rem;min-height:80px;transition:all var(--transition)}
+.dnd-bucket.dragover{border-color:var(--accent);background:var(--accent-light)}
+.dnd-bucket-title{font-weight:700;font-size:.9rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.dnd-items{display:flex;flex-wrap:wrap;gap:.5rem;min-height:30px}
+.dnd-item{padding:.5rem 1rem;background:var(--accent2-light);border:1px solid var(--accent2);border-radius:99px;font-size:.85rem;font-weight:600;cursor:grab;transition:all var(--transition);user-select:none}
+.dnd-item:active{cursor:grabbing;opacity:.7}
+.dnd-item.placed{background:var(--success-light);border-color:var(--success)}
+.dnd-bank{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem;background:var(--surface-alt);border-radius:var(--radius-sm);margin-bottom:1rem}
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:500px;margin:0 auto}
+.memory-card{aspect-ratio:1;border-radius:var(--radius-sm);cursor:pointer;position:relative;transition:transform .3s ease}
+.memory-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s ease}
+.memory-card.flipped .memory-card-inner,.memory-card.matched .memory-card-inner{transform:rotateY(180deg)}
+.memory-card-front,.memory-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;border:2px solid var(--border)}
+.memory-card-front{background:var(--accent);color:#fff;font-size:1.5rem}
+.memory-card-back{background:var(--surface);transform:rotateY(180deg);flex-direction:column;gap:.25rem;padding:.5rem}
+.memory-card-back .mc-emoji{font-size:1.5rem}
+.memory-card-back .mc-word{font-size:.7rem;font-weight:600;text-align:center}
+.memory-card.matched{pointer-events:none}.memory-card.matched .memory-card-back{border-color:var(--success);background:var(--success-light)}
+.quiz-container{max-width:650px;margin:0 auto}
+.quiz-progress{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.quiz-progress-bar{flex:1;height:8px;background:var(--border);border-radius:99px;overflow:hidden}
+.quiz-progress-fill{height:100%;background:var(--accent);transition:width .3s ease;border-radius:99px}
+.quiz-progress-text{font-size:.85rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.quiz-question{font-size:1.15rem;font-weight:600;margin-bottom:1.25rem;font-family:var(--font-display);line-height:1.4}
+.quiz-options{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
+.quiz-option{padding:.85rem 1.25rem;border:2px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition);font-size:.95rem;background:var(--surface);display:flex;align-items:center;gap:.75rem}
+.quiz-option:hover{border-color:var(--accent);background:var(--accent-light)}
+.quiz-option.selected{border-color:var(--accent);background:var(--accent-light);font-weight:600}
+.quiz-option.correct{border-color:var(--success);background:var(--success-light);pointer-events:none}
+.quiz-option.wrong{border-color:var(--danger);background:var(--danger-light);pointer-events:none}
+.quiz-option .qo-letter{width:28px;height:28px;border-radius:50%;background:var(--surface-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0}
+.quiz-option.correct .qo-letter{background:var(--success);color:#fff;border-color:var(--success)}
+.quiz-option.wrong .qo-letter{background:var(--danger);color:#fff;border-color:var(--danger)}
+.quiz-feedback{padding:1rem 1.25rem;border-radius:var(--radius-sm);margin-bottom:1rem;font-size:.95rem;display:none;border-left:4px solid}
+.quiz-feedback.show{display:block;animation:fadeIn .3s ease}
+.quiz-feedback.correct{background:var(--success-light);border-color:var(--success);color:var(--success)}
+.quiz-feedback.wrong{background:var(--danger-light);border-color:var(--danger);color:var(--danger)}
+.fill-blank-input{font-family:var(--font-mono);font-size:1rem;padding:.5rem .75rem;border:2px solid var(--border);border-radius:var(--radius-xs);background:var(--surface);color:var(--fg);width:100%;max-width:300px;transition:border-color var(--transition)}
+.fill-blank-input:focus{border-color:var(--accent);outline:none}
+.speaking-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem}
+.speaking-question{font-size:1.1rem;font-weight:600;margin-bottom:1rem;font-family:var(--font-display)}
+.speaking-prompt{background:var(--info-light);padding:.75rem 1rem;border-radius:var(--radius-sm);font-size:.9rem;color:var(--info);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.speaking-input{width:100%;padding:.75rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;background:var(--surface);color:var(--fg);resize:vertical;min-height:80px;transition:border-color var(--transition)}
+.speaking-input:focus{border-color:var(--accent);outline:none}
+.speaking-example{margin-top:.75rem;padding:.5rem .75rem;background:var(--surface-alt);border-radius:var(--radius-xs);font-size:.85rem;color:var(--muted);display:none}.speaking-example.show{display:block}
+.writing-area{width:100%;min-height:250px;padding:1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:1rem;line-height:1.7;background:var(--surface);color:var(--fg);resize:vertical;transition:border-color var(--transition)}
+.writing-area:focus{border-color:var(--accent);outline:none}
+.writing-stats{display:flex;gap:1.5rem;margin-top:.75rem;font-size:.85rem;color:var(--muted)}
+.tracker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.tracker-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center}
+.tracker-value{font-size:2rem;font-weight:700;font-family:var(--font-display);color:var(--accent);margin-bottom:.25rem}
+.tracker-label{font-size:.85rem;color:var(--muted)}
+.tracker-bar{width:100%;height:8px;background:var(--border);border-radius:99px;margin-top:.75rem;overflow:hidden}
+.tracker-bar-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .5s ease}
+.review-table-wrapper{overflow-x:auto}
+.review-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.review-table th{padding:.75rem 1rem;text-align:left;font-weight:700;background:var(--accent);color:#fff;white-space:nowrap;letter-spacing:.02em}
+.review-table th:first-child{border-radius:var(--radius-sm) 0 0 0}
+.review-table th:last-child{border-radius:0 var(--radius-sm) 0 0}
+.review-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+.review-table tr:hover td{background:var(--surface-alt)}
+.review-table .formula-cell{font-family:var(--font-mono);font-size:.85rem;color:var(--accent)}
+.certificate-wrapper{background:var(--surface);border:3px solid var(--accent);border-radius:var(--radius);padding:3rem 2rem;text-align:center;max-width:600px;margin:0 auto;position:relative;overflow:hidden}
+.certificate-wrapper::before{content:'';position:absolute;inset:8px;border:1px solid var(--border);border-radius:var(--radius-sm);pointer-events:none}
+.cert-title{font-size:1.8rem;color:var(--accent);margin-bottom:.5rem;letter-spacing:-.02em}
+.cert-subtitle{font-size:1rem;color:var(--muted);margin-bottom:1.5rem}
+.cert-name{font-size:2rem;font-family:var(--font-display);font-weight:700;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:2px solid var(--accent);display:inline-block;min-width:200px}
+.cert-date{font-size:.9rem;color:var(--muted);margin-bottom:1rem}
+.cert-score{font-size:1.1rem;font-weight:600;margin-bottom:1.5rem}.cert-score span{color:var(--accent);font-size:1.3rem}
+.cert-input{font-size:1.1rem;padding:.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-xs);text-align:center;font-family:var(--font-display);background:transparent;color:var(--fg);width:100%;max-width:300px}
+.cert-input:focus{border-color:var(--accent);outline:none}
+.text-center{text-align:center}.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}.mb-1{margin-bottom:.5rem}.mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}.hidden{display:none!important}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--accent);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 var(--radius-sm) var(--radius-sm);font-weight:600;z-index:10000;transition:top .2s ease}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input:focus-visible,textarea:focus-visible{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:480px){.section-header h2{font-size:1.5rem}.section-header .emoji{font-size:2rem}#intro h1{font-size:1.6rem}.feature-grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:repeat(2,1fr)}.certificate-wrapper{padding:1.5rem .75rem}.cert-title{font-size:1.3rem}.cert-name{font-size:1.5rem}}
+.confetti-piece{position:fixed;width:10px;height:10px;border-radius:2px;z-index:9999;pointer-events:none;animation:confettiFall 3s ease forwards}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+@media(max-width:600px){.matching-grid{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(3,1fr)}.grammar-grid{grid-template-columns:1fr}.certificate-wrapper{padding:2rem 1rem}}
+@media print{#navbar,#progress-bar-container,.btn,.nav-link,.flashcard-controls,.game-header{display:none!important}#main-content{padding-top:0;max-width:100%}.section{display:block!important;page-break-inside:avoid;margin-bottom:2rem}body{background:#fff;color:#000}.card,.tense-card,.grammar-card{box-shadow:none;border:1px solid #ccc}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+<div id="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de la lección"><div id="progress-bar"></div></div>
+<nav id="navbar" aria-label="Navegación principal"><div id="navbar-inner">
+<div id="nav-logo" aria-label="DailyRoutines - Rutinas Diarias en Inglés">
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="vertical-align:middle;margin-right:6px"><circle cx="14" cy="14" r="13" stroke="var(--accent)" stroke-width="2" fill="var(--accent-light)"/><path d="M9 14.5l3.5 3.5 6.5-7" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="5" r="1.5" fill="var(--accent)" opacity=".5"/><circle cx="14" cy="23" r="1.5" fill="var(--accent)" opacity=".5"/><circle cx="5" cy="14" r="1.5" fill="var(--accent)" opacity=".5"/><circle cx="23" cy="14" r="1.5" fill="var(--accent)" opacity=".5"/></svg>
+RutinasConDiego
+</div>
+<div id="nav-links">
+<button class="nav-link active" data-section="intro">Inicio</button>
+<button class="nav-link" data-section="present-simple">Presente Simple</button>
+<button class="nav-link" data-section="present-continuous">Presente Continuo</button>
+<button class="nav-link" data-section="past-simple">Pasado Simple</button>
+<button class="nav-link" data-section="past-continuous">Pasado Continuo</button>
+<button class="nav-link" data-section="future-simple">Futuro Simple</button>
+<button class="nav-link" data-section="future-continuous">Futuro Continuo</button>
+<button class="nav-link" data-section="vocabulary">Vocabulario</button>
+<button class="nav-link" data-section="flashcards">Flashcards</button>
+<button class="nav-link" data-section="grammar-cards">Gramática</button>
+<button class="nav-link" data-section="timeline">Línea Temporal</button>
+<button class="nav-link" data-section="matching">Emparejar</button>
+<button class="nav-link" data-section="dragdrop">Arrastrar</button>
+<button class="nav-link" data-section="quizzes">Cuestionarios</button>
+<button class="nav-link" data-section="memory">Memoria</button>
+<button class="nav-link" data-section="speaking">Práctica Oral</button>
+<button class="nav-link" data-section="writing">Práctica Escrita</button>
+<button class="nav-link" data-section="progress">Progreso</button>
+<button class="nav-link" data-section="final-review">Revisión Final</button>
+<button class="nav-link" data-section="final-quiz">Examen Final</button>
+<button class="nav-link" data-section="certificate">Certificado</button>
+</div>
+<div id="nav-controls">
+<button id="theme-toggle" title="Cambiar tema" aria-label="Cambiar entre tema claro y oscuro">🌙</button>
+<button id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
+</div>
+</div></nav>
+<div id="main-content" role="main" aria-label="Contenido de la lección">
+
+<section id="intro" class="section active" aria-label="Introducción">
+<h1>Rutinas Diarias en <span>Inglés</span></h1>
+<p class="subtitle">Domina los 6 tiempos verbales esenciales para describir tu día a día</p>
+<button class="start-btn" onclick="navigateTo('present-simple')">Comenzar a aprender →</button>
+<div class="feature-grid">
+<div class="feature-item"><div class="fi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div><h4>6 Tiempos Verbales</h4><p>Presente, pasado y futuro en formas simples y continuas</p></div>
+<div class="feature-item"><div class="fi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h10M7 12h6"/></svg></div><h4>Flashcards Interactivas</h4><p>Aprende vocabulario con tarjetas que voltean</p></div>
+<div class="feature-item"><div class="fi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg></div><h4>Juegos Educativos</h4><p>Emparejar, arrastrar, memoria y más</p></div>
+<div class="feature-item"><div class="fi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h4>Cuestionarios</h4><p>Pon a prueba tu conocimiento con 5 tipos de ejercicios</p></div>
+<div class="feature-item"><div class="fi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><h4>Práctica Oral</h4><p>Simulador de conversación con preguntas reales</p></div>
+<div class="feature-item"><div class="fi-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/></svg></div><h4>Certificado</h4><p>Obtén tu certificado de finalización al completar todo</p></div>
+</div></section>
+
+<section id="present-simple" class="section">
+<div class="section-header"><div class="emoji">☀️</div><h2>Presente Simple</h2><p>Describe hábitos, rutinas y hechos generales</p></div>
+<div class="tense-section-intro"><h3>¿Cuándo se usa?</h3>
+<ul class="usage-list">
+<li>Hábitos y rutinas diarias (<em>I wake up at 7 every day</em>)</li>
+<li>Hechos generales y verdades (<em>The sun rises in the east</em>)</li>
+<li>Horarios y planes fijos (<em>The bus leaves at 8:30</em>)</li>
+<li>Situaciones permanentes (<em>She lives in Madrid</em>)</li>
+</ul></div>
+<div class="tense-card mb-3"><h3>Estructura</h3>
+<div class="formula">Sujeto + Verbo base (+ s/es para he/she/it)</div>
+<div class="example">I <em>wake up</em> at 7 every day.</div>
+<div class="example">She <em>brushes</em> her teeth twice a day.</div>
+<div class="example">We <em>go</em> to work by bus.</div>
+<div class="example">He <em>doesn't eat</em> meat.</div>
+<div class="example">Do you <em>study</em> English?</div></div>
+<div class="tense-card mb-3"><h3>Formación</h3>
+<div class="example"><strong>Positivo:</strong> I/You/We/They + verbo | He/She/It + verbo<strong>s</strong></div>
+<div class="example"><strong>Negativo:</strong> I/You/We/They + don't + verbo | He/She/It + doesn't + verbo</div>
+<div class="example"><strong>Preguntas:</strong> Do + I/you/we/they + verbo? | Does + he/she/it + verbo?</div></div>
+<div class="text-center mt-2"><button class="btn btn-primary" onclick="markSectionComplete('present-simple');navigateTo('present-continuous')">Siguiente: Presente Continuo →</button></div></section>
+
+<section id="present-continuous" class="section">
+<div class="section-header"><div class="emoji">🔄</div><h2>Presente Continuo</h2><p>Describe acciones que están ocurriendo ahora mismo</p></div>
+<div class="tense-section-intro"><h3>¿Cuándo se usa?</h3>
+<ul class="usage-list">
+<li>Acciones en este momento (<em>I am eating breakfast right now</em>)</li>
+<li>Situaciones temporales (<em>She is living in London this year</em>)</li>
+<li>Planes futuros confirmados (<em>We are meeting them tomorrow</em>)</li>
+<li>Cambios en curso (<em>The world is getting warmer</em>)</li>
+</ul></div>
+<div class="tense-card mb-3"><h3>Estructura</h3>
+<div class="formula">Sujeto + am/is/are + Verbo-ing</div>
+<div class="example">I <em>am eating</em> breakfast.</div>
+<div class="example">She <em>is driving</em> to work.</div>
+<div class="example">We <em>are studying</em> English right now.</div>
+<div class="example">They <em>aren't watching</em> TV.</div>
+<div class="example"><em>Are</em> you <em>listening</em> to me?</div></div>
+<div class="tense-card mb-3"><h3>Formación</h3>
+<div class="example"><strong>Positivo:</strong> I + am + V-ing | He/She/It + is + V-ing | We/You/They + are + V-ing</div>
+<div class="example"><strong>Negativo:</strong> am/is/are + not + V-ing</div>
+<div class="example"><strong>Preguntas:</strong> Am/Is/Are + sujeto + V-ing?</div></div>
+<div class="text-center mt-2"><button class="btn btn-primary" onclick="markSectionComplete('present-continuous');navigateTo('past-simple')">Siguiente: Pasado Simple →</button></div></section>
+
+<section id="past-simple" class="section">
+<div class="section-header"><div class="emoji">⏪</div><h2>Pasado Simple</h2><p>Describe acciones completadas en el pasado</p></div>
+<div class="tense-section-intro"><h3>¿Cuándo se usa?</h3>
+<ul class="usage-list">
+<li>Acciones completadas en un momento específico (<em>I woke up at 7 yesterday</em>)</li>
+<li>Series de acciones en el pasado (<em>She woke up, showered, and left</em>)</li>
+<li>Experiencias pasadas (<em>We visited Paris last summer</em>)</li>
+<li>Conectores: yesterday, last week, ago, in 2020</li>
+</ul></div>
+<div class="tense-card mb-3"><h3>Estructura</h3>
+<div class="formula">Sujeto + Verbo en pasado (V2)</div>
+<div class="example">I <em>woke up</em> at 7 yesterday.</div>
+<div class="example">She <em>cooked</em> dinner last night.</div>
+<div class="example">We <em>went</em> to the cinema last weekend.</div>
+<div class="example">He <em>didn't call</em> me.</div>
+<div class="example"><em>Did</em> you <em>sleep</em> well?</div></div>
+<div class="tense-card mb-3"><h3>Formación</h3>
+<div class="example"><strong>Positivo:</strong> Sujeto + V2 (pasado)</div>
+<div class="example"><strong>Negativo:</strong> Sujeto + didn't + verbo base</div>
+<div class="example"><strong>Preguntas:</strong> Did + sujeto + verbo base?</div></div>
+<div class="text-center mt-2"><button class="btn btn-primary" onclick="markSectionComplete('past-simple');navigateTo('past-continuous')">Siguiente: Pasado Continuo →</button></div></section>
+
+<section id="past-continuous" class="section">
+<div class="section-header"><div class="emoji">⏳</div><h2>Pasado Continuo</h2><p>Describe acciones en progreso en un momento del pasado</p></div>
+<div class="tense-section-intro"><h3>¿Cuándo se usa?</h3>
+<ul class="usage-list">
+<li>Acción en progreso interrumpida (<em>I was sleeping when the phone rang</em>)</li>
+<li>Dos acciones simultáneas (<em>She was cooking while I was cleaning</em>)</li>
+<li>Contexto/ambientación (<em>The sun was shining and birds were singing</em>)</li>
+<li>Con <strong>when</strong>: interrupción | Con <strong>while</strong>: simultaneidad</li>
+</ul></div>
+<div class="tense-card mb-3"><h3>Estructura</h3>
+<div class="formula">Sujeto + was/were + Verbo-ing</div>
+<div class="example">I <em>was sleeping</em> at 10 PM.</div>
+<div class="example">She <em>was cooking</em> dinner when I arrived.</div>
+<div class="example">They <em>were watching</em> TV while we <em>were studying</em>.</div>
+<div class="example">He <em>wasn't paying</em> attention.</div>
+<div class="example"><em>Were</em> you <em>working</em> late?</div></div>
+<div class="tense-card mb-3"><h3>Uso de When y While</h3>
+<div class="example"><strong>When</strong> + Pasado Simple: <em>When I arrived, she was cooking.</em></div>
+<div class="example"><strong>While</strong> + Pasado Continuo: <em>While I was reading, he was sleeping.</em></div></div>
+<div class="text-center mt-2"><button class="btn btn-primary" onclick="markSectionComplete('past-continuous');navigateTo('future-simple')">Siguiente: Futuro Simple →</button></div></section>
+
+<section id="future-simple" class="section">
+<div class="section-header"><div class="emoji">⏩</div><h2>Futuro Simple</h2><p>Describe predicciones, decisiones espontáneas y promesas</p></div>
+<div class="tense-section-intro"><h3>¿Cuándo se usa?</h3>
+<ul class="usage-list">
+<li>Predicciones (<em>It will rain tomorrow</em>)</li>
+<li>Decisiones espontáneas (<em>I'll have the chicken</em>)</li>
+<li>Promesas y ofertas (<em>I will help you</em>)</li>
+<li>Planes con <strong>going to</strong>: (<em>I'm going to travel next year</em>)</li>
+</ul></div>
+<div class="tense-card mb-3"><h3>Estructura</h3>
+<div class="formula">Sujeto + will + Verbo base</div>
+<div class="example">I <em>will study</em> tomorrow.</div>
+<div class="example">They <em>will travel</em> to Japan next year.</div>
+<div class="example">She <em>will start</em> her new job on Monday.</div>
+<div class="example">He <em>won't forget</em> your birthday.</div>
+<div class="example"><em>Will</em> you <em>come</em> to the party?</div></div>
+<div class="text-center mt-2"><button class="btn btn-primary" onclick="markSectionComplete('future-simple');navigateTo('future-continuous')">Siguiente: Futuro Continuo →</button></div></section>
+
+<section id="future-continuous" class="section">
+<div class="section-header"><div class="emoji">🔮</div><h2>Futuro Continuo</h2><p>Describe acciones que estarán en progreso en un momento del futuro</p></div>
+<div class="tense-section-intro"><h3>¿Cuándo se usa?</h3>
+<ul class="usage-list">
+<li>Acción en progreso en un momento futuro (<em>I will be working at 3 PM tomorrow</em>)</li>
+<li>Acciones paralelas futuras (<em>They will be sleeping while we travel</em>)</li>
+<li>Preguntas corteses (<em>Will you be using the car tonight?</em>)</li>
+<li>Planes ya establecidos (<em>I will be meeting the director at noon</em>)</li>
+</ul></div>
+<div class="tense-card mb-3"><h3>Estructura</h3>
+<div class="formula">Sujeto + will be + Verbo-ing</div>
+<div class="example">I <em>will be working</em> tomorrow at 3 PM.</div>
+<div class="example">They <em>will be sleeping</em> when we arrive.</div>
+<div class="example">She <em>will be studying</em> all night.</div>
+<div class="example">He <em>won't be attending</em> the meeting.</div>
+<div class="example"><em>Will</em> you <em>be waiting</em> for me?</div></div>
+<div class="text-center mt-2"><button class="btn btn-primary" onclick="markSectionComplete('future-continuous');navigateTo('vocabulary')">Siguiente: Vocabulario →</button></div></section>
+
+<section id="vocabulary" class="section">
+<div class="section-header"><div class="emoji">📖</div><h2>Vocabulario de Rutinas</h2><p>Haz clic en cada palabra para marcarla como aprendida</p></div>
+<div class="vocab-grid" id="vocab-grid"></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('vocabulary');navigateTo('flashcards')">Siguiente: Flashcards →</button></div></section>
+
+<section id="flashcards" class="section">
+<div class="section-header"><div class="emoji">🃏</div><h2>Flashcards</h2><p>Haz clic en la tarjeta para voltearla</p></div>
+<div class="flashcard-area"><div class="flashcard-wrapper" id="flashcard" onclick="flipFlashcard()">
+<div class="flashcard-face flashcard-front"><div class="fc-icon" id="fc-icon">⏰</div><div class="fc-word" id="fc-word">wake up</div></div>
+<div class="flashcard-face flashcard-back"><div class="fc-def" id="fc-def">Despertarse</div><div class="fc-example" id="fc-example">"I wake up at 7 every morning."</div></div>
+</div></div>
+<div class="flashcard-controls">
+<button class="btn btn-secondary btn-sm" onclick="prevFlashcard()">← Anterior</button>
+<span id="fc-counter" style="font-size:.9rem;color:var(--muted)">1 / 16</span>
+<button class="btn btn-primary btn-sm" onclick="nextFlashcard()">Siguiente →</button>
+</div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('flashcards');navigateTo('grammar-cards')">Siguiente: Tarjetas de Gramática →</button></div></section>
+
+<section id="grammar-cards" class="section">
+<div class="section-header"><div class="emoji">📐</div><h2>Tarjetas de Gramática</h2><p>Resumen visual de cada tiempo verbal</p></div>
+<div class="grammar-grid" id="grammar-grid"></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('grammar-cards');navigateTo('timeline')">Siguiente: Línea Temporal →</button></div></section>
+
+<section id="timeline" class="section">
+<div class="section-header"><div class="emoji">📅</div><h2>Línea Temporal Visual</h2><p>Los 6 tiempos verbales en una línea de tiempo</p></div>
+<div class="card mb-3"><div class="timeline-container"><div class="timeline" id="visual-timeline"></div></div></div>
+<div class="card"><h3 style="margin-bottom:1rem;">Comparación en una frase</h3>
+<div style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem;"><strong style="color:var(--accent)">Present Simple:</strong> I <em>wake up</em> at 7 every day.</div>
+<div style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem;"><strong style="color:var(--accent2)">Present Continuous:</strong> I <em>am waking up</em> right now.</div>
+<div style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem;"><strong style="color:var(--info)">Past Simple:</strong> I <em>woke up</em> at 7 yesterday.</div>
+<div style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem;"><strong style="color:var(--purple)">Past Continuous:</strong> I <em>was waking up</em> when the alarm rang.</div>
+<div style="padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.95rem;"><strong style="color:var(--warning)">Future Simple:</strong> I <em>will wake up</em> at 6 tomorrow.</div>
+<div style="padding:.5rem 0;font-size:.95rem;"><strong style="color:var(--danger)">Future Continuous:</strong> I <em>will be waking up</em> at 6 this time tomorrow.</div>
+</div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('timeline');navigateTo('matching')">Siguiente: Juego de Emparejar →</button></div></section>
+
+<section id="matching" class="section">
+<div class="section-header"><div class="emoji">🔗</div><h2>Juego de Emparejar</h2><p>Conecta cada oración con su tiempo verbal correcto</p></div>
+<div class="card"><div class="game-header"><h3>Emparejar oraciones</h3><div class="game-score">Puntos: <span id="match-score">0</span> / <span id="match-total">8</span></div></div>
+<div class="matching-grid"><div class="match-column"><h4>Oraciones</h4><div id="match-sentences"></div></div>
+<div class="match-column"><h4>Tiempos</h4><div id="match-tenses"></div></div></div>
+<div class="text-center mt-2"><button class="btn btn-secondary btn-sm" onclick="initMatchingGame()">Reiniciar</button></div></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('matching');navigateTo('dragdrop')">Siguiente: Arrastrar y Soltar →</button></div></section>
+
+<section id="dragdrop" class="section">
+<div class="section-header"><div class="emoji">🎯</div><h2>Arrastrar y Soltar</h2><p>Arrastra cada verbo a su tiempo verbal correcto</p></div>
+<div class="card"><div class="game-header"><h3>Clasifica los verbos</h3><div class="game-score">Colocados: <span id="dnd-placed">0</span> / <span id="dnd-total">8</span></div></div>
+<div class="dnd-bank" id="dnd-bank"></div>
+<div class="dnd-container" id="dnd-buckets"></div></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('dragdrop');navigateTo('quizzes')">Siguiente: Cuestionarios →</button></div></section>
+
+<section id="quizzes" class="section">
+<div class="section-header"><div class="emoji">❓</div><h2>Cuestionarios</h2><p>Pon a prueba tu conocimiento con diferentes tipos de ejercicios</p></div>
+<div class="card quiz-container" id="quiz-area">
+<div class="quiz-progress"><div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-fill"></div></div><div class="quiz-progress-text" id="quiz-counter">1 / 10</div></div>
+<div id="quiz-question-area"></div>
+<div class="quiz-feedback" id="quiz-feedback"></div>
+<div class="text-center mt-2" id="quiz-nav"></div></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('quizzes');navigateTo('memory')">Siguiente: Juego de Memoria →</button></div></section>
+
+<section id="memory" class="section">
+<div class="section-header"><div class="emoji">🧠</div><h2>Juego de Memoria</h2><p>Encuentra las parejas de palabras y definiciones</p></div>
+<div class="card"><div class="game-header"><h3>Memoria</h3><div class="game-score">Parejas: <span id="mem-score">0</span> / <span id="mem-total">8</span></div></div>
+<div class="memory-grid" id="memory-grid"></div>
+<div class="text-center mt-2"><button class="btn btn-secondary btn-sm" onclick="initMemoryGame()">Reiniciar</button></div></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('memory');navigateTo('speaking')">Siguiente: Práctica Oral →</button></div></section>
+
+<section id="speaking" class="section">
+<div class="section-header"><div class="emoji">🗣️</div><h2>Práctica Oral</h2><p>Responde las preguntas sobre tus rutinas diarias</p></div>
+<div id="speaking-area"></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('speaking');navigateTo('writing')">Siguiente: Práctica Escrita →</button></div></section>
+
+<section id="writing" class="section">
+<div class="section-header"><div class="emoji">✍️</div><h2>Práctica Escrita</h2><p>Escribe sobre tu rutina diaria usando los tiempos que has aprendido</p></div>
+<div class="card"><h3 style="margin-bottom:.75rem">Mi Rutina Diaria</h3>
+<p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">Describe tu día usando al menos 3 tiempos verbales diferentes.</p>
+<textarea class="writing-area" id="writing-input" placeholder="I wake up at 7 every morning. I usually brush my teeth..."></textarea>
+<div class="writing-stats"><span>Palabras: <strong id="word-count">0</strong></span><span>Oraciones: <strong id="sentence-count">0</strong></span></div></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="markSectionComplete('writing');navigateTo('progress')">Siguiente: Mi Progreso →</button></div></section>
+
+<section id="progress" class="section">
+<div class="section-header"><div class="emoji">📊</div><h2>Mi Progreso</h2><p>Ve tu avance en la lección</p></div>
+<div class="tracker-grid" id="tracker-grid"></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="navigateTo('final-review')">Siguiente: Revisión Final →</button></div></section>
+
+<section id="final-review" class="section">
+<div class="section-header"><div class="emoji">📋</div><h2>Revisión Final</h2><p>Tabla comparativa de los 6 tiempos verbales</p></div>
+<div class="card review-table-wrapper"><table class="review-table">
+<thead><tr><th>Tiempo</th><th>Estructura</th><th>Ejemplo</th><th>Expresiones de tiempo</th></tr></thead>
+<tbody>
+<tr><td><strong>Present Simple</strong></td><td class="formula-cell">S + V(s)</td><td>I wake up at 7.</td><td>every day, always, usually, often</td></tr>
+<tr><td><strong>Present Continuous</strong></td><td class="formula-cell">S + am/is/are + V-ing</td><td>I am eating now.</td><td>now, right now, at the moment</td></tr>
+<tr><td><strong>Past Simple</strong></td><td class="formula-cell">S + V2</td><td>I woke up at 7 yesterday.</td><td>yesterday, last week, ago, in 2020</td></tr>
+<tr><td><strong>Past Continuous</strong></td><td class="formula-cell">S + was/were + V-ing</td><td>I was sleeping at 10.</td><td>when, while, at that time</td></tr>
+<tr><td><strong>Future Simple</strong></td><td class="formula-cell">S + will + V</td><td>I will study tomorrow.</td><td>tomorrow, next week, in 2030</td></tr>
+<tr><td><strong>Future Continuous</strong></td><td class="formula-cell">S + will be + V-ing</td><td>I will be working at 3.</td><td>this time tomorrow, at 3 PM tomorrow</td></tr>
+</tbody></table></div>
+<div class="text-center mt-3"><button class="btn btn-primary" onclick="navigateTo('final-quiz')">Siguiente: Examen Final →</button></div></section>
+
+<section id="final-quiz" class="section">
+<div class="section-header"><div class="emoji">🏅</div><h2>Examen Final</h2><p>25 preguntas sobre todos los tiempos verbales</p></div>
+<div class="card quiz-container" id="final-quiz-area">
+<div class="quiz-progress"><div class="quiz-progress-bar"><div class="quiz-progress-fill" id="fquiz-fill"></div></div><div class="quiz-progress-text" id="fquiz-counter">1 / 25</div></div>
+<div id="fquiz-question-area"></div>
+<div class="quiz-feedback" id="fquiz-feedback"></div>
+<div class="text-center mt-2" id="fquiz-nav"></div></div></section>
+
+<section id="certificate" class="section">
+<div class="section-header"><div class="emoji">🏆</div><h2>Certificado de Completación</h2><p>¡Felicidades por completar la lección!</p></div>
+<div class="certificate-wrapper" id="cert-doc">
+<div class="cert-title">Certificado de Completación</div>
+<div class="cert-subtitle">Rutinas Diarias: Tiempos Verbales en Inglés</div>
+<div style="margin-bottom:1rem;font-size:.9rem;color:var(--muted)">Otorgado a:</div>
+<input class="cert-input" id="cert-name" placeholder="Tu nombre" oninput="updateCert()">
+<div class="cert-date" id="cert-date"></div>
+<div class="cert-score">Puntuación: <span id="cert-score">0</span>%</div>
+<div style="margin-bottom:1.5rem;font-size:.9rem;color:var(--muted)">Has completado todas las secciones de la lección sobre los 6 tiempos verbales del inglés.</div>
+<button class="btn btn-primary" onclick="printCert()" style="margin-right:.5rem">🖨️ Imprimir Certificado</button>
+<button class="btn btn-secondary" onclick="launchConfetti()">🎉 Celebrar</button>
+</div></section>
+
+</div>
+<script>
+/* ═══════════════════════════════════════════
+   STATE & DATA
+   ═══════════════════════════════════════════ */
+const APP = {
+  currentSection: 'intro',
+  completedSections: new Set(),
+  vocabLearned: new Set(),
+  matchScore: 0,
+  dndPlaced: 0,
+  memScore: 0,
+  quizIndex: 0,
+  quizScore: 0,
+  fquizIndex: 0,
+  fquizScore: 0,
+  fcIndex: 0
+};
+
+const VOCAB = [
+  {word:'wake up',translation:'despertarse',icon:'⏰',def:'To stop sleeping',example:'I wake up at 7 every morning.'},
+  {word:'get up',translation:'levantarse',icon:'🛏️',def:'To get out of bed',example:'She gets up early on weekdays.'},
+  {word:'brush my teeth',translation:'cepillarse los dientes',icon:'🪥',def:'To clean teeth with a brush',example:'I brush my teeth twice a day.'},
+  {word:'take a shower',translation:'tomar una ducha',icon:'🚿',def:'To wash your body in the shower',example:'He takes a shower every morning.'},
+  {word:'get dressed',translation:'vestirse',icon:'👔',def:'To put on clothes',example:'I get dressed for work at 7:30.'},
+  {word:'have breakfast',translation:'desayunar',icon:'🍳',def:'To eat the first meal of the day',example:'We have breakfast at 8.'},
+  {word:'go to work',translation:'ir al trabajo',icon:'💼',def:'To travel to your workplace',example:'She goes to work by bus.'},
+  {word:'study',translation:'estudiar',icon:'📚',def:'To learn or examine something',example:'I study English every day.'},
+  {word:'eat lunch',translation:'almorzar',icon:'🥗',def:'To eat the midday meal',example:'We eat lunch at noon.'},
+  {word:'cook dinner',translation:'cenar/cocinar',icon:'🍽️',def:'To prepare and eat the evening meal',example:'She cooks dinner at 7 PM.'},
+  {word:'watch TV',translation:'ver televisión',icon:'📺',def:'To view television programs',example:'I watch TV after dinner.'},
+  {word:'read a book',translation:'leer un libro',icon:'📖',def:'To look at and understand written words',example:'He reads a book before bed.'},
+  {word:'go to bed',translation:'acostarse',icon:'🌙',def:'To go to sleep',example:'I go to bed at 11 PM.'},
+  {word:'drive',translation:'conducir',icon:'🚗',def:'To operate a vehicle',example:'She drives to work every day.'},
+  {word:'exercise',translation:'hacer ejercicio',icon:'🏃',def:'To do physical activity',example:'I exercise in the morning.'},
+  {word:'clean the house',translation:'limpiar la casa',icon:'🧹',def:'To make your home tidy',example:'We clean the house on Saturdays.'}
+];
+
+const MATCHING_DATA = [
+  {sentence:'I wake up at 7 every day.',tense:'Present Simple'},
+  {sentence:'She is driving to work.',tense:'Present Continuous'},
+  {sentence:'We went to the cinema.',tense:'Past Simple'},
+  {sentence:'I was sleeping when the phone rang.',tense:'Past Continuous'},
+  {sentence:'They will travel to Japan.',tense:'Future Simple'},
+  {sentence:'He will be working at 3 PM.',tense:'Future Continuous'},
+  {sentence:'She doesn\'t eat meat.',tense:'Present Simple'},
+  {sentence:'We are studying English.',tense:'Present Continuous'}
+];
+
+const DND_DATA = [
+  {verb:'wake up',tense:'Present Simple'},
+  {verb:'is eating',tense:'Present Continuous'},
+  {verb:'cooked',tense:'Past Simple'},
+  {verb:'was sleeping',tense:'Past Continuous'},
+  {verb:'will study',tense:'Future Simple'},
+  {verb:'will be working',tense:'Future Continuous'},
+  {verb:'go',tense:'Present Simple'},
+  {verb:'are driving',tense:'Present Continuous'}
+];
+
+const QUIZ_DATA = [
+  {type:'mc',q:'¿Qué tiempo se usa para hábitos diarios?',opts:['Present Simple','Present Continuous','Past Simple','Future Simple'],correct:0,explain:'El Present Simple describe hábitos y rutinas: "I wake up at 7 every day."'},
+  {type:'mc',q:'Completa: She ___ breakfast right now.',opts:['eats','is eating','ate','will eat'],correct:1,explain:'"Right now" indica una acción en este momento → Presente Continuo: "is eating".'},
+  {type:'fill',q:'Completa: I ___ (go) to work by bus every day.',answer:'go',explain:'Present Simple con "I" usa el verbo sin -s: "go".'},
+  {type:'tf',q:'"She was cooking when I arrived" usa el Pasado Simple.',answer:false,explain:'"was cooking" es Pasado Continuo. La acción principal estaba en progreso cuando llegó la interrupción.'},
+  {type:'mc',q:'¿Cuál es la estructura del Futuro Continuo?',opts:['S + will + V','S + will be + V-ing','S + is going to + V','S + was + V-ing'],correct:1,explain:'Futuro Continuo: Sujeto + will be + Verbo-ing.'},
+  {type:'fill',q:'Completa: They ___ (watch) TV when I called.',answer:'were watching',explain:'"When I called" interrumpió una acción en progreso → Past Continuous: "were watching".'},
+  {type:'tf',q:'El Presente Simple usa "-s" con "I".',answer:false,explain:'El Presente Simple usa "-s" solo con he/she/it: "I wake up", pero "She wake upS".'},
+  {type:'mc',q:'Completa: I will ___ at 6 tomorrow morning.',opts:['be waking up','am waking up','woke up','waking up'],correct:0,explain:'Futuro Simple: will + verbo base. "will be waking up" sería Futuro Continuo, pero aquí "will" es correcto.'},
+  {type:'fill',q:'Completa: What ___ you doing at 8 PM?',answer:'were',explain:'Past Continuous: What were you doing...? "You" usa "were".'},
+  {type:'mc',q:'"While I was reading, he was sleeping." ¿Qué conectores se usan?',opts:['when ... then','while ... while','while ... and','since ... because'],correct:1,explain:'"While" se usa con Past Continuous para acciones simultáneas: While + V-ing, ... V-ing.'}
+];
+
+const FQUIZ_DATA = [
+  {type:'mc',q:'I ___ at 7 every morning.',opts:['wake up','am waking up','woke up','will wake up'],correct:0,explain:'"every morning" → hábito → Present Simple: "wake up"'},
+  {type:'mc',q:'She ___ to work right now.',opts:['drives','is driving','drove','will drive'],correct:1,explain:'"right now" → acción en progreso → Present Continuous: "is driving"'},
+  {type:'fill',q:'I ___ (go) to the cinema yesterday.',answer:'went',explain:'"yesterday" → Past Simple: "went" (irregular de "go")'},
+  {type:'tf',q:'"Will you be using the car tonight?" es Futuro Simple.',answer:false,explain:'"will be using" es Futuro Continuo, no Futuro Simple.'},
+  {type:'mc',q:'We ___ English for 2 hours when the bell rang.',opts:['studied','were studying','study','will study'],correct:1,explain:'Acción en progreso interrumpida → Past Continuous: "were studying"'},
+  {type:'fill',q:'He ___ (not eat) meat.',answer:"doesn't eat",explain:'Present Simple negativo con he/she/it: doesn\'t + verbo base'},
+  {type:'mc',q:'¿Cuándo usamos el Futuro Simple?',opts:['Acciones en progreso ahora','Hábitos diarios','Predicciones y promesas','Acciones en el pasado'],correct:2,explain:'El Futuro Simple se usa para predicciones, promesas y decisiones espontáneas.'},
+  {type:'tf',q:'"I am studying English this year" usa Present Continuous para un plan temporal.',answer:true,explain:'Correcto. "This year" es temporal, y el Present Continuous puede expresar situaciones temporales.'},
+  {type:'mc',q:'They ___ dinner when I arrived.',opts:['cooked','were cooking','cook','will cook'],correct:1,explain:'Acción en progreso interrumpida: Past Continuous "were cooking"'},
+  {type:'fill',q:'Tomorrow at 3 PM, I ___ (work) in the office.',answer:'will be working',explain:'Acción en progreso en un momento futuro → Future Continuous: "will be working"'},
+  {type:'mc',q:'She ___ her teeth every morning.',opts:['brush','brushes','is brushing','brushed'],correct:1,explain:'Present Simple con "she" → añade -s: "brushes"'},
+  {type:'tf',q:'"Did you went to school?" es una pregunta correcta.',answer:false,explain:'Incorrecto. Después de "did" se usa verbo base: "Did you go to school?"'},
+  {type:'fill',q:'I ___ (read) a book at 10 PM last night.',answer:'was reading',explain:'"at 10 PM last night" → momento específico en el pasado → Past Continuous: "was reading"'},
+  {type:'mc',q:'We ___ to Japan next year.',opts:['travel','are traveling','traveled','will travel'],correct:3,explain:'"next year" → Futuro Simple: "will travel"'},
+  {type:'mc',q:'¿Cuál es negativo de "She is cooking"?',opts:["She isn't cooking","She doesn't cooking","She not cooking","She isn't cook"],correct:0,explain:'Present Continuous negativo: am/is/are + not + V-ing → "She isn\'t cooking"'},
+  {type:'tf',q:'El Pasado Continuo se usa con "when" para interrupciones.',answer:true,explain:'Correcto. "When + Past Simple" interrumpe una acción en Past Continuous.'},
+  {type:'fill',q:'Right now, they ___ (play) football.',answer:'are playing',explain:'"Right now" → Present Continuous: "are playing"'},
+  {type:'mc',q:'He ___ his car to work yesterday.',opts:['drives','was driving','drove','will drive'],correct:2,explain:'"yesterday" → Past Simple: "drove" (irregular)'},
+  {type:'mc',q:'What will you ___ tomorrow?',opts:['doing','do','did','be doing'],correct:1,explain:'Futuro Simple: will + verbo base → "will do"'},
+  {type:'fill',q:'While she ___ (cook), I was setting the table.',answer:'was cooking',explain:'"While" + Past Continuous para acciones simultáneas: "was cooking"'},
+  {type:'tf',q:'"I will be sleeping at 11 PM tonight" es Futuro Continuo.',answer:true,explain:'Correcto. "will be sleeping" = Futuro Continuo (acción en progreso en un momento futuro).'},
+  {type:'mc',q:'The bus ___ at 8:30 every day.',opts:['leave','leaves','is leaving','left'],correct:1,explain:'Present Simple para horarios fijos con "the bus" (it) → "leaves"'},
+  {type:'fill',q:'I ___ (not watch) TV yesterday.',answer:"didn't watch",explain:'Past Simple negativo: didn\'t + verbo base → "didn\'t watch"'},
+  {type:'mc',q:'This time tomorrow, she ___ on the beach.',opts:['will lie','will be lying','is lying','was lying'],correct:1,explain:'"This time tomorrow" → acción en progreso en un momento futuro → Future Continuous: "will be lying"'},
+  {type:'tf',q:'"I am going to study" es una forma del Futuro Simple (going to).',answer:true,explain:'Correcto. "Going to" es una alternativa al Futuro Simple para planes e intenciones.'}
+];
+
+const SPEAKING_QS = [
+  {q:'What time do you wake up?',tense:'Present Simple',tip:'Usa Present Simple para rutinas: "I wake up at..."',example:'I wake up at 7 every morning.'},
+  {q:'What are you doing now?',tense:'Present Continuous',tip:'Usa Present Continuous para lo que está pasando ahora: "I am..."',example:'I am learning English right now.'},
+  {q:'What did you do yesterday?',tense:'Past Simple',tip:'Usa Past Simple para acciones completadas: "I ... yesterday."',example:'Yesterday I went to the park and ate lunch with friends.'},
+  {q:'What were you doing at 8 PM yesterday?',tense:'Past Continuous',tip:'Usa Past Continuous para acciones en progreso: "I was ... at 8 PM."',example:'At 8 PM yesterday I was watching a movie.'},
+  {q:'What will you do tomorrow?',tense:'Future Simple',tip:'Usa Future Simple con "will": "I will ... tomorrow."',example:'Tomorrow I will study English and go to the gym.'},
+  {q:'What will you be doing tomorrow evening?',tense:'Future Continuous',tip:'Usa Future Continuous: "I will be ... tomorrow evening."',example:'Tomorrow evening I will be cooking dinner and watching TV.'}
+];
+
+const GRAMMAR_DATA = [
+  {name:'Present Simple',color:'var(--accent)',bg:'var(--accent-light)',formula:'S + V(s/es)',pos:'I/You/We/They + V | He/She/It + V+s',neg:"I/You/We/They + don't + V | He/She/It + doesn't + V",q:'Do + I/you/we/they + V? | Does + he/she/it + V?',mistakes:'Olvidar la -s en he/she/it: ~~"She go"~~ → "She goes"',example:'I wake up at 7. She brushes her teeth.'},
+  {name:'Present Continuous',color:'var(--accent2)',bg:'var(--accent2-light)',formula:'S + am/is/are + V-ing',pos:'I + am + V-ing | He/She/It + is + V-ing | We/You/They + are + V-ing',neg:'am/is/are + not + V-ing',q:'Am/Is/Are + S + V-ing?',mistakes:'Olvidar "be": ~~"I eating"~~ → "I am eating"',example:'I am eating breakfast. She is driving.'},
+  {name:'Past Simple',color:'var(--info)',bg:'var(--info-light)',formula:'S + V2',pos:'S + V2 (pasado irregular o regular)',neg:"S + didn't + V",q:'Did + S + V?',mistakes:'Usar did + V2: ~~"Did you went?"~~ → "Did you go?"',example:'I woke up yesterday. She cooked dinner.'},
+  {name:'Past Continuous',color:'var(--purple)',bg:'var(--purple-light)',formula:'S + was/were + V-ing',pos:'I/He/She/It + was + V-ing | We/You/They + were + V-ing',neg:'was/were + not + V-ing',q:'Was/Were + S + V-ing?',mistakes:'Usar "was" con "they": ~~"They was"~~ → "They were"',example:'I was sleeping. She was cooking when I arrived.'},
+  {name:'Future Simple',color:'var(--warning)',bg:'var(--warning-light)',formula:'S + will + V',pos:'S + will + V (base)',neg:"S + won't + V",q:'Will + S + V?',mistakes:'Usar "will" + V-ing: ~~"I will going"~~ → "I will go"',example:'I will study tomorrow. They will travel.'},
+  {name:'Future Continuous',color:'var(--danger)',bg:'var(--danger-light)',formula:'S + will be + V-ing',pos:'S + will be + V-ing',neg:"S + won't be + V-ing",q:'Will + S + be + V-ing?',mistakes:'Olvidar "be": ~~"I will working"~~ → "I will be working"',example:'I will be working at 3 PM. They will be sleeping.'}
+];
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+function navigateTo(sectionId) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(sectionId);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.dataset.section === sectionId);
+  });
+  APP.currentSection = sectionId;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  updateProgressBar();
+  document.getElementById('nav-links').classList.remove('open');
+  if (sectionId === 'final-quiz') initQuiz(FQUIZ_DATA, 'fquiz', 0);
+  if (sectionId === 'final-review') updateProgressTracker();
+  if (sectionId === 'certificate') initCert();
+}
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => navigateTo(link.dataset.section));
+});
+
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  const nav = document.getElementById('nav-links');
+  const toggle = document.getElementById('menu-toggle');
+  const isOpen = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', isOpen);
+  toggle.textContent = isOpen ? '✕' : '☰';
+  toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const nav = document.getElementById('nav-links');
+    const toggle = document.getElementById('menu-toggle');
+    if (nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+      toggle.focus();
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   THEME
+   ═══════════════════════════════════════════ */
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+  document.getElementById('theme-toggle').textContent = isDark ? '🌙' : '☀️';
+  document.getElementById('theme-toggle').setAttribute('aria-label', isDark ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+});
+(function() {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('theme-toggle').textContent = '☀️';
+  }
+})();
+
+/* ═══════════════════════════════════════════
+   PROGRESS
+   ═══════════════════════════════════════════ */
+const ALL_SECTIONS = ['present-simple','present-continuous','past-simple','past-continuous','future-simple','future-continuous','vocabulary','flashcards','grammar-cards','timeline','matching','dragdrop','quizzes','memory','speaking','writing'];
+
+function markSectionComplete(id) {
+  APP.completedSections.add(id);
+  localStorage.setItem('completedSections', JSON.stringify([...APP.completedSections]));
+  updateProgressBar();
+  updateProgressTracker();
+}
+(function() {
+  try { JSON.parse(localStorage.getItem('completedSections') || '[]').forEach(s => APP.completedSections.add(s)); } catch(e) {}
+})();
+
+function updateProgressBar() {
+  const total = ALL_SECTIONS.length;
+  const done = ALL_SECTIONS.filter(s => APP.completedSections.has(s)).length;
+  const pct = Math.round(done / total * 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+  const bar = document.getElementById('progress-bar-container');
+  bar.setAttribute('aria-valuenow', pct);
+  bar.setAttribute('aria-label', 'Progreso de la lección: ' + pct + '%');
+}
+
+/* ═══════════════════════════════════════════
+   VOCABULARY
+   ═══════════════════════════════════════════ */
+function initVocabulary() {
+  const grid = document.getElementById('vocab-grid');
+  grid.innerHTML = VOCAB.map((v, i) =>
+    `<div class="vocab-card${APP.vocabLearned.has(i)?' learned':''}" onclick="toggleVocab(${i})" data-od-id="vocab-${v.word.replace(/\s/g,'-')}">
+      <span class="v-check">✓</span>
+      <span class="v-icon">${v.icon}</span>
+      <div class="v-word">${v.word}</div>
+      <div class="v-translation">${v.translation}</div>
+    </div>`
+  ).join('');
+}
+function toggleVocab(i) {
+  if (APP.vocabLearned.has(i)) APP.vocabLearned.delete(i); else APP.vocabLearned.add(i);
+  initVocabulary();
+}
+
+/* ═══════════════════════════════════════════
+   FLASHCARDS
+   ═══════════════════════════════════════════ */
+function showFlashcard() {
+  const v = VOCAB[APP.fcIndex];
+  document.getElementById('fc-icon').textContent = v.icon;
+  document.getElementById('fc-word').textContent = v.word;
+  document.getElementById('fc-def').textContent = v.translation;
+  document.getElementById('fc-example').textContent = '"' + v.example + '"';
+  document.getElementById('fc-counter').textContent = (APP.fcIndex + 1) + ' / ' + VOCAB.length;
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+function flipFlashcard() { document.getElementById('flashcard').classList.toggle('flipped'); }
+function nextFlashcard() { APP.fcIndex = (APP.fcIndex + 1) % VOCAB.length; showFlashcard(); }
+function prevFlashcard() { APP.fcIndex = (APP.fcIndex - 1 + VOCAB.length) % VOCAB.length; showFlashcard(); }
+
+/* ═══════════════════════════════════════════
+   GRAMMAR CARDS
+   ═══════════════════════════════════════════ */
+function initGrammarCards() {
+  document.getElementById('grammar-grid').innerHTML = GRAMMAR_DATA.map(g =>
+    `<div class="grammar-card" style="border-color:${g.color};background:${g.bg}" data-od-id="grammar-${g.name.toLowerCase().replace(/\s/g,'-')}">
+      <h4 style="color:${g.color}">${g.name}</h4>
+      <div class="g-formula" style="background:${g.color}20;color:${g.color}">${g.formula}</div>
+      <div class="g-section"><div class="g-label" style="color:${g.color}">Positivo</div><div class="g-example">${g.pos}</div></div>
+      <div class="g-section"><div class="g-label" style="color:${g.color}">Negativo</div><div class="g-example">${g.neg}</div></div>
+      <div class="g-section"><div class="g-label" style="color:${g.color}">Preguntas</div><div class="g-example">${g.q}</div></div>
+      <div class="g-section"><div class="g-label" style="color:${g.color}">Errores comunes</div><div class="g-example">${g.mistakes}</div></div>
+      <div class="g-section"><div class="g-label" style="color:${g.color}">Ejemplo</div><div class="g-example"><em>${g.example}</em></div></div>
+    </div>`
+  ).join('');
+}
+
+/* ═══════════════════════════════════════════
+   TIMELINE
+   ═══════════════════════════════════════════ */
+function initTimeline() {
+  const points = [
+    {label:'Past Simple',example:'I woke up',color:'var(--info)'},
+    {label:'Past Continuous',example:'I was sleeping',color:'var(--purple)'},
+    {label:'Present Simple',example:'I wake up',color:'var(--accent)'},
+    {label:'Present Continuous',example:'I am eating',color:'var(--accent2)'},
+    {label:'Future Simple',example:'I will study',color:'var(--warning)'},
+    {label:'Future Continuous',example:'I will be working',color:'var(--danger)'}
+  ];
+  document.getElementById('visual-timeline').innerHTML = points.map(p =>
+    `<div class="timeline-point"><div class="timeline-dot"></div><div class="timeline-label" style="border-color:${p.color};color:${p.color}">${p.label}</div><div class="timeline-example">${p.example}</div></div>`
+  ).join('');
+}
+
+/* ═══════════════════════════════════════════
+   MATCHING GAME
+   ═══════════════════════════════════════════ */
+let matchState = {selected: null, score: 0, matched: new Set()};
+function initMatchingGame() {
+  matchState = {selected: null, score: 0, matched: new Set()};
+  APP.matchScore = 0;
+  document.getElementById('match-score').textContent = '0';
+  const data = MATCHING_DATA.slice().sort(() => Math.random() - 0.5);
+  const tenses = [...new Set(data.map(d => d.tense))].sort(() => Math.random() - 0.5);
+  const sDiv = document.getElementById('match-sentences');
+  const tDiv = document.getElementById('match-tenses');
+  sDiv.innerHTML = data.map((d, i) =>
+    `<div class="match-item" data-idx="${i}" data-tense="${d.tense}" onclick="selectMatch(this,'sentence')">${d.sentence}</div>`
+  ).join('');
+  tDiv.innerHTML = tenses.map(t =>
+    `<div class="match-item" data-tense="${t}" onclick="selectMatch(this,'tense')">${t}</div>`
+  ).join('');
+}
+function selectMatch(el, type) {
+  if (el.classList.contains('correct')) return;
+  if (matchState.selected && matchState.selected.type === type) {
+    matchState.selected.el.classList.remove('selected');
+    matchState.selected = {el, type};
+    el.classList.add('selected');
+    return;
+  }
+  if (!matchState.selected) {
+    matchState.selected = {el, type};
+    el.classList.add('selected');
+    return;
+  }
+  const prev = matchState.selected;
+  const sentTense = type === 'sentence' ? el.dataset.tense : prev.el.dataset.tense;
+  const tenseVal = type === 'tense' ? el.dataset.tense : prev.el.dataset.tense;
+  if (sentTense === tenseVal) {
+    el.classList.add('correct');
+    prev.el.classList.add('correct');
+    prev.el.classList.remove('selected');
+    matchState.score++;
+    APP.matchScore = matchState.score;
+    document.getElementById('match-score').textContent = matchState.score;
+  } else {
+    el.classList.add('wrong');
+    prev.el.classList.add('wrong');
+    setTimeout(() => {
+      el.classList.remove('wrong', 'selected');
+      prev.el.classList.remove('wrong', 'selected');
+    }, 600);
+  }
+  matchState.selected = null;
+}
+
+/* ═══════════════════════════════════════════
+   DRAG & DROP
+   ═══════════════════════════════════════════ */
+function initDnD() {
+  APP.dndPlaced = 0;
+  document.getElementById('dnd-placed').textContent = '0';
+  const tenses = [...new Set(DND_DATA.map(d => d.tense))].sort(() => Math.random() - 0.5);
+  const bank = document.getElementById('dnd-bank');
+  const buckets = document.getElementById('dnd-buckets');
+  const items = DND_DATA.slice().sort(() => Math.random() - 0.5);
+  bank.innerHTML = items.map(d =>
+    `<div class="dnd-item" draggable="true" data-tense="${d.tense}">${d.verb}</div>`
+  ).join('');
+  buckets.innerHTML = tenses.map(t =>
+    `<div class="dnd-bucket" data-tense="${t}">
+      <div class="dnd-bucket-title">📦 ${t}</div>
+      <div class="dnd-items"></div>
+    </div>`
+  ).join('');
+  setupDnDEvents();
+}
+function setupDnDEvents() {
+  document.querySelectorAll('.dnd-item').forEach(item => {
+    item.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', item.dataset.tense);
+      e.dataTransfer.setData('text/verb', item.textContent);
+      item.style.opacity = '0.5';
+      setTimeout(() => item.style.display = 'none', 0);
+    });
+    item.addEventListener('dragend', () => { item.style.opacity = '1'; });
+    let touchClone = null;
+    item.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      touchClone = item.cloneNode(true);
+      touchClone.style.position = 'fixed';
+      touchClone.style.zIndex = '9999';
+      touchClone.style.pointerEvents = 'none';
+      touchClone.style.opacity = '0.8';
+      touchClone.style.left = t.clientX - 30 + 'px';
+      touchClone.style.top = t.clientY - 15 + 'px';
+      document.body.appendChild(touchClone);
+      item.dataset._tense = item.dataset.tense;
+      item.dataset._verb = item.textContent;
+    }, {passive: true});
+    item.addEventListener('touchmove', e => {
+      if (!touchClone) return;
+      const t = e.touches[0];
+      touchClone.style.left = t.clientX - 30 + 'px';
+      touchClone.style.top = t.clientY - 15 + 'px';
+      e.preventDefault();
+    }, {passive: false});
+    item.addEventListener('touchend', e => {
+      if (touchClone) { touchClone.remove(); touchClone = null; }
+      const t = e.changedTouches[0];
+      const el = document.elementFromPoint(t.clientX, t.clientY);
+      const bucket = el ? el.closest('.dnd-bucket') : null;
+      if (bucket) handleDrop(bucket, item);
+    });
+  });
+  document.querySelectorAll('.dnd-bucket').forEach(bucket => {
+    bucket.addEventListener('dragover', e => { e.preventDefault(); bucket.classList.add('dragover'); });
+    bucket.addEventListener('dragleave', () => bucket.classList.remove('dragover'));
+    bucket.addEventListener('drop', e => {
+      e.preventDefault();
+      bucket.classList.remove('dragover');
+      const verbTense = e.dataTransfer.getData('text/plain');
+      const verb = e.dataTransfer.getData('text/verb');
+      const item = document.querySelector(`.dnd-item[style*="display: none"]`) || document.querySelector(`.dnd-item[data-tense="${verbTense}"]`);
+      if (item) handleDrop(bucket, item);
+    });
+  });
+}
+function handleDrop(bucket, item) {
+  const bucketTense = bucket.dataset.tense;
+  const itemTense = item.dataset.tense || item.dataset._tense;
+  const verb = item.textContent || item.dataset._verb;
+  if (itemTense === bucketTense) {
+    item.remove();
+    bucket.querySelector('.dnd-items').innerHTML += `<div class="dnd-item placed">${verb}</div>`;
+    APP.dndPlaced++;
+    document.getElementById('dnd-placed').textContent = APP.dndPlaced;
+  } else {
+    item.style.display = '';
+    item.style.animation = 'shake .4s ease';
+    setTimeout(() => item.style.animation = '', 500);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   QUIZ ENGINE
+   ═══════════════════════════════════════════ */
+function initQuiz(data, prefix, startIdx) {
+  APP.quizIndex = startIdx || 0;
+  APP.quizScore = 0;
+  renderQuizQuestion(data, prefix);
+}
+function renderQuizQuestion(data, prefix) {
+  const q = data[APP.quizIndex];
+  if (!q) { showQuizResult(data, prefix); return; }
+  const total = data.length;
+  const fill = document.getElementById(prefix + 'fill');
+  const counter = document.getElementById(prefix + 'counter');
+  const area = document.getElementById(prefix + 'question-area');
+  const fb = document.getElementById(prefix + 'feedback');
+  const nav = document.getElementById(prefix + 'nav');
+  fill.style.width = ((APP.quizIndex / total) * 100) + '%';
+  counter.textContent = (APP.quizIndex + 1) + ' / ' + total;
+  fb.className = 'quiz-feedback';
+  fb.innerHTML = '';
+  let html = `<div class="quiz-question">${q.q}</div>`;
+  if (q.type === 'mc') {
+    html += '<div class="quiz-options">';
+    const letters = ['A','B','C','D'];
+    q.opts.forEach((o, i) => {
+      html += `<div class="quiz-option" data-idx="${i}" onclick="answerMC(this,${i},${q.correct},'${prefix}')"><span class="qo-letter">${letters[i]}</span><span>${o}</span></div>`;
+    });
+    html += '</div>';
+    nav.innerHTML = '';
+  } else if (q.type === 'fill') {
+    html += `<div><input class="fill-blank-input" id="${prefix}-fill-input" placeholder="Escribe tu respuesta..." onkeydown="if(event.key==='Enter')answerFill('${prefix}')"></div>`;
+    html += `<div class="text-center mt-1"><button class="btn btn-primary btn-sm" onclick="answerFill('${prefix}')">Verificar</button></div>`;
+    nav.innerHTML = '';
+  } else if (q.type === 'tf') {
+    html += '<div class="quiz-options">';
+    html += `<div class="quiz-option" onclick="answerTF(this,true,${q.answer},'${prefix}')"><span class="qo-letter">V</span><span>Verdadero</span></div>`;
+    html += `<div class="quiz-option" onclick="answerTF(this,false,${q.answer},'${prefix}')"><span class="qo-letter">F</span><span>Falso</span></div>`;
+    html += '</div>';
+    nav.innerHTML = '';
+  }
+  area.innerHTML = html;
+}
+function answerMC(el, chosen, correct, prefix) {
+  const data = prefix === 'fquiz' ? FQUIZ_DATA : QUIZ_DATA;
+  document.querySelectorAll('#' + prefix + 'question-area .quiz-option').forEach(o => o.style.pointerEvents = 'none');
+  const q = data[APP.quizIndex];
+  const fb = document.getElementById(prefix + 'feedback');
+  if (chosen === correct) {
+    el.classList.add('correct');
+    if (prefix === 'fquiz') APP.fquizScore++; else APP.quizScore++;
+    fb.className = 'quiz-feedback correct show';
+    fb.innerHTML = '✓ ¡Correcto! ' + q.explain;
+  } else {
+    el.classList.add('wrong');
+    document.querySelectorAll('#' + prefix + 'question-area .quiz-option')[correct].classList.add('correct');
+    fb.className = 'quiz-feedback wrong show';
+    fb.innerHTML = '✗ Incorrecto. ' + q.explain;
+  }
+  document.getElementById(prefix + 'nav').innerHTML = `<button class="btn btn-primary btn-sm" onclick="nextQuiz('${prefix}')">Siguiente →</button>`;
+}
+function answerFill(prefix) {
+  const data = prefix === 'fquiz' ? FQUIZ_DATA : QUIZ_DATA;
+  const q = data[APP.quizIndex];
+  const input = document.getElementById(prefix + '-fill-input');
+  const val = input.value.trim().toLowerCase();
+  const fb = document.getElementById(prefix + 'feedback');
+  input.disabled = true;
+  if (val === q.answer.toLowerCase()) {
+    if (prefix === 'fquiz') APP.fquizScore++; else APP.quizScore++;
+    fb.className = 'quiz-feedback correct show';
+    fb.innerHTML = '✓ ¡Correcto! ' + q.explain;
+  } else {
+    fb.className = 'quiz-feedback wrong show';
+    fb.innerHTML = '✗ La respuesta correcta es: <strong>' + q.answer + '</strong>. ' + q.explain;
+  }
+  document.getElementById(prefix + 'nav').innerHTML = `<button class="btn btn-primary btn-sm" onclick="nextQuiz('${prefix}')">Siguiente →</button>`;
+}
+function answerTF(el, chosen, correct, prefix) {
+  const data = prefix === 'fquiz' ? FQUIZ_DATA : QUIZ_DATA;
+  document.querySelectorAll('#' + prefix + 'question-area .quiz-option').forEach(o => o.style.pointerEvents = 'none');
+  const q = data[APP.quizIndex];
+  const fb = document.getElementById(prefix + 'feedback');
+  if (chosen === correct) {
+    el.classList.add('correct');
+    if (prefix === 'fquiz') APP.fquizScore++; else APP.quizScore++;
+    fb.className = 'quiz-feedback correct show';
+    fb.innerHTML = '✓ ¡Correcto! ' + q.explain;
+  } else {
+    el.classList.add('wrong');
+    fb.className = 'quiz-feedback wrong show';
+    fb.innerHTML = '✗ Incorrecto. ' + q.explain;
+  }
+  document.getElementById(prefix + 'nav').innerHTML = `<button class="btn btn-primary btn-sm" onclick="nextQuiz('${prefix}')">Siguiente →</button>`;
+}
+function nextQuiz(prefix) {
+  APP.quizIndex++;
+  const data = prefix === 'fquiz' ? FQUIZ_DATA : QUIZ_DATA;
+  renderQuizQuestion(data, prefix);
+}
+function showQuizResult(data, prefix) {
+  const area = document.getElementById(prefix + 'question-area');
+  const score = prefix === 'fquiz' ? APP.fquizScore : APP.quizScore;
+  const pct = Math.round(score / data.length * 100);
+  let msg = pct >= 80 ? '¡Excelente! 🎉' : pct >= 60 ? '¡Bien hecho! 👍' : 'Sigue practicando 💪';
+  area.innerHTML = `<div class="text-center"><div style="font-size:3rem;margin-bottom:1rem;">${pct >= 80 ? '🏆' : pct >= 60 ? '⭐' : '📚'}</div><h3 style="margin-bottom:.5rem">${msg}</h3><div style="font-size:1.5rem;font-weight:700;color:var(--accent);margin-bottom:.5rem">${score} / ${data.length}</div><div style="font-size:1.1rem;color:var(--muted)">${pct}% de aciertos</div></div>`;
+  document.getElementById(prefix + 'fill').style.width = '100%';
+  document.getElementById(prefix + 'feedback').className = 'quiz-feedback';
+  document.getElementById(prefix + 'nav').innerHTML = '';
+  if (prefix === 'fquiz') {
+    document.getElementById(prefix + 'nav').innerHTML = `<button class="btn btn-primary" onclick="navigateTo('certificate')">Ver Certificado →</button>`;
+  }
+}
+</script>
+<script>
+/* ═══════════════════════════════════════════
+   MEMORY GAME
+   ═══════════════════════════════════════════ */
+let memState = {flipped:[], matched:0, locked:false};
+function initMemoryGame() {
+  memState = {flipped:[], matched:0, locked:false};
+  APP.memScore = 0;
+  document.getElementById('mem-score').textContent = '0';
+  const pairs = VOCAB.slice(0, 8);
+  let cards = [];
+  pairs.forEach((v,i) => {
+    cards.push({id:i, type:'word', text:v.word, icon:v.icon, pairId:i});
+    cards.push({id:i+100, type:'def', text:v.translation, icon:v.icon, pairId:i});
+  });
+  cards.sort(() => Math.random() - 0.5);
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = cards.map(c =>
+    `<div class="memory-card" data-pair="${c.pairId}" data-id="${c.id}" onclick="flipMemCard(this)" data-od-id="mem-card-${c.id}">
+      <div class="memory-card-inner">
+        <div class="memory-card-front">❓</div>
+        <div class="memory-card-back">
+          <span class="mc-emoji">${c.icon}</span>
+          <span class="mc-word">${c.text}</span>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+}
+function flipMemCard(el) {
+  if (memState.locked || el.classList.contains('flipped') || el.classList.contains('matched')) return;
+  el.classList.add('flipped');
+  memState.flipped.push(el);
+  if (memState.flipped.length === 2) {
+    memState.locked = true;
+    const [a, b] = memState.flipped;
+    if (a.dataset.pair === b.dataset.pair && a.dataset.id !== b.dataset.id) {
+      a.classList.add('matched');
+      b.classList.add('matched');
+      memState.matched++;
+      APP.memScore = memState.matched;
+      document.getElementById('mem-score').textContent = memState.matched;
+      memState.flipped = [];
+      memState.locked = false;
+    } else {
+      setTimeout(() => {
+        a.classList.remove('flipped');
+        b.classList.remove('flipped');
+        memState.flipped = [];
+        memState.locked = false;
+      }, 800);
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════
+   SPEAKING PRACTICE
+   ═══════════════════════════════════════════ */
+function initSpeaking() {
+  document.getElementById('speaking-area').innerHTML = SPEAKING_QS.map((s, i) =>
+    `<div class="speaking-card" data-od-id="speaking-${i}">
+      <div class="speaking-question">${i+1}. ${s.q}</div>
+      <div class="speaking-prompt">💡 Tiempo recomendado: <strong>${s.tense}</strong> — ${s.tip}</div>
+      <textarea class="speaking-input" placeholder="Escribe tu respuesta aquí..." oninput="checkSpeakingInput(this)"></textarea>
+      <div class="mt-1"><button class="btn btn-secondary btn-sm" onclick="this.nextElementSibling.classList.toggle('show')">Ver ejemplo</button></div>
+      <div class="speaking-example">Ejemplo: ${s.example}</div>
+    </div>`
+  ).join('');
+}
+function checkSpeakingInput(el) {
+  el.style.borderColor = el.value.trim().length > 10 ? 'var(--success)' : 'var(--border)';
+}
+
+/* ═══════════════════════════════════════════
+   WRITING PRACTICE
+   ═══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  const wi = document.getElementById('writing-input');
+  if (wi) wi.addEventListener('input', () => {
+    const text = wi.value.trim();
+    document.getElementById('word-count').textContent = text ? text.split(/\s+/).length : 0;
+    document.getElementById('sentence-count').textContent = text ? text.split(/[.!?]+/).filter(s => s.trim()).length : 0;
+  });
+});
+
+/* ═══════════════════════════════════════════
+   PROGRESS TRACKER
+   ═══════════════════════════════════════════ */
+function updateProgressTracker() {
+  const lessons = ['present-simple','present-continuous','past-simple','past-continuous','future-simple','future-continuous'];
+  const lessonsDone = lessons.filter(s => APP.completedSections.has(s)).length;
+  const flashDone = APP.completedSections.has('flashcards') ? 1 : 0;
+  const gamesDone = ['matching','dragdrop','memory'].filter(s => APP.completedSections.has(s)).length;
+  const quizDone = APP.completedSections.has('quizzes') ? 1 : 0;
+  const totalDone = ALL_SECTIONS.filter(s => APP.completedSections.has(s)).length;
+  const pct = Math.round(totalDone / ALL_SECTIONS.length * 100);
+  document.getElementById('tracker-grid').innerHTML = `
+    <div class="tracker-card"><div class="tracker-value">${lessonsDone}/6</div><div class="tracker-label">Lecciones de tiempos</div><div class="tracker-bar"><div class="tracker-bar-fill" style="width:${lessonsDone/6*100}%"></div></div></div>
+    <div class="tracker-card"><div class="tracker-value">${APP.vocabLearned.size}</div><div class="tracker-label">Vocabulario aprendido</div><div class="tracker-bar"><div class="tracker-bar-fill" style="width:${APP.vocabLearned.size/16*100}%"></div></div></div>
+    <div class="tracker-card"><div class="tracker-value">${gamesDone}/3</div><div class="tracker-label">Juegos completados</div><div class="tracker-bar"><div class="tracker-bar-fill" style="width:${gamesDone/3*100}%"></div></div></div>
+    <div class="tracker-card"><div class="tracker-value">${APP.quizScore}/${QUIZ_DATA.length}</div><div class="tracker-label">Puntuación cuestionario</div><div class="tracker-bar"><div class="tracker-bar-fill" style="width:${APP.quizScore/QUIZ_DATA.length*100}%"></div></div></div>
+    <div class="tracker-card" style="grid-column:1/-1"><div class="tracker-value" style="font-size:2.5rem">${pct}%</div><div class="tracker-label">Progreso total de la lección</div><div class="tracker-bar"><div class="tracker-bar-fill" style="width:${pct}%"></div></div></div>
+  `;
+}
+
+/* ═══════════════════════════════════════════
+   CERTIFICATE
+   ═══════════════════════════════════════════ */
+function updateCert() {
+  const name = document.getElementById('cert-name').value || 'Tu Nombre';
+  document.querySelector('.cert-name') && (document.querySelector('.cert-name').textContent = '');
+}
+function initCert() {
+  const now = new Date();
+  document.getElementById('cert-date').textContent = now.toLocaleDateString('es-ES', {day:'numeric',month:'long',year:'numeric'});
+  const total = ALL_SECTIONS.length;
+  const done = ALL_SECTIONS.filter(s => APP.completedSections.has(s)).length;
+  const sectionPct = Math.round(done / total * 100);
+  const quizPct = APP.fquizScore > 0 ? Math.round(APP.fquizScore / FQUIZ_DATA.length * 100) : 0;
+  const finalPct = Math.round((sectionPct + quizPct) / 2);
+  document.getElementById('cert-score').textContent = finalPct || sectionPct;
+}
+function printCert() { window.print(); }
+function launchConfetti() {
+  const colors = ['#58a832','#ff6b35','#3498db','#f39c12','#8e44ad','#e74c3c','#27ae60'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top = -10 + 'px';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDelay = Math.random() * 1.5 + 's';
+    el.style.animationDuration = (2 + Math.random() * 2) + 's';
+    el.style.width = (5 + Math.random() * 10) + 'px';
+    el.style.height = (5 + Math.random() * 10) + 'px';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 4000);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+function initAll() {
+  updateProgressBar();
+  initVocabulary();
+  showFlashcard();
+  initGrammarCards();
+  initTimeline();
+  initMatchingGame();
+  initDnD();
+  initQuiz(QUIZ_DATA, 'quiz', 0);
+  initMemoryGame();
+  initSpeaking();
+  initCert();
+  updateProgressTracker();
+}
+document.addEventListener('DOMContentLoaded', initAll);
+</script>
+</body>
+</html>
