@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borracho — Lección interactiva de español</title>
+<meta property="og:title" content="Borracho — Aprende español con música">
+<meta property="og:description" content="Lección interactiva de español basada en la canción Borracho de Yerba Brava. 13 actividades: karaoke, listening, quizzes y más.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Borracho — Aprende español con música">
+<meta name="twitter:description" content="Lección interactiva de español con karaoke, listening, quizzes y más.">
+<meta name="twitter:image" content="og-image.jpg">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════ */
+:root {
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'Fira Code', monospace;
+
+  /* Dark theme (default) */
+  --bg: #0a1628;
+  --bg-gradient: linear-gradient(135deg, #0a1628 0%, #0f2027 50%, #0a1628 100%);
+  --surface: rgba(255,255,255,0.06);
+  --surface-hover: rgba(255,255,255,0.10);
+  --surface-glass: rgba(255,255,255,0.08);
+  --surface-glass-border: rgba(255,255,255,0.12);
+  --fg: #e8ecf1;
+  --fg-secondary: #9aa5b4;
+  --muted: #5a6a7e;
+  --border: rgba(255,255,255,0.08);
+  --accent: #4caf50;
+  --accent-bright: #66bb6a;
+  --accent-dark: #2e7d32;
+  --accent-glow: rgba(76,175,80,0.25);
+  --gold: #ffd54f;
+  --gold-glow: rgba(255,213,79,0.3);
+  --danger: #ef5350;
+  --danger-soft: rgba(239,83,80,0.15);
+  --success: #66bb6a;
+  --success-soft: rgba(102,187,106,0.15);
+  --warn: #ffa726;
+  --warn-soft: rgba(255,167,38,0.15);
+  --card-radius: 16px;
+  --card-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg: #f0f4f0;
+  --bg-gradient: linear-gradient(135deg, #f0f4f0 0%, #e8ede8 50%, #f0f4f0 100%);
+  --surface: rgba(0,0,0,0.04);
+  --surface-hover: rgba(0,0,0,0.07);
+  --surface-glass: rgba(255,255,255,0.7);
+  --surface-glass-border: rgba(0,0,0,0.08);
+  --fg: #1a2e1a;
+  --fg-secondary: #4a5e4a;
+  --muted: #7a8e7a;
+  --border: rgba(0,0,0,0.08);
+  --accent: #388e3c;
+  --accent-bright: #43a047;
+  --accent-dark: #2e7d32;
+  --accent-glow: rgba(56,142,60,0.2);
+  --gold: #f9a825;
+  --gold-glow: rgba(249,168,37,0.25);
+  --danger: #d32f2f;
+  --danger-soft: rgba(211,47,47,0.1);
+  --success: #43a047;
+  --success-soft: rgba(67,160,71,0.1);
+  --warn: #ef6c00;
+  --warn-soft: rgba(239,108,0,0.1);
+  --card-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ═══════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  color: var(--fg);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.2; }
+
+/* ═══════════════════════════════════════════
+   GLASSMORPHISM CARD
+   ═══════════════════════════════════════════ */
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.glass-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+
+/* ═══════════════════════════════════════════
+   PROGRESS BAR
+   ═══════════════════════════════════════════ */
+#global-progress {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 4px; background: var(--border);
+}
+#global-progress .fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent), var(--gold));
+  transition: width 0.5s ease; width: 0%;
+}
+
+/* ═══════════════════════════════════════════
+   TOP BAR
+   ═══════════════════════════════════════════ */
+.top-bar {
+  position: sticky; top: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.top-bar .logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--accent-bright);
+  letter-spacing: -0.01em;
+}
+.top-bar .score-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--gold-glow);
+  border: 1px solid rgba(255,213,79,0.3);
+  border-radius: 999px;
+  font-weight: 600; font-size: 0.85rem;
+  color: var(--gold);
+}
+.top-bar .score-badge svg { width: 16px; height: 16px; }
+.theme-toggle {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--fg); font-size: 1.1rem;
+  transition: background var(--transition);
+}
+.theme-toggle:hover { background: var(--surface-hover); }
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+.nav-tabs-custom {
+  display: flex; gap: 0.25rem; overflow-x: auto;
+  padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.nav-tabs-custom::-webkit-scrollbar { display: none; }
+.nav-tab-btn {
+  flex-shrink: 0; padding: 0.5rem 1rem;
+  background: transparent; border: 1px solid transparent;
+  border-radius: 999px; color: var(--fg-secondary);
+  font-size: 0.8rem; font-weight: 500; cursor: pointer;
+  transition: all var(--transition); white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.nav-tab-btn:hover { background: var(--surface); color: var(--fg); }
+.nav-tab-btn.active {
+  background: var(--accent); color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px var(--accent-glow);
+}
+.nav-tab-btn .tab-check { display: none; margin-left: 0.3rem; }
+.nav-tab-btn.completed .tab-check { display: inline; }
+
+/* ═══════════════════════════════════════════
+   SECTION / PANEL
+   ═══════════════════════════════════════════ */
+.section-panel {
+  display: none; padding: 2rem 1.5rem 4rem;
+  max-width: 900px; margin: 0 auto;
+  animation: fadeSlideIn 0.4s ease;
+}
+.section-panel.active { display: block; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  margin-bottom: 2rem;
+}
+.section-header .section-icon {
+  font-size: 2rem; margin-bottom: 0.5rem;
+}
+.section-header h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+.section-header p {
+  color: var(--fg-secondary); font-size: 0.95rem;
+  max-width: 60ch;
+}
+
+/* ═══════════════════════════════════════════
+   INTRO SECTION
+   ═══════════════════════════════════════════ */
+.intro-hero {
+  text-align: center;
+  padding: 3rem 0;
+  position: relative;
+}
+.intro-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('hero-borracho.jpg') center/cover no-repeat;
+  opacity: 0.15;
+  border-radius: var(--card-radius);
+  pointer-events: none;
+}
+.intro-hero > * { position: relative; z-index: 1; }
+.intro-hero .song-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--accent-glow);
+  border: 1px solid rgba(76,175,80,0.3);
+  border-radius: 999px;
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--accent-bright);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.intro-hero h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+.intro-hero .artist {
+  font-size: 1.1rem; color: var(--fg-secondary);
+  margin-bottom: 2rem;
+}
+.intro-meta {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  justify-content: center; margin-bottom: 2.5rem;
+}
+.intro-meta .meta-chip {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--fg-secondary);
+}
+.intro-meta .meta-chip strong { color: var(--fg); }
+#section-culture {
+  position: relative;
+}
+#section-culture::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('cultural-stadium.jpg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+#section-culture > * { position: relative; z-index: 1; }
+#section-karaoke {
+  position: relative;
+}
+#section-karaoke::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('karaoke-mic.jpg') center/cover no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
+#section-karaoke > * { position: relative; z-index: 1; }
+#section-fillblanks { position: relative; }
+#section-fillblanks::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('fillblanks-bg.jpg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+#section-fillblanks > * { position: relative; z-index: 1; }
+#section-matching { position: relative; }
+#section-matching::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('matching-bg.jpg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+#section-matching > * { position: relative; z-index: 1; }
+#section-lyricsorder { position: relative; }
+#section-lyricsorder::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('lyricsorder-bg.jpg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+#section-lyricsorder > * { position: relative; z-index: 1; }
+#section-pronunciation { position: relative; }
+#section-pronunciation::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('pronunciation-bg.jpg') center/cover no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
+#section-pronunciation > * { position: relative; z-index: 1; }
+#section-grammar { position: relative; }
+#section-grammar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('grammar-bg.jpg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+#section-grammar > * { position: relative; z-index: 1; }
+#section-quizzes { position: relative; }
+#section-quizzes::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('quizzes-bg.jpg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+#section-quizzes > * { position: relative; z-index: 1; }
+#section-speaking { position: relative; }
+#section-speaking::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('speaking-bg.jpg') center/cover no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
+#section-speaking > * { position: relative; z-index: 1; }
+#section-challenge { position: relative; }
+#section-challenge::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('challenge-bg.jpg') center/cover no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
+#section-challenge > * { position: relative; z-index: 1; }
+.intro-objectives {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.intro-objectives h3 {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin-bottom: 1rem;
+}
+.intro-objectives ul {
+  list-style: none; padding: 0;
+}
+.intro-objectives li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.intro-objectives li::before {
+  content: '✓';
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════ */
+.btn-primary-custom {
+  background: var(--accent);
+  color: #fff; border: none;
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600; font-size: 0.95rem;
+  cursor: pointer; transition: all var(--transition);
+  box-shadow: 0 4px 16px var(--accent-glow);
+  letter-spacing: 0.01em;
+}
+.btn-primary-custom:hover {
+  background: var(--accent-bright);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--accent-glow);
+}
+.btn-secondary-custom {
+  background: var(--surface);
+  color: var(--fg); border: 1px solid var(--border);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 500; font-size: 0.9rem;
+  cursor: pointer; transition: all var(--transition);
+}
+.btn-secondary-custom:hover { background: var(--surface-hover); }
+
+/* ═══════════════════════════════════════════
+   AUDIO PLAYER (custom)
+   ═══════════════════════════════════════════ */
+.audio-player-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+}
+.audio-controls {
+  display: flex; align-items: center; gap: 1rem;
+  flex-wrap: wrap;
+}
+.play-btn {
+  width: 48px; height: 48px;
+  background: var(--accent);
+  border: none; border-radius: 50%;
+  color: #fff; font-size: 1.2rem;
+  cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: all var(--transition);
+  box-shadow: 0 4px 16px var(--accent-glow);
+  flex-shrink: 0;
+}
+.play-btn:hover { background: var(--accent-bright); transform: scale(1.05); }
+.speed-btn {
+  padding: 0.3rem 0.7rem;
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg-secondary);
+  font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+}
+.speed-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.progress-bar-container {
+  flex: 1; min-width: 120px;
+  height: 6px; background: var(--border);
+  border-radius: 3px; cursor: pointer;
+  position: relative;
+}
+.progress-bar-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 3px; width: 0%;
+  transition: width 0.1s linear;
+}
+.time-display { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 80px; }
+
+/* ═══════════════════════════════════════════
+   LYRICS DISPLAY
+   ═══════════════════════════════════════════ */
+.lyrics-display {
+  font-size: 1.1rem; line-height: 2;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+}
+#listening-lyrics {
+  max-height: 400px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.lyrics-display .lyric-line {
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.15s;
+}
+.lyrics-display .lyric-line:hover { background: var(--surface-hover); transform: translateX(4px); }
+.lyrics-display .lyric-line.highlighted {
+  background: var(--accent-glow);
+  color: var(--accent-bright);
+  font-weight: 600;
+  border-left: 3px solid var(--accent);
+  padding-left: calc(0.5rem - 3px);
+  transform: scale(1.01);
+}
+.lyrics-display .lyric-line .word-highlight {
+  background: var(--gold-glow);
+  border-radius: 3px;
+  padding: 0 2px;
+  transition: background 0.15s;
+}
+
+/* ═══════════════════════════════════════════
+   FILL IN THE BLANKS
+   ═══════════════════════════════════════════ */
+.fill-blank-sentence {
+  font-size: 1.05rem; line-height: 2;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  margin-bottom: 1rem;
+}
+.blank-input {
+  display: inline-block;
+  min-width: 100px;
+  padding: 0.2rem 0.5rem;
+  background: var(--surface-glass);
+  border: 2px dashed var(--muted);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  text-align: center;
+  transition: all var(--transition);
+}
+.blank-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.blank-input.correct {
+  border-color: var(--success);
+  background: var(--success-soft);
+  border-style: solid;
+}
+.blank-input.incorrect {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  border-style: solid;
+}
+
+/* ═══════════════════════════════════════════
+   FLASHCARDS
+   ═══════════════════════════════════════════ */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%; max-width: 400px;
+  height: 280px;
+  margin: 0 auto 1.5rem;
+  cursor: pointer;
+}
+.flashcard {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.flashcard-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 2rem;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--surface-glass-border);
+  text-align: center;
+}
+.flashcard-front {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.flashcard-front::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('grass-texture.jpg') center/cover no-repeat;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.flashcard-front > * { position: relative; z-index: 1; }
+.flashcard-front .word {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.flashcard-front .hint {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+.flashcard-back {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  color: var(--fg);
+  transform: rotateY(180deg);
+}
+.flashcard-back .translation {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.flashcard-back .example {
+  font-size: 0.9rem;
+  color: var(--fg-secondary);
+  font-style: italic;
+}
+.flashcard-nav {
+  display: flex; justify-content: center; gap: 1rem;
+  margin-top: 1rem;
+}
+.flashcard-counter {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* ═══════════════════════════════════════════
+   MATCHING GAME
+   ═══════════════════════════════════════════ */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+.match-item {
+  padding: 1rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 0.95rem;
+  user-select: none;
+}
+.match-item:hover { background: var(--surface-hover); border-color: var(--accent); }
+.match-item.selected {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.match-item.matched {
+  border-color: var(--success);
+  background: var(--success-soft);
+  pointer-events: none;
+  opacity: 0.7;
+}
+.match-item.wrong {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* ═══════════════════════════════════════════
+   LYRICS ORDER (drag & drop)
+   ═══════════════════════════════════════════ */
+.order-list {
+  list-style: none; padding: 0;
+}
+.order-item {
+  padding: 0.8rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  cursor: grab;
+  transition: all var(--transition);
+  font-size: 0.95rem;
+}
+.order-item:active { cursor: grabbing; }
+.order-item.dragging {
+  opacity: 0.5;
+  border-color: var(--accent);
+}
+.order-item .drag-handle {
+  color: var(--muted);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.order-item .line-num {
+  width: 24px; height: 24px;
+  background: var(--accent-glow);
+  color: var(--accent-bright);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   KARAOKE
+   ═══════════════════════════════════════════ */
+.karaoke-display {
+  font-size: 1.4rem;
+  line-height: 2.4;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  min-height: 200px;
+}
+.karaoke-display .karaoke-word {
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.15s;
+  margin: 0 2px;
+}
+.karaoke-display .karaoke-word.sung {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+.karaoke-display .karaoke-word.current {
+  background: var(--gold-glow);
+  color: var(--gold);
+  transform: scale(1.1);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════
+   GRAMMAR CARDS
+   ═══════════════════════════════════════════ */
+.grammar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent);
+}
+.grammar-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-bright);
+}
+.grammar-card .grammar-rule {
+  font-size: 0.9rem;
+  color: var(--fg-secondary);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: var(--surface-glass);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+}
+.grammar-card .example-sentence {
+  font-style: italic;
+  color: var(--fg-secondary);
+  font-size: 0.9rem;
+}
+.grammar-card .example-sentence em {
+  color: var(--accent-bright);
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════════
+   QUIZ
+   ═══════════════════════════════════════════ */
+.quiz-question {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.quiz-question h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.quiz-option {
+  display: block; width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--fg);
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-bottom: 0.5rem;
+}
+.quiz-option:hover { background: var(--surface-hover); border-color: var(--accent); }
+.quiz-option.selected { border-color: var(--accent); background: var(--accent-glow); }
+.quiz-option.correct-answer { border-color: var(--success); background: var(--success-soft); color: var(--success); }
+.quiz-option.wrong-answer { border-color: var(--danger); background: var(--danger-soft); color: var(--danger); }
+.quiz-option:disabled { cursor: default; }
+
+/* ═══════════════════════════════════════════
+   CULTURAL NOTES
+   ═══════════════════════════════════════════ */
+.culture-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.culture-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+}
+.culture-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+.culture-card p {
+  font-size: 0.9rem;
+  color: var(--fg-secondary);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════
+   SPEAKING PRACTICE
+   ═══════════════════════════════════════════ */
+.speaking-question {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.speaking-question .question-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.speaking-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--fg);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  resize: vertical;
+  min-height: 60px;
+  transition: border-color var(--transition);
+}
+.speaking-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ═══════════════════════════════════════════
+   FINAL CHALLENGE
+   ═══════════════════════════════════════════ */
+.challenge-round {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.challenge-round h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--accent-bright);
+}
+.medal-display {
+  display: flex; justify-content: center;
+  gap: 2rem; padding: 2rem 0;
+}
+.medal-item {
+  text-align: center;
+  opacity: 0.3;
+  transition: all 0.5s;
+}
+.medal-item.earned { opacity: 1; transform: scale(1.1); }
+.medal-item .medal-icon { font-size: 3rem; }
+.medal-item .medal-label {
+  font-size: 0.8rem;
+  color: var(--fg-secondary);
+  margin-top: 0.3rem;
+}
+
+/* ═══════════════════════════════════════════
+   CONFETTI
+   ═══════════════════════════════════════════ */
+.confetti-container {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  width: 10px; height: 10px;
+  opacity: 0;
+  animation: confettiFall 3s ease forwards;
+}
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(-20px) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+}
+
+/* ═══════════════════════════════════════════
+   FEEDBACK TOAST
+   ═══════════════════════════════════════════ */
+.toast-feedback {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600; font-size: 0.9rem;
+  z-index: 9998;
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.toast-feedback.success { background: var(--success); color: #fff; }
+.toast-feedback.error { background: var(--danger); color: #fff; }
+.toast-feedback.info { background: var(--accent); color: #fff; }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes toastOut {
+  from { opacity: 1; }
+  to { opacity: 0; pointer-events: none; }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .section-panel { padding: 1.25rem 1rem 3rem; }
+  .glass-card { padding: 1.25rem; }
+  .flashcard-container { height: 240px; }
+  .flashcard-front .word { font-size: 1.5rem; }
+  .match-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  .karaoke-display { font-size: 1.1rem; }
+  .medal-display { gap: 1rem; }
+  .medal-item .medal-icon { font-size: 2.2rem; }
+}
+
+/* ═══════════════════════════════════════════
+   HINT BUTTON
+   ═══════════════════════════════════════════ */
+.hint-btn {
+  padding: 0.3rem 0.7rem;
+  background: var(--warn-soft);
+  border: 1px solid rgba(255,167,38,0.3);
+  border-radius: 999px;
+  color: var(--warn);
+  font-size: 0.75rem; font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.hint-btn:hover { background: rgba(255,167,38,0.2); }
+
+/* Pronunciation tips */
+.pronunciation-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.pronunciation-box .phonetic {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--accent-bright);
+  margin-bottom: 0.3rem;
+}
+.pronunciation-box .tip {
+  font-size: 0.85rem;
+  color: var(--fg-secondary);
+}
+
+/* ═══════════════════════════════════════════
+   SUBTITLES (English translations)
+   ═══════════════════════════════════════════ */
+.subtitle {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+.subtitle-inline {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  display: block;
+  margin-top: 0.2rem;
+}
+.lyric-subtitle {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  padding-left: 0.5rem;
+  line-height: 1.3;
+  margin-top: -0.2rem;
+  margin-bottom: 0.3rem;
+}
+.section-header .section-subtitle {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.2rem;
+}
+.quiz-question .q-subtitle {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+.speaking-question .q-subtitle {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.15rem;
+}
+
+/* Section nav buttons */
+.section-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="global-progress"><div class="fill" id="progress-fill"></div></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="logo">⚽ Español con Diego</div>
+  <div class="score-badge" id="score-display">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span id="score-value">0</span> pts
+  </div>
+  <button class="theme-toggle" id="theme-btn" aria-label="Cambiar tema">🌙</button>
+</div>
+
+<!-- NAVIGATION TABS -->
+<div class="nav-tabs-custom" id="nav-tabs">
+  <button class="nav-tab-btn active" data-section="intro">🎵 Intro <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="listening">🎧 Escuchar <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="fillblanks">✍️ Completar <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="flashcards">🃏 Tarjetas <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="matching">🎮 Emparejar <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="lyricsorder">🧩 Ordenar <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="karaoke">🎤 Karaoke <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="pronunciation">🔊 Pronunciación <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="grammar">📚 Gramática <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="culture">⚽ Cultura <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="quizzes">❓ Cuestionario <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="speaking">💬 Hablar <span class="tab-check">✓</span></button>
+  <button class="nav-tab-btn" data-section="challenge">🏆 Desafío <span class="tab-check">✓</span></button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: INTRO
+     ═══════════════════════════════════════════ -->
+<div class="section-panel active" id="section-intro" data-od-id="intro-section">
+  <div class="intro-hero glass-card">
+    <div class="song-badge">🎵 Cumbia • Fútbol</div>
+    <h1>Borracho</h1>
+    <p class="artist">Yerba Brava</p>
+    <div class="intro-meta">
+      <div class="meta-chip">📊 Nivel: <strong>A2 – B1</strong></div>
+      <div class="meta-chip">⏱ Tiempo: <strong>~45 min</strong></div>
+      <div class="meta-chip">📝 Actividades: <strong>13</strong></div>
+    </div>
+    <p class="subtitle" style="text-align:center;">Level: A2 – B1 · Time: ~45 min · Activities: 13</p>
+
+    <div style="margin:2rem auto;max-width:560px;">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--card-radius);border:1px solid var(--border);">
+        <iframe src="https://player.vimeo.com/video/173504307?h=2e4c39019c" title="Yerba Brava - La Cumbia de los Trapos ⚽ / Letra" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p class="subtitle" style="text-align:center;margin-top:0.5rem;">🎵 Escucha la canción original · Listen to the original song</p>
+      <p class="subtitle" style="text-align:center;font-size:0.72rem;">Uso exclusivamente con fines educativos · For educational purposes only</p>
+    </div>
+    <div class="intro-objectives">
+      <h3>Objetivos de aprendizaje</h3>
+      <p class="subtitle" style="text-align:center;margin-bottom:1rem;">Learning Objectives</p>
+      <ul>
+        <li>Vocabulario del fútbol y las barras bravas <span class="subtitle-inline">Football and barras bravas vocabulary</span></li>
+        <li>Gramática: ir + gerundio, ir a + infinitivo <span class="subtitle-inline">Grammar: ir + gerund, ir a + infinitive</span></li>
+        <li>Expresiones coloquiales argentinas <span class="subtitle-inline">Argentine colloquial expressions</span></li>
+        <li>Pronunciación de sonidos del español rioplatense <span class="subtitle-inline">Rioplatense Spanish pronunciation</span></li>
+        <li>Cultura del fútbol en Sudamérica <span class="subtitle-inline">Football culture in South America</span></li>
+      </ul>
+    </div>
+    <div style="margin-top:2rem;">
+      <button class="btn-primary-custom" onclick="goToSection('listening')">Comenzar lección →</button>
+      <div class="subtitle" style="margin-top:0.5rem;">Start lesson →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: LISTENING
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-listening" data-od-id="listening-section">
+  <div class="section-header">
+    <div class="section-icon">🎧</div>
+    <h2>Actividad de escucha</h2>
+    <div class="section-subtitle">Listening Activity</div>
+    <p>Escucha la canción, luego vuelve a escuchar con las letras resaltadas.</p>
+    <p class="subtitle">Listen to the song, then listen again with the lyrics highlighted.</p>
+  </div>
+
+  <div class="audio-player-box glass-card" style="margin-bottom:1.5rem;">
+    <audio id="song-audio" preload="metadata">
+      <source src="Yerba-Brava---La-Cumbia-de-los-Trapos-_-Letra.MP3" type="audio/mpeg">
+    </audio>
+    <div class="audio-controls">
+      <button class="play-btn" id="listen-play-btn" onclick="toggleListenPlayback()">▶</button>
+      <div class="progress-bar-container" id="listen-progress" onclick="seekListen(event)">
+        <div class="progress-bar-fill" id="listen-progress-fill"></div>
+      </div>
+      <span class="time-display" id="listen-time">0:00 / 4:13</span>
+      <button class="speed-btn active" data-speed="1" onclick="setSpeed(this, 1)">1×</button>
+      <button class="speed-btn" data-speed="0.75" onclick="setSpeed(this, 0.75)">0.75×</button>
+      <button class="speed-btn" data-speed="0.5" onclick="setSpeed(this, 0.5)">0.5×</button>
+    </div>
+    <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+      <button class="btn-secondary-custom" onclick="replayLine()">🔁 Repetir línea</button>
+      <button class="btn-secondary-custom" onclick="toggleHighlightMode()">📝 Resaltar letras</button>
+      <span class="subtitle" style="display:flex;align-items:center;">Replay line · Highlight lyrics</span>
+    </div>
+  </div>
+
+  <div class="lyrics-display glass-card" id="listening-lyrics">
+    <div class="lyric-line" data-line="0">Esta es la cumbia de los trapos<div class="lyric-subtitle">This is the cumbia of the flags</div></div>
+    <div class="lyric-line" data-line="1">Se viene el fin de semana<div class="lyric-subtitle">The weekend is coming</div></div>
+    <div class="lyric-line" data-line="2">Todo' a la cancha vamos a ir<div class="lyric-subtitle">Everyone's going to the pitch</div></div>
+    <div class="lyric-line" data-line="3">Ya está todo preparado<div class="lyric-subtitle">Everything's already prepared</div></div>
+    <div class="lyric-line" data-line="4">El bombo y el trapo para salir<div class="lyric-subtitle">The drum and the flag to head out</div></div>
+    <div class="lyric-line" data-line="5">Al equipo que tiene más aguante<div class="lyric-subtitle">To the team that has the most loyalty</div></div>
+    <div class="lyric-line" data-line="6">Lo llevo dentro del corazón<div class="lyric-subtitle">I carry it inside my heart</div></div>
+    <div class="lyric-line" data-line="7">Saltando, cantando, prendidos a los trapos<div class="lyric-subtitle">Jumping, singing, holding on to the flags</div></div>
+    <div class="lyric-line" data-line="8">Dejamos el alma en el tablón<div class="lyric-subtitle">We leave our soul in the stands</div></div>
+    <div class="lyric-line" data-line="9">Borracho, yo voy cantando<div class="lyric-subtitle">Drunk, I go singing along</div></div>
+    <div class="lyric-line" data-line="10">Con mis amigos, voy festejando un triunfo más<div class="lyric-subtitle">With my friends, I'm celebrating one more victory</div></div>
+    <div class="lyric-line" data-line="11">Loco soy por mi trapo<div class="lyric-subtitle">I'm crazy for my flag</div></div>
+    <div class="lyric-line" data-line="12">Te sigo a muerte, por donde vas<div class="lyric-subtitle">I follow you to the death, wherever you go</div></div>
+    <div class="lyric-line" data-line="13">Porque la vuelta queremos dar<div class="lyric-subtitle">Because we want to make the turn</div></div>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('intro')">← Intro</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('listening','fillblanks')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: FILL IN THE BLANKS
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-fillblanks" data-od-id="fillblanks-section">
+  <div class="section-header">
+    <div class="section-icon">✍️</div>
+    <h2>Completar la letra</h2>
+    <div class="section-subtitle">Fill in the Blanks</div>
+    <p>Rellena las palabras que faltan en la canción.</p>
+    <p class="subtitle">Fill in the missing words from the song.</p>
+  </div>
+
+  <div id="fillblanks-container"></div>
+  <div style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+    <button class="btn-primary-custom" onclick="checkFillBlanks()">Comprobar respuestas</button>
+    <button class="btn-secondary-custom" onclick="showFillBlanksHints()">💡 Pistas</button>
+    <span id="fillblanks-score" style="display:flex;align-items:center;font-weight:600;color:var(--gold);"></span>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('listening')">← Escuchar</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('fillblanks','flashcards')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: FLASHCARDS
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-flashcards" data-od-id="flashcards-section">
+  <div class="section-header">
+    <div class="section-icon">🃏</div>
+    <h2>Tarjetas de vocabulario</h2>
+    <div class="section-subtitle">Vocabulary Flashcards</div>
+    <p>Haz clic en la tarjeta para ver la traducción.</p>
+    <p class="subtitle">Click the card to see the translation.</p>
+  </div>
+
+  <div class="flashcard-counter" id="flashcard-counter">1 / 10</div>
+  <div class="flashcard-container" onclick="flipFlashcard()">
+    <div class="flashcard" id="flashcard">
+      <div class="flashcard-face flashcard-front">
+        <div class="word" id="fc-word">cancha</div>
+        <div class="hint">Toca para voltear</div>
+      </div>
+      <div class="flashcard-face flashcard-back">
+        <div class="translation" id="fc-translation">football pitch / field</div>
+        <div class="example" id="fc-example">"Todo' a la cancha vamos a ir"</div>
+      </div>
+    </div>
+  </div>
+  <div class="flashcard-nav">
+    <button class="btn-secondary-custom" onclick="prevFlashcard()">← Anterior</button>
+    <button class="btn-primary-custom" onclick="nextFlashcard()">Siguiente →</button>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('fillblanks')">← Completar</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('flashcards','matching')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: MATCHING GAME
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-matching" data-od-id="matching-section">
+  <div class="section-header">
+    <div class="section-icon">🎮</div>
+    <h2>Juego de emparejar</h2>
+    <div class="section-subtitle">Matching Game</div>
+    <p>Empareja cada palabra en español con su significado en inglés.</p>
+    <p class="subtitle">Match each Spanish word with its English meaning.</p>
+  </div>
+
+  <div id="matching-game">
+    <div class="match-grid" id="match-spanish"></div>
+    <div style="text-align:center;padding:1rem 0;font-size:1.2rem;color:var(--muted);">↔</div>
+    <div class="match-grid" id="match-english"></div>
+  </div>
+  <div style="margin-top:1rem; display:flex; gap:0.75rem; align-items:center;">
+    <button class="btn-secondary-custom" onclick="resetMatching()">🔄 Reiniciar</button>
+    <span id="matching-score" style="font-weight:600;color:var(--gold);"></span>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('flashcards')">← Tarjetas</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('matching','lyricsorder')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: LYRICS ORDER
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-lyricsorder" data-od-id="lyricsorder-section">
+  <div class="section-header">
+    <div class="section-icon">🧩</div>
+    <h2>Ordena la letra</h2>
+    <div class="section-subtitle">Put the Lyrics in Order</div>
+    <p>Arrastra las líneas para reconstruir el estribillo en el orden correcto.</p>
+    <p class="subtitle">Drag the lines to rebuild the chorus in the correct order.</p>
+  </div>
+
+  <ul class="order-list" id="order-list"></ul>
+  <div style="margin-top:1rem; display:flex; gap:0.75rem; align-items:center;">
+    <button class="btn-primary-custom" onclick="checkLyricsOrder()">Comprobar orden</button>
+    <button class="btn-secondary-custom" onclick="resetLyricsOrder()">🔄 Reiniciar</button>
+    <span id="lyrics-order-score" style="font-weight:600;color:var(--gold);"></span>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('matching')">← Emparejar</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('lyricsorder','karaoke')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: KARAOKE
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-karaoke" data-od-id="karaoke-section">
+  <div class="section-header">
+    <div class="section-icon">🎤</div>
+    <h2>Modo karaoke</h2>
+    <div class="section-subtitle">Karaoke Mode</div>
+    <p>Sigue la letra mientras se resalta cada palabra con la música.</p>
+    <p class="subtitle">Follow the lyrics as each word is highlighted with the music.</p>
+  </div>
+
+  <div class="audio-player-box glass-card" style="margin-bottom:1.5rem;">
+    <audio id="karaoke-audio" preload="metadata">
+      <source src="Yerba-Brava---La-Cumbia-de-los-Trapos-_-Letra.MP3" type="audio/mpeg">
+    </audio>
+    <div class="audio-controls">
+      <button class="play-btn" id="karaoke-play-btn" onclick="toggleKaraoke()">▶</button>
+      <div class="progress-bar-container" id="karaoke-progress">
+        <div class="progress-bar-fill" id="karaoke-progress-fill"></div>
+      </div>
+      <span class="time-display" id="karaoke-time">0:00</span>
+    </div>
+    <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+      <button class="btn-secondary-custom" onclick="karaokeRepeatLine()">🔁 Línea <span class="subtitle-inline">Line</span></button>
+      <button class="btn-secondary-custom" onclick="karaokeRepeatVerse()">🔂 Estrofa <span class="subtitle-inline">Verse</span></button>
+      <button class="btn-secondary-custom" onclick="karaokeFullSong()">🎵 Canción completa <span class="subtitle-inline">Full song</span></button>
+    </div>
+  </div>
+
+  <div class="karaoke-display glass-card" id="karaoke-display"></div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('lyricsorder')">← Ordenar</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('karaoke','pronunciation')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: PRONUNCIATION
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-pronunciation" data-od-id="pronunciation-section">
+  <div class="section-header">
+    <div class="section-icon">🔊</div>
+    <h2>Práctica de pronunciación</h2>
+    <div class="section-subtitle">Pronunciation Practice</div>
+    <p>Practica pronunciar las expresiones clave de la canción.</p>
+    <p class="subtitle">Practice pronouncing key expressions from the song.</p>
+  </div>
+
+  <div id="pronunciation-container"></div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('karaoke')">← Karaoke</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('pronunciation','grammar')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: GRAMMAR
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-grammar" data-od-id="grammar-section">
+  <div class="section-header">
+    <div class="section-icon">📚</div>
+    <h2>Descubrimiento gramatical</h2>
+    <div class="section-subtitle">Grammar Discovery</div>
+    <p>La gramática que aparece naturalmente en la canción.</p>
+    <p class="subtitle">The grammar that naturally appears in the song.</p>
+  </div>
+
+  <div id="grammar-container"></div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('pronunciation')">← Pronunciación</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('grammar','culture')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: CULTURAL NOTES
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-culture" data-od-id="culture-section">
+  <div class="section-header">
+    <div class="section-icon">⚽</div>
+    <h2>Notas culturales</h2>
+    <div class="section-subtitle">Cultural Notes</div>
+    <p>La cultura del fútbol en los países hispanohablantes.</p>
+    <p class="subtitle">Football culture in Spanish-speaking countries.</p>
+  </div>
+
+  <div id="culture-container"></div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('grammar')">← Gramática</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('culture','quizzes')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: QUIZZES
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-quizzes" data-od-id="quizzes-section">
+  <div class="section-header">
+    <div class="section-icon">❓</div>
+    <h2>Cuestionario interactivo</h2>
+    <div class="section-subtitle">Interactive Quiz</div>
+    <p>Pon a prueba lo que has aprendido sobre la canción.</p>
+    <p class="subtitle">Test what you've learned about the song.</p>
+  </div>
+
+  <div id="quizzes-container"></div>
+  <div style="margin-top:1rem;">
+    <button class="btn-primary-custom" onclick="checkQuizzes()">Comprobar respuestas</button>
+    <span id="quizzes-score" style="margin-left:1rem;font-weight:600;color:var(--gold);"></span>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('culture')">← Cultura</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('quizzes','speaking')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: SPEAKING PRACTICE
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-speaking" data-od-id="speaking-section">
+  <div class="section-header">
+    <div class="section-icon">💬</div>
+    <h2>Práctica de habla</h2>
+    <div class="section-subtitle">Speaking Practice</div>
+    <p>Responde las preguntas relacionadas con la canción.</p>
+    <p class="subtitle">Answer questions related to the song.</p>
+  </div>
+
+  <div id="speaking-container"></div>
+  <div style="margin-top:1rem;">
+    <button class="btn-primary-custom" onclick="submitSpeaking()">Enviar respuestas</button>
+    <span id="speaking-score" style="margin-left:1rem;font-weight:600;color:var(--gold);"></span>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('quizzes')">← Cuestionario</button>
+    <button class="btn-primary-custom" onclick="completeAndNext('speaking','challenge')">Siguiente →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: FINAL CHALLENGE
+     ═══════════════════════════════════════════ -->
+<div class="section-panel" id="section-challenge" data-od-id="challenge-section">
+  <div class="section-header">
+    <div class="section-icon">🏆</div>
+    <h2>Desafío final</h2>
+    <div class="section-subtitle">Final Challenge</div>
+    <p>Completa los retos para ganar tu medalla.</p>
+    <p class="subtitle">Complete the challenges to earn your medal.</p>
+  </div>
+
+  <div id="challenge-container"></div>
+  <div style="margin-top:1rem;">
+    <button class="btn-primary-custom" onclick="checkChallenge()">Comprobar desafío</button>
+    <span id="challenge-score" style="margin-left:1rem;font-weight:600;color:var(--gold);"></span>
+  </div>
+
+  <div class="medal-display" id="medal-display">
+    <div class="medal-item" id="medal-bronze">
+      <div class="medal-icon">🥉</div>
+      <div class="medal-label">Bronce</div>
+    </div>
+    <div class="medal-item" id="medal-silver">
+      <div class="medal-icon">🥈</div>
+      <div class="medal-label">Plata</div>
+    </div>
+    <div class="medal-item" id="medal-gold">
+      <div class="medal-icon">🥇</div>
+      <div class="medal-label">Oro</div>
+    </div>
+    <div class="medal-item" id="medal-champion">
+      <div class="medal-icon">🏆</div>
+      <div class="medal-label">Campeón</div>
+    </div>
+  </div>
+
+  <div class="section-nav">
+    <button class="btn-secondary-custom" onclick="goToSection('speaking')">← Hablar</button>
+    <button class="btn-primary-custom" onclick="showFinalResults()">🎉 Ver resultados</button>
+  </div>
+</div>
+
+<!-- CONFETTI CONTAINER -->
+<div class="confetti-container" id="confetti-container"></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA & STATE
+   ═══════════════════════════════════════════ */
+const SONG_LINES = [
+  "Esta es la cumbia de los trapos",
+  "Se viene el fin de semana",
+  "Todo' a la cancha vamos a ir",
+  "Ya está todo preparado",
+  "El bombo y el trapo para salir",
+  "Al equipo que tiene más aguante",
+  "Lo llevo dentro del corazón",
+  "Saltando, cantando, prendidos a los trapos",
+  "Dejamos el alma en el tablón",
+  "Borracho, yo voy cantando",
+  "Con mis amigos, voy festejando un triunfo más",
+  "Loco soy por mi trapo",
+  "Te sigo a muerte, por donde vas",
+  "Porque la vuelta queremos dar"
+];
+
+const VOCAB = [
+  { es: "cancha", en: "football pitch", example: "Todo' a la cancha vamos a ir", phonetic: "/ˈkan.tʃa/", tip: "La 'ch' se pronuncia como en 'chart' en inglés." },
+  { es: "trapos", en: "flags / scarves", example: "Esta es la cumbia de los trapos", phonetic: "/ˈtra.pos/", tip: "La 'tr' es una consonante fuerte, la 'o' es abierta." },
+  { es: "bombo", en: "bass drum", example: "El bombo y el trapo para salir", phonetic: "/ˈbom.bo/", tip: "Doble 'o' fuerte, sin nasalizar demasiado." },
+  { es: "equipo", en: "team", example: "Al equipo que tiene más aguante", phonetic: "/e.ˈki.po/", tip: "La 'qu' suena como 'k'. Acento en la 'i'." },
+  { es: "aguante", en: "endurance / loyalty", example: "Al equipo que tiene más aguante", phonetic: "/a.ˈɡwan.te/", tip: "La 'gu' antes de 'a' suena fuerte como 'g' en 'gate'." },
+  { es: "corazón", en: "heart", example: "Lo llevo dentro del corazón", phonetic: "/ko.ɾa.ˈθon/", tip: "La 'z' en España suena como 'th' en 'think'." },
+  { es: "saltando", en: "jumping", example: "Saltando, cantando, prendidos a los trapos", phonetic: "/sal.ˈtan.do/", tip: "Gerundio regular: -ando. La 'a' es abierta." },
+  { es: "tablón", en: "stands / bleachers", example: "Dejamos el alma en el tablón", phonetic: "/ta.ˈβlon/", tip: "La 'b' después de 'a' se suaviza, casi como una 'v'." },
+  { es: "borracho", en: "drunk", example: "Borracho, yo voy cantando", phonetic: "/bo.ˈra.tʃo/", tip: "Doble 'r' vibrante. La 'ch' es como en español." },
+  { es: "triunfo", en: "triumph / victory", example: "Voy festejando un triunfo más", phonetic: "/tɾjum.fo/", tip: "La 'tr' es fuerte. La 'u' es corta." }
+];
+
+const GRAMMAR = [
+  {
+    title: "ir + gerundio (ir +ando/-iendo)",
+    rule: "Expresa acción en progreso: 'voy + gerundio' = 'I am +ing'",
+    examples: [
+      { es: "Yo <em>voy cantando</em>", en: "I am singing (while going)" },
+      { es: "Voy <em>festejando</em> un triunfo más", en: "I am celebrating one more victory" }
+    ]
+  },
+  {
+    title: "ir a + infinitivo",
+    rule: "Futuro cercano: 'ir a + verbo' = 'going to + verb'",
+    examples: [
+      { es: "A la cancha <em>vamos a ir</em>", en: "We are going to go to the pitch" }
+    ]
+  },
+  {
+    title: "Presente de indicativo",
+    rule: "Acciones habituales o presentes. 'Llevo' = I carry/feel",
+    examples: [
+      { es: "<em>Llevo</em> dentro del corazón", en: "I carry it inside my heart" },
+      { es: "<em>Te sigo</em> a muerte", en: "I follow you to the death" }
+    ]
+  },
+  {
+    title: "Expresiones con 'voy'",
+    rule: "'Voy' puede significar 'I go' o usarse con gerundio para acciones simultáneas",
+    examples: [
+      { es: "Yo <em>voy</em> cantando", en: "I go singing / I am singing along" },
+      { es: "<em>Vamos</em> a la cancha", en: "We go to the pitch" }
+    ]
+  },
+  {
+    title: "Vocabulario del fútbol",
+    rule: "Expresiones típicas de las barras bravas argentinas",
+    examples: [
+      { es: "Tener <em>aguante</em>", en: "To have loyalty / endurance" },
+      { es: "Dejar el <em>alma</em> en el tablón", en: "To give your all in the stands" }
+    ]
+  }
+];
+
+const CULTURE = [
+  {
+    title: "🏟️ Las Barras Bravas",
+    titleEn: "The Barras Bravas",
+    text: "Las barras bravas son grupos organizados de hinchas (fans) en Argentina y otros países sudamericanos. Se caracterizan por su pasión extrema, los bombos (drums), los trapos (flags/scarves) y las canciones que cantan durante todo el partido. La canción 'Borracho' de Yerba Brava representa perfectamente esta cultura.",
+    textEn: "Barras bravas are organized groups of fans in Argentina and other South American countries. They are known for their extreme passion, drums, flags/scarves, and the songs they sing throughout the match. The song 'Borracho' by Yerba Brava perfectly represents this culture."
+  },
+  {
+    title: "🎵 La Cumbia y el Fútbol",
+    titleEn: "Cumbia and Football",
+    text: "La cumbia es un género musical originario de Colombia que se ha convertido en el himno de las barras bravas argentinas. Grupos como Yerba Brava, La Camisa Negra y Los Pibes Chorros crean canciones que unen a los hinchas. El bombo (bass drum) es el instrumento emblemático de estas celebraciones.",
+    textEn: "Cumbia is a musical genre from Colombia that has become the anthem of Argentine barras bravas. Groups like Yerba Brava, La Camisa Negra, and Los Pibes Chorros create songs that unite fans. The bass drum is the iconic instrument of these celebrations."
+  },
+  {
+    title: "🗣️ Expresiones Argentinas",
+    titleEn: "Argentine Expressions",
+    text: "La canción usa expresiones típicas del español rioplatense: 'aguante' (lealtad/paciencia), 'trapos' (banderas del equipo), 'tablón' (las gradas del estadio), y 'voy cantando' (gerundio argentino que describe una acción en progreso mientras se hace otra cosa).",
+    textEn: "The song uses typical Rioplatense Spanish expressions: 'aguante' (loyalty/patience), 'trapos' (team flags), 'tablón' (stadium stands), and 'voy cantando' (Argentine gerund describing an action in progress while doing something else)."
+  },
+  {
+    title: "⚽ El Estadio como Hogar",
+    titleEn: "The Stadium as Home",
+    text: "Para los hinchas sudamericanos, el estadio es un segundo hogar. 'Dejamos el alma en el tablón' significa que dan todo su ser apoyando al equipo. La frase 'te sigo a muerte' refleja la lealtad absoluta que define la cultura futbolera sudamericana.",
+    textEn: "For South American fans, the stadium is a second home. 'Dejamos el alma en el tablón' means they give their all supporting the team. The phrase 'te sigo a muerte' reflects the absolute loyalty that defines South American football culture."
+  }
+];
+
+const FILL_BLANKS_DATA = [
+  { template: "Esta es la _____ de los trapos", en: "This is the cumbia of the flags", answer: "cumbia", hint: "Género musical colombiano" },
+  { template: "Se viene el _____ de semana", en: "The weekend is coming", answer: "fin", hint: "El último día" },
+  { template: "Todo' a la _____ vamos a ir", en: "Everyone's going to the pitch", answer: "cancha", hint: "Donde se juega el fútbol" },
+  { template: "El _____ y el trapo para salir", en: "The drum and the flag to head out", answer: "bombo", hint: "Instrumento grande" },
+  { template: "Al _____ que tiene más aguante", en: "To the team that has the most loyalty", answer: "equipo", hint: "Grupo de jugadores" },
+  { template: "Lo llevo dentro del _____", en: "I carry it inside my heart", answer: "corazón", hint: "Órgano del cuerpo" },
+  { template: "_____ , cantando, prendidos a los trapos", en: "Jumping, singing, holding on to the flags", answer: "saltando", hint: "Gerundio de 'saltar'" },
+  { template: "Dejamos el _____ en el tablón", en: "We leave our soul in the stands", answer: "alma", hint: "Parte espiritual" },
+  { template: "Borracho, yo voy _____", en: "Drunk, I go singing along", answer: "cantando", hint: "Gerundio de 'cantar'" },
+  { template: "Voy festejando un _____ más", en: "I'm celebrating one more victory", answer: "triunfo", hint: "Victoria, ganar" }
+];
+
+const MATCH_DATA = [
+  { es: "cancha", en: "football pitch" },
+  { es: "trapos", en: "flags / scarves" },
+  { es: "bombo", en: "bass drum" },
+  { es: "equipo", en: "team" },
+  { es: "aguante", en: "loyalty" },
+  { es: "corazón", en: "heart" },
+  { es: "tablón", en: "stands" },
+  { es: "borracho", en: "drunk" }
+];
+
+const LYRICS_ORDER_CORRECT = [
+  "Borracho, yo voy cantando",
+  "Con mis amigos, voy festejando un triunfo más",
+  "Loco soy por mi trapo",
+  "Te sigo a muerte, por donde vas",
+  "Porque la vuelta queremos dar"
+];
+
+const QUIZ_DATA = [
+  { q: "¿Qué significa 'cancha'?", en: "What does 'cancha' mean?", type: "mc", options: ["Casa", "Campo de fútbol", "Restaurante", "Estación de tren"], correct: 1 },
+  { q: "'Voy cantando' usa la estructura gramatical:", en: "'Voy cantando' uses the grammatical structure:", type: "mc", options: ["ir + infinitivo", "ir + gerundio", "presente simple", "futuro"], correct: 1 },
+  { q: "¿Qué son los 'trapos' en la cultura del fútbol?", en: "What are 'trapos' in football culture?", type: "mc", options: ["Ropa vieja", "Banderas y bufandas del equipo", "Zapatillas", "Comida"], correct: 1 },
+  { q: "Verdadero o falso: 'aguante' significa 'paciencia y lealtad'.", en: "True or false: 'aguante' means 'patience and loyalty'.", type: "tf", correct: true },
+  { q: "Verdadero o falso: La cumbia es un género musical de México.", en: "True or false: Cumbia is a musical genre from Mexico.", type: "tf", correct: false },
+  { q: "¿Qué instrumento aparece en la canción?", en: "Which instrument appears in the song?", type: "mc", options: ["Guitarra", "Piano", "Bombo", "Violín"], correct: 2 },
+  { q: "Completa: 'Lo llevo dentro del _____'", en: "Complete: 'Lo llevo dentro del _____'", type: "mc", options: ["cabeza", "corazón", "bolsillo", "coche"], correct: 1 },
+  { q: "¿Qué son las 'barras bravas'?", en: "What are 'barras bravas'?", type: "mc", options: ["Equipos de fútbol", "Grupos organizados de hinchas", "Entrenadores", "Arbitros"], correct: 1 }
+];
+
+const SPEAKING_DATA = [
+  { q: "¿Te gusta el fútbol? ¿Por qué sí o por qué no?", en: "Do you like football? Why or why not?", hint: "Usa: 'Me gusta / no me gusta + infinitivo'" },
+  { q: "¿Qué haces los fines de semana?", en: "What do you do on weekends?", hint: "Usa: 'Los fines de semana yo + presente'" },
+  { q: "¿Con quién vas al estadio?", en: "Who do you go to the stadium with?", hint: "Usa: 'Voy al estadio con + persona'" },
+  { q: "¿Cuál es tu equipo favorito? ¿Por qué lo apoyas?", en: "What's your favorite team? Why do you support them?", hint: "Usa: 'Mi equipo favorito es... porque...'" }
+];
+
+const CHALLENGE_ROUNDS = [
+  {
+    title: "Ronda 1: Completa la letra",
+    titleEn: "Round 1: Complete the lyrics",
+    type: "fill",
+    lines: [
+      { display: "Borracho, yo voy _____", en: "Drunk, I go _____", answer: "cantando" },
+      { display: "Con mis amigos, voy _____ un triunfo más", en: "With my friends, I'm _____ one more victory", answer: "festejando" },
+      { display: "_____ soy por mi trapo", en: "_____ I am for my flag", answer: "Loco" },
+      { display: "Te sigo a _____, por donde vas", en: "I follow you to the _____, wherever you go", answer: "muerte" }
+    ]
+  },
+  {
+    title: "Ronda 2: Preguntas de comprensión",
+    titleEn: "Round 2: Comprehension questions",
+    type: "mc",
+    questions: [
+      { q: "¿Qué celebran los protagonistas de la canción?", en: "What are the protagonists of the song celebrating?", options: ["Una fiesta de cumpleaños", "Un triunfo de su equipo", "Una boda", "Una graduación"], correct: 1 },
+      { q: "¿Qué llevan los hinchas al estadio?", en: "What do the fans bring to the stadium?", options: ["Teléfonos", "Bombos y trapos", "Libros", "Maletas"], correct: 1 }
+    ]
+  }
+];
+
+/* State */
+let score = 0;
+let completedSections = new Set();
+let currentFlashcard = 0;
+let matchSelected = null;
+let matchPairsFound = 0;
+let karaokeTimer = null;
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  loadProgress();
+  initAudioListeners();
+  initFillBlanks();
+  initFlashcards();
+  initMatching();
+  initLyricsOrder();
+  initKaraoke();
+  initPronunciation();
+  initGrammar();
+  initCulture();
+  initQuizzes();
+  initSpeaking();
+  initChallenge();
+  updateScore(0);
+
+  document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => goToSection(btn.dataset.section));
+  });
+});
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+function goToSection(id) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('section-' + id);
+  const tab = document.querySelector(`[data-section="${id}"]`);
+  if (panel) panel.classList.add('active');
+  if (tab) {
+    tab.classList.add('active');
+    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function completeAndNext(current, next) {
+  completedSections.add(current);
+  markTabCompleted(current);
+  addScore(10);
+  saveProgress();
+  goToSection(next);
+}
+
+function markTabCompleted(id) {
+  const tab = document.querySelector(`[data-section="${id}"]`);
+  if (tab) tab.classList.add('completed');
+}
+
+/* ═══════════════════════════════════════════
+   SCORE
+   ═══════════════════════════════════════════ */
+function addScore(pts) {
+  score += pts;
+  updateScore(0);
+  saveProgress();
+}
+
+function updateScore() {
+  document.getElementById('score-value').textContent = score;
+  document.getElementById('progress-fill').style.width = Math.min(100, (completedSections.size / 13) * 100) + '%';
+}
+
+/* ═══════════════════════════════════════════
+   THEME
+   ═══════════════════════════════════════════ */
+document.getElementById('theme-btn').addEventListener('click', () => {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-btn').textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+});
+
+/* ═══════════════════════════════════════════
+   CONFETTI
+   ═══════════════════════════════════════════ */
+function launchConfetti() {
+  const container = document.getElementById('confetti-container');
+  const colors = ['#4caf50', '#ffd54f', '#ef5350', '#42a5f5', '#ab47bc', '#ff7043'];
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 0.8 + 's';
+    piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.width = (6 + Math.random() * 8) + 'px';
+    piece.style.height = (6 + Math.random() * 8) + 'px';
+    container.appendChild(piece);
+  }
+  setTimeout(() => container.innerHTML = '', 4000);
+}
+
+function showToast(msg, type = 'success') {
+  const toast = document.createElement('div');
+  toast.className = 'toast-feedback ' + type;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2200);
+}
+
+/* ═══════════════════════════════════════════
+   LOCAL STORAGE
+   ═══════════════════════════════════════════ */
+function saveProgress() {
+  const data = { score, completedSections: [...completedSections] };
+  localStorage.setItem('borracho-lesson', JSON.stringify(data));
+}
+
+function loadProgress() {
+  try {
+    const data = JSON.parse(localStorage.getItem('borracho-lesson'));
+    if (data) {
+      score = data.score || 0;
+      completedSections = new Set(data.completedSections || []);
+      completedSections.forEach(id => markTabCompleted(id));
+    }
+  } catch(e) {}
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.getElementById('theme-btn').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+  }
+}
+
+/* ═══════════════════════════════════════════
+   LISTENING
+   ═══════════════════════════════════════════ */
+let highlightMode = false;
+let currentLyricIndex = 0;
+
+// Timestamps for each lyric line (start, end) in seconds
+const LYRIC_TIMINGS = [
+  [0, 14],    // 0: Esta es la cumbia de los trapos
+  [14, 22],   // 1: Se viene el fin de semana
+  [22, 30],   // 2: Todo' a la cancha vamos a ir
+  [30, 38],   // 3: Ya está todo preparado
+  [38, 48],   // 4: El bombo y el trapo para salir
+  [48, 58],   // 5: Al equipo que tiene más aguante
+  [58, 66],   // 6: Lo llevo dentro del corazón
+  [66, 78],   // 7: Saltando, cantando, prendidos a los trapos
+  [78, 88],   // 8: Dejamos el alma en el tablón
+  [88, 100],  // 9: Borracho, yo voy cantando
+  [100, 114], // 10: Con mis amigos, voy festejando un triunfo más
+  [114, 124], // 11: Loco soy por mi trapo
+  [124, 136], // 12: Te sigo a muerte, por donde vas
+  [136, 150], // 13: Porque la vuelta queremos dar
+];
+
+function getSongAudio() { return document.getElementById('song-audio'); }
+
+function toggleListenPlayback() {
+  const audio = getSongAudio();
+  if (!audio) return;
+  if (audio.paused) {
+    audio.play();
+    document.getElementById('listen-play-btn').textContent = '⏸';
+  } else {
+    audio.pause();
+    document.getElementById('listen-play-btn').textContent = '▶';
+  }
+}
+
+function initAudioListeners() {
+  const audio = getSongAudio();
+  if (!audio) return;
+  audio.addEventListener('timeupdate', function() {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    document.getElementById('listen-progress-fill').style.width = pct + '%';
+    document.getElementById('listen-time').textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+    highlightLyricLine(audio.currentTime);
+  });
+  audio.addEventListener('ended', function() {
+    document.getElementById('listen-play-btn').textContent = '▶';
+    showToast('¡Escucha completada!', 'success');
+  });
+  
+  // Click on lyric line to seek
+  document.querySelectorAll('#listening-lyrics .lyric-line').forEach((line, i) => {
+    line.addEventListener('click', function() {
+      if (!audio.duration || !LYRIC_TIMINGS[i]) return;
+      audio.currentTime = LYRIC_TIMINGS[i][0];
+      audio.play();
+      document.getElementById('listen-play-btn').textContent = '⏸';
+    });
+  });
+}
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+function highlightLyricLine(currentTime) {
+  const lines = document.querySelectorAll('#listening-lyrics .lyric-line');
+  if (!lines.length) return;
+  
+  // Find current line based on timestamps
+  let idx = 0;
+  for (let i = 0; i < LYRIC_TIMINGS.length; i++) {
+    if (currentTime >= LYRIC_TIMINGS[i][0] && currentTime < LYRIC_TIMINGS[i][1]) {
+      idx = i;
+      break;
+    }
+  }
+  currentLyricIndex = idx;
+  
+  lines.forEach((l, i) => {
+    const isActive = i === idx;
+    l.classList.toggle('highlighted', highlightMode && isActive);
+    if (highlightMode && isActive) {
+      l.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+}
+
+function replayLine() {
+  const audio = getSongAudio();
+  if (!audio || !audio.duration) return;
+  
+  const [start, end] = LYRIC_TIMINGS[currentLyricIndex] || [0, 14];
+  audio.currentTime = start;
+  audio.play();
+  document.getElementById('listen-play-btn').textContent = '⏸';
+  
+  // Auto-pause at end of line
+  const checkEnd = function() {
+    if (audio.currentTime >= end) {
+      audio.pause();
+      document.getElementById('listen-play-btn').textContent = '▶';
+      audio.removeEventListener('timeupdate', checkEnd);
+    }
+  };
+  audio.addEventListener('timeupdate', checkEnd);
+}
+
+function setSpeed(btn, speed) {
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const audio = getSongAudio();
+  if (audio) audio.playbackRate = speed;
+}
+
+function seekListen(e) {
+  const audio = getSongAudio();
+  if (!audio || !audio.duration) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = pct * audio.duration;
+}
+
+function toggleHighlightMode() {
+  highlightMode = !highlightMode;
+  const btn = document.querySelector('[onclick="toggleHighlightMode()"]');
+  if (btn) {
+    btn.style.background = highlightMode ? 'var(--accent-glow)' : '';
+    btn.style.color = highlightMode ? 'var(--accent-bright)' : '';
+    btn.style.borderColor = highlightMode ? 'rgba(76,175,80,0.3)' : '';
+  }
+  showToast(highlightMode ? 'Resaltado activado — las letras se resaltan con el audio' : 'Resaltado desactivado', 'info');
+}
+
+/* ═══════════════════════════════════════════
+   FILL IN THE BLANKS
+   ═══════════════════════════════════════════ */
+function initFillBlanks() {
+  const container = document.getElementById('fillblanks-container');
+  FILL_BLANKS_DATA.forEach((item, i) => {
+    const parts = item.template.split('_____');
+    const div = document.createElement('div');
+    div.className = 'fill-blank-sentence';
+    div.innerHTML = `
+      <span>${parts[0]}</span>
+      <input class="blank-input" data-index="${i}" data-answer="${item.answer}" placeholder="..." autocomplete="off" spellcheck="false">
+      <span>${parts[1] || ''}</span>
+      <button class="hint-btn" onclick="showHint(this, '${item.hint}')" style="margin-left:0.5rem;">Pista</button>
+      <div class="subtitle-inline">${item.en}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function showHint(btn, hint) {
+  btn.textContent = hint;
+  btn.style.background = 'var(--accent-glow)';
+  btn.style.color = 'var(--accent-bright)';
+  btn.style.borderColor = 'rgba(76,175,80,0.3)';
+}
+
+function checkFillBlanks() {
+  let correct = 0;
+  document.querySelectorAll('.blank-input').forEach(input => {
+    const answer = input.dataset.answer.toLowerCase();
+    const val = input.value.trim().toLowerCase();
+    input.classList.remove('correct', 'incorrect');
+    if (val === answer) {
+      input.classList.add('correct');
+      correct++;
+    } else if (val) {
+      input.classList.add('incorrect');
+    }
+  });
+  const total = FILL_BLANKS_DATA.length;
+  document.getElementById('fillblanks-score').textContent = correct + '/' + total + ' correctas';
+  addScore(correct * 5);
+  if (correct === total) launchConfetti();
+}
+
+function showFillBlanksHints() {
+  document.querySelectorAll('.blank-input').forEach(input => {
+    if (!input.value.trim()) {
+      input.value = input.dataset.answer.charAt(0) + '...';
+      input.style.color = 'var(--muted)';
+    }
+  });
+}
+
+/* ═══════════════════════════════════════════
+   FLASHCARDS
+   ═══════════════════════════════════════════ */
+function initFlashcards() {
+  updateFlashcard();
+}
+
+function updateFlashcard() {
+  const v = VOCAB[currentFlashcard];
+  document.getElementById('fc-word').textContent = v.es;
+  document.getElementById('fc-translation').textContent = v.en;
+  document.getElementById('fc-example').textContent = '"' + v.example + '"';
+  document.getElementById('flashcard-counter').textContent = (currentFlashcard + 1) + ' / ' + VOCAB.length;
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+
+function flipFlashcard() {
+  document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function nextFlashcard() {
+  currentFlashcard = (currentFlashcard + 1) % VOCAB.length;
+  updateFlashcard();
+}
+
+function prevFlashcard() {
+  currentFlashcard = (currentFlashcard - 1 + VOCAB.length) % VOCAB.length;
+  updateFlashcard();
+}
+
+/* ═══════════════════════════════════════════
+   MATCHING GAME
+   ═══════════════════════════════════════════ */
+function initMatching() {
+  const spanish = document.getElementById('match-spanish');
+  const english = document.getElementById('match-english');
+  const shuffledES = [...MATCH_DATA].sort(() => Math.random() - 0.5);
+  const shuffledEN = [...MATCH_DATA].sort(() => Math.random() - 0.5);
+
+  shuffledES.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'match-item';
+    div.textContent = item.es;
+    div.dataset.pair = item.es;
+    div.dataset.side = 'es';
+    div.addEventListener('click', () => selectMatchItem(div));
+    spanish.appendChild(div);
+  });
+
+  shuffledEN.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'match-item';
+    div.textContent = item.en;
+    div.dataset.pair = item.es;
+    div.dataset.side = 'en';
+    div.addEventListener('click', () => selectMatchItem(div));
+    english.appendChild(div);
+  });
+}
+
+function selectMatchItem(el) {
+  if (el.classList.contains('matched')) return;
+  if (matchSelected && matchSelected.dataset.side === el.dataset.side) {
+    matchSelected.classList.remove('selected');
+    matchSelected = el;
+    el.classList.add('selected');
+    return;
+  }
+  if (!matchSelected) {
+    matchSelected = el;
+    el.classList.add('selected');
+    return;
+  }
+  if (matchSelected.dataset.pair === el.dataset.pair) {
+    matchSelected.classList.remove('selected');
+    matchSelected.classList.add('matched');
+    el.classList.add('matched');
+    matchPairsFound++;
+    addScore(5);
+    if (matchPairsFound === MATCH_DATA.length) {
+      showToast('¡Todas emparejadas!', 'success');
+      launchConfetti();
+    }
+  } else {
+    el.classList.add('wrong');
+    matchSelected.classList.add('wrong');
+    const ms = matchSelected;
+    setTimeout(() => {
+      el.classList.remove('wrong');
+      ms.classList.remove('wrong', 'selected');
+    }, 600);
+  }
+  matchSelected = null;
+}
+
+function resetMatching() {
+  matchSelected = null;
+  matchPairsFound = 0;
+  document.getElementById('match-spanish').innerHTML = '';
+  document.getElementById('match-english').innerHTML = '';
+  initMatching();
+}
+
+/* ═══════════════════════════════════════════
+   LYRICS ORDER
+   ═══════════════════════════════════════════ */
+let draggedItem = null;
+
+function initLyricsOrder() {
+  const list = document.getElementById('order-list');
+  list.innerHTML = '';
+  const shuffled = [...LYRICS_ORDER_CORRECT].sort(() => Math.random() - 0.5);
+  shuffled.forEach((line, i) => {
+    const li = document.createElement('li');
+    li.className = 'order-item';
+    li.draggable = true;
+    li.dataset.line = line;
+    li.innerHTML = `<span class="drag-handle">⠿</span><span class="line-num">${i + 1}</span><span>${line}</span>`;
+    li.addEventListener('dragstart', e => { draggedItem = li; li.classList.add('dragging'); });
+    li.addEventListener('dragend', () => { li.classList.remove('dragging'); draggedItem = null; });
+    li.addEventListener('dragover', e => { e.preventDefault(); });
+    li.addEventListener('drop', e => {
+      e.preventDefault();
+      if (draggedItem && draggedItem !== li) {
+        const list = li.parentNode;
+        const items = [...list.children];
+        const fromIdx = items.indexOf(draggedItem);
+        const toIdx = items.indexOf(li);
+        if (fromIdx < toIdx) li.after(draggedItem);
+        else li.before(draggedItem);
+        updateLineNums();
+      }
+    });
+    list.appendChild(li);
+  });
+}
+
+function updateLineNums() {
+  document.querySelectorAll('#order-list .order-item').forEach((li, i) => {
+    li.querySelector('.line-num').textContent = i + 1;
+  });
+}
+
+function checkLyricsOrder() {
+  const items = document.querySelectorAll('#order-list .order-item');
+  let correct = 0;
+  items.forEach((li, i) => {
+    if (li.dataset.line === LYRICS_ORDER_CORRECT[i]) {
+      li.style.borderColor = 'var(--success)';
+      li.style.background = 'var(--success-soft)';
+      correct++;
+    } else {
+      li.style.borderColor = 'var(--danger)';
+      li.style.background = 'var(--danger-soft)';
+    }
+  });
+  document.getElementById('lyrics-order-score').textContent = correct + '/' + LYRICS_ORDER_CORRECT.length + ' correctas';
+  addScore(correct * 5);
+  if (correct === LYRICS_ORDER_CORRECT.length) launchConfetti();
+}
+
+function resetLyricsOrder() {
+  document.getElementById('lyrics-order-score').textContent = '';
+  initLyricsOrder();
+}
+
+/* ═══════════════════════════════════════════
+   KARAOKE
+   ═══════════════════════════════════════════ */
+const KARAOKE_WORDS = SONG_LINES.join(' ').split(' ');
+
+function initKaraoke() {
+  const display = document.getElementById('karaoke-display');
+  display.innerHTML = KARAOKE_WORDS.map((w, i) =>
+    `<span class="karaoke-word" data-idx="${i}">${w}</span>`
+  ).join(' ');
+}
+
+function toggleKaraoke() {
+  const audio = document.getElementById('karaoke-audio');
+  if (!audio) return;
+  if (audio.paused) {
+    audio.play();
+    document.getElementById('karaoke-play-btn').textContent = '⏸';
+    runKaraoke();
+  } else {
+    audio.pause();
+    document.getElementById('karaoke-play-btn').textContent = '▶';
+    clearTimeout(karaokeTimer);
+  }
+}
+
+function runKaraoke() {
+  const audio = document.getElementById('karaoke-audio');
+  if (!audio || audio.paused) return;
+  const words = document.querySelectorAll('.karaoke-word');
+  if (!words.length) return;
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  const idx = Math.floor((pct / 100) * words.length);
+  words.forEach((w, i) => {
+    w.classList.toggle('sung', i < idx);
+    w.classList.toggle('current', i === idx);
+  });
+  document.getElementById('karaoke-progress-fill').style.width = pct + '%';
+  document.getElementById('karaoke-time').textContent = formatTime(audio.currentTime);
+  if (idx < words.length) {
+    karaokeTimer = setTimeout(runKaraoke, 200);
+  } else {
+    document.getElementById('karaoke-play-btn').textContent = '▶';
+    showToast('¡Canción terminada!', 'success');
+  }
+}
+
+function karaokeRepeatLine() {
+  showToast('Repetir línea', 'info');
+}
+
+function karaokeRepeatVerse() {
+  showToast('Repetir estrofa', 'info');
+}
+
+function karaokeFullSong() {
+  const audio = document.getElementById('karaoke-audio');
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+  document.getElementById('karaoke-play-btn').textContent = '⏸';
+  runKaraoke();
+}
+
+/* ═══════════════════════════════════════════
+   PRONUNCIATION
+   ═══════════════════════════════════════════ */
+function initPronunciation() {
+  const container = document.getElementById('pronunciation-container');
+  const words = [
+    { word: "cancha", phonetic: "/ˈkan.tʃa/", tip: "La 'ch' suena como en inglés 'church'. Acento en la primera sílaba." },
+    { word: "trapos", phonetic: "/ˈtra.pos/", tip: "La 'tr' es una 't' fuerte. La 'o' es abierta, como en 'top'." },
+    { word: "aguante", phonetic: "/a.ˈɡwan.te/", tip: "La 'gu' antes de 'a' suena como 'g' en 'got'. La 'u' es suave." },
+    { word: "corazón", phonetic: "/ko.ɾa.ˈθon/", tip: "En Latinoamérica: /ko.ɾa.ˈson/. En España: la 'z' suena como 'th'." },
+    { word: "borracho", phonetic: "/bo.ˈra.tʃo/", tip: "La 'rr' es una 'r' vibrante fuerte. Practica: 'rrrr'." },
+    { word: "voy cantando", phonetic: "/boj kan.ˈtan.do/", tip: "La 'y' de 'voy' suena como 'j' suave en español." }
+  ];
+  words.forEach(w => {
+    const div = document.createElement('div');
+    div.className = 'pronunciation-box';
+    div.innerHTML = `
+      <div style="font-size:1.3rem;font-weight:700;margin-bottom:0.3rem;">${w.word}</div>
+      <div class="phonetic">${w.phonetic}</div>
+      <div class="tip">${w.tip}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   GRAMMAR
+   ═══════════════════════════════════════════ */
+function initGrammar() {
+  const container = document.getElementById('grammar-container');
+  GRAMMAR.forEach(g => {
+    const div = document.createElement('div');
+    div.className = 'grammar-card';
+    let examplesHtml = g.examples.map(e =>
+      `<div class="example-sentence">${e.es} → ${e.en}</div>`
+    ).join('');
+    div.innerHTML = `
+      <h4>${g.title}</h4>
+      <div class="grammar-rule">${g.rule}</div>
+      ${examplesHtml}
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   CULTURE
+   ═══════════════════════════════════════════ */
+function initCulture() {
+  const container = document.getElementById('culture-container');
+  CULTURE.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'culture-card';
+    div.innerHTML = `<h4>${c.title}</h4><div class="subtitle">${c.titleEn || ''}</div><p>${c.text}</p><p class="subtitle">${c.textEn || ''}</p>`;
+    container.appendChild(div);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   QUIZZES
+   ═══════════════════════════════════════════ */
+function initQuizzes() {
+  const container = document.getElementById('quizzes-container');
+  QUIZ_DATA.forEach((q, qi) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    if (q.type === 'mc') {
+      const optionsHtml = q.options.map((opt, oi) =>
+        `<button class="quiz-option" data-qi="${qi}" data-oi="${oi}" onclick="selectQuizOption(this)">${opt}</button>`
+      ).join('');
+      div.innerHTML = `<h4>${qi + 1}. ${q.q}</h4><div class="q-subtitle">${q.en}</div>${optionsHtml}`;
+    } else {
+      div.innerHTML = `
+        <h4>${qi + 1}. ${q.q}</h4>
+        <div class="q-subtitle">${q.en}</div>
+        <button class="quiz-option" data-qi="${qi}" data-val="true" onclick="selectQuizOption(this)">Verdadero</button>
+        <button class="quiz-option" data-qi="${qi}" data-val="false" onclick="selectQuizOption(this)">Falso</button>
+      `;
+    }
+    container.appendChild(div);
+  });
+}
+
+function selectQuizOption(btn) {
+  const qi = btn.dataset.qi;
+  document.querySelectorAll(`[data-qi="${qi}"].quiz-option`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function checkQuizzes() {
+  let correct = 0;
+  QUIZ_DATA.forEach((q, qi) => {
+    const selected = document.querySelector(`[data-qi="${qi}"].quiz-option.selected`);
+    document.querySelectorAll(`[data-qi="${qi}"].quiz-option`).forEach(b => {
+      b.disabled = true;
+      b.classList.remove('selected');
+    });
+    if (q.type === 'mc') {
+      if (selected && parseInt(selected.dataset.oi) === q.correct) {
+        selected.classList.add('correct-answer');
+        correct++;
+      } else if (selected) {
+        selected.classList.add('wrong-answer');
+      }
+      document.querySelector(`[data-qi="${qi}"][data-oi="${q.correct}"]`).classList.add('correct-answer');
+    } else {
+      if (selected && selected.dataset.val === String(q.correct)) {
+        selected.classList.add('correct-answer');
+        correct++;
+      } else if (selected) {
+        selected.classList.add('wrong-answer');
+      }
+      const correctBtn = document.querySelector(`[data-qi="${qi}"][data-val="${q.correct}"]`);
+      if (correctBtn) correctBtn.classList.add('correct-answer');
+    }
+  });
+  document.getElementById('quizzes-score').textContent = correct + '/' + QUIZ_DATA.length + ' correctas';
+  addScore(correct * 10);
+  if (correct >= QUIZ_DATA.length * 0.8) launchConfetti();
+}
+
+/* ═══════════════════════════════════════════
+   SPEAKING
+   ═══════════════════════════════════════════ */
+function initSpeaking() {
+  const container = document.getElementById('speaking-container');
+  SPEAKING_DATA.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'speaking-question';
+    div.innerHTML = `
+      <div class="question-text">${i + 1}. ${s.q}</div>
+      <div class="q-subtitle">${s.en}</div>
+      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.5rem;">💡 ${s.hint}</div>
+      <textarea class="speaking-input" data-qi="${i}" placeholder="Escribe tu respuesta aquí..."></textarea>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function submitSpeaking() {
+  let answered = 0;
+  document.querySelectorAll('.speaking-input').forEach(ta => {
+    if (ta.value.trim().length > 5) answered++;
+  });
+  document.getElementById('speaking-score').textContent = answered + '/' + SPEAKING_DATA.length + ' respondidas';
+  addScore(answered * 15);
+  if (answered === SPEAKING_DATA.length) launchConfetti();
+  showToast('¡Respuestas guardadas!', 'success');
+}
+
+/* ═══════════════════════════════════════════
+   FINAL CHALLENGE
+   ═══════════════════════════════════════════ */
+function initChallenge() {
+  const container = document.getElementById('challenge-container');
+  CHALLENGE_ROUNDS.forEach((round, ri) => {
+    const div = document.createElement('div');
+    div.className = 'challenge-round';
+    let inner = `<h4>${round.title}</h4><div class="subtitle">${round.titleEn || ''}</div>`;
+    if (round.type === 'fill') {
+      round.lines.forEach((line, li) => {
+        const parts = line.display.split('_____');
+        inner += `
+          <div class="fill-blank-sentence" style="margin-bottom:0.5rem;">
+            <span>${parts[0]}</span>
+            <input class="blank-input" data-round="${ri}" data-line="${li}" data-answer="${line.answer}" placeholder="..." autocomplete="off" spellcheck="false">
+            <span>${parts[1] || ''}</span>
+            <div class="subtitle-inline">${line.en || ''}</div>
+          </div>
+        `;
+      });
+    } else {
+      round.questions.forEach((q, qi) => {
+        inner += `<div style="margin-bottom:1rem;"><strong>${q.q}</strong><br><span class="subtitle-inline">${q.en || ''}</span>`;
+        q.options.forEach((opt, oi) => {
+          inner += `<button class="quiz-option" data-round="${ri}" data-qi="${qi}" data-oi="${oi}" onclick="selectQuizOption(this)">${opt}</button>`;
+        });
+        inner += '</div>';
+      });
+    }
+    div.innerHTML = inner;
+    container.appendChild(div);
+  });
+}
+
+function checkChallenge() {
+  let correct = 0;
+  let total = 0;
+  CHALLENGE_ROUNDS.forEach((round, ri) => {
+    if (round.type === 'fill') {
+      round.lines.forEach((line, li) => {
+        total++;
+        const input = document.querySelector(`[data-round="${ri}"][data-line="${li}"]`);
+        if (input && input.value.trim().toLowerCase() === line.answer.toLowerCase()) {
+          input.classList.add('correct');
+          correct++;
+        } else if (input) {
+          input.classList.add('incorrect');
+        }
+      });
+    } else {
+      round.questions.forEach((q, qi) => {
+        total++;
+        const selected = document.querySelector(`[data-round="${ri}"][data-qi="${qi}"].quiz-option.selected`);
+        document.querySelectorAll(`[data-round="${ri}"][data-qi="${qi}"].quiz-option`).forEach(b => {
+          b.disabled = true;
+          b.classList.remove('selected');
+        });
+        if (selected && parseInt(selected.dataset.oi) === q.correct) {
+          selected.classList.add('correct-answer');
+          correct++;
+        } else if (selected) {
+          selected.classList.add('wrong-answer');
+        }
+        document.querySelector(`[data-round="${ri}"][data-qi="${qi}"][data-oi="${q.correct}"]`).classList.add('correct-answer');
+      });
+    }
+  });
+  document.getElementById('challenge-score').textContent = correct + '/' + total + ' correctas';
+  addScore(correct * 15);
+  const pct = (correct / total) * 100;
+  if (pct >= 25) document.getElementById('medal-bronze').classList.add('earned');
+  if (pct >= 50) document.getElementById('medal-silver').classList.add('earned');
+  if (pct >= 75) document.getElementById('medal-gold').classList.add('earned');
+  if (pct >= 90) document.getElementById('medal-champion').classList.add('earned');
+  if (pct >= 75) launchConfetti();
+}
+
+/* ═══════════════════════════════════════════
+   FINAL RESULTS
+   ═══════════════════════════════════════════ */
+function showFinalResults() {
+  const total = completedSections.size;
+  const pct = Math.round((total / 13) * 100);
+  let msg = '';
+  if (pct === 100) msg = '¡Increíble! Has completado todas las actividades.';
+  else if (pct >= 70) msg = '¡Muy bien! Estás avanzando con fuerza.';
+  else msg = 'Sigue practicando, ¡tú puedes!';
+  showToast(msg + ' Puntuación: ' + score + ' pts', 'success');
+  launchConfetti();
+  saveProgress();
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
