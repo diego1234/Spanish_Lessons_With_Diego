@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lamento Boliviano — Curso interactivo de español</title>
+<meta property="og:title" content="Lamento Boliviano — Curso interactivo de español">
+<meta property="og:description" content="Aprende español con una de las canciones más icónicas del rock latinoamericano. Vocabulario, flashcards, quiz y más.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Aprende español con una de las canciones más icónicas del rock latinoamericano. Vocabulario interactivo, flashcards, quiz y repetición espaciada.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="brand-logo.svg">
+<style>
+@font-face {
+  font-family: 'Feather Bold';
+  src: local('DIN Round Pro'), local('Helvetica Neue');
+  font-weight: 800;
+  font-style: normal;
+}
+
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f7;
+  --fg: #3c3c3c;
+  --muted: #777777;
+  --meta: #afafaf;
+  --border: #e5e5e5;
+  --accent: #58cc02;
+  --accent-on: #ffffff;
+  --accent-hover: #89e219;
+  --accent-active: #58a700;
+  --accent-light: #dbf8c5;
+  --success: #58cc02;
+  --warn: #ffc800;
+  --danger: #ff4b4b;
+  --font-display: 'Feather Bold', 'DIN Round Pro', 'Helvetica Neue', sans-serif;
+  --font-body: 'Mona Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --elev-raised: 0 4px 0 #d7d7d7;
+  --elev-flat: none;
+  --focus-ring: 0 0 0 3px rgba(28, 176, 246, 0.2);
+  --motion-fast: 180ms;
+  --motion-base: 320ms;
+  --ease-standard: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --accent-light-bg: #dbf8c5;
+  --warn-light-bg: #fff3c4;
+  --danger-light-bg: #ffd5d5;
+  --fav-light-bg: #f0d4ff;
+  --fav: #a355d4;
+  --hover-overlay: rgba(0,0,0,0.04);
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a2e;
+  --surface: #16213e;
+  --fg: #f0f0fa;
+  --muted: #b0b0cc;
+  --meta: #8888a8;
+  --border: #3a3a5a;
+  --accent: #78e000;
+  --accent-on: #ffffff;
+  --accent-hover: #a0ff30;
+  --accent-active: #5cb800;
+  --accent-light: #2a3a1a;
+  --success: #78e000;
+  --warn: #ffc800;
+  --danger: #ff6b6b;
+  --elev-raised: 0 4px 0 #12122a;
+  --focus-ring: 0 0 0 3px rgba(28, 176, 246, 0.4);
+  --accent-light-bg: #2a3a1a;
+  --warn-light-bg: #3a3010;
+  --danger-light-bg: #3a1414;
+  --fav-light-bg: #2a1a3a;
+  --fav: #c084fc;
+  --hover-overlay: rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .hero-section { background: linear-gradient(180deg, #1e1e3a 0%, var(--bg) 70%); }
+[data-theme="dark"] .hero-section::before { background: radial-gradient(circle, rgba(120,224,0,0.08) 0%, transparent 70%); }
+[data-theme="dark"] .hero-section::after { background: radial-gradient(circle, rgba(255,200,0,0.06) 0%, transparent 70%); }
+[data-theme="dark"] .card-flashcard-front, [data-theme="dark"] .card-flashcard-back { box-shadow: 0 6px 0 var(--border), 0 2px 12px rgba(0,0,0,0.2); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1a2e;
+    --surface: #16213e;
+    --fg: #f0f0fa;
+    --muted: #b0b0cc;
+    --meta: #8888a8;
+    --border: #3a3a5a;
+    --accent: #78e000;
+    --accent-on: #ffffff;
+    --accent-hover: #a0ff30;
+    --accent-active: #5cb800;
+    --accent-light: #2a3a1a;
+    --success: #78e000;
+    --warn: #ffc800;
+    --danger: #ff6b6b;
+    --elev-raised: 0 4px 0 #12122a;
+    --focus-ring: 0 0 0 3px rgba(28, 176, 246, 0.4);
+    --accent-light-bg: #2a3a1a;
+    --warn-light-bg: #3a3010;
+    --danger-light-bg: #3a1414;
+    --fav-light-bg: #2a1a3a;
+    --fav: #c084fc;
+    --hover-overlay: rgba(255,255,255,0.06);
+  }
+  :root:not([data-theme="light"]) .hero-section { background: linear-gradient(180deg, #1e1e3a 0%, var(--bg) 70%); }
+  :root:not([data-theme="light"]) .hero-section::before { background: radial-gradient(circle, rgba(120,224,0,0.08) 0%, transparent 70%); }
+  :root:not([data-theme="light"]) .hero-section::after { background: radial-gradient(circle, rgba(255,200,0,0.06) 0%, transparent 70%); }
+  :root:not([data-theme="light"]) .card-flashcard-front, :root:not([data-theme="light"]) .card-flashcard-back { box-shadow: 0 6px 0 var(--border), 0 2px 12px rgba(0,0,0,0.2); }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.text-muted { color: var(--muted) !important; }
+
+h1, h2, h3, h4, h5, h6, .display { font-family: var(--font-display); font-weight: 800; }
+
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); letter-spacing: -0.005em; line-height: 1.15; }
+h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); letter-spacing: -0.005em; }
+.display-1 { font-size: clamp(2.5rem, 6vw, 3.5rem); letter-spacing: -0.01em; line-height: 1.05; }
+
+section { scroll-margin-top: 70px; }
+
+a { color: var(--accent); }
+a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+
+:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+
+.btn { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.02em; border-radius: var(--radius-md); padding: 14px 24px; transition: all var(--motion-fast) var(--ease-standard); border-bottom: 4px solid transparent; }
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.btn-primary { background: var(--accent); color: var(--accent-on); border-color: var(--accent); border-bottom-color: var(--accent-active); }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); border-bottom-color: var(--accent-active); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(4px); border-bottom-width: 0; }
+.btn-outline-accent { color: var(--accent); border-color: var(--border); background: var(--bg); border-bottom: 4px solid var(--border); }
+.btn-outline-accent:hover { color: var(--fg); border-color: var(--meta); border-bottom-color: var(--meta); }
+.btn-outline-accent:active { transform: translateY(4px); border-bottom-width: 0; }
+.btn-ghost { color: var(--muted); border: 2px solid transparent; background: transparent; }
+.btn-ghost:hover { color: var(--fg); background: var(--border); }
+.btn-sm { padding: 10px 16px; font-size: 14px; border-radius: var(--radius-sm); border-bottom-width: 3px; }
+.btn-sm:active { transform: translateY(3px); border-bottom-width: 0; }
+.btn-icon { width: 44px; height: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border-bottom-width: 3px; }
+.btn-icon:active { transform: translateY(3px); border-bottom-width: 0; }
+
+.badge { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.04em; border-radius: var(--radius-pill); padding: 4px 12px; font-size: 13px; }
+.badge-easy { background: var(--accent-light-bg); color: var(--accent-active); }
+.badge-medium { background: var(--warn-light-bg); color: var(--warn); }
+.badge-hard { background: var(--danger-light-bg); color: var(--danger); }
+.badge-learned { background: var(--accent-light-bg); color: var(--accent-active); }
+.badge-review { background: var(--warn-light-bg); color: var(--warn); }
+.badge-fav { background: var(--fav-light-bg); color: var(--fav); }
+
+.card-flashcard { perspective: 1200px; width: 100%; max-width: 520px; height: 400px; margin: 0 auto; cursor: pointer; position: relative; }
+.card-flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform var(--motion-base) var(--ease-standard); transform-style: preserve-3d; }
+.card-flashcard-front, .card-flashcard-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: var(--radius-md); background: var(--bg); display: flex; flex-direction: column; align-items: center; border: 2px solid var(--accent-light); padding: 2rem; }
+.card-flashcard-front { box-shadow: 0 6px 0 var(--border), 0 2px 8px rgba(0,0,0,0.04); justify-content: center; }
+.card-flashcard-back { transform: rotateY(180deg); box-shadow: 0 6px 0 var(--border), 0 2px 8px rgba(0,0,0,0.04); overflow-y: auto; justify-content: flex-start; border-color: var(--border); }
+.card-flashcard-front:focus-visible, .card-flashcard-back:focus-visible { box-shadow: var(--focus-ring), 0 6px 0 var(--border), 0 2px 8px rgba(0,0,0,0.04); }
+.card-flashcard-back::-webkit-scrollbar { width: 6px; }
+.card-flashcard-back::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--radius-pill); }
+
+.card-flashcard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: var(--radius-md) var(--radius-md) 0 0; z-index: 2; }
+
+.card-progress { position: absolute; top: 10px; right: 12px; font-size: 11px; color: var(--accent-active); font-weight: 800; letter-spacing: 0.03em; z-index: 3; font-family: var(--font-display); background: var(--accent-light-bg); padding: 2px 10px; border-radius: var(--radius-pill); }
+
+.word-display { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; color: var(--accent-active); line-height: 1.1; }
+.pronunciation { font-size: 1rem; color: var(--meta); letter-spacing: 0.02em; margin-top: 0.35rem; }
+.pos-badge { font-size: 13px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent-active); font-weight: 800; margin-top: 0.35rem; background: var(--accent-light-bg); padding: 2px 10px; border-radius: var(--radius-pill); display: inline-block; }
+.translation-en { font-size: 1.25rem; color: var(--muted); margin-top: 0.25rem; }
+.card-front-badges { display: flex; gap: 6px; margin-top: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+.flashcard-back-content { width: 100%; text-align: left; padding: 0; }
+.flashcard-back-content .back-header { text-align: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-light); }
+.flashcard-back-content .back-header .word { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--accent-active); }
+.flashcard-back-content .back-header .pron { font-size: 0.9rem; color: var(--meta); }
+.flashcard-back-content .detail-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 2px solid var(--accent-light); font-size: 0.9rem; gap: 12px; }
+.flashcard-back-content .detail-row:last-child { border-bottom: none; }
+.flashcard-back-content .detail-label { color: var(--accent); font-weight: 800; letter-spacing: 0.07em; font-size: 13px; text-transform: uppercase; min-width: 90px; flex-shrink: 0; }
+.flashcard-back-content .detail-value { text-align: right; flex: 1; font-weight: 500; color: var(--fg); }
+.flashcard-back-content .frase-row { margin-top: 8px; background: var(--accent-light-bg); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; border: 2px solid var(--accent); }
+.flashcard-back-content .frase-row .es { font-size: 1.25rem; font-weight: 800; color: var(--accent-active); line-height: 1.4; }
+.flashcard-back-content .frase-row .en { font-size: 0.95rem; color: var(--fg); line-height: 1.4; }
+
+.nav-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: var(--space-6); }
+.nav-controls .counter { font-size: 14px; color: var(--muted); min-width: 80px; text-align: center; font-weight: 600; }
+.nav-controls .btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; }
+
+.action-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: var(--space-4); }
+.action-bar .btn { font-size: 14px; padding: 10px 14px; border-radius: var(--radius-sm); }
+
+.mode-tabs { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: var(--space-6); }
+.mode-tab { padding: 10px 18px; border-radius: var(--radius-pill); border: 2px solid var(--border); background: var(--bg); font-size: 15px; font-weight: 800; font-family: var(--font-display); letter-spacing: 0.02em; color: var(--muted); cursor: pointer; transition: all var(--motion-fast) ease; }
+.mode-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.mode-tab.active { background: var(--accent); border-color: var(--accent); color: var(--accent-on); }
+
+
+.transcript-container { max-height: 420px; overflow-y: auto; border-radius: var(--radius-md); background: var(--bg); border: 2px solid var(--border); padding: var(--space-4); }
+.transcript-line { padding: 4px 8px; border-radius: var(--radius-sm); transition: all var(--motion-fast) ease; cursor: default; font-size: 1rem; line-height: 1.8; }
+.transcript-line.active { background: var(--accent-light-bg); color: var(--fg); font-weight: 700; border-left: 4px solid var(--accent); }
+.transcript-line .word { cursor: pointer; border-radius: var(--radius-sm); padding: 0 3px; transition: all 0.15s ease; position: relative; }
+.transcript-line .word:hover { background: var(--accent-light-bg); }
+.transcript-line .word:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.scene-review-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius-pill); border: 2px solid var(--accent); color: var(--accent); background: var(--bg); font-size: 14px; font-weight: 700; cursor: pointer; transition: all var(--motion-fast) ease; margin-top: 12px; }
+.scene-review-btn:hover { background: var(--accent-light-bg); color: var(--accent-active); }
+
+
+.hero-section { padding: var(--space-12) 0 var(--space-8); text-align: center; background: linear-gradient(180deg, #fef6e0 0%, var(--bg) 70%); border-bottom: 2px solid var(--border); position: relative; overflow: hidden; }
+.hero-section::before { content: ''; position: absolute; top: -60px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(88,204,2,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.hero-section::after { content: ''; position: absolute; bottom: -40px; left: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,200,0,0.05) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.hero-section h1 { margin-bottom: 4px; position: relative; z-index: 1; }
+.hero-section .artist { font-size: 1.25rem; color: var(--muted); letter-spacing: 0.02em; font-weight: 500; position: relative; z-index: 1; }
+.hero-section .hero-tagline { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; margin: 0 0 6px; position: relative; z-index: 1; font-family: var(--font-display); }
+.hero-section .meta { display: flex; gap: 8px; justify-content: center; margin-top: var(--space-4); flex-wrap: wrap; position: relative; z-index: 1; }
+.hero-section .hero-desc { max-width:500px; margin:1rem auto 0; font-size:0.95rem; position: relative; z-index: 1; }
+.hero-section .hero-badge-strip { position: relative; z-index: 1; }
+
+.top-bar { position: sticky; top: 0; z-index: 1030; background: var(--bg); border-bottom: 2px solid var(--border); padding: 8px 0; }
+.top-bar .progress-thin { height: 8px; background: var(--border); border-radius: var(--radius-pill); margin-top: 6px; overflow: hidden; }
+.top-bar .progress-thin .progress-bar { background: var(--accent); border-radius: var(--radius-pill); transition: width var(--motion-base) ease; }
+
+.modal-content { border-radius: var(--radius-md); border: 2px solid var(--border); box-shadow: var(--elev-raised); }
+.modal-header { border-bottom: 2px solid var(--border); }
+.modal-footer { border-top: 2px solid var(--border); }
+
+.quiz-options { display: grid; gap: 8px; margin-top: var(--space-4); max-width: 440px; margin-left: auto; margin-right: auto; }
+.quiz-option { padding: 14px 20px; border: 2px solid var(--border); border-radius: var(--radius-md); background: var(--bg); cursor: pointer; transition: all var(--motion-fast) ease; text-align: left; font-size: 1rem; font-weight: 600; box-shadow: var(--elev-raised); }
+.quiz-option:hover { border-color: var(--accent); background: var(--accent-light-bg); }
+.quiz-option.correct { border-color: var(--success); background: var(--accent-light-bg); color: var(--fg); border-bottom-color: var(--accent-active); }
+.quiz-option.wrong { border-color: var(--danger); background: var(--danger-light-bg); color: var(--fg); border-bottom-color: var(--danger); }
+.quiz-option.disabled { pointer-events: none; opacity: 0.6; }
+.quiz-option.selected { border-color: var(--accent); }
+
+.speed-card { max-width: 520px; margin: 0 auto; text-align: center; }
+.speed-card .timer { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; color: var(--accent); letter-spacing: -0.01em; line-height: 1.05; }
+.speed-card .speed-word { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.01em; margin: var(--space-4) 0; }
+
+.custom-checkbox { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 700; }
+.custom-checkbox input { accent-color: var(--accent); width: 20px; height: 20px; }
+
+.wordmark { font-family: var(--font-display); font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 6px; }
+.wordmark .disc { display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 3px solid var(--accent-active); position: relative; }
+.wordmark .disc::before { content: ''; position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #3a3a3a; transform: translate(-50%, -50%); }
+.wordmark .disc::after { content: ''; position: absolute; top: 50%; left: 50%; width: 4px; height: 4px; background: var(--accent-on); border-radius: 50%; transform: translate(-50%, -50%); }
+
+.hero-wordmark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 10px; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.05; }
+.hero-wordmark .disc { display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); border: 5px solid var(--accent-active); position: relative; }
+.hero-wordmark .disc::before { content: ''; position: absolute; top: 50%; left: 50%; width: 18px; height: 18px; border-radius: 50%; border: 2px solid #3a3a3a; transform: translate(-50%, -50%); }
+.hero-wordmark .disc::after { content: ''; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background: var(--accent-on); border-radius: 50%; transform: translate(-50%, -50%); }
+
+.kbd-hint { display: inline-flex; gap: 6px; flex-wrap: wrap; justify-content: center; font-size: 12px; color: var(--meta); background: var(--surface); padding: 6px 14px; border-radius: var(--radius-pill); border: 1px solid var(--border); font-family: var(--font-body); }
+.kbd-hint kbd { display: inline-block; padding: 1px 6px; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); font-family: var(--font-body); font-size: 11px; font-weight: 600; color: var(--fg); box-shadow: 0 1px 0 var(--border); }
+
+@media (max-width: 576px) {
+  .card-flashcard { height: 340px; }
+  .card-flashcard-front, .card-flashcard-back { padding: var(--space-4); }
+  .word-display { font-size: 1.8rem; }
+  .hero-wordmark { font-size: 2.2rem; }
+  .hero-wordmark .disc { width: 24px; height: 24px; border-width: 4px; }
+  .hero-wordmark .disc::before { width: 13px; height: 13px; border-width: 1.5px; }
+  .hero-wordmark .disc::after { width: 6px; height: 6px; }
+  .hero-section { padding: var(--space-8) 0 var(--space-6); }
+  .mode-tab { font-size: 14px; padding: 8px 14px; }
+  .nav-controls .btn { width: 44px; height: 44px; }
+  .action-bar .btn { font-size: 13px; padding: 8px 12px; }
+  .action-bar { gap: 6px; }
+  .top-bar .container { padding-left: 12px; padding-right: 12px; }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .hero-section { padding: var(--space-10) 0 var(--space-6); }
+  .card-flashcard { height: 380px; }
+  .action-bar { gap: 6px; }
+}
+
+@media (min-width: 1200px) {
+  .card-flashcard { height: 440px; }
+  .hero-section { padding: var(--space-12) 0 var(--space-10); }
+  .hero-section .hero-desc { font-size: 1.05rem; }
+  .flashcard-back-content .detail-row { font-size: 0.95rem; }
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.fade-in { animation: fadeIn var(--motion-base) ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.shake { animation: shake 0.4s ease; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+.empty-state { text-align: center; padding: var(--space-12) var(--space-4); color: var(--muted); }
+.empty-state svg { width: 64px; height: 64px; margin-bottom: var(--space-4); opacity: 0.3; }
+.empty-state .btn { margin-top: var(--space-4); }
+
+
+/* ===== LISTENING ACTIVITY ===== */
+.listening-container { max-height: 420px; overflow-y: auto; border-radius: var(--radius-md); background: var(--bg); border: 2px solid var(--border); padding: var(--space-4); }
+.listening-line { padding: 6px 8px; border-radius: var(--radius-sm); transition: all var(--motion-fast) ease; cursor: default; }
+.listening-line.active { background: var(--accent-light-bg); border-left: 4px solid var(--accent); }
+.listening-line .sub-es { font-size: 1.05rem; font-weight: 700; color: var(--fg); line-height: 1.8; }
+.listening-line .sub-en { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-top: 1px; }
+
+/* ===== EMPAREJAR (MATCHING) ===== */
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); max-width: 700px; margin: 0 auto; }
+.match-side { display: flex; flex-direction: column; gap: var(--space-2); }
+.match-side-label { font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--meta); text-align: center; margin-bottom: var(--space-1); }
+.match-card { padding: 12px 16px; border: 2px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); cursor: pointer; transition: all var(--motion-fast) ease; text-align: center; font-weight: 600; font-size: 0.95rem; box-shadow: var(--elev-flat); user-select: none; }
+.match-card:hover { border-color: var(--accent); background: var(--accent-light-bg); }
+.match-card.selected { border-color: var(--accent); background: var(--accent-light-bg); box-shadow: 0 0 0 3px var(--accent); transform: scale(1.02); }
+.match-card.matched { border-color: var(--success); background: var(--accent-light-bg); color: var(--accent-active); cursor: default; opacity: 0.7; pointer-events: none; }
+.match-card.wrong { border-color: var(--danger); background: var(--danger-light-bg); animation: shake 0.4s ease; }
+.match-card.matched-correct { border-color: var(--success); background: var(--accent-light-bg); animation: matchPop 0.35s ease; }
+@keyframes matchPop { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+
+/* ===== ORDENAR (ORDERING) ===== */
+.ordenar-wordbank { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center; margin-bottom: var(--space-4); min-height: 60px; padding: var(--space-3); background: var(--surface); border-radius: var(--radius-md); border: 2px dashed var(--border); }
+.ordenar-slot { display: inline-flex; align-items: center; justify-content: center; min-width: 60px; height: 42px; padding: 0 12px; border-radius: var(--radius-sm); background: var(--bg); border: 2px solid var(--border); font-weight: 600; font-size: 0.95rem; transition: all var(--motion-fast) ease; cursor: pointer; user-select: none; }
+.ordenar-slot:hover { border-color: var(--accent); }
+.ordenar-slot.filled { border-color: var(--accent); background: var(--accent-light-bg); color: var(--accent-active); cursor: pointer; }
+.ordenar-slot.empty { border-style: dashed; color: var(--meta); font-size: 0.8rem; }
+.ordenar-slot.correct { border-color: var(--success); background: var(--accent-light-bg); color: var(--accent-active); }
+.ordenar-slot.wrong { border-color: var(--danger); background: var(--danger-light-bg); animation: shake 0.4s ease; }
+.ordenar-word-tile { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: var(--radius-sm); background: var(--bg); border: 2px solid var(--border); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all var(--motion-fast) ease; user-select: none; }
+.ordenar-word-tile:hover { border-color: var(--accent); background: var(--accent-light-bg); transform: translateY(-2px); }
+.ordenar-word-tile.used { opacity: 0.25; pointer-events: none; border-style: dashed; }
+.ordenar-progress { font-size: 0.85rem; color: var(--meta); text-align: center; margin-top: var(--space-2); }
+
+@media (max-width: 576px) {
+  .match-grid { grid-template-columns: 1fr; gap: var(--space-2); }
+  .match-side { gap: var(--space-1); max-height: 260px; overflow-y: auto; }
+  .match-card { padding: 10px 12px; font-size: 0.85rem; }
+  .ordenar-word-tile { padding: 6px 12px; font-size: 0.85rem; }
+  .ordenar-slot { min-width: 48px; height: 36px; font-size: 0.85rem; padding: 0 10px; }
+}
+</style>
+<script>
+(function(){
+  var t; try { t = localStorage.getItem('lamento_boliviano_theme'); } catch(e) {}
+  var isDark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  var style = document.createElement('style');
+  style.textContent = (isDark
+    ? '#theme-icon-sun{display:none}#theme-icon-moon{display:block}'
+    : '#theme-icon-sun{display:block}#theme-icon-moon{display:none}');
+  document.head.appendChild(style);
+  var fav = document.querySelector('link[rel="icon"]');
+  if (fav) fav.href = isDark ? 'brand-logo-dark.svg' : 'brand-logo.svg';
+})();
+</script>
+</head>
+<body data-od-id="app-root">
+<a href="#main-content" class="sr-only sr-only-focusable" style="position:absolute;top:0;left:0;padding:12px 20px;background:var(--accent);color:var(--accent-on);z-index:9999;border-radius:0 0 var(--radius-sm) 0">Ir al contenido principal</a>
+
+<!-- Top Bar -->
+<header class="top-bar" data-od-id="top-bar" role="banner">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <span class="wordmark"><span class="disc"></span>lamento boliviano</span>
+        <span class="badge badge-easy">A2–B1</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="small text-muted" data-od-id="progress-label" aria-live="polite">0 / 91</span>
+        <span class="small text-muted" id="streak-display" aria-live="polite">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px" aria-hidden="true"><path d="M8 2C7 4 5 5 5 7.5C5 9.5 6.5 11 8 11C9.5 11 11 9.5 11 7.5C11 5 9 4 8 2Z" fill="var(--warn)" stroke="var(--warn)" stroke-width="0.5"/><path d="M8 9C8.5 9 9 8 9 7C9 6 8.5 5 8 4.5" stroke="var(--warn)" stroke-width="0.8" fill="none"/></svg>
+          <span id="streak-count">0</span>
+        </span>
+        <button class="btn btn-icon btn-ghost" id="theme-toggle" aria-label="Cambiar tema" style="width:36px;height:36px;border-bottom-width:2px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" id="theme-icon-sun"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 1V3M8 13V15M3 8H1M15 8H13M4.5 4.5L3 3M13 13L11.5 11.5M11.5 4.5L13 3M3 13L4.5 11.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" id="theme-icon-moon" style="display:none"><path d="M13 9.16C12.2 9.7 11.2 10 10.2 10C7.6 10 5.6 8 5.6 5.5C5.6 4.22 6.14 2.94 7 2C4.4 2.5 2.5 4.8 2.5 7.5C2.5 10.6 5 13 8.2 13C10.36 13 12.4 11.72 13.5 10L13 9.16Z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="progress-thin" data-od-id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso del curso">
+      <div class="progress-bar" id="main-progress" style="width:0%"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero-section" data-od-id="hero" aria-label="Introducción del curso">
+  <div class="container">
+    <h1 class="hero-wordmark"><span class="disc"></span>lamento boliviano</h1>
+    <p class="hero-tagline">Curso de español</p>
+    <p class="artist">Los Enanitos Verdes</p>
+    <div class="meta">
+      <span class="badge badge-medium">Canción</span>
+      <span class="badge badge-easy">91 palabras clave</span>
+      <span class="badge badge-medium">Rock latino</span>
+    </div>
+    <p class="text-muted hero-desc">
+Listo para rockear tu vocabulario con una de las canciones más icónicas del rock latinoamericano.
+    </p>
+  </div>
+  <svg class="hero-decoration" viewBox="0 0 200 200" style="position:absolute;bottom:0;right:0;width:160px;height:160px;opacity:0.04;pointer-events:none;color:var(--accent)" aria-hidden="true"><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="20" fill="currentColor"/><line x1="40" y1="40" x2="70" y2="70" stroke="currentColor" stroke-width="2"/><line x1="160" y1="40" x2="130" y2="70" stroke="currentColor" stroke-width="2"/><line x1="40" y1="160" x2="70" y2="130" stroke="currentColor" stroke-width="2"/><line x1="160" y1="160" x2="130" y2="130" stroke="currentColor" stroke-width="2"/></svg>
+</section>
+
+<main id="main-content">
+
+<div class="container py-4">
+  <!-- Video Section -->
+  <section id="video" data-od-id="video-section" class="mb-5">
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><polygon points="5 3 19 12 5 21 5 3"/></svg> Escucha la canción</h2>
+    <p class="text-muted" style="max-width:65ch">Mira el video oficial. Las palabras clave aparecen resaltadas en la transcripción.</p>
+    <div class="row g-3">
+      <div class="col-lg-7">
+        <div class="ratio ratio-16x9 rounded-4 overflow-hidden" style="box-shadow:var(--elev-raised);background:#000" id="video-container">
+          <video id="local-video" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain" preload="metadata" controls playsinline>
+            <source src="lamento-boliviano.mp4" type="video/mp4">
+            <source src="lamento-boliviano.mp3" type="audio/mpeg">
+          </video>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h3 class="mb-0" style="font-size:1.1rem">Letra</h3>
+          <span class="text-muted small">Haz clic en cualquier palabra</span>
+        </div>
+        <div class="transcript-container" data-od-id="transcript" id="transcript" role="region" aria-label="Letra de la canción">
+          <div class="transcript-line" data-line="0" data-start="16" data-end="20">
+            <span class="word" data-word="agitar">Me quieren <strong>agitar</strong></span>, <span class="word" data-word="incitar">me <strong>incitan</strong></span> <span class="word" data-word="gritar">a <strong>gritar</strong></span>
+          </div>
+          <div class="transcript-line" data-line="1" data-start="20" data-end="24">
+            <span class="word" data-word="roca">Soy como una <strong>roca</strong></span>, <span class="word" data-word="tocar">palabras no me <strong>tocan</strong></span>
+          </div>
+          <div class="transcript-line" data-line="2" data-start="24" data-end="28">
+            <span class="word" data-word="adentro"><strong>Adentro</strong></span> hay un <span class="word" data-word="volcan"><strong>volcán</strong></span>, que pronto va a <span class="word" data-word="estallar"><strong>estallar</strong></span>
+          </div>
+          <div class="transcript-line" data-line="3" data-start="28" data-end="31">
+            Yo quiero estar <span class="word" data-word="tranquilo"><strong>tranquilo</strong></span>
+          </div>
+          <div class="transcript-line" data-line="4" data-start="31" data-end="36" style="margin-top:0.5rem">
+            Es mi <span class="word" data-word="situacion"><strong>situación</strong></span>, una <span class="word" data-word="desolacion"><strong>desolación</strong></span>
+          </div>
+          <div class="transcript-line" data-line="5" data-start="36" data-end="39">
+            Soy como un <span class="word" data-word="lamento"><strong>lamento</strong></span>, lamento <span class="word" data-word="boliviano"><strong>boliviano</strong></span>
+          </div>
+          <div class="transcript-line" data-line="6" data-start="39" data-end="43">
+            Que un día <span class="word" data-word="empezar"><strong>empezó</strong></span> y no va a <span class="word" data-word="terminar"><strong>terminar</strong></span>
+          </div>
+          <div class="transcript-line" data-line="7" data-start="43" data-end="47">
+            Y a nadie hace <span class="word" data-word="daño"><strong>daño</strong></span>
+          </div>
+          <div class="transcript-line" data-line="8" data-start="47" data-end="62" style="margin-top:0.5rem;font-weight:510;color:var(--accent)">
+            ♪ Uoh, yo' yo' yo', eh eh eh, yo' ♪
+          </div>
+          <div class="transcript-line" data-line="9" data-start="62" data-end="70" style="margin-top:0.5rem">
+            Y yo estoy aquí, <span class="word" data-word="borracho"><strong>borracho</strong></span> y <span class="word" data-word="loco"><strong>loco</strong></span>
+          </div>
+          <div class="transcript-line" data-line="10" data-start="70" data-end="78">
+            Y mi <span class="word" data-word="corazon"><strong>corazón</strong></span> <span class="word" data-word="idiota"><strong>idiota</strong></span>, <span class="word" data-word="siempre"><strong>siempre</strong></span> <span class="word" data-word="brillar"><strong>brillará</strong></span>
+          </div>
+          <div class="transcript-line" data-line="11" data-start="78" data-end="85">
+            Y yo te <span class="word" data-word="amar"><strong>amaré</strong></span>, te amaré por <span class="word" data-word="siempre"><strong>siempre</strong></span>
+          </div>
+          <div class="transcript-line" data-line="12" data-start="85" data-end="88">
+            <span class="word" data-word="nena"><strong>Nena</strong></span>, no te <span class="word" data-word="peinar"><strong>peines</strong></span> en la <span class="word" data-word="cama"><strong>cama</strong></span>
+          </div>
+          <div class="transcript-line" data-line="13" data-start="88" data-end="93">
+            Que los <span class="word" data-word="viajante"><strong>viajantes</strong></span> se van a <span class="word" data-word="atrasar"><strong>atrasar</strong></span>
+          </div>
+          <div class="transcript-line" data-line="14" data-start="127" data-end="139" style="margin-top:0.5rem;font-weight:510;color:var(--accent)">
+            ♪ Uoh, yo' yo' yo', eh eh eh, yo' ♪
+          </div>
+          <div class="transcript-line" data-line="15" data-start="139" data-end="148" style="margin-top:0.5rem">
+            Y hoy estoy aquí, <span class="word" data-word="borracho"><strong>borracho</strong></span> y <span class="word" data-word="loco"><strong>loco</strong></span>
+          </div>
+          <div class="transcript-line" data-line="16" data-start="148" data-end="155">
+            Y mi <span class="word" data-word="corazon"><strong>corazón</strong></span> <span class="word" data-word="idiota"><strong>idiota</strong></span>, <span class="word" data-word="siempre"><strong>siempre</strong></span> <span class="word" data-word="brillar"><strong>brillará</strong></span>
+          </div>
+          <div class="transcript-line" data-line="17" data-start="155" data-end="163">
+            Y yo te <span class="word" data-word="amar"><strong>amaré</strong></span>, te amaré por <span class="word" data-word="siempre"><strong>siempre</strong></span>
+          </div>
+          <div class="transcript-line" data-line="18" data-start="163" data-end="167">
+            <span class="word" data-word="nena"><strong>Nena</strong></span>, no te <span class="word" data-word="peinar"><strong>peines</strong></span> en la <span class="word" data-word="cama"><strong>cama</strong></span>
+          </div>
+          <div class="transcript-line" data-line="19" data-start="167" data-end="172">
+            Que los <span class="word" data-word="viajante"><strong>viajantes</strong></span> se van a <span class="word" data-word="atrasar"><strong>atrasar</strong></span>
+          </div>
+          <div class="transcript-line" data-line="20" data-start="172" data-end="178" style="margin-top:0.5rem">
+            Y yo estoy aquí, <span class="word" data-word="borracho"><strong>borracho</strong></span> y <span class="word" data-word="loco"><strong>loco</strong></span>
+          </div>
+          <div class="transcript-line" data-line="21" data-start="178" data-end="186">
+            Y mi <span class="word" data-word="corazon"><strong>corazón</strong></span> <span class="word" data-word="idiota"><strong>idiota</strong></span>, <span class="word" data-word="siempre"><strong>siempre</strong></span> <span class="word" data-word="brillar"><strong>brillará</strong></span>
+          </div>
+          <div class="transcript-line" data-line="22" data-start="186" data-end="194">
+            Y yo te <span class="word" data-word="amar"><strong>amaré</strong></span>, te amaré por <span class="word" data-word="siempre"><strong>siempre</strong></span>
+          </div>
+          <div class="transcript-line" data-line="23" data-start="194" data-end="197">
+            <span class="word" data-word="nena"><strong>Nena</strong></span>, no te <span class="word" data-word="peinar"><strong>peines</strong></span> en la <span class="word" data-word="cama"><strong>cama</strong></span>
+          </div>
+          <div class="transcript-line" data-line="24" data-start="197" data-end="210">
+            Que los <span class="word" data-word="viajante"><strong>viajantes</strong></span> se van a <span class="word" data-word="atrasar"><strong>atrasar</strong></span>
+          </div>
+          <div style="margin-top:0.8rem">
+            <button class="scene-review-btn" data-words="borracho,loco,corazon,idiota,siempre,brillar,amar,nena,peinar,cama,viajante,atrasar" data-od-id="review-chorus-btn">
+              Repasar palabras del coro
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flashcards Section -->
+  <section id="flashcards" data-od-id="flashcards-section" class="mb-5">
+    <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+      <h2 class="mb-0">Tarjetas de vocabulario</h2>
+      <div class="d-flex gap-2 align-items-center">
+        <span class="small text-muted" id="filter-count">91 palabras</span>
+        <label class="custom-checkbox small" id="shuffle-toggle">
+          <input type="checkbox" id="shuffle-checkbox"> Aleatorio
+        </label>
+      </div>
+    </div>
+
+    <!-- Mode Tabs -->
+    <div class="mode-tabs" data-od-id="mode-tabs" role="tablist" aria-label="Modos de aprendizaje">
+      <button class="mode-tab active" data-mode="study" role="tab" aria-selected="true" id="tab-study">Estudio</button>
+      <button class="mode-tab" data-mode="review" role="tab" aria-selected="false" id="tab-review">Repaso</button>
+      <button class="mode-tab" data-mode="quiz" role="tab" aria-selected="false" id="tab-quiz">Quiz</button>
+    </div>
+
+
+    <!-- Flashcard -->
+    <div class="text-center" id="flashcard-area">
+      <div class="card-flashcard" id="flashcard" data-od-id="flashcard" role="button" tabindex="0" aria-label="Tarjeta de vocabulario. Presiona espacio para voltear.">
+        <span class="card-progress" id="card-progress">1 / 91</span>
+        <div class="card-flashcard-inner">
+          <div class="card-flashcard-front" id="card-front">
+            <span class="word-display" id="word-display">agitar</span>
+            <span class="pronunciation" id="pronunciation">[ah-hee-TAR]</span>
+            <span class="pos-badge" id="pos-badge">Verbo</span>
+            <div class="translation-en" id="translation-en">to shake, to agitate</div>
+            <div class="card-front-badges">
+              <span class="badge badge-medium" id="difficulty-badge">Medio</span>
+              <span class="badge badge-easy ms-1" id="cat-badge">Verbos</span>
+            </div>
+          </div>
+          <div class="card-flashcard-back" id="card-back">
+            <div class="flashcard-back-content" style="overflow-y:auto;max-height:340px">
+              <div class="back-header">
+                <div class="word" id="back-word">agitar</div>
+                <div class="pron" id="back-pronunciation">[ah-hee-TAR]</div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Traducción</span>
+                <span class="detail-value" id="back-translation">to shake, to agitate</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Categoría</span>
+                <span class="detail-value" id="back-category">Verbos</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Dificultad</span>
+                <span class="detail-value" id="back-difficulty">Medio</span>
+              </div>
+              <div class="frase-row">
+                <span class="es" id="back-example-es">"Me quieren agitar"</span>
+                <span class="en" id="back-example-en">"They want to agitate me"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-controls" data-od-id="nav-controls">
+        <button class="btn btn-ghost btn-icon" id="prev-btn" aria-label="Anterior" data-od-id="prev-btn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="counter" id="card-counter" aria-live="polite">1 de 91</span>
+        <button class="btn btn-ghost btn-icon" id="next-btn" aria-label="Siguiente" data-od-id="next-btn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="text-center mt-2">
+        <div class="kbd-hint">
+          <kbd>← →</kbd> navegar
+          <kbd>⎵</kbd> voltear
+          <kbd>P</kbd> pronunciar
+        </div>
+      </div>
+
+      <div class="action-bar" data-od-id="action-bar">
+        <button class="btn btn-sm btn-outline-accent" id="btn-learned" data-od-id="btn-learned">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right:3px" aria-hidden="true"><path d="M2 7L5 10L12 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Aprendida
+        </button>
+        <button class="btn btn-sm btn-outline-accent" id="btn-speak" data-od-id="btn-speak">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right:3px" aria-hidden="true"><path d="M6 2L3 5H1V9H3L6 12V2Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 4C10 5 10.5 6.5 10.5 7C10.5 7.5 10 9 9 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M11 2C13 3.5 13.5 5.5 13.5 7C13.5 8.5 13 10.5 11 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Pronunciar
+        </button>
+      </div>
+    </div>
+
+    <!-- Quiz Area (hidden by default) -->
+    <div id="quiz-area" class="d-none" data-od-id="quiz-area">
+      <div class="text-center">
+        <div class="word-display" id="quiz-word" style="font-size:2rem">agitar</div>
+        <p class="text-muted small mt-1">Selecciona la traducción correcta</p>
+        <div class="quiz-options" id="quiz-options" style="max-width:400px;margin:0 auto"></div>
+        <div id="quiz-feedback" class="mt-3" aria-live="polite" role="status"></div>
+        <div class="mt-3">
+          <span class="counter" id="quiz-counter">1 de 10</span>
+          <span class="ms-2 small text-muted" id="quiz-score">Correctas: 0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Speed Review Area -->
+    <div id="speed-area" class="d-none" data-od-id="speed-area">
+      <div class="speed-card">
+        <div class="timer" id="speed-timer">3:00</div>
+        <div class="speed-word" id="speed-word">agitar</div>
+        <div class="translation-en mb-3" id="speed-translation">to shake, to agitate</div>
+        <div class="d-flex justify-content-center gap-2">
+          <button class="btn btn-sm btn-primary" id="speed-correct">Correcto</button>
+          <button class="btn btn-sm btn-outline-accent" id="speed-wrong">No sabía</button>
+        </div>
+        <div class="mt-3 small text-muted">
+          <span id="speed-count">0</span> respondidas · <span id="speed-accurate">0%</span> precisión
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listening Activity Section -->
+  <section id="listening" data-od-id="listening-section" class="mb-5">
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg> Listening: subtítulos duales</h2>
+    <p class="text-muted" style="max-width:65ch">Sigue la letra en español e inglés mientras se reproduce el video. Haz clic en una línea para ir a ese momento.</p>
+    <div class="row g-3 align-items-start">
+      <div class="col-lg-7">
+        <div class="ratio ratio-16x9 rounded-4 overflow-hidden" style="box-shadow:var(--elev-raised);background:#000">
+          <video id="listening-video" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain" preload="metadata" controls playsinline>
+            <source src="lamento-boliviano.mp4" type="video/mp4">
+            <source src="lamento-boliviano.mp3" type="audio/mpeg">
+          </video>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h3 class="mb-0" style="font-size:1.1rem">Letra bilingüe</h3>
+          <span class="text-muted small">Haz clic en una línea ⏤ salta a ese momento</span>
+        </div>
+        <div class="listening-container" id="listening-transcript" role="region" aria-label="Letra bilingüe sincronizada"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emparejar Section -->
+  <section id="matching" data-od-id="matching-section" class="mb-5">
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg> Emparejar vocabulario</h2>
+    <p class="text-muted" style="max-width:65ch">Haz clic en una palabra en español y luego en su traducción en inglés para emparejar.</p>
+    <div id="match-area">
+      <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
+        <span class="counter" id="match-counter" aria-live="polite">0 / 15</span>
+        <span class="small text-muted" id="match-accuracy">0%</span>
+      </div>
+      <div class="match-grid" id="match-grid"></div>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary btn-sm" id="match-new-btn" style="display:none">Nueva ronda</button>
+      </div>
+      <div class="text-center mt-2">
+        <div id="match-feedback" aria-live="polite" role="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ordenar Section -->
+  <section id="ordenar" data-od-id="ordenar-section" class="mb-5">
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Ordenar palabras</h2>
+    <p class="text-muted" style="max-width:65ch">Arrastra o haz clic en las palabras en el orden correcto para formar la oración.</p>
+    <div id="ordenar-area" class="text-center" style="max-width:650px;margin:0 auto">
+      <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--accent);margin-bottom:var(--space-2)" id="ordenar-prompt"></div>
+      <div class="ordenar-wordbank" id="ordenar-bank"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center;min-height:50px;padding:var(--space-3);background:var(--bg);border-radius:var(--radius-md);border:2px solid var(--border);margin-bottom:var(--space-3)" id="ordenar-answer"></div>
+      <div class="d-flex align-items-center justify-content-center gap-3">
+        <span class="counter" id="ordenar-counter">1 / 15</span>
+        <span class="small text-muted" id="ordenar-score">Correctas: 0</span>
+      </div>
+      <div class="mt-3 d-flex gap-2 justify-content-center">
+        <button class="btn btn-sm btn-outline-accent" id="ordenar-check-btn">Verificar</button>
+        <button class="btn btn-sm btn-ghost" id="ordenar-skip-btn">Saltar</button>
+      </div>
+      <div class="mt-2">
+        <div id="ordenar-feedback" aria-live="polite" role="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Song Facts Section -->
+  <section id="song-facts" data-od-id="song-facts-section" class="mb-5">
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Sobre la canción / About the Song</h2>
+
+    <div class="row g-4" style="max-width:900px">
+      <div class="col-md-6">
+        <div class="stat-card h-100" style="text-align:left">
+          <div class="stat-label" style="text-align:left;font-size:11px">FECHA DE LANZAMIENTO</div>
+          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">1993</div>
+          <p class="text-muted small mb-0" style="line-height:1.5">Lanzada en el tercer álbum de la banda, <em>En los '90</em>, en Argentina.</p>
+          <hr style="border-color:var(--border);margin:10px 0">
+          <div class="text-muted small" style="line-height:1.5"><strong>Release date:</strong> Released on the band's third album <em>En los '90</em> in Argentina.</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="stat-card h-100" style="text-align:left">
+          <div class="stat-label" style="text-align:left;font-size:11px">ARTISTA / ARTIST</div>
+          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Los Enanitos Verdes</div>
+          <p class="text-muted small mb-0" style="line-height:1.5">Banda de rock argentina formada en Mendoza en 1979. "Lamento Boliviano" es su canción más famosa.</p>
+          <hr style="border-color:var(--border);margin:10px 0">
+          <div class="text-muted small" style="line-height:1.5"><strong>Artist:</strong> Argentine rock band formed in Mendoza in 1979. "Lamento Boliviano" is their most famous song.</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="stat-card h-100" style="text-align:left">
+          <div class="stat-label" style="text-align:left;font-size:11px">COMPOSITORES / SONGWRITERS</div>
+          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Felipe Staiti & Marciano Cantero</div>
+          <p class="text-muted small mb-0" style="line-height:1.5">Escrita por el guitarrista Felipe Staiti y el fallecido vocalista Marciano Cantero (1960–2022).</p>
+          <hr style="border-color:var(--border);margin:10px 0">
+          <div class="text-muted small" style="line-height:1.5"><strong>Written by:</strong> Guitarist Felipe Staiti and late vocalist Marciano Cantero (1960–2022).</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="stat-card h-100" style="text-align:left">
+          <div class="stat-label" style="text-align:left;font-size:11px">GÉNERO / GENRE</div>
+          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Rock Latino / Pop Rock</div>
+          <p class="text-muted small mb-0" style="line-height:1.5">Rock en español con influencias de pop rock y new wave. Himno del rock latinoamericano de los 90.</p>
+          <hr style="border-color:var(--border);margin:10px 0">
+          <div class="text-muted small" style="line-height:1.5"><strong>Genre:</strong> Spanish-language rock with pop rock and new wave influences. A 90s Latin American rock anthem.</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="stat-card h-100" style="text-align:left">
+          <div class="stat-label" style="text-align:left;font-size:11px">SIGNIFICADO / MEANING</div>
+          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Amor, Dolor y Desolación</div>
+          <p class="text-muted small mb-0" style="line-height:1.5">La canción habla de un corazón roto y la lucha interna entre la razón y la emoción. "Lamento Boliviano" evoca la soledad del altiplano.</p>
+          <hr style="border-color:var(--border);margin:10px 0">
+          <div class="text-muted small" style="line-height:1.5"><strong>Meaning:</strong> The song is about a broken heart and the inner struggle between reason and emotion. "Bolivian Lament" evokes the solitude of the highlands.</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="stat-card h-100" style="text-align:left">
+          <div class="stat-label" style="text-align:left;font-size:11px">DATOS CURIOSOS / TRIVIA</div>
+          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">± 227 segundos</div>
+          <p class="text-muted small mb-0" style="line-height:1.5">Dura aproximadamente 3:47. Es una de las canciones más versionadas del rock argentino, con covers en múltiples idiomas.</p>
+          <hr style="border-color:var(--border);margin:10px 0">
+          <div class="text-muted small" style="line-height:1.5"><strong>Trivia:</strong> Runs approximately 3:47 and is one of the most covered Argentine rock songs, with versions in multiple languages.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<div aria-live="polite" role="status" class="sr-only" id="sr-announce"></div>
+
+<!-- Word Detail Modal -->
+<div class="modal fade" id="word-modal" tabindex="-1" data-od-id="word-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0" data-od-id="brand-symbol">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" style="flex-shrink:0" aria-hidden="true"><g transform="rotate(15 16 16)"><path d="M16 2C20 8 28 12 28 20C28 27 22 30 16 30C10 30 4 27 4 20C4 12 12 8 16 2Z" fill="var(--accent)"/><circle cx="13" cy="20" r="3" fill="var(--accent-on)"/><path d="M16 19V11L22 10V12L17 13V21C17 22.5 15.5 23 14 23C12.5 23 11.5 22 11.5 20.5" stroke="var(--accent-on)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg>
+        <span class="badge badge-medium" id="modal-difficulty">Medio</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="word-display" id="modal-word">agitar</div>
+        <div class="pronunciation" id="modal-pronunciation">[ah-hee-TAR]</div>
+        <div class="pos-badge" id="modal-pos">Verbo</div>
+        <div class="translation-en" id="modal-translation">to shake, to agitate</div>
+        <div class="mt-3 d-flex gap-2 justify-content-center">
+          <button class="btn btn-sm btn-outline-accent" id="modal-learned">Aprendida</button>
+          <button class="btn btn-sm btn-outline-accent" id="modal-fav">Favorita</button>
+          <button class="btn btn-sm btn-outline-accent" id="modal-speak">Pronunciar</button>
+        </div>
+        <div class="mt-3">      
+          <button class="btn btn-sm btn-ghost" id="modal-goto-video">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right:3px"><path d="M3 1L11 7L3 13V1Z" fill="currentColor"/></svg>
+            Ir al momento en el video
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+// ===== VOCABULARY DATA =====
+const VOCABULARY = [
+  { id:'agitar', spanish:'agitar', english:'to shake, to agitate', pronunciation:'ah-hee-TAR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Me quieren agitar', exampleTranslation:'They want to agitate me', timestamp:16,
+    related:['sacudir','agitarse'], collocations:['agitar las manos','agitar el ambiente'],
+    mistake:'Se confunde con "agitado" (agotado). Agitar es activo; agitado es un estado.',
+    synonyms:['sacudir','inquietar','perturbar'], alternatives:['agitarse (to get agitated)'] },
+  { id:'incitar', spanish:'incitar', english:'to incite, to urge', pronunciation:'in-see-TAR', pos:'verb', category:'Vocabulary', difficulty:'Hard',
+    example:'Me incitan a gritar', exampleTranslation:'They incite me to shout', timestamp:16,
+    related:['provocar','instigar'], collocations:['incitar a la violencia','incitar al cambio'],
+    mistake:'No es "insitar" — la forma correcta es incitar, sin s intermedia.',
+    synonyms:['provocar','instigar','impulsar'], alternatives:['incitación (instigation)'] },
+  { id:'gritar', spanish:'gritar', english:'to shout, to yell', pronunciation:'gree-TAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Me incitan a gritar', exampleTranslation:'They incite me to shout', timestamp:16,
+    related:['chillar','vociferar'], collocations:['gritar de alegría','gritar ayuda'],
+    mistake:'Gritar ≠ "llorar" (to cry). Son verbos distintos.',
+    synonyms:['chillar','vociferar','aullar'], alternatives:['grito (shout/n.)','gritón (loudmouth)'] },
+  { id:'roca', spanish:'roca', english:'rock', pronunciation:'ROH-kah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Soy como una roca', exampleTranslation:'I am like a rock', timestamp:20,
+    related:['piedra','peñasco'], collocations:['duro como una roca','roca sólida'],
+    mistake:'Roca (big rock) ≠ piedra (small stone). Úsalo con cuidado.',
+    synonyms:['piedra','peñasco','peña'], alternatives:['rocoso (rocky)','roquero (rocker)'] },
+  { id:'tocar', spanish:'tocar', english:'to touch; to play (instrument)', pronunciation:'toh-KAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Palabras no me tocan', exampleTranslation:'Words do not touch me', timestamp:20,
+    related:['palpar','tañer'], collocations:['tocar el cielo','tocar fondo','tocar guitarra'],
+    mistake:'"Tocar" también significa "to play (an instrument)" — contexto clave.',
+    synonyms:['palpar','sentir','rozar'], alternatives:['tocarse (to touch oneself)','tacto (touch n.)'] },
+  { id:'adentro', spanish:'adentro', english:'inside, within', pronunciation:'ah-DEN-tro', pos:'adverb', category:'Vocabulary', difficulty:'Medium',
+    example:'Adentro hay un volcán', exampleTranslation:'Inside there is a volcano', timestamp:24,
+    related:['dentro','interior'], collocations:['adentro de la casa','más adentro','tierra adentro'],
+    mistake:'Adentro (adv.) ≠ adentro de (prep.) — en algunos contextos es "dentro de".',
+    synonyms:['dentro','interiormente'], alternatives:['para adentro (inward)'] },
+  { id:'volcan', spanish:'volcán', english:'volcano', pronunciation:'vol-KAHN', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Medium',
+    example:'Adentro hay un volcán', exampleTranslation:'Inside there is a volcano', timestamp:24,
+    related:['cráter','lava','erupción'], collocations:['volcán activo','volcán en erupción'],
+    mistake:'Lleva tilde en la a (volcán). Plural: volcanes.',
+    synonyms:['montaña de fuego'], alternatives:['volcánico (volcanic)','volcanismo'] },
+  { id:'estallar', spanish:'estallar', english:'to explode, to burst', pronunciation:'es-tah-YAR', pos:'verb', category:'Vocabulary', difficulty:'Hard',
+    example:'Que pronto va a estallar', exampleTranslation:'That will soon explode', timestamp:24,
+    related:['explotar','reventar'], collocations:['estallar en llamas','estallar de ira','estallar la guerra'],
+    mistake:'Estallar (burst) ≠ estrellar (crash). Suenan similar pero son distintos.',
+    synonyms:['explotar','reventar','detonar'], alternatives:['estallido (explosion n.)','estallante'] },
+  { id:'tranquilo', spanish:'tranquilo', english:'calm, tranquil', pronunciation:'trahn-KEE-lo', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
+    example:'Yo quiero estar tranquilo', exampleTranslation:'I want to be calm', timestamp:28,
+    related:['calmado','sereno','pacífico'], collocations:['estar tranquilo','quedarse tranquilo','mente tranquila'],
+    mistake:'Tranquilo se usa también como "don\'t worry" — ¡Tranquilo!',
+    synonyms:['calmado','sereno','plácido','sosegado'], alternatives:['tranquilidad (calmness)'] },
+  { id:'situacion', spanish:'situación', english:'situation', pronunciation:'see-twah-SYON', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Medium',
+    example:'Es mi situación', exampleTranslation:'It is my situation', timestamp:31,
+    related:['circunstancia','estado','condición'], collocations:['situación difícil','situación económica','situación de emergencia'],
+    mistake:'Femenino: LA situación (not el). Lleva tilde en la o.',
+    synonyms:['circunstancia','escenario','contexto'], alternatives:['situar (to place)','situado (located)'] },
+  { id:'desolacion', spanish:'desolación', english:'desolation, despair', pronunciation:'deh-so-lah-SYON', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Hard',
+    example:'Una desolación', exampleTranslation:'A desolation', timestamp:31,
+    related:['tristeza','soledad','devastación'], collocations:['desolación total','paisaje de desolación'],
+    mistake:'Desolación es más profundo que "tristeza". Implica abandono total.',
+    synonyms:['devastación','tristeza','soledad','amargura'], alternatives:['desolado (desolate)','desolar (to lay waste)'] },
+  { id:'lamento', spanish:'lamento', english:'lament, wail', pronunciation:'lah-MEN-to', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Medium',
+    example:'Soy como un lamento', exampleTranslation:'I am like a lament', timestamp:36,
+    related:['quejido','gemido','llanto'], collocations:['lamento profundo','lamento de dolor','un lamento triste'],
+    mistake:'Lamento ≠ lamentación (lamentation es más formal).',
+    synonyms:['quejido','gemido','plañido'], alternatives:['lamentar (to regret)','lamentable (regrettable)'] },
+  { id:'boliviano', spanish:'boliviano', english:'Bolivian', pronunciation:'bo-lee-VYAH-no', pos:'adjective/noun', category:'Vocabulary', difficulty:'Easy',
+    example:'Lamento boliviano', exampleTranslation:'Bolivian lament', timestamp:36,
+    related:['Bolivia','andino','sudamericano'], collocations:['el pueblo boliviano','la cultura boliviana'],
+    mistake:'Nacionalidad se escribe con minúscula en español (boliviano, no Boliviano).',
+    synonyms:['andino','altiplánico'], alternatives:['Bolivia (country)'] },
+  { id:'empezar', spanish:'empezar', english:'to begin, to start', pronunciation:'em-peh-SAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Que un día empezó', exampleTranslation:'That one day began', timestamp:39,
+    related:['comenzar','iniciar'], collocations:['empezar de cero','empezar a hacer algo','empezar de nuevo'],
+    mistake:'Empezar + a + infinitive (empiezo A estudiar). No olvides la preposición.',
+    synonyms:['comenzar','iniciar','arrancar'], alternatives:['comienzo (beginning n.)','principio (start n.)'] },
+  { id:'terminar', spanish:'terminar', english:'to finish, to end', pronunciation:'tehr-mee-NAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'No va a terminar', exampleTranslation:'It will not end', timestamp:39,
+    related:['acabar','finalizar','concluir'], collocations:['terminar de trabajar','terminar con algo','terminar en'],
+    mistake:'Terminar de + infinitive (termino DE leer). Terminar con algo (break up with).',
+    synonyms:['acabar','finalizar','concluir','cesar'], alternatives:['término (term/end)','terminación (termination)'] },
+  { id:'dano', spanish:'daño', english:'damage, harm', pronunciation:'DAH-nyo', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Easy',
+    example:'A nadie hace daño', exampleTranslation:'It does not harm anyone', timestamp:43,
+    related:['perjuicio','lesión','mal'], collocations:['hacer daño','daño colateral','daño moral'],
+    mistake:'Daño (harm) ≠ año (year). La ñ cambia todo el significado.',
+    synonyms:['perjuicio','lesión','mal','detrimento'], alternatives:['dañar (to damage)','dañino (harmful)','dañado (damaged)'] },
+  { id:'borracho', spanish:'borracho', english:'drunk, drunken', pronunciation:'boh-RAH-cho', pos:'adjective', category:'Vocabulary', difficulty:'Medium',
+    example:'Borracho y loco', exampleTranslation:'Drunk and crazy', timestamp:62,
+    related:['ebrio','embriagado','alcoholizado'], collocations:['emborracharse','borracho perdido','borracho de poder'],
+    mistake:'Borracho se usa como adj. y como sustantivo (el borracho). Cuidado: es informal.',
+    synonyms:['ebrio','embriagado','alcoholizado'], alternatives:['emborracharse (to get drunk)','borrachera (drunkenness)'] },
+  { id:'loco', spanish:'loco', english:'crazy, mad', pronunciation:'LOH-ko', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
+    example:'Borracho y loco', exampleTranslation:'Drunk and crazy', timestamp:62,
+    related:['demente','insensato','trastornado'], collocations:['estar loco','volverse loco','amor loco','de locos'],
+    mistake:'"Loco" es más coloquial que "insano". En contexto cariñoso: "estoy loco por ti" (I\'m crazy about you).',
+    synonyms:['demente','insensato','perturbado'], alternatives:['locura (craziness)','alocado (reckless)','enloquecer (to go crazy)'] },
+  { id:'corazon', spanish:'corazón', english:'heart', pronunciation:'koh-rah-SOHN', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Mi corazón idiota', exampleTranslation:'My idiot heart', timestamp:70,
+    related:['alma','sentimiento','centro'], collocations:['de corazón','corazón partido','con todo el corazón','corazón de piedra'],
+    mistake:'Lleva tilde en la o final (corazón). Plural: corazones.',
+    synonyms:['alma','espíritu','sentimiento','núcleo'], alternatives:['corazonada (hunch)','cardíaco (cardiac)','enamorar (to fall in love)'] },
+  { id:'idiota', spanish:'idiota', english:'idiot, foolish', pronunciation:'ee-DYOH-tah', pos:'adjective/noun', category:'Vocabulary', difficulty:'Easy',
+    example:'Mi corazón idiota', exampleTranslation:'My idiot heart', timestamp:70,
+    related:['tonto','necio','estúpido'], collocations:['hacer el idiota','idiota útil'],
+    mistake:'Idiota es ofensivo en muchos contextos. En la canción es auto-crítica afectuosa.',
+    synonyms:['tonto','necio','estúpido','imbécil'], alternatives:['idiotez (idiocy)','entontecer (to daze)'] },
+  { id:'siempre', spanish:'siempre', english:'always', pronunciation:'SYEM-pre', pos:'adverb', category:'Vocabulary', difficulty:'Easy',
+    example:'Siempre brillará', exampleTranslation:'It will always shine', timestamp:70,
+    related:['eternamente','constantemente','continuamente'], collocations:['para siempre','siempre que','como siempre','siempre jamás'],
+    mistake:'Siempre ≠ nunca. Son antónimos directos. "Siempre" no lleva tilde.',
+    synonyms:['eternamente','constantemente','perennemente','incesantemente'], alternatives:['eterno (eternal)','eternidad (eternity)'] },
+  { id:'brillar', spanish:'brillar', english:'to shine, to glitter', pronunciation:'bree-YAR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Siempre brillará', exampleTranslation:'It will always shine', timestamp:70,
+    related:['relucir','resplandecer','destellar'], collocations:['brillar con luz propia','hacer brillar','brillar por su ausencia'],
+    mistake:'Brillar ≠ brillantear. La forma simple "brillar" es la más usada.',
+    synonyms:['relucir','resplandecer','destellar','fulgurar'], alternatives:['brillante (brilliant/adj.)','brillo (shine n.)','brillantez (brilliance)'] },
+  { id:'amar', spanish:'amar', english:'to love', pronunciation:'ah-MAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Yo te amaré', exampleTranslation:'I will love you', timestamp:78,
+    related:['querer','adorar','enamorar'], collocations:['amar sin condición','amar de verdad','hacer el amor'],
+    mistake:'Amar es más intenso que "querer". "Te quiero" es más cotidiano; "te amo" es más profundo.',
+    synonyms:['querer','adorar','estimar','idolatrar'], alternatives:['amor (love n.)','amante (lover)','enamorado (in love)'] },
+  { id:'nena', spanish:'nena', english:'baby, girl (term of endearment)', pronunciation:'NEH-nah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Medium',
+    example:'Nena, no te peines en la cama', exampleTranslation:'Baby, don\'t comb your hair in bed', timestamp:85,
+    related:['niña','chica','bebé','mamacita'], collocations:['nena linda','nena hermosa','mi nena'],
+    mistake:'Nena es coloquial / cariñoso. En contexto formal, usa "señorita" o "chica".',
+    synonyms:['niña','chica','bebé','princesa'], alternatives:['niño (boy)','niñez (childhood)'] },
+  { id:'peinar', spanish:'peinar', english:'to comb', pronunciation:'pay-NAR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'No te peines en la cama', exampleTranslation:'Don\'t comb your hair in bed', timestamp:85,
+    related:['cepillar','alisar','acicalar'], collocations:['peinarse el cabello','peinar a alguien'],
+    mistake:'"Peinar" ≠ "peinarse". "Peinarse" es reflexivo (to comb one\'s own hair).',
+    synonyms:['cepillar','alisar','desenredar'], alternatives:['peinado (hairstyle)','peine (comb n.)','peluquero (hairdresser)'] },
+  { id:'cama', spanish:'cama', english:'bed', pronunciation:'KAH-mah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'En la cama', exampleTranslation:'In bed', timestamp:85,
+    related:['lecho','litera','colchón'], collocations:['hacer la cama','guardar cama','caerse de la cama','cama matrimonial'],
+    mistake:'"Hacer la cama" = make the bed. "Irse a la cama" = go to bed. Dos expresiones distintas.',
+    synonyms:['lecho','litera','camastro'], alternatives:['camas (plural)','dormitorio (bedroom)','acostarse (to lie down)'] },
+  { id:'viajante', spanish:'viajante', english:'traveler, travelling salesman', pronunciation:'vyah-HAHN-te', pos:'noun', category:'Vocabulary', difficulty:'Medium',
+    example:'Los viajantes se van a atrasar', exampleTranslation:'The travelers will be delayed', timestamp:88,
+    related:['viajero','viaje','turista','pasajero'], collocations:['viajante de comercio','agente viajante'],
+    mistake:'Viajante ≠ viajero. Viajante sugiere alguien que viaja por trabajo; viajero es más general.',
+    synonyms:['viajero','pasajero','turista','caminante'], alternatives:['viaje (trip)','viajar (to travel)','vía (way/route)'] },
+  { id:'atrasar', spanish:'atrasar', english:'to delay, to be late', pronunciation:'ah-trah-SAR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Se van a atrasar', exampleTranslation:'They will be delayed', timestamp:88,
+    related:['retrasar','demorar','tardar'], collocations:['atrasar el reloj','atrasarse en el trabajo','sin atrasar'],
+    mistake:'Atrasarse (reflexive) = to be late. Atrasar (non-reflexive) = to delay something.',
+    synonyms:['retrasar','demorar','tardar','postergar'], alternatives:['atrasado (delayed/late)','atraso (delay n.)','retraso (delay)'] },
+  { id:'querer', spanish:'querer', english:'to want, to love', pronunciation:'keh-REHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Me quieren agitar', exampleTranslation:'They want to agitate me', timestamp:16,
+    related:['desear','amar','anhelar'], collocations:['querer hacer algo','querer a alguien','sin querer'],
+    mistake:'"Querer" + infinitive = to want to do sth. "Querer a alguien" = to love someone.',
+    synonyms:['desear','anhelar','apetecer'], alternatives:['quisiera (I would like)','querido (dear)'] },
+  { id:'soy', spanish:'soy', english:'I am', pronunciation:'soy', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Soy como una roca', exampleTranslation:'I am like a rock', timestamp:20,
+    related:['ser','eres','es','somos'], collocations:['soy de','soy como','yo soy'],
+    mistake:'"Soy" = permanent characteristic. "Estoy" = temporary state. ¡No los confundas!',
+    synonyms:[], alternatives:['ser (to be)','siendo (being)'] },
+  { id:'como', spanish:'como', english:'like, as', pronunciation:'KOH-mo', pos:'adverb', category:'Vocabulary', difficulty:'Easy',
+    example:'Soy como una roca', exampleTranslation:'I am like a rock', timestamp:20,
+    related:['tal como','así como'], collocations:['como siempre','como si','tan...como'],
+    mistake:'"Como" (like/as) ≠ "cómo" (how) with accent. La tilde cambia todo.',
+    synonyms:['tipo','similar a','igual que'], alternatives:['cómo (how)','comodidad (comfort)'] },
+  { id:'palabra', spanish:'palabra', english:'word', pronunciation:'pah-LAH-brah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Palabras no me tocan', exampleTranslation:'Words do not touch me', timestamp:20,
+    related:['vocablo','término','expresión'], collocations:['palabra clave','palabra de honor','no tener palabras'],
+    mistake:'Femenino: LA palabra. "Palabras" plural es regular.',
+    synonyms:['vocablo','término','voz','dicción'], alternatives:['palabrería (talkativeness)','palabro (weird word)'] },
+  { id:'no', spanish:'no', english:'no, not', pronunciation:'noh', pos:'adverb', category:'Vocabulary', difficulty:'Easy',
+    example:'Palabras no me tocan', exampleTranslation:'Words do not touch me', timestamp:20,
+    related:['nunca','jamás','tampoco'], collocations:['no saber','no poder','no querer','ya no'],
+    mistake:'"No" + verb = negation. "No" solo = answer (no). No confundir con "know" del inglés.',
+    synonyms:['ninguno','nunca'], alternatives:['nada (nothing)','nadie (nobody)'] },
+  { id:'haber', spanish:'haber', english:'to have (auxiliary); there is/are', pronunciation:'ah-BEHR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Hay un volcán', exampleTranslation:'There is a volcano', timestamp:24,
+    related:['tener','existir','ocurrir'], collocations:['hay que','haber de','puede haber'],
+    mistake:'"Hay" = there is/are (impersonal). "Tener" = to have (possession). Son diferentes.',
+    synonyms:['existir','tener','ocurrir'], alternatives:['hay (there is)','había (there was)','hubo (there was)'] },
+  { id:'pronto', spanish:'pronto', english:'soon, quickly', pronunciation:'PROHN-to', pos:'adverb', category:'Vocabulary', difficulty:'Easy',
+    example:'Que pronto va a estallar', exampleTranslation:'That will soon explode', timestamp:24,
+    related:['rápido','temprano','inmediatamente'], collocations:['tan pronto','pronto por la mañana','de pronto'],
+    mistake:'"Pronto" = soon / early. "Listo" = ready. No son lo mismo.',
+    synonyms:['rápidamente','temprano','enseguida'], alternatives:['prontitud (promptness)','prontuario (handbook)'] },
+  { id:'ir', spanish:'ir', english:'to go', pronunciation:'eer', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Va a estallar', exampleTranslation:'It is going to explode', timestamp:24,
+    related:['irse','andar','viajar'], collocations:['ir a','ir de compras','ir bien','ir y venir'],
+    mistake:'"Ir" + a + infinitive = near future (voy a comer). Altamente irregular.',
+    synonyms:['dirigirse','acudir','asistir'], alternatives:['irse (to leave)','ida (one-way)','vamos (let\'s go)'] },
+  { id:'querer-2', spanish:'querer (yo quiero)', english:'to want (I want)', pronunciation:'KYEH-roh', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Yo quiero estar tranquilo', exampleTranslation:'I want to be calm', timestamp:28,
+    related:['desear','desearía','necesitar'], collocations:['quiero que','quiero ir','te quiero'],
+    mistake:'"Quiero" (I want) vs "quiero a" (I love). La preposición a cambia el significado.',
+    synonyms:['deseo','anhelo','necesito'], alternatives:['quisiera (I would like)','quería (I wanted)'] },
+  { id:'ser', spanish:'ser', english:'to be (permanent)', pronunciation:'sehr', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Es mi situación', exampleTranslation:'It is my situation', timestamp:31,
+    related:['estar','existir','encontrarse'], collocations:['ser de','ser para','ser como','ser o no ser'],
+    mistake:'"Ser" (permanent) vs "estar" (temporary). "Soy feliz" = I\'m a happy person. "Estoy feliz" = I\'m happy right now.',
+    synonyms:['existir','vivir','consistir'], alternatives:['siendo (gerund)','sido (participle)','ser humano (human being)'] },
+  { id:'es', spanish:'es', english:'he/she/it is', pronunciation:'ehs', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Es mi situación', exampleTranslation:'It is my situation', timestamp:31,
+    related:['ser','soy','eres','somos'], collocations:['es que','es decir','es por','es para'],
+    mistake:'"Es" de ser (permanent). No confundir con "está" de estar (temporary).',
+    synonyms:[], alternatives:['era (it was)','será (it will be)','sea (maybe)'] },
+  { id:'situacion-revisit', spanish:'situación difícil', english:'difficult situation', pronunciation:'see-twah-SYON dee-FEEL', pos:'phrase', category:'Vocabulary', difficulty:'Medium',
+    example:'Es mi situación', exampleTranslation:'It is my situation', timestamp:31,
+    related:['problema','problema grave','apuro'], collocations:['situación complicada','situación límite','situación de riesgo'],
+    mistake:'"Situación" es femenino — "la situación", no "el situación".',
+    synonyms:['circunstancia','estado','contexto'], alternatives:['situado (located)','situacional (situational)'] },
+  { id:'un', spanish:'un/una', english:'a, an (indefinite article)', pronunciation:'oon / OO-nah', pos:'article', category:'Vocabulary', difficulty:'Easy',
+    example:'Un lamento boliviano', exampleTranslation:'A Bolivian lament', timestamp:36,
+    related:['el','la','unos','unas'], collocations:['un poco','un rato','un día','una vez'],
+    mistake:'"Un" for masculine nouns, "una" for feminine. "Un día" (masc.), "una noche" (fem.).',
+    synonyms:[], alternatives:['uno (one)','único (unique)'] },
+  { id:'dia', spanish:'día', english:'day', pronunciation:'DEE-ah', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Que un día empezó', exampleTranslation:'That one day began', timestamp:39,
+    related:['jornada','fecha','tiempo','noche'], collocations:['buen día','todos los días','día a día','al día'],
+    mistake:'"Día" es masculino — EL día, no "la día". Contraintuitivo porque termina en -a.',
+    synonyms:['jornada','fecha','jornada'], alternatives:['diario (daily adj.)','diariamente (daily adv.)','mediodía (noon)'] },
+  { id:'nadie', spanish:'nadie', english:'nobody, no one', pronunciation:'NAH-dyeh', pos:'pronoun', category:'Vocabulary', difficulty:'Easy',
+    example:'A nadie hace daño', exampleTranslation:'It does not harm anyone', timestamp:43,
+    related:['alguien','ninguno','nunca'], collocations:['casi nadie','nadie más','nadie sabe'],
+    mistake:'"Nadie" is already negative — in Spanish, use "no...nadie" or just "nadie". "No viene nadie" = Nobody comes.',
+    synonyms:['ninguno','ninguna persona'], alternatives:['nulidad (nonentity)','nadie (como sustantivo)'] },
+  { id:'hacer', spanish:'hacer', english:'to do, to make', pronunciation:'ah-SEHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'A nadie hace daño', exampleTranslation:'It does not harm anyone', timestamp:43,
+    related:['realizar','fabricar','crear'], collocations:['hacer daño','hacer el bien','hacer caso','hacer falta'],
+    mistake:'"Hacer" = to do/make. "Hace" + time = ago (hace dos días). Muy versátil.',
+    synonyms:['realizar','ejecutar','fabricar','producir'], alternatives:['hacerse (to become)','rehacer (to redo)','deshacer (to undo)'] },
+  { id:'yo', spanish:'yo', english:'I', pronunciation:'yoh', pos:'pronoun', category:'Vocabulary', difficulty:'Easy',
+    example:'Yo quiero estar tranquilo', exampleTranslation:'I want to be calm', timestamp:28,
+    related:['mí','me','conmigo'], collocations:['yo mismo','yo creo','yo pienso','yo soy'],
+    mistake:'"Yo" = subject. "Mí" = object (para mí). "Me" = reflexive/object. Tres formas distintas.',
+    synonyms:[], alternatives:['mí (me)','mío (mine)','yo mismo (myself)'] },
+  { id:'aqui', spanish:'aquí', english:'here', pronunciation:'ah-KEE', pos:'adverb', category:'Vocabulary', difficulty:'Easy',
+    example:'Y yo estoy aquí', exampleTranslation:'And I am here', timestamp:62,
+    related:['allí','ahí','acá'], collocations:['por aquí','aquí mismo','aquí y allá','de aquí'],
+    mistake:'"Aquí" (right here) ≠ "ahí" (there near you) ≠ "allí" (over there). Precisión espacial.',
+    synonyms:['acá','en este lugar'], alternatives:['aquello (that)','aquél (that one)'] },
+  { id:'estar', spanish:'estar', english:'to be (temporary)', pronunciation:'ehs-TAHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Estoy aquí', exampleTranslation:'I am here', timestamp:62,
+    related:['ser','encontrarse','hallarse'], collocations:['estar bien','estar mal','estar de acuerdo','estar a punto'],
+    mistake:'"Estar" for location, temporary states, and emotions. "Ser" for identity and permanent traits.',
+    synonyms:['encontrarse','hallarse','permanecer'], alternatives:['estado (state n./part.)','estancia (stay n.)'] },
+  { id:'estoy', spanish:'estoy', english:'I am (temporary)', pronunciation:'ehs-TOY', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Estoy aquí', exampleTranslation:'I am here', timestamp:62,
+    related:['estar','estás','está','estamos'], collocations:['estoy bien','estoy de acuerdo','estoy aquí','estoy listo'],
+    mistake:'"Estoy" = temporary. "Soy" = permanent. "Estoy cansado" (tired now) vs "Soy cansado" (WRONG — never permanent).',
+    synonyms:['me encuentro'], alternatives:['estaba (I was)','estaré (I will be)'] },
+  { id:'mi', spanish:'mi', english:'my', pronunciation:'mee', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
+    example:'Mi corazón idiota', exampleTranslation:'My idiot heart', timestamp:70,
+    related:['mío','mis','tu','su'], collocations:['mi casa','mi vida','mi amor','mi corazón'],
+    mistake:'"Mi" (my, sin tilde) ≠ "mí" (me, con tilde). "Mi casa" vs "para mí".',
+    synonyms:[], alternatives:['mío (mine)','mía (mine f.)','mis (my pl.)'] },
+  { id:'te', spanish:'te', english:'you (informal object/reflexive)', pronunciation:'teh', pos:'pronoun', category:'Vocabulary', difficulty:'Easy',
+    example:'Te amaré', exampleTranslation:'I will love you', timestamp:78,
+    related:['tú','ti','contigo','se'], collocations:['te quiero','te amo','te veo','te digo'],
+    mistake:'"Te" = object/reflexive (I love YOU). "Tú" = subject (YOU love). "Tu" = possessive (YOUR).',
+    synonyms:[], alternatives:['tú (you subject)','tu (your)','ti (you prep.)','contigo (with you)'] },
+  { id:'por', spanish:'por', english:'for, through, by', pronunciation:'pohr', pos:'preposition', category:'Vocabulary', difficulty:'Medium',
+    example:'Por siempre', exampleTranslation:'Forever', timestamp:85,
+    related:['para','debido a','a través de'], collocations:['por favor','por qué','por siempre','por ejemplo'],
+    mistake:'"Por" vs "para" — clásica confusión. "Por" = cause/through. "Para" = purpose/destination.',
+    synonyms:['mediante','a través de','debido a'], alternatives:['para (for purpose)','porque (because)'] },
+  { id:'siempre-revisit', spanish:'por siempre', english:'forever', pronunciation:'pohr SYEM-pre', pos:'phrase', category:'Vocabulary', difficulty:'Easy',
+    example:'Te amaré por siempre', exampleTranslation:'I will love you forever', timestamp:85,
+    related:['eternamente','para siempre','siempre jamás'], collocations:['por siempre jamás','por siempre joven'],
+    mistake:'"Por siempre" y "para siempre" son intercambiables en este contexto.',
+    synonyms:['eternamente','para siempre','perpetuamente'], alternatives:['siempre (always)','eterno (eternal)'] },
+  { id:'se', spanish:'se', english:'reflexive pronoun; passive marker', pronunciation:'seh', pos:'pronoun', category:'Vocabulary', difficulty:'Medium',
+    example:'Se van a atrasar', exampleTranslation:'They will be delayed', timestamp:88,
+    related:['me','te','nos','os'], collocations:['se dice','se sabe','se habla','se hace'],
+    mistake:'"Se" has many uses: reflexive (se lava), passive (se vende), impersonal (se dice), reciprocal (se aman).',
+    synonyms:[], alternatives:['sé (I know)','que se (so that)'] },
+  { id:'van', spanish:'van', english:'they go', pronunciation:'bahn', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Se van a atrasar', exampleTranslation:'They will be delayed', timestamp:88,
+    related:['ir','voy','vas','va'], collocations:['van a','van por','se van','van bien'],
+    mistake:'"Van" (they go) + a + inf. = near future. "Van a llegar" = They are going to arrive.',
+    synonyms:['se dirigen','acuden','asisten'], alternatives:['se van (they leave)','vamos (we go)'] },
+  { id:'los', spanish:'los', english:'the (masculine plural)', pronunciation:'lohs', pos:'article', category:'Vocabulary', difficulty:'Easy',
+    example:'Los viajantes', exampleTranslation:'The travelers', timestamp:88,
+    related:['el','la','las','unos'], collocations:['los dos','los demás','los nuestros','los que'],
+    mistake:'"Los" for masculine plural, "las" for feminine plural. "Los libros", "las casas".',
+    synonyms:[], alternatives:['ellos (they)','les (to them)'] },
+  { id:'de', spanish:'de', english:'of, from', pronunciation:'deh', pos:'preposition', category:'Vocabulary', difficulty:'Easy',
+    example:'Lamento boliviano', exampleTranslation:'Bolivian lament', timestamp:36,
+    related:['desde','acerca de','sobre'], collocations:['de la','de los','de que','de verdad','de nada'],
+    mistake:'"De" + el = "del" (contracción obligatoria). "De el" es incorrecto.',
+    synonyms:['desde','procedente de'], alternatives:['del (of the)','deber (duty)','dé (give subj.)'] },
+  { id:'me', spanish:'me', english:'me (object/reflexive)', pronunciation:'meh', pos:'pronoun', category:'Vocabulary', difficulty:'Easy',
+    example:'Me quieren agitar', exampleTranslation:'They want to agitate me', timestamp:16,
+    related:['te','se','nos','os'], collocations:['me gusta','me llamo','me duele','me parece'],
+    mistake:'"Me" = object/reflexive. "Me gusta" = It pleases ME (not "I like"). Estructura inversa.',
+    synonyms:[], alternatives:['mí (me/obj. prep.)','mío (mine)'] },
+  { id:'en', spanish:'en', english:'in, on, at', pronunciation:'ehn', pos:'preposition', category:'Vocabulary', difficulty:'Easy',
+    example:'En la cama', exampleTranslation:'In bed', timestamp:85,
+    related:['dentro de','sobre','encima de'], collocations:['en casa','en el','en serio','en punto','en camino'],
+    mistake:'"En" covers "in", "on", "at" — contexto determina el significado. "En la mesa" = on the table OR in the table.',
+    synonyms:['dentro','sobre','encima'], alternatives:['entre (between)','sin (without)'] },
+  { id:'y', spanish:'y', english:'and', pronunciation:'ee', pos:'conjunction', category:'Vocabulary', difficulty:'Easy',
+    example:'Borracho y loco', exampleTranslation:'Drunk and crazy', timestamp:62,
+    related:['e','también','además'], collocations:['y tú','y yo','y luego','y más'],
+    mistake:'"Y" changes to "e" before words starting with "i" or "hi": "padre e hijo".',
+    synonyms:['e','además'], alternatives:['ni (nor)','o (or)'] },
+  { id:'amor', spanish:'amor', english:'love', pronunciation:'ah-MOHR', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Te amaré por siempre', exampleTranslation:'I will love you forever', timestamp:78,
+    related:['cariño','afecto','pasión'], collocations:['amor propio','amor a primera vista','hacer el amor','mi amor'],
+    mistake:'"Amor" es masculino: EL amor. "Estar enamorado" = to be in love.',
+    synonyms:['cariño','afecto','pasión','devoción'], alternatives:['amar (to love)','amante (lover)','enamorado (in love)'] },
+  { id:'alma', spanish:'alma', english:'soul', pronunciation:'AHL-mah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Medium',
+    example:'Lamento del alma', exampleTranslation:'Lament of the soul', timestamp:0,
+    related:['espíritu','corazón','ser'], collocations:['con el alma','alma gemela','caerle al alma'],
+    mistake:'"Alma" es femenino pero usa "el" en singular: EL alma (por la a tónica). LAS almas.',
+    synonyms:['espíritu','corazón','esencia'], alternatives:['anímico (soulful)','desalmado (soulless)'] },
+  { id:'triste', spanish:'triste', english:'sad', pronunciation:'TREES-teh', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
+    example:'Un lamento triste', exampleTranslation:'A sad lament', timestamp:36,
+    related:['tristeza','melancólico','deprimido'], collocations:['estar triste','ponerse triste','cara triste','canción triste'],
+    mistake:'"Triste" is invariable in gender: hombre triste / mujer triste. Plural: tristes.',
+    synonyms:['melancólico','afligido','apesadumbrado'], alternatives:['tristeza (sadness)','entristecer (to sadden)'] },
+  { id:'sentir', spanish:'sentir', english:'to feel, to regret', pronunciation:'sehn-TEER', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Siento el lamento', exampleTranslation:'I feel the lament', timestamp:0,
+    related:['percibir','experimentar','lamentar'], collocations:['sentir miedo','sentir alegría','sentir mucho','lo siento'],
+    mistake:'"Lo siento" = I\'m sorry (lit. "I feel it"). "Sentir" = to feel; "sentirse" = to feel (emotion).',
+    synonyms:['percibir','experimentar','notar'], alternatives:['sentimiento (feeling)','sensible (sensitive)'] },
+  { id:'dejar', spanish:'dejar', english:'to leave, to let', pronunciation:'deh-HAHR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Déjame tranquilo', exampleTranslation:'Leave me alone', timestamp:0,
+    related:['abandonar','permitir','salir'], collocations:['dejar de','dejar atrás','dejar en paz','dejar caer'],
+    mistake:'"Dejar" + infinitive = to stop doing (dejé de fumar). "Dejar" + noun = to leave (dejé el libro).',
+    synonyms:['abandonar','permitir','soltar'], alternatives:['dejarse (to let oneself)','dejado (negligent)'] },
+  { id:'llevar', spanish:'llevar', english:'to carry, to take, to wear', pronunciation:'yeh-VAHR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Te llevo en mi corazón', exampleTranslation:'I carry you in my heart', timestamp:0,
+    related:['cargar','portar','vestir'], collocations:['llevar puesto','llevar a cabo','llevar tiempo','llevarse bien'],
+    mistake:'"Llevar" = carry/take. "Traer" = bring. Direction matters: llevar = away, traer = toward.',
+    synonyms:['cargar','portar','transportar'], alternatives:['llevarse (to get along)','llevadero (bearable)'] },
+  { id:'esperar', spanish:'esperar', english:'to wait, to hope', pronunciation:'ehs-peh-RAHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Espero que estés bien', exampleTranslation:'I hope you are well', timestamp:0,
+    related:['aguardar','tener esperanza','ansiar'], collocations:['esperar a','esperar que','esperar con ansias','esperar sentado'],
+    mistake:'"Esperar" = both to wait (esperar el bus) and to hope (espero que sí). Context determines meaning.',
+    synonyms:['aguardar','tener esperanza','contar con'], alternatives:['espera (wait n.)','esperanza (hope n.)','esperado (expected)'] },
+  { id:'recordar', spanish:'recordar', english:'to remember, to recall', pronunciation:'reh-kor-DAHR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Recordar la canción', exampleTranslation:'To remember the song', timestamp:0,
+    related:['acordarse','memorizar','evocar'], collocations:['recordar algo','recordar a','hacer recordar','que yo recuerde'],
+    mistake:'"Recordar" ≠ "acordarse de". "Recordar" = to recall (transitive). "Acordarse de" = to remember (reflexive).',
+    synonyms:['rememorar','evocar','traer a la mente'], alternatives:['recuerdo (memory)','inolvidable (unforgettable)'] },
+  { id:'olvidar', spanish:'olvidar', english:'to forget', pronunciation:'ohl-vee-DAHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Nunca voy a olvidar', exampleTranslation:'I will never forget', timestamp:0,
+    related:['olvidarse','omitir','perder'], collocations:['olvidar algo','olvidarse de','no olvidar','olvidar por completo'],
+    mistake:'"Olvidar" (transitive): olvidé las llaves. "Olvidarse de" (reflexive): me olvidé de las llaves.',
+    synonyms:['omitir','perder de vista','descuidar'], alternatives:['olvido (forgetfulness)','inolvidable (unforgettable)'] },
+  { id:'pensar', spanish:'pensar', english:'to think', pronunciation:'pehn-SAHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Pienso en ti', exampleTranslation:'I think of you', timestamp:0,
+    related:['reflexionar','considerar','creer'], collocations:['pensar en','pensar que','pensar hacer','sin pensar'],
+    mistake:'"Pensar EN" (to think OF/ABOUT something). "Pensar QUE" (to think THAT). "Pensar" + inf. = to plan to.',
+    synonyms:['reflexionar','meditar','considerar'], alternatives:['pensamiento (thought)','pensativo (thoughtful)'] },
+  { id:'creer', spanish:'creer', english:'to believe, to think', pronunciation:'kreh-EHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Creo que sí', exampleTranslation:'I think so', timestamp:0,
+    related:['pensar','suponer','confiar'], collocations:['creer en','creer que','no creer','creer o reventar'],
+    mistake:'"Creer" = to believe (may be religious). "Creer que" = to think (opinion). "Creer en" = to believe in.',
+    synonyms:['pensar','suponer','confiar'], alternatives:['creencia (belief)','créeme (believe me)','increíble (incredible)'] },
+  { id:'poder', spanish:'poder', english:'to be able to, can', pronunciation:'poh-DEHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'No puedo más', exampleTranslation:'I cannot take it anymore', timestamp:0,
+    related:['ser capaz','lograr','conseguir'], collocations:['puede ser','no poder','poder hacer','se puede'],
+    mistake:'"Poder" + infinitive = can do. "Se puede" = it\'s possible. "No puedo" = I can\'t.',
+    synonyms:['ser capaz de','lograr','conseguir'], alternatives:['posible (possible)','poderío (power)','potencia (power)'] },
+  { id:'deber', spanish:'deber', english:'must, should, ought to', pronunciation:'deh-BEHR', pos:'verb', category:'Vocabulary', difficulty:'Medium',
+    example:'Debes escuchar la canción', exampleTranslation:'You should listen to the song', timestamp:0,
+    related:['tener que','necesitar','obligación'], collocations:['deber hacer','deber de','debería','deberse a'],
+    mistake:'"Deber" + inf. = must (debo estudiar). "Deber de" + inf. = probably (debe de ser). Diferencia sutil.',
+    synonyms:['tener que','estar obligado'], alternatives:['debido (due)','deuda (debt)','debido a (due to)'] },
+  { id:'saber', spanish:'saber', english:'to know (facts, how to)', pronunciation:'sah-BEHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Yo sé la canción', exampleTranslation:'I know the song', timestamp:0,
+    related:['conocer','entender','comprender'], collocations:['saber hacer','saber que','no sé','saberse'],
+    mistake:'"Saber" = to know facts or how to do something. "Conocer" = to know people/places.',
+    synonyms:['conocer','entender','dominar'], alternatives:['sabio (wise)','sabiduría (wisdom)','sabor (flavor)'] },
+  { id:'hablar', spanish:'hablar', english:'to speak, to talk', pronunciation:'ah-BLAHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Hablamos español', exampleTranslation:'We speak Spanish', timestamp:0,
+    related:['conversar','decir','comunicar'], collocations:['hablar de','hablar con','hablar en','hablar claro'],
+    mistake:'"Hablar" = to speak. "Decir" = to say. "Hablar español" vs "decir una palabra".',
+    synonyms:['conversar','decir','comunicar','charlar'], alternatives:['habla (speech)','hablante (speaker)','hablado (spoken)'] },
+  { id:'decir', spanish:'decir', english:'to say, to tell', pronunciation:'deh-SEER', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Sé lo que quieres decir', exampleTranslation:'I know what you mean', timestamp:0,
+    related:['hablar','expresar','contar','explicar'], collocations:['decir que','decir la verdad','es decir','querer decir'],
+    mistake:'"Decir" = to say. "Querer decir" = to mean. Muy irregular: digo, dices, dice, decimos, dicen.',
+    synonyms:['expresar','manifestar','declarar'], alternatives:['dicho (saying)','dicha (happiness)','predicho (predicted)'] },
+  { id:'entender', spanish:'entender', english:'to understand', pronunciation:'ehn-tehn-DEHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Entiendo la letra', exampleTranslation:'I understand the lyrics', timestamp:0,
+    related:['comprender','captar','saber'], collocations:['entender que','hacer entender','entenderse','dar a entender'],
+    mistake:'"Entender" (e→ie): entiendo, entiendes, entiende. "Comprender" is more formal.',
+    synonyms:['comprender','captar','asimilar'], alternatives:['entendido (understood)','entendimiento (understanding)'] },
+  { id:'vida', spanish:'vida', english:'life', pronunciation:'VEE-dah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'La vida es un lamento', exampleTranslation:'Life is a lament', timestamp:0,
+    related:['existencia','vivir','ser'], collocations:['toda la vida','en la vida','vida diaria','calidad de vida'],
+    mistake:'"Vida" es femenino: LA vida. "La vida loca" = the crazy life.',
+    synonyms:['existencia','ser','vivencia'], alternatives:['vivir (to live)','vivo (alive)','vital (vital)'] },
+  { id:'noche', spanish:'noche', english:'night', pronunciation:'NOH-cheh', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Toda la noche',
+    exampleTranslation:'All night long', timestamp:0,
+    related:['madrugada','anochecer','oscuro'], collocations:['buenas noches','de noche','esta noche','noche y día'],
+    mistake:'"Noche" es femenino: LA noche. "Buenas noches" = good night (plural).',
+    synonyms:['madrugada','anochecer','oscuridad'], alternatives:['anoche (last night)','nocturno (nightly)','medianoche (midnight)'] },
+  { id:'fuego', spanish:'fuego', english:'fire', pronunciation:'FWEH-goh', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Fuego en el volcán', exampleTranslation:'Fire in the volcano', timestamp:24,
+    related:['llama','calor','incendio','llamarada'], collocations:['echar fuego','fuego artificial','a fuego lento','prenderse fuego'],
+    mistake:'"Fuego" es masculino: EL fuego. "Hacer fuego" = to make a fire. "Echar fuego" = to be furious.',
+    synonyms:['llama','llamarada','brasas'], alternatives:['fogata (bonfire)','incendio (wildfire)','quemar (to burn)'] },
+  { id:'tierra', spanish:'tierra', english:'earth, land, ground', pronunciation:'TYEH-rah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Tierra adentro', exampleTranslation:'Inland (into the land)', timestamp:0,
+    related:['suelo','terreno','país','mundo'], collocations:['tierra firme','caer a tierra','en tierra','temblor de tierra','tierra adentro'],
+    mistake:'"Tierra" = earth (planet), soil, ground, land. "La Tierra" (capital) = the planet.',
+    synonyms:['suelo','terreno','territorio'], alternatives:['terrenal (earthly)','terrestre (terrestrial)','enterrar (to bury)'] },
+  { id:'cantar', spanish:'cantar', english:'to sing', pronunciation:'kahn-TAHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Cantar una canción', exampleTranslation:'To sing a song', timestamp:0,
+    related:['entonar','interpretar','tararear'], collocations:['cantar bien','cantar en','cantar una canción','salir cantando'],
+    mistake:'"Cantar" = to sing. "Canción" = song. "Cantante" = singer. Familia de palabras.',
+    synonyms:['entonar','interpretar','tararear'], alternatives:['cantante (singer)','canción (song)','canto (singing n.)'] },
+  { id:'guitarra', spanish:'guitarra', english:'guitar', pronunciation:'gee-TAH-rrah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'Tocar la guitarra', exampleTranslation:'To play the guitar', timestamp:0,
+    related:['instrumento','música','rock','acorde'], collocations:['tocar la guitarra','guitarra acústica','guitarra eléctrica','rasgar la guitarra'],
+    mistake:'"Guitarra" es femenino: LA guitarra. "Guitarrista" es común: el/la guitarrista.',
+    synonyms:[], alternatives:['guitarrista (guitarist)','guitarreo (guitar playing)'] },
+  { id:'música', spanish:'música', english:'music', pronunciation:'MOO-see-kah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'La música del rock latino', exampleTranslation:'Latin rock music', timestamp:0,
+    related:['canción','melodía','ritmo','rock'], collocations:['música clásica','música moderna','escuchar música','poner música'],
+    mistake:'"Música" es femenino: LA música. "Músico" = musician (masc.), "música" = musician (fem.).',
+    synonyms:['melodía','sonido','ritmo'], alternatives:['músico (musician)','musical (musical)','musicalmente (musically)'] },
+  { id:'canción', spanish:'canción', english:'song', pronunciation:'kahn-SYOHN', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'La canción Lamento Boliviano', exampleTranslation:'The song Lamento Boliviano', timestamp:0,
+    related:['tema','melodía','himno','ritmo'], collocations:['canción de amor','cantar una canción','canción popular','letra de canción'],
+    mistake:'"Canción" es femenino: LA canción. Plural: canciones (pierde tilde).',
+    synonyms:['tema','melodía','pieza musical'], alternatives:['cancionero (songbook)','cantar (to sing)','cantante (singer)'] },
+  { id:'latino', spanish:'latino', english:'Latin, Latin American', pronunciation:'lah-TEE-noh', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
+    example:'Rock latinoamericano', exampleTranslation:'Latin American rock', timestamp:0,
+    related:['latinoamericano','hispano','español'], collocations:['música latina','cultura latina','rock latino','comunidad latina'],
+    mistake:'"Latino" ≠ "latinoamericano". Latino = Latin (can include Europeans). Latinoamericano = Latin American.',
+    synonyms:['latinoamericano','hispano','iberoamericano'], alternatives:['América Latina (Latin America)','latinoamericano (Latin American)'] },
+  { id:'libre', spanish:'libre', english:'free', pronunciation:'LEE-breh', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
+    example:'El espíritu libre', exampleTranslation:'The free spirit', timestamp:0,
+    related:['libertad','independiente','suelto','gratis'], collocations:['ser libre','tiempo libre','entrada libre','al aire libre'],
+    mistake:'"Libre" (free as in liberty) ≠ "gratis" (free as in no cost). "Tiempo libre" = free time.',
+    synonyms:['independiente','autónomo','liberado'], alternatives:['libertad (freedom)','liberar (to free)','libremente (freely)'] },
+  { id:'volver', spanish:'volver', english:'to return, to go back', pronunciation:'bol-VEHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
+    example:'Volver a empezar', exampleTranslation:'To start again', timestamp:0,
+    related:['regresar','devolver','repetir'], collocations:['volver a','volver a casa','volver sobre','volverse'],
+    mistake:'"Volver" (o→ue): vuelvo, vuelves. "Volver a" + inf. = to do again (vuelve a cantar = sings again).',
+    synonyms:['regresar','retornar','reaparecer'], alternatives:['vuelta (return n.)','devolver (to return sth.)','revolver (to stir)'] },
+  { id:'emoción', spanish:'emoción', english:'emotion', pronunciation:'eh-moh-SYOHN', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Medium',
+    example:'La canción tiene mucha emoción', exampleTranslation:'The song has a lot of emotion', timestamp:0,
+    related:['sentimiento','pasión','afecto'], collocations:['con emoción','lleno de emoción','emoción fuerte','sin emoción'],
+    mistake:'"Emoción" es femenino: LA emoción. Lleva tilde en la o. Plural: emociones.',
+    synonyms:['sentimiento','pasión','afecto','conmoción'], alternatives:['emocional (emotional)','emocionar (to move)','emocionante (exciting)'] },
+  { id:'fuerza', spanish:'fuerza', english:'strength, force', pronunciation:'FWEHR-sah', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'La fuerza del volcán', exampleTranslation:'The force of the volcano', timestamp:24,
+    related:['poder','energía','vigor','potencia'], collocations:['con fuerza','tomar fuerza','fuerza de voluntad','a la fuerza'],
+    mistake:'"Fuerza" is feminine: LA fuerza. "Hacer fuerza" = to exert force. "Fuerza" ≠ "fortaleza" (fortress).',
+    synonyms:['poder','vigor','potencia','energía'], alternatives:['forzudo (strong)','forzar (to force)','reforzar (to reinforce)'] },
+  { id:'gente', spanish:'gente', english:'people', pronunciation:'HEN-teh', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Easy',
+    example:'La gente baila', exampleTranslation:'People dance', timestamp:0,
+    related:['personas','pueblo','multitud'], collocations:['la gente','mucha gente','gente joven','buena gente'],
+    mistake:'"Gente" is singular feminine but means "people": LA gente es (not son). ¡Trampa común!',
+    synonyms:['personas','pueblo','multitud','público'], alternatives:['gentil (kind)','gentileza (kindness)'] },
+  { id:'coro', spanish:'coro', english:'chorus', pronunciation:'KOH-roh', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Medium',
+    example:'El coro de la canción', exampleTranslation:'The chorus of the song', timestamp:62,
+    related:['estribillo','refrán','repetición'], collocations:['coro de la canción','cantar en coro','a coro','el coro'],
+    mistake:'"Coro" = chorus (music). "Se fue al coro" has no relation — "coro" here is chorus/choir.',
+    synonyms:['estribillo','refrán','repetición'], alternatives:['corear (to chant)','corista (chorus member)'] }];
+
+// ===== STATE =====
+const STATE_KEY = 'lamento_boliviano_curso';
+let state = loadState();
+let currentIndex = 0;
+let currentMode = 'study';
+let isFlipped = false;
+let player = null;
+let syncInterval = null;
+let quizQuestions = [];
+let quizIndex = 0;
+let quizCorrect = 0;
+let speedTimer = null;
+let speedTimeLeft = 180;
+let speedCount = 0;
+let speedAccurate = 0;
+let shuffleOrder = null;
+let sceneFilter = null;
+
+function defaultState() {
+  return { learned:{}, review:{}, fav:{}, accuracy:{}, streak:0, lastDate:'', quizHistory:[] };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      const d = defaultState();
+      return { ...d, ...parsed };
+    }
+  } catch(e) {}
+  return defaultState();
+}
+
+function saveState() {
+  localStorage.setItem(STATE_KEY, JSON.stringify(state));
+  updateProgress();
+}
+
+function getFilteredWords() {
+  let words = sceneFilter ? [...sceneFilter] : [...VOCABULARY];
+  if (currentMode === 'review') {
+    const learnedIds = new Set(Object.keys(state.learned).filter(k => state.learned[k]));
+    words = words.filter(w => !learnedIds.has(w.id));
+    if (words.length === 0) words = [...VOCABULARY];
+  }
+  if (shuffleOrder) {
+    const orderMap = new Map(shuffleOrder.map((id, i) => [id, i]));
+    words = [...words].sort((a, b) => (orderMap.get(a.id) ?? Infinity) - (orderMap.get(b.id) ?? Infinity));
+  }
+  const fc = document.getElementById('filter-count');
+  if (fc) fc.textContent = words.length + ' palabras';
+  return words;
+}
+
+// ===== VIDEO PLAYER =====
+function initVideo() {
+  player = document.getElementById('local-video');
+  if (!player) return;
+  player.addEventListener('play', startSync);
+  player.addEventListener('pause', stopSync);
+  player.addEventListener('ended', stopSync);
+  player.addEventListener('seeked', syncTranscript);
+  player.addEventListener('error', () => {
+    document.getElementById('video-container').innerHTML =
+      '<div class="d-flex align-items-center justify-content-center h-100" style="background:#1a1a1a;color:var(--muted);font-size:0.9rem;padding:2rem;text-align:center"><div><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;opacity:0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r="0.5" fill="currentColor"/></svg><p>No se pudo cargar el video local.<br>Puedes continuar con las tarjetas de vocabulario.</p></div></div>';
+  });
+}
+
+function startSync() {
+  stopSync();
+  syncInterval = setInterval(syncTranscript, 500);
+}
+
+function stopSync() {
+  if (syncInterval) { clearInterval(syncInterval); syncInterval = null; }
+}
+
+function syncTranscript() {
+  if (!player || player.readyState < 1) return;
+  try {
+    const t = player.currentTime;
+    document.querySelectorAll('.transcript-line').forEach(line => {
+      const start = parseFloat(line.dataset.start);
+      const end = parseFloat(line.dataset.end);
+      const isActive = t >= start && t < end;
+      line.classList.toggle('active', isActive);
+      if (isActive) line.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
+  } catch(e) {}
+}
+
+function seekTo(timestamp) {
+  if (player && player.readyState >= 1) {
+    player.currentTime = timestamp;
+    player.play();
+  }
+}
+
+// ===== FLASHCARD =====
+function getCurrentWords() {
+  return currentMode === 'quiz' ? quizQuestions : getFilteredWords();
+}
+
+function getDifficultyLabel(d) {
+  return d === 'Easy' ? 'Fácil' : d === 'Medium' ? 'Medio' : 'Difícil';
+}
+
+function getDifficultyClass(d) {
+  return d === 'Easy' ? 'badge-easy' : d === 'Medium' ? 'badge-medium' : 'badge-hard';
+}
+
+function renderFlashcard(index) {
+  const words = getCurrentWords();
+  const navControls = document.querySelector('.nav-controls');
+  const actionBar = document.querySelector('.action-bar');
+  if (!words || words.length === 0) {
+    const fc = document.getElementById('flashcard');
+    if (fc) fc.classList.add('d-none');
+    if (navControls) navControls.classList.add('d-none');
+    if (actionBar) actionBar.classList.add('d-none');
+    showEmptyState('flashcard-area', 'Sin tarjetas en este modo. ¡Cambia de filtro!');
+    return;
+  }
+  document.getElementById('flashcard').classList.remove('d-none');
+  document.getElementById('flashcard-area').classList.remove('d-none');
+  if (navControls) navControls.classList.remove('d-none');
+  if (actionBar) actionBar.classList.remove('d-none');
+  const emptyState = document.querySelector('#flashcard-area .empty-state');
+  if (emptyState) emptyState.remove();
+
+  const w = words[index];
+  if (!w) return;
+
+  function updateContent() {
+    document.getElementById('word-display').textContent = w.spanish;
+    document.getElementById('pronunciation').textContent = '[' + w.pronunciation + ']';
+    document.getElementById('pos-badge').textContent = w.pos.charAt(0).toUpperCase() + w.pos.slice(1);
+    document.getElementById('translation-en').textContent = w.english;
+    document.getElementById('difficulty-badge').textContent = getDifficultyLabel(w.difficulty);
+    document.getElementById('difficulty-badge').className = 'badge ' + getDifficultyClass(w.difficulty);
+    document.getElementById('cat-badge').textContent = w.category;
+
+    const total = words.length;
+    document.getElementById('card-progress').textContent = (index + 1) + ' / ' + total;
+    document.getElementById('back-word').textContent = w.spanish;
+    document.getElementById('back-pronunciation').textContent = '[' + w.pronunciation + ']';
+    document.getElementById('back-translation').textContent = w.english;
+    document.getElementById('back-category').textContent = w.category;
+    document.getElementById('back-difficulty').textContent = getDifficultyLabel(w.difficulty);
+    document.getElementById('back-example-es').textContent = '"' + w.example + '"';
+    document.getElementById('back-example-en').textContent = '"' + w.exampleTranslation + '"';
+
+    const learned = state.learned[w.id];
+    document.getElementById('btn-learned').className = 'btn btn-sm ' + (learned ? 'btn-primary' : 'btn-outline-accent');
+
+    const counter = document.getElementById('card-counter');
+    counter.textContent = (index + 1) + ' de ' + total;
+
+    currentIndex = index;
+
+    gsap.fromTo('#flashcard', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+  }
+
+  if (isFlipped) {
+    gsap.to('#flashcard .card-flashcard-inner', { rotationY: 0, duration: 0.3, ease: 'power2.in', onComplete: updateContent });
+    isFlipped = false;
+  } else {
+    updateContent();
+  }
+}
+
+function flipCard() {
+  if (!isFlipped) {
+    gsap.to('#flashcard .card-flashcard-inner', { rotationY: 180, duration: 0.5, ease: 'power2.inOut' });
+    isFlipped = true;
+  } else {
+    gsap.to('#flashcard .card-flashcard-inner', { rotationY: 0, duration: 0.5, ease: 'power2.inOut' });
+    isFlipped = false;
+  }
+}
+
+function nextCard() {
+  const words = getCurrentWords();
+  if (words.length === 0) return;
+  const next = (currentIndex + 1) % words.length;
+  renderFlashcard(next);
+}
+
+function prevCard() {
+  const words = getCurrentWords();
+  if (words.length === 0) return;
+  const prev = (currentIndex - 1 + words.length) % words.length;
+  renderFlashcard(prev);
+}
+
+function shuffleCards() {
+  const words = getFilteredWords();
+  const ids = words.map(w => w.id);
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+  shuffleOrder = ids;
+  renderFlashcard(0);
+}
+
+function showEmptyState(containerId, msg) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  let es = container.querySelector('.empty-state');
+  if (!es) {
+    es = document.createElement('div');
+    es.className = 'empty-state';
+    es.setAttribute('data-od-id', 'brand-symbol');
+    es.innerHTML = `<svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><g transform="rotate(15 16 16)"><path d="M16 2C20 8 28 12 28 20C28 27 22 30 16 30C10 30 4 27 4 20C4 12 12 8 16 2Z" fill="var(--accent)"/><circle cx="13" cy="20" r="2.5" fill="var(--accent-on)"/><path d="M16 19V11L22 10V12L17 13V21C17 22 15.5 22.5 14 22.5C12.5 22.5 12 21.5 12 20.5" stroke="var(--accent-on)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg><p>${msg}</p>`;
+    container.appendChild(es);
+  }
+}
+
+// ===== ACTIONS =====
+function announce(msg) {
+  const el = document.getElementById('sr-announce');
+  if (el) { el.textContent = msg; }
+}
+
+function markLearned() {
+  const w = getCurrentWords()[currentIndex];
+  if (!w) return;
+  if (state.learned[w.id]) { delete state.learned[w.id]; announce('Desmarcada'); }
+  else { state.learned[w.id] = true; delete state.review[w.id]; announce('¡Bien hecho! ' + w.spanish); }
+  saveState();
+  renderFlashcard(currentIndex);
+}
+
+function speakWord() {
+  const w = getCurrentWords()[currentIndex];
+  if (!w) return;
+  if ('speechSynthesis' in window) {
+    try {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(w.spanish);
+      utter.lang = 'es-ES';
+      utter.rate = 0.85;
+      utter.onerror = () => { console.warn('Speech synthesis not available'); };
+      window.speechSynthesis.speak(utter);
+    } catch(e) {
+      console.warn('Speech synthesis error:', e);
+    }
+  }
+}
+
+// ===== MODES =====
+function switchMode(mode) {
+  if (speedTimer) { clearInterval(speedTimer); speedTimer = null; }
+  sceneFilter = null;
+  shuffleOrder = null;
+  currentMode = mode;
+  isFlipped = false;
+  const inner = document.querySelector('#flashcard .card-flashcard-inner');
+  if (inner) inner.style.transform = 'none';
+  document.querySelectorAll('.mode-tab').forEach(t => {
+    const isActive = t.dataset.mode === mode;
+    t.classList.toggle('active', isActive);
+    t.setAttribute('aria-selected', isActive.toString());
+  });
+
+  document.getElementById('flashcard-area').classList.toggle('d-none', mode === 'quiz' || mode === 'speed');
+  var nc = document.querySelector('.nav-controls');
+  if (nc) nc.classList.toggle('d-none', mode === 'quiz' || mode === 'speed');
+  var ab = document.querySelector('.action-bar');
+  if (ab) ab.classList.toggle('d-none', mode === 'quiz' || mode === 'speed');
+  document.getElementById('quiz-area').classList.toggle('d-none', mode !== 'quiz');
+  document.getElementById('speed-area').classList.toggle('d-none', mode !== 'speed');
+
+  if (mode === 'quiz') startQuiz();
+  else if (mode === 'speed') startSpeedReview();
+  else renderFlashcard(0);
+}
+
+function startQuiz() {
+  const words = getFilteredWords();
+  if (words.length < 4) {
+    showEmptyState('quiz-area', 'Mínimo 4 palabras para rockear el quiz.');
+    return;
+  }
+  const shuffled = [...words].sort(() => Math.random() - 0.5);
+  quizQuestions = shuffled.slice(0, Math.min(10, shuffled.length));
+  quizIndex = 0;
+  quizCorrect = 0;
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  const q = quizQuestions[quizIndex];
+  if (!q) { endQuiz(); return; }
+
+  document.getElementById('quiz-word').textContent = q.spanish;
+  document.getElementById('quiz-counter').textContent = (quizIndex + 1) + ' de ' + quizQuestions.length;
+  document.getElementById('quiz-score').textContent = 'Correctas: ' + quizCorrect;
+
+  const options = document.getElementById('quiz-options');
+  const allTranslations = VOCABULARY.map(w => w.english);
+  let pool = [q.english, ...getRandomDistractors(allTranslations, q.english, 3)];
+  pool = pool.sort(() => Math.random() - 0.5);
+
+  options.innerHTML = pool.map(t => `<button class="quiz-option" data-answer="${t === q.english ? 'correct' : 'wrong'}">${t}</button>`).join('');
+  document.getElementById('quiz-feedback').innerHTML = '';
+
+  options.querySelectorAll('.quiz-option').forEach(btn => {
+    btn.onclick = () => {
+      if (btn.classList.contains('disabled')) return;
+      options.querySelectorAll('.quiz-option').forEach(b => b.classList.add('disabled'));
+      btn.classList.add('selected');
+      const isCorrect = btn.dataset.answer === 'correct';
+      if (isCorrect) {
+        btn.classList.add('correct');
+        quizCorrect++;
+        document.getElementById('quiz-score').textContent = 'Correctas: ' + quizCorrect;
+        state.accuracy[q.id] = (state.accuracy[q.id] || 0) + 1;
+        document.getElementById('quiz-feedback').innerHTML = '<span style="color:var(--success);font-weight:800;font-family:var(--font-display)">¡Correcto!</span>';
+      } else {
+        btn.classList.add('wrong');
+        options.querySelector('[data-answer="correct"]').classList.add('correct');
+        state.accuracy[q.id] = (state.accuracy[q.id] || 0) - 1;
+        document.getElementById('quiz-feedback').innerHTML = '<span style="color:var(--danger);font-weight:800;font-family:var(--font-display)">Era ' + q.english + '</span>';
+      }
+      setTimeout(() => {
+        quizIndex++;
+        if (quizIndex < quizQuestions.length) renderQuizQuestion();
+        else endQuiz();
+      }, 1500);
+    };
+  });
+}
+
+function getRandomDistractors(pool, correct, count) {
+  const filtered = pool.filter(t => t !== correct);
+  const shuffled = filtered.sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+function endQuiz() {
+  const total = quizQuestions.length || 1;
+  const pct = Math.round(quizCorrect / total * 100);
+  document.getElementById('quiz-options').innerHTML = '';
+  document.getElementById('quiz-feedback').innerHTML = `
+    <div class="fade-in" style="padding:2rem">
+      <div style="font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--accent)">${pct}%</div>
+      <p class="text-muted">${quizCorrect} de ${quizQuestions.length} correctas</p>
+      <button class="btn btn-primary" onclick="startQuiz()">Otra ronda</button>
+      <button class="btn btn-ghost ms-2" onclick="switchMode('study')">Volver a Estudio</button>
+    </div>`;
+  updateStreak();
+  saveState();
+}
+
+function startSpeedReview() {
+  const words = getFilteredWords();
+  if (words.length === 0) { showEmptyState('speed-area', 'Sin palabras. ¡Aprende algunas primero!'); return; }
+  speedCount = 0;
+  speedAccurate = 0;
+  speedTimeLeft = 180;
+  let speedLocked = false;
+  document.getElementById('speed-timer').textContent = '3:00';
+  document.getElementById('speed-count').textContent = '0';
+  document.getElementById('speed-accurate').textContent = '0%';
+
+  let speedIdx = 0;
+  function showNextSpeedWord() {
+    const w = words[speedIdx % words.length];
+    speedIdx++;
+    speedLocked = false;
+    document.getElementById('speed-word').textContent = w.spanish;
+    document.getElementById('speed-translation').textContent = w.english;
+    document.getElementById('speed-correct').onclick = () => {
+      if (speedLocked) return;
+      speedLocked = true;
+      speedCount++;
+      speedAccurate++;
+      document.getElementById('speed-count').textContent = speedCount;
+      document.getElementById('speed-accurate').textContent = Math.round(speedAccurate / speedCount * 100) + '%';
+      state.accuracy[w.id] = (state.accuracy[w.id] || 0) + 1;
+      showNextSpeedWord();
+    };
+    document.getElementById('speed-wrong').onclick = () => {
+      if (speedLocked) return;
+      speedLocked = true;
+      speedCount++;
+      document.getElementById('speed-count').textContent = speedCount;
+      document.getElementById('speed-accurate').textContent = Math.round(speedAccurate / speedCount * 100) + '%';
+      state.accuracy[w.id] = (state.accuracy[w.id] || 0) - 1;
+      showNextSpeedWord();
+    };
+  }
+
+  if (speedTimer) clearInterval(speedTimer);
+  speedTimer = setInterval(() => {
+    speedTimeLeft--;
+    const m = Math.floor(speedTimeLeft / 60);
+    const s = speedTimeLeft % 60;
+    document.getElementById('speed-timer').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    if (speedTimeLeft <= 0) {
+      clearInterval(speedTimer);
+      speedTimer = null;
+      document.getElementById('speed-area').innerHTML = `
+        <div class="fade-in" style="padding:2rem;text-align:center">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--accent)">¡Tiempo!</div>
+          <p class="text-muted">${speedCount} palabras · ${Math.round(speedAccurate / (speedCount||1) * 100)}% precisión</p>
+          <button class="btn btn-primary" onclick="startSpeedReview()">Otra ronda</button>
+          <button class="btn btn-ghost ms-2" onclick="switchMode('study')">Volver a Estudio</button>
+        </div>`;
+      updateStreak();
+      saveState();
+    }
+  }, 1000);
+
+  showNextSpeedWord();
+}
+
+// ===== PROGRESS =====
+function updateProgress() {
+  const total = VOCABULARY.length;
+  const learnedCount = Object.keys(state.learned).filter(k => state.learned[k]).length;
+  const completion = total > 0 ? Math.round(learnedCount / total * 100) : 0;
+
+  const mainP = document.getElementById('main-progress');
+  if (mainP) {
+    mainP.style.width = completion + '%';
+    const topBar = mainP.closest('[role="progressbar"]');
+    if (topBar) topBar.setAttribute('aria-valuenow', Math.round(completion));
+  }
+  const label = document.querySelector('[data-od-id="progress-label"]');
+  if (label) label.textContent = learnedCount + ' / ' + total;
+
+  const streakEl = document.getElementById('streak-count');
+  if (streakEl) streakEl.textContent = state.streak || 0;
+}
+
+function updateStreak() {
+  const today = new Date().toISOString().split('T')[0];
+  if (state.lastDate !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    if (state.lastDate === yesterday) {
+      state.streak = (state.streak || 0) + 1;
+    } else {
+      state.streak = 1;
+    }
+    state.lastDate = today;
+    saveState();
+  }
+}
+
+// ===== THEME TOGGLE =====
+function initThemeToggle() {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var sun = document.getElementById('theme-icon-sun');
+  var moon = document.getElementById('theme-icon-moon');
+  btn.addEventListener('click', function() {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('lamento_boliviano_theme', next);
+    var fav = document.querySelector('link[rel="icon"]');
+    if (fav) fav.href = next === 'dark' ? 'brand-logo-dark.svg' : 'brand-logo.svg';
+    if (sun && moon) {
+      sun.style.display = next === 'light' ? '' : 'none';
+      moon.style.display = next === 'dark' ? '' : 'none';
+    }
+  });
+}
+
+// ===== WORD CLICK HANDLER =====
+function showWordModal(wordId) {
+  const w = VOCABULARY.find(v => v.id === wordId);
+  if (!w) return;
+  const modal = new bootstrap.Modal(document.getElementById('word-modal'));
+  document.getElementById('modal-word').textContent = w.spanish;
+  document.getElementById('modal-pronunciation').textContent = '[' + w.pronunciation + ']';
+  document.getElementById('modal-pos').textContent = w.pos.charAt(0).toUpperCase() + w.pos.slice(1);
+  document.getElementById('modal-translation').textContent = w.english;
+  const diffBadge = document.getElementById('modal-difficulty');
+  diffBadge.textContent = w.difficulty === 'Easy' ? 'Fácil' : w.difficulty === 'Medium' ? 'Medio' : 'Difícil';
+  diffBadge.className = 'badge ' + (w.difficulty === 'Easy' ? 'badge-easy' : w.difficulty === 'Medium' ? 'badge-medium' : 'badge-hard');
+
+  const learned = state.learned[w.id];
+  document.getElementById('modal-learned').className = 'btn btn-sm ' + (learned ? 'btn-primary' : 'btn-outline-accent');
+  const fav = state.fav[w.id];
+  document.getElementById('modal-fav').className = 'btn btn-sm ' + (fav ? 'btn-primary' : 'btn-outline-accent');
+
+  document.getElementById('modal-learned').onclick = () => {
+    if (state.learned[w.id]) delete state.learned[w.id];
+    else { state.learned[w.id] = true; }
+    saveState();
+    const l = state.learned[w.id];
+    document.getElementById('modal-learned').className = 'btn btn-sm ' + (l ? 'btn-primary' : 'btn-outline-accent');
+  };
+  document.getElementById('modal-fav').onclick = () => {
+    if (state.fav[w.id]) delete state.fav[w.id];
+    else { state.fav[w.id] = true; }
+    saveState();
+    const f = state.fav[w.id];
+    document.getElementById('modal-fav').className = 'btn btn-sm ' + (f ? 'btn-primary' : 'btn-outline-accent');
+  };
+  document.getElementById('modal-speak').onclick = () => {
+    if ('speechSynthesis' in window) {
+      const utter = new SpeechSynthesisUtterance(w.spanish);
+      utter.lang = 'es-ES';
+      utter.rate = 0.85;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utter);
+    }
+  };
+  document.getElementById('modal-goto-video').onclick = () => {
+    if (w.timestamp && player && player.readyState >= 1) {
+      seekTo(w.timestamp - 2);
+    }
+    modal.hide();
+  };
+
+  modal.show();
+}
+
+// ===== KEYBOARD =====
+document.addEventListener('keydown', (e) => {
+  if (currentMode === 'speed' || currentMode === 'quiz') return;
+  if (document.querySelector('.modal.show')) return;
+  switch(e.key) {
+    case 'ArrowLeft': prevCard(); e.preventDefault(); break;
+    case 'ArrowRight': nextCard(); e.preventDefault(); break;
+    case ' ': flipCard(); e.preventDefault(); break;
+    case 'l': markLearned(); e.preventDefault(); break;
+    case 'p': case 's': speakWord(); e.preventDefault(); break;
+  }
+});
+
+// ===== LISTENING ACTIVITY =====
+const LISTENING_DATA = [
+  { es:'Me quieren agitar, me incitan a gritar', en:'They want to agitate me, they incite me to shout', start:16, end:20 },
+  { es:'Soy como una roca, palabras no me tocan', en:'I am like a rock, words do not touch me', start:20, end:24 },
+  { es:'Adentro hay un volcán, que pronto va a estallar', en:'Inside there is a volcano, that will soon explode', start:24, end:28 },
+  { es:'Yo quiero estar tranquilo', en:'I want to be calm', start:28, end:31 },
+  { es:'Es mi situación, una desolación', en:'It is my situation, a desolation', start:31, end:36 },
+  { es:'Soy como un lamento, lamento boliviano', en:'I am like a lament, Bolivian lament', start:36, end:39 },
+  { es:'Que un día empezó y no va a terminar', en:'That one day began and will not end', start:39, end:43 },
+  { es:'Y a nadie hace daño', en:'And does not harm anyone', start:43, end:47 },
+  { es:'♪ Uoh, yo\' yo\' yo\', eh eh eh, yo\' ♪', en:'♪ Uoh, yo\' yo\' yo\', eh eh eh, yo\' ♪', start:47, end:62 },
+  { es:'Y yo estoy aquí, borracho y loco', en:'And I am here, drunk and crazy', start:62, end:70 },
+  { es:'Y mi corazón idiota, siempre brillará', en:'And my idiot heart will always shine', start:70, end:78 },
+  { es:'Y yo te amaré, te amaré por siempre', en:'And I will love you, I will love you forever', start:78, end:85 },
+  { es:'Nena, no te peines en la cama', en:'Baby, don\'t comb your hair in bed', start:85, end:88 },
+  { es:'Que los viajantes se van a atrasar', en:'Because the travelers will be delayed', start:88, end:93 },
+  { es:'♪ Uoh, yo\' yo\' yo\', eh eh eh, yo\' ♪', en:'♪ Uoh, yo\' yo\' yo\', eh eh eh, yo\' ♪', start:127, end:139 },
+  { es:'Y hoy estoy aquí, borracho y loco', en:'And today I am here, drunk and crazy', start:139, end:148 },
+  { es:'Y mi corazón idiota, siempre brillará', en:'And my idiot heart will always shine', start:148, end:155 },
+  { es:'Y yo te amaré, te amaré por siempre', en:'And I will love you, I will love you forever', start:155, end:163 },
+  { es:'Nena, no te peines en la cama', en:'Baby, don\'t comb your hair in bed', start:163, end:167 },
+  { es:'Que los viajantes se van a atrasar', en:'Because the travelers will be delayed', start:167, end:172 },
+  { es:'Y yo estoy aquí, borracho y loco', en:'And I am here, drunk and crazy', start:172, end:178 },
+  { es:'Y mi corazón idiota, siempre brillará', en:'And my idiot heart will always shine', start:178, end:186 },
+  { es:'Y yo te amaré, te amaré por siempre', en:'And I will love you, I will love you forever', start:186, end:194 },
+  { es:'Nena, no te peines en la cama', en:'Baby, don\'t comb your hair in bed', start:194, end:197 },
+  { es:'Que los viajantes se van a atrasar', en:'Because the travelers will be delayed', start:197, end:210 },
+];
+
+function initListening() {
+  const container = document.getElementById('listening-transcript');
+  if (!container) return;
+  container.innerHTML = LISTENING_DATA.map((l, i) =>
+    `<div class="listening-line" data-lstart="${l.start}" data-lend="${l.end}" data-index="${i}">` +
+      `<div class="sub-es">${l.es}</div>` +
+      `<div class="sub-en">${l.en}</div>` +
+    `</div>`
+  ).join('');
+
+  container.addEventListener('click', (e) => {
+    const line = e.target.closest('.listening-line');
+    if (!line) return;
+    const lv = document.getElementById('listening-video');
+    if (lv && lv.readyState >= 1) {
+      lv.currentTime = parseFloat(line.dataset.lstart);
+      lv.play();
+    }
+  });
+}
+
+function syncListening() {
+  const lv = document.getElementById('listening-video');
+  if (!lv || lv.readyState < 1) return;
+  const t = lv.currentTime;
+  document.querySelectorAll('.listening-line').forEach(line => {
+    const start = parseFloat(line.dataset.lstart);
+    const end = parseFloat(line.dataset.lend);
+    const isActive = t >= start && t < end;
+    line.classList.toggle('active', isActive);
+    if (isActive) line.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+}
+
+function initListeningVideo() {
+  const lv = document.getElementById('listening-video');
+  if (!lv) return;
+  let interval = null;
+  lv.addEventListener('play', () => {
+    if (interval) clearInterval(interval);
+    interval = setInterval(syncListening, 500);
+  });
+  lv.addEventListener('pause', () => { if (interval) { clearInterval(interval); interval = null; } });
+  lv.addEventListener('ended', () => { if (interval) { clearInterval(interval); interval = null; } });
+  lv.addEventListener('seeked', syncListening);
+}
+
+// ===== EMPAREJAR (MATCHING) =====
+let matchWords = [];
+let matchSelected = null;
+let matchPairs = 0;
+let matchCorrect = 0;
+let matchAttempts = 0;
+let matchLocked = false;
+
+function startMatching() {
+  const pool = [...VOCABULARY].sort(() => Math.random() - 0.5);
+  matchWords = pool.slice(0, 15);
+  matchSelected = null;
+  matchPairs = 0;
+  matchCorrect = 0;
+  matchAttempts = 0;
+  matchLocked = false;
+  document.getElementById('match-new-btn').style.display = 'none';
+  document.getElementById('match-feedback').innerHTML = '';
+  renderMatching();
+}
+
+function renderMatching() {
+  const grid = document.getElementById('match-grid');
+  if (!grid) return;
+  const shuffled = [...matchWords].sort(() => Math.random() - 0.5);
+  const esWords = document.createElement('div');
+  esWords.className = 'match-side';
+  const esLabel = document.createElement('div');
+  esLabel.className = 'match-side-label'; esLabel.textContent = 'Español';
+  esWords.appendChild(esLabel);
+  shuffled.forEach(w => {
+    const card = document.createElement('div');
+    card.className = 'match-card';
+    card.dataset.side = 'es';
+    card.dataset.wordId = w.id;
+    card.textContent = w.spanish;
+    card.addEventListener('click', () => onMatchClick(card));
+    esWords.appendChild(card);
+  });
+
+  const enWords = document.createElement('div');
+  enWords.className = 'match-side';
+  const enLabel = document.createElement('div');
+  enLabel.className = 'match-side-label'; enLabel.textContent = 'English';
+  enWords.appendChild(enLabel);
+  const enShuffled = [...matchWords].sort(() => Math.random() - 0.5);
+  enShuffled.forEach(w => {
+    const card = document.createElement('div');
+    card.className = 'match-card';
+    card.dataset.side = 'en';
+    card.dataset.wordId = w.id;
+    card.textContent = w.english;
+    card.addEventListener('click', () => onMatchClick(card));
+    enWords.appendChild(card);
+  });
+
+  grid.innerHTML = '';
+  grid.appendChild(esWords);
+  grid.appendChild(enWords);
+  updateMatchCounter();
+}
+
+function onMatchClick(card) {
+  if (matchLocked) return;
+  if (card.classList.contains('matched')) return;
+  if (card.classList.contains('wrong')) card.classList.remove('wrong');
+
+  if (!matchSelected) {
+    matchSelected = card;
+    card.classList.add('selected');
+    return;
+  }
+
+  if (matchSelected === card) {
+    card.classList.remove('selected');
+    matchSelected = null;
+    return;
+  }
+
+  if (matchSelected.dataset.side === card.dataset.side) {
+    matchSelected.classList.remove('selected');
+    matchSelected = card;
+    card.classList.add('selected');
+    return;
+  }
+
+  matchLocked = true;
+  matchAttempts++;
+  const esCard = matchSelected.dataset.side === 'es' ? matchSelected : card;
+  const enCard = matchSelected.dataset.side === 'en' ? matchSelected : card;
+  const isCorrect = esCard.dataset.wordId === enCard.dataset.wordId;
+
+  matchSelected.classList.remove('selected');
+  matchSelected = null;
+
+  if (isCorrect) {
+    matchPairs++;
+    matchCorrect++;
+    esCard.classList.add('matched', 'matched-correct');
+    enCard.classList.add('matched', 'matched-correct');
+    document.getElementById('match-feedback').innerHTML = '<span style="color:var(--success);font-weight:700">¡Bien hecho!</span>';
+    if (matchPairs === matchWords.length) {
+      const pct = Math.round(matchCorrect / matchAttempts * 100);
+      document.getElementById('match-feedback').innerHTML =
+        `<span style="color:var(--accent);font-weight:800;font-family:var(--font-display);font-size:1.3rem">¡Completado!</span>` +
+        `<br><span class="text-muted small">${matchCorrect} de ${matchAttempts} (${pct}%)</span>`;
+      document.getElementById('match-new-btn').style.display = 'inline-flex';
+    }
+    matchLocked = false;
+  } else {
+    esCard.classList.add('wrong');
+    enCard.classList.add('wrong');
+    document.getElementById('match-feedback').innerHTML = '<span style="color:var(--danger);font-weight:700">Otra vez</span>';
+    setTimeout(() => {
+      esCard.classList.remove('wrong');
+      enCard.classList.remove('wrong');
+      matchLocked = false;
+    }, 600);
+  }
+  updateMatchCounter();
+}
+
+function updateMatchCounter() {
+  document.getElementById('match-counter').textContent = matchPairs + ' / ' + matchWords.length;
+  const pct = matchAttempts > 0 ? Math.round(matchCorrect / matchAttempts * 100) : 0;
+  document.getElementById('match-accuracy').textContent = pct + '%';
+}
+
+// ===== ORDENAR =====
+let ordenarQuestions = [];
+let ordenarIndex = 0;
+let ordenarCorrect = 0;
+let ordenarBank = [];
+let ordenarAnswer = [];
+let ordenarLocked = false;
+
+const ORDENAR_SENTENCES = [
+  { es:'Me quieren agitar, me incitan a gritar', en:'They want to agitate me, they incite me to shout' },
+  { es:'Soy como una roca, palabras no me tocan', en:'I am like a rock, words do not touch me' },
+  { es:'Adentro hay un volcán, que pronto va a estallar', en:'Inside there is a volcano, that will soon explode' },
+  { es:'Yo quiero estar tranquilo', en:'I want to be calm' },
+  { es:'Es mi situación, una desolación', en:'It is my situation, a desolation' },
+  { es:'Soy como un lamento, lamento boliviano', en:'I am like a lament, Bolivian lament' },
+  { es:'Que un día empezó y no va a terminar', en:'That one day began and will not end' },
+  { es:'Y a nadie hace daño', en:'And does not harm anyone' },
+  { es:'Y yo estoy aquí, borracho y loco', en:'And I am here, drunk and crazy' },
+  { es:'Y mi corazón idiota, siempre brillará', en:'And my idiot heart will always shine' },
+  { es:'Y yo te amaré, te amaré por siempre', en:'And I will love you, I will love you forever' },
+  { es:'Nena, no te peines en la cama', en:'Baby, don\'t comb your hair in bed' },
+  { es:'Que los viajantes se van a atrasar', en:'Because the travelers will be delayed' },
+  { es:'Me quieren agitar', en:'They want to agitate me' },
+  { es:'Palabras no me tocan', en:'Words do not touch me' },
+  { es:'Que pronto va a estallar', en:'That will soon explode' },
+  { es:'Y hoy estoy aquí, borracho y loco', en:'And today I am here, drunk and crazy' },
+  { es:'Siempre brillará', en:'It will always shine' },
+  { es:'Te amaré por siempre', en:'I will love you forever' },
+  { es:'Que un día empezó', en:'That one day began' },
+  { es:'Y no va a terminar', en:'And will not end' },
+  { es:'No te peines en la cama', en:'Don\'t comb your hair in bed' },
+  { es:'Los viajantes se van a atrasar', en:'The travelers will be delayed' },
+];
+
+function startOrdenar() {
+  const shuffled = [...ORDENAR_SENTENCES].sort(() => Math.random() - 0.5);
+  ordenarQuestions = shuffled.slice(0, 15);
+  ordenarIndex = 0;
+  ordenarCorrect = 0;
+  ordenarLocked = false;
+  renderOrdenarQuestion();
+}
+
+function renderOrdenarQuestion() {
+  const q = ordenarQuestions[ordenarIndex];
+  if (!q) { endOrdenar(); return; }
+  const words = q.es.split(/[\s,]+/).filter(w => w.length > 0);
+  ordenarBank = words.map((w, i) => ({ text: w, id: i, used: false }));
+  ordenarAnswer = [];
+  ordenarLocked = false;
+
+  document.getElementById('ordenar-prompt').textContent = 'Arma la oración:';
+  document.getElementById('ordenar-counter').textContent = (ordenarIndex + 1) + ' / ' + ordenarQuestions.length;
+  document.getElementById('ordenar-score').textContent = 'Correctas: ' + ordenarCorrect;
+  document.getElementById('ordenar-feedback').innerHTML = '';
+  document.getElementById('ordenar-check-btn').style.display = 'inline-flex';
+  document.getElementById('ordenar-skip-btn').style.display = 'inline-flex';
+
+  renderOrdenarBank();
+  renderOrdenarAnswer();
+}
+
+function renderOrdenarBank() {
+  const bank = document.getElementById('ordenar-bank');
+  bank.innerHTML = '';
+  const indices = ordenarBank.map((_, i) => i).sort(() => Math.random() - 0.5);
+  indices.forEach(i => {
+    const w = ordenarBank[i];
+    const tile = document.createElement('span');
+    tile.className = 'ordenar-word-tile' + (w.used ? ' used' : '');
+    tile.textContent = w.text.replace(/[♪,']/g, '').trim();
+    tile.dataset.bankIdx = i;
+    tile.addEventListener('click', () => {
+      if (ordenarLocked) return;
+      if (ordenarBank[i].used) return;
+      ordenarBank[i].used = true;
+      ordenarAnswer.push({ text: w.text, id: w.id, bankIdx: i });
+      renderOrdenarBank();
+      renderOrdenarAnswer();
+    });
+    bank.appendChild(tile);
+  });
+}
+
+function renderOrdenarAnswer() {
+  const ans = document.getElementById('ordenar-answer');
+  ans.innerHTML = '';
+  ordenarAnswer.forEach((w, i) => {
+    const slot = document.createElement('span');
+    slot.className = 'ordenar-slot filled';
+    slot.textContent = w.text.replace(/[♪,']/g, '').trim();
+    slot.addEventListener('click', () => {
+      if (ordenarLocked) return;
+      ordenarBank[w.bankIdx].used = false;
+      ordenarAnswer.splice(i, 1);
+      renderOrdenarBank();
+      renderOrdenarAnswer();
+    });
+    ans.appendChild(slot);
+  });
+  if (ordenarAnswer.length === 0) {
+    const empty = document.createElement('span');
+    empty.className = 'ordenar-slot empty';
+    empty.textContent = 'Haz clic en las palabras arriba';
+    ans.appendChild(empty);
+  }
+}
+
+function checkOrdenar() {
+  if (ordenarLocked) return;
+  const q = ordenarQuestions[ordenarIndex];
+  if (!q) return;
+  const correctWords = q.es.split(/[\s,]+/).filter(w => w.length > 0);
+  const userWords = ordenarAnswer.map(w => w.text);
+  const isCorrect = userWords.length === correctWords.length &&
+    userWords.every((w, i) => w === correctWords[i]);
+
+  ordenarLocked = true;
+  document.getElementById('ordenar-check-btn').style.display = 'none';
+  document.getElementById('ordenar-skip-btn').style.display = 'none';
+
+  const ans = document.getElementById('ordenar-answer');
+  ans.innerHTML = '';
+  correctWords.forEach((w, i) => {
+    const slot = document.createElement('span');
+    const userW = userWords[i] || '';
+    const match = userW === w;
+    slot.className = 'ordenar-slot ' + (match ? 'correct' : 'wrong');
+    slot.textContent = w.replace(/[♪,']/g, '').trim();
+    ans.appendChild(slot);
+  });
+
+  if (isCorrect) {
+    ordenarCorrect++;
+    document.getElementById('ordenar-score').textContent = 'Correctas: ' + ordenarCorrect;
+    document.getElementById('ordenar-feedback').innerHTML = '<span style="color:var(--success);font-weight:800;font-family:var(--font-display)">¡Correcto!</span>';
+  } else {
+    document.getElementById('ordenar-feedback').innerHTML = '<span style="color:var(--danger);font-weight:800;font-family:var(--font-display)">La oración correcta:</span><br><span style="font-weight:600">' + q.es + '</span>';
+  }
+
+  setTimeout(() => {
+    ordenarIndex++;
+    if (ordenarIndex < ordenarQuestions.length) renderOrdenarQuestion();
+    else endOrdenar();
+  }, 2500);
+}
+
+function endOrdenar() {
+  document.getElementById('ordenar-prompt').textContent = '';
+  document.getElementById('ordenar-bank').innerHTML = '';
+  document.getElementById('ordenar-answer').innerHTML = '';
+  document.getElementById('ordenar-check-btn').style.display = 'none';
+  document.getElementById('ordenar-skip-btn').style.display = 'none';
+  const total = ordenarQuestions.length || 1;
+  const pct = Math.round(ordenarCorrect / total * 100);
+  document.getElementById('ordenar-feedback').innerHTML =
+    `<div style="padding:1.5rem"><div style="font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--accent)">${pct}%</div>` +
+    `<p class="text-muted">${ordenarCorrect} de ${ordenarQuestions.length} correctas</p>` +
+    `<button class="btn btn-primary btn-sm" onclick="startOrdenar()">Otra ronda</button></div>`;
+  updateStreak();
+  saveState();
+}
+
+function skipOrdenar() {
+  if (ordenarLocked) return;
+  const q = ordenarQuestions[ordenarIndex];
+  if (!q) return;
+  ordenarLocked = true;
+  document.getElementById('ordenar-check-btn').style.display = 'none';
+  document.getElementById('ordenar-skip-btn').style.display = 'none';
+  const ans = document.getElementById('ordenar-answer');
+  ans.innerHTML = '';
+  const correctWords = q.es.split(/[\s,]+/).filter(w => w.length > 0);
+  correctWords.forEach(w => {
+    const slot = document.createElement('span');
+    slot.className = 'ordenar-slot correct';
+    slot.textContent = w.replace(/[♪,']/g, '').trim();
+    ans.appendChild(slot);
+  });
+  document.getElementById('ordenar-feedback').innerHTML = '<span style="color:var(--meta)">Oración: ' + q.es + '</span>';
+  setTimeout(() => {
+    ordenarIndex++;
+    if (ordenarIndex < ordenarQuestions.length) renderOrdenarQuestion();
+    else endOrdenar();
+  }, 2000);
+}
+
+// ===== TOUCH GESTURES =====
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  if (currentMode === 'speed' || currentMode === 'quiz') return;
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  const dy = e.changedTouches[0].screenY - touchStartY;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    if (dx > 0) prevCard();
+    else nextCard();
+  }
+}, { passive: true });
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  initVideo();
+  initThemeToggle();
+  renderFlashcard(0);
+  updateProgress();
+
+  var flashcardEl = document.getElementById('flashcard');
+  if (flashcardEl) {
+    flashcardEl.addEventListener('click', (e) => {
+      if (e.target.closest('.action-bar') || e.target.closest('.nav-controls')) return;
+      flipCard();
+    });
+  }
+
+  var nextBtn = document.getElementById('next-btn');
+  if (nextBtn) nextBtn.addEventListener('click', nextCard);
+  var prevBtn = document.getElementById('prev-btn');
+  if (prevBtn) prevBtn.addEventListener('click', prevCard);
+  var btnLearned = document.getElementById('btn-learned');
+  if (btnLearned) btnLearned.addEventListener('click', markLearned);
+  var btnSpeak = document.getElementById('btn-speak');
+  if (btnSpeak) btnSpeak.addEventListener('click', speakWord);
+
+  document.querySelectorAll('.mode-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchMode(tab.dataset.mode));
+  });
+
+  var shuffleCheck = document.getElementById('shuffle-checkbox');
+  if (shuffleCheck) {
+    shuffleCheck.addEventListener('change', (e) => {
+      if (e.target.checked) shuffleCards();
+      else { shuffleOrder = null; renderFlashcard(0); }
+    });
+  }
+
+  document.querySelectorAll('.word[data-word]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wordId = el.dataset.word;
+      showWordModal(wordId);
+    });
+    el.style.cursor = 'pointer';
+  });
+
+  initListening();
+  initListeningVideo();
+  startMatching();
+  startOrdenar();
+  var matchNewBtn = document.getElementById('match-new-btn');
+  if (matchNewBtn) matchNewBtn.addEventListener('click', startMatching);
+  var ordenarCheck = document.getElementById('ordenar-check-btn');
+  if (ordenarCheck) ordenarCheck.addEventListener('click', checkOrdenar);
+  var ordenarSkip = document.getElementById('ordenar-skip-btn');
+  if (ordenarSkip) ordenarSkip.addEventListener('click', skipOrdenar);
+
+  document.querySelectorAll('.scene-review-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const raw = btn.dataset.words;
+      if (!raw) return;
+      const wordIds = raw.split(',');
+      const matched = VOCABULARY.filter(w => wordIds.includes(w.id));
+      if (matched.length > 0) {
+        document.querySelector('[data-mode="study"]').click();
+        sceneFilter = matched;
+        shuffleOrder = null;
+        document.getElementById('shuffle-checkbox').checked = false;
+        renderFlashcard(0);
+        document.getElementById('flashcards').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+});
+
+</script>
+</body>
+</html>
