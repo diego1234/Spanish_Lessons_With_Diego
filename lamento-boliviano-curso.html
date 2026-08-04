@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lamento Boliviano — Curso interactivo de español</title>
-<meta property="og:title" content="Lamento Boliviano — Curso interactivo de español">
+<title>Lamento Boliviano - Curso interactivo de español</title>
+<meta property="og:title" content="Lamento Boliviano - Curso interactivo de español">
 <meta property="og:description" content="Aprende español con una de las canciones más icónicas del rock latinoamericano. Vocabulario, flashcards, quiz y más.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
@@ -49,6 +49,7 @@
   --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
+  --space-10: 40px;
   --space-12: 48px;
   --elev-raised: 0 4px 0 #d7d7d7;
   --elev-flat: none;
@@ -89,9 +90,6 @@
   --hover-overlay: rgba(255,255,255,0.06);
 }
 
-[data-theme="dark"] .hero-section { background: linear-gradient(180deg, #1e1e3a 0%, var(--bg) 70%); }
-[data-theme="dark"] .hero-section::before { background: radial-gradient(circle, rgba(120,224,0,0.08) 0%, transparent 70%); }
-[data-theme="dark"] .hero-section::after { background: radial-gradient(circle, rgba(255,200,0,0.06) 0%, transparent 70%); }
 [data-theme="dark"] .card-flashcard-front, [data-theme="dark"] .card-flashcard-back { box-shadow: 0 6px 0 var(--border), 0 2px 12px rgba(0,0,0,0.2); }
 
 @media (prefers-color-scheme: dark) {
@@ -119,9 +117,6 @@
     --fav: #c084fc;
     --hover-overlay: rgba(255,255,255,0.06);
   }
-  :root:not([data-theme="light"]) .hero-section { background: linear-gradient(180deg, #1e1e3a 0%, var(--bg) 70%); }
-  :root:not([data-theme="light"]) .hero-section::before { background: radial-gradient(circle, rgba(120,224,0,0.08) 0%, transparent 70%); }
-  :root:not([data-theme="light"]) .hero-section::after { background: radial-gradient(circle, rgba(255,200,0,0.06) 0%, transparent 70%); }
   :root:not([data-theme="light"]) .card-flashcard-front, :root:not([data-theme="light"]) .card-flashcard-back { box-shadow: 0 6px 0 var(--border), 0 2px 12px rgba(0,0,0,0.2); }
 }
 
@@ -195,8 +190,7 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: v
 .flashcard-back-content .back-header { text-align: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-light); }
 .flashcard-back-content .back-header .word { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--accent-active); }
 .flashcard-back-content .back-header .pron { font-size: 0.9rem; color: var(--meta); }
-.flashcard-back-content .detail-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 2px solid var(--accent-light); font-size: 0.9rem; gap: 12px; }
-.flashcard-back-content .detail-row:last-child { border-bottom: none; }
+.flashcard-back-content .detail-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; font-size: 0.9rem; gap: 12px; }
 .flashcard-back-content .detail-label { color: var(--accent); font-weight: 800; letter-spacing: 0.07em; font-size: 13px; text-transform: uppercase; min-width: 90px; flex-shrink: 0; }
 .flashcard-back-content .detail-value { text-align: right; flex: 1; font-weight: 500; color: var(--fg); }
 .flashcard-back-content .frase-row { margin-top: 8px; background: var(--accent-light-bg); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; border: 2px solid var(--accent); }
@@ -227,15 +221,21 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: v
 .scene-review-btn:hover { background: var(--accent-light-bg); color: var(--accent-active); }
 
 
-.hero-section { padding: var(--space-12) 0 var(--space-8); text-align: center; background: linear-gradient(180deg, #fef6e0 0%, var(--bg) 70%); border-bottom: 2px solid var(--border); position: relative; overflow: hidden; }
-.hero-section::before { content: ''; position: absolute; top: -60px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(88,204,2,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-.hero-section::after { content: ''; position: absolute; bottom: -40px; left: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,200,0,0.05) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+.hero-section { padding: var(--space-12) 0 var(--space-8); text-align: center; background: var(--bg); border-bottom: 2px solid var(--border); position: relative; }
 .hero-section h1 { margin-bottom: 4px; position: relative; z-index: 1; }
 .hero-section .artist { font-size: 1.25rem; color: var(--muted); letter-spacing: 0.02em; font-weight: 500; position: relative; z-index: 1; }
 .hero-section .hero-tagline { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; margin: 0 0 6px; position: relative; z-index: 1; font-family: var(--font-display); }
 .hero-section .meta { display: flex; gap: 8px; justify-content: center; margin-top: var(--space-4); flex-wrap: wrap; position: relative; z-index: 1; }
 .hero-section .hero-desc { max-width:500px; margin:1rem auto 0; font-size:0.95rem; position: relative; z-index: 1; }
 .hero-section .hero-badge-strip { position: relative; z-index: 1; }
+
+.facts-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 28px; max-width: 900px; }
+.facts-grid .fact { min-width: 0; }
+.facts-grid dt { font-family: var(--font-display); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--meta); margin: 0 0 6px; }
+.facts-grid dd { margin: 0; }
+.fact-value { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; line-height: 1.25; color: var(--fg); margin-bottom: 4px; }
+.fact-desc { font-size: 0.92rem; line-height: 1.55; color: var(--fg); }
+.fact-gloss { font-size: 0.84rem; line-height: 1.5; color: var(--muted); margin-top: 4px; }
 
 .top-bar { position: sticky; top: 0; z-index: 1030; background: var(--bg); border-bottom: 2px solid var(--border); padding: 8px 0; }
 .top-bar .progress-thin { height: 8px; background: var(--border); border-radius: var(--radius-pill); margin-top: 6px; overflow: hidden; }
@@ -282,6 +282,7 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: v
   .hero-wordmark .disc::before { width: 13px; height: 13px; border-width: 1.5px; }
   .hero-wordmark .disc::after { width: 6px; height: 6px; }
   .hero-section { padding: var(--space-8) 0 var(--space-6); }
+  .facts-grid { grid-template-columns: 1fr; }
   .mode-tab { font-size: 14px; padding: 8px 14px; }
   .nav-controls .btn { width: 44px; height: 44px; }
   .action-bar .btn { font-size: 13px; padding: 8px 12px; }
@@ -354,6 +355,79 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: v
   .ordenar-word-tile { padding: 6px 12px; font-size: 0.85rem; }
   .ordenar-slot { min-width: 48px; height: 36px; font-size: 0.85rem; padding: 0 10px; }
 }
+
+/* ===== LYRICS CHALLENGE ===== */
+.lyrics-challenge { position: relative; max-width: 720px; margin: 0 auto; }
+.lyrics-card { position: relative; background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--elev-raised); padding: var(--space-6); }
+
+.lyrics-difficulty { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.lyrics-diff { padding: 10px 18px; border-radius: var(--radius-pill); border: 2px solid var(--border); background: var(--bg); font-size: 15px; font-weight: 800; font-family: var(--font-display); letter-spacing: 0.02em; color: var(--muted); cursor: pointer; transition: all var(--motion-fast) ease; }
+.lyrics-diff:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.lyrics-diff.active { background: var(--accent); border-color: var(--accent); color: var(--accent-on); }
+
+.lyrics-stats { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space-4); }
+.lyrics-stat { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 800; font-size: 14px; color: var(--fg); background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius-pill); padding: 6px 12px; }
+.lyrics-stat svg { flex-shrink: 0; }
+.lyrics-stat .val { color: var(--accent-active); min-width: 20px; text-align: center; }
+.lyrics-stat-k { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--meta); font-weight: 800; }
+
+.lyrics-hearts { display: inline-flex; gap: 2px; color: var(--danger); }
+.lyrics-heart { transition: all var(--motion-fast) ease; }
+.lyrics-heart.lost { opacity: 0.22; transform: scale(0.9); }
+
+.lyrics-progress { text-align: center; font-family: var(--font-display); color: var(--meta); font-size: 0.85rem; letter-spacing: 0.06em; margin-bottom: var(--space-2); text-transform: uppercase; }
+
+.lyrics-timer-track { height: 10px; background: var(--border); border-radius: var(--radius-pill); overflow: hidden; margin-bottom: var(--space-4); }
+.lyrics-timer-fill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: var(--radius-pill); }
+.lyrics-timer-fill.low { background: var(--danger); }
+
+.lyrics-lyric-line { text-align: center; font-family: var(--font-display); font-size: clamp(1.35rem, 3.5vw, 1.9rem); font-weight: 800; line-height: 1.4; color: var(--fg); padding: var(--space-5); background: var(--accent-light-bg); border: 2px solid var(--accent); border-radius: var(--radius-md); }
+.lyrics-lyric-line .lyrics-blank { display: inline-block; min-width: 90px; border-bottom: 4px solid var(--accent-active); color: var(--accent-active); letter-spacing: 0.05em; }
+.lyrics-hint { text-align: center; color: var(--meta); font-size: 0.85rem; margin-top: var(--space-2); }
+
+.lyrics-audio-row { display: flex; justify-content: center; margin-top: var(--space-4); }
+
+.lyrics-audio-row audio { display: none; }
+
+.lyrics-audio-row .playing { border-color: var(--accent); color: var(--accent); background: var(--accent-light-bg); }
+
+.lyrics-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-5); }
+.lyrics-option { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 2px solid var(--border); border-radius: var(--radius-md); background: var(--bg); cursor: pointer; transition: all var(--motion-fast) ease; text-align: left; font-size: 1.1rem; font-weight: 700; box-shadow: var(--elev-raised); }
+.lyrics-option:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-light-bg); transform: translateY(-1px); }
+.lyrics-option:disabled { pointer-events: none; opacity: 0.5; }
+.lyrics-option:disabled.correct { opacity: 1; }
+.lyrics-option.correct { border-color: var(--success); background: var(--accent-light-bg); color: var(--accent-active); border-bottom-color: var(--accent-active); }
+.lyrics-option.wrong { border-color: var(--danger); background: var(--danger-light-bg); color: var(--danger); border-bottom-color: var(--danger); }
+.lyrics-opt-key { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--surface); border: 2px solid var(--border); font-size: 13px; color: var(--meta); font-family: var(--font-display); font-weight: 800; }
+.lyrics-option.correct .lyrics-opt-key { background: var(--accent); border-color: var(--accent-active); color: var(--accent-on); }
+.lyrics-option.wrong .lyrics-opt-key { background: var(--danger); border-color: var(--danger); color: var(--accent-on); }
+
+.lyrics-learn { display: none; margin-top: var(--space-5); background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius-md); padding: var(--space-4); text-align: left; }
+.lyrics-learn-head { display: flex; align-items: center; gap: 10px; margin-bottom: var(--space-3); flex-wrap: wrap; }
+.lyrics-learn-word { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--accent-active); }
+.lyrics-learn-badge { font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 800; background: var(--accent-light-bg); color: var(--accent-active); padding: 3px 10px; border-radius: var(--radius-pill); }
+.lyrics-learn-row { display: flex; gap: 10px; padding: 6px 0; font-size: 0.9rem; }
+.lyrics-learn-row .k { flex-shrink: 0; min-width: 96px; color: var(--accent); font-weight: 800; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; padding-top: 1px; }
+.lyrics-learn-row .v { flex: 1; }
+
+.lyrics-continue { text-align: center; margin-top: var(--space-4); }
+
+.lyrics-float-score { position: absolute; top: 36px; right: 24px; z-index: 6; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; color: var(--accent); pointer-events: none; }
+.lyrics-confetti-piece { position: absolute; bottom: 10px; pointer-events: none; z-index: 5; }
+
+.lyrics-results-score { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 4rem); font-weight: 800; color: var(--accent); line-height: 1.05; margin-top: var(--space-2); }
+.lyrics-missed { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: var(--space-4); }
+.lyrics-missed-chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 2px solid var(--danger); color: var(--danger); background: var(--danger-light-bg); border-radius: var(--radius-pill); font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: all var(--motion-fast) ease; }
+.lyrics-missed-chip:hover { border-color: var(--accent); color: var(--accent-active); background: var(--accent-light-bg); }
+.lyrics-missed-chip .en { color: var(--muted); font-weight: 500; font-size: 0.78rem; }
+
+@media (max-width: 576px) {
+  .lyrics-card { padding: var(--space-4); }
+  .lyrics-lyric-line { font-size: 1.15rem; padding: var(--space-4); }
+  .lyrics-options { grid-template-columns: 1fr; }
+  .lyrics-stat { font-size: 13px; padding: 5px 10px; }
+  .lyrics-diff { font-size: 14px; padding: 8px 14px; }
+}
 </style>
 <script>
 (function(){
@@ -379,7 +453,7 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: v
     <div class="d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center gap-2">
         <span class="wordmark"><span class="disc"></span>lamento boliviano</span>
-        <span class="badge badge-easy">A2–B1</span>
+        <span class="badge badge-easy">A2-B1</span>
       </div>
       <div class="d-flex align-items-center gap-2">
         <span class="small text-muted" data-od-id="progress-label" aria-live="polite">0 / 91</span>
@@ -414,7 +488,6 @@ a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: v
 Listo para rockear tu vocabulario con una de las canciones más icónicas del rock latinoamericano.
     </p>
   </div>
-  <svg class="hero-decoration" viewBox="0 0 200 200" style="position:absolute;bottom:0;right:0;width:160px;height:160px;opacity:0.04;pointer-events:none;color:var(--accent)" aria-hidden="true"><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="20" fill="currentColor"/><line x1="40" y1="40" x2="70" y2="70" stroke="currentColor" stroke-width="2"/><line x1="160" y1="40" x2="130" y2="70" stroke="currentColor" stroke-width="2"/><line x1="40" y1="160" x2="70" y2="130" stroke="currentColor" stroke-width="2"/><line x1="160" y1="160" x2="130" y2="130" stroke="currentColor" stroke-width="2"/></svg>
 </section>
 
 <main id="main-content">
@@ -541,6 +614,7 @@ Listo para rockear tu vocabulario con una de las canciones más icónicas del ro
       <button class="mode-tab active" data-mode="study" role="tab" aria-selected="true" id="tab-study">Estudio</button>
       <button class="mode-tab" data-mode="review" role="tab" aria-selected="false" id="tab-review">Repaso</button>
       <button class="mode-tab" data-mode="quiz" role="tab" aria-selected="false" id="tab-quiz">Quiz</button>
+      <button class="mode-tab" data-mode="letra" role="tab" aria-selected="false" id="tab-letra">Letra</button>
     </div>
 
 
@@ -599,7 +673,7 @@ Listo para rockear tu vocabulario con una de las canciones más icónicas del ro
       <div class="text-center mt-2">
         <div class="kbd-hint">
           <kbd>← →</kbd> navegar
-          <kbd>⎵</kbd> voltear
+          <kbd>Espacio</kbd> voltear
           <kbd>P</kbd> pronunciar
         </div>
       </div>
@@ -647,9 +721,127 @@ Listo para rockear tu vocabulario con una de las canciones más icónicas del ro
     </div>
   </section>
 
+  <!-- Lyrics Challenge Section -->
+  <section id="lyrics-challenge" data-od-id="lyrics-challenge-section" class="mb-5">
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Reto de letra</h2>
+    <p class="text-muted" style="max-width:65ch">Completa la letra de la canción eligiendo la palabra que falta en cada línea. Cada acierto suma 10 puntos; pierdes un corazón por fallo. Al final podrás repasar tus errores.</p>
+
+    <div class="lyrics-challenge" id="lyrics-app" data-od-id="lyrics-app">
+
+      <!-- INTRO / LOBBY -->
+      <div id="lyrics-intro" class="lyrics-card text-center">
+        <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--accent-active)">Completa la letra</div>
+        <p class="text-muted" style="max-width:52ch;margin:0.5rem auto 0">Cada línea esconderá una palabra clave de la canción. Elige la correcta antes de que se acabe el tiempo.</p>
+
+        <div class="mt-4">
+          <div class="lyrics-stat-k" style="margin-bottom:8px">Dificultad</div>
+          <div class="lyrics-difficulty" role="group" aria-label="Dificultad del reto">
+            <button class="lyrics-diff active" data-difficulty="easy" type="button" aria-pressed="true">Fácil</button>
+            <button class="lyrics-diff" data-difficulty="medium" type="button" aria-pressed="false">Medio</button>
+            <button class="lyrics-diff" data-difficulty="hard" type="button" aria-pressed="false">Difícil</button>
+            <button class="lyrics-diff" data-difficulty="expert" type="button" aria-pressed="false">Experto</button>
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+          <span class="lyrics-stat"><span class="lyrics-stat-k">Preguntas</span> <span class="val" id="lyrics-intro-count">0</span></span>
+          <span class="lyrics-stat"><span class="lyrics-stat-k">Mejor</span> <span class="val" id="lyrics-intro-best">0</span></span>
+        </div>
+
+        <div class="mt-4">
+          <button class="btn btn-primary btn-lg" id="lyrics-start-btn">Comenzar reto</button>
+        </div>
+
+        <div class="kbd-hint" style="margin-top:var(--space-5)">
+          <kbd>1</kbd>-<kbd>4</kbd> elegir · <kbd>Enter</kbd> continuar · <kbd>Esc</kbd> salir
+        </div>
+      </div>
+
+      <!-- GAME -->
+      <div id="lyrics-game" class="d-none">
+        <div class="lyrics-card" id="lyrics-card">
+          <div class="lyrics-progress" id="lyrics-progress">Pregunta 1 de 10</div>
+
+          <div class="lyrics-stats">
+            <span class="lyrics-stat lyrics-hearts" id="lyrics-hearts" aria-label="Corazones"></span>
+            <span class="lyrics-stat" id="lyrics-score-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--warn)" aria-hidden="true"><path d="M12 2l2.9 6.26L21 9.27l-5 4.6 1.2 6.7L12 17.3 6.8 20.57 8 13.87 3 9.27l6.1-1.01L12 2z"/></svg>
+              <span class="val" id="lyrics-score">0</span>
+            </span>
+            <span class="lyrics-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+              <span class="val" id="lyrics-accuracy">100%</span>
+            </span>
+            <span class="lyrics-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--fav)" stroke-width="1.8" aria-hidden="true"><path d="M6 9V3h12v6M6 9a6 6 0 0 0 12 0M6 9H3v3a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6V9h-3M12 15v3M8 21h8"/></svg>
+              <span class="val" id="lyrics-best">0</span>
+            </span>
+            <span class="lyrics-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span class="val" id="lyrics-time">30s</span>
+            </span>
+          </div>
+
+          <div class="lyrics-timer-track" role="timer" aria-label="Tiempo restante">
+            <div class="lyrics-timer-fill" id="lyrics-timer-fill"></div>
+          </div>
+
+          <div class="lyrics-lyric-line" id="lyrics-line" aria-live="polite"></div>
+          <div class="lyrics-hint">Selecciona la palabra que completa la frase</div>
+
+          <div class="lyrics-audio-row">
+            <button class="btn btn-sm btn-outline-accent" id="lyrics-play-btn" type="button" aria-label="Escuchar el fragmento de la canción">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              <span id="lyrics-play-label">Escuchar fragmento</span>
+            </button>
+            <audio id="lyrics-audio" preload="auto">
+              <source src="lamento-boliviano.mp3" type="audio/mpeg">
+              <source src="lamento-boliviano.mp4" type="audio/mp4">
+            </audio>
+          </div>
+
+          <div class="lyrics-options" id="lyrics-options"></div>
+
+          <div class="text-center mt-3" id="lyrics-feedback" aria-live="polite" role="status"></div>
+
+          <div class="lyrics-learn" id="lyrics-learn"></div>
+
+          <div class="lyrics-continue" id="lyrics-continue" style="display:none">
+            <button class="btn btn-primary" id="lyrics-continue-btn">Continuar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="lyrics-results" class="d-none">
+        <div class="lyrics-card text-center">
+          <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800" id="lyrics-results-title">¡Ronda completada!</div>
+          <div class="lyrics-results-score" id="lyrics-results-score">0 pts</div>
+          <p class="text-muted" id="lyrics-results-sub"></p>
+
+          <div class="d-flex justify-content-center gap-3 flex-wrap mb-3">
+            <span class="lyrics-stat"><span class="lyrics-stat-k">Precisión</span> <span class="val" id="lyrics-results-accuracy">0%</span></span>
+            <span class="lyrics-stat"><span class="lyrics-stat-k">Mejor</span> <span class="val" id="lyrics-results-best">0</span></span>
+          </div>
+
+          <div id="lyrics-results-record" style="color:var(--warn);font-family:var(--font-display);font-weight:800"></div>
+
+          <div class="lyrics-missed" id="lyrics-missed"></div>
+
+          <div class="mt-4 d-flex flex-wrap justify-content-center gap-2">
+            <button class="btn btn-primary" id="lyrics-retry-btn">Repetir</button>
+            <button class="btn btn-outline-accent" id="lyrics-practice-btn" style="display:none">Practicar errores</button>
+            <button class="btn btn-ghost" id="lyrics-change-btn">Cambiar dificultad</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Listening Activity Section -->
   <section id="listening" data-od-id="listening-section" class="mb-5">
-    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg> Listening: subtítulos duales</h2>
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg> Comprensión auditiva</h2>
     <p class="text-muted" style="max-width:65ch">Sigue la letra en español e inglés mientras se reproduce el video. Haz clic en una línea para ir a ese momento.</p>
     <div class="row g-3 align-items-start">
       <div class="col-lg-7">
@@ -663,7 +855,7 @@ Listo para rockear tu vocabulario con una de las canciones más icónicas del ro
       <div class="col-lg-5">
         <div class="d-flex align-items-center justify-content-between mb-2">
           <h3 class="mb-0" style="font-size:1.1rem">Letra bilingüe</h3>
-          <span class="text-muted small">Haz clic en una línea ⏤ salta a ese momento</span>
+          <span class="text-muted small">Haz clic en una línea para saltar a ese momento</span>
         </div>
         <div class="listening-container" id="listening-transcript" role="region" aria-label="Letra bilingüe sincronizada"></div>
       </div>
@@ -713,69 +905,46 @@ Listo para rockear tu vocabulario con una de las canciones más icónicas del ro
 
   <!-- Song Facts Section -->
   <section id="song-facts" data-od-id="song-facts-section" class="mb-5">
-    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Sobre la canción / About the Song</h2>
+    <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:-4px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> Sobre la canción</h2>
 
-    <div class="row g-4" style="max-width:900px">
-      <div class="col-md-6">
-        <div class="stat-card h-100" style="text-align:left">
-          <div class="stat-label" style="text-align:left;font-size:11px">FECHA DE LANZAMIENTO</div>
-          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">1993</div>
-          <p class="text-muted small mb-0" style="line-height:1.5">Lanzada en el tercer álbum de la banda, <em>En los '90</em>, en Argentina.</p>
-          <hr style="border-color:var(--border);margin:10px 0">
-          <div class="text-muted small" style="line-height:1.5"><strong>Release date:</strong> Released on the band's third album <em>En los '90</em> in Argentina.</div>
-        </div>
+    <dl class="facts-grid">
+      <div class="fact">
+        <dt>Fecha de lanzamiento</dt>
+        <dd class="fact-value">1993</dd>
+        <dd class="fact-desc">Lanzada en el tercer álbum de la banda, <em>En los '90</em>, en Argentina.</dd>
+        <dd class="fact-gloss" lang="en">Released on the band's third album <em>En los '90</em> in Argentina.</dd>
       </div>
-
-      <div class="col-md-6">
-        <div class="stat-card h-100" style="text-align:left">
-          <div class="stat-label" style="text-align:left;font-size:11px">ARTISTA / ARTIST</div>
-          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Los Enanitos Verdes</div>
-          <p class="text-muted small mb-0" style="line-height:1.5">Banda de rock argentina formada en Mendoza en 1979. "Lamento Boliviano" es su canción más famosa.</p>
-          <hr style="border-color:var(--border);margin:10px 0">
-          <div class="text-muted small" style="line-height:1.5"><strong>Artist:</strong> Argentine rock band formed in Mendoza in 1979. "Lamento Boliviano" is their most famous song.</div>
-        </div>
+      <div class="fact">
+        <dt>Artista</dt>
+        <dd class="fact-value">Los Enanitos Verdes</dd>
+        <dd class="fact-desc">Banda de rock argentina formada en Mendoza en 1979. "Lamento Boliviano" es su canción más famosa.</dd>
+        <dd class="fact-gloss" lang="en">Argentine rock band formed in Mendoza in 1979. "Lamento Boliviano" is their most famous song.</dd>
       </div>
-
-      <div class="col-md-6">
-        <div class="stat-card h-100" style="text-align:left">
-          <div class="stat-label" style="text-align:left;font-size:11px">COMPOSITORES / SONGWRITERS</div>
-          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Felipe Staiti & Marciano Cantero</div>
-          <p class="text-muted small mb-0" style="line-height:1.5">Escrita por el guitarrista Felipe Staiti y el fallecido vocalista Marciano Cantero (1960–2022).</p>
-          <hr style="border-color:var(--border);margin:10px 0">
-          <div class="text-muted small" style="line-height:1.5"><strong>Written by:</strong> Guitarist Felipe Staiti and late vocalist Marciano Cantero (1960–2022).</div>
-        </div>
+      <div class="fact">
+        <dt>Compositores</dt>
+        <dd class="fact-value">Felipe Staiti &amp; Marciano Cantero</dd>
+        <dd class="fact-desc">Escrita por el guitarrista Felipe Staiti y el fallecido vocalista Marciano Cantero (1960-2022).</dd>
+        <dd class="fact-gloss" lang="en">Written by guitarist Felipe Staiti and late vocalist Marciano Cantero (1960-2022).</dd>
       </div>
-
-      <div class="col-md-6">
-        <div class="stat-card h-100" style="text-align:left">
-          <div class="stat-label" style="text-align:left;font-size:11px">GÉNERO / GENRE</div>
-          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Rock Latino / Pop Rock</div>
-          <p class="text-muted small mb-0" style="line-height:1.5">Rock en español con influencias de pop rock y new wave. Himno del rock latinoamericano de los 90.</p>
-          <hr style="border-color:var(--border);margin:10px 0">
-          <div class="text-muted small" style="line-height:1.5"><strong>Genre:</strong> Spanish-language rock with pop rock and new wave influences. A 90s Latin American rock anthem.</div>
-        </div>
+      <div class="fact">
+        <dt>Género</dt>
+        <dd class="fact-value">Rock latino / pop rock</dd>
+        <dd class="fact-desc">Rock en español con influencias de pop rock y new wave. Himno del rock latinoamericano de los 90.</dd>
+        <dd class="fact-gloss" lang="en">Spanish-language rock with pop rock and new wave influences. A 90s Latin American rock anthem.</dd>
       </div>
-
-      <div class="col-md-6">
-        <div class="stat-card h-100" style="text-align:left">
-          <div class="stat-label" style="text-align:left;font-size:11px">SIGNIFICADO / MEANING</div>
-          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">Amor, Dolor y Desolación</div>
-          <p class="text-muted small mb-0" style="line-height:1.5">La canción habla de un corazón roto y la lucha interna entre la razón y la emoción. "Lamento Boliviano" evoca la soledad del altiplano.</p>
-          <hr style="border-color:var(--border);margin:10px 0">
-          <div class="text-muted small" style="line-height:1.5"><strong>Meaning:</strong> The song is about a broken heart and the inner struggle between reason and emotion. "Bolivian Lament" evokes the solitude of the highlands.</div>
-        </div>
+      <div class="fact">
+        <dt>Significado</dt>
+        <dd class="fact-value">Amor, dolor y desolación</dd>
+        <dd class="fact-desc">La canción habla de un corazón roto y la lucha interna entre la razón y la emoción. "Lamento Boliviano" evoca la soledad del altiplano.</dd>
+        <dd class="fact-gloss" lang="en">The song is about a broken heart and the inner struggle between reason and emotion. "Bolivian Lament" evokes the solitude of the highlands.</dd>
       </div>
-
-      <div class="col-md-6">
-        <div class="stat-card h-100" style="text-align:left">
-          <div class="stat-label" style="text-align:left;font-size:11px">DATOS CURIOSOS / TRIVIA</div>
-          <div class="stat-value" style="font-size:1.6rem;line-height:1.2">± 227 segundos</div>
-          <p class="text-muted small mb-0" style="line-height:1.5">Dura aproximadamente 3:47. Es una de las canciones más versionadas del rock argentino, con covers en múltiples idiomas.</p>
-          <hr style="border-color:var(--border);margin:10px 0">
-          <div class="text-muted small" style="line-height:1.5"><strong>Trivia:</strong> Runs approximately 3:47 and is one of the most covered Argentine rock songs, with versions in multiple languages.</div>
-        </div>
+      <div class="fact">
+        <dt>Datos curiosos</dt>
+        <dd class="fact-value">3:47</dd>
+        <dd class="fact-desc">Dura aproximadamente 3:47. Es una de las canciones más versionadas del rock argentino, con covers en múltiples idiomas.</dd>
+        <dd class="fact-gloss" lang="en">Runs approximately 3:47 and is one of the most covered Argentine rock songs, with versions in multiple languages.</dd>
       </div>
-    </div>
+    </dl>
   </section>
 </div>
 </main>
@@ -826,7 +995,7 @@ const VOCABULARY = [
   { id:'incitar', spanish:'incitar', english:'to incite, to urge', pronunciation:'in-see-TAR', pos:'verb', category:'Vocabulary', difficulty:'Hard',
     example:'Me incitan a gritar', exampleTranslation:'They incite me to shout', timestamp:16,
     related:['provocar','instigar'], collocations:['incitar a la violencia','incitar al cambio'],
-    mistake:'No es "insitar" — la forma correcta es incitar, sin s intermedia.',
+    mistake:'No es "insitar" - la forma correcta es incitar, sin s intermedia.',
     synonyms:['provocar','instigar','impulsar'], alternatives:['incitación (instigation)'] },
   { id:'gritar', spanish:'gritar', english:'to shout, to yell', pronunciation:'gree-TAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
     example:'Me incitan a gritar', exampleTranslation:'They incite me to shout', timestamp:16,
@@ -841,12 +1010,12 @@ const VOCABULARY = [
   { id:'tocar', spanish:'tocar', english:'to touch; to play (instrument)', pronunciation:'toh-KAR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
     example:'Palabras no me tocan', exampleTranslation:'Words do not touch me', timestamp:20,
     related:['palpar','tañer'], collocations:['tocar el cielo','tocar fondo','tocar guitarra'],
-    mistake:'"Tocar" también significa "to play (an instrument)" — contexto clave.',
+    mistake:'"Tocar" también significa "to play (an instrument)" - contexto clave.',
     synonyms:['palpar','sentir','rozar'], alternatives:['tocarse (to touch oneself)','tacto (touch n.)'] },
   { id:'adentro', spanish:'adentro', english:'inside, within', pronunciation:'ah-DEN-tro', pos:'adverb', category:'Vocabulary', difficulty:'Medium',
     example:'Adentro hay un volcán', exampleTranslation:'Inside there is a volcano', timestamp:24,
     related:['dentro','interior'], collocations:['adentro de la casa','más adentro','tierra adentro'],
-    mistake:'Adentro (adv.) ≠ adentro de (prep.) — en algunos contextos es "dentro de".',
+    mistake:'Adentro (adv.) ≠ adentro de (prep.) - en algunos contextos es "dentro de".',
     synonyms:['dentro','interiormente'], alternatives:['para adentro (inward)'] },
   { id:'volcan', spanish:'volcán', english:'volcano', pronunciation:'vol-KAHN', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Medium',
     example:'Adentro hay un volcán', exampleTranslation:'Inside there is a volcano', timestamp:24,
@@ -861,7 +1030,7 @@ const VOCABULARY = [
   { id:'tranquilo', spanish:'tranquilo', english:'calm, tranquil', pronunciation:'trahn-KEE-lo', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
     example:'Yo quiero estar tranquilo', exampleTranslation:'I want to be calm', timestamp:28,
     related:['calmado','sereno','pacífico'], collocations:['estar tranquilo','quedarse tranquilo','mente tranquila'],
-    mistake:'Tranquilo se usa también como "don\'t worry" — ¡Tranquilo!',
+    mistake:'Tranquilo se usa también como "no te preocupes" - ¡Tranquilo!',
     synonyms:['calmado','sereno','plácido','sosegado'], alternatives:['tranquilidad (calmness)'] },
   { id:'situacion', spanish:'situación', english:'situation', pronunciation:'see-twah-SYON', pos:'noun (fem.)', category:'Vocabulary', difficulty:'Medium',
     example:'Es mi situación', exampleTranslation:'It is my situation', timestamp:31,
@@ -1016,7 +1185,7 @@ const VOCABULARY = [
   { id:'situacion-revisit', spanish:'situación difícil', english:'difficult situation', pronunciation:'see-twah-SYON dee-FEEL', pos:'phrase', category:'Vocabulary', difficulty:'Medium',
     example:'Es mi situación', exampleTranslation:'It is my situation', timestamp:31,
     related:['problema','problema grave','apuro'], collocations:['situación complicada','situación límite','situación de riesgo'],
-    mistake:'"Situación" es femenino — "la situación", no "el situación".',
+    mistake:'"Situación" es femenino - "la situación", no "el situación".',
     synonyms:['circunstancia','estado','contexto'], alternatives:['situado (located)','situacional (situational)'] },
   { id:'un', spanish:'un/una', english:'a, an (indefinite article)', pronunciation:'oon / OO-nah', pos:'article', category:'Vocabulary', difficulty:'Easy',
     example:'Un lamento boliviano', exampleTranslation:'A Bolivian lament', timestamp:36,
@@ -1026,12 +1195,12 @@ const VOCABULARY = [
   { id:'dia', spanish:'día', english:'day', pronunciation:'DEE-ah', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Easy',
     example:'Que un día empezó', exampleTranslation:'That one day began', timestamp:39,
     related:['jornada','fecha','tiempo','noche'], collocations:['buen día','todos los días','día a día','al día'],
-    mistake:'"Día" es masculino — EL día, no "la día". Contraintuitivo porque termina en -a.',
+    mistake:'"Día" es masculino - EL día, no "la día". Contraintuitivo porque termina en -a.',
     synonyms:['jornada','fecha','jornada'], alternatives:['diario (daily adj.)','diariamente (daily adv.)','mediodía (noon)'] },
   { id:'nadie', spanish:'nadie', english:'nobody, no one', pronunciation:'NAH-dyeh', pos:'pronoun', category:'Vocabulary', difficulty:'Easy',
     example:'A nadie hace daño', exampleTranslation:'It does not harm anyone', timestamp:43,
     related:['alguien','ninguno','nunca'], collocations:['casi nadie','nadie más','nadie sabe'],
-    mistake:'"Nadie" is already negative — in Spanish, use "no...nadie" or just "nadie". "No viene nadie" = Nobody comes.',
+    mistake:'"Nadie" ya es negativo - en español se usa "no...nadie" o simplemente "nadie". "No viene nadie" significa "nobody comes".',
     synonyms:['ninguno','ninguna persona'], alternatives:['nulidad (nonentity)','nadie (como sustantivo)'] },
   { id:'hacer', spanish:'hacer', english:'to do, to make', pronunciation:'ah-SEHR', pos:'verb', category:'Vocabulary', difficulty:'Easy',
     example:'A nadie hace daño', exampleTranslation:'It does not harm anyone', timestamp:43,
@@ -1056,7 +1225,7 @@ const VOCABULARY = [
   { id:'estoy', spanish:'estoy', english:'I am (temporary)', pronunciation:'ehs-TOY', pos:'verb', category:'Vocabulary', difficulty:'Easy',
     example:'Estoy aquí', exampleTranslation:'I am here', timestamp:62,
     related:['estar','estás','está','estamos'], collocations:['estoy bien','estoy de acuerdo','estoy aquí','estoy listo'],
-    mistake:'"Estoy" = temporary. "Soy" = permanent. "Estoy cansado" (tired now) vs "Soy cansado" (WRONG — never permanent).',
+    mistake:'"Estoy" = temporal. "Soy" = permanente. "Estoy cansado" (ahora) vs "Soy cansado" (incorrecto - nunca permanente).',
     synonyms:['me encuentro'], alternatives:['estaba (I was)','estaré (I will be)'] },
   { id:'mi', spanish:'mi', english:'my', pronunciation:'mee', pos:'adjective', category:'Vocabulary', difficulty:'Easy',
     example:'Mi corazón idiota', exampleTranslation:'My idiot heart', timestamp:70,
@@ -1071,7 +1240,7 @@ const VOCABULARY = [
   { id:'por', spanish:'por', english:'for, through, by', pronunciation:'pohr', pos:'preposition', category:'Vocabulary', difficulty:'Medium',
     example:'Por siempre', exampleTranslation:'Forever', timestamp:85,
     related:['para','debido a','a través de'], collocations:['por favor','por qué','por siempre','por ejemplo'],
-    mistake:'"Por" vs "para" — clásica confusión. "Por" = cause/through. "Para" = purpose/destination.',
+    mistake:'"Por" vs "para" - clásica confusión. "Por" = causa / a través de. "Para" = propósito / destino.',
     synonyms:['mediante','a través de','debido a'], alternatives:['para (for purpose)','porque (because)'] },
   { id:'siempre-revisit', spanish:'por siempre', english:'forever', pronunciation:'pohr SYEM-pre', pos:'phrase', category:'Vocabulary', difficulty:'Easy',
     example:'Te amaré por siempre', exampleTranslation:'I will love you forever', timestamp:85,
@@ -1106,7 +1275,7 @@ const VOCABULARY = [
   { id:'en', spanish:'en', english:'in, on, at', pronunciation:'ehn', pos:'preposition', category:'Vocabulary', difficulty:'Easy',
     example:'En la cama', exampleTranslation:'In bed', timestamp:85,
     related:['dentro de','sobre','encima de'], collocations:['en casa','en el','en serio','en punto','en camino'],
-    mistake:'"En" covers "in", "on", "at" — contexto determina el significado. "En la mesa" = on the table OR in the table.',
+    mistake:'"En" cubre "in", "on", "at" - el contexto determina el significado. "En la mesa" = sobre la mesa o dentro de la mesa.',
     synonyms:['dentro','sobre','encima'], alternatives:['entre (between)','sin (without)'] },
   { id:'y', spanish:'y', english:'and', pronunciation:'ee', pos:'conjunction', category:'Vocabulary', difficulty:'Easy',
     example:'Borracho y loco', exampleTranslation:'Drunk and crazy', timestamp:62,
@@ -1272,7 +1441,7 @@ const VOCABULARY = [
   { id:'coro', spanish:'coro', english:'chorus', pronunciation:'KOH-roh', pos:'noun (masc.)', category:'Vocabulary', difficulty:'Medium',
     example:'El coro de la canción', exampleTranslation:'The chorus of the song', timestamp:62,
     related:['estribillo','refrán','repetición'], collocations:['coro de la canción','cantar en coro','a coro','el coro'],
-    mistake:'"Coro" = chorus (music). "Se fue al coro" has no relation — "coro" here is chorus/choir.',
+    mistake:'"Coro" = chorus (música). "Se fue al coro" no tiene relación - aquí "coro" es conjunto vocal.',
     synonyms:['estribillo','refrán','repetición'], alternatives:['corear (to chant)','corista (chorus member)'] }];
 
 // ===== STATE =====
@@ -1286,7 +1455,9 @@ let syncInterval = null;
 let quizQuestions = [];
 let quizIndex = 0;
 let quizCorrect = 0;
+let quizAdvanceId = null;
 let speedTimer = null;
+let speedAreaTemplate = null;
 let speedTimeLeft = 180;
 let speedCount = 0;
 let speedAccurate = 0;
@@ -1294,7 +1465,7 @@ let shuffleOrder = null;
 let sceneFilter = null;
 
 function defaultState() {
-  return { learned:{}, review:{}, fav:{}, accuracy:{}, streak:0, lastDate:'', quizHistory:[] };
+  return { learned:{}, review:{}, fav:{}, accuracy:{}, streak:0, lastDate:'', quizHistory:[], lyricsBest:{}, lyricsPlayed:0 };
 }
 
 function loadState() {
@@ -1436,11 +1607,12 @@ function renderFlashcard(index) {
 
     currentIndex = index;
 
-    gsap.fromTo('#flashcard', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+    if (window.gsap) gsap.fromTo('#flashcard', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
   }
 
   if (isFlipped) {
-    gsap.to('#flashcard .card-flashcard-inner', { rotationY: 0, duration: 0.3, ease: 'power2.in', onComplete: updateContent });
+    if (window.gsap) gsap.to('#flashcard .card-flashcard-inner', { rotationY: 0, duration: 0.3, ease: 'power2.in', onComplete: updateContent });
+    else updateContent();
     isFlipped = false;
   } else {
     updateContent();
@@ -1448,6 +1620,7 @@ function renderFlashcard(index) {
 }
 
 function flipCard() {
+  if (!window.gsap) return;
   if (!isFlipped) {
     gsap.to('#flashcard .card-flashcard-inner', { rotationY: 180, duration: 0.5, ease: 'power2.inOut' });
     isFlipped = true;
@@ -1489,7 +1662,7 @@ function showEmptyState(containerId, msg) {
   if (!es) {
     es = document.createElement('div');
     es.className = 'empty-state';
-    es.setAttribute('data-od-id', 'brand-symbol');
+    es.setAttribute('data-od-id', 'empty-state');
     es.innerHTML = `<svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><g transform="rotate(15 16 16)"><path d="M16 2C20 8 28 12 28 20C28 27 22 30 16 30C10 30 4 27 4 20C4 12 12 8 16 2Z" fill="var(--accent)"/><circle cx="13" cy="20" r="2.5" fill="var(--accent-on)"/><path d="M16 19V11L22 10V12L17 13V21C17 22 15.5 22.5 14 22.5C12.5 22.5 12 21.5 12 20.5" stroke="var(--accent-on)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg><p>${msg}</p>`;
     container.appendChild(es);
   }
@@ -1529,7 +1702,14 @@ function speakWord() {
 
 // ===== MODES =====
 function switchMode(mode) {
+  if (quizAdvanceId) { clearTimeout(quizAdvanceId); quizAdvanceId = null; }
   if (speedTimer) { clearInterval(speedTimer); speedTimer = null; }
+  if (mode !== 'letra') {
+    stopLyricsAudio();
+    clearLyricsTimeouts();
+    lyricsGame.phase = 'intro';
+    lyricsGame.locked = false;
+  }
   sceneFilter = null;
   shuffleOrder = null;
   currentMode = mode;
@@ -1542,16 +1722,21 @@ function switchMode(mode) {
     t.setAttribute('aria-selected', isActive.toString());
   });
 
-  document.getElementById('flashcard-area').classList.toggle('d-none', mode === 'quiz' || mode === 'speed');
+  document.getElementById('flashcard-area').classList.toggle('d-none', mode === 'quiz' || mode === 'speed' || mode === 'letra');
   var nc = document.querySelector('.nav-controls');
-  if (nc) nc.classList.toggle('d-none', mode === 'quiz' || mode === 'speed');
+  if (nc) nc.classList.toggle('d-none', mode === 'quiz' || mode === 'speed' || mode === 'letra');
   var ab = document.querySelector('.action-bar');
-  if (ab) ab.classList.toggle('d-none', mode === 'quiz' || mode === 'speed');
+  if (ab) ab.classList.toggle('d-none', mode === 'quiz' || mode === 'speed' || mode === 'letra');
   document.getElementById('quiz-area').classList.toggle('d-none', mode !== 'quiz');
   document.getElementById('speed-area').classList.toggle('d-none', mode !== 'speed');
 
   if (mode === 'quiz') startQuiz();
   else if (mode === 'speed') startSpeedReview();
+  else if (mode === 'letra') {
+    quitLyricsToIntro();
+    var lyricSection = document.getElementById('lyrics-challenge');
+    if (lyricSection) lyricSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
   else renderFlashcard(0);
 }
 
@@ -1602,7 +1787,8 @@ function renderQuizQuestion() {
         state.accuracy[q.id] = (state.accuracy[q.id] || 0) - 1;
         document.getElementById('quiz-feedback').innerHTML = '<span style="color:var(--danger);font-weight:800;font-family:var(--font-display)">Era ' + q.english + '</span>';
       }
-      setTimeout(() => {
+      quizAdvanceId = setTimeout(() => {
+        quizAdvanceId = null;
         quizIndex++;
         if (quizIndex < quizQuestions.length) renderQuizQuestion();
         else endQuiz();
@@ -1633,6 +1819,11 @@ function endQuiz() {
 }
 
 function startSpeedReview() {
+  const speedArea = document.getElementById('speed-area');
+  if (!speedArea) return;
+  if (!speedAreaTemplate) speedAreaTemplate = speedArea.innerHTML;
+  speedArea.innerHTML = speedAreaTemplate;
+
   const words = getFilteredWords();
   if (words.length === 0) { showEmptyState('speed-area', 'Sin palabras. ¡Aprende algunas primero!'); return; }
   speedCount = 0;
@@ -1714,11 +1905,19 @@ function updateProgress() {
   if (streakEl) streakEl.textContent = state.streak || 0;
 }
 
+function localDay(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
 function updateStreak() {
-  const today = new Date().toISOString().split('T')[0];
+  const today = localDay(new Date());
   if (state.lastDate !== today) {
-    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-    if (state.lastDate === yesterday) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    if (state.lastDate === localDay(yesterday)) {
       state.streak = (state.streak || 0) + 1;
     } else {
       state.streak = 1;
@@ -1752,6 +1951,7 @@ function initThemeToggle() {
 function showWordModal(wordId) {
   const w = VOCABULARY.find(v => v.id === wordId);
   if (!w) return;
+  if (!window.bootstrap) return;
   const modal = new bootstrap.Modal(document.getElementById('word-modal'));
   document.getElementById('modal-word').textContent = w.spanish;
   document.getElementById('modal-pronunciation').textContent = '[' + w.pronunciation + ']';
@@ -1794,6 +1994,8 @@ function showWordModal(wordId) {
       seekTo(w.timestamp - 2);
     }
     modal.hide();
+    const videoSection = document.getElementById('video');
+    if (videoSection) videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   modal.show();
@@ -1801,12 +2003,17 @@ function showWordModal(wordId) {
 
 // ===== KEYBOARD =====
 document.addEventListener('keydown', (e) => {
-  if (currentMode === 'speed' || currentMode === 'quiz') return;
+  if (lyricsGame.phase === 'playing') return;
+  if (currentMode === 'speed' || currentMode === 'quiz' || currentMode === 'letra') return;
   if (document.querySelector('.modal.show')) return;
   switch(e.key) {
     case 'ArrowLeft': prevCard(); e.preventDefault(); break;
     case 'ArrowRight': nextCard(); e.preventDefault(); break;
-    case ' ': flipCard(); e.preventDefault(); break;
+    case ' ':
+      flipCard();
+      if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+      e.preventDefault();
+      break;
     case 'l': markLearned(); e.preventDefault(); break;
     case 'p': case 's': speakWord(); e.preventDefault(); break;
   }
@@ -2203,6 +2410,632 @@ function skipOrdenar() {
   }, 2000);
 }
 
+// ===== LYRICS CHALLENGE =====
+const LYRICS_DIFF = {
+  easy:   { label: 'Fácil',   time: 30, rank: 0,  hint: 'Oculta palabras fáciles' },
+  medium: { label: 'Medio',   time: 25, rank: 1,  hint: 'Verbos y vocabulario esencial' },
+  hard:   { label: 'Difícil', time: 20, rank: 2,  hint: 'Verbos, sustantivos, adjetivos y expresiones' },
+  expert: { label: 'Experto', time: 15, rank: 99, hint: 'Casi cada palabra importante' }
+};
+const LYRICS_RANK = { Easy: 0, Medium: 1, Hard: 2 };
+
+const lyricsGame = {
+  difficulty: 'easy',
+  questions: [],
+  index: 0,
+  score: 0,
+  hearts: 3,
+  correct: 0,
+  answered: 0,
+  missed: [],
+  timeLeft: 30,
+  timerId: null,
+  autoId: null,
+  phase: 'intro',
+  locked: false,
+  practice: false
+};
+
+let lyricsLines = null;
+
+// Build the song lines once from the transcript DOM, pairing each line's
+// tagged vocabulary words (id + surface form) with its English translation.
+function buildLyricsLines() {
+  if (lyricsLines) return lyricsLines;
+  const lines = [];
+  const lineEls = document.querySelectorAll('#transcript .transcript-line');
+  lineEls.forEach((lineEl, i) => {
+    const start = parseFloat(lineEl.dataset.start) || 0;
+    const end = parseFloat(lineEl.dataset.end) || 0;
+    const en = (LISTENING_DATA[i] && LISTENING_DATA[i].en) ? LISTENING_DATA[i].en : '';
+    const tokens = [];
+    lineEl.querySelectorAll('.word[data-word]').forEach(span => {
+      const id = span.dataset.word;
+      const vocab = VOCABULARY.find(v => v.id === id);
+      if (!vocab) return;
+      const strong = span.querySelector('strong');
+      const form = (strong ? strong.textContent : span.textContent).replace(/\s+/g, ' ').trim();
+      tokens.push({ id: id, vocab: vocab, form: form });
+    });
+    if (tokens.length === 0) return;
+    lines.push({ lineEl: lineEl, es: lineEl.textContent.replace(/\s+/g, ' ').trim(), en: en, start: start, end: end, tokens: tokens });
+  });
+  lyricsLines = lines;
+  return lines;
+}
+
+// Build the question set for the selected difficulty. When onlyMissed is true,
+// only the words the player got wrong in the last round are re-quizzed.
+function buildLyricsQuestions(difficultyKey, onlyMissed) {
+  const conf = LYRICS_DIFF[difficultyKey] || LYRICS_DIFF.easy;
+  const questions = [];
+  buildLyricsLines().forEach(line => {
+    let eligible = line.tokens;
+    if (conf.rank <= 2) {
+      eligible = line.tokens.filter(t => LYRICS_RANK[t.vocab.difficulty] === conf.rank);
+    }
+    if (onlyMissed) {
+      eligible = line.tokens.filter(t => lyricsGame.missed.some(m => m.wordId === t.id));
+    }
+    if (eligible.length === 0) return;
+    const pick = eligible[Math.floor(Math.random() * eligible.length)];
+    const q = makeLyricsQuestion(line, pick);
+    if (q) questions.push(q);
+  });
+  return questions;
+}
+
+function makeLyricsQuestion(line, pick) {
+  const clone = line.lineEl.cloneNode(true);
+  let target = null;
+  clone.querySelectorAll('.word[data-word]').forEach(span => {
+    if (span.dataset.word === pick.id && !target) target = span;
+  });
+  if (!target) return null;
+  const strong = target.querySelector('strong');
+  if (strong) strong.innerHTML = '<span class="lyrics-blank">______</span>';
+  else target.innerHTML = '<span class="lyrics-blank">______</span>';
+  const sentence = clone.textContent.replace(/\s+/g, ' ').trim();
+  const distractors = buildLyricsDistractors(pick);
+  const options = [pick.form].concat(distractors).sort(() => Math.random() - 0.5);
+  return {
+    wordId: pick.id,
+    form: pick.form,
+    vocab: pick.vocab,
+    sentence: sentence,
+    es: line.es,
+    en: line.en,
+    start: line.start,
+    end: line.end,
+    options: options
+  };
+}
+
+function buildLyricsDistractors(pick) {
+  const posKey = pick.vocab.pos.split(' ')[0];
+  const pool = VOCABULARY.filter(w => w.id !== pick.id);
+  const samePos = pool.filter(w => w.pos.split(' ')[0] === posKey);
+  const candidates = samePos.length >= 3 ? samePos : pool;
+  let dist = getRandomDistractors(candidates.map(w => w.spanish), pick.form, 3);
+  dist = dist.filter(d => d !== pick.form);
+  if (dist.length < 3) {
+    const rest = getRandomDistractors(pool.map(w => w.spanish), pick.form, 3 - dist.length)
+      .filter(d => d !== pick.form && dist.indexOf(d) === -1);
+    dist = dist.concat(rest);
+  }
+  return dist.slice(0, 3);
+}
+
+function startLyricsGame(difficultyKey, practice) {
+  clearLyricsTimeouts();
+  const conf = LYRICS_DIFF[difficultyKey] || LYRICS_DIFF.easy;
+  lyricsGame.difficulty = difficultyKey;
+  lyricsGame.practice = !!practice;
+  lyricsGame.questions = buildLyricsQuestions(difficultyKey, !!practice);
+  lyricsGame.index = 0;
+  lyricsGame.score = 0;
+  lyricsGame.hearts = 3;
+  lyricsGame.correct = 0;
+  lyricsGame.answered = 0;
+  lyricsGame.missed = [];
+  lyricsGame.phase = 'playing';
+  lyricsGame.locked = false;
+  if (lyricsGame.questions.length === 0) {
+    lyricsGame.phase = 'intro';
+    showLyricsScreen('intro');
+    announce('No hay preguntas para esta dificultad. Prueba con otra.');
+    return;
+  }
+  showLyricsScreen('game');
+  renderLyricsQuestion();
+}
+
+function renderLyricsQuestion() {
+  clearLyricsTimeouts();
+  const q = lyricsGame.questions[lyricsGame.index];
+  if (!q) { endLyricsGame(); return; }
+  lyricsGame.locked = false;
+  const conf = LYRICS_DIFF[lyricsGame.difficulty];
+  lyricsGame.timeLeft = conf.time;
+
+  document.getElementById('lyrics-progress').textContent = 'Pregunta ' + (lyricsGame.index + 1) + ' de ' + lyricsGame.questions.length;
+  document.getElementById('lyrics-line').innerHTML = q.sentence;
+  const learn = document.getElementById('lyrics-learn');
+  learn.style.display = 'none';
+  learn.innerHTML = '';
+  document.getElementById('lyrics-continue').style.display = 'none';
+  document.getElementById('lyrics-feedback').innerHTML = '';
+
+  const opts = document.getElementById('lyrics-options');
+  opts.innerHTML = q.options.map((opt, i) =>
+    '<button class="lyrics-option" type="button" data-i="' + i + '" data-answer="' + (opt === q.form ? 'correct' : 'wrong') + '">' +
+    '<span class="lyrics-opt-key">' + (i + 1) + '</span>' + opt +
+    '</button>'
+  ).join('');
+  opts.querySelectorAll('.lyrics-option').forEach(btn => {
+    btn.onclick = () => answerLyrics(btn);
+  });
+
+  renderLyricsStats();
+  if (window.gsap) {
+    gsap.fromTo('#lyrics-line', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+    gsap.fromTo(opts.querySelectorAll('.lyrics-option'), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, stagger: 0.05, ease: 'power2.out' });
+  }
+  playLyricsLine(q);
+  startLyricsTimer();
+  announce('Pregunta ' + (lyricsGame.index + 1) + ' de ' + lyricsGame.questions.length + '. Completa la frase.');
+}
+
+function startLyricsTimer() {
+  stopLyricsTimer();
+  const conf = LYRICS_DIFF[lyricsGame.difficulty];
+  const fill = document.getElementById('lyrics-timer-fill');
+  const timeLabel = document.getElementById('lyrics-time');
+  const tick = () => {
+    const pct = (lyricsGame.timeLeft / conf.time) * 100;
+    if (fill) {
+      fill.style.width = Math.max(0, pct) + '%';
+      fill.classList.toggle('low', pct < 30);
+    }
+    if (timeLabel) timeLabel.textContent = Math.max(0, Math.ceil(lyricsGame.timeLeft)) + 's';
+    if (lyricsGame.timeLeft <= 0) {
+      stopLyricsTimer();
+      answerLyrics(null);
+      return;
+    }
+    lyricsGame.timeLeft -= 0.1;
+  };
+  tick();
+  lyricsGame.timerId = setInterval(tick, 100);
+}
+
+function stopLyricsTimer() {
+  if (lyricsGame.timerId) { clearInterval(lyricsGame.timerId); lyricsGame.timerId = null; }
+}
+
+function clearLyricsTimeouts() {
+  stopLyricsTimer();
+  if (lyricsGame.autoId) { clearTimeout(lyricsGame.autoId); lyricsGame.autoId = null; }
+}
+
+// ---- Audio sync: play the song fragment for the current lyric line ----
+function getLyricsAudio() {
+  return document.getElementById('lyrics-audio');
+}
+
+function updateLyricsPlayBtn(playing) {
+  const btn = document.getElementById('lyrics-play-btn');
+  const lbl = document.getElementById('lyrics-play-label');
+  if (!btn) return;
+  btn.classList.toggle('playing', !!playing);
+  if (lbl) lbl.textContent = playing ? 'Detener' : 'Escuchar fragmento';
+}
+
+function stopLyricsAudio() {
+  const a = getLyricsAudio();
+  if (a) {
+    try {
+      a.ontimeupdate = null;
+      a.onended = null;
+      a.pause();
+    } catch (e) {}
+  }
+  updateLyricsPlayBtn(false);
+}
+
+function playLyricsLine(q) {
+  const a = getLyricsAudio();
+  if (!a) return;
+  const start = parseFloat(q.start) || 0;
+  const end = parseFloat(q.end);
+  a.ontimeupdate = null;
+  a.onended = null;
+  a.ontimeupdate = () => { if (end && a.currentTime >= end) stopLyricsAudio(); };
+  a.onended = () => stopLyricsAudio();
+  try {
+    a.currentTime = start;
+    const p = a.play();
+    updateLyricsPlayBtn(true);
+    if (p && p.catch) p.catch(() => updateLyricsPlayBtn(false));
+  } catch (e) {
+    updateLyricsPlayBtn(false);
+  }
+}
+
+function initLyricsAudio() {
+  const btn = document.getElementById('lyrics-play-btn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const a = getLyricsAudio();
+    if (a && !a.paused) { stopLyricsAudio(); return; }
+    const q = lyricsGame.questions[lyricsGame.index];
+    if (q) playLyricsLine(q);
+  });
+}
+
+function answerLyrics(btn) {
+  if (lyricsGame.locked || lyricsGame.phase !== 'playing') return;
+  lyricsGame.locked = true;
+  stopLyricsTimer();
+  stopLyricsAudio();
+  const q = lyricsGame.questions[lyricsGame.index];
+  if (!q) return;
+
+  const opts = document.getElementById('lyrics-options');
+  const isCorrect = btn ? btn.dataset.answer === 'correct' : false;
+  lyricsGame.answered++;
+
+  if (isCorrect) {
+    lyricsGame.correct++;
+    lyricsGame.score += 10;
+    btn.classList.add('correct');
+    if (window.gsap) gsap.fromTo(btn, { scale: 1 }, { scale: 1.06, duration: 0.12, yoyo: true, repeat: 2, ease: 'power2.out' });
+    opts.querySelectorAll('.lyrics-option').forEach(b => { b.disabled = true; });
+    playLyricsSound('correct');
+    spawnLyricsConfetti(14);
+    floatingLyricsScore('+10');
+    document.getElementById('lyrics-feedback').innerHTML = '<div style="color:var(--success);font-weight:800;font-family:var(--font-display)">¡Bien hecho!</div>';
+    state.accuracy[q.wordId] = (state.accuracy[q.wordId] || 0) + 1;
+    if (state.accuracy[q.wordId] >= 2 && !state.learned[q.wordId]) {
+      state.learned[q.wordId] = true;
+      updateProgress();
+      saveState();
+    }
+    renderLyricsStats();
+    announce('¡Bien hecho! ' + q.form);
+    lyricsGame.autoId = setTimeout(() => { nextLyricsQuestion(); }, 1400);
+  } else {
+    lyricsGame.hearts = Math.max(0, lyricsGame.hearts - 1);
+    lyricsGame.missed.push({ wordId: q.wordId, form: q.form, vocab: q.vocab, sentence: q.sentence, en: q.en });
+    const correctBtn = opts.querySelector('[data-answer="correct"]');
+    if (correctBtn) correctBtn.classList.add('correct');
+    if (btn) {
+      btn.classList.add('wrong', 'shake');
+    } else if (correctBtn) {
+      correctBtn.classList.add('shake');
+    }
+    opts.querySelectorAll('.lyrics-option').forEach(b => { b.disabled = true; });
+    state.accuracy[q.wordId] = (state.accuracy[q.wordId] || 0) - 1;
+    playLyricsSound('wrong');
+    renderLyricsStats();
+    document.getElementById('lyrics-feedback').innerHTML = '<div style="color:var(--danger);font-weight:800;font-family:var(--font-display)">' +
+      (btn ? 'Era ' + q.form : 'Se acabó el tiempo · Era ' + q.form) + '</div>';
+    announce('Era ' + q.form);
+    showLyricsLearn(q);
+    if (lyricsGame.hearts <= 0) {
+      playLyricsSound('heart');
+      setTimeout(() => { endLyricsGame(); }, 1300);
+      return;
+    }
+    document.getElementById('lyrics-continue').style.display = 'block';
+  }
+}
+
+function renderLyricsStats() {
+  const scoreEl = document.getElementById('lyrics-score');
+  if (scoreEl) scoreEl.textContent = lyricsGame.score;
+  const acc = document.getElementById('lyrics-accuracy');
+  if (acc) acc.textContent = (lyricsGame.answered === 0 ? 100 : Math.round(lyricsGame.correct / lyricsGame.answered * 100)) + '%';
+  const best = document.getElementById('lyrics-best');
+  if (best) best.textContent = (state.lyricsBest && state.lyricsBest[lyricsGame.difficulty]) ? state.lyricsBest[lyricsGame.difficulty] : 0;
+  const hearts = document.getElementById('lyrics-hearts');
+  if (hearts) {
+    hearts.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+      const span = document.createElement('span');
+      span.className = 'lyrics-heart' + (i < lyricsGame.hearts ? '' : ' lost');
+      span.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.3C.4 8.6 1.8 5.5 4.8 5c1.9-.3 3.7.8 4.7 2.3C10.4 5.8 12.2 4.7 14.1 5c3 .5 4.4 3.6 2.8 6.7C19.5 16.3 12 21 12 21z"/></svg>';
+      hearts.appendChild(span);
+    }
+  }
+}
+
+function showLyricsLearn(q) {
+  const panel = document.getElementById('lyrics-learn');
+  const v = q.vocab;
+  const pos = posLabel(v.pos);
+  const isVerb = v.pos.indexOf('verb') !== -1;
+  const tense = isVerb ? inferLyricsTense(q.form, v.spanish) : null;
+  const rows = [];
+  rows.push(['Significado', '<strong>' + q.form + '</strong> = ' + v.english]);
+  rows.push(['Frase completa', q.sentence.replace('______', '<span class="lyrics-blank">' + q.form + '</span>')]);
+  if (q.en) rows.push(['Traducción de la línea', q.en]);
+  rows.push(['Categoría', pos]);
+  rows.push(['Pronunciación', '[' + v.pronunciation + ']']);
+  if (tense) rows.push(['Tiempo verbal', tense]);
+  if (v.mistake) rows.push(['Gramática y trampas', v.mistake]);
+  if (v.example) rows.push(['Ejemplo', '<em>' + v.example + '</em> - ' + (v.exampleTranslation || '')]);
+  if (v.collocations && v.collocations.length) rows.push(['Colocaciones', v.collocations.join(' · ')]);
+  if (v.synonyms && v.synonyms.length) rows.push(['Sinónimos', v.synonyms.join(' · ')]);
+
+  panel.innerHTML =
+    '<div class="lyrics-learn-head">' +
+    '<span class="lyrics-learn-word">' + q.form + '</span>' +
+    '<span class="lyrics-learn-badge">' + pos + '</span>' +
+    '<button class="btn btn-sm btn-outline-accent ms-auto" type="button" id="lyrics-speak-learn">Pronunciar</button>' +
+    '</div>' +
+    rows.map(r => '<div class="lyrics-learn-row"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>').join('');
+  panel.style.display = 'block';
+  if (window.gsap) gsap.fromTo(panel, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+  const speakBtn = document.getElementById('lyrics-speak-learn');
+  if (speakBtn) speakBtn.onclick = () => speakText(q.form);
+}
+
+function posLabel(pos) {
+  const p = (pos || '').toLowerCase();
+  if (p.indexOf('verb') !== -1) return 'Verbo';
+  if (p.indexOf('noun') !== -1) {
+    if (p.indexOf('fem') !== -1) return 'Sustantivo femenino';
+    if (p.indexOf('masc') !== -1) return 'Sustantivo masculino';
+    return 'Sustantivo';
+  }
+  if (p.indexOf('adjective') !== -1) return 'Adjetivo';
+  if (p.indexOf('adverb') !== -1) return 'Adverbio';
+  if (p.indexOf('expression') !== -1 || p.indexOf('phrase') !== -1) return 'Expresión';
+  return pos;
+}
+
+function inferLyricsTense(form, lemma) {
+  const f = form.toLowerCase();
+  const OVERRIDES = {
+    'peines': 'Presente de subjuntivo (no te peines - mandato negativo)'
+  };
+  if (OVERRIDES[f]) return OVERRIDES[f];
+  if (/(ará|erá|irá)$/.test(f)) return 'Futuro simple (3ª persona)';
+  if (/(aré|eré|iré)$/.test(f)) return 'Futuro simple (yo)';
+  if (/(é|ó|ió|aste|iste|aron|ieron)$/.test(f)) return 'Pretérito indefinido';
+  if (/(ando|iendo|yendo)$/.test(f)) return 'Gerundio';
+  if (/(aba|ías|ía|íamos|ábamos)$/.test(f)) return 'Pretérito imperfecto';
+  if (/(ar|er|ir)$/.test(f)) return 'Infinitivo';
+  return 'Presente de indicativo';
+}
+
+function nextLyricsQuestion() {
+  lyricsGame.index++;
+  if (lyricsGame.index < lyricsGame.questions.length) {
+    if (lyricsGame.hearts <= 0) { endLyricsGame(); return; }
+    renderLyricsQuestion();
+  } else {
+    endLyricsGame();
+  }
+}
+
+function endLyricsGame() {
+  clearLyricsTimeouts();
+  stopLyricsAudio();
+  lyricsGame.phase = 'finished';
+  const total = lyricsGame.questions.length || 1;
+  const acc = Math.round(lyricsGame.correct / total * 100);
+  const prevBest = (state.lyricsBest && state.lyricsBest[lyricsGame.difficulty]) ? state.lyricsBest[lyricsGame.difficulty] : 0;
+  const isRecord = lyricsGame.score > prevBest;
+  if (isRecord) {
+    if (!state.lyricsBest) state.lyricsBest = {};
+    state.lyricsBest[lyricsGame.difficulty] = lyricsGame.score;
+  }
+  state.lyricsPlayed = (state.lyricsPlayed || 0) + 1;
+  saveState();
+
+  const perfect = acc === 100 && lyricsGame.correct > 0;
+  document.getElementById('lyrics-results-title').textContent = lyricsGame.hearts <= 0 && !perfect ? 'Se acabaron los corazones' : (perfect ? '¡Letra perfecta!' : '¡Ronda completada!');
+  document.getElementById('lyrics-results-score').textContent = lyricsGame.score + ' pts';
+  document.getElementById('lyrics-results-sub').textContent = lyricsGame.correct + ' de ' + lyricsGame.questions.length + ' correctas';
+  document.getElementById('lyrics-results-accuracy').textContent = acc + '%';
+  document.getElementById('lyrics-results-best').textContent = state.lyricsBest[lyricsGame.difficulty];
+  document.getElementById('lyrics-results-record').textContent = isRecord ? '¡Nuevo récord!' : '';
+
+  const uniqueMissed = [];
+  const seen = {};
+  lyricsGame.missed.forEach(m => { if (!seen[m.wordId]) { seen[m.wordId] = true; uniqueMissed.push(m); } });
+  const missed = document.getElementById('lyrics-missed');
+  missed.innerHTML = '';
+  if (uniqueMissed.length) {
+    missed.innerHTML = '<div class="text-muted small mb-2" style="width:100%">Palabras para repasar (' + uniqueMissed.length + ')</div>';
+    uniqueMissed.forEach(m => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'lyrics-missed-chip';
+      chip.innerHTML = m.form + ' <span class="en">' + (m.vocab ? m.vocab.english : '') + '</span>';
+      chip.onclick = () => showWordModal(m.wordId);
+      missed.appendChild(chip);
+    });
+  }
+  const practiceBtn = document.getElementById('lyrics-practice-btn');
+  practiceBtn.style.display = uniqueMissed.length ? 'inline-block' : 'none';
+
+  showLyricsScreen('results');
+  if (perfect) spawnLyricsConfetti(80);
+  playLyricsSound(perfect ? 'fanfare' : 'finish');
+  announce(perfect ? '¡Letra perfecta!' : 'Ronda completada. Puntaje ' + lyricsGame.score);
+}
+
+function showLyricsScreen(name) {
+  ['intro', 'game', 'results'].forEach(s => {
+    const el = document.getElementById('lyrics-' + s);
+    if (!el) return;
+    const on = s === name;
+    el.classList.toggle('d-none', !on);
+    if (on && window.gsap) gsap.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+  });
+}
+
+function quitLyricsToIntro() {
+  clearLyricsTimeouts();
+  stopLyricsAudio();
+  lyricsGame.phase = 'intro';
+  lyricsGame.locked = false;
+  showLyricsScreen('intro');
+  renderLyricsIntro();
+}
+
+function renderLyricsIntro() {
+  const count = document.getElementById('lyrics-intro-count');
+  if (count) count.textContent = buildLyricsQuestions(lyricsGame.difficulty, false).length;
+  const best = document.getElementById('lyrics-intro-best');
+  if (best) best.textContent = (state.lyricsBest && state.lyricsBest[lyricsGame.difficulty]) ? state.lyricsBest[lyricsGame.difficulty] : 0;
+}
+
+function initLyricsChallenge() {
+  document.querySelectorAll('.lyrics-diff').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lyrics-diff').forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      lyricsGame.difficulty = btn.dataset.difficulty;
+      renderLyricsIntro();
+      playLyricsSound('click');
+    });
+  });
+  const bind = (id, fn) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', fn);
+  };
+  bind('lyrics-start-btn', () => { playLyricsSound('click'); startLyricsGame(lyricsGame.difficulty, false); });
+  bind('lyrics-continue-btn', () => { playLyricsSound('click'); nextLyricsQuestion(); });
+  bind('lyrics-retry-btn', () => { playLyricsSound('click'); startLyricsGame(lyricsGame.difficulty, false); });
+  bind('lyrics-practice-btn', () => { playLyricsSound('click'); startLyricsGame(lyricsGame.difficulty, true); });
+  bind('lyrics-change-btn', () => { playLyricsSound('click'); showLyricsScreen('intro'); renderLyricsIntro(); });
+  initLyricsAudio();
+  renderLyricsIntro();
+}
+
+// ---- Sound (Web Audio, no external assets) ----
+let lyricsAudioCtx = null;
+function ensureLyricsAudio() {
+  try {
+    if (!lyricsAudioCtx) lyricsAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (lyricsAudioCtx && lyricsAudioCtx.state === 'suspended') lyricsAudioCtx.resume();
+  } catch(e) { lyricsAudioCtx = null; }
+  return lyricsAudioCtx;
+}
+function lyricsTone(freq, duration, type, when, vol) {
+  const ctx = lyricsAudioCtx;
+  if (!ctx) return;
+  const t0 = ctx.currentTime + (when || 0);
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.setValueAtTime(freq, t0);
+  gain.gain.setValueAtTime(0.0001, t0);
+  gain.gain.exponentialRampToValueAtTime(vol || 0.16, t0 + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(t0);
+  osc.stop(t0 + duration + 0.05);
+}
+function playLyricsSound(kind) {
+  if (!ensureLyricsAudio()) return;
+  if (kind === 'correct') { lyricsTone(660, 0.12, 'sine', 0); lyricsTone(880, 0.18, 'sine', 0.1); }
+  else if (kind === 'wrong') { lyricsTone(200, 0.25, 'sawtooth', 0, 0.1); }
+  else if (kind === 'click') { lyricsTone(520, 0.06, 'sine', 0, 0.08); }
+  else if (kind === 'heart') { lyricsTone(440, 0.15, 'sine', 0); lyricsTone(300, 0.2, 'sine', 0.12); }
+  else if (kind === 'fanfare') {
+    [523, 659, 784, 1047].forEach((n, i) => lyricsTone(n, 0.16, 'triangle', i * 0.12, 0.14));
+  }
+  else if (kind === 'finish') {
+    lyricsTone(523, 0.12, 'triangle', 0); lyricsTone(659, 0.12, 'triangle', 0.12); lyricsTone(784, 0.2, 'triangle', 0.24);
+  }
+}
+
+// ---- GSAP effects: confetti + floating score ----
+function spawnLyricsConfetti(count) {
+  if (!window.gsap) return;
+  const host = document.getElementById('lyrics-card');
+  if (!host) return;
+  const colors = ['#58cc02', '#ffc800', '#ff4b4b', '#1cb0f6', '#a355d4', '#ff9600'];
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'lyrics-confetti-piece';
+    const size = 6 + Math.random() * 7;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.left = (8 + Math.random() * 84) + '%';
+    el.style.background = colors[i % colors.length];
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    host.appendChild(el);
+    gsap.fromTo(el,
+      { y: 10, x: 0, opacity: 1, rotation: 0 },
+      { y: -90 - Math.random() * 140, x: (Math.random() - 0.5) * 180, rotation: 240 + Math.random() * 360, opacity: 0, duration: 0.9 + Math.random() * 0.7, ease: 'power2.out',
+        onComplete: () => { if (el.parentNode) el.parentNode.removeChild(el); } });
+  }
+}
+function floatingLyricsScore(text) {
+  if (!window.gsap) return;
+  const host = document.getElementById('lyrics-card');
+  if (!host) return;
+  const el = document.createElement('div');
+  el.className = 'lyrics-float-score';
+  el.textContent = text;
+  host.appendChild(el);
+  gsap.fromTo(el,
+    { opacity: 1, y: 0, scale: 0.8 },
+    { opacity: 0, y: -46, scale: 1.15, duration: 0.9, ease: 'power1.out',
+      onComplete: () => { if (el.parentNode) el.parentNode.removeChild(el); } });
+}
+
+function speakText(text) {
+  if ('speechSynthesis' in window) {
+    try {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'es-ES';
+      utter.rate = 0.85;
+      utter.onerror = () => { console.warn('Speech synthesis not available'); };
+      window.speechSynthesis.speak(utter);
+    } catch(e) { console.warn('Speech synthesis error:', e); }
+  }
+}
+
+// Lyrics challenge keyboard: 1-4 pick an option, Enter/Space advance, Esc exits.
+document.addEventListener('keydown', (e) => {
+  if (lyricsGame.phase !== 'playing') return;
+  if (document.querySelector('.modal.show')) return;
+  if (lyricsGame.locked) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const cont = document.getElementById('lyrics-continue');
+      if (cont && cont.style.display !== 'none') {
+        const btn = document.getElementById('lyrics-continue-btn');
+        if (btn) btn.click();
+        e.preventDefault();
+      }
+    }
+    return;
+  }
+  const opts = document.getElementById('lyrics-options');
+  if (!opts) return;
+  if (/^[1-4]$/.test(e.key)) {
+    const idx = parseInt(e.key, 10) - 1;
+    const btn = opts.querySelectorAll('.lyrics-option')[idx];
+    if (btn) btn.click();
+    e.preventDefault();
+  } else if (e.key === 'Escape') {
+    quitLyricsToIntro();
+    e.preventDefault();
+  }
+});
+
 // ===== TOUCH GESTURES =====
 let touchStartX = 0, touchStartY = 0;
 document.addEventListener('touchstart', (e) => {
@@ -2210,7 +3043,10 @@ document.addEventListener('touchstart', (e) => {
   touchStartY = e.changedTouches[0].screenY;
 }, { passive: true });
 document.addEventListener('touchend', (e) => {
-  if (currentMode === 'speed' || currentMode === 'quiz') return;
+  if (currentMode === 'speed' || currentMode === 'quiz' || currentMode === 'letra') return;
+  if (lyricsGame.phase === 'playing') return;
+  const touchTarget = e.changedTouches[0] && e.changedTouches[0].target;
+  if (touchTarget && touchTarget.closest && touchTarget.closest('#lyrics-challenge')) return;
   const dx = e.changedTouches[0].screenX - touchStartX;
   const dy = e.changedTouches[0].screenY - touchStartY;
   if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
@@ -2266,6 +3102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initListening();
   initListeningVideo();
+  initLyricsChallenge();
   startMatching();
   startOrdenar();
   var matchNewBtn = document.getElementById('match-new-btn');
