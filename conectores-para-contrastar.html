@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conectores para contrastar — Worksheet</title>
+<style>
+  :root {
+    --bg:      oklch(98% 0.004 95);
+    --surface: oklch(100% 0.002 95);
+    --fg:      oklch(20% 0.018 70);
+    --muted:   oklch(48% 0.012 70);
+    --border:  oklch(90% 0.006 95);
+    --accent:  oklch(52% 0.10 28);
+    --success: oklch(52% 0.13 150);
+    --danger:  oklch(55% 0.18 30);
+
+    --font-display: 'Iowan Old Style', 'Charter', Georgia, serif;
+    --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono:    'SF Mono', 'Cascadia Mono', Consolas, 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    padding: 40px 20px;
+  }
+
+  .paper {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 56px 60px 64px;
+  }
+
+  /* ---- Header ---- */
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .intro {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .intro p { font-size: 17px; max-width: 60ch; }
+  .intro .en { font-size: 14px; color: var(--muted); margin-top: 4px; }
+
+  /* ---- Sections ---- */
+
+  section { margin-top: 40px; }
+
+  .section-head { margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  .section-title .en {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ---- Connector rows ---- */
+
+  .connector { padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .connector:first-of-type { padding-top: 4px; }
+
+  .connector-word-wrap { display: flex; align-items: baseline; gap: 14px; }
+
+  .connector-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .connector-word {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .connector-en {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .example-es {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+
+  .example-en {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ---- Interactive: buttons, blanks, feedback ---- */
+
+  .help { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--fg);
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: var(--muted); }
+  .btn:focus-visible, .blank:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+  .ex-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .ex-bar .score {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .done {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--success);
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .clue {
+    font-size: 13.5px;
+    color: var(--danger);
+    margin-top: 4px;
+    min-height: 1.2em;
+  }
+  .clue.ok { color: var(--success); }
+
+  /* ---- Word bank ---- */
+
+  .bank { margin-bottom: 20px; }
+  .bank .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .bank ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .bank li button {
+    font-family: var(--font-display);
+    font-size: 16px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 8px 13px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .bank li button:hover { border-color: var(--muted); }
+  .bank li button.active { border-color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+  .bank li button.used { opacity: 0.4; pointer-events: none; }
+  .bank li .gloss { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.02em; margin-left: 5px; }
+
+  /* ---- Exercise 1: blanks ---- */
+
+  .cloze { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .cloze:first-of-type { padding-top: 4px; }
+  .cloze p { font-size: 18px; }
+  .cloze .en { font-size: 14px; color: var(--muted); margin-top: 2px; }
+
+  .blank {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 7.5em;
+    min-height: 1.6em;
+    margin: 0 4px;
+    vertical-align: bottom;
+    border-bottom: 1.5px dashed var(--border);
+    font-family: var(--font-display);
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .blank::before { content: "····"; color: var(--muted); letter-spacing: 0.05em; }
+  .blank.has-word::before, .blank.ok::before { content: ""; }
+  .blank .fill { display: block; }
+  .blank.ok { border-bottom: 1.5px solid var(--success); }
+  .blank.wrong { border-bottom: 1.5px solid var(--danger); animation: shake 0.35s; }
+  .blank.solved { cursor: default; }
+
+  .quiz .q .blank { min-width: 6.5em; cursor: default; }
+
+  @keyframes shake {
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-2px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .blank.wrong, .opts button.wrong { animation: none; }
+  }
+
+  /* ---- Exercise 2: multiple choice ---- */
+
+  .quiz { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .quiz:first-of-type { padding-top: 4px; }
+  .quiz .q { font-size: 18px; }
+  .quiz .en { font-size: 14px; color: var(--muted); margin-top: 2px; }
+  .opts { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts button {
+    font-family: var(--font-body);
+    font-size: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 9px 14px;
+    cursor: pointer;
+  }
+  .opts button:hover:not(:disabled) { border-color: var(--muted); }
+  .opts button:disabled { cursor: default; }
+  .opts button.locked:not(.correct):not(.wrong) { opacity: 0.4; }
+  .opts button.correct { border-color: var(--success); color: var(--success); }
+  .opts button.correct::after { content: " ✓"; }
+  .opts button.wrong { border-color: var(--danger); color: var(--danger); animation: shake 0.35s; }
+
+  /* ---- Exercise 3: writing lines ---- */
+
+  .free { padding: 14px 0; }
+  .free .line {
+    border-bottom: 1px dotted var(--muted);
+    height: 34px;
+    margin-bottom: 14px;
+  }
+  .free p { font-size: 18px; }
+  .free .btn { margin-top: 6px; }
+
+  .samples {
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 16px 18px;
+  }
+  .samples p { font-size: 16px; }
+  .samples .en { font-size: 13.5px; color: var(--muted); margin-top: 2px; margin-bottom: 12px; }
+  .samples .en:last-of-type { margin-bottom: 0; }
+
+  footer {
+    margin-top: 44px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  @media (max-width: 560px) {
+    body { padding: 16px 10px; }
+    .paper { padding: 32px 22px 40px; }
+    .connector-word { font-size: 23px; }
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .paper { border: none; max-width: 100%; padding: 0; }
+    .cloze .blank, .quiz .blank { border-bottom: 1.5px solid var(--muted); min-height: 1.05em; }
+    .cloze .blank { min-width: 7em; }
+    .cloze .blank::before, .cloze .blank.ok::before { content: ""; }
+    .btn, .clue, .ex-bar, .done, .samples, .help { display: none !important; }
+    .blank { cursor: default; }
+  }
+</style>
+</head>
+<body>
+  <main class="paper" data-od-id="worksheet">
+
+    <header data-od-id="worksheet-header">
+      <p class="kicker">Contrast Connectors</p>
+      <h1>Conectores para contrastar</h1>
+      <p class="meta">Profesor: Diego Monduela · Español para principiantes</p>
+    </header>
+
+    <div class="intro" data-od-id="worksheet-intro">
+      <p>Los conectores nos ayudan a unir dos ideas. Hoy vamos a aprender cinco que sirven para <strong>contrastar</strong>: decir lo contrario, comparar o mostrar una diferencia.</p>
+      <p class="en">Connectors help us join two ideas. Today we will learn five that we use to contrast: to say the opposite, compare, or show a difference.</p>
+    </div>
+
+    <section data-od-id="section-conectores">
+      <div class="section-head">
+        <p class="section-num">01 · Los conectores</p>
+        <h2 class="section-title">Los conectores<span class="en">The connectors</span></h2>
+      </div>
+
+      <div class="connector" data-od-id="connector-pero">
+        <div class="connector-word-wrap">
+          <span class="connector-num">1.</span>
+          <span class="connector-word">pero</span>
+          <span class="connector-en">but</span>
+        </div>
+        <p class="example-es">Me gusta, pero es caro.</p>
+        <p class="example-en">I like it, but it is expensive.</p>
+      </div>
+
+      <div class="connector" data-od-id="connector-aunque">
+        <div class="connector-word-wrap">
+          <span class="connector-num">2.</span>
+          <span class="connector-word">aunque</span>
+          <span class="connector-en">although / even though</span>
+        </div>
+        <p class="example-es">Aunque está lloviendo, salimos a caminar.</p>
+        <p class="example-en">Even though it is raining, we go out for a walk.</p>
+      </div>
+
+      <div class="connector" data-od-id="connector-sin-embargo">
+        <div class="connector-word-wrap">
+          <span class="connector-num">3.</span>
+          <span class="connector-word">sin embargo</span>
+          <span class="connector-en">however</span>
+        </div>
+        <p class="example-es">No tengo mucho dinero; sin embargo, quiero comprar un regalo.</p>
+        <p class="example-en">I don't have much money; however, I want to buy a gift.</p>
+      </div>
+
+      <div class="connector" data-od-id="connector-en-cambio">
+        <div class="connector-word-wrap">
+          <span class="connector-num">4.</span>
+          <span class="connector-word">en cambio</span>
+          <span class="connector-en">on the other hand / instead</span>
+        </div>
+        <p class="example-es">A mí me gusta el café; en cambio, mi hermano prefiere el té.</p>
+        <p class="example-en">I like coffee; on the other hand, my brother prefers tea.</p>
+      </div>
+
+      <div class="connector" data-od-id="connector-mientras-que">
+        <div class="connector-word-wrap">
+          <span class="connector-num">5.</span>
+          <span class="connector-word">mientras que</span>
+          <span class="connector-en">whereas</span>
+        </div>
+        <p class="example-es">Marta estudia inglés, mientras que Pedro estudia francés.</p>
+        <p class="example-en">Marta studies English, whereas Pedro studies French.</p>
+      </div>
+    </section>
+
+    <section data-od-id="section-ejercicios">
+      <div class="section-head">
+        <p class="section-num">02 · Ejercicios</p>
+        <h2 class="section-title">Ejercicios<span class="en">Exercises</span></h2>
+      </div>
+    </section>
+
+    <section data-od-id="exercise-1">
+      <div class="section-head" style="border-bottom:none; padding-bottom:0;">
+        <p class="section-title"><strong>1. Completa las frases</strong><span class="en">Complete the sentences</span></p>
+      </div>
+
+      <div class="bank" data-od-id="word-bank">
+        <p class="label">Palabras disponibles · words you can use</p>
+        <p class="help">Elige una palabra del banco y haz clic en un espacio en blanco.</p>
+        <ul>
+          <li><button type="button" data-connector="pero">pero <span class="gloss">but</span></button></li>
+          <li><button type="button" data-connector="aunque">aunque <span class="gloss">even though</span></button></li>
+          <li><button type="button" data-connector="sin embargo">sin embargo <span class="gloss">however</span></button></li>
+          <li><button type="button" data-connector="en cambio">en cambio <span class="gloss">on the other hand</span></button></li>
+          <li><button type="button" data-connector="mientras que">mientras que <span class="gloss">whereas</span></button></li>
+        </ul>
+      </div>
+
+      <div class="cloze" data-od-id="cloze-1">
+        <p>Quiero ir al cine, <span class="blank" data-answer="pero" role="button" tabindex="0"><span class="fill"></span></span> no tengo tiempo.</p>
+        <p class="en">I want to go to the cinema, but I don't have time.</p>
+        <p class="clue" aria-live="polite"></p>
+      </div>
+      <div class="cloze" data-od-id="cloze-2">
+        <p><span class="blank" data-answer="aunque" role="button" tabindex="0"><span class="fill"></span></span> es temprano, estoy cansado.</p>
+        <p class="en">Even though it is early, I am tired.</p>
+        <p class="clue" aria-live="polite"></p>
+      </div>
+      <div class="cloze" data-od-id="cloze-3">
+        <p>Perdí la cartera; <span class="blank" data-answer="sin embargo" role="button" tabindex="0"><span class="fill"></span></span>, encontré mis llaves.</p>
+        <p class="en">I lost my wallet; however, I found my keys.</p>
+        <p class="clue" aria-live="polite"></p>
+      </div>
+      <div class="cloze" data-od-id="cloze-4">
+        <p>Yo hablo inglés; <span class="blank" data-answer="en cambio" role="button" tabindex="0"><span class="fill"></span></span>, mi prima habla francés.</p>
+        <p class="en">I speak English; my cousin speaks French.</p>
+        <p class="clue" aria-live="polite"></p>
+      </div>
+      <div class="cloze" data-od-id="cloze-5">
+        <p>A mi papá le gusta el fútbol, <span class="blank" data-answer="mientras que" role="button" tabindex="0"><span class="fill"></span></span> a mi mamá le gusta el tenis.</p>
+        <p class="en">My dad likes soccer, whereas my mom likes tennis.</p>
+        <p class="clue" aria-live="polite"></p>
+      </div>
+      <div class="ex-bar" data-od-id="cloze-progress">
+        <span class="score" id="cloze-score" aria-live="polite">Completadas: 0 / 5</span>
+        <button type="button" class="btn" id="cloze-reset">Limpiar</button>
+      </div>
+      <p class="done" id="cloze-done" hidden>¡Muy bien! Las cinco frases están completas.</p>
+    </section>
+
+    <section data-od-id="exercise-2">
+      <div class="section-head" style="border-bottom:none; padding-bottom:0;">
+        <p class="section-title"><strong>2. Elige la opción correcta</strong><span class="en">Choose the correct option</span></p>
+      </div>
+
+      <div class="quiz" data-od-id="quiz-1">
+        <p class="q">Quiero dormir, <span class="blank"></span> tengo que estudiar.</p>
+        <p class="en">I want to sleep, but I have to study.</p>
+        <div class="opts">
+          <button type="button" data-correct="true">a) pero</button>
+          <button type="button">b) mientras que</button>
+          <button type="button">c) sin embargo</button>
+        </div>
+      </div>
+      <div class="quiz" data-od-id="quiz-2">
+        <p class="q"><span class="blank" style="min-width:5.5em"></span> hace mucho calor, vamos a correr.</p>
+        <p class="en">Even though it is very hot, we are going to run.</p>
+        <div class="opts">
+          <button type="button">a) en cambio</button>
+          <button type="button" data-correct="true">b) aunque</button>
+          <button type="button">c) pero</button>
+        </div>
+      </div>
+      <div class="quiz" data-od-id="quiz-3">
+        <p class="q">La película fue larga; <span class="blank"></span>, fue muy buena.</p>
+        <p class="en">The movie was long; however, it was very good.</p>
+        <div class="opts">
+          <button type="button">a) pero</button>
+          <button type="button" data-correct="true">b) sin embargo</button>
+          <button type="button">c) aunque</button>
+        </div>
+      </div>
+      <div class="quiz" data-od-id="quiz-4">
+        <p class="q">A mí me gusta el campo; <span class="blank"></span>, a mi hermano le gusta la ciudad.</p>
+        <p class="en">I like the countryside; on the other hand, my brother likes the city.</p>
+        <div class="opts">
+          <button type="button" data-correct="true">a) en cambio</button>
+          <button type="button">b) pero</button>
+          <button type="button">c) sin embargo</button>
+        </div>
+      </div>
+      <div class="quiz" data-od-id="quiz-5">
+        <p class="q">Elena come pescado, <span class="blank"></span> Luis come carne.</p>
+        <p class="en">Elena eats fish, whereas Luis eats meat.</p>
+        <div class="opts">
+          <button type="button">a) aunque</button>
+          <button type="button" data-correct="true">b) mientras que</button>
+          <button type="button">c) en cambio</button>
+        </div>
+      </div>
+      <div class="ex-bar" data-od-id="quiz-progress">
+        <span class="score" id="quiz-score" aria-live="polite">Aciertos: 0 / 5</span>
+        <button type="button" class="btn" id="quiz-reset">Empezar de nuevo</button>
+      </div>
+      <p class="done" id="quiz-done" hidden>¡Genial! Cinco de cinco. Los usas muy bien.</p>
+    </section>
+
+    <section data-od-id="exercise-3">
+      <div class="section-head" style="border-bottom:none; padding-bottom:0;">
+        <p class="section-title"><strong>3. Crea tus propias frases</strong><span class="en">Create your own sentences</span></p>
+      </div>
+
+      <div class="free" data-od-id="free-writing">
+        <p>Escribe 3 frases usando conectores diferentes para contrastar ideas.</p>
+        <p class="en">Write 3 sentences using different connectors to contrast ideas.</p>
+        <div class="line" aria-hidden="true"></div>
+        <div class="line" aria-hidden="true"></div>
+        <div class="line" aria-hidden="true"></div>
+        <button type="button" class="btn" id="samples-toggle">Ver ejemplos de inspiración</button>
+        <div class="samples" id="samples" hidden data-od-id="sample-answers">
+          <p>Estudié poco; <strong>sin embargo</strong>, aprobé el examen.</p>
+          <p class="en">I studied little; however, I passed the exam.</p>
+          <p>A mi gato le gusta dormir, <strong>mientras que</strong> al perro le gusta correr.</p>
+          <p class="en">My cat likes to sleep, whereas the dog likes to run.</p>
+          <p>Ellos viven en el centro; <strong>en cambio</strong>, nosotros vivimos en las afueras.</p>
+          <p class="en">They live downtown; instead, we live in the suburbs.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer data-od-id="worksheet-footer">
+      <span>Conectores para contrastar</span>
+      <span>Clase de español · por Diego Monduela</span>
+    </footer>
+
+  </main>
+
+  <script>
+  (function () {
+    'use strict';
+
+    function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+    function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+
+    /* ---------- Ejercicio 1: rellenar los espacios ---------- */
+
+    var blanks = $$('.cloze .blank[data-answer]');
+    var bankBtns = $$('.bank li button');
+    var clozeScore = $('#cloze-score');
+    var clozeDone = $('#cloze-done');
+    var active = null;
+
+    function clueOf(blank) { return $('.clue', blank.closest('.cloze')); }
+
+    function setActive(btn) {
+      if (active) { active.classList.remove('active'); }
+      active = (btn === active) ? null : btn;
+      if (active) { active.classList.add('active'); }
+    }
+
+    function refreshCloze() {
+      var done = blanks.filter(function (b) { return b.classList.contains('ok'); }).length;
+      clozeScore.textContent = 'Completadas: ' + done + ' / ' + blanks.length;
+      clozeDone.hidden = (done < blanks.length);
+    }
+
+    function resetCloze() {
+      blanks.forEach(function (b) {
+        b.classList.remove('ok', 'wrong', 'solved', 'has-word');
+        b.querySelector('.fill').textContent = '';
+        var c = clueOf(b);
+        c.textContent = '';
+        c.classList.remove('ok');
+      });
+      bankBtns.forEach(function (b) { b.classList.remove('used', 'active'); });
+      active = null;
+      refreshCloze();
+    }
+
+    blanks.forEach(function (blank) {
+      blank.addEventListener('click', function () {
+        var clue = clueOf(blank);
+        if (blank.classList.contains('ok')) { return; }
+        if (!active) {
+          clue.textContent = 'Primero elige una palabra del banco.';
+          clue.classList.remove('ok');
+          return;
+        }
+        var word = active.getAttribute('data-connector');
+        var fill = blank.querySelector('.fill');
+        fill.textContent = word;
+        blank.classList.add('has-word');
+        if (word === blank.getAttribute('data-answer')) {
+          blank.classList.add('ok', 'solved');
+          active.classList.add('used');
+          setActive(null);
+          clue.textContent = '¡Correcto!';
+          clue.classList.add('ok');
+        } else {
+          blank.classList.add('wrong');
+          clue.textContent = 'Prueba otra palabra.';
+          clue.classList.remove('ok');
+          setTimeout(function () {
+            blank.classList.remove('wrong', 'has-word');
+            fill.textContent = '';
+          }, 700);
+        }
+        refreshCloze();
+      });
+      blank.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); blank.click(); }
+      });
+    });
+
+    bankBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.classList.contains('used')) { return; }
+        setActive(btn);
+      });
+    });
+
+    $('#cloze-reset').addEventListener('click', resetCloze);
+
+    /* ---------- Ejercicio 2: opción correcta ---------- */
+
+    var groups = $$('.quiz');
+    var quizScore = $('#quiz-score');
+    var quizDone = $('#quiz-done');
+
+    function refreshQuiz() {
+      var done = groups.filter(function (g) { return g.classList.contains('solved'); }).length;
+      quizScore.textContent = 'Aciertos: ' + done + ' / ' + groups.length;
+      quizDone.hidden = (done < groups.length);
+    }
+
+    function resetQuiz() {
+      groups.forEach(function (g) {
+        g.classList.remove('solved');
+        $$('.opts button', g).forEach(function (b) {
+          b.disabled = false;
+          b.classList.remove('correct', 'wrong', 'locked');
+        });
+      });
+      refreshQuiz();
+    }
+
+    groups.forEach(function (group) {
+      var btns = $$('.opts button', group);
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (group.classList.contains('solved')) { return; }
+          var isCorrect = btn.getAttribute('data-correct') === 'true';
+          if (isCorrect) {
+            btns.forEach(function (b) { b.disabled = true; });
+            btn.classList.add('correct');
+            group.classList.add('solved');
+          } else {
+            btn.disabled = true;
+            btn.classList.add('wrong');
+            btns.forEach(function (b) {
+              if (b !== btn) { b.disabled = false; b.classList.add('locked'); }
+            });
+          }
+          refreshQuiz();
+        });
+      });
+    });
+
+    $('#quiz-reset').addEventListener('click', resetQuiz);
+
+    /* ---------- Ejercicio 3: ejemplos de inspiración ---------- */
+
+    var samplesBtn = $('#samples-toggle');
+    var samples = $('#samples');
+    samplesBtn.addEventListener('click', function () {
+      var show = samples.hidden;
+      samples.hidden = !show;
+      samplesBtn.textContent = show ? 'Ocultar ejemplos' : 'Ver ejemplos de inspiración';
+    });
+  })();
+  </script>
+</body>
+</html>
