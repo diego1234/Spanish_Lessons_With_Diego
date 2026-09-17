@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slang mexicano — Lección de español con Diego Monduela</title>
+<style>
+  :root {
+    --bg:      oklch(98% 0.004 95);
+    --surface: oklch(100% 0.002 95);
+    --fg:      oklch(20% 0.018 70);
+    --muted:   oklch(48% 0.012 70);
+    --border:  oklch(90% 0.006 95);
+    --accent:  oklch(52% 0.10 28);
+    --ok:      oklch(50% 0.09 155);
+    --bad:     oklch(50% 0.12 28);
+
+    --font-display: 'Iowan Old Style', 'Charter', Georgia, serif;
+    --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono:    ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* ------------- Header ------------- */
+  header {
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 22px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 24ch;
+  }
+  .dek {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 22px 0 0;
+  }
+  .dek strong { color: var(--fg); font-weight: 600; }
+  .metaline {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 28px 0 0;
+  }
+  .metaline span { color: var(--fg); }
+
+  /* ------------- Sections ------------- */
+  section { padding: 64px 0 0; }
+  .sec-kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+  .sec-kicker em { font-style: normal; color: var(--fg); }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .lead {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 66ch;
+    margin: 0 0 30px;
+  }
+  .lead strong { color: var(--fg); font-weight: 600; }
+
+  /* ------------- Video ------------- */
+  .video-stage { text-align: center; }
+  .video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: #000;
+  }
+  .video-frame video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+  }
+  .captionbar {
+    position: absolute;
+    left: 0; right: 0; bottom: 52px;
+    padding: 18px 20px 20px;
+    background: linear-gradient(to top, color-mix(in oklch, var(--fg) 88%, transparent), color-mix(in oklch, var(--fg) 60%, transparent));
+    color: oklch(97% 0.004 95);
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+  }
+  .captionbar.on { opacity: 1; }
+  .captionbar.off { opacity: 0; }
+  .cap-es {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 4.5vw, 26px);
+    line-height: 1.15;
+    margin: 0;
+  }
+  .cap-en {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.4;
+    color: oklch(82% 0.008 95);
+    margin: 6px 0 0;
+  }
+  .cap-note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 16px;
+  }
+  .cc-toggle {
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .cc-toggle:hover { background: color-mix(in oklch, var(--accent) 8%, var(--surface)); }
+  .cc-toggle[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+  /* ------------- Transcript list ------------- */
+  .transcript {
+    margin-top: 48px;
+    border-top: 1px solid var(--fg);
+    list-style: none;
+    padding: 0;
+  }
+  .transcript li { border-bottom: 1px solid var(--border); }
+  .transcript button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    padding: 14px 4px;
+    cursor: pointer;
+    color: var(--fg);
+    font-family: var(--font-body);
+    transition: background 0.15s ease;
+  }
+  .transcript button:hover { background: color-mix(in oklch, var(--accent) 5%, transparent); }
+  .t-row { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: start; }
+  .t-time {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+  }
+  .t-es {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.35;
+    margin: 0 0 3px;
+  }
+  .t-en {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .transcript li.active button { background: color-mix(in oklch, var(--accent) 7%, transparent); }
+  .transcript li.active .t-time { color: var(--accent); }
+
+  /* ------------- Tables ------------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-weight: 500;
+    padding: 10px 14px 10px 0;
+    border-bottom: 2px solid var(--fg);
+    white-space: nowrap;
+  }
+  td {
+    padding: 14px 14px 14px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: 0; }
+  .x { font-family: var(--font-display); font-size: 17px; white-space: nowrap; }
+  .lit { font-style: italic; color: var(--muted); }
+  .en { color: var(--muted); }
+
+  /* ------------- Note box ------------- */
+  .note {
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--fg);
+    background: var(--surface);
+    padding: 28px 30px;
+    margin: 0 0 8px;
+  }
+  .note .sec-kicker { margin-bottom: 10px; color: var(--accent); }
+  .note h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 0 12px;
+  }
+  .note p { margin: 0; max-width: 66ch; }
+  .note p + p { margin-top: 10px; }
+  .note .en-note { color: var(--muted); font-size: 15px; }
+
+  /* ------------- Exercises ------------- */
+  .ex {
+    margin: 0 0 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .ex-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .ex-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .ex-head h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 19px;
+    margin: 0;
+  }
+  .ex-instr { color: var(--muted); font-size: 15px; margin: 0 0 20px; max-width: 66ch; }
+  .ex-instr strong { color: var(--fg); }
+  ol.qs { margin: 0; padding-left: 22px; }
+  ol.qs > li { margin-bottom: 12px; padding-left: 6px; }
+  .sp { font-family: var(--font-display); font-size: 17px; }
+  .blank {
+    border-bottom: 1px solid var(--fg);
+    display: inline-block;
+    min-width: 90px;
+  }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; gap: 22px; } }
+
+  /* -- Interactive exercise controls -- */
+  .toggle-group {
+    display: inline-flex;
+    gap: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .toggle-group button {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .toggle-group button:first-child { border-radius: 3px 0 0 3px; }
+  .toggle-group button:last-child { border-radius: 0 3px 3px 0; }
+  .toggle-group button + button { border-left: 0; }
+  .toggle-group button.sel {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+  .toggle-group button.ok { background: var(--ok); color: #fff; border-color: var(--ok); }
+  .toggle-group button.bad { background: var(--bad); color: #fff; border-color: var(--bad); }
+
+  .check-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+    cursor: pointer;
+    transition: opacity 0.15s;
+    margin-top: 8px;
+  }
+  .check-btn:hover { opacity: 0.85; }
+  .check-btn:disabled { opacity: 0.4; cursor: default; }
+
+  .ex-input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid var(--fg);
+    background: transparent;
+    padding: 2px 4px;
+    min-width: 120px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .ex-input:focus { border-bottom-color: var(--accent); }
+  .ex-input.ok { border-bottom-color: var(--ok); color: var(--ok); }
+  .ex-input.bad { border-bottom-color: var(--bad); color: var(--bad); }
+
+  .fb {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .fb.ok { color: var(--ok); }
+  .fb.bad { color: var(--bad); }
+
+  /* -- Match exercise -- */
+  .match-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 34px;
+    counter-reset: mleft mright;
+  }
+  @media (max-width: 640px) { .match-grid { grid-template-columns: 1fr; } }
+  .match-item {
+    font-family: var(--font-display);
+    font-size: 16px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+    user-select: none;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .match-item:hover { border-color: var(--fg); }
+  .match-item.active { border-color: var(--accent); background: color-mix(in oklch, var(--accent) 6%, var(--surface)); }
+  .match-item.locked {
+    border-color: var(--ok);
+    background: color-mix(in oklch, var(--ok) 8%, var(--surface));
+    cursor: default;
+    opacity: 0.7;
+  }
+  .match-item.wrong {
+    border-color: var(--bad);
+    animation: shake 0.3s ease;
+  }
+  .match-left::before { counter-increment: mleft; content: counter(mleft, lower-alpha) ". "; color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+  .match-right::before { counter-increment: mright; content: counter(mright) ". "; color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+  .match-item .match-pair {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--ok);
+    margin-left: auto;
+    padding-left: 10px;
+    white-space: nowrap;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  /* -- Score bar -- */
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .score-bar .score-val { color: var(--fg); font-size: 14px; }
+  .score-fill {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .score-fill span {
+    display: block;
+    height: 100%;
+    background: var(--ok);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  /* ------------- Answer key ------------- */
+  details.key {
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  details.key summary {
+    cursor: pointer;
+    padding: 20px 30px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--fg);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  details.key summary::-webkit-details-marker { display: none; }
+  details.key summary::after { content: "+"; font-size: 18px; color: var(--accent); }
+  details.key[open] summary::after { content: "–"; }
+  .key-body { padding: 6px 30px 26px; border-top: 1px solid var(--border); }
+  .key-body h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 20px 0 8px; }
+  .key-body h4:first-child { margin-top: 16px; }
+  .key-body p { margin: 0 0 4px; font-size: 15px; }
+  .key-body .k-en { color: var(--muted); }
+  .key-body .sample { color: var(--muted); }
+
+  footer {
+    margin-top: 72px;
+    padding: 34px 0 60px;
+    border-top: 1px solid var(--border);
+  }
+  footer p { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  footer p a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header data-od-id="lesson-header">
+  <div class="wrap">
+    <p class="kicker">Lección de español · Slang mexicano</p>
+    <h1>Un mexicano no dice «hola»</h1>
+    <p class="dek">A Mexican doesn't say <strong>“hello”</strong> — and he certainly doesn't mean what the words literally say. A one-minute lesson in how Mexican Spanish <em>really</em> works.</p>
+    <p class="metaline">Maestro <span>Diego Monduela</span> &nbsp;·&nbsp; Vídeo original &nbsp;·&nbsp; Nivel intermedio</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= 01 · VIDEO ================= -->
+  <section data-od-id="video-lesson">
+    <p class="sec-kicker">01 — <em>Escucha</em> · Watch</p>
+    <div class="video-stage">
+      <div class="video-frame">
+        <video id="lesson" controls playsinline preload="metadata" src="mexico.mp4"></video>
+        <div id="caps" class="captionbar" aria-live="off">
+          <p class="cap-es" id="cap-es"></p>
+          <p class="cap-en" id="cap-en"></p>
+        </div>
+      </div>
+      <button id="cc-toggle" class="cc-toggle" aria-pressed="true">Subtítulos: ES + EN</button>
+      <p class="cap-note">Toca cualquier línea del diálogo para ir a ese momento.</p>
+    </div>
+
+    <ol class="transcript" id="transcript" data-od-id="dialogue-transcript">
+      <li><button data-i="0"><span class="t-row"><span class="t-time">0:00</span><span><span class="t-es">Un mexicano no dice hola, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “hello” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="1"><span class="t-row"><span class="t-time">0:03</span><span><span class="t-es">¡Que pedo Guey!</span><span class="t-en">What's up, dude!</span></span></span></button></li>
+      <li><button data-i="2"><span class="t-row"><span class="t-time">0:06</span><span><span class="t-es">Un mexicano no dice se murió, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “he died” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="3"><span class="t-row"><span class="t-time">0:09</span><span><span class="t-es">Colgó los pinches tenis</span><span class="t-en">He kicked the bucket</span></span></span></button></li>
+      <li><button data-i="4"><span class="t-row"><span class="t-time">0:12</span><span><span class="t-es">Un mexicano no dice anda borracho, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “he's drunk” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="5"><span class="t-row"><span class="t-time">0:16</span><span><span class="t-es">Ándo a las chanclas</span><span class="t-en">I'm drunk</span></span></span></button></li>
+      <li><button data-i="6"><span class="t-row"><span class="t-time">0:19</span><span><span class="t-es">Un mexicano no dice se murió, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “he died” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="7"><span class="t-row"><span class="t-time">0:22</span><span><span class="t-es">Se petateó</span><span class="t-en">He/she died</span></span></span></button></li>
+      <li><button data-i="8"><span class="t-row"><span class="t-time">0:26</span><span><span class="t-es">Un mexicano no dice con permiso, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “excuse me” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="9"><span class="t-row"><span class="t-time">0:29</span><span><span class="t-es">La carne de burro no es transparente</span><span class="t-en">I can't see through you</span></span></span></button></li>
+      <li><button data-i="10"><span class="t-row"><span class="t-time">0:34</span><span><span class="t-es">Un mexicano no dice sí, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “yes” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="11"><span class="t-row"><span class="t-time">0:37</span><span><span class="t-es">¡Huevo!</span><span class="t-en">Hell yes!</span></span></span></button></li>
+      <li><button data-i="12"><span class="t-row"><span class="t-time">0:40</span><span><span class="t-es">Un mexicano no dice ahí va mi novia, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “there goes my girlfriend” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="13"><span class="t-row"><span class="t-time">0:44</span><span><span class="t-es">Ahí va mi pompi</span><span class="t-en">There goes my girlfriend</span></span></span></button></li>
+      <li><button data-i="14"><span class="t-row"><span class="t-time">0:48</span><span><span class="t-es">Un mexicano no dice ando borracho, ¿cómo dice un mexicano?</span><span class="t-en">A Mexican doesn't say “I'm drunk” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="15"><span class="t-row"><span class="t-time">0:51</span><span><span class="t-es">Anda hasta el culo</span><span class="t-en">He/she is wasted</span></span></span></button></li>
+      <li><button data-i="16"><span class="t-row"><span class="t-time">0:54</span><span><span class="t-es">Y por último, un mexicano no dice adiós, ¿cómo dice un mexicano?</span><span class="t-en">And last of all, a Mexican doesn't say “goodbye” — how does a Mexican say it?</span></span></span></button></li>
+      <li><button data-i="17"><span class="t-row"><span class="t-time">0:58</span><span><span class="t-es">¡Ay, los vidrios!</span><span class="t-en">Bye!</span></span></span></button></li>
+    </ol>
+  </section>
+
+  <!-- ================= 02 · NOTE ================= -->
+  <section data-od-id="teaching-note">
+    <div class="note">
+      <p class="sec-kicker">Apunte importante · Important note</p>
+      <h3>El slang mexicano ≠ español estándar</h3>
+      <p>Estas expresiones son informales, regionales, humorísticas o vulgares — según la expresión. Debes <strong>entenderlas cuando las escuches</strong>, pero también aprender <strong>cuándo es apropiado usarlas</strong>: con amigos y en contextos relajados, no en una entrevista de trabajo.</p>
+      <p class="en-note">Mexican slang ≠ standard Spanish. These expressions are informal, regional, humorous, or vulgar depending on the one you use. Learn to understand them when you hear them — but also learn when it's appropriate to say them.</p>
+    </div>
+  </section>
+
+  <!-- ================= 03 · SLANG TABLE ================= -->
+  <section data-od-id="slang-table">
+    <p class="sec-kicker">03 — <em>El slang</em> · The expressions</p>
+    <h2>Cómo dice un mexicano</h2>
+    <p class="lead">El punto principal de la lección: el <strong>significado literal no es, casi nunca, lo que un mexicano quiere decir</strong>. Mira estas nueve expresiones del vídeo.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Expresión mexicana</th><th>Significado literal</th><th>Significado real</th><th>English meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="x">¡Qué pedo, güey!</td><td class="lit">What fart, dude!</td><td>Informal greeting — “What's up, dude?”</td><td class="en">What's up, dude?</td></tr>
+          <tr><td class="x">Colgó los pinches tenis</td><td class="lit">He hung up the fucking tennis shoes</td><td>He died</td><td class="en">He kicked the bucket / He died</td></tr>
+          <tr><td class="x">Ando a las chanclas</td><td class="lit">I'm walking at the flip-flops</td><td>I'm drunk</td><td class="en">I'm drunk</td></tr>
+          <tr><td class="x">Se petateó</td><td class="lit">He/she got wrapped in a mat</td><td>He/she died</td><td class="en">He/she died</td></tr>
+          <tr><td class="x">La carne de burro no es transparente</td><td class="lit">Donkey meat isn't transparent</td><td>Used jokingly when someone is blocking your view</td><td class="en">I can't see through you</td></tr>
+          <tr><td class="x">¡Huevo!</td><td class="lit">Egg!</td><td>Yes! / Definitely!</td><td class="en">Hell yes!</td></tr>
+          <tr><td class="x">Ahí va mi pompi</td><td class="lit">There goes my butt</td><td>There goes my girlfriend</td><td class="en">There goes my girlfriend</td></tr>
+          <tr><td class="x">Anda hasta el culo</td><td class="lit">He/she is up to the ass</td><td>Very drunk / extremely intoxicated</td><td class="en">He/she is wasted</td></tr>
+          <tr><td class="x">¡Ay, los vidrios!</td><td class="lit">Oh, the glass!</td><td>Goodbye</td><td class="en">Bye!</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 04 · VERB PRACTICE ================= -->
+  <section data-od-id="verb-table">
+    <p class="sec-kicker">04 — <em>Los verbos</em> · Verbs at work</p>
+    <h2>Practica los tiempos</h2>
+    <p class="lead">Los verbos que dan vida a estas frases, en presente, pasado y participio.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Infinitivo</th><th>Present</th><th>Past</th><th>Past participle</th><th>English</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="x">decir</td><td>dice</td><td>dijo</td><td>dicho</td><td class="en">to say</td></tr>
+          <tr><td class="x">morir</td><td>muere</td><td>murió</td><td>muerto</td><td class="en">to die</td></tr>
+          <tr><td class="x">colgar</td><td>cuelga</td><td>colgó</td><td>colgado</td><td class="en">to hang</td></tr>
+          <tr><td class="x">andar</td><td>anda</td><td>anduvo</td><td>andado</td><td class="en">to go / be</td></tr>
+          <tr><td class="x">petatearse</td><td>se petatea</td><td>se petateó</td><td>petateado</td><td class="en">to die</td></tr>
+          <tr><td class="x">ser</td><td>es</td><td>fue</td><td>sido</td><td class="en">to be</td></tr>
+          <tr><td class="x">ir</td><td>va</td><td>fue</td><td>ido</td><td class="en">to go</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 05 · EXERCISES ================= -->
+  <section data-od-id="exercises">
+    <p class="sec-kicker">05 — <em>Practica</em> · Exercises</p>
+    <h2>A comprobar lo aprendido</h2>
+
+    <div class="score-bar" id="score-bar">
+      <span>Puntuación</span>
+      <span class="score-val" id="score-val">0 / 0</span>
+      <div class="score-fill"><span id="score-fill"></span></div>
+    </div>
+
+    <!-- EJERCICIO 1 — Match -->
+    <div class="ex" data-od-id="exercise-match">
+      <div class="ex-head"><span class="ex-num">Ejercicio 1</span><h3>Une cada expresión con su significado real</h3></div>
+      <p class="ex-instr"><strong>Match the expression to its real meaning.</strong> Toca una expresión y luego su significado correcto.</p>
+      <div class="match-grid" id="ex-match"></div>
+      <p class="ex-instr" style="margin-top:14px" id="match-status"></p>
+    </div>
+
+    <!-- EJERCICIO 2 — Verb forms (multiple choice) -->
+    <div class="ex" data-od-id="exercise-verb-forms">
+      <div class="ex-head"><span class="ex-num">Ejercicio 2</span><h3>Formas verbales</h3></div>
+      <p class="ex-instr"><strong>Verb forms.</strong> Elige la forma correcta para completar cada frase.</p>
+      <ol class="qs" id="ex-verbs">
+        <li>
+          <span class="sp">Diego ___ «¡qué pedo!» a sus amigos. <em>(decir, presente)</em></span>
+          <span class="toggle-group" data-a="dice"><button data-v="dice">dice</button><button data-v="dijo">dijo</button><button data-v="dicho">dicho</button><button data-v="decía">decía</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Él ___ los pinches tenis. <em>(colgar, pasado)</em></span>
+          <span class="toggle-group" data-a="colgó"><button data-v="cuelga">cuelga</button><button data-v="colgó">colgó</button><button data-v="colgado">colgado</button><button data-v="colgaba">colgaba</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Yo ___ a las chanclas. <em>(andar, presente)</em></span>
+          <span class="toggle-group" data-a="ando"><button data-v="anda">anda</button><button data-v="anduvo">anduvo</button><button data-v="ando">ando</button><button data-v="andaba">andaba</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">La abuela se ___ en paz. <em>(petatearse, pasado)</em></span>
+          <span class="toggle-group" data-a="petateó"><button data-v="se petatea">se petatea</button><button data-v="se petateó">se petateó</button><button data-v="petateado">petateado</button><button data-v="se petateaba">se petateaba</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Ella ___ mi mejor amiga. <em>(ser, presente)</em></span>
+          <span class="toggle-group" data-a="es"><button data-v="es">es</button><button data-v="fue">fue</button><button data-v="sido">sido</button><button data-v="era">era</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Él ___ al mercado. <em>(ir, presente)</em></span>
+          <span class="toggle-group" data-a="va"><button data-v="va">va</button><button data-v="fue">fue</button><button data-v="ido">ido</button><button data-v="iba">iba</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">El pez ___ ayer. <em>(morir, pasado)</em></span>
+          <span class="toggle-group" data-a="murió"><button data-v="muere">muere</button><button data-v="murió">murió</button><button data-v="muerto">muerto</button><button data-v="moría">moría</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Ya ha ___ el pobre abuelo. <em>(morir, participio)</em></span>
+          <span class="toggle-group" data-a="muerto"><button data-v="muere">muere</button><button data-v="murió">murió</button><button data-v="muerto">muerto</button><button data-v="morido">morido</button></span>
+          <span class="fb"></span>
+        </li>
+      </ol>
+      <button class="check-btn" data-ex="verbs">Comprobar · Check</button>
+    </div>
+
+    <!-- EJERCICIO 3 — Translate literal (multiple choice) -->
+    <div class="ex" data-od-id="exercise-translate">
+      <div class="ex-head"><span class="ex-num">Ejercicio 3</span><h3>Traduce el significado literal</h3></div>
+      <p class="ex-instr"><strong>Translate the literal meaning.</strong> Elige la traducción correcta palabra por palabra.</p>
+      <ol class="qs" id="ex-translate">
+        <li>
+          <span class="sp">¡Qué pedo, güey!</span>
+          <span class="toggle-group" data-a="what-fart-dude"><button data-v="what-fart-dude">What fart, dude!</button><button data-v="whats-up-dude">What's up, dude!</button><button data-v="what-noise-dude">What a noise, dude!</button><button data-v="what-problem-dude">What a problem, dude!</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Ando a las chanclas</span>
+          <span class="toggle-group" data-a="walking-flipflops"><button data-v="walking-flipflops">I'm walking at the flip-flops</button><button data-v="wearing-sandals">I'm wearing sandals</button><button data-v="going-beach">I'm going to the beach</button><button data-v="at-market">I'm at the market</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">¡Huevo!</span>
+          <span class="toggle-group" data-a="egg"><button data-v="hell-yes">Hell yes!</button><button data-v="egg">Egg!</button><button data-v="chicken">Chicken!</button><button data-v="breakfast">Breakfast!</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">Ahí va mi pompi</span>
+          <span class="toggle-group" data-a="there-goes-butt"><button data-v="there-goes-girlfriend">There goes my girlfriend</button><button data-v="there-goes-butt">There goes my butt</button><button data-v="there-goes-car">There goes my car</button><button data-v="there-goes-dog">There goes my dog</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">¡Ay, los vidrios!</span>
+          <span class="toggle-group" data-a="oh-glass"><button data-v="bye">Bye!</button><button data-v="oh-glass">Oh, the glass!</button><button data-v="watch-out">Watch out!</button><button data-v="be-careful">Be careful!</button></span>
+          <span class="fb"></span>
+        </li>
+      </ol>
+      <button class="check-btn" data-ex="translate">Comprobar · Check</button>
+    </div>
+
+    <!-- EJERCICIO 4 — What would a Mexican understand? (multiple choice) -->
+    <div class="ex" data-od-id="exercise-understand">
+      <div class="ex-head"><span class="ex-num">Ejercicio 4</span><h3>¿Qué entendería un mexicano?</h3></div>
+      <p class="ex-instr"><strong>What would a Mexican speaker understand?</strong> Elige el significado real de cada frase.</p>
+      <ol class="qs" id="ex-understand">
+        <li>
+          <span class="sp">«Se petateó.»</span>
+          <span class="toggle-group" data-a="died"><button data-v="died">He/she died</button><button data-v="fell">He/she fell down</button><button data-v="ran">He/she ran away</button><button data-v="laughed">He/she laughed</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">«Anda hasta el culo.»</span>
+          <span class="toggle-group" data-a="wasted"><button data-v="wasted">He/she is wasted</button><button data-v="tired">He/she is tired</button><button data-v="hungry">He/she is hungry</button><button data-v="lost">He/she is lost</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">«¡Huevo!»</span>
+          <span class="toggle-group" data-a="hell-yes"><button data-v="hell-yes">Hell yes!</button><button data-v="oh-no">Oh no!</button><button data-v="careful">Be careful!</button><button data-v="come-here">Come here!</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">«Colgó los pinches tenis.»</span>
+          <span class="toggle-group" data-a="kicked-bucket"><button data-v="kicked-bucket">He kicked the bucket</button><button data-v="bought-shoes">He bought new shoes</button><button data-v="played-soccer">He played soccer</button><button data-v="hung-clothes">He hung up clothes</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">«La carne de burro no es transparente.»</span>
+          <span class="toggle-group" data-a="cant-see"><button data-v="cant-see">I can't see through you</button><button data-v="meat-expensive">Donkey meat is expensive</button><button data-v="food-bad">This food is bad</button><button data-v="im-hungry">I'm hungry</button></span>
+          <span class="fb"></span>
+        </li>
+        <li>
+          <span class="sp">«Ahí va mi pompi.»</span>
+          <span class="toggle-group" data-a="there-goes-girlfriend"><button data-v="there-goes-girlfriend">There goes my girlfriend</button><button data-v="there-goes-bus">There goes my bus</button><button data-v="there-goes-chance">There goes my chance</button><button data-v="there-goes-money">There goes my money</button></span>
+          <span class="fb"></span>
+        </li>
+      </ol>
+      <button class="check-btn" data-ex="understand">Comprobar · Check</button>
+    </div>
+
+    <details class="key" data-od-id="answer-key">
+      <summary>Clave de respuestas · Answer key</summary>
+      <div class="key-body">
+        <h4>Ejercicio 1 — Une las expresiones</h4>
+        <p>a–4 · b–5 · c–2 · d–1 · e–8 · f–6 · g–3 · h–7 · i–9</p>
+
+        <h4>Ejercicio 2 — Formas verbales</h4>
+        <p>1. dice · 2. colgó · 3. ando · 4. petateó · 5. es · 6. va · 7. murió · 8. muerto</p>
+
+        <h4>Ejercicio 3 — Significado literal</h4>
+        <p>1. What fart, dude! · 2. I'm walking at the flip-flops · 3. Egg! · 4. There goes my butt · 5. Oh, the glass!</p>
+
+        <h4>Ejercicio 4 — Qué entendería un mexicano</h4>
+        <p>1. He/she died · 2. He/she is wasted · 3. Hell yes! · 4. He kicked the bucket · 5. I can't see through you · 6. There goes my girlfriend</p>
+      </div>
+    </details>
+  </section>
+</main>
+
+<footer data-od-id="lesson-footer">
+  <div class="wrap">
+    <p>Maestro: Diego Monduela · Vídeo original · Diálogo sin modificar</p>
+    <p>Lección de español orientada a entender el slang mexicano · Nivel intermedio</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ===================== VIDEO + SUBTITLES ===================== */
+  var cues = [
+    { t: 0,  d: 3,  es: "Un mexicano no dice hola, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Chello\u201D \u2014 how does a Mexican say it?" },
+    { t: 3,  d: 3,  es: "\u00a1Que pedo Guey!", en: "What's up, dude!" },
+    { t: 6,  d: 3,  es: "Un mexicano no dice se muri\u00f3, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Che died\u201D \u2014 how does a Mexican say it?" },
+    { t: 9,  d: 3,  es: "Colg\u00f3 los pinches tenis", en: "He kicked the bucket" },
+    { t: 12, d: 4,  es: "Un mexicano no dice anda borracho, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Che's drunk\u201D \u2014 how does a Mexican say it?" },
+    { t: 16, d: 3,  es: "\u00c1ndo a las chanclas", en: "I'm drunk" },
+    { t: 19, d: 3,  es: "Un mexicano no dice se muri\u00f3, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Che died\u201D \u2014 how does a Mexican say it?" },
+    { t: 22, d: 4,  es: "Se petate\u00f3", en: "He/she died" },
+    { t: 26, d: 3,  es: "Un mexicano no dice con permiso, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Cexcuse me\u201D \u2014 how does a Mexican say it?" },
+    { t: 29, d: 5,  es: "La carne de burro no es transparente", en: "I can't see through you" },
+    { t: 34, d: 3,  es: "Un mexicano no dice s\u00ed, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Cyes\u201D \u2014 how does a Mexican say it?" },
+    { t: 37, d: 3,  es: "\u00a1Huevo!", en: "Hell yes!" },
+    { t: 40, d: 4,  es: "Un mexicano no dice ah\u00ed va mi novia, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201Cthere goes my girlfriend\u201D \u2014 how does a Mexican say it?" },
+    { t: 44, d: 4,  es: "Ah\u00ed va mi pompi", en: "There goes my girlfriend" },
+    { t: 48, d: 3,  es: "Un mexicano no dice ando borracho, \u00bfc\u00f3mo dice un mexicano?", en: "A Mexican doesn't say \u201CI'm drunk\u201D \u2014 how does a Mexican say it?" },
+    { t: 51, d: 3,  es: "Anda hasta el culo", en: "He/she is wasted" },
+    { t: 54, d: 4,  es: "Y por \u00faltimo, un mexicano no dice adi\u00f3s, \u00bfc\u00f3mo dice un mexicano?", en: "And last of all, a Mexican doesn't say \u201Cgoodbye\u201D \u2014 how does a Mexican say it?" },
+    { t: 58, d: 3,  es: "\u00a1Ay, los vidrios!", en: "Bye!" }
+  ];
+
+  var video = document.getElementById("lesson");
+  var caps = document.getElementById("caps");
+  var capEs = document.getElementById("cap-es");
+  var capEn = document.getElementById("cap-en");
+  var ccBtn = document.getElementById("cc-toggle");
+  var rows = Array.prototype.slice.call(document.querySelectorAll("#transcript li"));
+  var active = -1;
+
+  function cueFor(t) {
+    for (var i = 0; i < cues.length; i++) {
+      if (t >= cues[i].t && t < cues[i].t + cues[i].d) return i;
+    }
+    return -1;
+  }
+
+  function render() {
+    var idx = cueFor(video.currentTime);
+    if (idx !== active) {
+      if (active >= 0) rows[active].classList.remove("active");
+      active = idx;
+      if (active >= 0) {
+        rows[active].classList.add("active");
+        capEs.textContent = cues[active].es;
+        capEn.textContent = cues[active].en;
+        caps.classList.add("on");
+        if (ccBtn.getAttribute("aria-pressed") === "true") caps.classList.remove("off");
+      } else {
+        caps.classList.remove("on");
+        caps.classList.add("off");
+      }
+    }
+  }
+
+  video.addEventListener("timeupdate", render);
+  video.addEventListener("seeked", render);
+  video.addEventListener("ended", render);
+
+  ccBtn.addEventListener("click", function () {
+    var on = ccBtn.getAttribute("aria-pressed") === "true";
+    ccBtn.setAttribute("aria-pressed", on ? "false" : "true");
+    if (on) { caps.classList.add("off"); }
+    else { caps.classList.remove("off"); render(); }
+  });
+
+  document.getElementById("transcript").addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    var i = parseInt(btn.getAttribute("data-i"), 10);
+    video.currentTime = cues[i].t;
+    video.play();
+  });
+
+  /* ===================== EXERCISES ===================== */
+
+  var totalScore = 0;
+  var totalPossible = 0;
+
+  function updateScore() {
+    var pct = totalPossible > 0 ? Math.round((totalScore / totalPossible) * 100) : 0;
+    document.getElementById("score-val").textContent = totalScore + " / " + totalPossible;
+    document.getElementById("score-fill").style.width = pct + "%";
+  }
+
+  /* --- Toggle group click handler (shared by verb + translate + understand) --- */
+  function wireToggleGroups(container) {
+    var groups = container.querySelectorAll(".toggle-group");
+    groups.forEach(function (g) {
+      var btns = g.querySelectorAll("button");
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          btns.forEach(function (x) { x.classList.remove("sel", "ok", "bad"); });
+          b.classList.add("sel");
+        });
+      });
+    });
+    return groups;
+  }
+
+  function checkToggleGroups(container, btn) {
+    var groups = container.querySelectorAll(".toggle-group");
+    groups.forEach(function (g) {
+      var ans = g.getAttribute("data-a");
+      var sel = g.querySelector(".sel");
+      var fb = g.parentElement.querySelector(".fb");
+      if (!sel) { fb.textContent = "\u2192 " + ans; fb.className = "fb bad"; return; }
+      if (sel.getAttribute("data-v") === ans) {
+        sel.classList.add("ok"); fb.textContent = "\u2713"; fb.className = "fb ok";
+      } else {
+        sel.classList.add("bad"); fb.textContent = "\u2717 " + ans; fb.className = "fb bad";
+      }
+    });
+    totalScore = recalcScore();
+    updateScore();
+  }
+
+  /* --- Exercise 1: Click-to-match --- */
+  (function () {
+    var expressions = [
+      { id: "a", text: "\u00a1Qu\u00e9 pedo, g\u00fcey!", pair: "4" },
+      { id: "b", text: "Colg\u00f3 los pinches tenis", pair: "5" },
+      { id: "c", text: "Ando a las chanclas", pair: "2" },
+      { id: "d", text: "Se petate\u00f3", pair: "1" },
+      { id: "e", text: "La carne de burro no es transparente", pair: "8" },
+      { id: "f", text: "\u00a1Huevo!", pair: "6" },
+      { id: "g", text: "Ah\u00ed va mi pompi", pair: "3" },
+      { id: "h", text: "Anda hasta el culo", pair: "7" },
+      { id: "i", text: "\u00a1Ay, los vidrios!", pair: "9" }
+    ];
+    var meanings = [
+      { id: "1", text: "He/she died" },
+      { id: "2", text: "I'm drunk" },
+      { id: "3", text: "There goes my girlfriend" },
+      { id: "4", text: "What's up, dude?" },
+      { id: "5", text: "He kicked the bucket" },
+      { id: "6", text: "Hell yes!" },
+      { id: "7", text: "He/she is wasted" },
+      { id: "8", text: "I can't see through you" },
+      { id: "9", text: "Bye!" }
+    ];
+
+    totalPossible += expressions.length;
+    var matched = 0;
+    var selectedLeft = null;
+    var grid = document.getElementById("ex-match");
+    var status = document.getElementById("match-status");
+
+    function renderGrid() {
+      grid.innerHTML = "";
+      var leftCol = document.createElement("div");
+      var rightCol = document.createElement("div");
+
+      expressions.forEach(function (ex) {
+        var el = document.createElement("div");
+        el.className = "match-item match-left" + (ex.locked ? " locked" : "") + (selectedLeft === ex.id ? " active" : "");
+        el.textContent = ex.text;
+        el.setAttribute("data-id", ex.id);
+        if (ex.locked) {
+          var badge = document.createElement("span");
+          badge.className = "match-pair";
+          badge.textContent = "\u2192 " + ex.pair;
+          el.appendChild(badge);
+        }
+        if (!ex.locked) el.addEventListener("click", function () { selectedLeft = ex.id; renderGrid(); });
+        leftCol.appendChild(el);
+      });
+
+      meanings.forEach(function (m) {
+        var el = document.createElement("div");
+        el.className = "match-item match-right" + (m.locked ? " locked" : "");
+        el.textContent = m.text;
+        el.setAttribute("data-id", m.id);
+        if (m.locked) {
+          var expr = expressions.find(function (e) { return e.pair === m.id; });
+          var badge = document.createElement("span");
+          badge.className = "match-pair";
+          badge.textContent = "\u2192 " + expr.id;
+          el.appendChild(badge);
+        }
+        if (!m.locked) el.addEventListener("click", function () { tryMatch(m.id); });
+        rightCol.appendChild(el);
+      });
+
+      grid.appendChild(leftCol);
+      grid.appendChild(rightCol);
+
+      if (matched === expressions.length) {
+        status.textContent = "\u00a1Todas las parejas correctas! \u2713";
+        status.style.color = "var(--ok)";
+      }
+    }
+
+    function tryMatch(rightId) {
+      if (!selectedLeft) return;
+      var expr = expressions.find(function (e) { return e.id === selectedLeft; });
+      if (expr.pair === rightId) {
+        expr.locked = true;
+        var right = meanings.find(function (m) { return m.id === rightId; });
+        right.locked = true;
+        matched++;
+        totalScore = recalcScore();
+        updateScore();
+      } else {
+        var rightEl = grid.querySelector('[data-id="' + rightId + '"].match-right');
+        if (rightEl) { rightEl.classList.add("wrong"); setTimeout(function () { rightEl.classList.remove("wrong"); }, 400); }
+      }
+      selectedLeft = null;
+      renderGrid();
+    }
+
+    renderGrid();
+  })();
+
+  /* --- Exercise 2: Verb forms (toggle groups) --- */
+  (function () {
+    var container = document.getElementById("ex-verbs");
+    var groups = wireToggleGroups(container);
+    totalPossible += groups.length;
+
+    document.querySelector('[data-ex="verbs"]').addEventListener("click", function () {
+      checkToggleGroups(container);
+    });
+  })();
+
+  /* --- Exercise 3: Translate literal (toggle groups) --- */
+  (function () {
+    var container = document.getElementById("ex-translate");
+    var groups = wireToggleGroups(container);
+    totalPossible += groups.length;
+
+    document.querySelector('[data-ex="translate"]').addEventListener("click", function () {
+      checkToggleGroups(container);
+    });
+  })();
+
+  /* --- Exercise 4: Understand (toggle groups) --- */
+  (function () {
+    var container = document.getElementById("ex-understand");
+    var groups = wireToggleGroups(container);
+    totalPossible += groups.length;
+
+    document.querySelector('[data-ex="understand"]').addEventListener("click", function () {
+      checkToggleGroups(container);
+    });
+  })();
+
+  /* --- Score recalculation helper --- */
+  function recalcScore() {
+    var score = 0;
+
+    // Match: locked pairs
+    score += document.querySelectorAll(".match-item.locked.match-left").length;
+
+    // Toggle group exercises (verbs, translate, understand)
+    ["ex-verbs", "ex-translate", "ex-understand"].forEach(function (id) {
+      document.querySelectorAll("#" + id + " .toggle-group").forEach(function (g) {
+        var sel = g.querySelector(".sel");
+        if (sel && sel.getAttribute("data-v") === g.getAttribute("data-a")) score++;
+      });
+    });
+
+    return score;
+  }
+
+  updateScore();
+})();
+</script>
+</body>
+</html>
