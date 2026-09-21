@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn English with a Short Video — Diego Monduela</title>
+<style>
+:root {
+  --bg:      oklch(98% 0.004 240);
+  --surface: oklch(100% 0 0);
+  --fg:      oklch(20% 0.02 240);
+  --muted:   oklch(50% 0.018 240);
+  --border:  oklch(90% 0.006 240);
+  --accent:  oklch(56% 0.12 170);
+  --success: oklch(52% 0.14 155);
+  --danger:  oklch(55% 0.18 25);
+
+  --font-display: 'Söhne', 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 22px; }
+
+a { color: var(--fg); }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.masthead .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- hero ---------- */
+.hero { padding: 52px 0 10px; }
+.kicker {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5.2vw, 44px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+}
+.hero .byline {
+  margin-top: 18px;
+  font-size: 16px;
+  color: var(--muted);
+}
+.hero .byline strong { color: var(--fg); font-weight: 600; }
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.meta span {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+/* ---------- sections ---------- */
+section { padding: 44px 0; }
+section + section { border-top: 1px solid var(--border); }
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.section-note { color: var(--muted); margin-bottom: 20px; max-width: 62ch; }
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+}
+.card + .card { margin-top: 16px; }
+
+/* ---------- video player ---------- */
+.player-card { padding: 16px; }
+.player-card video {
+  display: block;
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  background: oklch(16% 0.02 240);
+  border-radius: 12px;
+}
+
+.modebar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+.modebar button {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+}
+.modebar button:hover { border-color: var(--muted); }
+.modebar button.active {
+  border-color: var(--accent);
+  background: oklch(96% 0.03 170);
+}
+.modebar button b { display: block; font-weight: 600; font-size: 15px; }
+.modebar button small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+}
+
+/* subtitle stage */
+.sub-stage {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  padding: 18px 20px;
+  min-height: 132px;
+}
+.sub-empty { color: var(--muted); font-size: 15px; }
+.sub-ts {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.sub-en {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+.sub-en .gap {
+  display: inline-block;
+  min-width: 120px;
+  max-width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--muted);
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: var(--fg);
+  padding: 0 6px;
+  outline: none;
+}
+.sub-en .gap.ok { border-color: var(--success); color: var(--success); }
+.sub-en .gap.miss { border-color: var(--danger); color: var(--danger); }
+.sub-en .fillGap { color: var(--success); }
+.sub-es { margin-top: 8px; color: var(--muted); font-size: 16.5px; }
+.sub-actions { margin-top: 12px; }
+
+/* timeline */
+.timeline { margin-top: 14px; }
+.timeline h3 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.tl-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  cursor: pointer;
+  font-family: var(--font-body);
+  color: var(--fg);
+}
+.tl-row + .tl-row { margin-top: 8px; }
+.tl-row:hover { border-color: var(--muted); }
+.tl-row .ts {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px 8px;
+}
+.tl-row .lb { font-size: 15.5px; line-height: 1.35; }
+.tl-row.active {
+  border-color: var(--accent);
+  background: oklch(96% 0.03 170);
+}
+.tl-row.active .lb { font-weight: 600; }
+.tl-row.active .ts { color: var(--fg); border-color: var(--accent); }
+
+/* ---------- tables ---------- */
+.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+table.vtbl {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  font-size: 15.5px;
+  min-width: 560px;
+}
+.vtbl th {
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 13px 16px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+.vtbl td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.vtbl tr:last-child td { border-bottom: none; }
+.vtbl .en { font-weight: 600; }
+.vtbl .es { color: var(--muted); }
+.vtbl .pron { color: var(--muted); font-size: 13px; letter-spacing: 0.01em; }
+
+/* ---------- dictionary ---------- */
+.dict-find { margin-top: 16px; }
+.dict-find h3 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.dict-find ol { padding-left: 20px; }
+.dict-find li { margin: 6px 0; color: var(--fg); }
+.dict-find li small { color: var(--muted); }
+
+/* ---------- grammar ---------- */
+.gram-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.gram-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+.gram-card .tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.gram-card .sen { font-weight: 600; font-size: 16.5px; }
+.gram-card .gls { color: var(--muted); font-size: 15px; margin-top: 4px; }
+.gram-note { margin-top: 16px; font-size: 14.5px; color: var(--muted); }
+
+/* ---------- comprehension ---------- */
+details.q { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+details.q + details.q { margin-top: 10px; }
+details.q summary {
+  cursor: pointer;
+  padding: 15px 18px;
+  font-weight: 600;
+  font-size: 16px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+}
+details.q summary::-webkit-details-marker { display: none; }
+details.q summary::after { content: '+'; font-weight: 400; color: var(--muted); font-size: 20px; }
+details.q[open] summary::after { content: '–'; }
+details.q .ans { padding: 0 18px 16px; color: var(--muted); }
+details.q .ans b { color: var(--success); font-weight: 600; }
+
+/* ---------- exercises ---------- */
+.ex-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+.ex-card + .ex-card { margin-top: 16px; }
+.ex-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.ex-head h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.005em; }
+.ex-head .step {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.ex-instr { color: var(--muted); font-size: 14.5px; margin-bottom: 16px; }
+.ex-list { list-style: none; }
+.ex-list li {
+  padding: 9px 0;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+.ex-list li .num { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 4px; }
+
+.pick {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.pick:hover { border-color: var(--muted); }
+.pick.ok { border-color: var(--success); color: var(--success); font-weight: 600; }
+.pick.miss { border-color: var(--danger); color: var(--danger); text-decoration: line-through; }
+
+select.match {
+  font-family: inherit;
+  font-size: 14.5px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--fg);
+}
+select.match.ok { border-color: var(--success); color: var(--success); font-weight: 600; }
+select.match.miss { border-color: var(--danger); color: var(--danger); }
+
+input.wline {
+  font-family: inherit;
+  font-size: 15.5px;
+  width: 100%;
+  max-width: 520px;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  padding: 4px 2px;
+  outline: none;
+}
+input.wline:focus { border-bottom-color: var(--accent); }
+input.wline::placeholder { color: oklch(62% 0.015 240); }
+
+.din {
+  display: inline-block;
+  min-width: 100px;
+  max-width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--muted);
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: var(--fg);
+  padding: 0 5px;
+  outline: none;
+}
+.din:focus { border-bottom-color: var(--accent); }
+.din.ok { border-color: var(--success); color: var(--success); }
+.din.miss { border-color: var(--danger); color: var(--danger); }
+.wline.ok { border-bottom-color: var(--success); color: var(--success); }
+.wline.miss { border-bottom-color: var(--danger); color: var(--danger); }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; }
+.score { font-size: 14px; color: var(--muted); letter-spacing: 0.01em; margin-top: 12px; }
+.score b { color: var(--fg); }
+.score b.done { color: var(--success); }
+.wc { font-size: 13px; color: var(--muted); margin-left: 8px; letter-spacing: 0.01em; }
+.wc.ok { color: var(--success); }
+
+button.action {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+}
+button.action:hover { border-color: var(--muted); }
+button.action.primary { border-color: var(--accent); color: var(--fg); }
+
+.translate { list-style: none; }
+.translate li { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.translate li:last-child { border-bottom: none; }
+.translate .from { font-size: 16px; }
+.translate li .from i { color: var(--muted); font-style: normal; font-size: 13.5px; letter-spacing: 0.01em; }
+
+/* ---------- final challenge ---------- */
+.ch-table { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 15px; }
+.ch-table th {
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--border);
+}
+.ch-table td { padding: 8px 14px; border-bottom: 1px solid var(--border); }
+.ch-table input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--fg);
+  padding: 6px 2px;
+  outline: none;
+}
+.ch-table input:focus { border-bottom-color: var(--accent); }
+
+/* ---------- footer ---------- */
+footer { border-top: 1px solid var(--border); margin-top: 10px; padding: 30px 0 48px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+
+@media (min-width: 640px) {
+  .gram-grid { grid-template-columns: repeat(3, 1fr); }
+  .modebar button { min-height: 64px; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead" data-od-id="masthead">
+  <div class="wrap">
+    <span>ESL lesson</span>
+    <span>15–20 min</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <header class="hero" data-od-id="lesson-hero">
+    <div class="kicker">A practical lesson, made by hand</div>
+    <h1>Learn English with a Short Video</h1>
+    <p class="byline">A lesson created by <strong>Diego Monduela</strong> from a short motivational video. Watch it, repeat it, and learn ten real verbs you can use every day.</p>
+    <div class="meta">
+      <span>A1–A2 level</span>
+      <span>6 exercises</span>
+      <span>English · Spanish</span>
+    </div>
+  </header>
+
+  <!-- 1 · VIDEO + SUBTITLES -->
+  <section id="video-section" data-od-id="section-video">
+    <div class="kicker">1 · Video + subtitles</div>
+    <h2>Watch, listen, repeat</h2>
+    <p class="section-note">The subtitles appear below the video as it plays. Use the three buttons to change how much help you get. Click any line to jump to that moment.</p>
+
+    <div class="card player-card">
+      <video id="lessonVideo" data-od-id="lesson-video" controls playsinline preload="metadata" src="Tom.mp4"></video>
+
+      <div class="modebar" data-od-id="subtitle-modes" role="group" aria-label="Subtitle mode">
+        <button type="button" data-mode="off" id="modeOff">
+          <b>Stage 1 · Listen</b>
+          <small>Subtitles off</small>
+        </button>
+        <button type="button" data-mode="both" id="modeBoth" class="active">
+          <b>Stage 2 · Listen + Read</b>
+          <small>English + Spanish</small>
+        </button>
+        <button type="button" data-mode="blanks" id="modeBlanks">
+          <b>Stage 3 · Listen + Complete</b>
+          <small>Fill in the gaps</small>
+        </button>
+      </div>
+
+      <div class="sub-stage" aria-live="polite" data-od-id="subtitle-stage">
+        <div id="subContent"></div>
+      </div>
+
+      <div class="sub-actions" id="subActions"></div>
+
+      <div class="timeline" data-od-id="transcript-timeline">
+        <h3>Transcript — the whole video</h3>
+        <div id="tlList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · 10 MAIN VERBS -->
+  <section id="verbs" data-od-id="section-verbs">
+    <div class="kicker">2 · 10 main verbs</div>
+    <h2>The verbs of this video</h2>
+    <p class="section-note">All ten come from the clip. The past form is used for finished actions; the past participle is the form you use with <em>have / has</em>.</p>
+
+    <div class="table-scroll">
+      <table class="vtbl" data-od-id="verb-table">
+        <thead>
+          <tr>
+            <th>Present</th>
+            <th>Past</th>
+            <th>Past participle</th>
+            <th>Spanish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="en">wake up</td><td>woke up <span class="pron">/woʊk/</span></td><td>woken up <span class="pron">/ˈwoʊkən/</span></td><td class="es">despertarse</td></tr>
+          <tr><td class="en">go</td><td>went</td><td>gone <span class="pron">/ɡɒn/</span></td><td class="es">ir</td></tr>
+          <tr><td class="en">work out</td><td>worked out</td><td>worked out</td><td class="es">entrenar · hacer ejercicio</td></tr>
+          <tr><td class="en">sleep in</td><td>slept in</td><td>slept in</td><td class="es">dormir hasta tarde</td></tr>
+          <tr><td class="en">eat</td><td>ate <span class="pron">/eɪt/</span></td><td>eaten <span class="pron">/ˈiːtən/</span></td><td class="es">comer</td></tr>
+          <tr><td class="en">understand</td><td>understood</td><td>understood</td><td class="es">entender</td></tr>
+          <tr><td class="en">be</td><td>was / were</td><td>been</td><td class="es">ser · estar</td></tr>
+          <tr><td class="en">have to</td><td>had to</td><td>had to</td><td class="es">tener que</td></tr>
+          <tr><td class="en">work</td><td>worked</td><td>worked</td><td class="es">trabajar</td></tr>
+          <tr><td class="en">know</td><td>knew <span class="pron">/njuː/</span></td><td>known</td><td class="es">saber · conocer</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3 · DICTIONARY -->
+  <section id="dictionary" data-od-id="section-dictionary">
+    <div class="kicker">3 · Dictionary practice</div>
+    <h2>Get familiar with the dictionary</h2>
+    <p class="section-note">When you meet a new verb, look it up like this:</p>
+
+    <div class="card">
+      <p><strong>work</strong></p>
+      <ul class="dict-find">
+        <li>Meaning: <em>trabajar</em></li>
+        <li>Past: <em>worked</em></li>
+        <li>Past participle: <em>worked</em></li>
+        <li>Example: <em>I work every day.</em></li>
+      </ul>
+    </div>
+
+    <p class="section-note" style="margin-top:18px"><strong>Now try it yourself.</strong> For any verb from the table above, look for these five things:</p>
+    <ol class="dict-find">
+      <li>Meaning <small>· what it means in Spanish</small></li>
+      <li>Pronunciation <small>· how it sounds</small></li>
+      <li>Past form <small>· what you use for yesterday</small></li>
+      <li>Past participle <small>· the form with <em>have</em></small></li>
+      <li>Example sentence <small>· a real sentence using it</small></li>
+    </ol>
+  </section>
+
+  <!-- 4 · GRAMMAR -->
+  <section id="grammar" data-od-id="section-grammar">
+    <div class="kicker">4 · Grammar</div>
+    <h2>Present → Past → Past participle</h2>
+    <p class="section-note">One verb, three moments: I do it, I did it, I have done it.</p>
+
+    <div class="gram-grid" data-od-id="grammar-grid">
+      <div class="gram-card">
+        <div class="tag">Present</div>
+        <p class="sen">I work every day.</p>
+        <p class="gls">Trabajo todos los días.</p>
+        <p class="sen" style="margin-top:14px">I wake up at 6 a.m.</p>
+        <p class="gls">Me despierto a las 6 a. m.</p>
+      </div>
+      <div class="gram-card">
+        <div class="tag">Past</div>
+        <p class="sen">I worked yesterday.</p>
+        <p class="gls">Ayer trabajé.</p>
+        <p class="sen" style="margin-top:14px">I woke up at 6 a.m.</p>
+        <p class="gls">Me desperté a las 6 a. m.</p>
+      </div>
+      <div class="gram-card">
+        <div class="tag">Past participle</div>
+        <p class="sen">I have worked here for two years.</p>
+        <p class="gls">He trabajado aquí durante dos años.</p>
+        <p class="sen" style="margin-top:14px">I have woken up early all week.</p>
+        <p class="gls">Me he despertado temprano toda la semana.</p>
+      </div>
+    </div>
+
+    <p class="gram-note"><strong>A simple rule:</strong> regular verbs add <em>-ed</em> (work → worked → worked). Irregular verbs change in other ways — like <em>wake up → woke up → woken up</em> — so you just need to learn them. <span style="color:var(--muted)">Los verbos irregulares cambian su forma; hay que memorizarlos.</span></p>
+  </section>
+
+  <!-- 5 · COMPREHENSION -->
+  <section id="comprehension" data-od-id="section-comprehension">
+    <div class="kicker">5 · Video comprehension</div>
+    <h2>Did you understand the video?</h2>
+    <p class="section-note">Click a question to check your answer. If you are not sure, watch the video again.</p>
+
+    <details class="q" data-od-id="comprehension-q-time">
+      <summary>What time does the person wake up?</summary>
+      <p class="ans">At <b>6 a.m.</b> — in the off-season.</p>
+    </details>
+    <details class="q" data-od-id="comprehension-q-go">
+      <summary>What does he go to do?</summary>
+      <p class="ans">He goes to <b>train and work out</b>.</p>
+    </details>
+    <details class="q" data-od-id="comprehension-q-friends">
+      <summary>What are his friends doing?</summary>
+      <p class="ans">They are <b>sleeping in and eating pancakes</b>.</p>
+    </details>
+    <details class="q" data-od-id="comprehension-q-life">
+      <summary>What does he say about life?</summary>
+      <p class="ans">He says <b>life is hard</b> — and that is OK.</p>
+    </details>
+    <details class="q" data-od-id="comprehension-q-special">
+      <summary>Does he say you have to be special?</summary>
+      <p class="ans">No, he doesn't. You <b>don't have to be special</b>.</p>
+    </details>
+    <details class="q" data-od-id="comprehension-q-qualities">
+      <summary>What three qualities does he mention?</summary>
+      <p class="ans">Being <b>consistent, determined, and willing to work for it</b>.</p>
+    </details>
+    <details class="q" data-od-id="comprehension-q-shortcuts">
+      <summary>What does “No shortcuts” mean?</summary>
+      <p class="ans">There is no easy way: <b>you have to work for what you want</b>.</p>
+    </details>
+  </section>
+
+  <!-- 6 · VERB EXERCISES -->
+  <section id="exercises" data-od-id="section-exercises">
+    <div class="kicker">6 · Verb exercises</div>
+    <h2>Put the verbs to work</h2>
+    <p class="section-note">Six short exercises. Use the table from section 2 whenever you need it.</p>
+
+    <!-- Ex 1 -->
+    <div class="ex-card" data-od-id="exercise-1">
+      <div class="ex-head">
+        <h3>Exercise 1 — Complete the sentence</h3>
+        <span class="step">A1</span>
+      </div>
+      <p class="ex-instr">Type the correct verb in each gap, then press Check. You can try again as many times as you like. <i style="color:var(--muted)">Usa la forma correcta del verbo.</i></p>
+      <ol class="ex-list">
+        <li><span class="num">1.</span> Every day I <input class="din" type="text" data-answer="wake up" aria-label="gap 1" autocomplete="off" spellcheck="false"> at 6 a.m. <i>(wake up)</i></li>
+        <li><span class="num">2.</span> Yesterday he <input class="din" type="text" data-answer="went" aria-label="gap 2" autocomplete="off" spellcheck="false"> to the gym. <i>(go)</i></li>
+        <li><span class="num">3.</span> She has <input class="din" type="text" data-answer="eaten" aria-label="gap 3" autocomplete="off" spellcheck="false"> three pancakes today. <i>(eat)</i></li>
+        <li><span class="num">4.</span> My friends <input class="din" type="text" data-answer="understand" aria-label="gap 4" autocomplete="off" spellcheck="false"> that life is hard. <i>(understand)</i></li>
+        <li><span class="num">5.</span> I <input class="din" type="text" data-answer="work out" aria-label="gap 5" autocomplete="off" spellcheck="false"> with my team on Mondays. <i>(work out)</i></li>
+      </ol>
+      <div class="actions">
+        <button type="button" class="action primary" data-check="e1">Check</button>
+        <button type="button" class="action" data-clear="e1">Clear</button>
+      </div>
+      <p class="score" data-score="e1" hidden></p>
+    </div>
+
+    <!-- Ex 2 -->
+    <div class="ex-card" data-od-id="exercise-2">
+      <div class="ex-head">
+        <h3>Exercise 2 — Present or past?</h3>
+        <span class="step">A1</span>
+      </div>
+      <p class="ex-instr">Tap the correct form: <em>present</em> for habits, <em>past</em> for finished actions. A wrong tap turns red — just try another. <i style="color:var(--muted)">¿Presente o pasado?</i></p>
+      <ol class="ex-list">
+        <li><span class="num">1.</span> Yesterday I <button class="pick" data-ok="0">wake</button> <button class="pick" data-ok="1">woke</button> up at 6 a.m.</li>
+        <li><span class="num">2.</span> I <button class="pick" data-ok="0">go</button> <button class="pick" data-ok="1">went</button> to train every morning.</li>
+        <li><span class="num">3.</span> Last Saturday my friends <button class="pick" data-ok="0">sleep</button> <button class="pick" data-ok="1">slept</button> in until 11.</li>
+        <li><span class="num">4.</span> Right now I <button class="pick" data-ok="0">understand</button> <button class="pick" data-ok="1">understood</button> the message. <i>(present!)</i></li>
+        <li><span class="num">5.</span> When I was a kid, I <button class="pick" data-ok="0">work</button> <button class="pick" data-ok="1">worked</button> every summer.</li>
+      </ol>
+      <div class="actions">
+        <button type="button" class="action" data-clear="e2">Clear</button>
+      </div>
+      <p class="score" data-score="e2">0 / 5 correct</p>
+    </div>
+
+    <!-- Ex 3 -->
+    <div class="ex-card" data-od-id="exercise-3">
+      <div class="ex-head">
+        <h3>Exercise 3 — Choose the past participle</h3>
+        <span class="step">A1</span>
+      </div>
+      <p class="ex-instr">These sentences use <em>have / has</em> — so you need the past participle. Keep tapping until the whole line turns green. <i style="color:var(--muted)">Con have/has se usa el past participle.</i></p>
+      <ol class="ex-list">
+        <li><span class="num">1.</span> I have <button class="pick" data-ok="1">woken up</button> <button class="pick" data-ok="0">woke up</button> early all week.</li>
+        <li><span class="num">2.</span> They have <button class="pick" data-ok="1">eaten</button> <button class="pick" data-ok="0">ate</button> before training.</li>
+        <li><span class="num">3.</span> He has <button class="pick" data-ok="1">gone</button> <button class="pick" data-ok="0">went</button> to work out today.</li>
+        <li><span class="num">4.</span> We have <button class="pick" data-ok="1">known</button> <button class="pick" data-ok="0">knew</button> this for years.</li>
+        <li><span class="num">5.</span> She has <button class="pick" data-ok="1">understood</button> <button class="pick" data-ok="0">understand</button> the lesson.</li>
+      </ol>
+      <div class="actions">
+        <button type="button" class="action" data-clear="e3">Clear</button>
+      </div>
+      <p class="score" data-score="e3">0 / 5 correct</p>
+    </div>
+
+    <!-- Ex 4 -->
+    <div class="ex-card" data-od-id="exercise-4">
+      <div class="ex-head">
+        <h3>Exercise 4 — Match the verb with its meaning</h3>
+        <span class="step">A1</span>
+      </div>
+      <p class="ex-instr">Choose the Spanish meaning for each English verb, then press Check. Change any wrong answer and check again. <i style="color:var(--muted)">Elige el significado correcto.</i></p>
+      <ol class="ex-list" data-od-id="exercise-matcher">
+        <li><span class="num">1.</span> wake up
+          <select class="match" data-answer="despertarse">
+            <option value="">— choose —</option>
+            <option>comer</option>
+            <option>entender</option>
+            <option>despertarse</option>
+            <option>dormir hasta tarde</option>
+            <option>entrenar · hacer ejercicio</option>
+          </select>
+        </li>
+        <li><span class="num">2.</span> work out
+          <select class="match" data-answer="entrenar · hacer ejercicio">
+            <option value="">— choose —</option>
+            <option>comer</option>
+            <option>entrenar · hacer ejercicio</option>
+            <option>despertarse</option>
+            <option>entender</option>
+            <option>dormir hasta tarde</option>
+          </select>
+        </li>
+        <li><span class="num">3.</span> sleep in
+          <select class="match" data-answer="dormir hasta tarde">
+            <option value="">— choose —</option>
+            <option>entrenar · hacer ejercicio</option>
+            <option>dormir hasta tarde</option>
+            <option>comer</option>
+            <option>despertarse</option>
+            <option>entender</option>
+          </select>
+        </li>
+        <li><span class="num">4.</span> eat
+          <select class="match" data-answer="comer">
+            <option value="">— choose —</option>
+            <option>entender</option>
+            <option>despertarse</option>
+            <option>comer</option>
+            <option>dormir hasta tarde</option>
+            <option>entrenar · hacer ejercicio</option>
+          </select>
+        </li>
+        <li><span class="num">5.</span> understand
+          <select class="match" data-answer="entender">
+            <option value="">— choose —</option>
+            <option>dormir hasta tarde</option>
+            <option>entender</option>
+            <option>entrenar · hacer ejercicio</option>
+            <option>comer</option>
+            <option>despertarse</option>
+          </select>
+        </li>
+      </ol>
+      <div class="actions">
+        <button type="button" class="action primary" data-check="e4">Check</button>
+        <button type="button" class="action" data-clear="e4">Clear</button>
+      </div>
+      <p class="score" data-score="e4" hidden></p>
+    </div>
+
+    <!-- Ex 5 -->
+    <div class="ex-card" data-od-id="exercise-5">
+      <div class="ex-head">
+        <h3>Exercise 5 — Translate into English</h3>
+        <span class="step">A1</span>
+      </div>
+      <p class="ex-instr">Write each sentence in English, then press Check. Fix the red ones and try again. <i style="color:var(--muted)">Traduce al inglés.</i></p>
+      <ol class="translate">
+        <li>
+          <p class="from">Me despierto a las 6 a. m. <i>— (wake up)</i></p>
+          <input class="wline" type="text" data-answer="I wake up at 6 a.m.|I wake up at six a.m." placeholder="Write it in English…" aria-label="Translation 1" autocomplete="off" spellcheck="false">
+        </li>
+        <li>
+          <p class="from">Ayer fui a entrenar. <i>— (go, past)</i></p>
+          <input class="wline" type="text" data-answer="Yesterday I went to train." placeholder="Write it in English…" aria-label="Translation 2" autocomplete="off" spellcheck="false">
+        </li>
+        <li>
+          <p class="from">He trabajado aquí durante dos años. <i>— (work, with have)</i></p>
+          <input class="wline" type="text" data-answer="I have worked here for two years." placeholder="Write it in English…" aria-label="Translation 3" autocomplete="off" spellcheck="false">
+        </li>
+        <li>
+          <p class="from">Todos mis amigos duermen hasta tarde. <i>— (sleep in)</i></p>
+          <input class="wline" type="text" data-answer="All my friends sleep in.|All my friends are sleeping in." placeholder="Write it in English…" aria-label="Translation 4" autocomplete="off" spellcheck="false">
+        </li>
+        <li>
+          <p class="from">No tienes que ser especial. <i>— (have to)</i></p>
+          <input class="wline" type="text" data-answer="You don't have to be special.|You do not have to be special." placeholder="Write it in English…" aria-label="Translation 5" autocomplete="off" spellcheck="false">
+        </li>
+      </ol>
+      <div class="actions">
+        <button type="button" class="action primary" data-check="e5">Check</button>
+        <button type="button" class="action" data-clear="e5">Clear</button>
+      </div>
+      <p class="score" data-score="e5" hidden></p>
+    </div>
+
+    <!-- Ex 6 -->
+    <div class="ex-card" data-od-id="exercise-6">
+      <div class="ex-head">
+        <h3>Exercise 6 — Make your own sentences</h3>
+        <span class="step">B1</span>
+      </div>
+      <p class="ex-instr">Write one true sentence about you with each verb. Aim for at least 4 words, then say them aloud. <i style="color:var(--muted)">Escribe frases verdaderas sobre ti.</i></p>
+      <ol class="ex-list">
+        <li><span class="num">1.</span> <input class="wline" type="text" placeholder="Use ‘wake up’ — Present tense…" aria-label="Sentence with wake up" autocomplete="off"><span class="wc"></span></li>
+        <li><span class="num">2.</span> <input class="wline" type="text" placeholder="Use ‘work out’ — Present tense…" aria-label="Sentence with work out" autocomplete="off"><span class="wc"></span></li>
+        <li><span class="num">3.</span> <input class="wline" type="text" placeholder="Use ‘have to’ — Any tense…" aria-label="Sentence with have to" autocomplete="off"><span class="wc"></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7 · LISTENING -->
+  <section id="listening" data-od-id="section-listening">
+    <div class="kicker">7 · Listening practice</div>
+    <h2>Listen it three times, three ways</h2>
+    <p class="section-note">Use the buttons above the video to change the subtitles. Each time you watch, your ears do a little more work.</p>
+
+    <div class="card">
+      <p><strong>Stage 1 · Listen</strong><br>
+      <span style="color:var(--muted)">Watch the whole video with the subtitles <em>off</em>. What words can you catch? Escucha solo, sin leer.</span></p>
+    </div>
+    <div class="card">
+      <p><strong>Stage 2 · Listen + Read</strong><br>
+      <span style="color:var(--muted)">Watch again with English and Spanish subtitles on. Read along while you listen. Ahora escucha y lee a la vez.</span></p>
+    </div>
+    <div class="card">
+      <p><strong>Stage 3 · Listen + Complete</strong><br>
+      <span style="color:var(--muted)">Watch a third time with the blanks mode. Type the missing words as you hear them, then press Check.</span></p>
+      <button type="button" class="action" id="gotoBlanks" style="margin-top:12px">Go to Stage 3</button>
+    </div>
+  </section>
+
+  <!-- 8 · SPEAKING -->
+  <section id="speaking" data-od-id="section-speaking">
+    <div class="kicker">8 · Speaking practice</div>
+    <h2>Now, about your life</h2>
+    <p class="section-note">Answer out loud with complete sentences. There are no wrong answers here.</p>
+    <ol class="ex-list">
+      <li><span class="num">1.</span> What time do you wake up?</li>
+      <li><span class="num">2.</span> Do you work out?</li>
+      <li><span class="num">3.</span> What do you do every day?</li>
+      <li><span class="num">4.</span> What are you working for?</li>
+      <li><span class="num">5.</span> What do you do when something is difficult?</li>
+    </ol>
+    <p class="gram-note">Tip: answer using the verbs from this lesson — <em>wake up, go, work out, sleep in, eat, understand, work</em>.</p>
+  </section>
+
+  <!-- 9 · FINAL CHALLENGE -->
+  <section id="challenge" data-od-id="section-challenge">
+    <div class="kicker">9 · Final challenge</div>
+    <h2>Three verbs, nine sentences</h2>
+    <p class="section-note">Choose any <strong>3 verbs</strong> from the lesson. For each one, write a present sentence, a past sentence, and a past-participle sentence. Then say all nine out loud — with no shortcuts.</p>
+
+    <div class="table-scroll">
+      <table class="ch-table">
+        <thead>
+          <tr>
+            <th>Verb</th>
+            <th>Present sentence</th>
+            <th>Past sentence</th>
+            <th>Past-participle sentence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" placeholder="1st verb…" aria-label="First verb"></td>
+            <td><input type="text" placeholder="I …" aria-label="Present sentence"></td>
+            <td><input type="text" placeholder="I …" aria-label="Past sentence"></td>
+            <td><input type="text" placeholder="I have …" aria-label="Past participle sentence"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="2nd verb…" aria-label="Second verb"></td>
+            <td><input type="text" placeholder="I …" aria-label="Present sentence 2"></td>
+            <td><input type="text" placeholder="I …" aria-label="Past sentence 2"></td>
+            <td><input type="text" placeholder="I have …" aria-label="Past participle sentence 2"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="3rd verb…" aria-label="Third verb"></td>
+            <td><input type="text" placeholder="I …" aria-label="Present sentence 3"></td>
+            <td><input type="text" placeholder="I …" aria-label="Past sentence 3"></td>
+            <td><input type="text" placeholder="I have …" aria-label="Past participle sentence 3"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer data-od-id="lesson-footer">
+  <div class="wrap">
+    <span>Lesson by Diego Monduela · Learn English with a Short Video</span>
+    <span>15–20 minutes · A1–A2</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var SUBTITLES = [
+    {
+      s: 0, e: 5,
+      en: "It's hard when you're young to wake up in the off-season at 6 a.m. to go train and work out.",
+      es: "Es difícil cuando eres joven: levantarte a las 6 a. m. en temporada baja para ir a entrenar y hacer ejercicio.",
+      short: 'Wake up and go train'
+    },
+    {
+      s: 5, e: 10,
+      en: "Knowing that all your friends are sleeping in and eating pancakes, but understand this, life is hard.",
+      es: "Sabiendo que todos tus amigos están durmiendo hasta tarde y comiendo panqueques, pero entiende esto: la vida es difícil.",
+      short: 'Friends sleeping in'
+    },
+    {
+      s: 10, e: 17,
+      en: "To be successful at anything, the truth is, you don't have to be special.",
+      es: "Para tener éxito en cualquier cosa, la verdad es que no tienes que ser especial.",
+      short: 'You don\u2019t have to be special'
+    },
+    {
+      s: 17, e: 24,
+      en: "You just have to be what most people aren't. Consistent, determined, and willing to work for it.",
+      es: "Solo tienes que ser lo que la mayoría de la gente no es: constante, decidido y dispuesto a trabajar para lograrlo.",
+      short: 'Consistent, determined'
+    },
+    {
+      s: 24, e: 1e9,
+      en: 'No shortcuts.',
+      es: 'No hay atajos.',
+      short: 'No shortcuts'
+    }
+  ];
+
+  var GAPS = [
+    ["It's", 'hard', "when", "you're", 'young', 'to', { a: 'wake up' }, 'in', 'the', 'off-season', 'at', '6', 'a.m.', 'to', 'go', 'train', 'and', { a: 'work out' }, '.'],
+    ['Knowing', 'that', 'all', 'your', 'friends', 'are', 'sleeping', 'in', 'and', { a: 'eating' }, 'pancakes,', 'but', 'understand', 'this,', 'life', 'is', 'hard.'],
+    ['To', 'be', 'successful', 'at', 'anything,', 'the', 'truth', 'is,', 'you', "don't", 'have', 'to', 'be', { a: 'special' }, '.'],
+    ['You', 'just', { a: 'have' }, 'to', 'be', 'what', 'most', 'people', "aren't.", 'Consistent,', { a: 'determined,' }, 'and', 'willing', 'to', 'work', 'for', 'it.'],
+    ['No', { a: 'shortcuts' }, '.']
+  ];
+
+  var video = document.getElementById('lessonVideo');
+  var subContent = document.getElementById('subContent');
+  var subActions = document.getElementById('subActions');
+  var tlList = document.getElementById('tlList');
+  var mode = 'both';
+  var checkedBlanks = false;
+  var curIdx = -1;
+
+  function fmt(t) {
+    var m = Math.floor(t / 60);
+    var s = Math.floor(t % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function fmtEnd(e) { return e > 1e8 ? 'end' : fmt(e); }
+
+  function renderTimeline() {
+    var html = '';
+    SUBTITLES.forEach(function (sub, i) {
+      var end = sub.e > 1e8 ? 'end' : fmt(sub.e);
+      html += '<button type="button" class="tl-row" data-i="' + i + '" data-od-id="tl-row-' + i + '">' +
+        '<span class="ts">' + fmt(sub.s) + '–' + end + '</span>' +
+        '<span class="lb">' + sub.short + '</span>' +
+        '</button>';
+    });
+    tlList.innerHTML = html;
+    tlList.addEventListener('click', function (e) {
+      var row = e.target.closest('.tl-row');
+      if (!row) return;
+      var i = +row.getAttribute('data-i');
+      video.currentTime = SUBTITLES[i].s;
+      video.play();
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function buildGapHtml(i) {
+    var tokens = GAPS[i];
+    var html = '';
+    tokens.forEach(function (tok) {
+      if (typeof tok === 'string') {
+        html += escapeHtml(tok) + ' ';
+      } else {
+        html += '<input class="gap" data-answer="' + tok.a + '" type="text" maxlength="40" placeholder="……"> ';
+      }
+    });
+    return html.trim();
+  }
+
+  function setMode(m, button) {
+    mode = m;
+    checkedBlanks = false;
+    Array.prototype.forEach.call(document.querySelectorAll('.modebar button'), function (b) {
+      b.classList.remove('active');
+    });
+    if (button) button.classList.add('active');
+    updateStage(true);
+  }
+
+  function updateStage(force) {
+    var t = video.currentTime;
+    var i = -1;
+    for (var k = 0; k < SUBTITLES.length; k++) {
+      if (t >= SUBTITLES[k].s && t < SUBTITLES[k].e) { i = k; break; }
+    }
+    if (mode === 'blanks' && i !== curIdx) checkedBlanks = false;
+    if (i === curIdx && !force) { updateTimelineHighlight(); return; }
+    curIdx = i;
+
+    var subActionsHtml = '';
+    if (mode === 'off') {
+      subContent.innerHTML = '<p class="sub-empty">Listening… subtitles are off. Just watch and listen.</p>';
+      subActionsHtml = '';
+    } else if (i < 0) {
+      subContent.innerHTML = '<p class="sub-empty">Press play — the subtitles will appear here.</p>';
+    } else if (mode === 'both') {
+      subContent.innerHTML =
+        '<p class="sub-ts">' + fmt(SUBTITLES[i].s) + '–' + fmtEnd(SUBTITLES[i].e) + '</p>' +
+        '<p class="sub-en">' + escapeHtml(SUBTITLES[i].en) + '</p>' +
+        '<p class="sub-es">' + escapeHtml(SUBTITLES[i].es) + '</p>';
+    } else if (mode === 'blanks') {
+      if (!checkedBlanks) {
+        subContent.innerHTML =
+          '<p class="sub-ts">' + fmt(SUBTITLES[i].s) + '–' + fmtEnd(SUBTITLES[i].e) + '</p>' +
+          '<p class="sub-en">' + buildGapHtml(i) + '</p>' +
+          '<p class="sub-es">' + escapeHtml(SUBTITLES[i].es) + '</p>';
+        subActionsHtml = '<button type="button" class="action" id="blanksCheck">Check my gaps</button>';
+      } else {
+        var seg = SUBTITLES[i];
+        var raw = seg.en;
+        var order = tokensWithAnswers(i);
+        order.forEach(function (g) {
+          raw = raw.replace(g.a, '<span class="fillGap">' + g.a + '</span>');
+        });
+        subContent.innerHTML =
+          '<p class="sub-ts">Answer key — ' + fmt(seg.s) + '–' + fmtEnd(seg.e) + '</p>' +
+          '<p class="sub-en">' + raw + '</p>' +
+          '<p class="sub-es">' + escapeHtml(seg.es) + '</p>';
+        subActionsHtml = '';
+      }
+    }
+    subActions.innerHTML = subActionsHtml;
+    var chk = document.getElementById('blanksCheck');
+    if (chk) chk.addEventListener('click', checkBlanks);
+    updateTimelineHighlight();
+  }
+
+  function tokensWithAnswers(i) {
+    return GAPS[i].filter(function (t) { return typeof t !== 'string'; });
+  }
+
+  function checkBlanks() {
+    var inputs = subContent.querySelectorAll('input.gap');
+    if (!inputs.length) return;
+    var allOk = true;
+    Array.prototype.forEach.call(inputs, function (inp) {
+      var ans = inp.getAttribute('data-answer');
+      var val = inp.value.trim().toLowerCase().replace(/\.$/g, '');
+      if (val === ans.toLowerCase().replace(/,$/g, '')) {
+        inp.classList.add('ok');
+        inp.classList.remove('miss');
+      } else {
+        inp.classList.add('miss');
+        inp.classList.remove('ok');
+        allOk = false;
+      }
+    });
+    if (allOk) {
+      checkedBlanks = true;
+      updateStage(true);
+    }
+  }
+
+  function updateTimelineHighlight() {
+    Array.prototype.forEach.call(tlList.querySelectorAll('.tl-row'), function (row, idx) {
+      row.classList.toggle('active', idx === curIdx);
+    });
+  }
+
+  /* mode buttons */
+  Array.prototype.forEach.call(document.querySelectorAll('.modebar button'), function (b) {
+    b.addEventListener('click', function () { setMode(b.getAttribute('data-mode'), b); });
+  });
+
+  /* goto blanks from listening section */
+  var gb = document.getElementById('gotoBlanks');
+  if (gb) gb.addEventListener('click', function () {
+    var btn = document.getElementById('modeBlanks');
+    setMode('blanks', btn);
+    if (curIdx < 0) { video.currentTime = 0; }
+    video.play();
+  });
+
+  video.addEventListener('timeupdate', updateStage);
+
+  /* ---------- exercise engine ---------- */
+  var APOS = /[\u2018\u2019\u02bc]/g;
+  function norm(s) {
+    return String(s).trim().toLowerCase()
+      .replace(APOS, "'")
+      .replace(/\s+/g, ' ')
+      .replace(/[.!?,;]+$/g, '');
+  }
+  function accepted(inp) {
+    return inp.getAttribute('data-answer').split('|').map(norm);
+  }
+  function showScore(card, res) {
+    var p = card.querySelector('[data-score]');
+    if (!p) return;
+    p.hidden = false;
+    if (res.total && res.ok === res.total) {
+      p.innerHTML = '<b class="done">' + res.ok + ' / ' + res.total + ' correct</b> — perfect. ¡Muy bien!';
+    } else {
+      p.innerHTML = '<b>' + res.ok + ' / ' + res.total + ' correct</b> — fix the red ones and check again.';
+    }
+  }
+  function checkTextInputs(card) {
+    var items = card.querySelectorAll('input.din, input.wline');
+    var ok = 0;
+    Array.prototype.forEach.call(items, function (inp) {
+      var good = accepted(inp).indexOf(norm(inp.value)) !== -1;
+      inp.classList.toggle('ok', good);
+      inp.classList.toggle('miss', !good);
+      if (good) ok++;
+    });
+    return { ok: ok, total: items.length };
+  }
+  function checkSelects(card) {
+    var sels = card.querySelectorAll('select.match');
+    var ok = 0;
+    Array.prototype.forEach.call(sels, function (sel) {
+      var good = norm(sel.value) === norm(sel.getAttribute('data-answer'));
+      sel.classList.toggle('ok', good);
+      sel.classList.toggle('miss', !good);
+      if (good) ok++;
+    });
+    return { ok: ok, total: sels.length };
+  }
+  function pickScore(card) {
+    var total = 0, ok = 0;
+    Array.prototype.forEach.call(card.querySelectorAll('ol.ex-list > li'), function (li) {
+      var picks = li.querySelectorAll('.pick');
+      if (!picks.length) return;
+      total++;
+      if (li.querySelector('.pick.ok')) ok++;
+    });
+    return { ok: ok, total: total };
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-check]'), function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.ex-card');
+      var res = btn.getAttribute('data-check') === 'e4' ? checkSelects(card) : checkTextInputs(card);
+      showScore(card, res);
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-clear]'), function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.ex-card');
+      var cid = btn.getAttribute('data-clear');
+      Array.prototype.forEach.call(card.querySelectorAll('input'), function (i) {
+        i.value = '';
+        i.classList.remove('ok', 'miss');
+      });
+      Array.prototype.forEach.call(card.querySelectorAll('select.match'), function (s) {
+        s.value = '';
+        s.classList.remove('ok', 'miss');
+      });
+      Array.prototype.forEach.call(card.querySelectorAll('.pick'), function (p) {
+        p.classList.remove('ok', 'miss');
+        p.disabled = false;
+      });
+      Array.prototype.forEach.call(card.querySelectorAll('.wc'), function (w) {
+        w.textContent = '';
+        w.classList.remove('ok');
+      });
+      var sc = card.querySelector('[data-score]');
+      if (sc) {
+        if (cid === 'e2' || cid === 'e3') { sc.hidden = false; sc.innerHTML = '0 / 5 correct'; }
+        else { sc.hidden = true; sc.innerHTML = ''; }
+      }
+    });
+  });
+
+  /* exercise 2 & 3 — taps are retryable */
+  Array.prototype.forEach.call(document.querySelectorAll('.pick'), function (btn) {
+    btn.addEventListener('click', function () {
+      var li = btn.closest('li');
+      var card = btn.closest('.ex-card');
+      var picks = li.querySelectorAll('.pick');
+      if (btn.getAttribute('data-ok') === '1') {
+        Array.prototype.forEach.call(picks, function (p) {
+          p.classList.remove('miss');
+          p.disabled = true;
+          p.classList.toggle('ok', p === btn);
+        });
+      } else {
+        Array.prototype.forEach.call(picks, function (p) {
+          p.classList.remove('ok', 'miss');
+          p.disabled = false;
+        });
+        btn.classList.add('miss');
+      }
+      showScore(card, pickScore(card));
+    });
+  });
+
+  /* exercise 6 — live word count */
+  Array.prototype.forEach.call(document.querySelectorAll('.ex-card[data-od-id="exercise-6"] .wline'), function (inp) {
+    inp.addEventListener('input', function () {
+      var wc = inp.parentElement.querySelector('.wc');
+      var n = inp.value.trim() ? inp.value.trim().split(/\s+/).length : 0;
+      inp.classList.toggle('ok', n >= 4);
+      if (wc) {
+        wc.textContent = n ? n + ' words' : '';
+        wc.classList.toggle('ok', n >= 4);
+      }
+    });
+  });
+
+  renderTimeline();
+  updateStage(true);
+})();
+</script>
+</body>
+</html>
