@@ -1,0 +1,2085 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>English with Diego — Video Lesson</title>
+  <style>
+    :root {
+      --bg: oklch(99% 0.002 240);
+      --surface: oklch(100% 0 0);
+      --fg: oklch(18% 0.012 250);
+      --muted: oklch(54% 0.012 250);
+      --border: oklch(92% 0.005 250);
+      --accent: oklch(58% 0.18 255);
+      --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), oklch(58% 0.15 140), oklch(58% 0.15 40));
+      z-index: 1000;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+      z-index: 1000;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 24px 24px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, oklch(98% 0.001 250) 0%, var(--bg) 100%);
+    }
+    .header__tutor {
+      font-size: 13px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .header__title {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .header__meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Video Player — Hero Section */
+    .video-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 24px;
+    }
+    .video-hero {
+      position: relative;
+      width: 100%;
+      background: #0a0a0a;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+    }
+    .video-hero video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .video-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.88) 100%);
+      pointer-events: none;
+    }
+    .video-hero__section-label {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 6px;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .video-hero__info {
+      position: absolute;
+      bottom: 56px;
+      left: 20px;
+      right: 20px;
+      pointer-events: none;
+    }
+    .video-hero__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+    .video-hero__subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 4px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    }
+    .video-hero__captions {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 600px;
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: 2;
+    }
+    .video-hero__captions.visible { opacity: 1; }
+    .video-hero__captions-en {
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
+      line-height: 1.4;
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+    .video-hero__captions-es {
+      font-size: clamp(13px, 2vw, 17px);
+      color: rgba(255,255,255,0.8);
+      margin-top: 6px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+      padding: 4px 12px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+    .video-hero__captions.hidden { display: none; }
+    .video-controls__btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--fg);
+      padding: 6px 8px;
+      border-radius: 8px;
+      transition: all 0.15s;
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+    }
+    .video-controls__btn:hover { background: var(--border); color: var(--accent); }
+    .video-controls__btn.active { color: var(--accent); }
+    .video-controls__speed {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 36px;
+      text-align: center;
+    }
+    .video-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      flex-wrap: wrap;
+    }
+    .video-controls button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: var(--fg);
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: all 0.15s;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+    }
+    .video-controls button:hover { background: var(--border); color: var(--accent); }
+    .progress-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 160px;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+    }
+    .progress-bar__fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.25s;
+      position: relative;
+    }
+    .progress-bar__fill::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.35);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .progress-bar:hover .progress-bar__fill::after { opacity: 1; }
+    .time-display {
+      font-size: 13px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .chapter-dots {
+      display: flex;
+      gap: 5px;
+      margin-left: 8px;
+    }
+    .chapter-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .chapter-dot:hover { background: oklch(70% 0.15 255); }
+    .chapter-dot.active { background: var(--accent); transform: scale(1.4); box-shadow: 0 0 8px rgba(92,109,255,0.4); }
+
+    /* Timestamps */
+    .timestamps {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 24px 32px;
+    }
+    .timestamps h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .timestamp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+    .timestamp-btn {
+      display: block;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--fg);
+      transition: all 0.15s;
+    }
+    .timestamp-btn:hover {
+      border-color: var(--accent);
+      background: oklch(97% 0.01 255);
+    }
+    .timestamp-btn__time {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 13px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .timestamp-btn__preview {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Subtitles */
+    .subtitles-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .subtitles-section h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    .subtitle-block {
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .subtitle-block:hover {
+      border-color: var(--accent);
+    }
+    .subtitle-block__time {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .subtitle-block__english {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .subtitle-block__spanish {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.5;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+    }
+
+    /* Dictionary */
+    .dictionary-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .dictionary-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .dictionary-search {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      background: var(--surface);
+      color: var(--fg);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .dictionary-search:focus {
+      border-color: var(--accent);
+    }
+    .dictionary-search::placeholder {
+      color: var(--muted);
+    }
+    .dictionary-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .dictionary-tab {
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+    .dictionary-tab:hover {
+      border-color: var(--accent);
+      color: var(--fg);
+    }
+    .dictionary-tab.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .dictionary-stats {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .dictionary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .dict-card {
+      perspective: 800px;
+      height: 100px;
+    }
+    .dict-card__inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .dict-card.flipped .dict-card__inner {
+      transform: rotateY(180deg);
+    }
+    .dict-card__face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      text-align: center;
+    }
+    .dict-card__front {
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .dict-card__front .dict-word {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 4px;
+    }
+    .dict-card__front .dict-category {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .dict-card__back {
+      background: oklch(97% 0.02 255);
+      border: 1px solid var(--accent);
+      transform: rotateY(180deg);
+    }
+    .dict-card__back .dict-word {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .dict-card__back .dict-meaning {
+      font-size: 15px;
+      color: var(--fg);
+    }
+    .dict-card__learned {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .dict-card.learned .dict-card__learned {
+      opacity: 1;
+    }
+    .dict-card__check {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 2px 8px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      transition: all 0.15s;
+    }
+    .dict-card__check:hover { border-color: var(--accent); color: var(--accent); }
+    .dict-card.learned .dict-card__check {
+      background: oklch(95% 0.05 140);
+      border-color: #17a34a;
+      color: #17a34a;
+    }
+    .dict-card__category-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 6px;
+    }
+    .dict-card__category-badge.verb { background: oklch(90% 0.08 255); color: oklch(40% 0.15 255); }
+    .dict-card__category-badge.noun { background: oklch(90% 0.08 140); color: oklch(35% 0.15 140); }
+    .dict-card__category-badge.adjective { background: oklch(90% 0.08 40); color: oklch(45% 0.15 40); }
+
+    /* Dictionary content section */
+    .dictionary-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 24px 32px;
+    }
+
+    /* Grammar */
+    .grammar-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .grammar-section h3 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .grammar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+    .grammar-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .grammar-card h4 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .grammar-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .grammar-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .grammar-card th {
+      text-align: left;
+      padding: 6px 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-bottom: 2px solid var(--border);
+    }
+    .grammar-card td {
+      padding: 6px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .grammar-card td:first-child {
+      font-weight: 500;
+    }
+    .grammar-card td:last-child {
+      color: var(--muted);
+    }
+    .grammar-card tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .grammar-card__tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 5px;
+      margin-bottom: 6px;
+    }
+    .grammar-card__tag.present { background: oklch(90% 0.08 255); color: oklch(40% 0.15 255); }
+    .grammar-card__tag.past { background: oklch(90% 0.08 30); color: oklch(45% 0.15 30); }
+    .grammar-card__tag.perfect { background: oklch(90% 0.08 140); color: oklch(35% 0.15 140); }
+    .grammar-card__tag.future { background: oklch(90% 0.08 40); color: oklch(45% 0.15 40); }
+    .grammar-card__formula {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+      padding: 6px 12px;
+      background: oklch(97% 0.03 255);
+      border-radius: 6px;
+      font-family: monospace;
+    }
+    .grammar-card__desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .grammar-card__examples {
+      font-size: 13px;
+      color: var(--fg);
+      margin-bottom: 12px;
+      padding-left: 12px;
+      border-left: 2px solid var(--border);
+      line-height: 1.6;
+    }
+
+    /* Exercises */
+    .exercises-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .exercises-section h3 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .exercise-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .exercise-card h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .exercise-card p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .exercise-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .exercise-option {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--fg);
+      transition: all 0.15s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .exercise-option:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+    .exercise-option.selected {
+      border-color: var(--accent);
+      background: oklch(95% 0.05 255);
+      color: var(--accent);
+    }
+    .exercise-option.correct {
+      border-color: #17a34a;
+      background: oklch(95% 0.05 140);
+      color: #17a34a;
+    }
+    .exercise-option.wrong {
+      border-color: #dc2626;
+      background: oklch(95% 0.05 0);
+      color: #dc2626;
+    }
+    .exercise-feedback {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+    }
+    .exercise-feedback.correct { color: #17a34a; display: block; }
+    .exercise-feedback.wrong { color: #dc2626; display: block; }
+
+    /* Practice buttons */
+    .practice-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .practice-section h3 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .practice-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .practice-card p {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn--primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn--primary:hover {
+      filter: brightness(1.1);
+    }
+    .btn--secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .btn--secondary:hover {
+      background: oklch(95% 0.05 255);
+    }
+    .btn--small {
+      padding: 6px 14px;
+      font-size: 13px;
+    }
+
+    /* Practice questions */
+    .practice-questions {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 12px;
+      display: none;
+    }
+    .practice-questions.visible { display: block; }
+    .practice-questions h5 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+    .practice-questions label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .practice-questions input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    /* Final Review */
+    .review-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    .review-section h3 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .review-card h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .review-card p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .review-quiz {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 16px;
+    }
+    .review-quiz h4 {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .review-quiz label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+    .review-quiz select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--fg);
+      margin-bottom: 16px;
+    }
+    .review-quiz .btn {
+      margin-top: 8px;
+    }
+    .review-result {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Section headers */
+    .section-header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+      position: relative;
+    }
+    .section-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 40px; height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-header h2 {
+      font-size: clamp(20px, 3vw, 26px);
+      margin-bottom: 4px;
+      padding-left: 12px;
+    }
+    .section-header p {
+      font-size: 15px;
+      color: var(--muted);
+      padding-left: 12px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-top: 1px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer__brand {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .footer__tagline {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header { padding: 24px 16px 20px; }
+      .video-section, .subtitles-section, .dictionary-section,
+      .grammar-section, .exercises-section, .practice-section, .review-section {
+        padding: 20px 16px;
+      }
+      .video-hero__title { font-size: 17px; }
+      .video-hero__subtitle { font-size: 12px; }
+      .video-hero__section-label { font-size: 10px; padding: 3px 10px; top: 10px; left: 12px; }
+      .video-hero__info { bottom: 48px; left: 12px; right: 12px; }
+      .video-controls { padding: 10px 12px; gap: 8px; }
+      .chapter-dot { width: 8px; height: 8px; }
+      .timestamp-grid { grid-template-columns: 1fr; }
+      .exercise-options { flex-direction: column; }
+      .exercise-option { text-align: center; }
+      .practice-card { flex-direction: column; align-items: flex-start; }
+      .grammar-card table { font-size: 13px; }
+    }
+
+    /* Visual separator before sections after video */
+    .section-separator {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-separator::before {
+      content: '';
+      display: block;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-top: 1px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer__brand {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .footer__tagline {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Design polish — card shadows and button lifts */
+    .grammar-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .practice-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .review-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .subtitle-block { box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+    .dict-card { box-shadow: none; }
+    .btn--primary:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); transform: translateY(-1px); }
+    .btn--secondary:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.06); transform: translateY(-1px); }
+
+    /* Utility */
+    .hidden { display: none !important; }
+    .mt-2 { margin-top: 8px; }
+    .mt-4 { margin-top: 16px; }
+    .mb-2 { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <header class="header" data-od-id="header">
+    <p class="header__tutor">Diego Monduela — English Tutor</p>
+    <h1 class="header__title">English with Diego — Video Lesson</h1>
+    <p class="header__meta">A 35-minute video lesson with subtitles, dictionary, grammar and exercises</p>
+  </header>
+
+  <main>
+    <!-- 1. Video Player — Hero Section -->
+    <section class="video-section" data-od-id="video-player">
+      <div class="video-hero" id="videoHero">
+        <video id="lessonVideo" preload="metadata" data-od-id="video-element" aria-label="English lesson video">
+          <source src="pray.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-hero__overlay"></div>
+        <div class="video-hero__section-label" id="sectionLabel">Section 1 — Four things to pray</div>
+        <div class="video-hero__captions" id="videoCaptions">
+          <div class="video-hero__captions-en" id="captionsEn"></div>
+          <div class="video-hero__captions-es" id="captionsEs"></div>
+        </div>
+        <div class="video-hero__info" id="videoInfo">
+          <div class="video-hero__title" id="videoTitle">Four things you should pray</div>
+          <div class="video-hero__subtitle" id="videoSubtitle">Click a timestamp below or a chapter dot to jump</div>
+        </div>
+      </div>
+      <div class="video-controls">
+        <button id="playPauseBtn" title="Play/Pause" aria-label="Play or pause video">&#9654;</button>
+        <button class="video-controls__btn" id="skipBackBtn" title="Skip back 10s" aria-label="Skip back 10 seconds">&#9198;</button>
+        <button class="video-controls__btn" id="skipFwdBtn" title="Skip forward 10s" aria-label="Skip forward 10 seconds">&#9200;</button>
+        <button class="video-controls__btn" id="volumeBtn" title="Mute/Unmute" aria-label="Toggle mute">&#128266;</button>
+        <button class="video-controls__btn" id="captionsBtn" title="Toggle subtitles" aria-label="Toggle subtitles" style="color: var(--accent);">&#9830;</button>
+        <button class="video-controls__btn" id="speedBtn" title="Playback speed" aria-label="Change playback speed">1x</button>
+        <button class="video-controls__btn" id="fullscreenBtn" title="Fullscreen" aria-label="Toggle fullscreen">&#9974;</button>
+        <div class="progress-wrapper">
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-bar__fill" id="progressFill"></div>
+          </div>
+          <div class="chapter-dots" id="chapterDots">
+            <div class="chapter-dot active" data-time="0" title="0:00–0:06"></div>
+            <div class="chapter-dot" data-time="6" title="0:06–0:13"></div>
+            <div class="chapter-dot" data-time="13" title="0:13–0:19"></div>
+            <div class="chapter-dot" data-time="20" title="0:20–0:27"></div>
+            <div class="chapter-dot" data-time="27" title="0:27–0:35"></div>
+          </div>
+        </div>
+        <span class="time-display" id="timeCurrent">0:00</span>
+        <span class="time-display">/</span>
+        <span class="time-display" id="timeTotal">0:35</span>
+      </div>
+    </section>
+
+    <!-- Timestamps -->
+    <div class="section-separator"></div>
+    <section class="timestamps" data-od-id="timestamps">
+      <h3 style="margin-top: 8px;">Jump to Section</h3>
+      <div class="timestamp-grid" id="timestampGrid">
+        <button class="timestamp-btn" data-time="0">
+          <span class="timestamp-btn__time">0:00–0:06</span>
+          <span class="timestamp-btn__preview">Four things to pray</span>
+        </button>
+        <button class="timestamp-btn" data-time="6">
+          <span class="timestamp-btn__time">0:06–0:13</span>
+          <span class="timestamp-btn__preview">Make me better</span>
+        </button>
+        <button class="timestamp-btn" data-time="13">
+          <span class="timestamp-btn__time">0:13–0:19</span>
+          <span class="timestamp-btn__preview">Change my attitude</span>
+        </button>
+        <button class="timestamp-btn" data-time="20">
+          <span class="timestamp-btn__time">0:20–0:27</span>
+          <span class="timestamp-btn__preview">Draw me closer</span>
+        </button>
+        <button class="timestamp-btn" data-time="27">
+          <span class="timestamp-btn__time">0:27–0:35</span>
+          <span class="timestamp-btn__preview">Meaningful days</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. Subtitles -->
+    <section class="subtitles-section" data-od-id="subtitles">
+      <div class="section-header">
+        <h2>Subtitles</h2>
+        <p>English with Spanish translation underneath</p>
+      </div>
+      <div style="max-width:900px; margin:0 auto; padding:16px 24px 32px;">
+        <div class="subtitle-block" data-time="0">
+          <div class="subtitle-block__time">0:00–0:06</div>
+          <div class="subtitle-block__english">Four things you should pray, and I promise your whole day will feel different. Dear God,</div>
+          <div class="subtitle-block__spanish">Cuatro cosas por las que deberías orar, y te prometo que todo tu día se sentirá diferente. Querido Dios,</div>
+        </div>
+        <div class="subtitle-block" data-time="6">
+          <div class="subtitle-block__time">0:06–0:13</div>
+          <div class="subtitle-block__english">Make me a better person. Remove any laziness or procrastination from my mind and body.</div>
+          <div class="subtitle-block__spanish">Hazme una mejor persona. Elimina de mi mente y de mi cuerpo la pereza o la procrastinación.</div>
+        </div>
+        <div class="subtitle-block" data-time="13">
+          <div class="subtitle-block__time">0:13–0:19</div>
+          <div class="subtitle-block__english">Change my attitude, my actions, my thoughts, and the way I respond. Lord, if I'm chasing the wrong things, redirect me.</div>
+          <div class="subtitle-block__spanish">Cambia mi actitud, mis acciones, mis pensamientos y la manera en que respondo. Señor, si estoy persiguiendo las cosas equivocadas, redirígeme.</div>
+        </div>
+        <div class="subtitle-block" data-time="20">
+          <div class="subtitle-block__time">0:20–0:27</div>
+          <div class="subtitle-block__english">God, please draw me closer to what you have destined for my life. If it's not for me, remove it. If they're not for me, reveal it.</div>
+          <div class="subtitle-block__spanish">Dios, por favor acércame más a lo que has destinado para mi vida. Si no es para mí, elimínalo. Si ellos no son para mí, revélalo.</div>
+        </div>
+        <div class="subtitle-block" data-time="27">
+          <div class="subtitle-block__time">0:27–0:35</div>
+          <div class="subtitle-block__english">God, make my days meaningful, my nights peaceful, my home filled with your presence, and my heart closer to you.</div>
+          <div class="subtitle-block__spanish">Dios, haz que mis días tengan sentido, que mis noches sean tranquilas, que mi hogar esté lleno de tu presencia y que mi corazón esté más cerca de ti.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Dictionary -->
+    <section class="dictionary-section" data-od-id="dictionary">
+      <div class="section-header">
+        <h2>English–Spanish Dictionary</h2>
+        <p>Flip cards to reveal meanings — search, filter, and track your progress</p>
+      </div>
+      <div class="dictionary-content">
+        <div class="dictionary-toolbar">
+          <input type="text" class="dictionary-search" id="dictSearch" placeholder="Search a word..." aria-label="Search dictionary">
+          <div class="dictionary-tabs" id="dictTabs">
+            <button class="dictionary-tab active" data-cat="all">All</button>
+            <button class="dictionary-tab" data-cat="verb">Verbs</button>
+            <button class="dictionary-tab" data-cat="noun">Nouns</button>
+            <button class="dictionary-tab" data-cat="adjective">Adjectives</button>
+          </div>
+        </div>
+        <div class="dictionary-stats" id="dictStats">20 words</div>
+        <div class="dictionary-grid" id="dictGrid">
+          <!-- Verbs -->
+          <div class="dict-card" data-cat="verb" data-english="pray">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">pray</span>
+                <span class="dict-category">verb</span>
+                <span class="dict-card__category-badge verb">verb</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">pray</span>
+                <span class="dict-meaning">orar</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="verb" data-english="promise">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">promise</span>
+                <span class="dict-category">verb</span>
+                <span class="dict-card__category-badge verb">verb</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">promise</span>
+                <span class="dict-meaning">prometer</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="verb" data-english="remove">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">remove</span>
+                <span class="dict-category">verb</span>
+                <span class="dict-card__category-badge verb">verb</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">remove</span>
+                <span class="dict-meaning">eliminar / quitar</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="verb" data-english="respond">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">respond</span>
+                <span class="dict-category">verb</span>
+                <span class="dict-card__category-badge verb">verb</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">respond</span>
+                <span class="dict-meaning">responder</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="verb" data-english="chase">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">chase</span>
+                <span class="dict-category">verb</span>
+                <span class="dict-card__category-badge verb">verb</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">chase</span>
+                <span class="dict-meaning">perseguir</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="verb" data-english="redirect">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">redirect</span>
+                <span class="dict-category">verb</span>
+                <span class="dict-card__category-badge verb">verb</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">redirect</span>
+                <span class="dict-meaning">redirigir</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <!-- Nouns -->
+          <div class="dict-card" data-cat="noun" data-english="mind">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">mind</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">mind</span>
+                <span class="dict-meaning">mente</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="body">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">body</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">body</span>
+                <span class="dict-meaning">cuerpo</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="attitude">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">attitude</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">attitude</span>
+                <span class="dict-meaning">actitud</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="actions">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">actions</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">actions</span>
+                <span class="dict-meaning">acciones</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="thoughts">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">thoughts</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">thoughts</span>
+                <span class="dict-meaning">pensamientos</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="laziness">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">laziness</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">laziness</span>
+                <span class="dict-meaning">pereza</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="procrastination">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">procrastination</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">procrastination</span>
+                <span class="dict-meaning">procrastinación</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="presence">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">presence</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">presence</span>
+                <span class="dict-meaning">presencia</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="noun" data-english="heart">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">heart</span>
+                <span class="dict-category">noun</span>
+                <span class="dict-card__category-badge noun">noun</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">heart</span>
+                <span class="dict-meaning">corazón</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <!-- Adjectives -->
+          <div class="dict-card" data-cat="adjective" data-english="different">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">different</span>
+                <span class="dict-category">adjective</span>
+                <span class="dict-card__category-badge adjective">adjective</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">different</span>
+                <span class="dict-meaning">diferente</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="adjective" data-english="better">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">better</span>
+                <span class="dict-category">adjective</span>
+                <span class="dict-card__category-badge adjective">adjective</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">better</span>
+                <span class="dict-meaning">mejor</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="adjective" data-english="wrong">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">wrong</span>
+                <span class="dict-category">adjective</span>
+                <span class="dict-card__category-badge adjective">adjective</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">wrong</span>
+                <span class="dict-meaning">equivocado</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="adjective" data-english="meaningful">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">meaningful</span>
+                <span class="dict-category">adjective</span>
+                <span class="dict-card__category-badge adjective">adjective</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">meaningful</span>
+                <span class="dict-meaning">significativo</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+          <div class="dict-card" data-cat="adjective" data-english="peaceful">
+            <div class="dict-card__inner">
+              <div class="dict-card__face dict-card__front">
+                <span class="dict-word">peaceful</span>
+                <span class="dict-category">adjective</span>
+                <span class="dict-card__category-badge adjective">adjective</span>
+              </div>
+              <div class="dict-card__face dict-card__back">
+                <span class="dict-word">peaceful</span>
+                <span class="dict-meaning">tranquilo / pacífico</span>
+                <button class="dict-card__check" onclick="event.stopPropagation();toggleLearned(this)">✓ Learned</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Grammar -->
+    <section class="grammar-section" data-od-id="grammar">
+      <div class="section-header">
+        <h2>Main Verb Grammar</h2>
+        <p>Important verbs from the video — learn when and how to use each tense</p>
+      </div>
+      <div style="max-width:900px; margin:0 auto; padding:16px 24px 32px;">
+        <div class="grammar-card">
+          <span class="grammar-card__tag present">Present Simple</span>
+          <h4>Present Simple</h4>
+          <p class="grammar-card__desc">Use it for habits, routines, and things that are always true. Something you do regularly.</p>
+          <div class="grammar-card__formula">I + base verb</div>
+          <div class="grammar-card__examples">
+            I pray every morning.<br>
+            She promises to help.<br>
+            He makes good decisions.
+          </div>
+          <table>
+            <thead><tr><th>English</th><th>I ___</th></tr></thead>
+            <tbody>
+              <tr><td>pray</td><td>I pray</td></tr>
+              <tr><td>promise</td><td>I promise</td></tr>
+              <tr><td>remove</td><td>I remove</td></tr>
+              <tr><td>change</td><td>I change</td></tr>
+              <tr><td>respond</td><td>I respond</td></tr>
+              <tr><td>chase</td><td>I chase</td></tr>
+              <tr><td>make</td><td>I make</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grammar-card">
+          <span class="grammar-card__tag past">Past Simple</span>
+          <h4>Past Simple</h4>
+          <p class="grammar-card__desc">Use it for finished actions in the past. Something that happened and is now over.</p>
+          <div class="grammar-card__formula">Subject + past verb</div>
+          <div class="grammar-card__examples">
+            I prayed yesterday.<br>
+            She changed her mind.<br>
+            He chased the dog.
+          </div>
+          <table>
+            <thead><tr><th>Present</th><th>Past</th><th>Spanish</th></tr></thead>
+            <tbody>
+              <tr><td>pray</td><td>prayed</td><td>orar</td></tr>
+              <tr><td>promise</td><td>promised</td><td>prometer</td></tr>
+              <tr><td>remove</td><td>removed</td><td>eliminar</td></tr>
+              <tr><td>change</td><td>changed</td><td>cambiar</td></tr>
+              <tr><td>respond</td><td>responded</td><td>responder</td></tr>
+              <tr><td>chase</td><td>chased</td><td>perseguir</td></tr>
+              <tr><td>make</td><td>made</td><td>hacer</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grammar-card">
+          <span class="grammar-card__tag perfect">Present Perfect</span>
+          <h4>Present Perfect</h4>
+          <p class="grammar-card__desc">Use it for experiences that connect to the present. Something happened but the result matters now.</p>
+          <div class="grammar-card__formula">Have + past participle</div>
+          <div class="grammar-card__examples">
+            I have prayed many times.<br>
+            She has changed a lot.<br>
+            He has made progress.
+          </div>
+          <table>
+            <thead><tr><th>English</th><th>Spanish</th></tr></thead>
+            <tbody>
+              <tr><td>I have prayed</td><td>He orado</td></tr>
+              <tr><td>I have changed</td><td>He cambiado</td></tr>
+              <tr><td>I have responded</td><td>He respondido</td></tr>
+              <tr><td>I have made progress</td><td>He progresado</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grammar-card">
+          <span class="grammar-card__tag future">Future with WILL</span>
+          <h4>Future with WILL</h4>
+          <p class="grammar-card__desc">Use it for predictions, promises, or decisions made at the moment of speaking. Plans that feel certain.</p>
+          <div class="grammar-card__formula">Will + base verb</div>
+          <div class="grammar-card__examples">
+            I will change tomorrow.<br>
+            I will pray for you.<br>
+            I will make better decisions.
+          </div>
+          <table>
+            <thead><tr><th>English</th><th>Spanish</th></tr></thead>
+            <tbody>
+              <tr><td>I will change</td><td>Cambiaré</td></tr>
+              <tr><td>I will pray</td><td>Oraré</td></tr>
+              <tr><td>I will respond differently</td><td>Responderé de manera diferente</td></tr>
+              <tr><td>I will make better decisions</td><td>Tomaré mejores decisiones</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Exercises -->
+    <section class="exercises-section" data-od-id="exercises">
+      <div class="section-header">
+        <h2>Interactive Exercises</h2>
+        <p>Test your knowledge — get immediate feedback</p>
+      </div>
+      <div style="max-width:900px; margin:0 auto; padding:16px 24px 32px;">
+        <!-- Exercise 1 -->
+        <div class="exercise-card" id="exercise-1">
+          <h4>Exercise 1 — Choose the correct verb</h4>
+          <p>"God, please ___ me closer."</p>
+          <div class="exercise-options">
+            <button class="exercise-option" data-correct="false">draw</button>
+            <button class="exercise-option" data-correct="false">drew</button>
+            <button class="exercise-option" data-correct="true">drawn</button>
+          </div>
+          <div class="exercise-feedback"></div>
+        </div>
+        <!-- Exercise 2 -->
+        <div class="exercise-card" id="exercise-2">
+          <h4>Exercise 2 — Present or Past?</h4>
+          <p>"I ___ yesterday."</p>
+          <div class="exercise-options">
+            <button class="exercise-option" data-correct="false">pray</button>
+            <button class="exercise-option" data-correct="true">prayed</button>
+            <button class="exercise-option" data-correct="false">will pray</button>
+          </div>
+          <div class="exercise-feedback"></div>
+        </div>
+        <!-- Exercise 3 -->
+        <div class="exercise-card" id="exercise-3">
+          <h4>Exercise 3 — Present Perfect</h4>
+          <p>"I have ___."</p>
+          <div class="exercise-options">
+            <button class="exercise-option" data-correct="true">prayed</button>
+            <button class="exercise-option" data-correct="false">pray</button>
+            <button class="exercise-option" data-correct="false">praying</button>
+          </div>
+          <div class="exercise-feedback"></div>
+        </div>
+        <!-- Exercise 4 -->
+        <div class="exercise-card" id="exercise-4">
+          <h4>Exercise 4 — Future with WILL</h4>
+          <p>"Tomorrow, I ___ differently."</p>
+          <div class="exercise-options">
+            <button class="exercise-option" data-correct="true">will respond</button>
+            <button class="exercise-option" data-correct="false">responded</button>
+            <button class="exercise-option" data-correct="false">responding</button>
+          </div>
+          <div class="exercise-feedback"></div>
+        </div>
+        <!-- Exercise 5 -->
+        <div class="exercise-card" id="exercise-5">
+          <h4>Exercise 5 — English → Spanish</h4>
+          <p>"What is the Spanish for 'promise'?"</p>
+          <div class="exercise-options">
+            <button class="exercise-option" data-correct="false">promesa</button>
+            <button class="exercise-option" data-correct="true">prometer</button>
+            <button class="exercise-option" data-correct="false">preparar</button>
+          </div>
+          <div class="exercise-feedback"></div>
+        </div>
+        <!-- Exercise 6 -->
+        <div class="exercise-card" id="exercise-6">
+          <h4>Exercise 6 — Complete the sentence</h4>
+          <p>"God, make my days ___."</p>
+          <div class="exercise-options">
+            <button class="exercise-option" data-correct="false">difficult</button>
+            <button class="exercise-option" data-correct="true">meaningful</button>
+            <button class="exercise-option" data-correct="false">short</button>
+          </div>
+          <div class="exercise-feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Video + Grammar Interaction -->
+    <section class="practice-section" data-od-id="practice">
+      <div class="section-header">
+        <h2>Video + Grammar Practice</h2>
+        <p>After each section, practice what you learned</p>
+      </div>
+      <div style="max-width:900px; margin:0 auto; padding:16px 24px 32px;">
+        <div class="practice-card">
+          <div>
+            <h4 style="margin-bottom:4px;">Section 1: 0:00–0:06</h4>
+            <p>Vocabulary: pray, promise, different</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn--primary btn--small" onclick="showPractice(1)">Practice</button>
+            <button class="btn btn--secondary btn--small" onclick="watchSection(0)">Watch again</button>
+          </div>
+          <div class="practice-questions" id="practice-1">
+            <h5>What does "pray" mean in Spanish?</h5>
+            <label><input type="radio" name="p1q1" value="orar"> orar</label>
+            <label><input type="radio" name="p1q1" value="prometer"> prometer</label>
+            <label><input type="radio" name="p1q1" value="cambiar"> cambiar</label>
+            <div class="practice-result" id="result-p1"></div>
+          </div>
+        </div>
+        <div class="practice-card">
+          <div>
+            <h4 style="margin-bottom:4px;">Section 2: 0:06–0:13</h4>
+            <p>Vocabulary: remove, laziness, procrastination</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn--primary btn--small" onclick="showPractice(2)">Practice</button>
+            <button class="btn btn--secondary btn--small" onclick="watchSection(6)">Watch again</button>
+          </div>
+          <div class="practice-questions" id="practice-2">
+            <h5>What does "procrastination" mean?</h5>
+            <label><input type="radio" name="p2q1" value="pereza"> pereza</label>
+            <label><input type="radio" name="p2q1" value="acción"> acción</label>
+            <label><input type="radio" name="p2q1" value="promesa"> promesa</label>
+            <div class="practice-result" id="result-p2"></div>
+          </div>
+        </div>
+        <div class="practice-card">
+          <div>
+            <h4 style="margin-bottom:4px;">Section 3: 0:13–0:19</h4>
+            <p>Vocabulary: attitude, actions, thoughts, respond</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn--primary btn--small" onclick="showPractice(3)">Practice</button>
+            <button class="btn btn--secondary btn--small" onclick="watchSection(13)">Watch again</button>
+          </div>
+          <div class="practice-questions" id="practice-3">
+            <h5>What is the past tense of "change"?</h5>
+            <label><input type="radio" name="p3q1" value="changed"> changed</label>
+            <label><input type="radio" name="p3q1" value="changes"> changes</label>
+            <label><input type="radio" name="p3q1" value="change"> change</label>
+            <div class="practice-result" id="result-p3"></div>
+          </div>
+        </div>
+        <div class="practice-card">
+          <div>
+            <h4 style="margin-bottom:4px;">Section 4: 0:20–0:27</h4>
+            <p>Vocabulary: draw, closer, destiny, reveal</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn--primary btn--small" onclick="showPractice(4)">Practice</button>
+            <button class="btn btn--secondary btn--small" onclick="watchSection(20)">Watch again</button>
+          </div>
+          <div class="practice-questions" id="practice-4">
+            <h5>Complete: "God, please ___ me closer."</h5>
+            <label><input type="radio" name="p4q1" value="draw"> draw</label>
+            <label><input type="radio" name="p4q1" value="drawn"> drawn</label>
+            <label><input type="radio" name="p4q1" value="drew"> drew</label>
+            <div class="practice-result" id="result-p4"></div>
+          </div>
+        </div>
+        <div class="practice-card">
+          <div>
+            <h4 style="margin-bottom:4px;">Section 5: 0:27–0:35</h4>
+            <p>Vocabulary: meaningful, peaceful, presence, heart</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn--primary btn--small" onclick="showPractice(5)">Practice</button>
+            <button class="btn btn--secondary btn--small" onclick="watchSection(27)">Watch again</button>
+          </div>
+          <div class="practice-questions" id="practice-5">
+            <h5>What is the Spanish for "peaceful"?</h5>
+            <label><input type="radio" name="p5q1" value="triste"> triste</label>
+            <label><input type="radio" name="p5q1" value="tranquilo"> tranquilo</label>
+            <label><input type="radio" name="p5q1" value="fuerte"> fuerte</label>
+            <div class="practice-result" id="result-p5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Final Review -->
+    <section class="review-section" data-od-id="review">
+      <div class="section-header">
+        <h2>Final Review</h2>
+        <p>Quick recap before you finish</p>
+      </div>
+      <div style="max-width:900px; margin:0 auto; padding:16px 24px 32px;">
+        <div class="review-grid">
+          <div class="review-card">
+            <h4>10 Important Words</h4>
+            <p>pray, promise, remove, change, attitude, thoughts, respond, chase, redirect, meaningful</p>
+          </div>
+          <div class="review-card">
+            <h4>10 Important Verbs</h4>
+            <p>pray, promise, make, remove, change, respond, chase, redirect, reveal, fill</p>
+          </div>
+        </div>
+        <div class="review-quiz">
+          <h4>5 Final Questions</h4>
+          <div class="exercise-card">
+            <p style="margin-bottom:12px;"><strong>1.</strong> What does "heart" mean in Spanish?</p>
+            <div class="exercise-options" data-q="q1" data-correct="corazón">
+              <button class="exercise-option" data-val="corazón">corazón</button>
+              <button class="exercise-option" data-val="cuerpo">cuerpo</button>
+              <button class="exercise-option" data-val="mente">mente</button>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <p style="margin-bottom:12px;"><strong>2.</strong> Which tense is "I have prayed"?</p>
+            <div class="exercise-options" data-q="q2" data-correct="Present Perfect">
+              <button class="exercise-option" data-val="Present Simple">Present Simple</button>
+              <button class="exercise-option" data-val="Past Simple">Past Simple</button>
+              <button class="exercise-option" data-val="Present Perfect">Present Perfect</button>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <p style="margin-bottom:12px;"><strong>3.</strong> What is the past of "make"?</p>
+            <div class="exercise-options" data-q="q3" data-correct="made">
+              <button class="exercise-option" data-val="maked">maked</button>
+              <button class="exercise-option" data-val="made">made</button>
+              <button class="exercise-option" data-val="makes">makes</button>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <p style="margin-bottom:12px;"><strong>4.</strong> "Tomorrow I ___ differently" — what goes in the blank?</p>
+            <div class="exercise-options" data-q="q4" data-correct="will respond">
+              <button class="exercise-option" data-val="will respond">will respond</button>
+              <button class="exercise-option" data-val="responded">responded</button>
+              <button class="exercise-option" data-val="responding">responding</button>
+            </div>
+          </div>
+          <div class="exercise-card">
+            <p style="margin-bottom:12px;"><strong>5.</strong> What does "chase" mean in Spanish?</p>
+            <div class="exercise-options" data-q="q5" data-correct="perseguir">
+              <button class="exercise-option" data-val="perseguir">perseguir</button>
+              <button class="exercise-option" data-val="orar">orar</button>
+              <button class="exercise-option" data-val="cambiar">cambiar</button>
+            </div>
+          </div>
+          <button class="btn btn--primary" onclick="checkFinal()">Check Answers</button>
+          <div class="review-result" id="finalResult"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Video player — Hero Section
+    const video = document.getElementById('lessonVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressBar = document.getElementById('progressBar');
+    const timeCurrent = document.getElementById('timeCurrent');
+    const timeTotal = document.getElementById('timeTotal');
+    const sectionLabel = document.getElementById('sectionLabel');
+    const videoTitle = document.getElementById('videoTitle');
+    const videoSubtitle = document.getElementById('videoSubtitle');
+    const chapterDots = document.querySelectorAll('.chapter-dot');
+    const videoHero = document.getElementById('videoHero');
+    const videoCaptions = document.getElementById('videoCaptions');
+    const captionsEn = document.getElementById('captionsEn');
+    const captionsEs = document.getElementById('captionsEs');
+    const captionsBtn = document.getElementById('captionsBtn');
+    const skipBackBtn = document.getElementById('skipBackBtn');
+    const skipFwdBtn = document.getElementById('skipFwdBtn');
+    const volumeBtn = document.getElementById('volumeBtn');
+    const speedBtn = document.getElementById('speedBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+    const sections = [
+      { time: 0, end: 6, label: 'Section 1', title: 'Four things you should pray', subtitle: '0:00 — 0:06' },
+      { time: 6, end: 13, label: 'Section 2', title: 'Make me a better person', subtitle: '0:06 — 0:13' },
+      { time: 13, end: 19, label: 'Section 3', title: 'Change my attitude', subtitle: '0:13 — 0:19' },
+      { time: 20, end: 27, label: 'Section 4', title: 'God, draw me closer', subtitle: '0:20 — 0:27' },
+      { time: 27, end: 35, label: 'Section 5', title: 'Meaningful days and peaceful nights', subtitle: '0:27 — 0:35' }
+    ];
+
+    const subtitles = [
+      { time: 0, textEn: 'Four things you should pray, and I promise your whole day will feel different. Dear God,', textEs: 'Cuatro cosas por las que deberías orar, y te prometo que todo tu día se sentirá diferente. Querido Dios,' },
+      { time: 6, textEn: 'Make me a better person. Remove any laziness or procrastination from my mind and body.', textEs: 'Hazme una mejor persona. Elimina de mi mente y de mi cuerpo la pereza o la procrastinación.' },
+      { time: 13, textEn: 'Change my attitude, my actions, my thoughts, and the way I respond. Lord, if I\'m chasing the wrong things, redirect me.', textEs: 'Cambia mi actitud, mis acciones, mis pensamientos y la manera en que respondo. Señor, si estoy persiguiendo las cosas equivocadas, redirígeme.' },
+      { time: 20, textEn: 'God, please draw me closer to what you have destined for my life. If it\'s not for me, remove it. If they\'re not for me, reveal it.', textEs: 'Dios, por favor acércame más a lo que has destinado para mi vida. Si no es para mí, elimínalo. Si ellos no son para mí, revélalo.' },
+      { time: 27, textEn: 'God, make my days meaningful, my nights peaceful, my home filled with your presence, and my heart closer to you.', textEs: 'Dios, haz que mis días tengan sentido, que mis noches sean tranquilas, que mi hogar esté lleno de tu presencia y que mi corazón esté más cerca de ti.' }
+    ];
+
+    function getCurrentSubtitle() {
+      const t = video.currentTime;
+      for (const sub of subtitles) {
+        if (t >= sub.time) { let next; for (let i = 0; i < subtitles.length; i++) { if (subtitles[i].time > sub.time) { next = subtitles[i].time; break; } } if (!next || t < next) return sub; } }
+      return subtitles[subtitles.length - 1];
+    }
+
+    function updateVideoUI() {
+      const pct = (video.currentTime / video.duration) * 100;
+      progressFill.style.width = pct + '%';
+      timeCurrent.textContent = formatTime(video.currentTime);
+      const sec = getCurrentSection();
+      sectionLabel.textContent = sec.label + ' — ' + sec.title;
+      videoTitle.textContent = sec.title;
+      videoSubtitle.textContent = sec.subtitle;
+      chapterDots.forEach(function(dot) {
+        const dt = parseFloat(dot.dataset.time);
+        const endSec = sections.find(function(s){return s.time===dt});
+        const end = endSec ? endSec.end : (dt === sections[sections.length-1].time ? 35 : dt+6);
+        dot.classList.toggle('active', video.currentTime >= dt && video.currentTime < end);
+      });
+      // Update captions on video
+      if (captionsBtn.classList.contains('active')) {
+        const sub = getCurrentSubtitle();
+        captionsEn.textContent = sub.textEn;
+        captionsEs.textContent = sub.textEs;
+        videoCaptions.classList.remove('hidden');
+      } else {
+        videoCaptions.classList.add('hidden');
+      }
+    }
+
+    // Play/Pause
+    playPauseBtn.addEventListener('click', function() {
+      if (video.paused) { video.play(); playPauseBtn.innerHTML = '&#9646;&#9646;'; }
+      else { video.pause(); playPauseBtn.innerHTML = '&#9654;'; }
+    });
+
+    // Skip 10 seconds
+    skipBackBtn.addEventListener('click', function() { video.currentTime = Math.max(0, video.currentTime - 10); });
+    skipFwdBtn.addEventListener('click', function() { video.currentTime = Math.min(video.duration, video.currentTime + 10); });
+
+    // Volume mute/unmute
+    let muted = false;
+    volumeBtn.addEventListener('click', function() {
+      muted = !muted;
+      video.muted = muted;
+      volumeBtn.innerHTML = muted ? '&#128263;' : '&#128266;';
+      volumeBtn.classList.toggle('active', muted);
+    });
+
+    // Captions toggle
+    captionsBtn.addEventListener('click', function() {
+      captionsBtn.classList.toggle('active');
+      if (captionsBtn.classList.contains('active')) {
+        videoCaptions.classList.remove('hidden');
+        updateVideoUI();
+      } else {
+        videoCaptions.classList.add('hidden');
+      }
+    });
+
+    // Speed control
+    const speeds = [0.5, 1, 1.25, 1.5, 2];
+    let speedIdx = 1;
+    speedBtn.addEventListener('click', function() {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      video.playbackRate = speeds[speedIdx];
+      speedBtn.textContent = speeds[speedIdx] + 'x';
+      speedBtn.classList.toggle('active', speeds[speedIdx] !== 1);
+    });
+
+    // Fullscreen
+    fullscreenBtn.addEventListener('click', function() {
+      const hero = document.getElementById('videoHero');
+      if (!document.fullscreenElement) {
+        hero.requestFullscreen().catch(function(){});
+        fullscreenBtn.innerHTML = '&#10070;';
+      } else {
+        document.exitFullscreen();
+        fullscreenBtn.innerHTML = '&#9974;';
+      }
+    });
+
+    video.addEventListener('timeupdate', updateVideoUI);
+
+    video.addEventListener('loadedmetadata', function() {
+      timeTotal.textContent = formatTime(video.duration);
+      updateVideoUI();
+    });
+
+    video.addEventListener('ended', function() {
+      playPauseBtn.innerHTML = '&#9654;';
+      videoCaptions.classList.add('hidden');
+    });
+
+    progressBar.addEventListener('click', function(e) {
+      const rect = progressBar.getBoundingClientRect();
+      const pct = (e.clientX - rect.left) / rect.width;
+      video.currentTime = pct * video.duration;
+    });
+
+    // Chapter dots click
+    chapterDots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        const time = parseFloat(dot.dataset.time);
+        video.currentTime = time;
+        video.play();
+        playPauseBtn.innerHTML = '&#9646;&#9646;';
+        updateVideoUI();
+      });
+    });
+
+    // Timestamp buttons click to jump
+    document.querySelectorAll('.timestamp-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const time = parseFloat(btn.dataset.time);
+        video.currentTime = time;
+        video.play();
+        playPauseBtn.innerHTML = '&#9646;&#9646;';
+        updateVideoUI();
+      });
+    });
+
+    // Subtitle blocks click to jump
+    document.querySelectorAll('.subtitle-block').forEach(function(block) {
+      block.addEventListener('click', function() {
+        const time = parseInt(block.dataset.time);
+        video.currentTime = time;
+        video.play();
+        playPauseBtn.innerHTML = '&#9646;&#9646;';
+        updateVideoUI();
+      });
+    });
+
+    // Keyboard: space = play/pause, arrow keys = skip
+
+    // Dictionary
+    const dictGrid = document.getElementById('dictGrid');
+    const dictSearch = document.getElementById('dictSearch');
+    const dictTabs = document.getElementById('dictTabs');
+    const dictStats = document.getElementById('dictStats');
+
+    function filterDict() {
+      const q = dictSearch.value.toLowerCase().trim();
+      const activeTab = document.querySelector('.dictionary-tab.active');
+      const cat = activeTab ? activeTab.dataset.cat : 'all';
+      const cards = dictGrid.querySelectorAll('.dict-card');
+      let visible = 0;
+      cards.forEach(function(card) {
+        const word = card.dataset.english.toLowerCase();
+        const category = card.dataset.cat;
+        const matchesSearch = word.includes(q);
+        const matchesCat = cat === 'all' || category === cat;
+        card.style.display = (matchesSearch && matchesCat) ? '' : 'none';
+        if (matchesSearch && matchesCat) visible++;
+      });
+      dictStats.textContent = visible + ' of 20 words';
+    }
+
+    dictSearch.addEventListener('input', filterDict);
+
+    dictTabs.addEventListener('click', function(e) {
+      const tab = e.target.closest('.dictionary-tab');
+      if (!tab) return;
+      document.querySelectorAll('.dictionary-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      filterDict();
+    });
+
+    dictGrid.addEventListener('click', function(e) {
+      const card = e.target.closest('.dict-card');
+      if (!card) return;
+      if (e.target.closest('.dict-card__check')) return;
+      card.classList.toggle('flipped');
+    });
+
+    window.toggleLearned = function(btn) {
+      const card = btn.closest('.dict-card');
+      card.classList.toggle('learned');
+      btn.textContent = card.classList.contains('learned') ? '✓ Learned' : 'Learn';
+    };
+
+    // Dictionary end
+
+    // Exercises
+    document.querySelectorAll('.exercise-card').forEach(function(card) {
+      const options = card.querySelectorAll('.exercise-option');
+      const feedback = card.querySelector('.exercise-feedback');
+      let answered = false;
+      options.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          if (answered) return;
+          answered = true;
+          const correct = opt.dataset.correct === 'true';
+          options.forEach(function(o) {
+            o.style.pointerEvents = 'none';
+            if (o.dataset.correct === 'true') o.classList.add('correct');
+            if (o.dataset.correct === 'false' && o !== opt) o.classList.add('wrong');
+          });
+          if (correct) {
+            opt.classList.add('selected');
+            feedback.textContent = '\u2713 Correct!';
+            feedback.className = 'exercise-feedback correct';
+          } else {
+            feedback.textContent = '\u2717 Try again';
+            feedback.className = 'exercise-feedback wrong';
+          }
+        });
+      });
+    });
+
+    // Practice sections
+    window.showPractice = function(num) {
+      const pq = document.getElementById('practice-' + num);
+      if (pq) {
+        pq.classList.toggle('visible');
+      }
+    };
+
+    window.watchSection = function(time) {
+      video.currentTime = time;
+      video.play();
+      playPauseBtn.innerHTML = '&#9646;&#9646;';
+      updateVideoUI();
+    };
+
+    // Practice radio buttons - check answers
+    document.querySelectorAll('.practice-questions').forEach(function(pq) {
+      const radios = pq.querySelectorAll('input[type="radio"]');
+      const resultId = 'result-' + pq.id.replace('practice-', '');
+      const answers = {
+        '1': 'orar',
+        '2': 'pereza',
+        '3': 'changed',
+        '4': 'drawn',
+        '5': 'tranquilo'
+      };
+      radios.forEach(function(r) {
+        r.addEventListener('change', function() {
+          const qNum = pq.id.replace('practice-', '');
+          const correct = answers[qNum];
+          const result = document.getElementById('result-' + qNum);
+          if (result) {
+            if (r.value === correct) {
+              result.textContent = '\u2713 Correct! Well done.';
+              result.style.color = '#17a34a';
+            } else {
+              result.textContent = 'Not quite. The answer is: ' + correct + '.';
+              result.style.color = '#dc2626';
+            }
+          }
+        });
+      });
+    });
+
+    // Final Review
+    window.checkFinal = function() {
+      const answerData = {
+        q1: 'coraz\u00f3n',
+        q2: 'Present Perfect',
+        q3: 'made',
+        q4: 'will respond',
+        q5: 'perseguir'
+      };
+      let score = 0;
+      let total = 0;
+      Object.keys(answerData).forEach(function(qId) {
+        const group = document.querySelector('.exercise-options[data-q="' + qId + '"]');
+        if (!group) return;
+        total++;
+        const selected = group.querySelector('.exercise-option.selected');
+        if (selected && selected.dataset.val === answerData[qId]) score++;
+      });
+      const result = document.getElementById('finalResult');
+      if (score === total) {
+        result.textContent = 'Excellent! You got all ' + total + ' correct! Great work!';
+        result.style.color = '#17a34a';
+      } else {
+        result.textContent = 'You got ' + score + ' out of ' + total + ' correct. Keep practicing!';
+        result.style.color = '#dc2626';
+      }
+      document.querySelectorAll('.exercise-options').forEach(function(group) {
+        group.querySelectorAll('.exercise-option').forEach(function(opt) {
+          opt.style.pointerEvents = 'none';
+        });
+      });
+    };
+
+    // Review quiz button selection
+    document.querySelectorAll('.review-quiz .exercise-options').forEach(function(group) {
+      group.querySelectorAll('.exercise-option').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          group.querySelectorAll('.exercise-option').forEach(function(o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+        });
+      });
+    });
+
+    // Keyboard shortcut: space to play/pause
+    document.addEventListener('keydown', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.code === 'Space') {
+        e.preventDefault();
+        playPauseBtn.click();
+      }
+     });
+  </script>
+  <footer class="footer" data-od-id="footer">
+    <p class="footer__brand">Diego Monduela — English Tutor</p>
+    <p class="footer__tagline">English with Diego — Video Lesson</p>
+  </footer>
+</body>
+</html>
