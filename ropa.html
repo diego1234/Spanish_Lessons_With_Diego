@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learn English with Video · Diego Monduela</title>
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:         oklch(97.5% 0.006 255);
+  --surface:    oklch(100% 0 0);
+  --surface-2:  oklch(98.4% 0.005 255);
+  --fg:         oklch(24% 0.02 258);
+  --muted:      oklch(52% 0.02 258);
+  --border:     oklch(90% 0.008 258);
+  --border-2:   oklch(85% 0.01 258);
+  --primary:    oklch(55% 0.14 248);
+  --primary-ink:oklch(43% 0.13 248);
+  --primary-soft:oklch(94% 0.03 248);
+  --spanish:    oklch(62% 0.13 48);
+  --spanish-soft:oklch(96% 0.03 60);
+  --success:    oklch(58% 0.15 150);
+  --success-soft:oklch(95% 0.05 150);
+  --danger:     oklch(56% 0.19 25);
+  --danger-soft:oklch(95% 0.05 25);
+  --amber:      oklch(78% 0.13 85);
+
+  --radius:     14px;
+  --radius-sm:  10px;
+  --shadow:     0 1px 2px oklch(24% 0.02 258 / .06), 0 8px 24px oklch(24% 0.02 258 / .05);
+  --font-body:  ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --maxw:       1120px;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{ margin:0; line-height:1.15; letter-spacing:-.02em; }
+p{ margin:0; }
+a{ color:inherit; }
+img{ max-width:100%; }
+button{ font-family:inherit; }
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 20px; }
+.section{ padding:56px 0 8px; scroll-margin-top:74px; }
+.section:last-of-type{ padding-bottom:56px; }
+
+/* ============================================================
+   HEADER + NAV
+   ============================================================ */
+.site-header{
+  background:
+    radial-gradient(120% 140% at 100% 0%, oklch(96% 0.04 248) 0%, transparent 55%),
+    var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; padding:22px 20px; max-width:var(--maxw); margin:0 auto; flex-wrap:wrap;
+}
+.brand{ display:flex; align-items:center; gap:14px; }
+.brand-mark{
+  width:46px; height:46px; border-radius:12px; flex:0 0 auto;
+  background:linear-gradient(140deg, var(--primary), var(--primary-ink));
+  color:#fff; display:grid; place-items:center; font-weight:700; font-size:19px;
+  letter-spacing:-.03em;
+}
+.brand h1{ font-size:clamp(19px,2.4vw,23px); font-weight:700; }
+.brand .sub{ font-size:13px; color:var(--muted); margin-top:2px; }
+.tutor-badge{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--surface-2); border:1px solid var(--border);
+  border-radius:999px; padding:8px 16px 8px 8px;
+}
+.tutor-badge .avatar{
+  width:30px; height:30px; border-radius:50%;
+  background:var(--spanish-soft); color:var(--spanish);
+  display:grid; place-items:center; font-weight:700; font-size:13px;
+}
+.tutor-badge b{ font-size:14px; }
+.tutor-badge span{ font-size:12px; color:var(--muted); display:block; }
+
+.topnav{
+  position:sticky; top:0; z-index:40;
+  background:oklch(100% 0 0 / .82);
+  backdrop-filter:saturate(1.4) blur(10px);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.topnav ul{
+  list-style:none; margin:0; padding:0 20px;
+  max-width:var(--maxw); margin:0 auto;
+  display:flex; gap:6px; overflow-x:auto; scrollbar-width:none;
+}
+.topnav ul::-webkit-scrollbar{ display:none; }
+.topnav a{
+  display:block; white-space:nowrap; text-decoration:none;
+  font-size:13.5px; font-weight:550; color:var(--muted);
+  padding:14px 12px; border-bottom:2px solid transparent; transition:color .15s, border-color .15s;
+}
+.topnav a:hover{ color:var(--fg); }
+.topnav a.active{ color:var(--primary-ink); border-bottom-color:var(--primary); }
+
+/* ============================================================
+   SHARED UI
+   ============================================================ */
+.eyebrow{
+  font-family:var(--font-mono); font-size:11.5px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--primary-ink);
+}
+.section-head{ margin-bottom:22px; }
+.section-head h2{ font-size:clamp(22px,3vw,30px); margin-top:8px; }
+.section-head p{ color:var(--muted); margin-top:8px; max-width:70ch; }
+
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:10px 18px; border-radius:var(--radius-sm);
+  border:1px solid var(--border-2); background:var(--surface); color:var(--fg);
+  font-size:14.5px; font-weight:600; cursor:pointer; transition:.15s;
+  -webkit-appearance:none; appearance:none; text-decoration:none;
+}
+.btn:hover{ border-color:var(--muted); }
+.btn:active{ transform:translateY(1px); }
+.btn.primary{ background:var(--primary); border-color:var(--primary); color:#fff; }
+.btn.primary:hover{ background:var(--primary-ink); border-color:var(--primary-ink); }
+.btn.ghost{ background:transparent; }
+.btn.small{ min-height:36px; padding:6px 12px; font-size:13px; }
+.btn:disabled{ opacity:.5; cursor:not-allowed; }
+.pill{
+  display:inline-flex; align-items:center; gap:6px; padding:4px 10px;
+  border-radius:999px; font-size:12px; font-weight:600;
+  background:var(--surface-2); border:1px solid var(--border); color:var(--muted);
+}
+.pill.clip{ background:var(--success-soft); color:oklch(40% 0.12 150); border-color:transparent; }
+.pill.practice{ background:var(--spanish-soft); color:oklch(48% 0.12 48); border-color:transparent; }
+
+.toolbar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:18px; }
+.spacer{ flex:1 1 auto; }
+
+/* ============================================================
+   VIDEO + TRANSCRIPT
+   ============================================================ */
+.video-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:start; }
+@media (max-width:900px){ .video-grid{ grid-template-columns:1fr; } }
+.player{
+  background:#0c0f16; border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow); position:sticky; top:74px;
+}
+@media (max-width:900px){ .player{ position:static; } }
+.player video{ display:block; width:100%; height:auto; background:#000; aspect-ratio:16/9; }
+.player .meta{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; color:oklch(88% 0.01 258); font-size:13px; }
+.player .meta .dot{ color:oklch(72% 0.06 25); }
+
+.transcript{ max-height:520px; overflow:auto; padding:6px; }
+.tline{
+  display:grid; grid-template-columns:56px 1fr; gap:12px;
+  width:100%; text-align:left; background:transparent; border:0;
+  border-radius:10px; padding:10px 12px; cursor:pointer; color:inherit;
+  border-left:3px solid transparent; transition:background .12s, border-color .12s;
+}
+.tline:hover{ background:var(--surface-2); }
+.tline.active{ background:var(--primary-soft); border-left-color:var(--primary); }
+.tline .ts{
+  font-family:var(--font-mono); font-size:12px; color:var(--primary-ink);
+  font-weight:600; padding-top:2px;
+}
+.tline .en{ font-size:15px; color:var(--fg); }
+.tline .es{ font-size:14px; color:var(--spanish); margin-top:3px; font-style:italic; }
+body.hide-es .tline .es{ display:none; }
+.tnote{ font-size:12.5px; color:var(--muted); padding:10px 12px 14px; }
+
+/* Themed sections inside the transcript (titles + subtitles) */
+.tsection{ padding:16px 12px 6px; }
+.tsection:first-child{ padding-top:6px; }
+.tsection-ttl{
+  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+  font-size:14.5px; font-weight:700; letter-spacing:-.01em; color:var(--fg);
+}
+.tsection-ttl .es{ color:var(--spanish); font-weight:600; font-size:13px; }
+.tsection-sub{ font-size:12.5px; color:var(--muted); margin-top:3px; display:flex; gap:8px; flex-wrap:wrap; }
+.tsection-sub .es{ color:var(--spanish); font-style:italic; }
+.tsection-rule{ height:1px; background:var(--border); margin:8px 0 2px; }
+body.hide-es .tsection .es{ display:none; }
+
+/* Chapter index chips */
+.chapters{ display:flex; gap:8px; flex-wrap:wrap; margin:-4px 0 18px; }
+.chip{
+  border:1px solid var(--border-2); background:var(--surface); color:var(--fg);
+  border-radius:999px; padding:8px 14px; font-size:13px; font-weight:600; cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px; transition:.12s; min-height:40px;
+}
+.chip:hover{ border-color:var(--primary); }
+.chip.active{ background:var(--primary-soft); border-color:var(--primary); color:var(--primary-ink); }
+.chip .n{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); }
+.chip.active .n{ color:var(--primary-ink); }
+
+/* ============================================================
+   FLASHCARDS
+   ============================================================ */
+.flash-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; }
+.flip{ perspective:1100px; height:210px; cursor:pointer; }
+.flip-inner{ position:relative; width:100%; height:100%; transition:transform .5s cubic-bezier(.2,.7,.2,1); transform-style:preserve-3d; }
+.flip.flipped .flip-inner{ transform:rotateY(180deg); }
+.flip-face{
+  position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  border-radius:var(--radius); border:1px solid var(--border); background:var(--surface);
+  box-shadow:var(--shadow); padding:20px; display:flex; flex-direction:column; justify-content:center; gap:8px;
+}
+.flip-back{ transform:rotateY(180deg); background:var(--surface-2); }
+.flip-face .tag{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.flip-face .term{ font-size:21px; font-weight:700; letter-spacing:-.02em; }
+.flip-face .trans{ font-size:16px; color:var(--spanish); font-weight:600; }
+.flip-face .ex{ font-size:13.5px; margin-top:6px; }
+.flip-face .ex.es{ color:var(--spanish); font-style:italic; }
+.flip-face .hint{ font-size:11.5px; color:var(--muted); margin-top:auto; }
+
+/* ============================================================
+   DICTIONARY
+   ============================================================ */
+.search-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+.search-row input{
+  flex:1 1 280px; min-height:46px; padding:10px 16px; font-size:15px;
+  border:1px solid var(--border-2); border-radius:var(--radius-sm); background:var(--surface); color:var(--fg);
+}
+.search-row input:focus{ outline:2px solid var(--primary); outline-offset:1px; border-color:var(--primary); }
+.dict-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; }
+.dict-item{ padding:16px 18px; }
+.dict-item .top{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+.dict-item .word{ font-size:17px; font-weight:700; }
+.dict-item .word-es{ font-size:14.5px; color:var(--spanish); font-weight:600; }
+.dict-item .def{ font-size:14px; color:var(--muted); margin-top:8px; }
+.dict-item .exm{ font-size:13.5px; margin-top:8px; border-top:1px dashed var(--border); padding-top:8px; }
+.dict-empty{ padding:28px; text-align:center; color:var(--muted); }
+
+/* ============================================================
+   VERB TABLE
+   ============================================================ */
+.table-scroll{ overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow); }
+table.verbs{ width:100%; border-collapse:collapse; min-width:720px; font-size:14.5px; }
+table.verbs th{
+  text-align:left; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); font-weight:600; padding:14px 16px; border-bottom:1px solid var(--border);
+  background:var(--surface-2); position:sticky; top:0;
+}
+table.verbs td{ padding:13px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
+table.verbs tr:last-child td{ border-bottom:0; }
+table.verbs .base{ font-weight:700; }
+table.verbs .form{ font-family:var(--font-mono); font-size:13.5px; color:var(--primary-ink); }
+table.verbs .esm{ color:var(--spanish); font-weight:600; }
+table.verbs .exm{ color:var(--muted); font-size:13.5px; max-width:280px; }
+
+/* ============================================================
+   GRAMMAR
+   ============================================================ */
+.grammar-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; }
+.gram-card{ padding:22px; display:flex; flex-direction:column; gap:12px; }
+.gram-card h3{ font-size:19px; }
+.gram-card .when{ font-size:14px; color:var(--muted); }
+.gram-card .struct{
+  font-family:var(--font-mono); font-size:14px; background:var(--primary-soft);
+  color:var(--primary-ink); padding:10px 14px; border-radius:var(--radius-sm); font-weight:600;
+}
+.gram-card ul{ margin:0; padding-left:18px; font-size:14px; color:var(--fg); display:grid; gap:6px; }
+.gram-card ul .ex{ color:var(--spanish); font-style:italic; }
+.gram-note{ font-size:13.5px; color:var(--muted); border-left:2px solid var(--border-2); padding-left:12px; }
+
+/* ============================================================
+   QUIZ (shared by grammar games)
+   ============================================================ */
+.quiz-head{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
+.score{
+  font-family:var(--font-mono); font-size:13px; font-weight:600;
+  background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:6px 14px;
+}
+.quiz-list{ display:grid; gap:14px; }
+.qcard{ padding:18px 20px; }
+.qcard .qtext{ font-size:15.5px; font-weight:600; margin-bottom:12px; }
+.qcard .qtext .num{ color:var(--muted); font-family:var(--font-mono); font-size:12.5px; margin-right:8px; }
+.opts{ display:grid; gap:8px; }
+.opt{
+  text-align:left; padding:11px 14px; border-radius:var(--radius-sm);
+  border:1px solid var(--border-2); background:var(--surface); color:var(--fg);
+  font-size:14.5px; cursor:pointer; transition:.12s; min-height:44px;
+}
+.opt:hover:not(:disabled){ border-color:var(--primary); background:var(--primary-soft); }
+.opt.correct{ background:var(--success-soft); border-color:var(--success); color:oklch(38% 0.12 150); font-weight:600; }
+.opt.wrong{ background:var(--danger-soft); border-color:var(--danger); color:oklch(42% 0.16 25); font-weight:600; }
+.opt:disabled{ cursor:default; }
+.fb{ font-size:13px; font-weight:600; margin-top:10px; display:none; }
+.fb.show{ display:block; }
+.fb.ok{ color:oklch(42% 0.14 150); }
+.fb.no{ color:oklch(46% 0.17 25); }
+
+/* ============================================================
+   MATCH GAME
+   ============================================================ */
+.match-board{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.match-col h4{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:10px; }
+.match-item{
+  width:100%; text-align:left; padding:12px 14px; margin-bottom:8px; border-radius:var(--radius-sm);
+  border:1px solid var(--border-2); background:var(--surface); font-size:14.5px; cursor:pointer; transition:.12s; min-height:44px;
+}
+.match-item:hover:not(:disabled){ border-color:var(--primary); }
+.match-item.sel{ border-color:var(--primary); background:var(--primary-soft); box-shadow:0 0 0 2px var(--primary-soft); }
+.match-item.matched{ background:var(--success-soft); border-color:var(--success); color:oklch(38% 0.12 150); cursor:default; }
+.match-item.wrong{ animation:shake .3s; border-color:var(--danger); background:var(--danger-soft); }
+@keyframes shake{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+
+/* ============================================================
+   LISTENING
+   ============================================================ */
+.listen-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px; }
+.listen-card{ padding:20px; display:flex; flex-direction:column; gap:12px; }
+.listen-card .range{ font-family:var(--font-mono); font-size:12.5px; color:var(--primary-ink); font-weight:600; }
+.listen-card .q{ font-size:15.5px; font-weight:600; }
+.listen-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; }
+.reveal{ display:none; border-top:1px dashed var(--border); padding-top:12px; font-size:14px; }
+.reveal.open{ display:block; }
+.reveal .en{ color:var(--fg); }
+.reveal .es{ color:var(--spanish); font-style:italic; margin-top:4px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{ border-top:1px solid var(--border); background:var(--surface); margin-top:40px; }
+.notes{ padding:26px 0; display:grid; gap:12px; }
+.notes p{ font-size:13.5px; color:var(--muted); max-width:80ch; }
+.notes .credit{ font-size:14px; color:var(--fg); font-weight:600; }
+.toast{
+  position:fixed; left:50%; bottom:22px; transform:translateX(-50%) translateY(20px);
+  background:var(--fg); color:#fff; padding:11px 20px; border-radius:999px;
+  font-size:13.5px; font-weight:600; opacity:0; pointer-events:none; transition:.25s; z-index:100;
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+@media (max-width:560px){
+  .header-inner{ padding:16px; }
+  .section{ padding:40px 0 6px; }
+  .match-board{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion:reduce){
+  *{ transition:none !important; animation:none !important; scroll-behavior:auto !important; }
+}
+</style>
+</head>
+<body class="">
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">EN</div>
+      <div>
+        <h1>Learn English with Video</h1>
+        <div class="sub">Interactive lesson · Vocabulary, grammar &amp; listening practice</div>
+      </div>
+    </div>
+    <div class="tutor-badge">
+      <span class="avatar">DM</span>
+      <span>
+        <b>English Tutor: Diego Monduela</b>
+        <span>Profesor de inglés</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<nav class="topnav" aria-label="Lesson sections">
+  <ul>
+    <li><a href="#video">Video &amp; Transcript</a></li>
+    <li><a href="#flashcards">Flashcards</a></li>
+    <li><a href="#dictionary">Dictionary</a></li>
+    <li><a href="#verbs">Verb Table</a></li>
+    <li><a href="#grammar">Grammar</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#listening">Listening</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <!-- ============ VIDEO + TRANSCRIPT ============ -->
+  <section class="section" id="video">
+    <div class="section-head">
+      <div class="eyebrow">Step 1 · Watch &amp; read</div>
+      <h2>Video and timestamped transcript</h2>
+      <p>Watch the clip on the left. On the right, click any line to jump to that moment in the video. Use the button to show or hide the Spanish translation.</p>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn primary" id="toggleEs" type="button" aria-pressed="true">Ocultar español</button>
+      <span class="pill">Click a line to seek</span>
+      <div class="spacer"></div>
+      <span class="pill" id="esState">Español: visible</span>
+    </div>
+
+    <div class="chapters" id="chapters" aria-label="Transcript chapters"></div>
+
+    <div class="video-grid">
+      <div class="player">
+        <video id="lessonVideo" src="https://res.cloudinary.com/oxkbcyki/video/upload/v1791942145/vestido.mp4" controls preload="metadata" playsinline>
+          Your browser does not support the video tag.
+        </video>
+        <div class="meta">
+          <span><span class="dot">●</span> Sample clip · speaker's own opinion, used here only to teach English</span>
+          <span id="nowTime">0:00</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="transcript" id="transcript" aria-label="Transcript"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLASHCARDS ============ -->
+  <section class="section" id="flashcards">
+    <div class="section-head">
+      <div class="eyebrow">Step 2 · Learn the words</div>
+      <h2>Vocabulary flashcards</h2>
+      <p>Tap a card to reveal the Spanish meaning and an example. Use “Reset cards” to hide everything and review again.</p>
+    </div>
+    <div class="toolbar">
+      <button class="btn" id="resetCards" type="button">Reset cards</button>
+      <button class="btn ghost" id="flipAll" type="button">Reveal all</button>
+      <div class="spacer"></div>
+      <span class="pill" id="cardCount">0 / 0 reviewed</span>
+    </div>
+    <div class="flash-grid" id="flashGrid"></div>
+  </section>
+
+  <!-- ============ DICTIONARY ============ -->
+  <section class="section" id="dictionary">
+    <div class="section-head">
+      <div class="eyebrow">Step 3 · Look it up</div>
+      <h2>English–Spanish dictionary</h2>
+      <p>Search in English or Spanish. Each entry has a simple definition and an example sentence.</p>
+    </div>
+    <div class="search-row">
+      <input id="dictSearch" type="search" placeholder="Search a word or expression… (e.g. weaken, víctima)" aria-label="Search dictionary" />
+      <button class="btn" id="dictClear" type="button">Clear</button>
+    </div>
+    <div class="dict-grid" id="dictGrid"></div>
+  </section>
+
+  <!-- ============ VERB TABLE ============ -->
+  <section class="section" id="verbs">
+    <div class="section-head">
+      <div class="eyebrow">Step 4 · Build the forms</div>
+      <h2>Verb table: base form, past simple, past participle</h2>
+      <p>The badge shows which form is actually heard in the clip. The other forms are regular practice — they are not all spoken in the video.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="verbs">
+        <thead>
+          <tr>
+            <th>Base form</th>
+            <th>Past simple</th>
+            <th>Past participle</th>
+            <th>Spanish meaning</th>
+            <th>Example sentence</th>
+            <th>In the clip</th>
+          </tr>
+        </thead>
+        <tbody id="verbBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ GRAMMAR ============ -->
+  <section class="section" id="grammar">
+    <div class="section-head">
+      <div class="eyebrow">Step 5 · Understand the tenses</div>
+      <h2>Three key tenses</h2>
+      <p>Short, practical explanations based on the video's vocabulary, each with a quick check.</p>
+    </div>
+    <div class="grammar-grid" id="grammarGrid"></div>
+  </section>
+
+  <!-- ============ GAMES ============ -->
+  <section class="section" id="games">
+    <div class="section-head">
+      <div class="eyebrow">Step 6 · Practise</div>
+      <h2>Interactive games</h2>
+      <p>Four activities with instant feedback, a score, and a restart button.</p>
+    </div>
+    <div class="quiz-list" style="gap:38px;">
+
+      <div id="gameA">
+        <div class="quiz-head">
+          <h3 style="font-size:19px;">Game A · Match the words</h3>
+          <span class="score" id="scoreA">0 / 10 matched</span>
+          <div class="spacer"></div>
+          <button class="btn small" data-restart="A" type="button">Restart</button>
+        </div>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:14px;">Click an English expression, then click its Spanish translation.</p>
+        <div class="match-board">
+          <div class="match-col"><h4>English</h4><div id="matchLeft"></div></div>
+          <div class="match-col"><h4>Español</h4><div id="matchRight"></div></div>
+        </div>
+      </div>
+
+      <div id="gameB">
+        <div class="quiz-head">
+          <h3 style="font-size:19px;">Game B · Multiple-choice quiz</h3>
+          <span class="score" id="scoreB">0 / 10</span>
+          <div class="spacer"></div>
+          <button class="btn small" data-restart="B" type="button">Restart</button>
+        </div>
+        <div class="quiz-list" id="quizB"></div>
+      </div>
+
+      <div id="gameC">
+        <div class="quiz-head">
+          <h3 style="font-size:19px;">Game C · Complete the sentence</h3>
+          <span class="score" id="scoreC">0 / 10</span>
+          <div class="spacer"></div>
+          <button class="btn small" data-restart="C" type="button">Restart</button>
+        </div>
+        <div class="quiz-list" id="quizC"></div>
+      </div>
+
+      <div id="gameD">
+        <div class="quiz-head">
+          <h3 style="font-size:19px;">Game D · Verb forms challenge</h3>
+          <span class="score" id="scoreD">0 / 10</span>
+          <div class="spacer"></div>
+          <button class="btn small" data-restart="D" type="button">Restart</button>
+        </div>
+        <div class="quiz-list" id="quizD"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ LISTENING ============ -->
+  <section class="section" id="listening">
+    <div class="section-head">
+      <div class="eyebrow">Step 7 · Train your ear</div>
+      <h2>Listening practice</h2>
+      <p>Play a short section, answer the question, then reveal the transcript and translation. Replay as many times as you need.</p>
+    </div>
+    <div class="listen-grid" id="listenGrid"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap notes">
+    <p class="credit">English Tutor: Diego Monduela</p>
+    <p><strong>Note for students:</strong> the speaker in this video expresses his own personal opinions. This lesson uses the clip only to teach English vocabulary, grammar and listening. The opinions are not presented as facts.</p>
+    <p>Built with plain HTML, CSS and JavaScript. The video file is used as-is; no audio or subtitles are generated. Timestamps are kept exactly as provided.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+
+const TRANSCRIPT = [
+  { t:"0:00", en:"The latest celebrity to fall victim to the men in skirts gang is Russell Westbrook.", es:"La última celebridad en caer víctima de la banda de los hombres con falda es Russell Westbrook." },
+  { t:"0:05", en:"What?", es:"¿Qué?" },
+  { t:"0:05", en:"Who was seen wearing a short short skirt at the ESPYs.", es:"A quien se vio usando una falda muy, muy corta en los ESPYs." },
+  { t:"0:09", en:"Almost as short as John Cena's.", es:"Casi tan corta como la de John Cena." },
+  { t:"0:11", en:"Now I'm not gonna go over the whole humiliation rituals", es:"Ahora no voy a repasar todos los rituales de humillación" },
+  { t:"0:13", en:"and the agenda to feminize men and the gender fluidity movement", es:"y la agenda para feminizar a los hombres y el movimiento de fluidez de género" },
+  { t:"0:17", en:"because most people are now awake to it.", es:"porque la mayoría de la gente ya está despierta ante esto." },
+  { t:"0:19", en:"So what I will do instead is offer you a short list of men that are part of the gang", es:"Así que lo que haré en su lugar es ofrecerte una breve lista de hombres que forman parte de la banda" },
+  { t:"0:23", en:"so you can decide for yourself if you want to keep giving your attention", es:"para que decidas por ti mismo si quieres seguir dándoles tu atención" },
+  { t:"0:27", en:"to people that are clearly working against us", es:"a personas que claramente trabajan en contra de nosotros" },
+  { t:"0:29", en:"or you want to put that energy back into empowering yourself and your loved ones.", es:"o quieres reinvertir esa energía en empoderarte a ti mismo y a tus seres queridos." },
+  { t:"0:42", en:"Now some of you may say it's just fashion", es:"Ahora, algunos de ustedes dirán que es solo moda" },
+  { t:"0:44", en:"but if we combine all the efforts made by the cult to promote feminism", es:"pero si combinamos todos los esfuerzos hechos por la secta para promover el feminismo" },
+  { t:"0:48", en:"to demonize masculinity", es:"para demonizar la masculinidad" },
+  { t:"0:50", en:"to glamorize feminine men in music", es:"para glamorizar a los hombres femeninos en la música" },
+  { t:"0:52", en:"in movies", es:"en las películas" },
+  { t:"0:53", en:"in fashion", es:"en la moda" },
+  { t:"0:54", en:"there are no coincidences.", es:"no hay casualidades." },
+  { t:"0:55", en:"Their goal is to confuse", es:"Su objetivo es confundir" },
+  { t:"0:57", en:"weaken", es:"debilitar" },
+  { t:"0:57", en:"divide", es:"dividir" },
+  { t:"0:58", en:"rule", es:"gobernar" },
+  { t:"0:58", en:"and profit.", es:"y lucrar." },
+  { t:"0:59", en:"The next time you see a male celebrity wearing a skirt", es:"La próxima vez que veas a una celebridad masculina usando una falda" },
+  { t:"1:02", en:"or having their nails painted", es:"o con las uñas pintadas" },
+  { t:"1:03", en:"or dressed like a woman", es:"o vestida como una mujer" },
+  { t:"1:05", en:"you know what to do.", es:"ya sabes qué hacer." }
+];
+
+/* Themed blocks for the transcript — each "from" is the index of the first
+   line in the block. Titles and subtitles are shown in English + Spanish. */
+const SECTIONS = [
+  { from:0,  title:"The celebrity and the skirt",  titleEs:"La celebridad y la falda",
+    sub:"Opening the topic",                        subEs:"Se abre el tema" },
+  { from:4,  title:"A short list of names",        titleEs:"Una breve lista de nombres",
+    sub:"Who deserves your attention",              subEs:"Quién merece tu atención" },
+  { from:11, title:"No coincidences",              titleEs:"No hay casualidades",
+    sub:"A chain of efforts in music, movies and fashion", subEs:"Una cadena de esfuerzos en la música, el cine y la moda" },
+  { from:23, title:"The next time",                titleEs:"La próxima vez",
+    sub:"Closing advice",                           subEs:"Un consejo final" }
+];
+
+const FLASHCARDS = [
+  { term:"fall victim to", trans:"caer víctima de / ser víctima de", ex:"Many people fall victim to online scams.", exEs:"Muchas personas caen víctima de las estafas en línea." },
+  { term:"be seen wearing", trans:"ser visto usando / llevar puesto", ex:"She was seen wearing a red dress.", exEs:"Se la vio usando un vestido rojo." },
+  { term:"go over", trans:"repasar / revisar", ex:"Let's go over the notes before the exam.", exEs:"Repasemos los apuntes antes del examen." },
+  { term:"instead", trans:"en su lugar / en cambio", ex:"I didn't go out; I stayed home instead.", exEs:"No salí; me quedé en casa en su lugar." },
+  { term:"decide for yourself", trans:"decidir por ti mismo", ex:"You should decide for yourself.", exEs:"Deberías decidir por ti mismo." },
+  { term:"give your attention", trans:"prestar tu atención / dar tu atención", ex:"Don't give your attention to gossip.", exEs:"No le prestes tu atención a los chismes." },
+  { term:"work against", trans:"trabajar en contra de", ex:"The delay worked against us.", exEs:"El retraso trabajó en contra de nosotros." },
+  { term:"put that energy back into", trans:"reinvertir esa energía en", ex:"Put that energy back into your studies.", exEs:"Reinvierte esa energía en tus estudios." },
+  { term:"empower", trans:"empoderar", ex:"Education empowers people.", exEs:"La educación empodera a las personas." },
+  { term:"loved ones", trans:"seres queridos", ex:"She spends the holidays with her loved ones.", exEs:"Ella pasa las vacaciones con sus seres queridos." },
+  { term:"combine", trans:"combinar", ex:"Combine the flour and the sugar.", exEs:"Combina la harina y el azúcar." },
+  { term:"promote", trans:"promover", ex:"The campaign promotes healthy habits.", exEs:"La campaña promueve hábitos saludables." },
+  { term:"masculinity", trans:"masculinidad", ex:"The film explores masculinity.", exEs:"La película explora la masculinidad." },
+  { term:"glamorize", trans:"glamorizar", ex:"Ads often glamorize fast cars.", exEs:"Los anuncios a menudo glamorizan los coches rápidos." },
+  { term:"coincidence", trans:"casualidad / coincidencia", ex:"It was just a coincidence.", exEs:"Fue solo una casualidad." },
+  { term:"weaken", trans:"debilitar", ex:"Stress can weaken the immune system.", exEs:"El estrés puede debilitar el sistema inmunitario." },
+  { term:"divide", trans:"dividir", ex:"The issue divided the group.", exEs:"El tema dividió al grupo." },
+  { term:"profit", trans:"lucrar / beneficiarse; ganancia", ex:"They profit from the situation.", exEs:"Ellos lucran con la situación." },
+  { term:"the next time", trans:"la próxima vez", ex:"The next time you visit, call me.", exEs:"La próxima vez que vengas, llámame." }
+];
+
+const DICTIONARY = [
+  { en:"fall victim to", es:"caer víctima de", def:"To become the victim of something bad (a scam, an attack, a trend).", ex:"He fell victim to a fake website." },
+  { en:"be seen wearing", es:"ser visto usando", def:"To be noticed or photographed wearing something.", ex:"The actor was seen wearing a black suit." },
+  { en:"go over", es:"repasar, revisar", def:"To review or examine something carefully.", ex:"Let's go over the plan again." },
+  { en:"instead", es:"en su lugar, en cambio", def:"In the place of something else; as an alternative.", ex:"Instead of driving, we walked." },
+  { en:"decide for yourself", es:"decidir por ti mismo", def:"To make your own choice without being told what to do.", ex:"Read both sides and decide for yourself." },
+  { en:"give your attention", es:"prestar atención", def:"To focus your time and interest on someone or something.", ex:"Give your attention to what matters." },
+  { en:"work against", es:"trabajar en contra de", def:"To act in a way that harms or opposes someone or something.", ex:"Time is working against us." },
+  { en:"put that energy back into", es:"reinvertir esa energía en", def:"To redirect your effort or focus toward something useful.", ex:"Put that energy back into training." },
+  { en:"empower", es:"empoderar", def:"To give someone more power, confidence or control.", ex:"Good teachers empower their students." },
+  { en:"loved ones", es:"seres queridos", def:"The people you love, such as family and close friends.", ex:"He sacrificed a lot for his loved ones." },
+  { en:"combine", es:"combinar", def:"To join two or more things together.", ex:"She combines work and study." },
+  { en:"promote", es:"promover", def:"To support, encourage or advertise something.", ex:"The group promotes healthy eating." },
+  { en:"masculinity", es:"masculinidad", def:"The qualities traditionally associated with being a man.", ex:"The film questions traditional masculinity." },
+  { en:"glamorize", es:"glamorizar", def:"To make something seem more attractive or exciting than it is.", ex:"Films can glamorize danger." },
+  { en:"coincidence", es:"casualidad, coincidencia", def:"Two things happening together by chance, not by plan.", ex:"Meeting you here is a coincidence." },
+  { en:"weaken", es:"debilitar", def:"To make someone or something less strong.", ex:"Lack of sleep can weaken you." },
+  { en:"divide", es:"dividir", def:"To separate something into parts, or to make people split apart.", ex:"The decision divided the community." },
+  { en:"profit", es:"lucrar, beneficiarse; ganancia", def:"To gain money or an advantage from something.", ex:"Businesses profit from attention." },
+  { en:"the next time", es:"la próxima vez", def:"The following occasion when something happens.", ex:"The next time you call, I'll answer." },
+  { en:"agenda", es:"agenda, plan oculto", def:"A plan or set of goals someone wants to achieve.", ex:"The article claims there is a hidden agenda." },
+  { en:"humiliation", es:"humillación", def:"The feeling of being embarrassed or made to feel ashamed.", ex:"He spoke about the humiliation he felt." },
+  { en:"celebrity", es:"celebridad, famoso", def:"A famous person.", ex:"The celebrity arrived with bodyguards." },
+  { en:"demonize", es:"demonizar", def:"To portray someone or something as evil.", ex:"Some media demonize the group." },
+  { en:"confuse", es:"confundir", def:"To make someone unable to think clearly or understand.", ex:"Too many options confuse people." },
+  { en:"rule", es:"gobernar, mandar", def:"To control or govern a country or people.", ex:"Kings once ruled these lands." }
+];
+
+const VERBS = [
+  { base:"fall", past:"fell", pp:"fallen", es:"caer", ex:"He fell on the ice last winter.", heard:"fall (base)", clip:true },
+  { base:"see", past:"saw", pp:"seen", es:"ver", ex:"I saw the film yesterday.", heard:"be seen / see", clip:true },
+  { base:"go", past:"went", pp:"gone", es:"ir", ex:"We went home early.", heard:"go (base)", clip:true },
+  { base:"be", past:"was / were", pp:"been", es:"ser / estar", ex:"She was tired after the trip.", heard:"is / was / are", clip:true },
+  { base:"give", past:"gave", pp:"given", es:"dar", ex:"He gave me a book.", heard:"giving (gerund)", clip:true },
+  { base:"put", past:"put", pp:"put", es:"poner", ex:"Put it on the table, please.", heard:"put (base = same)", clip:true },
+  { base:"make", past:"made", pp:"made", es:"hacer, fabricar", ex:"They made a cake for her.", heard:"made (participle)", clip:true },
+  { base:"do", past:"did", pp:"done", es:"hacer", ex:"What did you do last night?", heard:"do (base)", clip:true },
+  { base:"keep", past:"kept", pp:"kept", es:"seguir, mantener", ex:"She kept the old letters.", heard:"keep (base)", clip:true },
+  { base:"know", past:"knew", pp:"known", es:"saber, conocer", ex:"I knew the answer.", heard:"know (base)", clip:true },
+  { base:"combine", past:"combined", pp:"combined", es:"combinar", ex:"They combined the two teams.", heard:"combine (base)", clip:true },
+  { base:"promote", past:"promoted", pp:"promoted", es:"promover", ex:"They promoted the new product.", heard:"promote (base)", clip:true },
+  { base:"weaken", past:"weakened", pp:"weakened", es:"debilitar", ex:"The illness weakened him.", heard:"weaken (base)", clip:true },
+  { base:"divide", past:"divided", pp:"divided", es:"dividir", ex:"The river divides the city.", heard:"divide (base)", clip:true }
+];
+
+const GRAMMAR = [
+  {
+    id:"present",
+    title:"Present simple",
+    when:"Facts, habits and things that are generally true. It uses the base verb; add -s / -es for he, she, it.",
+    struct:"I / you / we / they + verb · he / she / it + verb + s",
+    examples:[
+      ["The speaker <b>works</b> against the trend.", "El hablante trabaja en contra de la tendencia."],
+      ["Most people <b>are</b> awake to it.", "La mayoría de la gente está despierta ante esto."],
+      ["There <b>are</b> no coincidences.", "No hay casualidades."]
+    ],
+    note:"In the clip: “Their goal <b>is</b> to confuse…”, “there <b>are</b> no coincidences.”",
+    quiz:[{ q:"Choose the correct present simple: “Their goal ____ to confuse people.”", options:["is","are","be","been"], answer:0 }]
+  },
+  {
+    id:"past",
+    title:"Past simple",
+    when:"Finished actions at a known time in the past. Regular verbs add -ed; irregular verbs change (go → went).",
+    struct:"subject + verb-ed  /  irregular past form",
+    examples:[
+      ["He <b>fell</b> victim to the trend.", "Él cayó víctima de la tendencia."],
+      ["Someone <b>saw</b> him wearing a skirt.", "Alguien lo vio usando una falda."],
+      ["They <b>combined</b> their efforts.", "Ellos combinaron sus esfuerzos."]
+    ],
+    note:"Regular: combine → combined, promote → promoted. Irregular: see → saw, go → went, fall → fell.",
+    quiz:[{ q:"Choose the correct past simple: “Yesterday, she ____ a short skirt.”", options:["wear","wore","worn","wearing"], answer:1 }]
+  },
+  {
+    id:"perfect",
+    title:"Present perfect",
+    when:"A past action connected to now — often with no finished time, or with ever, never, already, just, yet.",
+    struct:"have / has + past participle",
+    examples:[
+      ["He <b>has fallen</b> victim to criticism.", "Él ha caído víctima de las críticas."],
+      ["They <b>have combined</b> all their efforts.", "Ellos han combinado todos sus esfuerzos."],
+      ["I <b>have seen</b> this before.", "He visto esto antes."]
+    ],
+    note:"Español: el past simple es “cayó” (acción terminada); el present perfect es “ha caído” (conecta con el presente).",
+    quiz:[{ q:"Choose the correct present perfect: “He ____ victim to criticism.”", options:["fell","has fallen","falls","was fall"], answer:1 }]
+  }
+];
+
+const MATCH_PAIRS = [
+  ["fall victim to","caer víctima de"],
+  ["go over","repasar"],
+  ["empower","empoderar"],
+  ["loved ones","seres queridos"],
+  ["weaken","debilitar"],
+  ["divide","dividir"],
+  ["coincidence","casualidad"],
+  ["promote","promover"],
+  ["work against","trabajar en contra"],
+  ["the next time","la próxima vez"]
+];
+
+const QUIZ_B = [
+  { q:"What does “fall victim to” mean?", options:["Ser víctima de","Caer al suelo","Vencer a alguien","Olvidar algo"], answer:0 },
+  { q:"In the video, “go over” means…", options:["Cruzar la calle","Repasar o revisar","Terminar algo","Subir muy alto"], answer:1 },
+  { q:"“The next time you see…” — “the next time” means…", options:["La última vez","La primera vez","La próxima vez","Cada vez"], answer:2 },
+  { q:"“People working against us” means people who…", options:["Nos ayudan","Trabajan en contra nuestra","Trabajan con nosotros","Nos ignoran"], answer:1 },
+  { q:"“loved ones” means…", options:["Los que aman","Seres queridos","Enemigos","Desconocidos"], answer:1 },
+  { q:"Which word means “debilitar”?", options:["weaken","divide","combine","promote"], answer:0 },
+  { q:"Which word means “empoderar”?", options:["empower","confuse","rule","profit"], answer:0 },
+  { q:"“coincidence” in Spanish is…", options:["Coincidencia menor","Casualidad","Consecuencia","Decisión"], answer:1 },
+  { q:"In the clip, “profit” (as a verb) means…", options:["Perder dinero","Lucrar o beneficiarse","Prohibir","Prometer"], answer:1 },
+  { q:"“decide for yourself” means…", options:["Que otros deciden por ti","Decidir por ti mismo","No decidir","Decidir al azar"], answer:1 }
+];
+
+const QUIZ_C = [
+  { q:"Many celebrities ____ victim to fashion trends.", options:["fall","falls","falling","fell down"], answer:0 },
+  { q:"She was ____ wearing a short skirt at the event.", options:["see","saw","seen","seeing"], answer:2 },
+  { q:"Let's ____ over the transcript one more time.", options:["go","went","gone","going"], answer:0 },
+  { q:"Don't ____ your attention to gossip.", options:["gave","give","given","giving"], answer:1 },
+  { q:"Put that energy ____ into your goals.", options:["back","backward","backs","backing"], answer:0 },
+  { q:"Their goal is to ____ people.", options:["confuse","confused","confusing","confusion"], answer:0 },
+  { q:"If we ____ all our efforts, we get stronger.", options:["combined","combine","combining","combines"], answer:1 },
+  { q:"There are no ____.", options:["coincide","coincidence","coincidences","coincidental"], answer:2 },
+  { q:"The ____ time you see this, you'll know what to do.", options:["last","next","past","first"], answer:1 },
+  { q:"Education can ____ people.", options:["empower","empowers","empowering","empowered"], answer:0 }
+];
+
+const QUIZ_D = [
+  { q:"Past simple of “go” →", options:["goed","gone","went","going"], answer:2 },
+  { q:"Past participle of “see” →", options:["saw","seen","seed","sawed"], answer:1 },
+  { q:"Base form of “made” →", options:["make","maked","made","making"], answer:0 },
+  { q:"Past simple of “give” →", options:["gived","gave","given","giving"], answer:1 },
+  { q:"Past participle of “fall” →", options:["fell","fallen","falled","falling"], answer:1 },
+  { q:"Past simple of “know” →", options:["knowed","known","knew","knowing"], answer:2 },
+  { q:"Past participle of “put” →", options:["putted","put","puted","putting"], answer:1 },
+  { q:"Past simple of “be” (he) →", options:["were","was","been","beed"], answer:1 },
+  { q:"Base form of “kept” →", options:["kep","kept","keep","keeping"], answer:2 },
+  { q:"Past participle of “do” →", options:["did","done","doed","doing"], answer:1 }
+];
+
+const LISTENING = [
+  { start:"0:00", end:"0:09", q:"What was the celebrity seen wearing?", options:["A short skirt","A long coat","A formal suit","A winter hat"], answer:0,
+    en:"The latest celebrity to fall victim to the men in skirts gang is Russell Westbrook. Who was seen wearing a short short skirt at the ESPYs.",
+    es:"La última celebridad en caer víctima de la banda de los hombres con falda es Russell Westbrook. A quien se vio usando una falda muy, muy corta en los ESPYs." },
+  { start:"0:23", end:"0:29", q:"What can you decide for yourself?", options:["Whether to keep giving your attention","What to wear to a party","Where to travel next","How to sing a song"], answer:0,
+    en:"So you can decide for yourself if you want to keep giving your attention to people that are clearly working against us.",
+    es:"Para que decidas por ti mismo si quieres seguir dándoles tu atención a personas que claramente trabajan en contra de nosotros." },
+  { start:"0:42", end:"0:54", q:"According to the speaker, what might some people say it is?", options:["Just fashion","A crime","A sport","A joke"], answer:0,
+    en:"Now some of you may say it's just fashion, but if we combine all the efforts made by the cult to promote feminism, to demonize masculinity, to glamorize feminine men in music, in movies, in fashion, there are no coincidences.",
+    es:"Ahora, algunos de ustedes dirán que es solo moda, pero si combinamos todos los esfuerzos hechos por la secta para promover el feminismo, para demonizar la masculinidad, para glamorizar a los hombres femeninos en la música, en las películas, en la moda, no hay casualidades." },
+  { start:"0:55", end:"0:59", q:"What does the speaker say the goal is? Select the best answer.", options:["To confuse, weaken, divide, rule and profit","To help and unite people","To teach fashion design","To promote health"], answer:0,
+    en:"Their goal is to confuse, weaken, divide, rule and profit.",
+    es:"Su objetivo es confundir, debilitar, dividir, gobernar y lucrar." }
+];
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+function parseTime(str){
+  const parts = String(str).split(":").map(Number);
+  return parts.length === 2 ? parts[0]*60 + parts[1] : parts[0];
+}
+function fmt(sec){
+  sec = Math.max(0, Math.floor(sec));
+  const m = Math.floor(sec/60), s = sec%60;
+  return m + ":" + String(s).padStart(2,"0");
+}
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; }
+  return a;
+}
+const video = $("#lessonVideo");
+function seekTo(sec){ try { video.currentTime = sec; video.focus(); } catch(e){} }
+function playFrom(sec){ seekTo(sec); const p = video.play(); if(p && p.catch) p.catch(()=>{}); }
+function toast(msg){
+  const el = $("#toast"); el.textContent = msg; el.classList.add("show");
+  clearTimeout(el._t); el._t = setTimeout(()=>el.classList.remove("show"), 1600);
+}
+
+/* ============================================================
+   TRANSCRIPT
+   ============================================================ */
+(function renderTranscript(){
+  const box = $("#transcript");
+  const frag = document.createDocumentFragment();
+
+  function sectionHeader(sec){
+    const wrap = document.createElement("div");
+    wrap.className = "tsection";
+    wrap.dataset.sec = sec.from;
+    wrap.innerHTML =
+      '<div class="tsection-ttl"><span class="en"></span><span class="es"></span></div>' +
+      '<div class="tsection-sub"><span class="en"></span><span class="es"></span></div>' +
+      '<div class="tsection-rule"></div>';
+    const ttl = wrap.querySelectorAll(".tsection-ttl > span");
+    ttl[0].textContent = sec.title;
+    ttl[1].textContent = "· " + sec.titleEs;
+    const sub = wrap.querySelectorAll(".tsection-sub > span");
+    sub[0].textContent = sec.sub;
+    sub[1].textContent = "· " + sec.subEs;
+    return wrap;
+  }
+
+  TRANSCRIPT.forEach((line, i) => {
+    const sec = SECTIONS.find(s => s.from === i);
+    if(sec) frag.appendChild(sectionHeader(sec));
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "tline";
+    btn.dataset.index = i;
+    btn.dataset.time = line.t;
+    btn.innerHTML =
+      '<span class="ts">' + line.t + '</span>' +
+      '<span><span class="en"></span><span class="es"></span></span>';
+    btn.querySelector(".en").textContent = line.en;
+    btn.querySelector(".es").textContent = line.es;
+    frag.appendChild(btn);
+  });
+  box.appendChild(frag);
+
+  const note = document.createElement("div");
+  note.className = "tnote";
+  note.textContent = "Some lines share the same timestamp (for example 0:05 and 0:57) — the order is kept exactly as supplied.";
+  box.appendChild(note);
+
+  box.addEventListener("click", (e) => {
+    const line = e.target.closest(".tline");
+    if(!line) return;
+    const sec = parseTime(line.dataset.time);
+    seekTo(sec);
+    playFrom(sec);
+    $$(".tline", box).forEach(el => el.classList.remove("active"));
+    line.classList.add("active");
+    toast("Jumped to " + line.dataset.time);
+  });
+})();
+
+/* Chapter index — jump the video and scroll the transcript to each block */
+(function renderChapters(){
+  const wrap = $("#chapters"), box = $("#transcript");
+  if(!wrap) return;
+  SECTIONS.forEach((sec, i) => {
+    const t = TRANSCRIPT[sec.from].t;
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.dataset.time = t;
+    b.dataset.sec = sec.from;
+    b.innerHTML = '<span class="n">' + String(i+1).padStart(2,"0") + '</span><span>' + sec.title + '</span>';
+    b.addEventListener("click", () => {
+      playFrom(parseTime(t));
+      $$(".chip", wrap).forEach(c => c.classList.remove("active"));
+      b.classList.add("active");
+      const header = box.querySelector('.tsection[data-sec="' + sec.from + '"]');
+      if(header){
+        const cRect = box.getBoundingClientRect();
+        const hRect = header.getBoundingClientRect();
+        box.scrollTop += (hRect.top - cRect.top) - 6;
+      }
+      toast(sec.title + " · " + t);
+    });
+    wrap.appendChild(b);
+  });
+})();
+
+/* highlight active line + update clock */
+(function trackVideo(){
+  const clock = $("#nowTime");
+  video.addEventListener("timeupdate", () => {
+    clock.textContent = fmt(video.currentTime);
+    const t = video.currentTime;
+    let activeIdx = 0;
+    for(let i=0;i<TRANSCRIPT.length;i++){ if(parseTime(TRANSCRIPT[i].t) <= t + 0.05) activeIdx = i; }
+    $$(".tline").forEach((el,i)=> el.classList.toggle("active", i === activeIdx && !video.paused));
+    let activeSec = SECTIONS[0].from;
+    for(let s=0;s<SECTIONS.length;s++){ if(SECTIONS[s].from <= activeIdx) activeSec = SECTIONS[s].from; }
+    $$(".chip").forEach((c)=> c.classList.toggle("active", Number(c.dataset.sec) === activeSec));
+  });
+  video.addEventListener("pause", () => $$(".tline").forEach(el=>el.classList.remove("active")));
+})();
+
+/* ES show / hide */
+(function transcriptToggle(){
+  const btn = $("#toggleEs"), state = $("#esState");
+  btn.addEventListener("click", () => {
+    const hidden = document.body.classList.toggle("hide-es");
+    btn.textContent = hidden ? "Mostrar español" : "Ocultar español";
+    btn.setAttribute("aria-pressed", String(!hidden));
+    state.textContent = "Español: " + (hidden ? "oculto" : "visible");
+  });
+})();
+
+/* ============================================================
+   FLASHCARDS
+   ============================================================ */
+(function flashcards(){
+  const grid = $("#flashGrid"), count = $("#cardCount");
+  let reviewed = 0;
+
+  function update(){
+    count.textContent = reviewed + " / " + FLASHCARDS.length + " reviewed";
+  }
+  function build(){
+    grid.innerHTML = "";
+    reviewed = 0;
+    FLASHCARDS.forEach((c, i) => {
+      const el = document.createElement("div");
+      el.className = "flip";
+      el.tabIndex = 0;
+      el.setAttribute("role","button");
+      el.setAttribute("aria-label","Flashcard: " + c.term);
+      el.innerHTML =
+        '<div class="flip-inner">' +
+          '<div class="flip-face front">' +
+            '<span class="tag">English</span>' +
+            '<span class="term"></span>' +
+            '<span class="hint">Tap to reveal →</span>' +
+          '</div>' +
+          '<div class="flip-face flip-back back">' +
+            '<span class="tag">Español + example</span>' +
+            '<span class="trans"></span>' +
+            '<span class="ex en"></span>' +
+            '<span class="ex es"></span>' +
+          '</div>' +
+        '</div>';
+      el.querySelector(".term").textContent = c.term;
+      el.querySelector(".trans").textContent = c.trans;
+      el.querySelector(".ex.en").textContent = c.ex;
+      el.querySelector(".ex.es").textContent = c.exEs;
+      const flip = () => {
+        const on = el.classList.toggle("flipped");
+        if(on) reviewed = Math.min(FLASHCARDS.length, reviewed + 1); else reviewed = Math.max(0, reviewed - 1);
+        update();
+      };
+      el.addEventListener("click", flip);
+      el.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); flip(); } });
+      grid.appendChild(el);
+    });
+    update();
+  }
+  $("#resetCards").addEventListener("click", () => { build(); toast("Cards reset"); });
+  $("#flipAll").addEventListener("click", () => {
+    const cards = $$(".flip", grid);
+    const allOn = cards.every(el => el.classList.contains("flipped"));
+    cards.forEach(el => el.classList.toggle("flipped", !allOn));
+    reviewed = allOn ? 0 : FLASHCARDS.length;
+    update();
+  });
+  build();
+})();
+
+/* ============================================================
+   DICTIONARY
+   ============================================================ */
+(function dictionary(){
+  const grid = $("#dictGrid"), input = $("#dictSearch");
+  const norm = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+
+  function render(list){
+    grid.innerHTML = "";
+    if(!list.length){
+      const empty = document.createElement("div");
+      empty.className = "dict-empty card";
+      empty.textContent = "No results. Try another word in English or Spanish.";
+      grid.appendChild(empty);
+      return;
+    }
+    list.forEach(e => {
+      const item = document.createElement("div");
+      item.className = "dict-item card";
+      item.innerHTML =
+        '<div class="top"><span class="word"></span><span class="word-es"></span></div>' +
+        '<p class="def"></p>' +
+        '<p class="exm"></p>';
+      item.querySelector(".word").textContent = e.en;
+      item.querySelector(".word-es").textContent = e.es;
+      item.querySelector(".def").textContent = e.def;
+      item.querySelector(".exm").textContent = "e.g. " + e.ex;
+      grid.appendChild(item);
+    });
+  }
+  function filter(){
+    const q = norm(input.value.trim());
+    if(!q){ render(DICTIONARY); return; }
+    const res = DICTIONARY.filter(e =>
+      norm(e.en).includes(q) || norm(e.es).includes(q) || norm(e.def).includes(q)
+    );
+    render(res);
+  }
+  input.addEventListener("input", filter);
+  $("#dictClear").addEventListener("click", () => { input.value = ""; render(DICTIONARY); input.focus(); });
+  render(DICTIONARY);
+})();
+
+/* ============================================================
+   VERB TABLE
+   ============================================================ */
+(function verbTable(){
+  const body = $("#verbBody");
+  VERBS.forEach(v => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      '<td class="base"></td>' +
+      '<td class="form"></td>' +
+      '<td class="form"></td>' +
+      '<td class="esm"></td>' +
+      '<td class="exm"></td>' +
+      '<td></td>';
+    tr.querySelector(".base").textContent = v.base;
+    tr.children[1].textContent = v.past;
+    tr.children[2].textContent = v.pp;
+    tr.querySelector(".esm").textContent = v.es;
+    tr.querySelector(".exm").textContent = v.ex;
+    const pill = document.createElement("span");
+    pill.className = "pill " + (v.clip ? "clip" : "practice");
+    pill.textContent = v.heard;
+    tr.lastElementChild.appendChild(pill);
+    body.appendChild(tr);
+  });
+})();
+
+/* ============================================================
+   GRAMMAR
+   ============================================================ */
+(function grammar(){
+  const grid = $("#grammarGrid");
+  GRAMMAR.forEach(g => {
+    const card = document.createElement("article");
+    card.className = "gram-card card";
+    card.id = "gram-" + g.id;
+    const ul = document.createElement("ul");
+    g.examples.forEach(([en, es]) => {
+      const li = document.createElement("li");
+      li.innerHTML = en + ' <span class="ex">— ' + es + '</span>';
+      ul.appendChild(li);
+    });
+    card.innerHTML =
+      '<h3></h3>' +
+      '<p class="when"></p>' +
+      '<div class="struct"></div>';
+    card.querySelector("h3").textContent = g.title;
+    card.querySelector(".when").textContent = g.when;
+    card.querySelector(".struct").textContent = g.struct;
+    card.appendChild(ul);
+    const note = document.createElement("p");
+    note.className = "gram-note";
+    note.innerHTML = g.note;
+    card.appendChild(note);
+    const exWrap = document.createElement("div");
+    exWrap.className = "quiz-list";
+    exWrap.dataset.quiz = "gram-" + g.id;
+    card.appendChild(exWrap);
+    grid.appendChild(card);
+    buildQuiz(exWrap, g.quiz, { id: "gram-" + g.id, label: "Check" });
+  });
+})();
+
+/* ============================================================
+   SHARED QUIZ BUILDER
+   ============================================================ */
+function buildQuiz(container, items, opts){
+  opts = opts || {};
+  container.innerHTML = "";
+  let correct = 0;
+  const restartRow = document.createElement("div");
+  restartRow.className = "quiz-head";
+  restartRow.style.margin = "4px 0 0";
+  const scoreEl = document.createElement("span");
+  scoreEl.className = "score";
+  scoreEl.textContent = "0 / " + items.length;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn small";
+  btn.textContent = "Restart";
+  restartRow.appendChild(scoreEl);
+  restartRow.appendChild(btn);
+
+  const listEl = document.createElement("div");
+  listEl.className = "quiz-list";
+
+  function render(){
+    correct = 0;
+    scoreEl.textContent = "0 / " + items.length;
+    listEl.innerHTML = "";
+    items.forEach((item, qi) => {
+      const card = document.createElement("div");
+      card.className = "qcard card";
+      const qt = document.createElement("p");
+      qt.className = "qtext";
+      qt.innerHTML = '<span class="num">' + String(qi+1).padStart(2,"0") + '</span>';
+      qt.appendChild(document.createTextNode(item.q));
+      card.appendChild(qt);
+      const optWrap = document.createElement("div");
+      optWrap.className = "opts";
+      const fb = document.createElement("p");
+      fb.className = "fb";
+      let answered = false;
+      item.options.forEach((opt, oi) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "opt";
+        b.textContent = opt;
+        b.addEventListener("click", () => {
+          if(answered) return;
+          answered = true;
+          const ok = oi === item.answer;
+          $$(".opt", optWrap).forEach((x, xi) => {
+            x.disabled = true;
+            if(xi === item.answer) x.classList.add("correct");
+            if(xi === oi && !ok) x.classList.add("wrong");
+          });
+          fb.classList.add("show");
+          if(ok){ correct++; fb.textContent = "✓ Correct"; fb.className = "fb show ok"; }
+          else { fb.textContent = "✗ Not quite — the answer is “" + item.options[item.answer] + "”"; fb.className = "fb show no"; }
+          scoreEl.textContent = correct + " / " + items.length;
+          if(correct === items.length) toast("Perfect score! All correct.");
+        });
+        optWrap.appendChild(b);
+      });
+      card.appendChild(optWrap);
+      card.appendChild(fb);
+      listEl.appendChild(card);
+    });
+  }
+  btn.addEventListener("click", () => { render(); });
+  container.appendChild(restartRow);
+  container.appendChild(listEl);
+  render();
+  return { reset: render };
+}
+
+/* ============================================================
+   GAME A · MATCH
+   ============================================================ */
+(function matchGame(){
+  const left = $("#matchLeft"), right = $("#matchRight"), score = $("#scoreA");
+  let selected = null, matched = 0;
+
+  function build(){
+    left.innerHTML = ""; right.innerHTML = ""; selected = null; matched = 0;
+    score.textContent = "0 / " + MATCH_PAIRS.length + " matched";
+    const enItems = shuffle(MATCH_PAIRS.map((p,i)=>({ text:p[0], id:i })));
+    const esItems = shuffle(MATCH_PAIRS.map((p,i)=>({ text:p[1], id:i })));
+    enItems.forEach(o => left.appendChild(makeBtn(o, "en")));
+    esItems.forEach(o => right.appendChild(makeBtn(o, "es")));
+  }
+  function makeBtn(o, side){
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "match-item";
+    b.dataset.id = o.id;
+    b.dataset.side = side;
+    b.textContent = o.text;
+    b.addEventListener("click", () => onClick(b));
+    return b;
+  }
+  function onClick(b){
+    if(b.classList.contains("matched")) return;
+    if(!selected){
+      selected = b; b.classList.add("sel"); return;
+    }
+    if(selected === b){ b.classList.remove("sel"); selected = null; return; }
+    if(selected.dataset.side === b.dataset.side){
+      selected.classList.remove("sel"); selected = b; b.classList.add("sel"); return;
+    }
+    if(selected.dataset.id === b.dataset.id){
+      selected.classList.remove("sel"); selected.classList.add("matched");
+      b.classList.add("matched");
+      selected = null;
+      matched++;
+      score.textContent = matched + " / " + MATCH_PAIRS.length + " matched";
+      if(matched === MATCH_PAIRS.length) toast("All matched! Well done.");
+    } else {
+      const a = selected, c = b;
+      a.classList.remove("sel");
+      a.classList.add("wrong"); c.classList.add("wrong");
+      setTimeout(()=>{ a.classList.remove("wrong"); c.classList.remove("wrong"); }, 420);
+      selected = null;
+    }
+  }
+  $("#gameA [data-restart='A']").addEventListener("click", () => { build(); toast("Game A restarted"); });
+  build();
+})();
+
+/* ============================================================
+   GAMES B / C / D
+   ============================================================ */
+buildQuiz($("#quizB"), QUIZ_B, { id:"quizB" });
+buildQuiz($("#quizC"), QUIZ_C, { id:"quizC" });
+buildQuiz($("#quizD"), QUIZ_D, { id:"quizD" });
+
+/* restart buttons for B / C / D map to internal reset via re-render */
+(function wireRestarts(){
+  const map = { B:"#quizB", C:"#quizC", D:"#quizD" };
+  Object.keys(map).forEach(k => {
+    const btn = document.querySelector("[data-restart='" + k + "']");
+    if(!btn) return;
+    btn.addEventListener("click", () => {
+      const root = document.querySelector(map[k]);
+      const rb = root.querySelector("button.btn.small");
+      if(rb) rb.click();
+      toast("Game " + k + " restarted");
+      const top = root.getBoundingClientRect().top + window.pageYOffset - 84;
+      window.scrollTo({ top: Math.max(0, top), behavior:"smooth" });
+    });
+  });
+})();
+
+/* ============================================================
+   LISTENING
+   ============================================================ */
+(function listening(){
+  const grid = $("#listenGrid");
+  LISTENING.forEach((seg, i) => {
+    const card = document.createElement("article");
+    card.className = "listen-card card";
+    const s = parseTime(seg.start), e = parseTime(seg.end);
+    card.innerHTML =
+      '<span class="range">' + seg.start + " – " + seg.end + '</span>' +
+      '<p class="q"></p>' +
+      '<div class="opts"></div>' +
+      '<div class="listen-actions">' +
+        '<button class="btn small primary" type="button" data-play>Play section</button>' +
+        '<button class="btn small" type="button" data-reveal>Reveal transcript</button>' +
+      '</div>' +
+      '<div class="reveal"><p class="en"></p><p class="es"></p></div>';
+    card.querySelector(".q").textContent = seg.q;
+    card.querySelector(".reveal .en").textContent = seg.en;
+    card.querySelector(".reveal .es").textContent = seg.es;
+
+    const opts = card.querySelector(".opts");
+    let answered = false;
+    seg.options.forEach((opt, oi) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "opt"; b.textContent = opt;
+      b.addEventListener("click", () => {
+        if(answered) return; answered = true;
+        $$(".opt", opts).forEach((x, xi) => {
+          x.disabled = true;
+          if(xi === seg.answer) x.classList.add("correct");
+          if(xi === oi && oi !== seg.answer) x.classList.add("wrong");
+        });
+        if(oi === seg.answer) toast("Correct!");
+      });
+      opts.appendChild(b);
+    });
+
+    card.querySelector("[data-play]").addEventListener("click", () => {
+      playFrom(s);
+      toast("Playing " + seg.start + " – " + seg.end);
+    });
+    card.querySelector("[data-reveal]").addEventListener("click", (ev) => {
+      const r = card.querySelector(".reveal");
+      const open = r.classList.toggle("open");
+      ev.currentTarget.textContent = open ? "Hide transcript" : "Reveal transcript";
+    });
+    grid.appendChild(card);
+  });
+})();
+
+/* ============================================================
+   SCROLL-SPY NAV
+   ============================================================ */
+(function navSpy(){
+  const links = $$(".topnav a");
+  const sections = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  if(!("IntersectionObserver" in window) || !sections.length) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        const id = "#" + en.target.id;
+        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === id));
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+  sections.forEach(s => obs.observe(s));
+})();
+</script>
+</body>
+</html>
